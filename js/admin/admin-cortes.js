@@ -887,6 +887,89 @@
 
         return result.sort((a, b) => a.minQty - b.minQty);
     }
+
+    // ═══════════════════════════════════════════════════════════════════════════
+    // RENDERIZADO Y CONTROL DE ESCALAS DE DESCUENTO DINÁMICAS EN MADERA (TABLAS)
+    // ═══════════════════════════════════════════════════════════════════════════
+    let currentMaderaDiscountScales = [
+        { minQty: 3, discountPercent: 10 },
+        { minQty: 6, discountPercent: 15 }
+    ];
+
+    function renderMaderaDiscountScalesUI() {
+        const container = document.getElementById('cortes-madera-escalas-container');
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        if (!currentMaderaDiscountScales || currentMaderaDiscountScales.length === 0) {
+            container.innerHTML = `<div style="padding: 0.6rem; text-align: center; color: #64748B; font-size: 0.75rem; background: #FFFFFF; border-radius: 8px; border: 1px dashed #CBD5E1;">No hay escalas configuradas. Hacé clic en "Agregar Escala".</div>`;
+            return;
+        }
+
+        currentMaderaDiscountScales.forEach((esc, idx) => {
+            const row = document.createElement('div');
+            row.style.cssText = 'display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: center; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 8px 12px;';
+
+            row.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <label style="font-size: 0.72rem; font-weight: 700; color: #475569; white-space: nowrap;">A partir de:</label>
+                    <input type="number" class="admin-input madera-esc-inp-qty" value="${esc.minQty || (idx * 3 + 3)}" min="2" max="999" style="width: 75px; padding: 4px 8px; font-size: 0.8rem; font-weight: 700;">
+                    <span style="font-size: 0.72rem; color: #64748B;">piezas</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <label style="font-size: 0.72rem; font-weight: 700; color: #10B981; white-space: nowrap;">Descuento:</label>
+                    <input type="number" class="admin-input madera-esc-inp-pct" value="${esc.discountPercent || 10}" min="1" max="99" style="width: 75px; padding: 4px 8px; font-size: 0.8rem; font-weight: 700; color: #15803D;">
+                    <span style="font-size: 0.72rem; font-weight: 700; color: #15803D;">% OFF</span>
+                </div>
+                <button type="button" class="btn-danger" onclick="window.removeCortesMaderaDiscountScaleRow(${idx})" style="padding: 4px 8px; border-radius: 6px;" title="Eliminar escala">
+                    <span class="material-symbols-outlined" style="font-size: 16px;">delete</span>
+                </button>
+            `;
+
+            container.appendChild(row);
+        });
+    }
+
+    window.addCortesMaderaDiscountScaleRow = function() {
+        currentMaderaDiscountScales = getMaderaDiscountScalesFromUI();
+        if (!Array.isArray(currentMaderaDiscountScales)) currentMaderaDiscountScales = [];
+        const lastQty = currentMaderaDiscountScales.length > 0 ? (currentMaderaDiscountScales[currentMaderaDiscountScales.length - 1].minQty + 3) : 3;
+        const lastPct = currentMaderaDiscountScales.length > 0 ? Math.min(95, currentMaderaDiscountScales[currentMaderaDiscountScales.length - 1].discountPercent + 5) : 10;
+
+        currentMaderaDiscountScales.push({ minQty: lastQty, discountPercent: lastPct });
+        renderMaderaDiscountScalesUI();
+    };
+
+    window.removeCortesMaderaDiscountScaleRow = function(idx) {
+        currentMaderaDiscountScales = getMaderaDiscountScalesFromUI();
+        if (!Array.isArray(currentMaderaDiscountScales) || idx < 0 || idx >= currentMaderaDiscountScales.length) return;
+        currentMaderaDiscountScales.splice(idx, 1);
+        renderMaderaDiscountScalesUI();
+    };
+
+    function getMaderaDiscountScalesFromUI() {
+        const container = document.getElementById('cortes-madera-escalas-container');
+        if (!container) return currentMaderaDiscountScales;
+
+        const rows = container.children;
+        const result = [];
+
+        for (let i = 0; i < rows.length; i++) {
+            const row = rows[i];
+            const inQty = row.querySelector('.madera-esc-inp-qty');
+            const inPct = row.querySelector('.madera-esc-inp-pct');
+            if (inQty && inPct) {
+                const q = parseInt(inQty.value) || 0;
+                const p = parseFloat(inPct.value) || 0;
+                if (q > 0 && p > 0) {
+                    result.push({ minQty: q, discountPercent: p });
+                }
+            }
+        }
+
+        return result.sort((a, b) => a.minQty - b.minQty);
+    }
     function loadCortesConfigToUI() {
         const conf = window.cortesConfig || {
             precios: { precio_m2_venta: 48500, costo_m2_base: 27000, minimo_corte_taller: 3500 },
@@ -1124,17 +1207,17 @@
 
         // Descuentos en el Producto (Madera / Piezas)
         const chkDesc = document.getElementById('chk-cortes-desc-activo');
-        const inDescCant1 = document.getElementById('inp-cortes-desc-cant-1');
-        const inDescPct1 = document.getElementById('inp-cortes-desc-pct-1');
-        const inDescCant2 = document.getElementById('inp-cortes-desc-cant-2');
-        const inDescPct2 = document.getElementById('inp-cortes-desc-pct-2');
-
-        const escalas = conf.descuentos?.escalas || [{ minQty: 3, discountPercent: 10 }, { minQty: 6, discountPercent: 15 }];
         if (chkDesc) chkDesc.checked = conf.descuentos?.activo !== false;
-        if (inDescCant1) inDescCant1.value = escalas[0]?.minQty ?? 3;
-        if (inDescPct1) inDescPct1.value = escalas[0]?.discountPercent ?? 10;
-        if (inDescCant2) inDescCant2.value = escalas[1]?.minQty ?? 6;
-        if (inDescPct2) inDescPct2.value = escalas[1]?.discountPercent ?? 15;
+
+        if (Array.isArray(conf.descuentos?.escalas) && conf.descuentos.escalas.length > 0) {
+            currentMaderaDiscountScales = [...conf.descuentos.escalas];
+        } else {
+            currentMaderaDiscountScales = [
+                { minQty: 3, discountPercent: 10 },
+                { minQty: 6, discountPercent: 15 }
+            ];
+        }
+        renderMaderaDiscountScalesUI();
 
         // Actualizar opciones del selector de Material en el simulador
         const selSimMat = document.getElementById('sim-cortes-mat');
@@ -1433,16 +1516,7 @@
             ],
             descuentos: {
                 activo: document.getElementById('chk-cortes-desc-activo')?.checked !== false,
-                escalas: [
-                    {
-                        minQty: parseInt(document.getElementById('inp-cortes-desc-cant-1')?.value) || 3,
-                        discountPercent: parseFloat(document.getElementById('inp-cortes-desc-pct-1')?.value) || 10
-                    },
-                    {
-                        minQty: parseInt(document.getElementById('inp-cortes-desc-cant-2')?.value) || 6,
-                        discountPercent: parseFloat(document.getElementById('inp-cortes-desc-pct-2')?.value) || 15
-                    }
-                ]
+                escalas: getMaderaDiscountScalesFromUI()
             },
             logistica: {
                 max_largo_flex: flexMaxL,

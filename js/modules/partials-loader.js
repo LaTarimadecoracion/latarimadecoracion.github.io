@@ -29,6 +29,7 @@ window.loadAdminPartialsOnDemand = async function() {
 
     await loadPartial('partials/view-admin.html', '#view-admin', 'innerHTML');
     await Promise.all([
+        loadPartial('partials/admin/view-ml-importer.html', '#admin-main-container', 'beforeend'),
         loadPartial('partials/admin/modal-offer.html', '#view-admin'),
         loadPartial('partials/admin/modal-stock-edit.html', '#view-admin'),
         loadPartial('partials/admin/modal-stock-draft.html', '#view-admin'),

@@ -294,8 +294,8 @@ if (Array.isArray(window.sessionAvisos)) {
                     if (cat.products) {
                         const found = cat.products.find(p => {
                             if (!p) return false;
-                            const pId = (p.id || '').trim().toLowerCase();
-                            const pTitle = (p.title || '').trim().toLowerCase();
+                            const pId = String(p.id != null ? p.id : '').trim().toLowerCase();
+                            const pTitle = String(p.title != null ? p.title : '').trim().toLowerCase();
                             return pId === decodedProdId || pTitle === decodedProdId;
                         });
 
@@ -323,8 +323,8 @@ if (Array.isArray(window.sessionAvisos)) {
             if (!targetCover && window.sessionRentals && Array.isArray(window.sessionRentals)) {
                 const found = window.sessionRentals.find(r => {
                     if (!r) return false;
-                    const rId = (r.id || '').trim().toLowerCase();
-                    const rTitle = (r.title || '').trim().toLowerCase();
+                    const rId = String(r.id != null ? r.id : '').trim().toLowerCase();
+                    const rTitle = String(r.title != null ? r.title : '').trim().toLowerCase();
                     return rId === decodedProdId || rTitle === decodedProdId;
                 });
                 if (found) {
@@ -357,7 +357,7 @@ if (Array.isArray(window.sessionAvisos)) {
         const isAutoNotice = Boolean(prodParam) || /^¡?Nuevo (Ingreso|Alquiler)/i.test(aviso.title || '');
         if (!isAutoNotice) return true; // Mantener avisos informativos generales
 
-        const normATitle = (aviso.title || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/^¡?nuevo\s+(ingreso|alquiler):\s*/i, "").replace(/[^a-z0-9]/g, "");
+        const normATitle = String(aviso.title || '').toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/^¡?nuevo\s+(ingreso|alquiler):\s*/i, "").replace(/[^a-z0-9]/g, "");
 
         // Verificar existencia en productos
         if (window.sessionProducts && Array.isArray(window.sessionProducts)) {
@@ -365,8 +365,8 @@ if (Array.isArray(window.sessionAvisos)) {
                 if (cat.products && Array.isArray(cat.products)) {
                     for (const p of cat.products) {
                         if (!p) continue;
-                        const pId = (p.id || '').trim().toLowerCase();
-                        const pTitle = (p.title || '').trim().toLowerCase();
+                        const pId = String(p.id != null ? p.id : '').trim().toLowerCase();
+                        const pTitle = String(p.title != null ? p.title : '').trim().toLowerCase();
                         const normPTitle = pTitle.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
                         if (prodParam && (pId === prodParam || normPTitle === prodParam)) return true;
                         if (normATitle && (normPTitle === normATitle || (normPTitle.length > 5 && normATitle.includes(normPTitle)))) return true;
@@ -379,8 +379,8 @@ if (Array.isArray(window.sessionAvisos)) {
         if (window.sessionOffers && Array.isArray(window.sessionOffers)) {
             for (const o of window.sessionOffers) {
                 if (!o) continue;
-                const oId = (o.id || '').trim().toLowerCase();
-                const oTitle = (o.title || '').trim().toLowerCase();
+                const oId = String(o.id != null ? o.id : '').trim().toLowerCase();
+                const oTitle = String(o.title != null ? o.title : '').trim().toLowerCase();
                 const normOTitle = oTitle.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
                 if (prodParam && (oId === prodParam || normOTitle === prodParam)) return true;
                 if (normATitle && (normOTitle === normATitle || (normOTitle.length > 5 && normATitle.includes(normOTitle)))) return true;
@@ -391,8 +391,8 @@ if (Array.isArray(window.sessionAvisos)) {
         if (window.sessionRentals && Array.isArray(window.sessionRentals)) {
             for (const r of window.sessionRentals) {
                 if (!r) continue;
-                const rId = (r.id || '').trim().toLowerCase();
-                const rTitle = (r.title || '').trim().toLowerCase();
+                const rId = String(r.id != null ? r.id : '').trim().toLowerCase();
+                const rTitle = String(r.title != null ? r.title : '').trim().toLowerCase();
                 const normRTitle = rTitle.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
                 if (prodParam && (rId === prodParam || normRTitle === prodParam)) return true;
                 if (normATitle && (normRTitle === normATitle || (normRTitle.length > 5 && normATitle.includes(normRTitle)))) return true;
@@ -444,8 +444,26 @@ try {
 
 try {
     const localHomeConfig = localStorage.getItem('homeConfig');
-    if (localHomeConfig && (!window.siteConfig.homeConfig || !window.siteConfig.homeConfig.order)) {
-        window.homeConfig = JSON.parse(localHomeConfig);
+    if (localHomeConfig) {
+        const parsed = JSON.parse(localHomeConfig);
+        // Sincronizar secciones combinando los datos actualizados del servidor/siteConfig
+        if (window.siteConfig && window.siteConfig.homeConfig) {
+            window.homeConfig = {
+                order: parsed.order || window.siteConfig.homeConfig.order,
+                sections: Object.assign({}, window.siteConfig.homeConfig.sections, parsed.sections || {})
+            };
+            // Si en siteConfig una sección está explícitamente oculta (visible === false) y en local no se guardó, respetar siteConfig
+            if (window.siteConfig.homeConfig.sections) {
+                Object.keys(window.siteConfig.homeConfig.sections).forEach(secKey => {
+                    const serverSec = window.siteConfig.homeConfig.sections[secKey];
+                    if (serverSec && serverSec.visible === false && parsed.sections && parsed.sections[secKey] && parsed.sections[secKey].visible === undefined) {
+                        window.homeConfig.sections[secKey].visible = false;
+                    }
+                });
+            }
+        } else {
+            window.homeConfig = parsed;
+        }
     }
 } catch (e) {
     console.error("Error loading homeConfig fallback:", e);

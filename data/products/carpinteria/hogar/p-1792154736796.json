@@ -1,0 +1,42 @@
+{
+  "id": "1792154736796",
+  "title": "Canasto Ramillero/paragüero De Mimbre",
+  "description": "",
+  "image": "img/canasto-ramillero-paraguero-de-mimbre/1792154735891-1-imagen.webp",
+  "order": 0,
+  "visible": true,
+  "primaryCatId": "Hogar",
+  "acabados_groups": [
+    {
+      "acabado_name": "Estándar",
+      "cover_image": "img/canasto-ramillero-paraguero-de-mimbre/1792154735891-1-imagen.webp",
+      "images_list": [
+        "img/canasto-ramillero-paraguero-de-mimbre/1792154735891-1-imagen.webp",
+        "img/canasto-ramillero-paraguero-de-mimbre/1792154736053-2-imagen.webp",
+        "img/canasto-ramillero-paraguero-de-mimbre/1792154736132-3-imagen.webp",
+        "img/canasto-ramillero-paraguero-de-mimbre/1792154736268-4-imagen.webp",
+        "img/canasto-ramillero-paraguero-de-mimbre/1792154736340-5-imagen.webp",
+        "img/canasto-ramillero-paraguero-de-mimbre/1792154736453-6-imagen.webp",
+        "img/canasto-ramillero-paraguero-de-mimbre/1792154736520-7-imagen.webp",
+        "img/canasto-ramillero-paraguero-de-mimbre/1792154736631-8-imagen.webp",
+        "img/canasto-ramillero-paraguero-de-mimbre/1792154736690-9-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Estándar",
+          "price": 42000,
+          "cost_price": 21000,
+          "link": "https://www.mercadolibre.com.ar/canasto-ramilleroparaguero-de-mimbre/up/MLAU5551554652",
+          "linkLabel": "Ver en Mercado Libre",
+          "iconType": "local_shipping",
+          "stock": 5,
+          "showPrice": true,
+          "highlight": false,
+          "default": true,
+          "hidden": false
+        }
+      ]
+    }
+  ],
+  "rubro": "carpinteria"
+}

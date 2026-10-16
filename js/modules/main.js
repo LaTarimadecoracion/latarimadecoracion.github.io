@@ -367,6 +367,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'admin-pedidos': 'view-pedidos-admin',
                 'editor': 'view-editor',
                 'edit': 'view-editor',
+                'videos': 'view-videos',
+                'video': 'view-videos',
                 'ofertas': 'view-offers',
                 'oferta': 'view-offer-detail'
             };

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Configurador & Despiece de Cajón CrossFit 3 en 1 | LA TARIMA</title>
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../img/icon-180.png">
+    
+    <!-- Fonts & Material Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    
+    <!-- CSS del Proyecto + CSS Modular de Cajones -->
+    <link rel="stylesheet" href="../css/style.css?v=26">
+    <link rel="stylesheet" href="../css/cajones.css?v=2">
+    
+    <style>
+        body {
+            background-color: var(--surface-color, #F7F5F0) !important;
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-main, 'Outfit', sans-serif);
+        }
+        #view-product-detail {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        /* Estilos específicos para la tabla técnica de despiece */
+        .cutting-list-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            margin-top: 8px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .cutting-list-table th {
+            background: #0F172A;
+            color: #FFFFFF;
+            padding: 8px 10px;
+            text-align: left;
+            font-weight: 700;
+        }
+        .cutting-list-table td {
+            padding: 7px 10px;
+            border-bottom: 1px solid #E2E8F0;
+            color: #334155;
+        }
+        .cutting-list-table tr:last-child td {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Script Anti-FOUC para Temáticas de la Tienda -->
+    <script>
+        (function() {
+            try {
+                var userSelected = localStorage.getItem('userSelectedTheme');
+                var localTheme = localStorage.getItem('activeTheme');
+                var themeToApply = userSelected || localTheme || 'classic';
+                if (themeToApply && themeToApply !== 'classic') {
+                    document.body.classList.add('theme-' + themeToApply);
+                }
+            } catch(e) {}
+        })();
+    </script>
+
+    <!-- Header Estilo SPA La Tarima 2.0 -->
+    <header class="main-header-bar">
+        <a href="../index.html" class="back-nav-btn" title="Volver al Catálogo">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <div class="header-titles-wrapper">
+            <h1 class="brand-title">LA TARIMA</h1>
+            <p class="brand-subtitle">Carpintería • Sistema de Cajones CrossFit</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="view-product-detail" class="view detail-view">
+            <div class="detail-main-grid">
+                
+                <!-- Encabezado del Producto -->
+                <div id="detail-header-info" style="padding: 1.25rem 1.25rem 0.5rem; text-align: left;">
+                    <h2 id="detail-title" style="margin: 0 0 0.25rem 0; font-size: 1.45rem; font-weight: 900; color: var(--text-main); line-height: 1.25; font-family: var(--font-main);">
+                        Cajón Pliométrico 3 en 1 CrossFit & Salto
+                    </h2>
+                    <span id="detail-category" style="font-size: 0.8rem; font-weight: 700; color: #16a34a; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Fitness & Box • Fenólico Industrial 18 mm
+                    </span>
+                </div>
+
+                <!-- Foto de Portada con Badge de Carga -->
+                <div class="detail-img-container" style="margin-bottom: 1.25rem;">
+                    <img id="detail-cover-image" src="../img/steps-cajones/cajones-profesional/1780590450688-imagen.webp" alt="Cajón Pliométrico CrossFit 3 en 1">
+                    
+                    <div class="gallery-acabados-overlay">
+                        <div class="gallery-acabados-title" style="padding-left: 12px; color: #FFFFFF; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 6px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">fitness_center</span>
+                            <span id="label-acabado-overlay">Refuerzo Estructural Interno</span>
+                        </div>
+                        <div style="padding-right: 12px; color: rgba(255,255,255,0.85); font-size: 0.72rem; font-weight: 600;" id="badge-peso-soporte">
+                            Soporta +250 kg
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido Configurable -->
+                <div class="detail-content" style="padding: 0 1.25rem;">
+
+                    <!-- Modo: Medidas Estándar vs A Medida Personalizado -->
+                    <div class="cajon-mode-tabs">
+                        <button type="button" class="cajon-mode-btn active" id="tab-mode-std" onclick="setCajonMode('standard')">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">view_in_ar</span>
+                            Medidas Estándar (3 en 1)
+                        </button>
+                        <button type="button" class="cajon-mode-btn" id="tab-mode-custom" onclick="setCajonMode('custom')">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">straighten</span>
+                            A Medida Box
+                        </button>
+                    </div>
+
+                    <!-- 1. Opciones Estándar -->
+                    <div id="cajon-std-container">
+                        <div class="cajon-cards-grid" id="cajon-std-cards">
+                            <!-- Inyectadas dinámicamente desde cajonesConfig -->
+                        </div>
+                    </div>
+
+                    <!-- 2. Inputs de Modo A Medida -->
+                    <div id="cajon-custom-container" style="display: none;">
+                        <div class="cajon-custom-grid">
+                            <div class="cajon-inputs-3cols">
+                                <div class="cajon-input-group">
+                                    <label for="inp-cajon-alto">Alto:</label>
+                                    <div class="cajon-input-wrapper">
+                                        <input type="number" id="inp-cajon-alto" value="50" min="1" max="250" step="1" oninput="calculateCustomCajon()">
+                                        <span class="unit">cm</span>
+                                    </div>
+                                </div>
+                                <div class="cajon-input-group">
+                                    <label for="inp-cajon-ancho">Ancho:</label>
+                                    <div class="cajon-input-wrapper">
+                                        <input type="number" id="inp-cajon-ancho" value="60" min="1" max="250" step="1" oninput="calculateCustomCajon()">
+                                        <span class="unit">cm</span>
+                                    </div>
+                                </div>
+                                <div class="cajon-input-group">
+                                    <label for="inp-cajon-largo">Largo:</label>
+                                    <div class="cajon-input-wrapper">
+                                        <input type="number" id="inp-cajon-largo" value="75" min="1" max="300" step="1" oninput="calculateCustomCajon()">
+                                        <span class="unit">cm</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. Modalidad de Entrega (Kit Desarmado vs Armado) -->
+                    <div style="margin-bottom: 1rem;">
+                        <span class="variant-label" style="display: block; font-size: 0.75rem; font-weight: 700; color: #475569; margin-bottom: 6px; text-transform: uppercase;">Modalidad de Entrega:</span>
+                        <div class="entrega-options-grid">
+                            <div class="entrega-btn active" id="btn-entrega-kit" onclick="selectEntrega('kit')">
+                                <div class="entrega-btn-header">
+                                    <span>📦 En Kit para Armar</span>
+                                    <span class="entrega-badge">Ahorro Envío</span>
+                                </div>
+                                <div class="entrega-btn-sub">Placas cortadas a medida, agujereadas, tornillos y guía de ensamble.</div>
+                            </div>
+                            <div class="entrega-btn" id="btn-entrega-armado" onclick="selectEntrega('armado')">
+                                <div class="entrega-btn-header">
+                                    <span>🔨 Armado en Taller</span>
+                                    <span style="font-size: 0.72rem; color: #c0510a; font-weight: 800;" id="lbl-plus-armado">+ $6.000</span>
+                                </div>
+                                <div class="entrega-btn-sub">Encolado profesional con cola poliuretánica, atornillado y bordes redondeados.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. Resumen Técnico de Taller (Despiece & Consumo de Placa) -->
+                    <div style="background: #F1F5F9; border: 1.5px solid #CBD5E1; border-radius: 12px; padding: 12px; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                            <span style="font-size: 0.78rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 4px;">
+                                <span class="material-symbols-outlined" style="font-size: 18px; color: #0284C7;">precision_manufacturing</span>
+                                Despiece & Consumo para la Sierra:
+                            </span>
+                            <span id="lbl-placas-consumo" style="font-size: 0.74rem; font-weight: 800; color: #166534; background: #DCFCE7; padding: 2px 8px; border-radius: 6px;">
+                                0.95 Placas (~2.88 m²)
+                            </span>
+                        </div>
+
+                        <!-- Métricas Rápidas: Peso y Tornillos -->
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; font-size: 0.72rem; color: #475569; margin-bottom: 8px;">
+                            <div>⚖️ Peso Aprox: <strong id="lbl-peso-cajon">29 kg</strong></div>
+                            <div>🔩 Tornillos: <strong id="lbl-tornillos-cant">38 unid.</strong></div>
+                            <div>🪵 Espesor: <strong>18 mm Fenólico</strong></div>
+                        </div>
+
+                        <!-- Tabla de Cortes para Taller -->
+                        <div style="max-height: 140px; overflow-y: auto;">
+                            <table class="cutting-list-table">
+                                <thead>
+                                    <tr>
+                                        <th>Pieza</th>
+                                        <th>Cant.</th>
+                                        <th>Medida de Corte</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cutting-list-tbody">
+                                    <!-- Inyectado dinámicamente -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- 5. Tarjeta de Precio Total y Cantidad -->
+                    <div style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 2px solid #86efac; border-radius: 16px; padding: 1.15rem 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08); display: flex; flex-direction: column; gap: 8px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                            <div class="qty-selector-wrapper" style="margin: 0;">
+                                <div class="qty-controls" style="background: white; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 4px 10px; display: inline-flex; align-items: center;">
+                                    <span class="qty-selector-label" style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-right: 4px;">Un.</span>
+                                    <button type="button" class="qty-btn" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;" onclick="modifyQty(-1)">−</button>
+                                    <span class="qty-value" id="qty-value" style="font-size: 0.95rem; font-weight: 900; color: #0f172a; min-width: 24px; text-align: center;">1</span>
+                                    <button type="button" class="qty-btn" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;" onclick="modifyQty(1)">+</button>
+                                </div>
+                            </div>
+
+                            <div id="detail-price-display" class="detail-price" style="margin: 0; display: block; text-align: right;">
+                                <div style="display: flex; align-items: center; gap: 4px; justify-content: flex-end;">
+                                    <span id="price-main-number" style="font-size:1.65rem; font-weight:900; color:#c0510a; line-height: 1.2;">$72.000</span>
+                                </div>
+                                <div id="price-sub-calc" style="font-size: 0.75rem; color: #64748B; font-weight: 600;">$72.000 c/u</div>
+                            </div>
+                        </div>
+
+                        <!-- Cotizador de Código Postal -->
+                        <div id="detail-shipping-best-price-badge" style="margin-top: 2px; padding-top: 8px; border-top: 1px dashed #cbd5e1; font-size: 0.82rem;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+                                <span id="shipping-result-label" style="color: #475569;">
+                                    📍 <strong>Hurlingham (Taller):</strong> Retiro sin cargo o cotizá tu envío:
+                                </span>
+                            </div>
+                            <div class="shipping-quick-calc">
+                                <input type="text" id="inp-cp-fast" placeholder="Ingresá tu CP (ej. 1686, 1425, 1708)" maxlength="8">
+                                <button type="button" onclick="calcQuickShipping()">Calcular</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 6. Botones de Acción -->
+                    <div class="detail-actions" id="detail-actions-container" style="display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.5rem;">
+                        <button type="button" id="btn-buy-now-product" class="btn-primary giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.95rem; width: 100%; border-radius: 12px; font-size: 1.05rem; font-weight: 900; background: linear-gradient(135deg, #059669, #10b981); border: none; color: white; box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35); cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;" onclick="triggerWhatsAppOrder()">
+                            <span class="material-symbols-outlined" style="font-size: 24px;">chat</span>
+                            <span>PEDIR POR WHATSAPP</span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts de Datos y Lógica Modular -->
+    <script src="../js/data/cajones-config.js?v=2"></script>
+    <script src="../js/shipping-config.js"></script>
+    <script src="../js/postal-lookup.js"></script>
+    <script>
+        // Estado reactivo
+        let isCustomMode = false;
+        let selectedStdId = 'grande';
+        let currentDims = '50 × 60 × 75 cm';
+        let baseUnitPrice = 72000;
+        let isArmado = false;
+        let currentQty = 1;
+
+        // Renderizar tarjetas estándar desde cajonesConfig
+        function renderStandardCards() {
+            const cfg = window.cajonesConfig || {};
+            const meds = cfg.medidas_estandar || [];
+            const container = document.getElementById('cajon-std-cards');
+            if (!container) return;
+
+            container.innerHTML = meds.map(m => {
+                const isActive = m.id === selectedStdId;
+                const icon = m.id === 'grande' ? '🥇' : (m.id === 'mediano' ? '🥈' : '🥉');
+                return `
+                    <div class="cajon-card-option ${isActive ? 'active' : ''}" data-id="${m.id}" onclick="selectStdCard('${m.id}')">
+                        <div class="cajon-card-title">${icon} ${m.name.split('(')[0].trim()}</div>
+                        <div class="cajon-card-dims">${m.alto} × ${m.ancho} × ${m.largo} cm</div>
+                        <div class="cajon-card-price">$${(m.precio_base || 0).toLocaleString('es-AR')}</div>
+                    </div>
+                `;
+            }).join('');
+
+            // Actualizar etiqueta del plus de armado
+            const plusArmado = (cfg.taller && cfg.taller.precio_armado_taller) || 6000;
+            const lblPlus = document.getElementById('lbl-plus-armado');
+            if (lblPlus) lblPlus.textContent = `+ $${plusArmado.toLocaleString('es-AR')}`;
+
+            updateTechnicalBreakdown();
+        }
+
+        function selectStdCard(id) {
+            selectedStdId = id;
+            document.querySelectorAll('.cajon-card-option').forEach(c => {
+                c.classList.toggle('active', c.dataset.id === id);
+            });
+            updateTechnicalBreakdown();
+        }
+
+        // Alternar modo
+        function setCajonMode(mode) {
+            isCustomMode = mode === 'custom';
+            document.getElementById('tab-mode-std').classList.toggle('active', !isCustomMode);
+            document.getElementById('tab-mode-custom').classList.toggle('active', isCustomMode);
+            document.getElementById('cajon-std-container').style.display = isCustomMode ? 'none' : 'block';
+            document.getElementById('cajon-custom-container').style.display = isCustomMode ? 'block' : 'none';
+
+            if (isCustomMode) {
+                calculateCustomCajon();
+            } else {
+                updateTechnicalBreakdown();
+            }
+        }
+
+        // Modalidad de entrega
+        function selectEntrega(tipo) {
+            isArmado = tipo === 'armado';
+            document.getElementById('btn-entrega-kit').classList.toggle('active', !isArmado);
+            document.getElementById('btn-entrega-armado').classList.toggle('active', isArmado);
+            updateFullPrice();
+        }
+
+        // Calcular despiece técnico y medidas
+        function updateTechnicalBreakdown() {
+            const cfg = window.cajonesConfig || {};
+            let alto, ancho, largo;
+
+            if (isCustomMode) {
+                alto = parseFloat(document.getElementById('inp-cajon-alto').value) || 50;
+                ancho = parseFloat(document.getElementById('inp-cajon-ancho').value) || 60;
+                largo = parseFloat(document.getElementById('inp-cajon-largo').value) || 75;
+            } else {
+                const meds = cfg.medidas_estandar || [];
+                const item = meds.find(m => m.id === selectedStdId) || meds[0];
+                alto = item.alto;
+                ancho = item.ancho;
+                largo = item.largo;
+                baseUnitPrice = item.precio_base || 72000;
+            }
+
+            currentDims = `${alto} × ${ancho} × ${largo} cm`;
+
+            // Superficie exterior exacta (m2)
+            const areaExt = 2 * ((alto * ancho) + (alto * largo) + (ancho * largo)) / 10000;
+            // Cruz interior (~30% del volumen de placas)
+            const areaCruz = ((alto * ancho) + (alto * largo)) / 10000;
+            const areaTotalM2 = areaExt + areaCruz;
+
+            // Rendimiento de placa (placa de 1.24 x 2.44 = 3.02 m2)
+            const areaPlaca = ((cfg.material?.largo_placa || 244) * (cfg.material?.ancho_placa || 124)) / 10000;
+            const placasUsadas = parseFloat((areaTotalM2 / areaPlaca).toFixed(2));
+            const pesoKg = Math.round(placasUsadas * (cfg.material?.peso_placa || 35));
+
+            // Si es personalizado, calcular precio según m2 y margen de placa
+            if (isCustomMode) {
+                const costoM2 = cfg.material?.costo_m2 || 6611;
+                const margen = cfg.material?.margen_pct !== undefined ? cfg.material.margen_pct : 140;
+                const precioVentaM2 = Math.round(costoM2 * (1 + (margen / 100)));
+                const insumos = (cfg.taller?.costo_tornillos_cola || 2000);
+                baseUnitPrice = Math.max(cfg.taller?.minimo_cajon || 35000, Math.round((areaTotalM2 * precioVentaM2) + insumos));
+            }
+
+            // Inyectar en el DOM técnico
+            document.getElementById('lbl-placas-consumo').textContent = `${placasUsadas} Placas (~${areaTotalM2.toFixed(2)} m²)`;
+            document.getElementById('lbl-peso-cajon').textContent = `${pesoKg} kg`;
+
+            // Estimación de tornillos según perímetro de ensamble
+            const cantTornillos = Math.round((alto + ancho + largo) * 0.2);
+            document.getElementById('lbl-tornillos-cant').textContent = `${cantTornillos} unid. (4×50mm)`;
+
+            // Despiece de las 6 caras + cruz (descontando 1.8 cm de espesor de placa)
+            const esp = (cfg.material?.espesor_num || 1.8);
+            const tbody = document.getElementById('cutting-list-tbody');
+            if (tbody) {
+                tbody.innerHTML = `
+                    <tr><td><strong>Tapas (Arriba / Base)</strong></td><td>2</td><td>${ancho} × ${largo} cm</td></tr>
+                    <tr><td><strong>Laterales Largos</strong></td><td>2</td><td>${alto - (2 * esp)} × ${largo} cm</td></tr>
+                    <tr><td><strong>Laterales Cortos</strong></td><td>2</td><td>${alto - (2 * esp)} × ${ancho - (2 * esp)} cm</td></tr>
+                    <tr><td><strong>Cruz Central Refuerzo</strong></td><td>2</td><td>${alto - (2 * esp)} × ${Math.min(ancho, largo) - (2 * esp)} cm</td></tr>
+                `;
+            }
+
+            updateFullPrice();
+        }
+
+        function calculateCustomCajon() {
+            updateTechnicalBreakdown();
+        }
+
+        function modifyQty(delta) {
+            currentQty = Math.max(1, Math.min(20, currentQty + delta));
+            document.getElementById('qty-value').textContent = currentQty;
+            updateFullPrice();
+        }
+
+        function updateFullPrice() {
+            const plusArmado = (window.cajonesConfig?.taller?.precio_armado_taller) || 6000;
+            const extra = isArmado ? plusArmado : 0;
+            const unitPrice = baseUnitPrice + extra;
+            const totalPrice = unitPrice * currentQty;
+
+            document.getElementById('price-main-number').textContent = `$${totalPrice.toLocaleString('es-AR')}`;
+            if (currentQty > 1) {
+                document.getElementById('price-sub-calc').textContent = `$${unitPrice.toLocaleString('es-AR')} c/u ($${totalPrice.toLocaleString('es-AR')} total)`;
+            } else {
+                document.getElementById('price-sub-calc').textContent = `$${unitPrice.toLocaleString('es-AR')} c/u`;
+            }
+        }
+
+        function triggerWhatsAppOrder() {
+            const plusArmado = (window.cajonesConfig?.taller?.precio_armado_taller) || 6000;
+            const extra = isArmado ? plusArmado : 0;
+            const unitPrice = baseUnitPrice + extra;
+            const totalPrice = unitPrice * currentQty;
+            const entregaTxt = isArmado ? 'Armado y Encolado en Taller' : 'En Kit para Armar (con tornillos y guía)';
+
+            const msg = `¡Hola La Tarima! Quiero encargar el Cajón Pliométrico 3 en 1 para CrossFit:
+- Medidas: ${currentDims}
+- Modalidad: ${entregaTxt}
+- Cantidad: ${currentQty} unidad(es)
+- Total Estimado: $${totalPrice.toLocaleString('es-AR')}
+
+¿Tienen stock o tiempo de fabricación para coordinar entrega/retiro? ¡Muchas gracias!`;
+
+            const phone = "5491136540647";
+            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function calcQuickShipping() {
+            const cpInput = document.getElementById('inp-cp-fast');
+            const cp = cpInput.value.trim();
+            const resultLabel = document.getElementById('shipping-result-label');
+
+            if (!cp) {
+                resultLabel.innerHTML = '⚠️ Ingresá tu código postal para cotizar.';
+                return;
+            }
+
+            localStorage.setItem('userPostalCode', cp);
+            resultLabel.innerHTML = `📍 CP <strong>${cp}</strong>: Envíos por correo/expreso (en Kit plano) o Flete particular en AMBA (armado).`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderStandardCards();
+            const savedCp = localStorage.getItem('userPostalCode');
+            if (savedCp) {
+                document.getElementById('inp-cp-fast').value = savedCp;
+                calcQuickShipping();
+            }
+        });
+    </script>
+</body>
+</html>

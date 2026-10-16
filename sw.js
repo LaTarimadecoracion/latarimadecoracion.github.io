@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tarima-cache-v60-1791691723653';
+const CACHE_NAME = 'tarima-cache-v64-' + Date.now();
 const STATIC_ASSETS = [
     './',
     './index.html',
@@ -18,6 +18,11 @@ const STATIC_ASSETS = [
     './js/ui/ui-core.js',
     './js/ui/ui-navigation.js',
     './js/ui/ui-home.js',
+    './js/ui/catalog/catalog-utils.js',
+    './js/ui/catalog/catalog-shipping-calc.js',
+    './js/ui/catalog/catalog-actions.js',
+    './js/ui/catalog/catalog-gallery.js',
+    './js/modules/cortes-widget.js',
     './js/ui/ui-catalog.js',
     './js/ui/ui-rentals.js',
     './js/ui/ui-blocks.js',
@@ -85,11 +90,17 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // Bypass Service Worker caching for site-config.js to ensure dynamic configs load fresh on localhost when online
-    // (If offline, catch block will still attempt to fetch from cache)
-    if (url.pathname.endsWith('/js/site-config.js') || url.pathname.endsWith('/site-config.js')) {
+    // Bypass Service Worker caching for dynamic config files to ensure changes load fresh immediately
+    if (
+        url.pathname.endsWith('/js/site-config.js') || url.pathname.endsWith('/site-config.js') ||
+        url.pathname.endsWith('/cajones-config.js') || url.pathname.includes('cajones-config.js') ||
+        url.pathname.endsWith('/cortes-config.js') || url.pathname.includes('cortes-config.js')
+    ) {
         event.respondWith(
-            fetch(event.request).catch(() => caches.match(event.request))
+            fetch(event.request).catch(async () => {
+                const match = await caches.match(event.request);
+                return match || new Response('', { status: 408, statusText: 'Offline Config' });
+            })
         );
         return;
     }
@@ -111,9 +122,10 @@ self.addEventListener('fetch', (event) => {
                         cache.put(event.request, responseToCache);
                     });
                     return networkResponse;
-                }).catch(() => {
+                }).catch(async () => {
                     // Fallback image if totally offline and image not cached
-                    return caches.match('./img/logo_provisional.png');
+                    const logoFallback = await caches.match('./img/logo_provisional.png');
+                    return logoFallback || new Response('', { status: 404, statusText: 'Image Not Found' });
                 });
             })
         );

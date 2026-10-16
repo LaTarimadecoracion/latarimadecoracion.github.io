@@ -4,7 +4,7 @@
 
 window.cortesConfig = {
     "precios": {
-        "precio_m2_venta": 24306,
+        "precio_m2_venta": 25521,
         "costo_m2_base": 12153,
         "minimo_corte_taller": 3500
     },
@@ -12,12 +12,12 @@ window.cortesConfig = {
         {
             "id": "pino_macizo",
             "name": "Placa de Pino",
-            "precio_m2": 24306,
+            "precio_m2": 25521,
             "costo_m2": 12153,
             "costo_placa": 35000,
             "peso_placa": 28,
             "peso_m2": 9.72,
-            "margen_pct": 100,
+            "margen_pct": 110,
             "max_largo": 240,
             "max_ancho": 120,
             "espesores_disponibles": [
@@ -27,6 +27,25 @@ window.cortesConfig = {
             "limite_mensaje": "Para piezas de más de 120 cm de ancho se cotiza unión de placas en taller.",
             "activo": true,
             "is_default": true
+        },
+        {
+            "id": "mat_1791737683464",
+            "name": "Placa Fenolico Industrial / 1 Cara buena / Pino",
+            "precio_m2": 29167,
+            "costo_m2": 13889,
+            "costo_placa": 40000,
+            "peso_placa": 35,
+            "peso_m2": 12.15,
+            "margen_pct": 110,
+            "max_largo": 240,
+            "max_ancho": 120,
+            "espesores_disponibles": [
+                "18 mm"
+            ],
+            "espesor": "18 mm",
+            "limite_mensaje": "El tablero seleccionado viene en placas de hasta 60 cm de ancho.",
+            "activo": true,
+            "is_default": false
         }
     ],
     "usos": [
@@ -38,7 +57,7 @@ window.cortesConfig = {
             "min_largo": 0,
             "max_largo": 120,
             "factor_precio": 50,
-            "recargo_fijo": 2500,
+            "recargo_fijo": 1500,
             "desc": "Cortes estándar para estantes y repisas. Lijado y cepillado de taller.",
             "activo": true,
             "is_default": true
@@ -51,7 +70,7 @@ window.cortesConfig = {
             "min_largo": 0,
             "max_largo": 120,
             "factor_precio": 75,
-            "recargo_fijo": 2500,
+            "recargo_fijo": 0,
             "desc": "Selección de vetas sin nudos abiertos, escuadrado de precisión y calibrado con lijado fino al tacto para uso diario.",
             "activo": true,
             "is_default": false
@@ -64,7 +83,7 @@ window.cortesConfig = {
             "min_largo": 0,
             "max_largo": 240,
             "factor_precio": 80,
-            "recargo_fijo": 3500,
+            "recargo_fijo": 0,
             "desc": "Corte estándar de taller.",
             "activo": true,
             "is_default": false
@@ -114,15 +133,19 @@ window.cortesConfig = {
         }
     ],
     "descuentos": {
-        "activo": false,
+        "activo": true,
         "escalas": [
             {
                 "minQty": 3,
-                "discountPercent": 10
+                "discountPercent": 8
             },
             {
-                "minQty": 6,
+                "minQty": 12,
                 "discountPercent": 15
+            },
+            {
+                "minQty": 24,
+                "discountPercent": 20
             }
         ]
     },

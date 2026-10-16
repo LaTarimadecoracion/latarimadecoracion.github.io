@@ -1,0 +1,57 @@
+<!-- partials/admin/cajones/panel-usos.html -->
+<div id="cajones-modpanel-usos" class="cajones-module-panel" style="display: none;">
+    <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--admin-shadow-sm);">
+        
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.2rem; gap: 10px; flex-wrap: wrap;">
+            <div>
+                <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="font-size: 22px; color: #6366F1;">rule</span>
+                    2. Reglas de Construcción & Tipos de Cajón
+                </h4>
+                <p style="margin: 3px 0 0 0; font-size: 0.78rem; color: #64748B;">
+                    Definí cómo se compone cada tipo de cajón (Simple, Reforzado, etc.), qué materiales consume y su multiplicador directo de taller para que el cliente pueda comparar precios.
+                </p>
+            </div>
+            <button type="button" class="btn-primary" onclick="window.addCajonReglaRow()" style="padding: 6px 14px; font-size: 0.78rem; font-weight: 700; border-radius: 8px; display: flex; align-items: center; gap: 6px;">
+                <span class="material-symbols-outlined" style="font-size: 18px;">add_circle</span> + Nueva Regla
+            </button>
+        </div>
+
+        <!-- Contenedor dinámico de Reglas de Construcción -->
+        <div id="cajones-reglas-container" style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 1.8rem;">
+            <!-- Renderizado dinámico vía admin-cajones.js -->
+        </div>
+
+        <!-- Parámetros Globales de Taller: Mínimo y Redondeo Comercial -->
+        <div style="background: #F8FAFC; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 1rem; margin-bottom: 1.5rem;">
+            <h5 style="margin: 0 0 0.5rem 0; font-size: 0.88rem; font-weight: 800; color: #334155; display: flex; align-items: center; gap: 6px;">
+                <span class="material-symbols-outlined" style="font-size: 19px; color: #16A34A;">price_check</span>
+                Parámetros Globales de Fabricación & Redondeo
+            </h5>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px;">
+                <div>
+                    <label style="font-size: 0.72rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">
+                        Precio Mínimo de Taller por Cajón ($):
+                    </label>
+                    <input type="number" id="cajon-taller-minimo" class="admin-input" value="1000" min="0" step="500" style="font-weight: 800; color: #0F172A; width: 100%;">
+                    <small style="font-size: 0.68rem; color: #64748B;">Piso mínimo para que no se venda por debajo del costo base de apertura de taller.</small>
+                </div>
+                <div>
+                    <label style="font-size: 0.72rem; font-weight: 700; color: #475569; display: block; margin-bottom: 4px;">
+                        Paso de Redondeo Comercial ($):
+                    </label>
+                    <select id="cajon-taller-redondeo" class="admin-input" style="font-weight: 800; color: #0F172A; width: 100%;">
+                        <option value="100">Cada $100</option>
+                        <option value="200">Cada $200</option>
+                        <option value="500" selected>Cada $500 (Recomendado - Bonificación visible)</option>
+                        <option value="1000">Cada $1.000</option>
+                        <option value="0">Sin redondeo (Precio exacto)</option>
+                    </select>
+                    <small style="font-size: 0.68rem; color: #64748B;">La diferencia por redondear hacia abajo se muestra al cliente como un descuento/regalo verde.</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+

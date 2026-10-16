@@ -1,0 +1,132 @@
+<!-- =============================================================================
+     partials/admin/view-ml-importer.html
+     Módulo Autónomo: Importador Inteligente desde Mercado Libre (#admin-ml-importer-view)
+     Totalmente aislado, con UI propia, lógica propia y pestañas independientes
+     ============================================================================= -->
+<div id="admin-ml-importer-view" class="admin-section-view" style="display: none;">
+    <div class="admin-card" style="background: #FFFFFF; border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-md); padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--admin-shadow-sm);">
+        
+        <!-- HEADER DEL MÓDULO -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid #F1F5F9; padding-bottom: 1rem;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="background: linear-gradient(135deg, #FFE600 0%, #F5D000 100%); border-radius: 12px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(245, 208, 0, 0.4); border: 1px solid #E6CA00;">
+                    <span class="material-symbols-outlined" style="color: #2D3277; font-size: 26px;">storefront</span>
+                </div>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: #2D3277; display: flex; align-items: center; gap: 8px;">
+                        Importador de Mercado Libre
+                        <span style="font-size: 0.72rem; font-weight: 700; background: #EEF2FF; color: #4338CA; padding: 2px 8px; border-radius: 6px;">Autónomo</span>
+                    </h3>
+                    <p style="margin: 4px 0 0 0; font-size: 0.84rem; color: #64748B;">
+                        Importá productos desde enlaces o descripciones de Mercado Libre, optimizando fotos a WebP y asociando su categoría.
+                    </p>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 8px; align-items: center;">
+                <button type="button" onclick="window.resetMlImporterView()" class="btn-outline" style="height: 38px; padding: 0 1rem; font-size: 0.82rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">restart_alt</span>
+                    <span>Limpiar</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- CONTENEDOR PRINCIPAL: INPUTS + PREVISUALIZACIÓN -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem; align-items: start;">
+            
+            <!-- COLUMNA IZQUIERDA: FORMULARIO DE IMPORTACIÓN -->
+            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem; display: flex; flex-direction: column; gap: 1.2rem;">
+                
+                <div style="background: #EFF6FF; border: 1.5px solid #93C5FD; border-radius: 10px; padding: 1rem; font-size: 0.82rem; color: #1E3A8A; line-height: 1.5;">
+                    🚀 <b>Paso a paso para importar en 5 segundos:</b><br>
+                    1. En Mercado Libre en la publicación del producto, presioná <b><code>Ctrl + U</code></b> (o clic derecho ➔ <i>"Ver código fuente"</i>).<br>
+                    2. Presioná <b><code>Ctrl + A</code></b> (seleccionar todo) y luego <b><code>Ctrl + C</code></b> (copiar).<br>
+                    3. Pegalo acá abajo y tocá <b>"Extraer Todo el Producto"</b>.<br>
+                    <i>¡El sistema leerá el título real, precio, fotos en máxima resolución y descripción completa al instante!</i>
+                </div>
+
+                <div>
+                    <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #1E293B; margin-bottom: 6px;">
+                        Código de la página de Mercado Libre:
+                    </label>
+                    <textarea id="ml-view-input-html" rows="9" placeholder="Pegá acá el código copiado de Mercado Libre (Ctrl + V)..." style="width: 100%; box-sizing: border-box; padding: 0.75rem; border-radius: 8px; border: 1.5px solid #CBD5E1; font-size: 0.8rem; font-family: monospace; resize: vertical; outline: none; background: #FFFFFF;"></textarea>
+                </div>
+
+                <button type="button" onclick="window.parseHtmlSourceMl()" class="btn-primary" style="background: #2563EB; border-color: #2563EB; color: white; padding: 0.8rem; border-radius: 9px; font-weight: 800; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);">
+                    <span class="material-symbols-outlined" style="font-size: 22px;">memory</span>
+                    <span>Extraer Todo el Producto (Fotos + Datos + Precio)</span>
+                </button>
+
+                <!-- SELECCIÓN DE CATEGORÍA DESTINO -->
+                <div style="border-top: 1px solid #E2E8F0; padding-top: 1rem;">
+                    <label style="display: block; font-size: 0.82rem; font-weight: 700; color: #1E293B; margin-bottom: 6px;">
+                        📁 Asignar a Categoría de tu Tienda:
+                    </label>
+                    <select id="ml-view-target-category" style="width: 100%; padding: 0.65rem 0.85rem; border-radius: 8px; border: 1.5px solid #CBD5E1; font-size: 0.88rem; background: #FFFFFF; color: #1E293B; outline: none;">
+                        <option value="Borrador" selected>📝 Borrador (Oculto - Por defecto)</option>
+                    </select>
+                    <small style="color: #64748B; font-size: 0.75rem; margin-top: 4px; display: block;">
+                        💡 Si no sabés la categoría o querés crearla después, queda guardado seguro en <b>Borrador</b>.
+                    </small>
+                </div>
+
+                <!-- Estado / Mensajes -->
+                <div id="ml-view-status" style="display: none; padding: 0.75rem 1rem; border-radius: 8px; font-size: 0.82rem; text-align: left; line-height: 1.4;"></div>
+            </div>
+
+            <!-- COLUMNA DERECHA: PREVISUALIZACIÓN Y CONFIRMACIÓN -->
+            <div style="background: #FFFFFF; border: 1.5px solid #E2E8F0; border-radius: 12px; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h4 style="margin: 0; font-size: 1rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 8px;">
+                        <span class="material-symbols-outlined" style="color: #3B82F6;">visibility</span>
+                        Previsualización del Producto
+                    </h4>
+                    <span id="ml-view-badge-status" style="font-size: 0.72rem; font-weight: 700; background: #F1F5F9; color: #64748B; padding: 3px 8px; border-radius: 6px;">
+                        Esperando datos
+                    </span>
+                </div>
+
+                <!-- Caja de Vista Previa -->
+                <div id="ml-view-preview-card" style="opacity: 0.6; pointer-events: none; transition: opacity 0.2s ease; border: 1px dashed #CBD5E1; border-radius: 10px; padding: 1rem; background: #F8FAFC;">
+                    <div style="display: flex; gap: 14px; align-items: flex-start; margin-bottom: 1rem;">
+                        <img id="ml-view-prev-img" src="img/logo_provisional.png" alt="Foto Portada" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid #E2E8F0; background: #FFFFFF;">
+                        <div style="flex: 1; min-width: 0;">
+                            <input type="text" id="ml-view-prev-title-input" placeholder="Título del Producto" style="width: 100%; box-sizing: border-box; font-size: 0.95rem; font-weight: 800; color: #0F172A; border: 1px solid transparent; background: transparent; padding: 3px 6px; border-radius: 6px; outline: none;" onfocus="this.style.background='#FFF'; this.style.borderColor='#93C5FD'" onblur="this.style.background='transparent'; this.style.borderColor='transparent'">
+                            <div style="display: flex; align-items: center; gap: 8px; margin: 6px 0;">
+                                <span style="font-size: 0.85rem; font-weight: 700; color: #64748B;">Precio $</span>
+                                <input type="number" id="ml-view-prev-price-input" placeholder="0" style="width: 130px; font-size: 1.1rem; font-weight: 800; color: #16A34A; border: 1px solid #CBD5E1; border-radius: 6px; padding: 3px 8px; background: #FFFFFF; outline: none;">
+                            </div>
+                            <div id="ml-view-prev-photos-count" style="font-size: 0.76rem; color: #64748B; font-weight: 600;">
+                                0 fotos listas para descargar
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Miniaturas de fotos -->
+                    <div id="ml-view-prev-thumbnails" style="display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 1rem;"></div>
+
+                    <!-- Descripción extraída -->
+                    <div>
+                        <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #475569; margin-bottom: 4px;">
+                            Descripción del Producto:
+                        </label>
+                        <textarea id="ml-view-prev-desc" rows="5" placeholder="Descripción..." style="width: 100%; box-sizing: border-box; padding: 0.6rem; border-radius: 8px; border: 1px solid #CBD5E1; font-size: 0.82rem; font-family: inherit; resize: vertical; outline: none; background: #FFFFFF;"></textarea>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <button type="button" id="btn-ml-save-direct" onclick="window.saveMlProductDirectly()" class="btn-primary" style="height: 44px; font-size: 0.92rem; font-weight: 800; background: #16A34A; border-color: #16A34A; color: #FFFFFF; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 2px 6px rgba(22, 163, 74, 0.3);" disabled>
+                        <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
+                        <span>Guardar Directamente en la Web</span>
+                    </button>
+
+                    <button type="button" id="btn-ml-open-in-editor" onclick="window.sendMlProductToEditor()" class="btn-outline" style="height: 40px; font-size: 0.85rem; font-weight: 700; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; color: #2D3277; border-color: #2D3277;" disabled>
+                        <span class="material-symbols-outlined" style="font-size: 19px;">edit_note</span>
+                        <span>Abrir en el Editor de Producto Completo</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

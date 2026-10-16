@@ -6800,4 +6800,27 @@ a .material-symbols-outlined {
     }
 }
 
+/* ── Panel Inferior de Configuración de Medidas para Cortes a Medida (Ancho Completo) ── */
+#detail-custom-cutting-bottom-container {
+    background: #FFFFFF;
+    border: 1.5px solid #E2E8F0;
+    border-radius: 16px;
+    padding: 1.35rem 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.custom-cutting-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+}
+
+@media (min-width: 850px) {
+    .custom-cutting-form-grid {
+        grid-template-columns: 1.15fr 1fr;
+        gap: 1.75rem;
+        align-items: start;
+    }
+}
+
 

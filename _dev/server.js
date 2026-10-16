@@ -235,8 +235,16 @@ app.get(['/', '/index.html'], (req, res, next) => {
     next();
 });
 
-// Disable caching specifically for js/site-config.js & js/payment-config.js to allow dynamic changes on localhost
-app.get(['/js/site-config.js', '/js/payment-config.js'], (req, res, next) => {
+// Disable caching specifically for configuration JS files to allow dynamic changes on localhost
+app.get([
+    '/js/site-config.js', 
+    '/js/payment-config.js',
+    '/js/data/payment-config.js',
+    '/js/cajones-config.js',
+    '/js/data/cajones-config.js',
+    '/js/cortes-config.js',
+    '/js/data/cortes-config.js'
+], (req, res, next) => {
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     res.setHeader('Pragma', 'no-cache');
     res.setHeader('Expires', '0');
@@ -720,6 +728,201 @@ app.post('/api/save-products', (req, res) => {
     }
 });
 
+// =========================================================================
+// API ENDPOINT: SCRAPING Y LECTURA INTELIGENTE DE MERCADO LIBRE
+// =========================================================================
+app.post('/api/scrape-ml-product', async (req, res) => {
+    try {
+        const { url } = req.body;
+        if (!url || typeof url !== 'string') {
+            return res.status(400).json({ success: false, message: 'URL o ID de publicación inválido.' });
+        }
+
+        // 1. Extraer ID de Mercado Libre (ej: MLA123456789 o MLA-123456789)
+        const idMatch = url.match(/MLA-?(\d+)/i);
+        const mlaId = idMatch ? `MLA${idMatch[1]}` : null;
+
+        let productData = {
+            title: '',
+            price: 0,
+            description: '',
+            permalink: url,
+            pictures: []
+        };
+
+        let fetchSuccess = false;
+
+        // A. Intentar por la API oficial abierta de Mercado Libre
+        if (mlaId) {
+            try {
+                const apiRes = await fetch(`https://api.mercadolibre.com/items/${mlaId}`);
+                if (apiRes.ok) {
+                    const item = await apiRes.json();
+                    productData.title = item.title || '';
+                    productData.price = item.price || 0;
+                    productData.permalink = item.permalink || url;
+
+                    if (Array.isArray(item.pictures)) {
+                        productData.pictures = item.pictures.map(p => p.secure_url || p.url).filter(Boolean);
+                    }
+
+                    // Obtener descripción si está disponible
+                    try {
+                        const descRes = await fetch(`https://api.mercadolibre.com/items/${mlaId}/description`);
+                        if (descRes.ok) {
+                            const descJson = await descRes.json();
+                            productData.description = descJson.plain_text || descJson.text || '';
+                        }
+                    } catch (e) {}
+
+                    fetchSuccess = true;
+                }
+            } catch (apiErr) {
+                console.warn('⚠️ API pública ML no respondió:', apiErr.message);
+            }
+        }
+
+        // B. Fallback: Intentar lectura HTML directa
+        if (!fetchSuccess) {
+            const targetUrl = url.startsWith('http') ? url : (mlaId ? `https://articulo.mercadolibre.com.ar/${mlaId}` : null);
+            if (targetUrl) {
+                try {
+                    const pageRes = await fetch(targetUrl, {
+                        headers: {
+                            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+                        }
+                    });
+
+                    if (pageRes.ok) {
+                        const html = await pageRes.text();
+                        
+                        if (!html.includes('suspicious-traffic-frontend')) {
+                            const titleMatch = html.match(/<title>([^<]+)<\/title>/i);
+                            if (titleMatch) {
+                                productData.title = titleMatch[1].replace(/\|.*$/i, '').replace(/Mercado Libre.*$/i, '').trim();
+                            }
+
+                            const priceMatch = html.match(/"price"\s*:\s*([0-9.]+)/i);
+                            if (priceMatch) {
+                                productData.price = parseFloat(priceMatch[1]) || 0;
+                            }
+
+                            const imgMatches = html.match(/https:\/\/http2\.mlstatic\.com\/D_NQ_NP_[^"'\s)]+/gi) || [];
+                            if (imgMatches.length > 0) {
+                                productData.pictures = [...new Set(imgMatches.map(u => u.replace(/-[A-Z]\.webp$/i, '-O.webp')))].slice(0, 10);
+                            }
+
+                            if (productData.title) fetchSuccess = true;
+                        }
+                    }
+                } catch (htmlErr) {
+                    console.warn('⚠️ Falló lectura HTML directa:', htmlErr.message);
+                }
+            }
+        }
+
+        // C. Fallback Inteligente por URL (slug y parámetros):
+        // Si Mercado Libre bloqueó la consulta automática (403 o captcha) extraemos el título y código de la propia URL
+        if (!fetchSuccess && !productData.title && url.startsWith('http')) {
+            try {
+                const parsedUrl = new URL(url);
+                const pathParts = parsedUrl.pathname.split('/').filter(Boolean);
+                if (pathParts.length > 0) {
+                    const rawSlug = pathParts[0];
+                    if (rawSlug && rawSlug !== 'p' && rawSlug !== 'up') {
+                        const cleanedTitle = rawSlug
+                            .split('-')
+                            .filter(Boolean)
+                            .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+                            .join(' ');
+                        
+                        if (cleanedTitle.length > 3) {
+                            productData.title = cleanedTitle;
+                            productData.permalink = url;
+                            fetchSuccess = true;
+                            productData.isPartial = true;
+                        }
+                    }
+                }
+            } catch (urlErr) {}
+        }
+
+        if (!fetchSuccess && !productData.title) {
+            return res.status(422).json({
+                success: false,
+                message: 'Mercado Libre bloqueó la lectura directa por captcha. Podés usar la pestaña "2. Modo Asistido / Pegar Texto" para cargar los datos.'
+            });
+        }
+
+        return res.json({ 
+            success: true, 
+            product: productData,
+            isPartial: !!productData.isPartial,
+            message: productData.isPartial 
+                ? 'Título y enlace extraídos desde la URL. Mercado Libre protegió las fotos/precio con captcha: completá precio y fotos en el panel derecho o usá la pestaña 2.' 
+                : 'Datos obtenidos exitosamente.'
+        });
+    } catch (err) {
+        console.error('❌ Error en /api/scrape-ml-product:', err);
+        return res.status(500).json({ success: false, message: err.message });
+    }
+});
+
+// =========================================================================
+// API ENDPOINT: DESCARGAR IMÁGENES REMOTAS Y CONVERTIR A WEBP LOCAL
+// =========================================================================
+app.post('/api/download-remote-images', async (req, res) => {
+    try {
+        const { title, images } = req.body;
+        if (!Array.isArray(images) || images.length === 0) {
+            return res.json({ success: true, savedImages: [] });
+        }
+
+        const safeTitle = sanitizeFolderName(title || 'producto-importado');
+        const targetDir = path.join(ROOT_DIR, 'img', safeTitle);
+        const docsTargetDir = path.join(ROOT_DIR, 'docs', 'img', safeTitle);
+
+        [targetDir, docsTargetDir].forEach(d => {
+            if (!fs.existsSync(d)) fs.mkdirSync(d, { recursive: true });
+        });
+
+        const savedRelativePaths = [];
+
+        for (let i = 0; i < images.length; i++) {
+            const imgUrl = images[i];
+            if (!imgUrl || !imgUrl.startsWith('http')) continue;
+
+            try {
+                const imgRes = await fetch(imgUrl);
+                if (!imgRes.ok) continue;
+
+                const buffer = Buffer.from(await imgRes.arrayBuffer());
+                const fileName = `${Date.now()}-${i + 1}-imagen.webp`;
+                const finalPath = path.join(targetDir, fileName);
+                const docsFinalPath = path.join(docsTargetDir, fileName);
+
+                // Convertir y optimizar con sharp a WebP
+                await sharp(buffer)
+                    .webp({ quality: 85 })
+                    .toFile(finalPath);
+
+                try { fs.copyFileSync(finalPath, docsFinalPath); } catch (e) {}
+
+                savedRelativePaths.push(`img/${safeTitle}/${fileName}`);
+            } catch (downloadErr) {
+                console.warn(`⚠️ No se pudo descargar foto ${imgUrl}:`, downloadErr.message);
+            }
+        }
+
+        console.log(`✅ ${savedRelativePaths.length} fotos descargadas y convertidas a WebP en img/${safeTitle}/`);
+        return res.json({ success: true, savedImages: savedRelativePaths });
+    } catch (err) {
+        console.error('❌ Error en /api/download-remote-images:', err);
+        return res.status(500).json({ success: false, message: err.message });
+    }
+});
+
 // API Endpoint to save assistant rules (Bot-Demo1.csv)
 app.post('/api/save-assistant-rules', (req, res) => {
     try {
@@ -854,6 +1057,38 @@ app.post('/api/save-cortes-config', (req, res) => {
     }
 });
 
+// API Endpoint to save cajonesConfig JSON
+app.post('/api/save-cajones-config', (req, res) => {
+    try {
+        const cajonesConfig = req.body;
+        
+        if (typeof cajonesConfig !== 'object' || cajonesConfig === null) {
+            return res.status(400).json({ success: false, message: 'El payload debe ser un objeto válido.' });
+        }
+
+        const fileContent = '// js/data/cajones-config.js\n// --- CAJONES CROSSFIT & PLIOMÉTRICOS CONFIGURATION DATABASE ---\n// Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.\n\nwindow.cajonesConfig = ' + JSON.stringify(cajonesConfig, null, 4) + ';\n';
+        const filePath = path.join(ROOT_DIR, 'js', 'data', 'cajones-config.js');
+        const legacyPath = path.join(ROOT_DIR, 'js', 'cajones-config.js');
+        const docsPath = path.join(ROOT_DIR, 'docs', 'js', 'data', 'cajones-config.js');
+        const docsLegacyPath = path.join(ROOT_DIR, 'docs', 'js', 'cajones-config.js');
+        
+        fs.writeFileSync(filePath, fileContent, 'utf8');
+        try { fs.writeFileSync(legacyPath, fileContent, 'utf8'); } catch (e) {}
+        try { 
+            const docsDataDir = path.join(ROOT_DIR, 'docs', 'js', 'data');
+            if (!fs.existsSync(docsDataDir)) fs.mkdirSync(docsDataDir, { recursive: true });
+            fs.writeFileSync(docsPath, fileContent, 'utf8');
+            fs.writeFileSync(docsLegacyPath, fileContent, 'utf8');
+        } catch (e) {}
+
+        console.log('✅ js/data/cajones-config.js guardado exitosamente.');
+        res.json({ success: true, message: 'Configuración de cajones crossfit guardada exitosamente.' });
+    } catch (error) {
+        console.error('❌ Error guardando configuración de cajones:', error);
+        res.status(500).json({ success: false, message: 'Error interno del servidor al guardar configuración de cajones.' });
+    }
+});
+
 // API Endpoint to save paymentConfig JSON
 app.post('/api/save-payment-config', (req, res) => {
     try {
@@ -907,6 +1142,12 @@ app.post('/api/publish-github', async (req, res) => {
 
     // Helper para remover el archivo de bloqueo lock de Git si quedó varado
     const cleanGitLock = () => {
+        try {
+            // Si hay un proceso git colgado en Windows, forzar su cierre para liberar el lock
+            const { execSync } = require('child_process');
+            execSync('taskkill /F /IM git.exe /T 2>nul || exit 0', { shell: 'cmd.exe' });
+        } catch (e) {}
+
         const lockFilePath = path.join(ROOT_DIR, '.git', 'index.lock');
         if (fs.existsSync(lockFilePath)) {
             try { fs.unlinkSync(lockFilePath); } catch (e) {}

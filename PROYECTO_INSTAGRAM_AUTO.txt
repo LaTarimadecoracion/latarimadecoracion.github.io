@@ -1,0 +1,53 @@
+================================================================================
+PROYECTO: AUTOMATIZACION DE PUBLICACIONES EN INSTAGRAM (LA TARIMA)
+Fecha de guardado: 2026-10-12
+================================================================================
+
+OBJETIVO:
+Automatizar la subida de fotos del taller acumuladas a la cuenta de Instagram de
+forma programada y periódica, sin tener que publicar manualmente desde el celular.
+
+--------------------------------------------------------------------------------
+1. CIRCUITO PROPUESTO (FLUJO AUTOMATIZADO)
+--------------------------------------------------------------------------------
+1. Depósito de fotos:
+   - Crear una carpeta en Google Drive (o Dropbox) llamada:
+     "/Fotos Instagram/Por Publicar"
+   - Subir en lote todas las fotos del taller juntas.
+
+2. Automatizador (Make.com o n8n):
+   - Se ejecuta en el horario óptimo (ej: 13:00 hs o 19:00 hs todos los días).
+   - Toma 1 foto de la carpeta.
+   - Aplica plantilla de texto comercial + hashtags relevantes.
+   - Publica directamente en el Feed de Instagram vía la API oficial de Meta.
+   - Mueve la foto a la subcarpeta "/Fotos Instagram/Publicadas" para no repetir.
+
+--------------------------------------------------------------------------------
+2. REQUISITOS PREVIOS (META / INSTAGRAM)
+--------------------------------------------------------------------------------
+Para que Meta permita la publicación externa oficial sin riesgo de bloqueo:
+1. Cuenta de Instagram configurada como Profesional / Creador / Empresa (gratuito).
+2. Estar vinculada a la Página de Facebook del negocio.
+3. Cuenta gratuita en Make.com (1.000 operaciones por mes gratis, sobra para 1-2 fotos/día)
+   o n8n self-hosted (gratis sin límites).
+
+--------------------------------------------------------------------------------
+3. PLANTILLA DE TEXTO COMERCIAL (BASE PARA EL BOT)
+--------------------------------------------------------------------------------
+"🪵✨ ¡Fabricación y Cortes en Taller La Tarima!
+
+Trabajos a medida en pino macizo, fenólico y tableros seleccionados.
+Repisas, tapas de escritorio, estanterías y cortes al milímetro para tu proyecto.
+
+📲 Consultas y pedidos por WhatsApp al link de nuestra bio.
+🌐 Cotizador online en nuestra web: latarima.com.ar
+
+#carpinteria #maderera #pinomacizo #estantes #cortesamedida #mueblesartesanales #latarima"
+
+--------------------------------------------------------------------------------
+4. EXTENSIONES FUTURAS (OPCIONALES)
+--------------------------------------------------------------------------------
+- Integrar un botón en el propio Admin de la web (_dev/server.js):
+  [📸 Publicar en Instagram este Producto]
+- Publicar en Instagram y Facebook simultáneamente con un solo clic.
+================================================================================

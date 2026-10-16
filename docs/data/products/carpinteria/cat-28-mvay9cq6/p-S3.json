@@ -1,0 +1,59 @@
+{
+  "id": "S3",
+  "shortId": "34",
+  "title": "Pizarra Pizarron Cartel Para Colgar 95x54",
+  "description": "PIZARRA COLGANTE DE MADERA – 95 x 54 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 95 cm\nAncho: 54 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nLas imagenes son ilustrativas.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nSin garantía",
+  "image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Estándar",
+      "description": "",
+      "cover_image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
+      "images_list": [
+        "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_699397-MLA119487331203_102026-O.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_770016-MLA119485646423_102026-O.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_921204-MLA119485229649_102026-O.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_969672-MLA119482643569_102026-O.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Estándar",
+          "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-para-colgar-95x54/up/MLAU5552344028",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "Ver en Mercado Libre",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 20000,
+          "cost_price": 10000,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1792154651487,
+  "primaryCatId": "cat-28-mvay9cq6",
+  "history": [],
+  "rubro": "carpinteria"
+}

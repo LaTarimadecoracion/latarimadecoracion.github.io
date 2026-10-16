@@ -174,23 +174,23 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
-            "title": "¡Nuevo Ingreso: Cajon GYM!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Cajon GYM!",
+            "title": "¡Nuevo Ingreso: Pizarra Pizarron Cartel Para Colgar 95x54!",
+            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Pizarra Pizarron Cartel Para Colgar 95x54!",
             "mediaType": "image",
-            "image": "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp",
+            "image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
             "videoUrl": "",
             "mapQuery": "",
             "links": [
                 {
                     "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=J8",
+                    "url": "?view=view-product-detail&prod=S3",
                     "newTab": false
                 }
             ],
-            "linkUrl": "?view=view-product-detail&prod=J8",
+            "linkUrl": "?view=view-product-detail&prod=S3",
             "linkText": "Ver Producto",
             "linkNewTab": false,
-            "timestamp": 1791374134276
+            "timestamp": 1792154651495
         },
         {
             "title": "¡Nuevo Ingreso: Exhibidor Organizador 4 Estantes De Madera!",
@@ -343,25 +343,6 @@ window.siteConfig = {
             "linkText": "Ver Producto",
             "linkNewTab": false,
             "timestamp": 1789442894010
-        },
-        {
-            "title": "¡Nuevo Ingreso: Estantes - Cortes!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Estantes - Cortes!",
-            "mediaType": "image",
-            "image": "img/latex/estantes-cortes/1789009178923-imagenwebp.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=K1",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=K1",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1789009178957
         },
         {
             "title": "¡Nuevo Ingreso: Perchero De Pie Torneado 8 Ganchos Niños!",
@@ -799,25 +780,6 @@ window.siteConfig = {
             "linkText": "Ver Producto",
             "linkNewTab": false,
             "timestamp": 1782622590998
-        },
-        {
-            "title": "¡Nuevo Ingreso: Baúl de madera de pino - Mediano!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Baúl de madera de pino - Mediano!",
-            "mediaType": "image",
-            "image": "img/infantil/baul-de-madera-de-pino---mediano/1782607702562-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=baul-madera-mediano",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=baul-madera-mediano",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1782607703040
         }
     ],
     "socialLinks": {

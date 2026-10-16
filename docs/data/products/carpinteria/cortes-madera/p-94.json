@@ -1,0 +1,74 @@
+{
+  "id": "94",
+  "shortId": "31",
+  "title": "Placa Fenólico Industrial 124 × 244 cm (1 Cara Buena / Pino 18 mm)",
+  "description": "Tablero fenólico multilaminado industrial con 1 cara buena en madera de pino, espesor 18 mm y medidas estándar de 124 × 244 cm. Gran resistencia estructural, estabilidad dimensional y excelente terminación para encofrados vistos, entrepisos, mobiliario rústico, obradores o revestimientos. Venta por placa cerrada.",
+  "image": "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "description": "Tablero multilaminado fenólico con una cara seleccionada.",
+      "cover_image": "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp",
+      "images_list": [
+        "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "124 × 244 cm (18 mm)",
+          "link": "",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": 40000,
+          "legend": "Consultar precio / cotización inmediata por WhatsApp",
+          "showPrice": false,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "fenolico",
+    "placa fenolica",
+    "multilaminado",
+    "pino",
+    "1 cara buena",
+    "18mm",
+    "124x244",
+    "tablero industrial",
+    "encofrado",
+    "carpinteria",
+    "obra"
+  ],
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "fleteMaxUnits": 10,
+    "otroEnabled": true,
+    "otroLabel": "Flete externo / A convenir (+ de 10 placas)",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1791766726663,
+  "primaryCatId": "cortes-madera",
+  "history": [],
+  "visible": true,
+  "views": 9,
+  "categories": [
+    "carpinteria-todos",
+    "cortes-madera"
+  ],
+  "rubro": "carpinteria"
+}

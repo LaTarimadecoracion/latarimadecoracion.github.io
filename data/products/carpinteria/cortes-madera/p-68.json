@@ -1,14 +1,16 @@
 {
   "id": "68",
-  "title": "Cortes de Madera para Escritorios y Mesas",
+  "shortId": "31",
+  "title": "Escritorios y Mesas",
   "description": "Tableros de pino macizo de gran formato, cepillados y pulidos a mano. Ideales para armar escritorios, mesas de comedor, mesadas o escritorios home office.",
-  "image": "img/estantes/estantes/estantes.webp",
+  "image": "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
-      "cover_image": "img/estantes/estantes/estantes.webp",
+      "description": "",
+      "cover_image": "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp",
       "images_list": [
-        "img/estantes/estantes/estantes.webp"
+        "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp"
       ],
       "medidas_variants": [
         {
@@ -22,7 +24,8 @@
           "price": 27500,
           "cost_price": 16500,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "60 x 120 cm",
@@ -35,7 +38,8 @@
           "price": 39600,
           "cost_price": 23500,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "60 x 140 cm",
@@ -48,7 +52,8 @@
           "price": 46200,
           "cost_price": 27500,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "70 x 140 cm",
@@ -61,7 +66,8 @@
           "price": 53900,
           "cost_price": 32000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         }
       ],
       "hidden": false
@@ -94,10 +100,11 @@
     "linkEnabled": false,
     "creditEnabled": false
   },
-  "last_modified": 1788655893945,
+  "quantityDiscounts": [],
+  "last_modified": 1791766660527,
   "primaryCatId": "cortes-madera",
   "history": [],
-  "views": 3,
+  "views": 4,
   "categories": [
     "carpinteria-todos",
     "cortes-madera"

@@ -20,18 +20,33 @@ window.renderVideosView = function() {
         ? sessionProducts 
         : (typeof productsData !== 'undefined' ? productsData : []);
 
+    // 1. Escanear categorías activas en sesión
     sourceData.forEach(cat => {
-        if (cat.visible === false) return;
         if (cat.products) {
             cat.products.forEach(prod => {
                 if (prod.visible === false) return;
                 if (prod.video && !seenIds.has(prod.id)) {
                     seenIds.add(prod.id);
-                    videoProducts.push({ product: prod, catName: cat.name });
+                    videoProducts.push({ product: prod, catName: cat.name || '' });
                 }
             });
         }
     });
+
+    // 2. Si productsData tiene productos con video que no estaban en sessionProducts
+    if (typeof productsData !== 'undefined' && Array.isArray(productsData)) {
+        productsData.forEach(cat => {
+            if (cat.products) {
+                cat.products.forEach(prod => {
+                    if (prod.visible === false) return;
+                    if (prod.video && !seenIds.has(prod.id)) {
+                        seenIds.add(prod.id);
+                        videoProducts.push({ product: prod, catName: cat.name || '' });
+                    }
+                });
+            }
+        });
+    }
 
     // Mezclar el array de forma aleatoria (Algoritmo Fisher-Yates) para generar sensación de novedad
     for (let i = videoProducts.length - 1; i > 0; i--) {
@@ -125,11 +140,11 @@ function openImmersiveVideo(videoList, startIndex) {
 
         let mediaHTML = '';
         if (ytId) {
-            // Reproductor iframe de YouTube
+            // Reproductor iframe de YouTube (usando youtube-nocookie para privacidad y sin scripts publicitarios invasivos)
             mediaHTML = `
                 <iframe 
                     class="tiktok-video-element yt-iframe"
-                    data-src="https://www.youtube.com/embed/${ytId}?enablejsapi=1&autoplay=1&controls=0&rel=0&showinfo=0&loop=1&playlist=${ytId}&modestbranding=1&playsinline=1&mute=1" 
+                    data-src="https://www.youtube-nocookie.com/embed/${ytId}?enablejsapi=1&autoplay=1&controls=0&rel=0&showinfo=0&loop=1&playlist=${ytId}&modestbranding=1&playsinline=1&mute=1" 
                     src=""
                     frameborder="0" 
                     allow="autoplay; encrypted-media" 

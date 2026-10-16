@@ -1,0 +1,58 @@
+<!-- =============================================================================
+     partials/admin/view-cajones.html
+     Módulo Maestro: Cajones CrossFit & Pliométricos (#admin-cajones-view)
+     Estructura idéntica con pestañas modulares a Cortes de Madera
+     ============================================================================= -->
+<div id="admin-cajones-view" class="admin-section-view" style="display: none;">
+    <div class="admin-card" style="background: #FFFFFF; border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-md); padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--admin-shadow-sm);">
+        
+        <!-- HEADER DEL MÓDULO -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 10px;">
+            <div>
+                <h3 style="margin: 0; font-size: 1.25rem; font-weight: 800; color: var(--admin-text-main); display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="color: #16a34a;">sports_gymnastics</span>
+                    Configuración de Cajones CrossFit & Pliométricos
+                </h3>
+                <p style="margin: 4px 0 0 0; font-size: 0.85rem; color: var(--admin-text-muted);">
+                    Controlá los costos de placa fenólica, márgenes de ganancia, costos de armado y despiece para la sierra.
+                </p>
+            </div>
+            <button type="button" id="btn-save-cajones-config" onclick="window.saveCajonesConfigFromUI()" class="btn-primary" style="display: flex; align-items: center; gap: 6px; padding: 0.6rem 1.25rem; font-weight: 800; border-radius: 10px; cursor: pointer; background: #0F172A; border-color: #0F172A; color: white;">
+                <span class="material-symbols-outlined" style="font-size: 18px;">save</span>
+                <span>Guardar Configuración</span>
+            </button>
+        </div>
+
+        <!-- BARRA DE PESTAÑAS PRINCIPALES DEL MÓDULO CAJONES (IDÉNTICA A CORTES) -->
+        <div id="cajones-module-tabs" style="display: flex; gap: 8px; width: 100%; margin-bottom: 1.5rem; background: #F1F5F9; padding: 6px; border-radius: 12px; border: 1px solid #E2E8F0; flex-wrap: wrap;">
+            <button type="button" class="cajones-main-tab-btn active" id="btn-cajones-mtab-materiales" data-tab="materiales" onclick="window.switchCajonesModuleTab('materiales')" style="flex: 1; min-width: 150px; justify-content: center; padding: 0.6rem 0.9rem; font-size: 0.85rem; font-weight: 700; border-radius: 9px; border: none; background: #0F172A; color: #FFFFFF; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: all 0.15s ease; box-shadow: 0 1px 3px rgba(0,0,0,0.12);">
+                <span class="material-symbols-outlined tab-drag-handle" style="font-size: 17px; color: #94A3B8; cursor: grab;" title="Arrastrar pestaña para reordenar">layers</span>
+                <span class="material-symbols-outlined" style="font-size: 19px; color: #FBBF24;">forest</span>
+                <span>1. Maderas & Tableros</span>
+            </button>
+            <button type="button" class="cajones-main-tab-btn" id="btn-cajones-mtab-usos" data-tab="usos" onclick="window.switchCajonesModuleTab('usos')" style="flex: 1; min-width: 150px; justify-content: center; padding: 0.6rem 0.9rem; font-size: 0.85rem; font-weight: 700; border-radius: 9px; border: none; background: transparent; color: #475569; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: all 0.15s ease;">
+                <span class="material-symbols-outlined tab-drag-handle" style="font-size: 17px; color: #94A3B8; cursor: grab;" title="Arrastrar pestaña para reordenar">layers</span>
+                <span class="material-symbols-outlined" style="font-size: 19px; color: #6366F1;">chair</span>
+                <span>2. Reglas de Construcción & Tipos</span>
+            </button>
+            <button type="button" class="cajones-main-tab-btn" id="btn-cajones-mtab-logistica" data-tab="logistica" onclick="window.switchCajonesModuleTab('logistica')" style="flex: 1; min-width: 150px; justify-content: center; padding: 0.6rem 0.9rem; font-size: 0.85rem; font-weight: 700; border-radius: 9px; border: none; background: transparent; color: #475569; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: all 0.15s ease;">
+                <span class="material-symbols-outlined tab-drag-handle" style="font-size: 17px; color: #94A3B8; cursor: grab;" title="Arrastrar pestaña para reordenar">layers</span>
+                <span class="material-symbols-outlined" style="font-size: 19px; color: #0284C7;">local_shipping</span>
+                <span>3. Fletes & Envíos (Kit vs Armado)</span>
+            </button>
+            <button type="button" class="cajones-main-tab-btn" id="btn-cajones-mtab-descuentos" data-tab="descuentos" onclick="window.switchCajonesModuleTab('descuentos')" style="flex: 1; min-width: 150px; justify-content: center; padding: 0.6rem 0.9rem; font-size: 0.85rem; font-weight: 700; border-radius: 9px; border: none; background: transparent; color: #475569; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: all 0.15s ease;">
+                <span class="material-symbols-outlined tab-drag-handle" style="font-size: 17px; color: #94A3B8; cursor: grab;" title="Arrastrar pestaña para reordenar">layers</span>
+                <span class="material-symbols-outlined" style="font-size: 19px; color: #10B981;">sell</span>
+                <span>4. Descuentos por Cantidad</span>
+            </button>
+            <button type="button" class="cajones-main-tab-btn" id="btn-cajones-mtab-simulador" data-tab="simulador" onclick="window.switchCajonesModuleTab('simulador')" style="flex: 1; min-width: 150px; justify-content: center; padding: 0.6rem 0.9rem; font-size: 0.85rem; font-weight: 700; border-radius: 9px; border: none; background: transparent; color: #475569; cursor: pointer; display: inline-flex; align-items: center; gap: 7px; transition: all 0.15s ease;">
+                <span class="material-symbols-outlined tab-drag-handle" style="font-size: 17px; color: #94A3B8; cursor: grab;" title="Arrastrar pestaña para reordenar">layers</span>
+                <span class="material-symbols-outlined" style="font-size: 19px; color: #EC4899;">calculate</span>
+                <span>5. Simulador de Taller</span>
+            </button>
+        </div>
+
+        <!-- CONTENEDOR DE SUBPANELES INYECTADOS MODULARMENTE -->
+        <div id="cajones-subpanels-container"></div>
+    </div>
+</div>

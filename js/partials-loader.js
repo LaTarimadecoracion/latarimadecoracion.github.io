@@ -35,11 +35,13 @@ window.loadAdminPartialsOnDemand = async function() {
         'partials/admin/view-offers.html',
         'partials/admin/view-shipping.html',
         'partials/admin/view-cortes.html',
+        'partials/admin/view-cajones.html',
         'partials/admin/view-payments.html',
         'partials/admin/view-stock.html',
         'partials/admin/view-pc-stock.html',
         'partials/admin/view-bulk-edit.html',
         'partials/admin/view-catalog.html',
+        'partials/admin/view-ml-importer.html',
         'partials/admin/view-pages.html',
         'partials/admin/view-settings.html',
         'partials/admin/view-orders.html',
@@ -73,6 +75,18 @@ window.loadAdminPartialsOnDemand = async function() {
     ];
     await Promise.all(
         cortesPanels.map(url => loadPartial(url, '#cortes-subpanels-container', 'beforeend'))
+    );
+
+    // Carga paralela de los subpaneles del módulo de Cajones CrossFit
+    const cajonesPanels = [
+        'partials/admin/cajones/panel-materiales.html',
+        'partials/admin/cajones/panel-usos.html',
+        'partials/admin/cajones/panel-logistica.html',
+        'partials/admin/cajones/panel-descuentos.html',
+        'partials/admin/cajones/panel-simulador.html'
+    ];
+    await Promise.all(
+        cajonesPanels.map(url => loadPartial(url, '#cajones-subpanels-container', 'beforeend'))
     );
 
     if (typeof window.initAdminUX20 === 'function') {

@@ -1,14 +1,17 @@
 {
   "id": "67",
-  "title": "Cortes de Madera para Estantes",
+  "shortId": "31",
+  "title": "Estantes a medida",
   "description": "Tablas de pino macizo seleccionadas y cepilladas en taller. Medidas estándar ideales para repisas flotantes o con ménsulas.",
-  "image": "img/estantes/estantes/estantes.webp",
+  "image": "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
-      "cover_image": "img/estantes/estantes/estantes.webp",
+      "description": "",
+      "cover_image": "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
       "images_list": [
-        "img/estantes/estantes/estantes.webp"
+        "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
+        "img/cortes-de-madera/estantes-a-medida/1791766625847-imagenwebp.webp"
       ],
       "medidas_variants": [
         {
@@ -20,9 +23,10 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 5800,
-          "cost_price": 5800,
+          "cost_price": 1458,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "20 x 80 cm",
@@ -33,9 +37,10 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 7700,
-          "cost_price": 7700,
+          "cost_price": 1944,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "20 x 100 cm",
@@ -46,9 +51,10 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 9700,
-          "cost_price": 9700,
+          "cost_price": 2431,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "30 x 60 cm",
@@ -59,9 +65,10 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 8750,
-          "cost_price": 8750,
+          "cost_price": 2188,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "30 x 80 cm",
@@ -72,9 +79,10 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 11600,
-          "cost_price": 11600,
+          "cost_price": 2917,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "30 x 100 cm",
@@ -85,9 +93,10 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 14500,
-          "cost_price": 14500,
+          "cost_price": 3646,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         }
       ],
       "hidden": false
@@ -112,14 +121,14 @@
     "linkEnabled": false,
     "creditEnabled": false
   },
-  "last_modified": 1788655893942,
+  "quantityDiscounts": [],
+  "last_modified": 1791766625851,
   "primaryCatId": "cortes-madera",
   "history": [],
-  "views": 16,
   "categories": [
     "carpinteria-todos",
-    "Estantes",
     "cortes-madera"
   ],
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "views": 17
 }

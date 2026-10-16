@@ -1,0 +1,62 @@
+<!-- partials/admin/cajones/panel-descuentos.html -->
+<div id="cajones-modpanel-descuentos" class="cajones-module-panel" style="display: none;">
+    <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--admin-shadow-sm);">
+        
+        <!-- Header con botón Agregar Escala -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 8px;">
+            <div>
+                <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="font-size: 22px; color: #10B981;">sell</span>
+                    4. Descuentos por Cantidad (Boxes & Gimnasios)
+                </h4>
+                <p style="margin: 3px 0 0 0; font-size: 0.78rem; color: #64748B;">
+                    Configurá promociones mayoristas automáticas (agregá o quitá todas las escalas que necesites) y activá beneficios de envío gratis.
+                </p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <button type="button" class="btn-secondary" onclick="window.addCajonDiscountScaleRow()" style="font-size: 0.75rem; padding: 6px 12px; border-radius: 8px; display: inline-flex; align-items: center; gap: 4px; font-weight: 700; cursor: pointer;">
+                    <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
+                    <span>+ Agregar Escala</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Lista dinámica de escalas -->
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem;">
+            <div style="font-size: 0.75rem; font-weight: 800; color: #475569; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">
+                Escalas de Descuento en Producto:
+            </div>
+            <div id="cajones-escalas-container" style="display: flex; flex-direction: column; gap: 8px;">
+                <!-- Inyectado dinámicamente por renderCajonDiscountScalesUI() -->
+            </div>
+        </div>
+
+        <!-- Beneficio de Envío Gratis por Cantidad (Flete / Logística) -->
+        <div style="background: #F0FDF4; border: 1.5px solid #86EFAC; border-radius: 12px; padding: 1rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+                <div style="font-weight: 800; font-size: 0.88rem; color: #166534; display: flex; align-items: center; gap: 6px;">
+                    <span class="material-symbols-outlined" style="font-size: 20px; color: #15803D;">local_shipping</span>
+                    <span>Beneficio: Envío Gratis por Cantidad para Boxes</span>
+                </div>
+                <label style="display: flex; align-items: center; gap: 6px; font-size: 0.78rem; font-weight: 800; color: #166534; cursor: pointer;">
+                    <input type="checkbox" id="chk-cajon-envio-gratis-activo" checked style="width: 16px; height: 16px; cursor: pointer;">
+                    <span>Activar Envío Gratis</span>
+                </label>
+            </div>
+            <p style="margin: 0 0 10px 0; font-size: 0.73rem; color: #166534; line-height: 1.4;">
+                Si el cliente o gimnasio compra esta cantidad mínima de cajones (o más), el flete se bonifica 100% como regalo comercial para cerrar la venta.
+            </p>
+            <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                <div style="display: flex; align-items: center; gap: 6px; background: white; padding: 6px 12px; border-radius: 8px; border: 1px solid #86EFAC;">
+                    <label style="font-size: 0.75rem; font-weight: 700; color: #334155;">Envío 100% GRATIS a partir de:</label>
+                    <input type="number" id="cajon-envio-gratis-min-qty" class="admin-input" value="10" min="2" max="100" style="width: 70px; padding: 4px 8px; font-size: 0.9rem; font-weight: 800; color: #15803D; text-align: center;">
+                    <span style="font-size: 0.75rem; font-weight: 700; color: #475569;">cajones</span>
+                </div>
+                <small style="color: #15803D; font-size: 0.72rem; font-weight: 600;">
+                    🎁 Se mostrará con la insignia verde <strong>"¡Envío GRATIS por cantidad!"</strong> en el cotizador y en el carrito.
+                </small>
+            </div>
+        </div>
+
+    </div>
+</div>

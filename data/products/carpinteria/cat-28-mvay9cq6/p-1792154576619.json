@@ -1,0 +1,42 @@
+{
+  "id": "1792154576619",
+  "title": "Pizarra Pizarron Cartel Doble Hoja",
+  "description": "PIZARRA CABALLETE DE MADERA – 80 x 50 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra tipo caballete es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\n\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño tipo caballete, práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 80 cm\nAncho: 50 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nLas imagenes son ilustrativas.\n\nSin garantía",
+  "image": "img/pizarra-pizarron-cartel-doble-hoja/1792154575692-1-imagen.webp",
+  "order": 0,
+  "visible": true,
+  "primaryCatId": "cat-28-mvay9cq6",
+  "acabados_groups": [
+    {
+      "acabado_name": "Estándar",
+      "cover_image": "img/pizarra-pizarron-cartel-doble-hoja/1792154575692-1-imagen.webp",
+      "images_list": [
+        "img/pizarra-pizarron-cartel-doble-hoja/1792154575692-1-imagen.webp",
+        "img/pizarra-pizarron-cartel-doble-hoja/1792154575887-2-imagen.webp",
+        "img/pizarra-pizarron-cartel-doble-hoja/1792154575978-3-imagen.webp",
+        "img/pizarra-pizarron-cartel-doble-hoja/1792154576120-4-imagen.webp",
+        "img/pizarra-pizarron-cartel-doble-hoja/1792154576185-5-imagen.webp",
+        "img/pizarra-pizarron-cartel-doble-hoja/1792154576290-6-imagen.webp",
+        "img/pizarra-pizarron-cartel-doble-hoja/1792154576345-7-imagen.webp",
+        "img/pizarra-pizarron-cartel-doble-hoja/1792154576452-8-imagen.webp",
+        "img/pizarra-pizarron-cartel-doble-hoja/1792154576510-9-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Estándar",
+          "price": 23000,
+          "cost_price": 11500,
+          "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-doble-hoja/up/MLAU5507345905",
+          "linkLabel": "Ver en Mercado Libre",
+          "iconType": "local_shipping",
+          "stock": 5,
+          "showPrice": true,
+          "highlight": false,
+          "default": true,
+          "hidden": false
+        }
+      ]
+    }
+  ],
+  "rubro": "carpinteria"
+}

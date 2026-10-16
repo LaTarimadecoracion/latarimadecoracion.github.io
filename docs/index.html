@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        if (!['localhost', '127.0.0.1'].includes(window.location.hostname)) {
-            const gaScript = document.createElement('script');
-            gaScript.async = true;
-            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-JXNJV3XERK';
-            document.head.appendChild(gaScript);
-            gtag('js', new Date());
-            gtag('config', 'G-JXNJV3XERK');
-        }
-    </script>
 
     
     
@@ -195,17 +182,17 @@
                     <div id="detail-attributes-container" style="margin-bottom: 1.25rem;"></div>
 
                     
-                    <div style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 2px solid #86efac; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                    <div style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 2px solid #86efac; border-radius: 16px; padding: 1.15rem 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08); display: flex; flex-direction: column; gap: 8px;">
+                        
+                        <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                             
                             <div class="qty-selector-wrapper" style="margin: 0;">
-                                <div class="qty-controls" style="background: white; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 4px 10px;">
-                                    <span class="qty-selector-label" style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-right: 4px;">Unidades:</span>
+                                <div class="qty-controls" style="background: white; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 4px 10px; display: inline-flex; align-items: center;">
+                                    <span class="qty-selector-label" style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-right: 4px;">Un.</span>
                                     <button type="button" class="qty-btn" id="btn-qty-minus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">−</button>
-                                    <span class="qty-value" id="qty-value" style="font-size: 0.95rem; font-weight: 900; color: #0f172a; min-width: 28px; text-align: center;">1</span>
+                                    <span class="qty-value" id="qty-value" style="font-size: 0.95rem; font-weight: 900; color: #0f172a; min-width: 24px; text-align: center;">1</span>
                                     <button type="button" class="qty-btn" id="btn-qty-plus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">+</button>
                                 </div>
-                                <div id="detail-qty-discount-banner" style="display: none; margin-top: 4px; font-size: 0.72rem; font-weight: 700; color: #16a34a;"></div>
                             </div>
 
                             
@@ -213,7 +200,10 @@
                         </div>
 
                         
-                        <div id="detail-shipping-best-price-badge" style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #cbd5e1; font-size: 0.82rem;"></div>
+                        <div id="detail-qty-discount-banner" style="display: none; padding: 6px 10px; border-radius: 8px; font-size: 0.74rem; font-weight: 700; width: 100%; box-sizing: border-box;"></div>
+
+                        
+                        <div id="detail-shipping-best-price-badge" style="margin-top: 2px; padding-top: 8px; border-top: 1px dashed #cbd5e1; font-size: 0.82rem;"></div>
                     </div>
 
                     
@@ -232,6 +222,9 @@
                     </div>
                 </div>
             </div>
+
+            
+            <div id="detail-custom-cutting-bottom-container" style="display: none; width: 100%; box-sizing: border-box; margin-bottom: 1.5rem;"></div>
 
             
             <div class="info-badges-grid" style="margin-top: 1.25rem; margin-bottom: 1.25rem; width: 100%; box-sizing: border-box;">
@@ -684,15 +677,20 @@
     <script src="js/data/products-data.js?v=6" defer></script>
     <script src="js/data/rentals-data.js?v=5" defer></script>
     <script src="js/data/offers-data.js?v=1" defer></script>
-    <script src="js/data/data.js?v=9" defer></script>
+    <script src="js/data/data.js?v=10" defer></script>
     <script src="js/modules/shortener.js?v=11" defer></script>
     <script src="js/ui/ui-dom.js?v=2" defer></script>
     <script src="js/ui/ui-utils.js?v=1" defer></script>
     <script src="js/ui/ui-core.js?v=1" defer></script>
     <script src="js/ui/ui-navigation.js?v=4" defer></script>
-    <script src="js/ui/ui-offers.js?v=6" defer></script>
-    <script src="js/ui/ui-home.js?v=1" defer></script>
-    <script src="js/ui/ui-catalog.js?v=20" defer></script>
+    <script src="js/ui/ui-offers.js?v=7" defer></script>
+    <script src="js/ui/catalog/catalog-utils.js?v=4" defer></script>
+    <script src="js/ui/ui-home.js?v=4" defer></script>
+    <script src="js/ui/catalog/catalog-shipping-calc.js?v=1" defer></script>
+    <script src="js/ui/catalog/catalog-actions.js?v=1" defer></script>
+    <script src="js/ui/catalog/catalog-gallery.js?v=1" defer></script>
+    <script src="js/modules/cortes-widget.js?v=1" defer></script>
+    <script src="js/ui/ui-catalog.js?v=21" defer></script>
     <script src="js/ui/ui-rentals.js?v=2" defer></script>
     <script src="js/ui/ui-blocks.js?v=1" defer></script>
     <script src="js/admin/admin-utils.js?v=1" defer></script>
@@ -702,6 +700,7 @@
     <script src="js/admin/admin-categories-form.js?v=1" defer></script>
     <script src="js/admin/admin-products.js?v=5" defer></script>
     <script src="js/admin/admin-products-form.js?v=6" defer></script>
+    <script src="js/admin/importer/admin-ml-importer.js?v=2" defer></script>
     <script src="js/admin/admin-bulk-edit.js?v=1" defer></script>
     <script src="js/admin/admin-stock-native.js?v=1" defer></script>
     <script src="js/admin/admin-pc-stock.js?v=1" defer></script>
@@ -709,9 +708,16 @@
     <script src="js/admin/admin-offers.js?v=1" defer></script>
     <script src="js/data/shipping-config.js?v=1" defer></script>
     <script src="js/data/cortes-config.js?v=1" defer></script>
+    <script src="js/data/cajones-config.js?v=2" defer></script>
     <script src="js/modules/postal-lookup.js?v=1" defer></script>
     <script src="js/admin/admin-shipping.js?v=1" defer></script>
     <script src="js/admin/admin-cortes.js?v=1" defer></script>
+    <script src="js/admin/cajones/cajones-drag.js?v=1" defer></script>
+    <script src="js/admin/cajones/cajones-materials.js?v=1" defer></script>
+    <script src="js/admin/cajones/cajones-rules.js?v=1" defer></script>
+    <script src="js/admin/cajones/cajones-discounts.js?v=1" defer></script>
+    <script src="js/admin/cajones/cajones-simulator.js?v=1" defer></script>
+    <script src="js/admin/admin-cajones.js?v=3" defer></script>
     <script src="js/admin/admin-payments.js?v=1" defer></script>
     <script src="js/admin/admin-pages.js?v=4" defer></script>
     <script src="js/admin/admin-quotes.js?v=1" defer></script>
@@ -719,8 +725,11 @@
     
     <script src="js/modules/carrito.js?v=9" defer></script>
     <script src="js/modules/main.js?v=5" defer></script>
-    <script src="js/modules/categorias.js?v=2" defer></script>
-    <script src="js/modules/videos.js?v=3" defer></script>
+    <script src="js/modules/categorias.js?v=3" defer></script>
+    <script src="js/modules/cajones/cajones-calc.js?v=2" defer></script>
+    <script src="js/modules/cajones/cajones-ui.js?v=2" defer></script>
+    <script src="js/modules/cajones-widget.js?v=3" defer></script>
+    <script src="js/modules/videos.js?v=2" defer></script>
     <script src="js/ui/pwa-banner.js?v=2" defer></script>
     <script src="js/apps/assistant.js?v=7" defer></script>
     <script>

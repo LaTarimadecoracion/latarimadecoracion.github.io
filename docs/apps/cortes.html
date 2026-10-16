@@ -162,17 +162,17 @@
                     </div>
 
                     <!-- 6. Tarjeta Destacada de Precio Total y Cantidad (Estilo Idéntico a Ofertas / Tienda) -->
-                    <div style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 2px solid #86efac; border-radius: 16px; padding: 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                    <div style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 2px solid #86efac; border-radius: 16px; padding: 1.15rem 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08); display: flex; flex-direction: column; gap: 8px;">
+                        <!-- Fila 1: Cantidad a la izquierda y Precio a la derecha -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                             <!-- Selector de Cantidad -->
                             <div class="qty-selector-wrapper" style="margin: 0;">
-                                <div class="qty-controls" style="background: white; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 4px 10px;">
-                                    <span class="qty-selector-label" style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-right: 4px;">Unidades:</span>
+                                <div class="qty-controls" style="background: white; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 4px 10px; display: inline-flex; align-items: center;">
+                                    <span class="qty-selector-label" style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-right: 4px;">Un.</span>
                                     <button type="button" class="qty-btn" id="btn-qty-minus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;" onclick="modifyQty(-1)">−</button>
-                                    <span class="qty-value" id="qty-value" style="font-size: 0.95rem; font-weight: 900; color: #0f172a; min-width: 28px; text-align: center;">1</span>
+                                    <span class="qty-value" id="qty-value" style="font-size: 0.95rem; font-weight: 900; color: #0f172a; min-width: 24px; text-align: center;">1</span>
                                     <button type="button" class="qty-btn" id="btn-qty-plus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;" onclick="modifyQty(1)">+</button>
                                 </div>
-                                <div id="detail-qty-discount-banner" style="display: none; margin-top: 4px; font-size: 0.72rem; font-weight: 700; color: #16a34a;"></div>
                             </div>
 
                             <!-- Precio a la derecha con Tooltip Nativo de la Tienda -->
@@ -190,8 +190,11 @@
                             </div>
                         </div>
 
-                        <!-- Cotizador / Mejor Precio de Envío debajo del precio -->
-                        <div id="detail-shipping-best-price-badge" style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #cbd5e1; font-size: 0.82rem;">
+                        <!-- Fila 2: Descuento / Banner de volumen destacado -->
+                        <div id="detail-qty-discount-banner" style="display: none; padding: 6px 10px; border-radius: 8px; font-size: 0.74rem; font-weight: 700; width: 100%; box-sizing: border-box;"></div>
+
+                        <!-- Fila 3: Cotizador / Mejor Precio de Envío debajo -->
+                        <div id="detail-shipping-best-price-badge" style="margin-top: 2px; padding-top: 8px; border-top: 1px dashed #cbd5e1; font-size: 0.82rem;">
                             <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
                                 <span id="shipping-result-label" style="color: #475569;">
                                     📍 <strong>Hurlingham (Taller):</strong> Retiro sin cargo o calculá tu envío:
@@ -221,6 +224,9 @@
 
                 </div>
             </div>
+
+            <!-- Contenedor de ancho completo para Configuración de Medida en Cortes a Medida -->
+            <div id="detail-custom-cutting-bottom-container" style="display: none; width: 100%; box-sizing: border-box; margin-bottom: 1.5rem;"></div>
 
             <!-- 9. Mini-Tarjetas Informativas (Formas de Pago / Envíos / Garantía) (Idénticas a la Tienda) -->
             <div class="info-badges-grid" style="margin-top: 1.25rem; margin-bottom: 1.25rem; width: 100%; box-sizing: border-box;">

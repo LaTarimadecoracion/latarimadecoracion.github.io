@@ -1,0 +1,119 @@
+<!-- =============================================================================
+     partials/admin/importer/modal-ml-importer.html
+     Módulo Autónomo: Importador Inteligente desde Mercado Libre
+     Permite importar por URL o pegando el contenido del producto
+     ============================================================================= -->
+<div id="admin-ml-importer-modal" class="modal-overlay" style="display: none; z-index: 100000;">
+    <div class="modal-content" style="max-width: 620px; width: 95%; background: #FFFFFF; border-radius: 14px; box-shadow: 0 20px 40px rgba(0,0,0,0.25); border: 1.5px solid #E2E8F0; padding: 0; overflow: hidden; animation: modalPop 0.2s cubic-bezier(0.16, 1, 0.3, 1);">
+        
+        <!-- Header del Modal -->
+        <div style="background: linear-gradient(135deg, #FFE600 0%, #F5D000 100%); padding: 1.25rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #E5C200;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div style="background: #FFFFFF; border-radius: 10px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 6px rgba(0,0,0,0.12);">
+                    <span class="material-symbols-outlined" style="color: #2D3277; font-size: 26px;">handshake</span>
+                </div>
+                <div>
+                    <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: #2D3277; line-height: 1.2;">
+                        Importar desde Mercado Libre
+                    </h3>
+                    <p style="margin: 2px 0 0 0; font-size: 0.78rem; color: #475569; font-weight: 600;">
+                        Carga automática de título, fotos, precio, descripción y enlace
+                    </p>
+                </div>
+            </div>
+            <button type="button" onclick="window.closeMlImporterModal()" style="background: rgba(255,255,255,0.7); border: none; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #2D3277; transition: background 0.15s;" title="Cerrar ventana">
+                <span class="material-symbols-outlined" style="font-size: 20px; font-weight: 700;">close</span>
+            </button>
+        </div>
+
+        <!-- Cuerpo del Modal -->
+        <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem;">
+            
+            <!-- Pestañas de modo: Vía Enlace o Vía Asistida -->
+            <div style="display: flex; gap: 6px; background: #F1F5F9; padding: 4px; border-radius: 10px; border: 1px solid #E2E8F0;">
+                <button type="button" id="ml-tab-btn-url" onclick="window.switchMlImporterTab('url')" style="flex: 1; padding: 8px 12px; font-size: 0.8rem; font-weight: 700; border-radius: 8px; border: none; background: #FFFFFF; color: #0F172A; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                    <span class="material-symbols-outlined" style="font-size: 18px; color: #0284C7;">link</span>
+                    <span>1. Enlace / ID de Publicación</span>
+                </button>
+                <button type="button" id="ml-tab-btn-manual" onclick="window.switchMlImporterTab('manual')" style="flex: 1; padding: 8px 12px; font-size: 0.8rem; font-weight: 700; border-radius: 8px; border: none; background: transparent; color: #64748B; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                    <span class="material-symbols-outlined" style="font-size: 18px; color: #10B981;">content_paste</span>
+                    <span>2. Pegar Texto / Datos</span>
+                </button>
+            </div>
+
+            <!-- Panel 1: Modo Enlace Directo -->
+            <div id="ml-panel-url" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                    <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #334155; margin-bottom: 6px;">
+                        Pegá el enlace de tu publicación o código MLA:
+                    </label>
+                    <div style="display: flex; gap: 8px;">
+                        <input type="text" id="ml-input-url" placeholder="https://articulo.mercadolibre.com.ar/MLA-..." style="flex: 1; padding: 0.65rem 0.9rem; border-radius: 8px; border: 1.5px solid #CBD5E1; font-size: 0.88rem; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#0284C7'" onblur="this.style.borderColor='#CBD5E1'">
+                        <button type="button" id="btn-fetch-ml" onclick="window.fetchMlProductData()" class="btn-primary" style="background: #2D3277; border-color: #2D3277; color: #FFFFFF; font-weight: 700; padding: 0.65rem 1.2rem; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">bolt</span>
+                            <span>Escanear</span>
+                        </button>
+                    </div>
+                    <small style="color: #64748B; font-size: 0.72rem; margin-top: 4px; display: block;">
+                        💡 Acepta URLs completas de Mercado Libre o el código identificador directo (ej: <code>MLA-1458923485</code>).
+                    </small>
+                </div>
+            </div>
+
+            <!-- Panel 2: Modo Asistido / Pegar Texto Rápido -->
+            <div id="ml-panel-manual" style="display: none; flex-direction: column; gap: 1rem;">
+                <div>
+                    <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #334155; margin-bottom: 6px;">
+                        Pegá el texto copiado de la publicación (Título, precio o descripción):
+                    </label>
+                    <textarea id="ml-input-raw-text" rows="5" placeholder="Pegá acá el texto completo de tu publicación de Mercado Libre..." style="width: 100%; box-sizing: border-box; padding: 0.75rem; border-radius: 8px; border: 1.5px solid #CBD5E1; font-size: 0.82rem; font-family: inherit; resize: vertical; outline: none;"></textarea>
+                </div>
+                <div>
+                    <label style="display: block; font-size: 0.8rem; font-weight: 700; color: #334155; margin-bottom: 6px;">
+                        Enlace de compra en Mercado Libre (opcional):
+                    </label>
+                    <input type="text" id="ml-input-manual-link" placeholder="https://articulo.mercadolibre.com.ar/MLA-..." style="width: 100%; box-sizing: border-box; padding: 0.6rem 0.8rem; border-radius: 8px; border: 1.5px solid #CBD5E1; font-size: 0.85rem;">
+                </div>
+                <button type="button" onclick="window.parseManualMlText()" class="btn-primary" style="background: #10B981; border-color: #10B981; color: white; padding: 0.65rem; border-radius: 8px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">auto_awesome</span>
+                    <span>Autocompletar Formulario</span>
+                </button>
+            </div>
+
+            <!-- Previsualización de Datos Extraídos (Oculto al inicio) -->
+            <div id="ml-preview-box" style="display: none; background: #F8FAFC; border: 1.5px solid #BBF7D0; border-radius: 10px; padding: 1rem; flex-direction: column; gap: 10px;">
+                <div style="font-weight: 800; font-size: 0.82rem; color: #166534; display: flex; align-items: center; gap: 6px;">
+                    <span class="material-symbols-outlined" style="color: #16A34A; font-size: 20px;">check_circle</span>
+                    <span>Datos Detectados con Éxito</span>
+                </div>
+                
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <img id="ml-prev-img" src="" alt="Portada" style="width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 1px solid #CBD5E1; background: #FFF;">
+                    <div style="flex: 1; min-width: 0;">
+                        <h4 id="ml-prev-title" style="margin: 0 0 4px 0; font-size: 0.88rem; font-weight: 700; color: #0F172A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"></h4>
+                        <div style="display: flex; align-items: center; gap: 10px; font-size: 0.8rem;">
+                            <span style="font-weight: 800; color: #15803D;" id="ml-prev-price">$0</span>
+                            <span style="color: #64748B;" id="ml-prev-photos">0 fotos detectadas</span>
+                        </div>
+                        <div id="ml-prev-variants" style="font-size: 0.72rem; color: #475569; margin-top: 4px;"></div>
+                    </div>
+                </div>
+
+                <!-- Botón de aplicar al formulario -->
+                <button type="button" id="btn-apply-ml-data" onclick="window.applyMlDataToProductForm()" class="btn-primary" style="background: #16A34A; border-color: #16A34A; color: white; padding: 0.65rem 1rem; border-radius: 8px; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 4px;">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">download_done</span>
+                    <span>Transferir al Formulario de Producto</span>
+                </button>
+            </div>
+
+            <!-- Caja de Estado / Loading -->
+            <div id="ml-status-box" style="display: none; padding: 0.75rem; border-radius: 8px; font-size: 0.8rem; text-align: center;"></div>
+        </div>
+
+        <!-- Footer Informativo -->
+        <div style="background: #F8FAFC; border-top: 1px solid #E2E8F0; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; color: #64748B;">
+            <span>🛡️ Integración modular para agilizar la carga de productos</span>
+            <button type="button" onclick="window.closeMlImporterModal()" style="background: none; border: none; font-weight: 700; color: #64748B; cursor: pointer;">Cerrar</button>
+        </div>
+    </div>
+</div>

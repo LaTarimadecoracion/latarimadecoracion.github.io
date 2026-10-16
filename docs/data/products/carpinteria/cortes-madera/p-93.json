@@ -1,0 +1,74 @@
+{
+  "id": "93",
+  "shortId": "31",
+  "title": "Placa de Pino Alistonada 124 × 244 cm (18 mm)",
+  "description": "Tablero entero de pino macizo alistonado de primera calidad, secado a horno, cepillado y calibrado. Dimensiones estándar de 124 × 244 cm en 18 mm de espesor. Ideal para carpintería general, tapas de mesas, frentes de placard, estanterías y muebles a medida. Venta por placa cerrada.",
+  "image": "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "description": "Placa entera alistonada calibrada de fábrica, lista para cortar o lijar.",
+      "cover_image": "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp",
+      "images_list": [
+        "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "124 × 244 cm (18 mm)",
+          "link": "",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": 35000,
+          "legend": "Consultar precio / cotización inmediata por WhatsApp",
+          "showPrice": false,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "placa",
+    "tablero",
+    "pino",
+    "alistonado",
+    "madera",
+    "18mm",
+    "124x244",
+    "placa entera",
+    "carpinteria",
+    "muebleria",
+    "taller"
+  ],
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "fleteMaxUnits": 10,
+    "otroEnabled": true,
+    "otroLabel": "Flete externo / A convenir (+ de 10 placas)",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1791766694912,
+  "primaryCatId": "cortes-madera",
+  "history": [],
+  "visible": true,
+  "views": 2,
+  "categories": [
+    "carpinteria-todos",
+    "cortes-madera"
+  ],
+  "rubro": "carpinteria"
+}

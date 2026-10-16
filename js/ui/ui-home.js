@@ -52,7 +52,8 @@
 
             } else if (comp.type === 'product' && comp.productId) {
                 // Buscar en window.sessionProducts primero (datos enriquecidos), luego en productsData
-                const res = findProductById(comp.productId);
+                const lookupProd = (typeof findProductById === 'function') ? findProductById : (window.findProductById || (() => null));
+                const res = lookupProd(comp.productId);
                 if (res) {
                     const { product, catName } = res;
                     const card = document.createElement('div');
@@ -246,22 +247,23 @@
         homeContent.innerHTML = ''; // Limpiar contenido previo para inyección limpia ordenada
 
         // Garantizar que homeConfig esté disponible
-        if (typeof homeConfig === 'undefined' || !homeConfig.order) {
-            window.homeConfig = {
+        const currentHomeConfig = (typeof window !== 'undefined' && window.homeConfig && window.homeConfig.order)
+            ? window.homeConfig
+            : ((typeof homeConfig !== 'undefined' && homeConfig && homeConfig.order) ? homeConfig : {
                 order: ['categorias', 'ofertas', 'novedades', 'buscados'],
                 sections: {
                     categorias: { title: "Categorías", subtitle: "Nuestras líneas de productos", icon: "grid_view" },
-                    ofertas: { title: "Ofertas Especiales", subtitle: "Promociones y combos por tiempo limitado", icon: "local_offer" },
+                    ofertas: { title: "Ofertas Especiales", subtitle: "Promociones y combos por tiempo limitado", icon: "local_offer", visible: false },
                     novedades: { title: "Nuevos Diseños 2026", subtitle: "Novedades del taller", icon: "celebration" },
                     buscados: { title: "Los más buscados", subtitle: "Los preferidos de nuestros clientes", icon: "star" }
                 }
-            };
-        }
+            });
+        window.homeConfig = currentHomeConfig;
 
-        homeConfig.order.forEach(sectionId => {
+        currentHomeConfig.order.forEach(sectionId => {
             try {
                 // Verificar si la sección está configurada como no visible
-                const secConfig = homeConfig.sections ? homeConfig.sections[sectionId] : null;
+                const secConfig = currentHomeConfig.sections ? currentHomeConfig.sections[sectionId] : null;
                 if (secConfig && secConfig.visible === false) {
                     return;
                 }
@@ -285,6 +287,11 @@
                 }
 
                 if (sectionId === 'ofertas') {
+                    // Si el administrador configuró la sección como oculta explícitamente, no mostrar
+                    if (secConfig && secConfig.visible === false) {
+                        return;
+                    }
+
                     // Obtener ofertas activas y no vencidas
                     const offersSource = (window.sessionOffers && window.sessionOffers.length > 0)
                         ? window.sessionOffers
@@ -309,7 +316,12 @@
 
                     const totalPromos = activeOffers.length + freeShipItems.length;
 
-                    // Renderizar el Banner CTA Horizontal siempre presente para llamado a la acción
+                    // Si no hay ofertas activas ni productos con beneficio de envío, no mostrar el banner
+                    if (totalPromos === 0) {
+                        return;
+                    }
+
+                    // Renderizar el Banner CTA Horizontal cuando hay ofertas o promociones
                     const ctaWrapper = document.createElement('div');
                     ctaWrapper.className = 'home-section full-width section-ofertas-cta';
                     ctaWrapper.style.cssText = 'margin: 0.6rem 0 0.8rem 0; padding: 0 1.25rem;';
@@ -431,7 +443,7 @@
                     return; // Evitar crear la cabecera estándar de sección
                 }
 
-                const config = homeConfig.sections[sectionId] || { title: sectionId, subtitle: '', icon: 'folder' };
+                const config = (currentHomeConfig.sections && currentHomeConfig.sections[sectionId]) ? currentHomeConfig.sections[sectionId] : { title: sectionId, subtitle: '', icon: 'folder' };
                 
                 // Crear el contenedor de la sección
                 const sectionEl = document.createElement('section');
@@ -441,7 +453,10 @@
                 // Determinar título dinámico si es la sección de novedades
                 let titleToShow = config.title;
                 if (sectionId === 'novedades') {
-                    const latestYear = getLatestModificationYear();
+                    const getYear = (typeof getLatestModificationYear === 'function')
+                        ? getLatestModificationYear
+                        : (window.getLatestModificationYear || (() => new Date().getFullYear()));
+                    const latestYear = getYear();
                     titleToShow = config.title.replace(/\b\d{4}\b/g, latestYear);
                 }
 
@@ -575,71 +590,83 @@
 
                     // Función para cargar y renderizar productos del rubro activo
                     const renderNovedadesProducts = () => {
-                        const sourceData = (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0) ? window.sessionProducts : productsData;
-                        if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
-                            let allProducts = [];
-                            const seenIds = new Set();
+                        try {
+                            const sourceData = (typeof window.sessionProducts !== 'undefined' && Array.isArray(window.sessionProducts) && window.sessionProducts.length > 0)
+                                ? window.sessionProducts
+                                : ((typeof productsData !== 'undefined' && Array.isArray(productsData)) ? productsData : []);
 
-                            sourceData.forEach(cat => {
-                                if (cat.visible === false) return;
-                                
-                                // Validar pertenencia del rubro activo
-                                const catRubro = cat.rubro || 'carpinteria';
-                                if (catRubro !== activeNovedadesRubro) return;
+                            if (sourceData && sourceData.length > 0) {
+                                let allProducts = [];
+                                const seenIds = new Set();
 
-                                if (cat.products) {
-                                    cat.products.forEach(product => {
-                                        if (product.visible === false) return;
-                                        if (!seenIds.has(product.id)) {
-                                            seenIds.add(product.id);
-                                            const res = findProductById(product.id);
-                                            allProducts.push({ product, catName: res ? res.catName : cat.name });
-                                        }
-                                    });
-                                }
-                            });
+                                sourceData.forEach(cat => {
+                                    if (!cat || cat.visible === false || cat.id === 'Borrador') return;
+                                    
+                                    // Validar pertenencia del rubro activo
+                                    const catRubro = cat.rubro || 'carpinteria';
+                                    if (catRubro !== activeNovedadesRubro) return;
 
-                            const limit = config.limit ? parseInt(config.limit, 10) : 6;
-                            const latestProducts = [...allProducts]
-                                .sort((a, b) => getProductTimestamp(b.product) - getProductTimestamp(a.product))
-                                .slice(0, limit);
-
-                            if (latestProducts.length === 0) {
-                                containerEl.innerHTML = `
-                                    <div style="padding: 1.2rem 1rem; text-align: center; color: #64748b; font-size: 0.8rem; font-weight: 600;">
-                                        ✨ No hay novedades en este rubro por el momento.
-                                    </div>
-                                `;
-                                return;
-                            }
-
-                            setupInfiniteCarousel(containerEl, latestProducts, (item, idx) => {
-                                const { product, catName } = item || {};
-                                if (!product) {
-                                    const placeholderCard = document.createElement('div');
-                                    placeholderCard.style.display = 'none';
-                                    return placeholderCard;
-                                }
-
-                                const card = document.createElement('div');
-                                card.className = 'category-card';
-                                const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
-                                const isEager = idx < 3;
-                                card.innerHTML = `
-                                    <div class="category-card-img-wrapper" style="position:relative;">
-                                        <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${product.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
-                                    </div>
-                                    <div class="category-overlay">
-                                        <span>${product.title}</span>
-                                    </div>
-                                `;
-                                card.addEventListener('click', () => {
-                                    if (window.showProductDetail) window.showProductDetail(product, catName);
+                                    if (cat.products && Array.isArray(cat.products)) {
+                                        cat.products.forEach(product => {
+                                            if (!product || product.visible === false) return;
+                                            if (product.primaryCatId === 'Borrador') return;
+                                            if (!seenIds.has(product.id)) {
+                                                seenIds.add(product.id);
+                                                allProducts.push({ product, catName: cat.name || 'Carpintería' });
+                                            }
+                                        });
+                                    }
                                 });
-                                return card;
-                            });
-                        } else {
-                            containerEl.innerHTML = '<p class="text-muted">No hay novedades disponibles.</p>';
+
+                                const limit = config.limit ? parseInt(config.limit, 10) : 10;
+                                const getTs = (typeof getProductTimestamp === 'function')
+                                    ? getProductTimestamp
+                                    : (window.getProductTimestamp || ((p) => Number(p?.last_modified || 0)));
+                                
+                                const latestProducts = [...allProducts]
+                                    .sort((a, b) => getTs(b.product) - getTs(a.product))
+                                    .slice(0, limit);
+
+                                if (latestProducts.length === 0) {
+                                    containerEl.innerHTML = `
+                                        <div style="padding: 1.2rem 1rem; text-align: center; color: #64748b; font-size: 0.8rem; font-weight: 600;">
+                                            ✨ No hay novedades en este rubro por el momento.
+                                        </div>
+                                    `;
+                                    return;
+                                }
+
+                                setupInfiniteCarousel(containerEl, latestProducts, (item, idx) => {
+                                    const { product, catName } = item || {};
+                                    if (!product) {
+                                        const placeholderCard = document.createElement('div');
+                                        placeholderCard.style.display = 'none';
+                                        return placeholderCard;
+                                    }
+
+                                    const card = document.createElement('div');
+                                    card.className = 'category-card';
+                                    const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                                    const isEager = idx < 3;
+                                    const safeTitle = (product.title || '').replace(/"/g, '&quot;');
+                                    card.innerHTML = `
+                                        <div class="category-card-img-wrapper" style="position:relative;">
+                                            <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${safeTitle}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
+                                        </div>
+                                        <div class="category-overlay">
+                                            <span>${safeTitle}</span>
+                                        </div>
+                                    `;
+                                    card.addEventListener('click', () => {
+                                        if (window.showProductDetail) window.showProductDetail(product, catName);
+                                    });
+                                    return card;
+                                });
+                            } else {
+                                containerEl.innerHTML = '<p class="text-muted" style="padding: 1rem 1.5rem;">No hay novedades disponibles.</p>';
+                            }
+                        } catch (errNovedades) {
+                            console.error('[Novedades] Error renderizando carrusel de novedades:', errNovedades);
                         }
                     };
 
@@ -652,57 +679,65 @@
                     homeContent.appendChild(sectionEl);
 
                     // Rellenar más buscados
-                    const sourceData = (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0) ? window.sessionProducts : productsData;
-                    if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
-                        let allProducts = [];
-                        const seenIds = new Set();
-                        
-                        const targetRubros = config.rubros || (config.rubro && config.rubro !== 'all' ? [config.rubro] : null);
+                    try {
+                        const sourceData = (typeof window.sessionProducts !== 'undefined' && Array.isArray(window.sessionProducts) && window.sessionProducts.length > 0)
+                            ? window.sessionProducts
+                            : ((typeof productsData !== 'undefined' && Array.isArray(productsData)) ? productsData : []);
 
-                        sourceData.forEach(cat => {
-                            if (cat.visible === false) return;
+                        if (sourceData && sourceData.length > 0) {
+                            let allProducts = [];
+                            const seenIds = new Set();
+                            
+                            const targetRubros = config.rubros || (config.rubro && config.rubro !== 'all' ? [config.rubro] : null);
 
-                            // Validar rubro de la categoría
-                            const catRubro = cat.rubro || 'carpinteria';
-                            if (targetRubros && !targetRubros.includes(catRubro)) return;
+                            sourceData.forEach(cat => {
+                                if (!cat || cat.visible === false || cat.id === 'Borrador') return;
 
-                            if (cat.products) {
-                                cat.products.forEach(product => {
-                                    if (product.visible === false) return;
-                                    if (!seenIds.has(product.id)) {
-                                        seenIds.add(product.id);
-                                        const res = findProductById(product.id);
-                                        allProducts.push({ product, catName: res ? res.catName : cat.name });
-                                    }
-                                });
-                            }
-                        });
+                                // Validar rubro de la categoría si aplica
+                                const catRubro = cat.rubro || 'carpinteria';
+                                if (targetRubros && !targetRubros.includes(catRubro)) return;
 
-                        // Selección aleatoria para mantener el home dinámico (sin base de datos)
-                        const limit = config.limit ? parseInt(config.limit, 10) : 8;
-                        const randomSelections = [...allProducts]
-                            .sort(() => 0.5 - Math.random())
-                            .slice(0, limit);
-                        setupInfiniteCarousel(containerEl, randomSelections, ({ product, catName }, idx) => {
-                            const pCard = document.createElement('div');
-                            pCard.className = 'category-card';
-                            const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
-                            const isEager = idx < 3;
-                            pCard.innerHTML = `
-                                <div class="category-card-img-wrapper" style="position:relative;">
-                                    <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${product.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
-                                </div>
-                                <div class="category-overlay">
-                                    <span>${product.title}</span>
-                                </div>
-                            `;
-                            pCard.addEventListener('click', () => {
-                                if (window.showProductDetail) window.showProductDetail(product, catName);
+                                if (cat.products && Array.isArray(cat.products)) {
+                                    cat.products.forEach(product => {
+                                        if (!product || product.visible === false) return;
+                                        if (product.primaryCatId === 'Borrador') return;
+                                        if (!seenIds.has(product.id)) {
+                                            seenIds.add(product.id);
+                                            allProducts.push({ product, catName: cat.name || 'Carpintería' });
+                                        }
+                                    });
+                                }
                             });
-                            return pCard;
-                        });
-                    } else {
-                        containerEl.innerHTML = '<p class="text-muted">No hay productos disponibles.</p>';
+
+                            const limit = config.limit ? parseInt(config.limit, 10) : 8;
+                            const randomSelections = [...allProducts]
+                                .sort(() => 0.5 - Math.random())
+                                .slice(0, limit);
+
+                            setupInfiniteCarousel(containerEl, randomSelections, ({ product, catName }, idx) => {
+                                const pCard = document.createElement('div');
+                                pCard.className = 'category-card';
+                                const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                                const isEager = idx < 3;
+                                const safeTitle = (product.title || '').replace(/"/g, '&quot;');
+                                pCard.innerHTML = `
+                                    <div class="category-card-img-wrapper" style="position:relative;">
+                                        <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${safeTitle}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
+                                    </div>
+                                    <div class="category-overlay">
+                                        <span>${safeTitle}</span>
+                                    </div>
+                                `;
+                                pCard.addEventListener('click', () => {
+                                    if (window.showProductDetail) window.showProductDetail(product, catName);
+                                });
+                                return pCard;
+                            });
+                        } else {
+                            containerEl.innerHTML = '<p class="text-muted" style="padding: 1rem 1.5rem;">No hay productos disponibles.</p>';
+                        }
+                    } catch (errBuscados) {
+                        console.error('[Buscados] Error renderizando carrusel de más buscados:', errBuscados);
                     }
                 }
 

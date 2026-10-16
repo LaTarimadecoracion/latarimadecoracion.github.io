@@ -449,7 +449,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 81,
+                "views": 82,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -1980,7 +1980,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -5707,7 +5707,7 @@ const productsData = [
                 "last_modified": 1788908607231,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 0,
+                "views": 1,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",
@@ -6176,7 +6176,7 @@ const productsData = [
                 "last_modified": 1788917627673,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 2,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "bazar-cocina"
@@ -6477,7 +6477,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812318991,
                 "primaryCatId": "jardin-patio",
-                "views": 11,
+                "views": 12,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -10404,7 +10404,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839116557,
                 "primaryCatId": "Juguetes",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -11075,121 +11075,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "24",
-                "title": "Vinoteca - 17 Vinos",
-                "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Tinte",
-                        "cover_image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
-                        "images_list": [
-                            "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
-                            "img/vinotecas-bodegas/17-vinos/1783741907006-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "17 Vinos",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1561953897-vinoteca-cava-bodega-madera-mueble-17-vinos-rustica-campo-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 90000,
-                                "cost_price": 36000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "vinos",
-                    "vino",
-                    "vinoteca",
-                    "bodega",
-                    "bodegon",
-                    "organizar",
-                    "chupi",
-                    "botellas",
-                    "fernet",
-                    "cerveza",
-                    "decorar",
-                    "papa",
-                    "regalo",
-                    "vinotecas",
-                    "vinoteca 17 vinos",
-                    "vinoteca gigante",
-                    "vinoteca madera",
-                    "vinoteca pino",
-                    "cava",
-                    "cavas",
-                    "bodegas",
-                    "botellero",
-                    "copas",
-                    "copero",
-                    "portacopas",
-                    "bar",
-                    "barra",
-                    "bebidas",
-                    "estante vinos",
-                    "porta botellas",
-                    "decoracion bar",
-                    "cava vinos",
-                    "mueble bar",
-                    "binoteca",
-                    "binotecas",
-                    "mueble para vinos",
-                    "organizador de vinos",
-                    "porta copas",
-                    "mueble rustico",
-                    "decoracion hogar",
-                    "regalo hombre",
-                    "bodega madera",
-                    "cava madera",
-                    "vinoteca de pared",
-                    "estante de botellas",
-                    "vinoteca de pino",
-                    "mueble de pino",
-                    "mueble de madera",
-                    "barra bar",
-                    "mini bar casa",
-                    "cava de pino",
-                    "portabotellas de pared"
-                ],
-                "last_modified": 1784083083495,
-                "primaryCatId": "Vinotecas",
-                "views": 8,
-                "stock": 0,
-                "history": [
-                    {
-                        "date": "26/8, 11:55 p. m.",
-                        "type": "Costo Bajó",
-                        "detail": "Costo: $45.000 ➔ $36.000"
-                    }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1,
-                    "logisticaFreeMinUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Vinotecas",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "25",
                 "title": "Bodega 6 Vinos",
                 "description": "Medidas\nAlto: 40 cm\nAncho: 30 cm\nProfundidad: 23 cm",
@@ -11277,7 +11162,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 10,
+                "views": 11,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -11426,15 +11311,18 @@ const productsData = [
             },
             {
                 "id": "67",
-                "title": "Cortes de Madera para Estantes",
+                "shortId": "31",
+                "title": "Estantes a medida",
                 "description": "Tablas de pino macizo seleccionadas y cepilladas en taller. Medidas estándar ideales para repisas flotantes o con ménsulas.",
-                "image": "img/estantes/estantes/estantes.webp",
+                "image": "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/estantes/estantes/estantes.webp",
+                        "description": "",
+                        "cover_image": "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
                         "images_list": [
-                            "img/estantes/estantes/estantes.webp"
+                            "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
+                            "img/cortes-de-madera/estantes-a-medida/1791766625847-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -11446,9 +11334,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 5800,
-                                "cost_price": 5800,
+                                "cost_price": 1458,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "20 x 80 cm",
@@ -11459,9 +11348,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 7700,
-                                "cost_price": 7700,
+                                "cost_price": 1944,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "20 x 100 cm",
@@ -11472,9 +11362,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 9700,
-                                "cost_price": 9700,
+                                "cost_price": 2431,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "30 x 60 cm",
@@ -11485,9 +11376,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 8750,
-                                "cost_price": 8750,
+                                "cost_price": 2188,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "30 x 80 cm",
@@ -11498,9 +11390,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 11600,
-                                "cost_price": 11600,
+                                "cost_price": 2917,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "30 x 100 cm",
@@ -11511,9 +11404,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 14500,
-                                "cost_price": 14500,
+                                "cost_price": 3646,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -11538,28 +11432,31 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "last_modified": 1788655893942,
+                "quantityDiscounts": [],
+                "last_modified": 1791766625851,
                 "primaryCatId": "cortes-madera",
                 "history": [],
-                "views": 16,
                 "categories": [
                     "carpinteria-todos",
                     "Estantes",
                     "cortes-madera"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 17
             },
             {
                 "id": "68",
-                "title": "Cortes de Madera para Escritorios y Mesas",
+                "shortId": "31",
+                "title": "Escritorios y Mesas",
                 "description": "Tableros de pino macizo de gran formato, cepillados y pulidos a mano. Ideales para armar escritorios, mesas de comedor, mesadas o escritorios home office.",
-                "image": "img/estantes/estantes/estantes.webp",
+                "image": "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/estantes/estantes/estantes.webp",
+                        "description": "",
+                        "cover_image": "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp",
                         "images_list": [
-                            "img/estantes/estantes/estantes.webp"
+                            "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -11573,7 +11470,8 @@ const productsData = [
                                 "price": 27500,
                                 "cost_price": 16500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 x 120 cm",
@@ -11586,7 +11484,8 @@ const productsData = [
                                 "price": 39600,
                                 "cost_price": 23500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 x 140 cm",
@@ -11599,7 +11498,8 @@ const productsData = [
                                 "price": 46200,
                                 "cost_price": 27500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 140 cm",
@@ -11612,7 +11512,8 @@ const productsData = [
                                 "price": 53900,
                                 "cost_price": 32000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -11645,15 +11546,346 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "last_modified": 1788655893945,
+                "quantityDiscounts": [],
+                "last_modified": 1791766660527,
                 "primaryCatId": "cortes-madera",
                 "history": [],
-                "views": 3,
+                "views": 4
+            },
+            {
+                "id": "93",
+                "shortId": "31",
+                "title": "Placa de Pino Alistonada 124 × 244 cm (18 mm)",
+                "description": "Tablero entero de pino macizo alistonado de primera calidad, secado a horno, cepillado y calibrado. Dimensiones estándar de 124 × 244 cm en 18 mm de espesor. Ideal para carpintería general, tapas de mesas, frentes de placard, estanterías y muebles a medida. Venta por placa cerrada.",
+                "image": "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "Placa entera alistonada calibrada de fábrica, lista para cortar o lijar.",
+                        "cover_image": "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp",
+                        "images_list": [
+                            "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "124 × 244 cm (18 mm)",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": 35000,
+                                "legend": "Consultar precio / cotización inmediata por WhatsApp",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "placa",
+                    "tablero",
+                    "pino",
+                    "alistonado",
+                    "madera",
+                    "18mm",
+                    "124x244",
+                    "placa entera",
+                    "carpinteria",
+                    "muebleria",
+                    "taller"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "otroEnabled": true,
+                    "otroLabel": "Flete externo / A convenir (+ de 10 placas)",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1791766694912,
+                "primaryCatId": "cortes-madera",
+                "history": [],
+                "visible": true,
+                "views": 2
+            },
+            {
+                "id": "94",
+                "shortId": "31",
+                "title": "Placa Fenólico Industrial 124 × 244 cm (1 Cara Buena / Pino 18 mm)",
+                "description": "Tablero fenólico multilaminado industrial con 1 cara buena en madera de pino, espesor 18 mm y medidas estándar de 124 × 244 cm. Gran resistencia estructural, estabilidad dimensional y excelente terminación para encofrados vistos, entrepisos, mobiliario rústico, obradores o revestimientos. Venta por placa cerrada.",
+                "image": "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "Tablero multilaminado fenólico con una cara seleccionada.",
+                        "cover_image": "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp",
+                        "images_list": [
+                            "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "124 × 244 cm (18 mm)",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": 40000,
+                                "legend": "Consultar precio / cotización inmediata por WhatsApp",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "fenolico",
+                    "placa fenolica",
+                    "multilaminado",
+                    "pino",
+                    "1 cara buena",
+                    "18mm",
+                    "124x244",
+                    "tablero industrial",
+                    "encofrado",
+                    "carpinteria",
+                    "obra"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "otroEnabled": true,
+                    "otroLabel": "Flete externo / A convenir (+ de 10 placas)",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1791766726663,
+                "primaryCatId": "cortes-madera",
+                "history": [],
+                "visible": true,
+                "views": 9
+            },
+            {
+                "id": "69",
+                "shortId": "2Z",
+                "title": "Cortes de Madera a Medida",
+                "description": "Calculá tu corte exacto al milímetro para cualquier proyecto: escalones, mesadas, tapas especiales o estantes a medida. Madera maciza de pino seleccionada.",
+                "image": "img/cortes-de-madera/cortes-de-madera-a-medida/1791766460587-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "",
+                        "cover_image": "img/cortes-de-madera/cortes-de-madera-a-medida/1791766460587-imagenwebp.webp",
+                        "images_list": [
+                            "img/cortes-de-madera/cortes-de-madera-a-medida/1791766460587-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "A Medida",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "straighten",
+                                "highlight": true,
+                                "price": "",
+                                "cost_price": 2000,
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "corte",
+                    "a medida",
+                    "personalizado",
+                    "tablas",
+                    "recortes",
+                    "escalon",
+                    "mesada",
+                    "pino"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "fleteFreeMinUnits": 100,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1791766460594,
+                "primaryCatId": "cortes-madera",
+                "history": [],
+                "visible": true,
+                "views": 102
+            },
+            {
+                "id": "95",
+                "shortId": "33",
+                "title": "Cajón Pliométrico 3 en 1 CrossFit & Salto",
+                "description": "Cajón de salto pliométrico multifuncional 3 en 1 para CrossFit, entrenamiento funcional y preparación física. Fabricado en Fenólico Industrial de 18 mm con refuerzo estructural interno en cruz y manijas ergonómicas.",
+                "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Fenólico 18mm",
+                        "description": "Placa Fenólica de 18 mm de alta resistencia con refuerzo interno en cruz",
+                        "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Grande Oficial (50 × 60 × 75 cm)",
+                                "link": "apps/cajon.html",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": true,
+                                "price": 72000,
+                                "cost_price": 22000,
+                                "legend": "Oficial Box CrossFit",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "Mediano (40 × 50 × 60 cm)",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 58000,
+                                "cost_price": 17000,
+                                "legend": "Intermedio",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "Chico (30 × 40 × 50 cm)",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 42000,
+                                "cost_price": 12000,
+                                "legend": "Funcional / Principiante",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "A Medida Especial",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Calcular",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 72000,
+                                "cost_price": 22000,
+                                "legend": "Personalizado",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cajon",
+                    "pliometrico",
+                    "crossfit",
+                    "salto",
+                    "jump box",
+                    "box",
+                    "3 en 1",
+                    "fitness",
+                    "gym",
+                    "entrenamiento funcional",
+                    "fenolico"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "fleteFreeMinUnits": 50,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minQty": 3,
+                        "discountPercent": 8
+                    },
+                    {
+                        "minQty": 6,
+                        "discountPercent": 12
+                    }
+                ],
+                "last_modified": 1791831629527,
+                "primaryCatId": "cajones-crossfit",
+                "history": [],
+                "visible": true,
                 "categories": [
                     "carpinteria-todos",
-                    "cortes-madera"
+                    "cajones-crossfit"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 57
             }
         ]
     },
@@ -11664,7 +11896,49 @@ const productsData = [
         "rubro": "carpinteria",
         "order": 1,
         "visible": false,
-        "products": []
+        "products": [
+            {
+                "id": "1792123134173",
+                "title": "Pizarra Pizarron Cartel Doble Hoja Grande Vereda",
+                "description": "PIZARRA  DE MADERA – 100 x 45 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\n\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 100 cm\nAncho: 45 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nLas imagenes son ilustrativas.\n\nSin garantía",
+                "image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
+                "order": 0,
+                "visible": true,
+                "primaryCatId": "Borrador",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "cover_image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
+                        "images_list": [
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133598-2-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133703-3-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133798-4-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133851-5-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133950-6-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123134008-7-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "price": 31000,
+                                "cost_price": 15500,
+                                "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-doble-hoja-grande-vereda/up/MLAU5156448073",
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "stock": 5,
+                                "showPrice": true,
+                                "highlight": false,
+                                "default": true,
+                                "hidden": false
+                            }
+                        ]
+                    }
+                ],
+                "rubro": "carpinteria",
+                "views": 0
+            }
+        ]
     },
     {
         "id": "Vinotecas",
@@ -11992,12 +12266,14 @@ const productsData = [
             },
             {
                 "id": "24",
+                "shortId": "2Z",
                 "title": "Vinoteca - 17 Vinos",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tinte",
+                        "description": "",
                         "cover_image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
                         "images_list": [
                             "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
@@ -12015,7 +12291,22 @@ const productsData = [
                                 "price": 90000,
                                 "cost_price": 36000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "17 Vinos",
+                                "link": "https://www.mercadolibre.com.ar/bodega-para-17-vinos--la-tarima/up/MLAU5439753557",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 90000,
+                                "cost_price": 90000,
+                                "legend": "Entrega Rápida",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -12075,10 +12366,26 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1784083083495,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1791737670624,
                 "primaryCatId": "Vinotecas",
-                "views": 8,
-                "stock": 0,
                 "history": [
                     {
                         "date": "26/8, 11:55 p. m.",
@@ -12086,24 +12393,8 @@ const productsData = [
                         "detail": "Costo: $45.000 ➔ $36.000"
                     }
                 ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1,
-                    "logisticaFreeMinUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Vinotecas",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 11
             },
             {
                 "id": "25",
@@ -12193,7 +12484,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 10,
+                "views": 11,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -14053,7 +14344,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 81,
+                "views": 82,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -15584,7 +15875,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18454,131 +18745,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "67",
-                "title": "Estantes - Cortes",
-                "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/estantes/estantes/estantes.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/estantes/estantes/estantes.webp",
-                        "images_list": [
-                            "img/estantes/estantes/estantes.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "20 x 60 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 5800,
-                                "cost_price": 5800,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "20 x 80 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 7700,
-                                "cost_price": 7700,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "20 x 100 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 9700,
-                                "cost_price": 9700,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "30 x 60 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 8750,
-                                "cost_price": 8750,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "30 x 80 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 11600,
-                                "cost_price": 11600,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "30 x 100 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 14500,
-                                "cost_price": 14500,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 3,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteMaxUnits": 10,
-                    "fleteFreeMinUnits": 100,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "last_modified": 1788655893942,
-                "primaryCatId": "cortes-madera",
-                "history": [],
-                "views": 16,
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes",
-                    "cortes-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "7C",
                 "title": "Repisa-estante de pared con toallero",
                 "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
@@ -18987,269 +19153,37 @@ const productsData = [
         "id": "cortes-madera",
         "name": "Cortes de Madera",
         "rubro": "carpinteria",
-        "image": "img/estantes-repisas/portada-1783038461695-imagen.webp",
-        "visible": false,
-        "order": 6,
+        "image": "img/cortes-de-madera/portada-1791766769534-imagen.webp",
+        "visible": true,
+        "order": 7,
         "products": [
-            {
-                "id": "67",
-                "title": "Cortes de Madera para Estantes",
-                "description": "Tablas de pino macizo seleccionadas y cepilladas en taller. Medidas estándar ideales para repisas flotantes o con ménsulas.",
-                "image": "img/estantes/estantes/estantes.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/estantes/estantes/estantes.webp",
-                        "images_list": [
-                            "img/estantes/estantes/estantes.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "20 x 60 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 5800,
-                                "cost_price": 5800,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "20 x 80 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 7700,
-                                "cost_price": 7700,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "20 x 100 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 9700,
-                                "cost_price": 9700,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "30 x 60 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 8750,
-                                "cost_price": 8750,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "30 x 80 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 11600,
-                                "cost_price": 11600,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "30 x 100 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 14500,
-                                "cost_price": 14500,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 3,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteMaxUnits": 10,
-                    "fleteFreeMinUnits": 100,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "last_modified": 1788655893942,
-                "primaryCatId": "cortes-madera",
-                "history": [],
-                "views": 16,
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes",
-                    "cortes-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "68",
-                "title": "Cortes de Madera para Escritorios y Mesas",
-                "description": "Tableros de pino macizo de gran formato, cepillados y pulidos a mano. Ideales para armar escritorios, mesas de comedor, mesadas o escritorios home office.",
-                "image": "img/estantes/estantes/estantes.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/estantes/estantes/estantes.webp",
-                        "images_list": [
-                            "img/estantes/estantes/estantes.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "50 x 100 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 27500,
-                                "cost_price": 16500,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "60 x 120 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": true,
-                                "price": 39600,
-                                "cost_price": 23500,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "60 x 140 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 46200,
-                                "cost_price": 27500,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "70 x 140 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 53900,
-                                "cost_price": 32000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "escritorio",
-                    "mesa",
-                    "tapa",
-                    "tablero",
-                    "corte",
-                    "madera",
-                    "pino"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 1,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteMaxUnits": 5,
-                    "fleteFreeMinUnits": 100,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "last_modified": 1788655893945,
-                "primaryCatId": "cortes-madera",
-                "history": [],
-                "views": 3,
-                "categories": [
-                    "carpinteria-todos",
-                    "cortes-madera"
-                ],
-                "rubro": "carpinteria"
-            },
             {
                 "id": "69",
                 "shortId": "2Z",
                 "title": "Cortes de Madera a Medida",
                 "description": "Calculá tu corte exacto al milímetro para cualquier proyecto: escalones, mesadas, tapas especiales o estantes a medida. Madera maciza de pino seleccionada.",
-                "image": "img/estantes/estantes/estantes.webp",
-                "isCustomCutting": true,
+                "image": "img/cortes-de-madera/cortes-de-madera-a-medida/1791766460587-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
                         "description": "",
-                        "cover_image": "img/estantes/estantes/estantes.webp",
+                        "cover_image": "img/cortes-de-madera/cortes-de-madera-a-medida/1791766460587-imagenwebp.webp",
                         "images_list": [
-                            "img/estantes/estantes/estantes.webp"
+                            "img/cortes-de-madera/cortes-de-madera-a-medida/1791766460587-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "A Medida Exacta (cm)",
+                                "medida": "A Medida",
                                 "link": "",
                                 "default": true,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "straighten",
                                 "highlight": true,
-                                "price": 3500,
+                                "price": "",
                                 "cost_price": 2000,
                                 "legend": "",
-                                "showPrice": true,
+                                "showPrice": false,
                                 "logisticaEnabled": true
                             }
                         ],
@@ -19285,12 +19219,392 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1791687942039,
+                "last_modified": 1791766460594,
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
+                "views": 102
+            },
+            {
+                "id": "67",
+                "shortId": "31",
+                "title": "Estantes a medida",
+                "description": "Tablas de pino macizo seleccionadas y cepilladas en taller. Medidas estándar ideales para repisas flotantes o con ménsulas.",
+                "image": "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "",
+                        "cover_image": "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
+                        "images_list": [
+                            "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
+                            "img/cortes-de-madera/estantes-a-medida/1791766625847-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "20 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 5800,
+                                "cost_price": 1458,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "20 x 80 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 7700,
+                                "cost_price": 1944,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "20 x 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9700,
+                                "cost_price": 2431,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "30 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 8750,
+                                "cost_price": 2188,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "30 x 80 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 11600,
+                                "cost_price": 2917,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "30 x 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 14500,
+                                "cost_price": 3646,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "fleteFreeMinUnits": 100,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1791766625851,
+                "primaryCatId": "cortes-madera",
+                "history": [],
+                "categories": [
+                    "carpinteria-todos",
+                    "Estantes",
+                    "cortes-madera"
+                ],
                 "rubro": "carpinteria",
-                "views": 62
+                "views": 17
+            },
+            {
+                "id": "68",
+                "shortId": "31",
+                "title": "Escritorios y Mesas",
+                "description": "Tableros de pino macizo de gran formato, cepillados y pulidos a mano. Ideales para armar escritorios, mesas de comedor, mesadas o escritorios home office.",
+                "image": "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "",
+                        "cover_image": "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp",
+                        "images_list": [
+                            "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50 x 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 27500,
+                                "cost_price": 16500,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "60 x 120 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": true,
+                                "price": 39600,
+                                "cost_price": 23500,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "60 x 140 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 46200,
+                                "cost_price": 27500,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "70 x 140 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 53900,
+                                "cost_price": 32000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "escritorio",
+                    "mesa",
+                    "tapa",
+                    "tablero",
+                    "corte",
+                    "madera",
+                    "pino"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 5,
+                    "fleteFreeMinUnits": 100,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1791766660527,
+                "primaryCatId": "cortes-madera",
+                "history": [],
+                "views": 4
+            },
+            {
+                "id": "93",
+                "shortId": "31",
+                "title": "Placa de Pino Alistonada 124 × 244 cm (18 mm)",
+                "description": "Tablero entero de pino macizo alistonado de primera calidad, secado a horno, cepillado y calibrado. Dimensiones estándar de 124 × 244 cm en 18 mm de espesor. Ideal para carpintería general, tapas de mesas, frentes de placard, estanterías y muebles a medida. Venta por placa cerrada.",
+                "image": "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "Placa entera alistonada calibrada de fábrica, lista para cortar o lijar.",
+                        "cover_image": "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp",
+                        "images_list": [
+                            "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "124 × 244 cm (18 mm)",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": 35000,
+                                "legend": "Consultar precio / cotización inmediata por WhatsApp",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "placa",
+                    "tablero",
+                    "pino",
+                    "alistonado",
+                    "madera",
+                    "18mm",
+                    "124x244",
+                    "placa entera",
+                    "carpinteria",
+                    "muebleria",
+                    "taller"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "otroEnabled": true,
+                    "otroLabel": "Flete externo / A convenir (+ de 10 placas)",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1791766694912,
+                "primaryCatId": "cortes-madera",
+                "history": [],
+                "visible": true,
+                "views": 2
+            },
+            {
+                "id": "94",
+                "shortId": "31",
+                "title": "Placa Fenólico Industrial 124 × 244 cm (1 Cara Buena / Pino 18 mm)",
+                "description": "Tablero fenólico multilaminado industrial con 1 cara buena en madera de pino, espesor 18 mm y medidas estándar de 124 × 244 cm. Gran resistencia estructural, estabilidad dimensional y excelente terminación para encofrados vistos, entrepisos, mobiliario rústico, obradores o revestimientos. Venta por placa cerrada.",
+                "image": "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "Tablero multilaminado fenólico con una cara seleccionada.",
+                        "cover_image": "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp",
+                        "images_list": [
+                            "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "124 × 244 cm (18 mm)",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": 40000,
+                                "legend": "Consultar precio / cotización inmediata por WhatsApp",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "fenolico",
+                    "placa fenolica",
+                    "multilaminado",
+                    "pino",
+                    "1 cara buena",
+                    "18mm",
+                    "124x244",
+                    "tablero industrial",
+                    "encofrado",
+                    "carpinteria",
+                    "obra"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "otroEnabled": true,
+                    "otroLabel": "Flete externo / A convenir (+ de 10 placas)",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1791766726663,
+                "primaryCatId": "cortes-madera",
+                "history": [],
+                "visible": true,
+                "views": 9
             }
         ]
     },
@@ -19299,7 +19613,7 @@ const productsData = [
         "name": "Cunas & Sueños",
         "image": "img/cunas/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 7,
+        "order": 8,
         "visible": true,
         "products": [
             {
@@ -20633,7 +20947,7 @@ const productsData = [
         "name": "Camas & Mesas de Luz",
         "image": "img/camas-para-ninos/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 8,
+        "order": 9,
         "products": [
             {
                 "id": "51",
@@ -21077,7 +21391,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 81,
+                "views": 82,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22315,7 +22629,7 @@ const productsData = [
         "id": "muebles",
         "name": "Escaleras",
         "image": "img/escaleras/portada-1780288150186-imagen.webp",
-        "order": 9,
+        "order": 10,
         "rubro": "carpinteria",
         "products": [
             {
@@ -22628,7 +22942,7 @@ const productsData = [
         "id": "Steps",
         "name": "Fitness & Steps",
         "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
-        "order": 10,
+        "order": 11,
         "rubro": "carpinteria",
         "products": [
             {
@@ -23276,7 +23590,7 @@ const productsData = [
                 "last_modified": 1788908607231,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 0,
+                "views": 1,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",
@@ -23290,7 +23604,7 @@ const productsData = [
         "id": "Juguetes",
         "name": "Rincón Infantil",
         "image": "img/juguetes/portada-1783038439545-imagen.webp",
-        "order": 11,
+        "order": 12,
         "rubro": "carpinteria",
         "products": [
             {
@@ -24329,7 +24643,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839116557,
                 "primaryCatId": "Juguetes",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24689,7 +25003,7 @@ const productsData = [
         "name": "Sillas y sillones",
         "image": "img/sillas-y-sillones/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 12,
+        "order": 13,
         "products": [
             {
                 "id": "B4",
@@ -24775,7 +25089,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839116557,
                 "primaryCatId": "Juguetes",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -25135,7 +25449,7 @@ const productsData = [
         "name": "Mesas & Escritorios",
         "image": "img/mesas-de-madera/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 13,
+        "order": 14,
         "products": [
             {
                 "id": "46",
@@ -25977,7 +26291,7 @@ const productsData = [
         "name": "Jardín",
         "image": "img/jardin/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 14,
+        "order": 15,
         "products": [
             {
                 "id": "E1",
@@ -26199,7 +26513,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812318991,
                 "primaryCatId": "jardin-patio",
-                "views": 11,
+                "views": 12,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -26895,7 +27209,7 @@ const productsData = [
         "name": "Muebles de Hogar",
         "image": "img/hogar/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 15,
+        "order": 16,
         "products": [
             {
                 "id": "7C",
@@ -27813,121 +28127,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "24",
-                "title": "Vinoteca - 17 Vinos",
-                "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Tinte",
-                        "cover_image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
-                        "images_list": [
-                            "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
-                            "img/vinotecas-bodegas/17-vinos/1783741907006-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "17 Vinos",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1561953897-vinoteca-cava-bodega-madera-mueble-17-vinos-rustica-campo-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 90000,
-                                "cost_price": 36000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "vinos",
-                    "vino",
-                    "vinoteca",
-                    "bodega",
-                    "bodegon",
-                    "organizar",
-                    "chupi",
-                    "botellas",
-                    "fernet",
-                    "cerveza",
-                    "decorar",
-                    "papa",
-                    "regalo",
-                    "vinotecas",
-                    "vinoteca 17 vinos",
-                    "vinoteca gigante",
-                    "vinoteca madera",
-                    "vinoteca pino",
-                    "cava",
-                    "cavas",
-                    "bodegas",
-                    "botellero",
-                    "copas",
-                    "copero",
-                    "portacopas",
-                    "bar",
-                    "barra",
-                    "bebidas",
-                    "estante vinos",
-                    "porta botellas",
-                    "decoracion bar",
-                    "cava vinos",
-                    "mueble bar",
-                    "binoteca",
-                    "binotecas",
-                    "mueble para vinos",
-                    "organizador de vinos",
-                    "porta copas",
-                    "mueble rustico",
-                    "decoracion hogar",
-                    "regalo hombre",
-                    "bodega madera",
-                    "cava madera",
-                    "vinoteca de pared",
-                    "estante de botellas",
-                    "vinoteca de pino",
-                    "mueble de pino",
-                    "mueble de madera",
-                    "barra bar",
-                    "mini bar casa",
-                    "cava de pino",
-                    "portabotellas de pared"
-                ],
-                "last_modified": 1784083083495,
-                "primaryCatId": "Vinotecas",
-                "views": 8,
-                "stock": 0,
-                "history": [
-                    {
-                        "date": "26/8, 11:55 p. m.",
-                        "type": "Costo Bajó",
-                        "detail": "Costo: $45.000 ➔ $36.000"
-                    }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1,
-                    "logisticaFreeMinUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Vinotecas",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "25",
                 "title": "Bodega 6 Vinos",
                 "description": "Medidas\nAlto: 40 cm\nAncho: 30 cm\nProfundidad: 23 cm",
@@ -28015,7 +28214,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 10,
+                "views": 11,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -28043,7 +28242,7 @@ const productsData = [
         "name": "Línea Algarrobo",
         "image": "img/todo-algarrobo/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 16,
+        "order": 17,
         "products": [
             {
                 "id": "G1",
@@ -28368,7 +28567,7 @@ const productsData = [
         "name": "Bazar & Cocina",
         "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
         "rubro": "carpinteria",
-        "order": 17,
+        "order": 18,
         "visible": true,
         "products": [
             {
@@ -29063,7 +29262,7 @@ const productsData = [
                 "last_modified": 1788917627673,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 2,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "bazar-cocina"
@@ -29603,7 +29802,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 10,
+                "views": 11,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -29631,7 +29830,7 @@ const productsData = [
         "name": "Cajones de Madera",
         "image": "img/cajones-de-madera/portada-1791337634850-imagen.webp",
         "rubro": "carpinteria",
-        "order": 18,
+        "order": 19,
         "visible": false,
         "products": [
             {
@@ -30821,7 +31020,7 @@ const productsData = [
                 "last_modified": 1788908607231,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 0,
+                "views": 1,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",
@@ -30835,7 +31034,7 @@ const productsData = [
         "id": "Podios",
         "name": "Podios de Premiacion",
         "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-        "order": 19,
+        "order": 20,
         "rubro": "carpinteria",
         "products": [
             {
@@ -31206,7 +31405,7 @@ const productsData = [
         "rubro": "pintureria",
         "image": "img/logo_provisional.png",
         "visible": true,
-        "order": 20,
+        "order": 21,
         "products": []
     },
     {
@@ -31215,7 +31414,7 @@ const productsData = [
         "rubro": "electricidad",
         "image": "img/logo_provisional.png",
         "visible": false,
-        "order": 21,
+        "order": 22,
         "products": [
             {
                 "id": "L1",
@@ -31473,7 +31672,7 @@ const productsData = [
         "name": "Kits Electricos",
         "image": "img/kits-electricos/portada-imagenwebp.webp",
         "rubro": "electricidad",
-        "order": 22,
+        "order": 23,
         "visible": true,
         "products": [
             {
@@ -31733,7 +31932,7 @@ const productsData = [
         "rubro": "herrajes",
         "image": "img/logo_provisional.png",
         "visible": false,
-        "order": 23,
+        "order": 24,
         "products": [
             {
                 "id": "N1",
@@ -31815,7 +32014,7 @@ const productsData = [
         "name": "Tornillos",
         "image": "img/herrajes/tornillos/portada-imagenwebp.webp",
         "rubro": "herrajes",
-        "order": 24,
+        "order": 25,
         "visible": true,
         "products": [
             {
@@ -31892,5 +32091,152 @@ const productsData = [
                 "rubro": "herrajes"
             }
         ]
+    },
+    {
+        "id": "cajones-crossfit",
+        "name": "Cajones CrossFit & Pliométricos",
+        "rubro": "carpinteria",
+        "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+        "visible": true,
+        "order": 26,
+        "products": [
+            {
+                "id": "95",
+                "shortId": "33",
+                "title": "Cajón Pliométrico 3 en 1 CrossFit & Salto",
+                "description": "Cajón de salto pliométrico multifuncional 3 en 1 para CrossFit, entrenamiento funcional y preparación física. Fabricado en Fenólico Industrial de 18 mm con refuerzo estructural interno en cruz y manijas ergonómicas.",
+                "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Fenólico 18mm",
+                        "description": "Placa Fenólica de 18 mm de alta resistencia con refuerzo interno en cruz",
+                        "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Grande Oficial (50 × 60 × 75 cm)",
+                                "link": "apps/cajon.html",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": true,
+                                "price": 72000,
+                                "cost_price": 22000,
+                                "legend": "Oficial Box CrossFit",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "Mediano (40 × 50 × 60 cm)",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 58000,
+                                "cost_price": 17000,
+                                "legend": "Intermedio",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "Chico (30 × 40 × 50 cm)",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 42000,
+                                "cost_price": 12000,
+                                "legend": "Funcional / Principiante",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "A Medida Especial",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Calcular",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 72000,
+                                "cost_price": 22000,
+                                "legend": "Personalizado",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cajon",
+                    "pliometrico",
+                    "crossfit",
+                    "salto",
+                    "jump box",
+                    "box",
+                    "3 en 1",
+                    "fitness",
+                    "gym",
+                    "entrenamiento funcional",
+                    "fenolico"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "fleteFreeMinUnits": 50,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minQty": 3,
+                        "discountPercent": 8
+                    },
+                    {
+                        "minQty": 6,
+                        "discountPercent": 12
+                    }
+                ],
+                "last_modified": 1791831629527,
+                "primaryCatId": "cajones-crossfit",
+                "history": [],
+                "visible": true,
+                "categories": [
+                    "carpinteria-todos",
+                    "cajones-crossfit"
+                ],
+                "rubro": "carpinteria",
+                "views": 57
+            }
+        ]
+    },
+    {
+        "id": "cat-28-mvay9cq6",
+        "name": "Pizzarones",
+        "image": "img/pizzarones/portada-imagenwebp.webp",
+        "rubro": "carpinteria",
+        "order": 27,
+        "products": []
     }
 ];

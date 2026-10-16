@@ -17,8 +17,8 @@
                 if (cat.products) {
                     const found = cat.products.find(p => {
                         if (!p) return false;
-                        const pId = (p.id || '').trim().toLowerCase();
-                        const pTitle = (p.title || '').trim().toLowerCase();
+                        const pId = String(p.id != null ? p.id : '').trim().toLowerCase();
+                        const pTitle = String(p.title != null ? p.title : '').trim().toLowerCase();
                         const normTitle = pTitle.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
                         const normId = pId.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
                         return pId === searchClean || pTitle === searchClean || normId === normSearch || normTitle === normSearch || (normSearch.length > 5 && normTitle.includes(normSearch));
@@ -360,6 +360,13 @@
     async function showProductDetail(product, categoryName, preselectedAcabado = '', preselectedMedida = '', preselectedOpcion = '', isBack = false) {
         if (!product) return;
 
+        // Resetear contenedor de configuración inferior de cortes a medida si existiera
+        const bottomCuttingContainer = document.getElementById('detail-custom-cutting-bottom-container');
+        if (bottomCuttingContainer) {
+            bottomCuttingContainer.innerHTML = '';
+            bottomCuttingContainer.style.display = 'none';
+        }
+
         // Si el producto viene desde el índice liviano y le faltan acabados_groups, cargar ficha completa bajo demanda
         if ((!product.acabados_groups || product.acabados_groups.length === 0) && window.fetchProductDetailAsync) {
             try {
@@ -672,30 +679,73 @@
         const btnMinus = document.getElementById('btn-qty-minus');
         const btnPlus = document.getElementById('btn-qty-plus');
         if (btnMinus && btnPlus && qtyValEl) {
+            const triggerQtyUpdate = (newQty) => {
+                qtyValEl.textContent = newQty;
+                const curGroup = grupos[currentGroupIndex] || grupos[0];
+                let mName = '';
+                if (product.isCustomCutting === true || product.id === '69') {
+                    // Si es corte a medida, tomar la medida generada en la variante o recalcular
+                    mName = curGroup?.medidas_variants?.[0]?.medida || '';
+                } else {
+                    const selMedida = divMedida.querySelector('select');
+                    mName = selMedida ? selMedida.value : '';
+                }
+                updateBuyButton(curGroup, mName);
+            };
+
             btnMinus.onclick = (e) => {
                 e.preventDefault();
                 let qty = parseInt(qtyValEl.textContent || '1');
                 if (qty > 1) {
                     qty--;
-                    qtyValEl.textContent = qty;
-                    // Actualizar precio y link de WhatsApp
-                    const selMedida = divMedida.querySelector('select');
-                    const mName = selMedida ? selMedida.value : '';
-                    updateBuyButton(grupos[currentGroupIndex], mName);
+                    triggerQtyUpdate(qty);
                 }
             };
             btnPlus.onclick = (e) => {
                 e.preventDefault();
                 let qty = parseInt(qtyValEl.textContent || '1');
                 qty++;
-                qtyValEl.textContent = qty;
-                // Actualizar precio y link de WhatsApp
-                const selMedida = divMedida.querySelector('select');
-                const mName = selMedida ? selMedida.value : '';
-                updateBuyButton(grupos[currentGroupIndex], mName);
+                triggerQtyUpdate(qty);
             };
         }
 
+
+        // Estado dinámico para Despiece / Múltiples Cortes a Medida (Opción A)
+        let customCutsList = [];
+        window._activeCustomCutsList = customCutsList; // accesible para render y sync
+
+        // Helper para obtener las escalas de descuento por cantidad aplicables
+        const getProductVolumeDiscounts = (activeVariant = null) => {
+            let discounts = (activeVariant && activeVariant.volumeDiscounts && Array.isArray(activeVariant.volumeDiscounts) && activeVariant.volumeDiscounts.length > 0)
+                ? activeVariant.volumeDiscounts
+                : (product.quantityDiscounts || []);
+
+            const isCortesProduct = product.isCustomCutting ||
+                                    product.id === '67' || product.id === '68' || product.id === '69' ||
+                                    product.category === 'cortes-madera' ||
+                                    product.primaryCatId === 'cortes-madera' ||
+                                    (Array.isArray(product.categories) && product.categories.includes('cortes-madera'));
+
+            if (isCortesProduct && window.cortesConfig?.descuentos?.activo !== false && Array.isArray(window.cortesConfig?.descuentos?.escalas) && window.cortesConfig.descuentos.escalas.length > 0) {
+                discounts = window.cortesConfig.descuentos.escalas;
+            }
+            return discounts || [];
+        };
+
+        const getBestDiscountRule = (qty, activeVariant = null) => {
+            const list = getProductVolumeDiscounts(activeVariant);
+            if (!list || !Array.isArray(list) || list.length === 0) return null;
+            const sortedRules = [...list].sort((a, b) => {
+                const minA = a.minQty !== undefined ? a.minQty : a.minUnits;
+                const minB = b.minQty !== undefined ? b.minQty : b.minUnits;
+                return minB - minA;
+            });
+            for (const rule of sortedRules) {
+                const minUnits = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
+                if (qty >= minUnits) return rule;
+            }
+            return null;
+        };
 
         function buildWA(grupo, medidaName) {
             const selOpt = divOpt.querySelector('select');
@@ -709,14 +759,22 @@
             if (grupo && grupo.acabado_name && grupo.acabado_name !== 'Único') {
                 details.push(`• Acabado: ${grupo.acabado_name}`);
             }
-            if (medidaName) {
+
+            // Si hay cortes en la lista multi-medida, formatear lista completa
+            if ((product.isCustomCutting === true || product.id === '69') && customCutsList.length > 0) {
+                const cutsSummary = customCutsList.map((c, idx) => 
+                    `  ${idx + 1}) ${c.qty}x ${c.largo}x${c.ancho} cm (${c.material} ${c.espesor}) - $${Number(c.subtotal).toLocaleString('es-AR')}`
+                ).join('\n');
+                details.push(`• Despiece (${customCutsList.length} medidas distintas):\n${cutsSummary}`);
+            } else if (medidaName) {
                 details.push(`• Medida: ${medidaName}`);
             }
+
             if (optText && optLabel) {
                 details.push(`• ${optLabel}: ${optText}`);
             }
             if (qtyVal > 1) {
-                details.push(`• Cantidad: ${qtyVal}`);
+                details.push(`• Cantidad total: ${qtyVal} piezas`);
             }
 
             const detailsStr = details.length > 0 ? ` (${details.map(d => d.replace('• ', '')).join(', ')})` : '';
@@ -870,51 +928,70 @@
                         const qtyValEl = document.getElementById('qty-value');
                         const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
                         
-                        // Buscar descuento por volumen aplicable (a nivel variante o nivel producto)
+                        // Determinar si usamos la lista multi-cortes agregada
+                        const hasCustomCutsList = (product.isCustomCutting === true || product.id === '69') && Array.isArray(customCutsList) && customCutsList.length > 0;
+                        const effectiveQty = hasCustomCutsList ? customCutsList.reduce((acc, c) => acc + (c.qty || 1), 0) : qtyVal;
+                        const effectiveSubtotal = hasCustomCutsList ? customCutsList.reduce((acc, c) => acc + (c.subtotal || 0), 0) : (activeVariant.price * effectiveQty);
+
+                        // Buscar descuentos por volumen aplicables
                         let discountPercent = 0;
                         let discountValue = 0;
                         let totalDiscountAmount = 0;
                         let discountRule = null;
                         
-                        let discountsList = (activeVariant.volumeDiscounts && Array.isArray(activeVariant.volumeDiscounts) && activeVariant.volumeDiscounts.length > 0)
-                            ? activeVariant.volumeDiscounts
-                            : (product.quantityDiscounts || []);
+                        let discountsList = getProductVolumeDiscounts(activeVariant);
                         
-                        // Si es producto de la categoría Cortes de Madera, integrar escala global de cortesConfig
-                        const isCortesProduct = product.isCustomCutting || product.category === 'cortes-madera' || product.rubro === 'cortes-madera' || product.id === '67' || product.id === '68' || product.id === '69';
-                        if (isCortesProduct && window.cortesConfig?.descuentos?.activo !== false && window.cortesConfig?.descuentos?.escalas) {
-                            discountsList = window.cortesConfig.descuentos.escalas;
-                        }
-                        
-                        if (discountsList && Array.isArray(discountsList) && discountsList.length > 0) {
-                            const sortedRules = [...discountsList].sort((a, b) => {
-                                const minA = a.minQty !== undefined ? a.minQty : a.minUnits;
-                                const minB = b.minQty !== undefined ? b.minQty : b.minUnits;
-                                return minB - minA;
-                            });
-                            for (const rule of sortedRules) {
-                                const minUnits = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
-                                if (qtyVal >= minUnits) {
-                                    discountRule = rule;
+                        // En cortes a medida, el descuento por cantidad se aplica SOLO llevando de las mismas dimensiones/características
+                        let discountedCutsSummary = [];
+                        if (hasCustomCutsList) {
+                            totalDiscountAmount = 0;
+                            customCutsList.forEach(cut => {
+                                const rule = getBestDiscountRule(cut.qty || 1, activeVariant);
+                                if (rule) {
+                                    let cutDiscount = 0;
+                                    const cutSub = cut.subtotal || 0;
                                     if (rule.discountPercent !== undefined && rule.discountPercent > 0) {
-                                        discountPercent = rule.discountPercent;
-                                        totalDiscountAmount = (activeVariant.price * qtyVal) * (discountPercent / 100);
+                                        cutDiscount = cutSub * (rule.discountPercent / 100);
                                     } else if (rule.discountValue !== undefined && rule.discountValue > 0) {
-                                        discountValue = rule.discountValue;
-                                        totalDiscountAmount = Math.floor(qtyVal / minUnits) * discountValue;
+                                        const minUnits = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
+                                        cutDiscount = Math.floor((cut.qty || 1) / minUnits) * rule.discountValue;
                                     }
-                                    break;
+                                    if (cutDiscount > 0) {
+                                        totalDiscountAmount += cutDiscount;
+                                        discountedCutsSummary.push({
+                                            cut,
+                                            rule,
+                                            discountAmount: cutDiscount
+                                        });
+                                    }
+                                }
+                            });
+                            if (discountedCutsSummary.length > 0) {
+                                discountRule = discountedCutsSummary[0].rule;
+                            }
+                        } else {
+                            // Modo variante normal (un solo corte o producto regular)
+                            discountRule = getBestDiscountRule(effectiveQty, activeVariant);
+                            if (discountRule) {
+                                if (discountRule.discountPercent !== undefined && discountRule.discountPercent > 0) {
+                                    discountPercent = discountRule.discountPercent;
+                                    totalDiscountAmount = effectiveSubtotal * (discountPercent / 100);
+                                } else if (discountRule.discountValue !== undefined && discountRule.discountValue > 0) {
+                                    discountValue = discountRule.discountValue;
+                                    const minUnits = discountRule.minQty !== undefined ? discountRule.minQty : discountRule.minUnits;
+                                    totalDiscountAmount = Math.floor(effectiveQty / minUnits) * discountValue;
                                 }
                             }
                         }
 
                         if (totalDiscountAmount > 0) {
-                            const originalTotalPrice = activeVariant.price * qtyVal;
+                            const originalTotalPrice = effectiveSubtotal;
                             const totalPrice = originalTotalPrice - totalDiscountAmount;
                             
                             const formattedOriginalPrice = formatter.format(originalTotalPrice);
                             const formattedTotalPrice = formatter.format(totalPrice);
-                            const badgeText = discountPercent > 0 ? `${discountPercent}% OFF` : `-$${formatter.format(totalDiscountAmount).replace('$', '').trim()}`;
+                            const effectivePct = Math.round((totalDiscountAmount / originalTotalPrice) * 100);
+                            const badgeText = effectivePct > 0 ? `${effectivePct}% OFF` : `-$${formatter.format(totalDiscountAmount).replace('$', '').trim()}`;
                             
                             priceDisplay.innerHTML = `
                                 <div style="display: flex; flex-direction: column; align-items: flex-end;">
@@ -935,7 +1012,7 @@
                                 </div>
                             `;
                         } else {
-                            const totalPrice = activeVariant.price * qtyVal;
+                            const totalPrice = effectiveSubtotal;
                             const formattedPrice = formatter.format(totalPrice);
                             
                             priceDisplay.innerHTML = `
@@ -950,7 +1027,7 @@
                             `;
                         }
 
-                        // Actualizar banner informativo de descuentos por cantidad
+                        // Actualizar banner informativo de descuentos por cantidad (Fila 2)
                         const discountBanner = document.getElementById('detail-qty-discount-banner');
                         if (discountBanner) {
                             if (discountsList && discountsList.length > 0) {
@@ -965,18 +1042,36 @@
                                     })
                                     .join(' | ');
 
-                                if (discountRule) {
+                                if (hasCustomCutsList) {
+                                    if (discountedCutsSummary.length > 0) {
+                                        discountBanner.style.display = 'block';
+                                        discountBanner.style.background = '#f0fdf4';
+                                        discountBanner.style.border = '1px solid #bbf7d0';
+                                        discountBanner.style.color = '#15803d';
+                                        discountBanner.innerHTML = `🎉 ¡Descuento por cantidad aplicado en cortes idénticos! Ahorrás <strong>$${formatter.format(totalDiscountAmount).replace('$', '').trim()}</strong>.`;
+                                    } else {
+                                        discountBanner.style.display = 'block';
+                                        discountBanner.style.background = '#eff6ff';
+                                        discountBanner.style.border = '1px solid #bfdbfe';
+                                        discountBanner.style.color = '#0369a1';
+                                        discountBanner.innerHTML = `🏷️ Descuentos por cantidad (mismas dimensiones): <strong>${tiersText}</strong>`;
+                                    }
+                                } else if (discountRule) {
                                     discountBanner.style.display = 'block';
+                                    discountBanner.style.background = '#f0fdf4';
+                                    discountBanner.style.border = '1px solid #bbf7d0';
                                     discountBanner.style.color = '#15803d';
                                     const activeParts = [];
                                     if (discountRule.discountPercent > 0) activeParts.push(`<strong>${discountRule.discountPercent}% OFF en producto</strong>`);
                                     if (discountRule.shippingDiscountPercent > 0) {
                                         activeParts.push(discountRule.shippingDiscountPercent >= 100 ? '<strong>ENVÍO GRATIS</strong>' : `<strong>${discountRule.shippingDiscountPercent}% OFF en envío</strong>`);
                                     }
-                                    discountBanner.innerHTML = `🎉 ¡Llevando ${qtyVal} uds tenés ${activeParts.join(' + ') || 'descuento especial'}!`;
+                                    discountBanner.innerHTML = `🎉 ¡Llevando ${effectiveQty} uds tenés ${activeParts.join(' + ') || 'descuento especial'}!`;
                                 } else {
                                     discountBanner.style.display = 'block';
-                                    discountBanner.style.color = '#0284c7';
+                                    discountBanner.style.background = '#eff6ff';
+                                    discountBanner.style.border = '1px solid #bfdbfe';
+                                    discountBanner.style.color = '#0369a1';
                                     discountBanner.innerHTML = `🏷️ Descuentos por cantidad: <strong>${tiersText}</strong>`;
                                 }
                             } else {
@@ -1098,7 +1193,8 @@
                     } else {
                         // Usuario tiene un CP cargado -> Evaluar mejores opciones de envío
                         const qtyValEl = document.getElementById('qty-value');
-                        const qty = qtyValEl ? (parseInt(qtyValEl.textContent, 10) || 1) : 1;
+                        const hasCustomCutsList = (product.isCustomCutting === true || product.id === '69') && Array.isArray(customCutsList) && customCutsList.length > 0;
+                        const qty = hasCustomCutsList ? customCutsList.reduce((acc, c) => acc + (c.qty || 1), 0) : (qtyValEl ? (parseInt(qtyValEl.textContent, 10) || 1) : 1);
                         let validOptions = [];
 
                         // 1. Envío global gratis
@@ -1113,49 +1209,61 @@
 
                         if (product.isCustomCutting || product.id === '69') {
                             const conf = window.cortesConfig?.logistica?.flex;
-                            const inL = document.getElementById('detail-custom-cut-largo');
-                            const inW = document.getElementById('detail-custom-cut-ancho');
-                            const selMat = document.getElementById('detail-custom-cut-material');
-
-                            const rawL = parseFloat(inL?.value) || 80;
-                            const rawW = parseFloat(inW?.value) || 30;
-                            // Auto-orientación inteligente (largo mayor, ancho menor)
-                            const l = Math.max(rawL, rawW);
-                            const w = Math.min(rawL, rawW);
-
-                            // Límites físicos configurados en el panel de Flex
                             const maxBultoLargo = conf?.max_largo || 140;
                             const maxBultoAncho = conf?.max_ancho || 60;
                             const maxBultoPeso = conf?.max_peso_bulto || 12;
                             const maxUnitsPerPkg = conf?.max_unidades || 5;
 
-                            // Si una sola tabla excede el largo o ancho del bulto de moto, se excluye Flex
-                            if (l > maxBultoLargo || w > maxBultoAncho) {
-                                isFlexExcludedBySize = true;
-                            } else {
-                                // Obtener densidad de la madera seleccionada
-                                const optMat = selMat?.options[selMat?.selectedIndex];
-                                const matId = optMat?.value;
-                                const curMat = (window.cortesConfig?.materiales || []).find(m => m.id === matId);
-                                const pesoM2 = curMat?.peso_m2 || 10; // kg/m2 base
-                                const pieceM2 = (l * w) / 10000;
-                                const pieceWeight = pieceM2 * pesoM2;
-                                flexTotalWeightKg = pieceWeight * qty;
-
-                                // Si una sola pieza ya pesa más de lo que puede llevar una moto completa (ej > 15 kg), excluir Flex
-                                if (pieceWeight > maxBultoPeso * 1.5) {
-                                    isFlexExcludedBySize = true;
-                                } else {
-                                    // Paquetes necesarios por cantidad de unidades
+                            if (hasCustomCutsList) {
+                                for (const cut of customCutsList) {
+                                    if (cut.autoL > maxBultoLargo || cut.autoW > maxBultoAncho) {
+                                        isFlexExcludedBySize = true;
+                                        break;
+                                    }
+                                    if (cut.weightKg > maxBultoPeso * 1.5) {
+                                        isFlexExcludedBySize = true;
+                                        break;
+                                    }
+                                    flexTotalWeightKg += (cut.weightKg || 0) * (cut.qty || 1);
+                                }
+                                if (!isFlexExcludedBySize) {
                                     const pkgsByQty = Math.ceil(qty / maxUnitsPerPkg);
-                                    // Paquetes necesarios por peso total acumulado
                                     const pkgsByWeight = Math.ceil(flexTotalWeightKg / maxBultoPeso);
-                                    // Se toma el que requiera más paquetes para no sobrecargar
                                     flexPackagesCount = Math.max(pkgsByQty, pkgsByWeight, 1);
-
-                                    // Si excede 4 paquetes (ej más de 48 kg), una moto no lo puede trasladar
                                     if (flexPackagesCount > 4 || flexTotalWeightKg > (maxBultoPeso * 4)) {
                                         isFlexExcludedBySize = true;
+                                    }
+                                }
+                            } else {
+                                const inL = document.getElementById('detail-custom-cut-largo');
+                                const inW = document.getElementById('detail-custom-cut-ancho');
+                                const selMat = document.getElementById('detail-custom-cut-material');
+
+                                const rawL = parseFloat(inL?.value) || 80;
+                                const rawW = parseFloat(inW?.value) || 30;
+                                const l = Math.max(rawL, rawW);
+                                const w = Math.min(rawL, rawW);
+
+                                if (l > maxBultoLargo || w > maxBultoAncho) {
+                                    isFlexExcludedBySize = true;
+                                } else {
+                                    const optMat = selMat?.options[selMat?.selectedIndex];
+                                    const matId = optMat?.value;
+                                    const curMat = (window.cortesConfig?.materiales || []).find(m => m.id === matId);
+                                    const pesoM2 = curMat?.peso_m2 || 10;
+                                    const pieceM2 = (l * w) / 10000;
+                                    const pieceWeight = pieceM2 * pesoM2;
+                                    flexTotalWeightKg = pieceWeight * qty;
+
+                                    if (pieceWeight > maxBultoPeso * 1.5) {
+                                        isFlexExcludedBySize = true;
+                                    } else {
+                                        const pkgsByQty = Math.ceil(qty / maxUnitsPerPkg);
+                                        const pkgsByWeight = Math.ceil(flexTotalWeightKg / maxBultoPeso);
+                                        flexPackagesCount = Math.max(pkgsByQty, pkgsByWeight, 1);
+                                        if (flexPackagesCount > 4 || flexTotalWeightKg > (maxBultoPeso * 4)) {
+                                            isFlexExcludedBySize = true;
+                                        }
                                     }
                                 }
                             }
@@ -1675,62 +1783,131 @@
                         if (foundIdx !== -1) preselectedGroupIdx = foundIdx;
                     }
 
+                    // Indicador compacto en la barra lateral derecha
                     divMedida.className = 'variant-selector-wrapper mt-1';
                     divMedida.innerHTML = `
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-                            <label class="variant-label" style="margin-bottom:0;">📐 Configurar Corte a Medida:</label>
-                            <span id="cortes-badge-mode" style="font-size:0.75rem; font-weight:800; color:var(--primary-color);">Cálculo Milimétrico</span>
-                        </div>
-
-                        <!-- Selector de Material / Tablero (Sin nombres duplicados) -->
-                        <div style="margin-bottom:8px;">
-                            <label style="display:block; font-size:0.72rem; font-weight:700; color:#475569; margin-bottom:3px; text-transform:uppercase;">1. Madera / Tablero:</label>
-                            <select id="detail-custom-cut-material" class="admin-input" style="width:100%; font-weight:700; border-radius:8px;">
-                                ${unifiedMatsList.map((g, idx) => `
-                                    <option value="${g.name}" data-group-index="${idx}" ${idx === preselectedGroupIdx ? 'selected' : ''}>
-                                        ${g.name} (Hasta ${g.max_largo} × ${g.max_ancho} cm)
-                                    </option>
-                                `).join('')}
-                            </select>
-                        </div>
-
-                        <!-- Selector de Espesor -->
-                        <div style="margin-bottom:8px;">
-                            <label style="display:block; font-size:0.72rem; font-weight:700; color:#475569; margin-bottom:3px; text-transform:uppercase;">2. Espesor del Tablero:</label>
-                            <select id="detail-custom-cut-espesor" class="admin-input" style="width:100%; font-weight:700; border-radius:8px;">
-                            </select>
-                        </div>
-
-                        <!-- Grilla de Medidas Largo x Ancho -->
-                        <div class="custom-cut-inputs-grid" style="background:#F8FAFC; border:1.5px dashed #CBD5E1; border-radius:12px; padding:0.85rem; display:flex; flex-direction:column; gap:8px;">
-                            <div class="custom-cut-row" style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                                <div class="custom-cut-col" style="display:flex; flex-direction:column; gap:3px;">
-                                    <label style="font-size:0.72rem; font-weight:700; color:#475569; text-transform:uppercase;">Largo (cm):</label>
-                                    <div style="position:relative; display:flex; align-items:center;">
-                                        <input type="number" id="detail-custom-cut-largo" value="80" min="15" max="300" step="1" class="admin-input" style="width:100%; padding:6px 22px 6px 8px; font-weight:700; border:1.5px solid #CBD5E1; border-radius:8px; box-sizing:border-box;">
-                                        <span style="position:absolute; right:6px; font-size:0.75rem; font-weight:700; color:#94A3B8; pointer-events:none;">cm</span>
-                                    </div>
-                                </div>
-                                <div class="custom-cut-col" style="display:flex; flex-direction:column; gap:3px;">
-                                    <label style="font-size:0.72rem; font-weight:700; color:#475569; text-transform:uppercase;">Ancho / Prof. (cm):</label>
-                                    <div style="position:relative; display:flex; align-items:center;">
-                                        <input type="number" id="detail-custom-cut-ancho" value="30" min="10" max="120" step="1" class="admin-input" style="width:100%; padding:6px 22px 6px 8px; font-weight:700; border:1.5px solid #CBD5E1; border-radius:8px; box-sizing:border-box;">
-                                        <span style="position:absolute; right:6px; font-size:0.75rem; font-weight:700; color:#94A3B8; pointer-events:none;">cm</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Alerta de Medidas Excedidas para el Material -->
-                            <div id="detail-custom-cut-warning" style="display:none; background:#FEF2F2; border:1px solid #FCA5A5; color:#991B1B; padding:0.6rem; border-radius:8px; font-size:0.75rem; line-height:1.35; font-weight:600;">
-                            </div>
-
-                            <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.72rem; color:#64748B;">
-                                <span id="detail-custom-cut-m2">📐 Superficie: 0.24 m²</span>
-                                <span id="detail-custom-cut-spec" style="color:#16A34A; font-weight:700;">Corte Rectificado</span>
+                        <div style="background:#F0FDF4; border:1.5px solid #BBF7D0; border-radius:10px; padding:10px 12px; display:flex; align-items:center; gap:8px;">
+                            <span class="material-symbols-outlined" style="font-size:20px; color:#166534; flex-shrink:0;">tune</span>
+                            <div style="font-size:0.78rem; font-weight:700; color:#166534; line-height:1.3;">
+                                Corte a medida personalizado
+                                <div style="font-size:0.7rem; font-weight:500; color:#15803D;">Configurá las medidas y agregá cortes en el panel inferior ↓</div>
                             </div>
                         </div>
                     `;
                     divMedida.style.display = 'block';
+
+                    // Inyectar el formulario completo en el contenedor de ancho completo inferior
+                    const bottomContainer = document.getElementById('detail-custom-cutting-bottom-container');
+                    if (bottomContainer) {
+                        bottomContainer.style.display = 'block';
+                        bottomContainer.innerHTML = `
+                            <div style="margin-bottom:1.25rem; border-bottom:1.5px solid #E2E8F0; padding-bottom:0.75rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    <span class="material-symbols-outlined" style="color:var(--primary-color, #ea580c); font-size:24px;">design_services</span>
+                                    <h3 style="margin:0; font-size:1.15rem; font-weight:800; color:#0F172A;">Medida personalizada</h3>
+                                </div>
+                            </div>
+
+                            <!-- Formulario en 3 Filas -->
+                            <div class="custom-cutting-form-rows" style="background:#F8FAFC; border:1.5px solid #E2E8F0; border-radius:14px; padding:1.25rem; margin-bottom:1.5rem; display:flex; flex-direction:column; gap:1rem;">
+                                <!-- Fila 1: Elegir Madera / Tablero -->
+                                <div class="custom-cutting-row-1">
+                                    <label style="display:flex; align-items:center; gap:6px; font-size:0.78rem; font-weight:800; color:#334155; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.02em;">
+                                        <span class="material-symbols-outlined" style="font-size:18px; color:var(--primary-color, #ea580c);">forest</span>
+                                        <span>1. Elegir Madera / Tablero:</span>
+                                    </label>
+                                    <select id="detail-custom-cut-material" class="admin-input" style="width:100%; font-weight:700; border-radius:10px; padding:9px 12px; font-size:0.92rem; background:white; border:1.5px solid #CBD5E1;">
+                                        ${unifiedMatsList.map((g, idx) => `
+                                            <option value="${g.name}" data-group-index="${idx}" ${idx === preselectedGroupIdx ? 'selected' : ''}>
+                                                ${g.name} (Placas de hasta ${g.max_largo} × ${g.max_ancho} cm)
+                                            </option>
+                                        `).join('')}
+                                    </select>
+                                </div>
+
+                                <!-- Fila 2: Largo - Ancho - Espesor - Cantidad -->
+                                <div class="custom-cutting-row-2" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:12px; align-items:end;">
+                                    <!-- Largo -->
+                                    <div>
+                                        <label style="font-size:0.75rem; font-weight:700; color:#334155; text-transform:uppercase; display:block; margin-bottom:5px;">Largo (cm):</label>
+                                        <div style="position:relative; display:flex; align-items:center;">
+                                            <input type="number" id="detail-custom-cut-largo" value="80" min="15" max="300" step="1" class="admin-input" style="width:100%; padding:9px 28px 9px 12px; font-weight:800; font-size:0.95rem; border:1.5px solid #CBD5E1; border-radius:10px; box-sizing:border-box; background:white;">
+                                            <span style="position:absolute; right:10px; font-size:0.75rem; font-weight:700; color:#94A3B8; pointer-events:none;">cm</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ancho -->
+                                    <div>
+                                        <label style="font-size:0.75rem; font-weight:700; color:#334155; text-transform:uppercase; display:block; margin-bottom:5px;">Ancho / Prof. (cm):</label>
+                                        <div style="position:relative; display:flex; align-items:center;">
+                                            <input type="number" id="detail-custom-cut-ancho" value="30" min="10" max="120" step="1" class="admin-input" style="width:100%; padding:9px 28px 9px 12px; font-weight:800; font-size:0.95rem; border:1.5px solid #CBD5E1; border-radius:10px; box-sizing:border-box; background:white;">
+                                            <span style="position:absolute; right:10px; font-size:0.75rem; font-weight:700; color:#94A3B8; pointer-events:none;">cm</span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Espesor -->
+                                    <div>
+                                        <label style="font-size:0.75rem; font-weight:700; color:#334155; text-transform:uppercase; display:block; margin-bottom:5px;">Espesor:</label>
+                                        <select id="detail-custom-cut-espesor" class="admin-input" style="width:100%; padding:9px 12px; font-weight:800; font-size:0.92rem; border:1.5px solid #CBD5E1; border-radius:10px; box-sizing:border-box; background:white;">
+                                        </select>
+                                    </div>
+
+                                    <!-- Cantidad -->
+                                    <div>
+                                        <label style="font-size:0.75rem; font-weight:700; color:#334155; text-transform:uppercase; display:block; margin-bottom:5px;">Cantidad:</label>
+                                        <div style="display:flex; align-items:center; background:white; border:1.5px solid #CBD5E1; border-radius:10px; padding:2px 8px; height:42px; box-sizing:border-box;">
+                                            <button type="button" id="btn-cut-qty-minus" style="border:none; background:none; cursor:pointer; font-size:1.1rem; font-weight:900; color:#64748B; padding:0 6px;">−</button>
+                                            <input type="number" id="detail-custom-cut-item-qty" value="1" min="1" max="100" style="width:100%; border:none; outline:none; text-align:center; font-weight:800; font-size:1rem; color:#0F172A; padding:0; background:transparent;">
+                                            <button type="button" id="btn-cut-qty-plus" style="border:none; background:none; cursor:pointer; font-size:1.1rem; font-weight:900; color:#64748B; padding:0 6px;">+</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Alerta de Límites de Placa y Sub-detalles -->
+                                <div id="detail-custom-cut-warning" style="display:none; background:#FEF2F2; border:1px solid #FCA5A5; color:#991B1B; padding:0.75rem 1rem; border-radius:10px; font-size:0.8rem; line-height:1.4; font-weight:600;">
+                                </div>
+
+                                <!-- Fila 3: Información a la izquierda y Botón Agregar Cortes a la Derecha -->
+                                <div class="custom-cutting-row-3" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; padding-top:10px; border-top:1.5px dashed #CBD5E1;">
+                                    <div style="display:flex; align-items:center; gap:14px; font-size:0.8rem; color:#64748B; flex-wrap:wrap;">
+                                        <span id="detail-custom-cut-m2" style="font-weight:700; color:#334155;">📐 Superficie: 0.24 m²</span>
+                                        <span id="detail-custom-cut-spec" style="color:#16A34A; font-weight:700; background:#DCFCE7; padding:2px 8px; border-radius:6px;">Corte Rectificado</span>
+                                        <span id="detail-custom-cut-unit-preview" style="color:var(--primary-color, #ea580c); font-weight:800; font-size:0.9rem;">$0 c/u</span>
+                                    </div>
+
+                                    <div style="display:flex; align-items:center; gap:8px; margin-left:auto;">
+                                        <button type="button" id="btn-cancel-edit-cut" style="display:none; background:#E2E8F0; color:#475569; border:none; border-radius:10px; padding:10px 16px; font-size:0.85rem; font-weight:700; cursor:pointer;">
+                                            Cancelar edición
+                                        </button>
+                                        <button type="button" id="btn-add-cut-to-list" style="background:#0284c7; color:white; border:none; border-radius:10px; padding:10px 22px; font-size:0.9rem; font-weight:800; cursor:pointer; display:flex; align-items:center; gap:8px; box-shadow:0 2px 6px rgba(2,132,199,0.3); transition:all 0.2s ease;">
+                                            <span class="material-symbols-outlined" style="font-size:20px;">playlist_add</span>
+                                            <span id="btn-add-cut-text">+ Agregar a lista de cortes</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Lista de Cortes Agregados (Despiece a todo el ancho) -->
+                            <div id="detail-custom-cuts-list-container">
+                            </div>
+                        `;
+                    }
+
+                    // Vincular botones +/- de cantidad del corte
+                    document.getElementById('btn-cut-qty-minus')?.addEventListener('click', () => {
+                        const qIn = document.getElementById('detail-custom-cut-item-qty');
+                        if (qIn) {
+                            const val = Math.max(1, (parseInt(qIn.value, 10) || 1) - 1);
+                            qIn.value = String(val);
+                        }
+                    });
+                    document.getElementById('btn-cut-qty-plus')?.addEventListener('click', () => {
+                        const qIn = document.getElementById('detail-custom-cut-item-qty');
+                        if (qIn) {
+                            const val = (parseInt(qIn.value, 10) || 1) + 1;
+                            qIn.value = String(val);
+                        }
+                    });
 
                     // Actualizar selector de espesores para la madera seleccionada
                     // Cada espesor sabe a qué precio_m2 y límites corresponde exactamente
@@ -1788,6 +1965,384 @@
                         }
                     };
 
+                    let currentCalculatedCut = null;
+                    let editingCutIndex = -1; // -1 significa que está agregando nuevo, >=0 significa editando
+
+                    const renderCustomCutsList = () => {
+                        const listContainer = document.getElementById('detail-custom-cuts-list-container');
+                        if (!listContainer) return;
+
+                        if (customCutsList.length === 0) {
+                            listContainer.style.display = 'none';
+                            listContainer.innerHTML = '';
+                            return;
+                        }
+
+                        const totalPieces = customCutsList.reduce((acc, c) => acc + (c.qty || 1), 0);
+                        const totalM2 = customCutsList.reduce((acc, c) => acc + (c.m2Total || 0), 0);
+                        const totalSubtotal = customCutsList.reduce((acc, c) => acc + (c.subtotal || 0), 0);
+
+                        // Calcular descuentos por cantidad en cortes individuales que tengan las mismas dimensiones
+                        let totalListDiscount = 0;
+                        const discountedCutsIndices = new Map(); // cutIndex -> { rule, discountAmount }
+
+                        customCutsList.forEach((c, idx) => {
+                            const rule = getBestDiscountRule(c.qty || 1);
+                            if (rule) {
+                                let cutDisc = 0;
+                                if (rule.discountPercent !== undefined && rule.discountPercent > 0) {
+                                    cutDisc = (c.subtotal || 0) * (rule.discountPercent / 100);
+                                } else if (rule.discountValue !== undefined && rule.discountValue > 0) {
+                                    const minU = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
+                                    cutDisc = Math.floor((c.qty || 1) / minU) * rule.discountValue;
+                                }
+                                if (cutDisc > 0) {
+                                    totalListDiscount += cutDisc;
+                                    discountedCutsIndices.set(idx, { rule, discountAmount: cutDisc });
+                                }
+                            }
+                        });
+
+                        const finalListSubtotal = totalSubtotal - totalListDiscount;
+
+                        // Construir texto de las escalas de descuento disponibles
+                        const listDiscounts = getProductVolumeDiscounts();
+                        const tiersText = (listDiscounts && listDiscounts.length > 0)
+                            ? [...listDiscounts]
+                                .sort((a, b) => (a.minQty !== undefined ? a.minQty : a.minUnits) - (b.minQty !== undefined ? b.minQty : b.minUnits))
+                                .map(d => {
+                                    const minU = d.minQty !== undefined ? d.minQty : d.minUnits;
+                                    const parts = [];
+                                    if (d.discountPercent > 0) parts.push(`${d.discountPercent}% OFF`);
+                                    if (d.shippingDiscountPercent > 0) parts.push(d.shippingDiscountPercent >= 100 ? 'Envío GRATIS' : `${d.shippingDiscountPercent}% OFF envío`);
+                                    return `${minU}+ uds: ${parts.join(' + ') || (d.discountPercent + '% OFF')}`;
+                                })
+                                .join(' | ')
+                            : '';
+
+                        listContainer.style.display = 'block';
+                        listContainer.innerHTML = `
+                            <div style="background:#FFFFFF; border:1.5px solid #CBD5E1; border-radius:14px; padding:1.25rem; box-shadow:0 4px 16px rgba(0,0,0,0.04); width:100%; box-sizing:border-box;">
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; border-bottom:1.5px solid #F1F5F9; padding-bottom:10px; flex-wrap:wrap; gap:8px;">
+                                    <div style="display:flex; align-items:center; gap:8px; font-weight:800; font-size:0.95rem; color:#0F172A;">
+                                        <span class="material-symbols-outlined" style="font-size:20px; color:#0284c7;">table_rows</span>
+                                        <span>Lista de Cortes Agregados al Pedido (${totalPieces} piezas en total)</span>
+                                    </div>
+                                    <div style="display:flex; align-items:center; gap:12px;">
+                                        <span style="font-size:0.8rem; color:#64748B;">Superficie total: <strong style="color:#0F172A;">${totalM2.toFixed(2)} m²</strong></span>
+                                        <button type="button" id="btn-clear-custom-cuts" style="background:#FEE2E2; border:1px solid #FCA5A5; color:#DC2626; font-size:0.75rem; font-weight:800; cursor:pointer; padding:4px 10px; border-radius:6px; display:flex; align-items:center; gap:4px; transition:all 0.2s ease;">
+                                            <span class="material-symbols-outlined" style="font-size:15px;">delete_sweep</span>
+                                            <span>Vaciar lista</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Banner de Descuento por Cantidad en la Cabecera de la Lista -->
+                                ${tiersText ? `
+                                    <div style="margin-bottom:12px; padding:10px 14px; border-radius:10px; font-size:0.82rem; font-weight:600; display:flex; align-items:center; gap:8px; ${totalListDiscount > 0 ? 'background:#F0FDF4; border:1px solid #BBF7D0; color:#15803D;' : 'background:#EFF6FF; border:1px solid #BFDBFE; color:#0369A1;'}">
+                                        <span class="material-symbols-outlined" style="font-size:20px; flex-shrink:0;">${totalListDiscount > 0 ? 'verified' : 'sell'}</span>
+                                        <div style="line-height:1.4;">
+                                            ${totalListDiscount > 0 
+                                                ? `🎉 <strong>¡Descuento por cantidad aplicado!</strong> Estás ahorrando <strong>$${Number(totalListDiscount).toLocaleString('es-AR')}</strong> llevando cortes de las mismas dimensiones.`
+                                                : `🏷️ <strong>Descuentos por cantidad (aplicado llevando de las mismas dimensiones):</strong> <span>${tiersText}</span>`
+                                            }
+                                        </div>
+                                    </div>
+                                ` : ''}
+
+                                <!-- Tabla / Grilla Responsiva de Despiece a todo el ancho -->
+                                <div style="overflow-x:auto; width:100%;">
+                                    <table style="width:100%; border-collapse:collapse; text-align:left; font-size:0.82rem; min-width:600px;">
+                                        <thead>
+                                            <tr style="background:#F8FAFC; color:#475569; font-weight:800; border-bottom:1.5px solid #E2E8F0; text-transform:uppercase; font-size:0.72rem; letter-spacing:0.03em;">
+                                                <th style="padding:10px 12px; width:45px; text-align:center;">#</th>
+                                                <th style="padding:10px 12px;">Madera / Tablero</th>
+                                                <th style="padding:10px 12px;">Medida (Largo × Ancho)</th>
+                                                <th style="padding:10px 12px;">Espesor</th>
+                                                <th style="padding:10px 12px; text-align:center;">Cant.</th>
+                                                <th style="padding:10px 12px; text-align:right;">Subtotal</th>
+                                                <th style="padding:10px 12px; text-align:center; width:130px;">Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${customCutsList.map((c, idx) => {
+                                                const isCurrentEditing = editingCutIndex === idx;
+                                                const cutDiscountInfo = discountedCutsIndices.get(idx);
+                                                const finalCutSubtotal = cutDiscountInfo ? (c.subtotal - cutDiscountInfo.discountAmount) : c.subtotal;
+
+                                                return `
+                                                    <tr style="border-bottom:1px solid #E2E8F0; background:${isCurrentEditing ? '#EFF6FF' : (idx % 2 === 0 ? '#FFFFFF' : '#F8FAFC')}; transition:background 0.2s ease;">
+                                                        <td style="padding:10px 12px; text-align:center; font-weight:800; color:#64748B;">
+                                                            ${idx + 1}
+                                                        </td>
+                                                        <td style="padding:10px 12px;">
+                                                            <div style="font-weight:800; color:#0F172A;">${c.material}</div>
+                                                            <div style="font-size:0.7rem; color:#64748B;">${c.usageLabel || 'Corte cepillado'}</div>
+                                                        </td>
+                                                        <td style="padding:10px 12px;">
+                                                            <span style="font-weight:800; color:#0284c7; font-size:0.9rem;">${c.largo} × ${c.ancho} cm</span>
+                                                            <span style="font-size:0.7rem; color:#64748B; margin-left:4px;">(${(c.m2Unit || 0).toFixed(2)} m²)</span>
+                                                        </td>
+                                                        <td style="padding:10px 12px; font-weight:700; color:#334155;">
+                                                            ${c.espesor}
+                                                        </td>
+                                                        <td style="padding:10px 12px; text-align:center;">
+                                                            <span style="background:#E0F2FE; color:#0369A1; font-weight:800; padding:3px 8px; border-radius:6px; font-size:0.8rem;">
+                                                                ${c.qty} un.
+                                                            </span>
+                                                        </td>
+                                                        <td style="padding:10px 12px; text-align:right; white-space:nowrap;">
+                                                            ${cutDiscountInfo ? `
+                                                                <div style="text-decoration:line-through; color:#94A3B8; font-size:0.75rem;">
+                                                                    $${Number(c.subtotal).toLocaleString('es-AR')}
+                                                                </div>
+                                                                <div style="display:flex; align-items:center; justify-content:flex-end; gap:4px;">
+                                                                    <span style="background:#10B981; color:white; font-size:0.65rem; font-weight:700; padding:1px 5px; border-radius:10px;">
+                                                                        ${cutDiscountInfo.rule.discountPercent ? `${cutDiscountInfo.rule.discountPercent}% OFF` : 'OFERTA'}
+                                                                    </span>
+                                                                    <span style="font-weight:900; color:#C0510A; font-size:0.92rem;">
+                                                                        $${Number(finalCutSubtotal).toLocaleString('es-AR')}
+                                                                    </span>
+                                                                </div>
+                                                            ` : `
+                                                                <span style="font-weight:800; color:#C0510A; font-size:0.9rem;">
+                                                                    $${Number(c.subtotal).toLocaleString('es-AR')}
+                                                                </span>
+                                                            `}
+                                                        </td>
+                                                        <td style="padding:10px 12px; text-align:center;">
+                                                            <div style="display:flex; align-items:center; justify-content:center; gap:6px;">
+                                                                <button type="button" class="btn-edit-custom-cut-item" data-cut-index="${idx}" style="background:#F1F5F9; border:1px solid #CBD5E1; color:#0284C7; cursor:pointer; padding:4px 8px; border-radius:6px; display:inline-flex; align-items:center; gap:3px; font-size:0.72rem; font-weight:700;" title="Modificar/Editar medidas de este corte">
+                                                                    <span class="material-symbols-outlined" style="font-size:15px;">edit</span>
+                                                                    <span>Editar</span>
+                                                                </button>
+                                                                <button type="button" class="btn-remove-custom-cut-item" data-cut-index="${idx}" style="background:#FEE2E2; border:1px solid #FECACA; color:#EF4444; cursor:pointer; padding:4px 6px; border-radius:6px; display:inline-flex; align-items:center;" title="Eliminar corte de la lista">
+                                                                    <span class="material-symbols-outlined" style="font-size:15px;">delete</span>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                `;
+                                            }).join('')}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!-- Resumen inferior de la lista -->
+                                <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; padding-top:10px; border-top:1.5px dashed #CBD5E1; flex-wrap:wrap; gap:8px;">
+                                    <div style="font-size:0.8rem; color:#475569;">
+                                        Total de piezas a cortar: <strong style="color:#0F172A;">${totalPieces} unidades</strong> en <strong>${customCutsList.length} cortes distintos</strong>.
+                                    </div>
+                                    <div style="display:flex; align-items:center; gap:10px;">
+                                        ${totalListDiscount > 0 ? `
+                                            <div style="text-align:right;">
+                                                <div style="font-size:0.75rem; color:#94A3B8; text-decoration:line-through;">
+                                                    Subtotal: $${Number(totalSubtotal).toLocaleString('es-AR')}
+                                                </div>
+                                                <div style="font-size:0.75rem; color:#15803D; font-weight:700;">
+                                                    Ahorro: -$${Number(totalListDiscount).toLocaleString('es-AR')}
+                                                </div>
+                                            </div>
+                                        ` : ''}
+                                        <div style="font-size:1rem; font-weight:800; color:#0F172A;">
+                                            Total cortes: <span style="color:#0284c7; font-size:1.2rem;">$${Number(finalListSubtotal).toLocaleString('es-AR')}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+
+                        // Escuchar clicks de editar corte individual
+                        listContainer.querySelectorAll('.btn-edit-custom-cut-item').forEach(btn => {
+                            btn.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                const cutIdx = parseInt(btn.getAttribute('data-cut-index'), 10);
+                                if (!isNaN(cutIdx) && cutIdx >= 0 && cutIdx < customCutsList.length) {
+                                    loadCutForEditing(cutIdx);
+                                }
+                            });
+                        });
+
+                        // Escuchar clicks de eliminar corte individual
+                        listContainer.querySelectorAll('.btn-remove-custom-cut-item').forEach(btn => {
+                            btn.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                const cutIdx = parseInt(btn.getAttribute('data-cut-index'), 10);
+                                if (!isNaN(cutIdx) && cutIdx >= 0 && cutIdx < customCutsList.length) {
+                                    customCutsList.splice(cutIdx, 1);
+                                    if (editingCutIndex === cutIdx) {
+                                        resetEditingState();
+                                    } else if (editingCutIndex > cutIdx) {
+                                        editingCutIndex--;
+                                    }
+                                    window._activeCustomCutsList = customCutsList;
+                                    renderCustomCutsList();
+                                    calcCut();
+                                }
+                            });
+                        });
+
+                        // Escuchar vaciar lista
+                        document.getElementById('btn-clear-custom-cuts')?.addEventListener('click', () => {
+                            if (confirm('¿Querés vaciar toda la lista de cortes?')) {
+                                customCutsList.length = 0;
+                                window._activeCustomCutsList = customCutsList;
+                                resetEditingState();
+                                renderCustomCutsList();
+                                calcCut();
+                            }
+                        });
+                    };
+
+                    const loadCutForEditing = (cutIdx) => {
+                        const cut = customCutsList[cutIdx];
+                        if (!cut) return;
+
+                        editingCutIndex = cutIdx;
+
+                        // Seleccionar Material en el dropdown
+                        const selMat = document.getElementById('detail-custom-cut-material');
+                        if (selMat) {
+                            for (let i = 0; i < selMat.options.length; i++) {
+                                if (selMat.options[i].value === cut.material) {
+                                    selMat.selectedIndex = i;
+                                    break;
+                                }
+                            }
+                            updateEspesoresForSelectedMaterial();
+                        }
+
+                        // Seleccionar Espesor
+                        const selEsp = document.getElementById('detail-custom-cut-espesor');
+                        if (selEsp) {
+                            for (let i = 0; i < selEsp.options.length; i++) {
+                                if (selEsp.options[i].value === cut.espesor) {
+                                    selEsp.selectedIndex = i;
+                                    break;
+                                }
+                            }
+                        }
+
+                        // Cargar Largo y Ancho
+                        const inL = document.getElementById('detail-custom-cut-largo');
+                        const inW = document.getElementById('detail-custom-cut-ancho');
+                        if (inL) inL.value = cut.largo;
+                        if (inW) inW.value = cut.ancho;
+
+                        // Cargar Cantidad
+                        const inQ = document.getElementById('detail-custom-cut-item-qty');
+                        if (inQ) inQ.value = cut.qty || 1;
+
+                        // Cambiar botón a modo Actualizar
+                        const btnAddText = document.getElementById('btn-add-cut-text');
+                        if (btnAddText) btnAddText.textContent = 'Guardar cambios del corte #' + (cutIdx + 1);
+
+                        const btnCancel = document.getElementById('btn-cancel-edit-cut');
+                        if (btnCancel) btnCancel.style.display = 'inline-block';
+
+                        renderCustomCutsList();
+                        calcCut();
+
+                        // Scroll suave al formulario
+                        document.getElementById('detail-custom-cutting-bottom-container')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    };
+
+                    const resetEditingState = () => {
+                        editingCutIndex = -1;
+                        const btnAddText = document.getElementById('btn-add-cut-text');
+                        if (btnAddText) btnAddText.textContent = '+ Agregar a lista de cortes';
+                        const btnCancel = document.getElementById('btn-cancel-edit-cut');
+                        if (btnCancel) btnCancel.style.display = 'none';
+                    };
+
+                    document.getElementById('btn-cancel-edit-cut')?.addEventListener('click', () => {
+                        resetEditingState();
+                        renderCustomCutsList();
+                        calcCut();
+                    });
+
+                    const addCutItemToList = () => {
+                        if (!currentCalculatedCut) return;
+                        if (currentCalculatedCut.isExceeded) {
+                            alert('No se puede guardar esta pieza porque excede las dimensiones máximas del tablero seleccionado.');
+                            return;
+                        }
+
+                        const qtyInput = document.getElementById('detail-custom-cut-item-qty');
+                        const itemQty = Math.max(1, parseInt(qtyInput?.value || '1', 10));
+
+                        const pieceSubtotal = currentCalculatedCut.unitPrice * itemQty;
+                        const pieceM2Total = currentCalculatedCut.m2Unit * itemQty;
+
+                        const cutData = {
+                            id: (editingCutIndex >= 0 && customCutsList[editingCutIndex]?.id) ? customCutsList[editingCutIndex].id : ('cut_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6)),
+                            material: currentCalculatedCut.materialName,
+                            espesor: currentCalculatedCut.espesorText,
+                            largo: currentCalculatedCut.autoL,
+                            ancho: currentCalculatedCut.autoW,
+                            autoL: currentCalculatedCut.autoL,
+                            autoW: currentCalculatedCut.autoW,
+                            qty: itemQty,
+                            m2Unit: currentCalculatedCut.m2Unit,
+                            m2Total: pieceM2Total,
+                            unitPrice: currentCalculatedCut.unitPrice,
+                            subtotal: pieceSubtotal,
+                            usageLabel: currentCalculatedCut.usageLabel,
+                            weightKg: currentCalculatedCut.weightKg
+                        };
+
+                        if (editingCutIndex >= 0 && editingCutIndex < customCutsList.length) {
+                            // Modo edición: verificar si al modificar coincide con otro corte existente diferente a este
+                            const existingDuplicateIdx = customCutsList.findIndex((c, idx) => 
+                                idx !== editingCutIndex &&
+                                (c.material || '').trim().toLowerCase() === (cutData.material || '').trim().toLowerCase() &&
+                                (c.espesor || '').trim().toLowerCase() === (cutData.espesor || '').trim().toLowerCase() &&
+                                Number(c.autoL) === Number(cutData.autoL) &&
+                                Number(c.autoW) === Number(cutData.autoW)
+                            );
+
+                            if (existingDuplicateIdx !== -1) {
+                                // Acoplar la cantidad en el corte existente y quitar el que se estaba editando
+                                const target = customCutsList[existingDuplicateIdx];
+                                target.qty = (target.qty || 1) + cutData.qty;
+                                target.m2Total = target.m2Unit * target.qty;
+                                target.subtotal = target.unitPrice * target.qty;
+                                customCutsList.splice(editingCutIndex, 1);
+                            } else {
+                                customCutsList[editingCutIndex] = cutData;
+                            }
+                            resetEditingState();
+                        } else {
+                            // Modo agregar nuevo corte: buscar si ya existe un corte idéntico en la lista
+                            const existingIdx = customCutsList.findIndex(c => 
+                                (c.material || '').trim().toLowerCase() === (cutData.material || '').trim().toLowerCase() &&
+                                (c.espesor || '').trim().toLowerCase() === (cutData.espesor || '').trim().toLowerCase() &&
+                                Number(c.autoL) === Number(cutData.autoL) &&
+                                Number(c.autoW) === Number(cutData.autoW)
+                            );
+
+                            if (existingIdx !== -1) {
+                                // Acoplar/sumar cantidad al corte existente
+                                const existing = customCutsList[existingIdx];
+                                existing.qty = (existing.qty || 1) + cutData.qty;
+                                existing.m2Total = existing.m2Unit * existing.qty;
+                                existing.subtotal = existing.unitPrice * existing.qty;
+                            } else {
+                                customCutsList.push(cutData);
+                            }
+                        }
+
+                        window._activeCustomCutsList = customCutsList;
+
+                        // Resetear el input de cantidad de pieza a 1
+                        if (qtyInput) qtyInput.value = '1';
+
+                        renderCustomCutsList();
+                        calcCut();
+                    };
+
+                    document.getElementById('btn-add-cut-to-list')?.addEventListener('click', addCutItemToList);
+
                     const calcCut = () => {
                         const inL = document.getElementById('detail-custom-cut-largo');
                         const inW = document.getElementById('detail-custom-cut-ancho');
@@ -1799,8 +2354,6 @@
                         const rawW = parseFloat(inW?.value) || 10;
                         
                         // Auto-Orientación Inteligente:
-                        // La pieza es físicamente la misma sin importar si el cliente puso el número más grande en 'Largo' o en 'Ancho'.
-                        // autoL siempre es el lado mayor (largo/frente) y autoW es el lado menor (ancho/profundidad).
                         const autoL = Math.max(rawL, rawW);
                         const autoW = Math.min(rawL, rawW);
 
@@ -1809,21 +2362,17 @@
                         const optMat = selMat?.options[selMat.selectedIndex];
                         const optEsp = selEsp?.options[selEsp.selectedIndex];
 
-                        // Los límites y precio m2 ahora vienen asociados al espesor/tablero elegido
                         const maxL = parseFloat(optEsp?.getAttribute('data-max-largo')) || parseFloat(optMat?.getAttribute('data-max-largo')) || 300;
                         const maxW = parseFloat(optEsp?.getAttribute('data-max-ancho')) || parseFloat(optMat?.getAttribute('data-max-ancho')) || 120;
                         const precioM2Base = parseFloat(optEsp?.getAttribute('data-precio')) || parseFloat(optMat?.getAttribute('data-precio')) || (conf.precios?.precio_m2_venta || 48500);
                         const limitMsg = optEsp?.getAttribute('data-msg') || optMat?.getAttribute('data-msg') || '';
 
-                        // Detección automática invisible evaluando la lista dinámica de usos/tipos de corte
                         let factorUso = 1.0;
                         let recargoFijoUso = 0;
                         let detectedLabel = 'Corte Estándar Cepillado';
 
                         const availableUsos = Array.isArray(conf.usos) ? conf.usos.filter(u => u.activo !== false) : [];
                         
-                        // Buscar el uso que calce con las dimensiones autoW (ancho/profundidad) y autoL (largo)
-                        // Se evalúan los más específicos primero (los que tengan min_ancho o recargos)
                         const matchedUso = availableUsos.find(u => {
                             const minW = u.min_ancho || 0;
                             const maxW_uso = u.max_ancho !== undefined ? u.max_ancho : 999;
@@ -1835,17 +2384,14 @@
                         if (matchedUso) {
                             const rawFactor = Number(matchedUso.factor_precio) || 0;
                             if (rawFactor > 0 && rawFactor <= 3) {
-                                // Soporte retrocompatible para decimales viejos (ej 1.25)
                                 factorUso = rawFactor;
                             } else {
-                                // Porcentaje amigable directo: 0% -> 1.0, 25% -> 1.25, 50% -> 1.50
                                 factorUso = 1.0 + (rawFactor / 100);
                             }
                             recargoFijoUso = matchedUso.recargo_fijo || 0;
                             detectedLabel = matchedUso.name || 'Corte Estándar';
                         }
 
-                        // Validar límites de dimensiones físicas de la placa evaluando la pieza ya orientada
                         let isExceeded = false;
                         if (autoL > maxL || autoW > maxW) {
                             isExceeded = true;
@@ -1871,7 +2417,45 @@
                         const precioM2Final = precioM2Base * factorUso;
                         const calcPrice = Math.max(minimo, Math.round(m2 * precioM2Final + recargoFijoUso));
 
-                        const medidaDesc = `${autoL} × ${autoW} cm (${optMat?.text.split('(')[0].trim()} - ${detectedLabel})`;
+                        const lblPricePrev = document.getElementById('detail-custom-cut-unit-preview');
+                        if (lblPricePrev) {
+                            lblPricePrev.textContent = `$${Number(calcPrice).toLocaleString('es-AR')} c/u`;
+                        }
+
+                        const cleanMatName = optMat?.text.split('(')[0].trim() || 'Madera';
+                        const cleanEspText = optEsp?.text.trim() || '18 mm';
+
+                        // Peso estimado de la pieza
+                        const curMat = (conf.materiales || []).find(m => m.name === optMat?.value || m.id === optMat?.value);
+                        const pesoM2 = curMat?.peso_m2 || 10;
+                        const weightKg = m2 * pesoM2;
+
+                        currentCalculatedCut = {
+                            materialName: cleanMatName,
+                            espesorText: cleanEspText,
+                            autoL,
+                            autoW,
+                            m2Unit: m2,
+                            unitPrice: calcPrice,
+                            usageLabel: detectedLabel,
+                            isExceeded,
+                            weightKg
+                        };
+
+                        // Si hay cortes en la lista multi-medida, actualizar el contador global #qty-value
+                        const qtyValEl = document.getElementById('qty-value');
+                        if (customCutsList.length > 0) {
+                            const totalListPieces = customCutsList.reduce((acc, c) => acc + (c.qty || 1), 0);
+                            if (qtyValEl) qtyValEl.textContent = String(totalListPieces);
+                        }
+
+                        let medidaDesc = '';
+                        if (customCutsList.length > 0) {
+                            const totalListPieces = customCutsList.reduce((acc, c) => acc + (c.qty || 1), 0);
+                            medidaDesc = `Despiece personalizado (${totalListPieces} piezas en ${customCutsList.length} medidas)`;
+                        } else {
+                            medidaDesc = `${autoL} × ${autoW} cm (${cleanMatName} - ${detectedLabel})`;
+                        }
                         defaultMedidaName = medidaDesc;
 
                         if (grupo.medidas_variants && grupo.medidas_variants[0]) {
@@ -1883,10 +2467,9 @@
 
                         updateBuyButton(grupo, medidaDesc);
 
-                        // Si excede la placa, deshabilitar botón de comprar/agregar
                         const btnBuy = document.getElementById('btn-modal-add-to-cart');
                         if (btnBuy) {
-                            if (isExceeded) {
+                            if (customCutsList.length === 0 && isExceeded) {
                                 btnBuy.disabled = true;
                                 btnBuy.style.opacity = '0.5';
                                 btnBuy.style.pointerEvents = 'none';
@@ -1998,17 +2581,40 @@
                 e.preventDefault();
                 const grupo = (grupos && grupos[currentGroupIndex]) ? grupos[currentGroupIndex] : {};
                 const selMedida = divMedida.querySelector('select');
-                const medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
+                let medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
                 
                 const selOpt = divOpt.querySelector('select');
                 const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
                 const optLabel = product.optional_variant?.label || '';
 
                 const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaText);
-                const variantPrice = (activeVariant && activeVariant.price !== undefined && activeVariant.price !== '') ? activeVariant.price : (parseFloat(product.price) || 0);
+                let variantPrice = (activeVariant && activeVariant.price !== undefined && activeVariant.price !== '') ? activeVariant.price : (parseFloat(product.price) || 0);
                 
                 const qtyValEl = document.getElementById('qty-value');
-                const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
+                let qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
+
+                // Si es corte a medida y hay lista de despiece agregada
+                if ((product.isCustomCutting === true || product.id === '69') && customCutsList.length > 0) {
+                    const totalPieces = customCutsList.reduce((acc, c) => acc + (c.qty || 1), 0);
+                    let netSubtotal = 0;
+                    customCutsList.forEach(c => {
+                        let cSub = c.subtotal || 0;
+                        const rule = getBestDiscountRule ? getBestDiscountRule(c.qty || 1) : null;
+                        if (rule) {
+                            if (rule.discountPercent !== undefined && rule.discountPercent > 0) {
+                                cSub = cSub * (1 - rule.discountPercent / 100);
+                            } else if (rule.discountValue !== undefined && rule.discountValue > 0) {
+                                const minU = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
+                                cSub = Math.max(0, cSub - (Math.floor((c.qty || 1) / minU) * rule.discountValue));
+                            }
+                        }
+                        netSubtotal += cSub;
+                    });
+                    const cutsSummary = customCutsList.map(c => `${c.qty}x ${c.largo}x${c.ancho}cm (${c.material} ${c.espesor})`).join(' | ');
+                    medidaText = `Despiece (${totalPieces} piezas: ${cutsSummary})`;
+                    variantPrice = Math.round(netSubtotal / totalPieces);
+                    qtyVal = totalPieces;
+                }
 
                 if (window.showProductPaymentModal) {
                     window.showProductPaymentModal(product, grupo, medidaText, variantPrice, qtyVal, optText, optLabel);
@@ -2027,17 +2633,40 @@
                     const grupo = (grupos && grupos[currentGroupIndex]) ? grupos[currentGroupIndex] : {};
                     const acabadoName = grupo.acabado_name || 'Único';
                     const selMedida = divMedida ? divMedida.querySelector('select') : null;
-                    const medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
+                    let medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
 
                     const selOpt = divOpt ? divOpt.querySelector('select') : null;
                     const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
                     const optLabel = product.optional_variant?.label || '';
 
                     const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaText);
-                    const itemPrice = (activeVariant && activeVariant.showPrice === true && activeVariant.price) ? activeVariant.price : null;
+                    let itemPrice = (activeVariant && activeVariant.showPrice === true && activeVariant.price) ? activeVariant.price : null;
 
                     const qtyValEl = document.getElementById('qty-value');
-                    const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
+                    let qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1') : 1;
+
+                    // Si es corte a medida y hay lista de despiece agregada
+                    if ((product.isCustomCutting === true || product.id === '69') && customCutsList.length > 0) {
+                        const totalPieces = customCutsList.reduce((acc, c) => acc + (c.qty || 1), 0);
+                        let netSubtotal = 0;
+                        customCutsList.forEach(c => {
+                            let cSub = c.subtotal || 0;
+                            const rule = getBestDiscountRule ? getBestDiscountRule(c.qty || 1) : null;
+                            if (rule) {
+                                if (rule.discountPercent !== undefined && rule.discountPercent > 0) {
+                                    cSub = cSub * (1 - rule.discountPercent / 100);
+                                } else if (rule.discountValue !== undefined && rule.discountValue > 0) {
+                                    const minU = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
+                                    cSub = Math.max(0, cSub - (Math.floor((c.qty || 1) / minU) * rule.discountValue));
+                                }
+                            }
+                            netSubtotal += cSub;
+                        });
+                        const cutsSummary = customCutsList.map(c => `${c.qty}x ${c.largo}x${c.ancho}cm (${c.material} ${c.espesor})`).join(' | ');
+                        medidaText = `Despiece (${totalPieces} piezas: ${cutsSummary})`;
+                        itemPrice = Math.round(netSubtotal / totalPieces);
+                        qtyVal = totalPieces;
+                    }
 
                     window.CarritoModule.toggle(product, acabadoName, categoryName, medidaText, optText, optLabel, itemPrice, qtyVal);
                     updateFavState();

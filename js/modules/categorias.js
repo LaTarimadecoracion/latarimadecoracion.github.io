@@ -81,43 +81,99 @@ window.renderCategoriesMenu = function() {
     const rubrosList = (window.siteConfig && window.siteConfig.rubros) || [{ id: 'carpinteria', name: 'Carpintería' }];
     const visibleRubros = rubrosList.filter(r => r.visible !== false);
 
-    // Inyectar tarjeta especial de OFERTAS Y COMBOS al inicio
+    // Calcular ofertas y beneficios de envío activos para el rubro actual
+    const currentRubro = (visibleRubros.length > 1 && window.activeCategoriesRubro) ? window.activeCategoriesRubro.toLowerCase() : 'carpinteria';
     const rawOffers = (window.sessionOffers && window.sessionOffers.length > 0) ? window.sessionOffers : (typeof offersData !== 'undefined' ? offersData : []);
-    const activeOffersCount = rawOffers.filter(o => o.active !== false).length;
-    const offersCard = document.createElement('div');
-    offersCard.className = 'feed-card offer-category-tile';
-    offersCard.style.cssText = `
-        margin: 0; 
-        position: relative;
-        cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        border: 2px solid #b38728;
-        border-radius: 12px;
-        overflow: hidden;
-    `;
-    offersCard.innerHTML = `
-        <div class="feed-card-photo-container" style="background: linear-gradient(135deg, #1a1a1a, #2d2a26);">
-            <div class="feed-card-img-wrapper" style="position:relative; opacity: 0.85;">
-                <img src="img/borrador/portada-imagen.webp" class="feed-card-img loaded" alt="Ofertas y Combos" loading="lazy">
-            </div>
-            <div class="stamp-badge pro-gold" style="position: absolute; top: 10px; left: 10px; z-index: 5;">
-                🔥 OFERTA PRO GOLD
-            </div>
-            <div class="feed-card-gradient"></div>
-            <div class="feed-card-info" style="bottom: 0; left: 0; right: 0; padding: 0.5rem; text-align: center; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
-                <h3 class="feed-card-title" style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0; color: #fcf6ba; text-align: center; width: 100%;">
-                    🏷️ OFERTA Y COMBOS
-                </h3>
-                <span style="font-size: 0.75rem; color: #e2b043; font-weight: 700;">${activeOffersCount > 0 ? `¡${activeOffersCount} combos disponibles!` : 'Promociones especiales'}</span>
-            </div>
-        </div>
-    `;
-    offersCard.addEventListener('click', () => {
-        if (window.navigateToView) {
-            window.navigateToView('view-offers');
+    
+    // Obtener mapa rápido de producto -> rubro
+    const catRubroMap = {};
+    sourceData.forEach(cat => {
+        const r = (cat.rubro || 'carpinteria').toLowerCase();
+        if (Array.isArray(cat.products)) {
+            cat.products.forEach(p => { if (p && p.id) catRubroMap[p.id] = r; });
         }
     });
-    container.appendChild(offersCard);
+
+    const activeCombos = rawOffers.filter(o => {
+        if (o.active === false) return false;
+        if (o.hasTimer && o.expirationDate) {
+            const expTime = new Date(o.expirationDate).getTime();
+            if (!isNaN(expTime) && expTime <= Date.now()) return false;
+        }
+        if (visibleRubros.length > 1) {
+            let offerRubro = 'carpinteria';
+            if (Array.isArray(o.product_items) && o.product_items.length > 0) {
+                for (const item of o.product_items) {
+                    const id = item.id || item.productId;
+                    if (id && catRubroMap[id]) {
+                        offerRubro = catRubroMap[id];
+                        break;
+                    }
+                }
+            }
+            if (offerRubro !== currentRubro) return false;
+        }
+        return true;
+    });
+
+    const freeShipItems = (typeof window.getFreeShippingProducts === 'function') ? window.getFreeShippingProducts() : [];
+    const activeFreeShip = freeShipItems.filter(item => {
+        if (!item || !item.product) return false;
+        if (visibleRubros.length > 1) {
+            const itemRubro = (catRubroMap[item.product.id] || item.product.rubro || 'carpinteria').toLowerCase();
+            if (itemRubro !== currentRubro) return false;
+        }
+        return true;
+    });
+
+    const totalPromos = activeCombos.length + activeFreeShip.length;
+
+    // Inyectar tarjeta especial de OFERTAS Y COMBOS si hay ofertas o productos con beneficios
+    if (totalPromos > 0) {
+        let promoSubtitle = 'Promociones especiales';
+        if (activeCombos.length > 0 && activeFreeShip.length > 0) {
+            promoSubtitle = `¡${activeCombos.length} combos y ${activeFreeShip.length} envíos bonificados!`;
+        } else if (activeCombos.length > 0) {
+            promoSubtitle = activeCombos.length === 1 ? '¡1 combo disponible!' : `¡${activeCombos.length} combos disponibles!`;
+        } else if (activeFreeShip.length > 0) {
+            promoSubtitle = activeFreeShip.length === 1 ? '¡1 producto con beneficio de envío!' : `¡${activeFreeShip.length} productos con envío bonificado!`;
+        }
+
+        const offersCard = document.createElement('div');
+        offersCard.className = 'feed-card offer-category-tile';
+        offersCard.style.cssText = `
+            margin: 0; 
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 2px solid #b38728;
+            border-radius: 12px;
+            overflow: hidden;
+        `;
+        offersCard.innerHTML = `
+            <div class="feed-card-photo-container" style="background: linear-gradient(135deg, #1a1a1a, #2d2a26);">
+                <div class="feed-card-img-wrapper" style="position:relative; opacity: 0.85;">
+                    <img src="img/borrador/portada-imagen.webp" class="feed-card-img loaded" alt="Ofertas y Combos" loading="lazy">
+                </div>
+                <div class="stamp-badge pro-gold" style="position: absolute; top: 10px; left: 10px; z-index: 5;">
+                    🔥 OFERTA PRO GOLD
+                </div>
+                <div class="feed-card-gradient"></div>
+                <div class="feed-card-info" style="bottom: 0; left: 0; right: 0; padding: 0.5rem; text-align: center; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
+                    <h3 class="feed-card-title" style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0; color: #fcf6ba; text-align: center; width: 100%;">
+                        🏷️ OFERTA Y COMBOS
+                    </h3>
+                    <span style="font-size: 0.75rem; color: #e2b043; font-weight: 700;">${promoSubtitle}</span>
+                </div>
+            </div>
+        `;
+        offersCard.addEventListener('click', () => {
+            if (window.navigateToView) {
+                window.navigateToView('view-offers');
+            }
+        });
+        container.appendChild(offersCard);
+    }
 
     sortedCategories.forEach((cat, index) => {
         if (cat.visible === false) return;

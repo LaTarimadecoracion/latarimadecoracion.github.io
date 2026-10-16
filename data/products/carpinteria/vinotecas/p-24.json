@@ -1,11 +1,13 @@
 {
   "id": "24",
+  "shortId": "2Z",
   "title": "Vinoteca - 17 Vinos",
   "description": "Cavas y bodegas rústicas de madera.",
   "image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
   "acabados_groups": [
     {
       "acabado_name": "Tinte",
+      "description": "",
       "cover_image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
       "images_list": [
         "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
@@ -23,7 +25,22 @@
           "price": 90000,
           "cost_price": 36000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
+        },
+        {
+          "medida": "17 Vinos",
+          "link": "https://www.mercadolibre.com.ar/bodega-para-17-vinos--la-tarima/up/MLAU5439753557",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 90000,
+          "cost_price": 90000,
+          "legend": "Entrega Rápida",
+          "showPrice": true,
+          "logisticaEnabled": true
         }
       ],
       "hidden": false
@@ -83,10 +100,26 @@
     "cava de pino",
     "portabotellas de pared"
   ],
-  "last_modified": 1784083083495,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 1,
+    "logisticaFreeMinUnits": 1,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1791737670624,
   "primaryCatId": "Vinotecas",
-  "views": 8,
-  "stock": 0,
   "history": [
     {
       "date": "26/8, 11:55 p. m.",
@@ -94,22 +127,9 @@
       "detail": "Costo: $45.000 ➔ $36.000"
     }
   ],
-  "paymentConfig": {
-    "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
-  },
-  "shippingConfig": {
-    "logisticaEnabled": true,
-    "fleteEnabled": true,
-    "otroEnabled": false,
-    "logisticaMaxUnits": 1,
-    "logisticaFreeMinUnits": 1
-  },
+  "rubro": "carpinteria",
+  "views": 11,
   "categories": [
-    "carpinteria-todos",
-    "Vinotecas",
-    "Hogar"
-  ],
-  "rubro": "carpinteria"
+    "Vinotecas"
+  ]
 }

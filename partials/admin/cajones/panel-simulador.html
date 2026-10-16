@@ -1,0 +1,59 @@
+<!-- partials/admin/cajones/panel-simulador.html -->
+<div id="cajones-modpanel-simulador" class="cajones-module-panel" style="display: none;">
+    <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--admin-shadow-sm);">
+        <div style="margin-bottom: 1rem;">
+            <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 8px;">
+                <span class="material-symbols-outlined" style="font-size: 22px; color: #EC4899;">calculate</span>
+                5. Simulador de Rentabilidad & Despiece en Taller
+            </h4>
+            <p style="margin: 3px 0 0 0; font-size: 0.78rem; color: #64748B;">
+                Probá cualquier medida o cantidad de cajones en tiempo real para ver el costo exacto de placas, ganancia limpia y despiece de corte antes de encender la sierra.
+            </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-bottom: 1rem; background: #F8FAFC; padding: 1rem; border-radius: 10px;">
+            <div style="grid-column: span 2; min-width: 180px;">
+                <label style="font-size: 0.7rem; font-weight: 700; color: #475569;">Regla Constructiva / Modelo:</label>
+                <select id="sim-cajon-regla" class="admin-input" style="font-weight: 700;" onchange="window.runCajonAdminSimulation()">
+                    <!-- Inyectado dinámicamente -->
+                </select>
+            </div>
+            <div>
+                <label style="font-size: 0.7rem; font-weight: 700; color: #475569;">Largo (cm):</label>
+                <input type="number" id="sim-cajon-largo" class="admin-input" value="75" oninput="window.runCajonAdminSimulation()">
+            </div>
+            <div>
+                <label style="font-size: 0.7rem; font-weight: 700; color: #475569;">Ancho (cm):</label>
+                <input type="number" id="sim-cajon-ancho" class="admin-input" value="60" oninput="window.runCajonAdminSimulation()">
+            </div>
+            <div>
+                <label style="font-size: 0.7rem; font-weight: 700; color: #475569;">Alto (cm):</label>
+                <input type="number" id="sim-cajon-alto" class="admin-input" value="50" oninput="window.runCajonAdminSimulation()">
+            </div>
+            <div>
+                <label style="font-size: 0.7rem; font-weight: 700; color: #475569;">Cantidad:</label>
+                <input type="number" id="sim-cajon-qty" class="admin-input" value="1" min="1" oninput="window.runCajonAdminSimulation()">
+            </div>
+        </div>
+
+        <!-- Resultados de la Simulación -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 1rem;">
+            <div style="background: #F1F5F9; border-radius: 10px; padding: 10px; text-align: center;">
+                <div style="font-size: 0.72rem; color: #64748B; font-weight: 700;">CONSUMO DE PLACAS</div>
+                <div id="sim-lbl-placas" style="font-size: 1.15rem; font-weight: 900; color: #0F172A; margin-top: 4px;">0.95 Placas</div>
+            </div>
+            <div style="background: #FEF2F2; border-radius: 10px; padding: 10px; text-align: center; border: 1px solid #FECACA;">
+                <div style="font-size: 0.72rem; color: #991B1B; font-weight: 700;">COSTO TOTAL MATERIAL</div>
+                <div id="sim-lbl-costo" style="font-size: 1.15rem; font-weight: 900; color: #DC2626; margin-top: 4px;">$21.000</div>
+            </div>
+            <div style="background: #F0FDF4; border-radius: 10px; padding: 10px; text-align: center; border: 1px solid #BBF7D0;">
+                <div style="font-size: 0.72rem; color: #166534; font-weight: 700;">VENTA TOTAL SUGERIDA</div>
+                <div id="sim-lbl-venta" style="font-size: 1.15rem; font-weight: 900; color: #16A34A; margin-top: 4px;">$72.000</div>
+            </div>
+            <div style="background: #ECFDF5; border-radius: 10px; padding: 10px; text-align: center; border: 2px solid #059669;">
+                <div style="font-size: 0.72rem; color: #065F46; font-weight: 800;">GANANCIA LIMPIA TALLER</div>
+                <div id="sim-lbl-ganancia" style="font-size: 1.25rem; font-weight: 900; color: #059669; margin-top: 4px;">+$51.000</div>
+            </div>
+        </div>
+    </div>
+</div>

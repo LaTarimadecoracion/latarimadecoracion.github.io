@@ -7,38 +7,25 @@
                                                     Descuentos por Cantidad en Tablas y Cortes (Precio Unitario)
                                                 </h4>
                                                 <p style="margin: 3px 0 0 0; font-size: 0.78rem; color: #64748B;">
-                                                    Escala de precios mayoristas por volumen de piezas compradas (independiente del flete seleccionado).
+                                                    Escala de precios mayoristas por volumen de piezas compradas (independiente del flete seleccionado). Podés agregar todos los tramos que necesites.
                                                 </p>
                                             </div>
-                                            <div style="display: flex; align-items: center; gap: 6px;">
-                                                <input type="checkbox" id="chk-cortes-desc-activo" checked style="width: 16px; height: 16px; cursor: pointer;">
-                                                <label for="chk-cortes-desc-activo" style="font-size: 0.78rem; font-weight: 700; cursor: pointer;">Descuento en Madera Activo</label>
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <button type="button" class="btn-secondary" onclick="window.addCortesMaderaDiscountScaleRow()" style="font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; display: inline-flex; align-items: center; gap: 4px;">
+                                                    <span class="material-symbols-outlined" style="font-size: 15px;">add</span>
+                                                    <span>Agregar Escala</span>
+                                                </button>
+                                                <div style="display: flex; align-items: center; gap: 6px;">
+                                                    <input type="checkbox" id="chk-cortes-desc-activo" checked style="width: 16px; height: 16px; cursor: pointer;">
+                                                    <label for="chk-cortes-desc-activo" style="font-size: 0.78rem; font-weight: 700; cursor: pointer;">Activo</label>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.15rem;">
-                                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
-                                                <div style="display: flex; gap: 8px; align-items: center;">
-                                                    <div style="flex: 1;">
-                                                        <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #475569; margin-bottom: 3px;">Tramo 1 - Desde (unidades):</label>
-                                                        <input type="number" id="inp-cortes-desc-cant-1" class="admin-input" value="3" min="2" oninput="window.updateCortesAdminSimulator()">
-                                                    </div>
-                                                    <div style="flex: 1;">
-                                                        <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #475569; margin-bottom: 3px;">Descuento (%):</label>
-                                                        <input type="number" id="inp-cortes-desc-pct-1" class="admin-input" value="10" min="1" max="50" oninput="window.updateCortesAdminSimulator()">
-                                                    </div>
-                                                </div>
-
-                                                <div style="display: flex; gap: 8px; align-items: center;">
-                                                    <div style="flex: 1;">
-                                                        <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #475569; margin-bottom: 3px;">Tramo 2 - Desde (unidades):</label>
-                                                        <input type="number" id="inp-cortes-desc-cant-2" class="admin-input" value="6" min="2" oninput="window.updateCortesAdminSimulator()">
-                                                    </div>
-                                                    <div style="flex: 1;">
-                                                        <label style="display: block; font-size: 0.72rem; font-weight: 700; color: #475569; margin-bottom: 3px;">Descuento (%):</label>
-                                                        <input type="number" id="inp-cortes-desc-pct-2" class="admin-input" value="15" min="1" max="50" oninput="window.updateCortesAdminSimulator()">
-                                                    </div>
-                                                </div>
+                                        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1rem;">
+                                            <!-- Contenedor dinámico de escalas de descuento de madera -->
+                                            <div id="cortes-madera-escalas-container" style="display: flex; flex-direction: column; gap: 8px;">
+                                                <!-- Inyectado dinámicamente por renderMaderaDiscountScalesUI() -->
                                             </div>
                                         </div>
                                     </div>
