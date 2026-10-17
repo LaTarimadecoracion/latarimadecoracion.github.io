@@ -825,8 +825,10 @@ window.initProductsAdmin = function() {
         
 
         const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('cat') !== categoryId) {
-            const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + `?cat=${categoryId}`;
+        const currentCat = urlParams.get('cat') || urlParams.get('category');
+        const hasOtherParams = urlParams.has('prod') || urlParams.has('product') || urlParams.has('p') || urlParams.has('view');
+        if (currentCat !== categoryId || hasOtherParams) {
+            const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + `?cat=${encodeURIComponent(categoryId)}`;
             if (isBack) {
                 window.history.replaceState({ viewId: 'view-category-feed', categoryId }, document.title, cleanUrl);
             } else {
@@ -922,9 +924,6 @@ window.initProductsAdmin = function() {
                 categoryFeedList.appendChild(card);
             });
         }
-
-        // Navegar: ocultar todo y mostrar solo el feed de categoría
-        navigateToView('view-category-feed', { name: cat.name, categoryId: categoryId }, isBack);
     }
 
     // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

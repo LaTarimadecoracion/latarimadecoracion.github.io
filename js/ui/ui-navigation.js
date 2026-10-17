@@ -114,6 +114,14 @@
                             return;
                         }
                     }
+                    if (window.fetchProductDetailAsync && window.showProductDetail) {
+                        window.fetchProductDetailAsync(context.productId).then(lazyProd => {
+                            if (lazyProd) {
+                                window.showProductDetail(lazyProd, lazyProd.primaryCatId || '', '', '', '', true);
+                            }
+                        }).catch(() => {});
+                        return;
+                    }
                 }
             } else if (viewId === 'view-category-feed' && context && context.categoryId) {
                 const currentCategoryId = document.getElementById('view-category-feed')?.dataset.categoryId;
@@ -334,10 +342,23 @@
 
         updateHeader(viewId, context);
 
-        // Actualizar URL en el historial (si no es navegación hacia atrás o disparada por popstate/detalles/categoría)
-        const isProductOrCategoryView = viewId === 'view-product-detail' || viewId === 'view-category-feed' || viewId === 'view-offer-detail';
+        // Actualizar URL en el historial (si no es navegación hacia atrás o disparada por popstate/detalles)
+        const isProductOrCategoryView = viewId === 'view-product-detail' || viewId === 'view-offer-detail';
         
-        if (!isProductOrCategoryView) {
+        if (viewId === 'view-category-feed') {
+            const catId = context?.categoryId || document.getElementById('view-category-feed')?.dataset.categoryId;
+            if (catId) {
+                const urlParams = new URLSearchParams(window.location.search);
+                if (urlParams.get('cat') !== catId) {
+                    const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + `?cat=${encodeURIComponent(catId)}`;
+                    if (isBack) {
+                        window.history.replaceState({ viewId: 'view-category-feed', categoryId: catId }, document.title, cleanUrl);
+                    } else {
+                        window.history.pushState({ viewId: 'view-category-feed', categoryId: catId }, document.title, cleanUrl);
+                    }
+                }
+            }
+        } else if (!isProductOrCategoryView) {
             const prettyNames = {
                 'view-about': 'nosotros',
                 'view-search': 'buscar',

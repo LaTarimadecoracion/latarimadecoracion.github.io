@@ -4974,13 +4974,10 @@
   {
     "id": "95",
     "shortId": "33",
-    "title": "Cajón Pliométrico 3 en 1 CrossFit & Salto",
+    "title": "Cajón / CrossFit & Salto / Hechos a medida",
     "rubro": "carpinteria",
     "primaryCatId": "cajones-crossfit",
-    "categories": [
-      "carpinteria-todos",
-      "cajones-crossfit"
-    ],
+    "categories": [],
     "subcategoria": "",
     "price": 72000,
     "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
@@ -5209,5 +5206,19 @@
     "tags": [],
     "visible": true,
     "file": "data/products/carpinteria/hogar/p-1792154736796.json"
+  },
+  {
+    "id": "6J",
+    "shortId": "36",
+    "title": "Canasta Cesta Organizador De Mimbre Con Tapa",
+    "rubro": "carpinteria",
+    "primaryCatId": "Organizadores",
+    "categories": [],
+    "subcategoria": "",
+    "price": 42000,
+    "image": "https://http2.mlstatic.com/D_NQ_NP_2X_983994-MLA117974180406_102026-O.webp",
+    "tags": [],
+    "visible": true,
+    "file": "data/products/carpinteria/organizadores/p-6J.json"
   }
 ]

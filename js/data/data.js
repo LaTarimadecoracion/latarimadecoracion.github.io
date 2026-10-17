@@ -582,7 +582,17 @@ window.fetchProductDetailAsync = async function(productId) {
 
         let targetRelPath = null;
         if (Array.isArray(window.catalogIndex)) {
-            const entry = window.catalogIndex.find(item => item && (String(item.id).trim() === cleanId || String(item.shortId).trim() === cleanId));
+            const normClean = cleanId.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+            const entry = window.catalogIndex.find(item => {
+                if (!item) return false;
+                const itemId = String(item.id || '').trim();
+                const itemShort = String(item.shortId || '').trim();
+                if (itemId === cleanId || itemShort === cleanId) return true;
+                const itemSlug = (item.title || '').trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9\s-]/g, "").replace(/\s+/g, '-').replace(/-+/g, '-').toLowerCase();
+                if (itemSlug === cleanId.toLowerCase()) return true;
+                const normTitle = (item.title || '').trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+                return normClean && normTitle === normClean;
+            });
             if (entry && entry.file) {
                 targetRelPath = entry.file;
             }

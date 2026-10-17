@@ -49,6 +49,12 @@
         if (bottomContainer) {
             bottomContainer.style.display = 'block';
             bottomContainer.innerHTML = window.CajonesUI ? window.CajonesUI.getFormTemplate(activeReglas, activePlacas) : '';
+            if (typeof window.renderUniversalCPBar === 'function') {
+                window.renderUniversalCPBar('cajon-cp-bar-container', {
+                    marginBottom: '1rem',
+                    noCpText: '📍 Ingresá tu CP para activar bonificaciones de envío en Flex y Flete'
+                });
+            }
         }
 
         // 3. Vincular botones +/- de cantidad

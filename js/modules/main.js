@@ -509,20 +509,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         if (prodId) {
-            if (window.findProductById && window.showProductDetail) {
-                const foundData = window.findProductById(prodId);
-                if (foundData) {
-                    const catObj = window.sessionProducts ? window.sessionProducts.find(c => c.name === foundData.catName || c.id === foundData.catName) : null;
-                    const isCatVisible = !catObj || catObj.visible !== false;
-                    if (foundData.product.visible !== false) {
-                        const { preselectedAcabado, preselectedMedida, preselectedOpcion } = getVariantsFromUrl(foundData.product, urlParams);
-                        return window.showProductDetail(foundData.product, foundData.catName, preselectedAcabado, preselectedMedida, preselectedOpcion);
-                    }
+            let foundData = window.findProductById ? window.findProductById(prodId) : null;
+            if (foundData && window.showProductDetail) {
+                if (foundData.product.visible !== false) {
+                    const { preselectedAcabado, preselectedMedida, preselectedOpcion } = getVariantsFromUrl(foundData.product, urlParams);
+                    return window.showProductDetail(foundData.product, foundData.catName, preselectedAcabado, preselectedMedida, preselectedOpcion, true);
                 }
+            } else if (window.fetchProductDetailAsync && window.showProductDetail) {
+                window.fetchProductDetailAsync(prodId).then(lazyProd => {
+                    if (lazyProd && lazyProd.visible !== false) {
+                        const { preselectedAcabado, preselectedMedida, preselectedOpcion } = getVariantsFromUrl(lazyProd, urlParams);
+                        window.showProductDetail(lazyProd, lazyProd.primaryCatId || '', preselectedAcabado, preselectedMedida, preselectedOpcion, true);
+                    }
+                }).catch(() => {});
+                return;
             }
         } else if (catId) {
             if (window.navigateToCategoryFeed) {
-                return window.navigateToCategoryFeed(catId);
+                return window.navigateToCategoryFeed(catId, true);
             }
         } else if (cartParam) {
             if (window.importCartFromString) {

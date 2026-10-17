@@ -87,6 +87,9 @@
         if (bottomContainer) {
             bottomContainer.style.display = 'block';
             bottomContainer.innerHTML = `
+                <!-- Banner de Incentivo CP y Bonificación Envíos -->
+                <div id="cortes-cp-bar-container"></div>
+
                 <div style="margin-bottom:1.25rem; border-bottom:1.5px solid #E2E8F0; padding-bottom:0.75rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
                     <div style="display:flex; align-items:center; gap:8px;">
                         <span class="material-symbols-outlined" style="color:var(--primary-color, #ea580c); font-size:24px;">design_services</span>
@@ -95,19 +98,35 @@
                 </div>
 
                 <div class="custom-cutting-form-rows" style="background:#F8FAFC; border:1.5px solid #E2E8F0; border-radius:14px; padding:1.25rem; margin-bottom:1.5rem; display:flex; flex-direction:column; gap:1rem;">
-                    <!-- Fila 1: Elegir Madera / Tablero -->
-                    <div class="custom-cutting-row-1">
-                        <label style="display:flex; align-items:center; gap:6px; font-size:0.78rem; font-weight:800; color:#334155; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.02em;">
-                            <span class="material-symbols-outlined" style="font-size:18px; color:var(--primary-color, #ea580c);">forest</span>
-                            <span>1. Elegir Madera / Tablero:</span>
-                        </label>
-                        <select id="detail-custom-cut-material" class="admin-input" style="width:100%; font-weight:700; border-radius:10px; padding:9px 12px; font-size:0.92rem; background:white; border:1.5px solid #CBD5E1;">
-                            ${unifiedMatsList.map((g, idx) => `
-                                <option value="${g.name}" data-group-index="${idx}" ${idx === preselectedGroupIdx ? 'selected' : ''}>
-                                    ${g.name} (Placas de hasta ${g.max_largo} × ${g.max_ancho} cm)
-                                </option>
-                            `).join('')}
-                        </select>
+                    <!-- Fila 1: Elegir Madera / Tablero y Uso / Terminación -->
+                    <div class="custom-cutting-row-1" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:12px;">
+                        <div>
+                            <label style="display:flex; align-items:center; gap:6px; font-size:0.78rem; font-weight:800; color:#334155; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.02em;">
+                                <span class="material-symbols-outlined" style="font-size:18px; color:var(--primary-color, #ea580c);">forest</span>
+                                <span>1. Elegir Madera / Tablero:</span>
+                            </label>
+                            <select id="detail-custom-cut-material" class="admin-input" style="width:100%; font-weight:700; border-radius:10px; padding:9px 12px; font-size:0.92rem; background:white; border:1.5px solid #CBD5E1;">
+                                ${unifiedMatsList.map((g, idx) => `
+                                    <option value="${g.name}" data-group-index="${idx}" ${idx === preselectedGroupIdx ? 'selected' : ''}>
+                                        ${g.name} (Placas hasta ${g.max_largo} × ${g.max_ancho} cm)
+                                    </option>
+                                `).join('')}
+                            </select>
+                        </div>
+
+                        <div>
+                            <label style="display:flex; align-items:center; gap:6px; font-size:0.78rem; font-weight:800; color:#334155; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.02em;">
+                                <span class="material-symbols-outlined" style="font-size:18px; color:#854D0E;">architecture</span>
+                                <span>Uso / Destino del corte:</span>
+                            </label>
+                            <select id="detail-custom-cut-uso" class="admin-input" style="width:100%; font-weight:700; border-radius:10px; padding:9px 12px; font-size:0.92rem; background:white; border:1.5px solid #CBD5E1;">
+                                ${(Array.isArray(conf.usos) ? conf.usos.filter(u => u.activo !== false) : []).map((u, idx) => `
+                                    <option value="${u.id}" data-factor="${u.factor_precio || 0}" data-recargo="${u.recargo_fijo || 0}" ${idx === 0 ? 'selected' : ''}>
+                                        ${u.name}
+                                    </option>
+                                `).join('')}
+                            </select>
+                        </div>
                     </div>
 
                     <!-- Fila 2: Largo - Ancho - Espesor - Cantidad -->
@@ -144,6 +163,15 @@
                         </div>
                     </div>
 
+                    <!-- Breve descripción explicativa de elaboración y acabado del corte -->
+                    <div id="detail-custom-cut-desc-wrapper" style="background:#FFFFFF; border:1px solid #E2E8F0; border-left:3.5px solid var(--primary-color, #ea580c); border-radius:8px; padding:8px 12px; display:flex; align-items:flex-start; gap:8px;">
+                        <span class="material-symbols-outlined" style="font-size:18px; color:var(--primary-color, #ea580c); flex-shrink:0; margin-top:2px;">info</span>
+                        <div style="font-size:0.75rem; color:#475569; line-height:1.45;">
+                            <strong id="detail-custom-cut-desc-title" style="color:#0F172A; font-weight:700;">Elaboración y Acabado:</strong>
+                            <span id="detail-custom-cut-desc-text">Cortes estándar de taller con escuadrado y cepillado.</span>
+                        </div>
+                    </div>
+
                     <div id="detail-custom-cut-warning" style="display:none; background:#FEF2F2; border:1px solid #FCA5A5; color:#991B1B; padding:0.75rem 1rem; border-radius:10px; font-size:0.8rem; line-height:1.4; font-weight:600;">
                     </div>
 
@@ -151,7 +179,7 @@
                         <div style="display:flex; align-items:center; gap:14px; font-size:0.8rem; color:#64748B; flex-wrap:wrap;">
                             <span id="detail-custom-cut-m2" style="font-weight:700; color:#334155;">📐 Superficie: 0.24 m²</span>
                             <span id="detail-custom-cut-spec" style="color:#16A34A; font-weight:700; background:#DCFCE7; padding:2px 8px; border-radius:6px;">Corte Rectificado</span>
-                            <span id="detail-custom-cut-unit-preview" style="color:var(--primary-color, #ea580c); font-weight:800; font-size:0.9rem;">$0 c/u</span>
+                            <span id="detail-custom-cut-unit-preview" style="color:var(--primary-color, #ea580c); font-weight:800; font-size:0.95rem;">$0 c/u</span>
                         </div>
 
                         <div style="display:flex; align-items:center; gap:8px; margin-left:auto;">
@@ -172,6 +200,12 @@
                 <div id="detail-custom-cuts-list-container">
                 </div>
             `;
+            if (typeof window.renderUniversalCPBar === 'function') {
+                window.renderUniversalCPBar('cortes-cp-bar-container', {
+                    marginBottom: '1rem',
+                    noCpText: '📍 Ingresá tu CP para activar bonificaciones de envío en Flex y Flete'
+                });
+            }
         }
 
         // Vincular botones +/- de cantidad del corte
@@ -257,6 +291,8 @@
             const totalPieces = customCutsList.reduce((acc, c) => acc + (c.qty || 1), 0);
             const totalM2 = customCutsList.reduce((acc, c) => acc + (c.m2Total || 0), 0);
             const totalSubtotal = customCutsList.reduce((acc, c) => acc + (c.subtotal || 0), 0);
+            const totalRawSubtotal = customCutsList.reduce((acc, c) => acc + ((c.rawUnitPrice || c.unitPrice || 0) * (c.qty || 1)), 0);
+            const totalAhorroRedondeo = Math.max(0, totalRawSubtotal - totalSubtotal);
 
             let totalListDiscount = 0;
             const discountedCutsIndices = new Map();
@@ -316,7 +352,7 @@
                             <thead>
                                 <tr style="background:#F8FAFC; color:#475569; font-weight:800; border-bottom:1.5px solid #E2E8F0; text-transform:uppercase; font-size:0.72rem; letter-spacing:0.03em;">
                                     <th style="padding:10px 12px; width:45px; text-align:center;">#</th>
-                                    <th style="padding:10px 12px;">Madera / Tablero</th>
+                                    <th style="padding:10px 12px;">Madera / Uso</th>
                                     <th style="padding:10px 12px;">Medida (Largo × Ancho)</th>
                                     <th style="padding:10px 12px;">Espesor</th>
                                     <th style="padding:10px 12px; text-align:center;">Cant.</th>
@@ -337,7 +373,7 @@
                                             </td>
                                             <td style="padding:10px 12px;">
                                                 <div style="font-weight:800; color:#0F172A;">${c.material}</div>
-                                                <div style="font-size:0.7rem; color:#64748B;">${c.usageLabel || 'Corte cepillado'}</div>
+                                                <div style="font-size:0.7rem; color:#64748B; font-weight:600;">${c.usageLabel || 'Corte cepillado'}</div>
                                             </td>
                                             <td style="padding:10px 12px;">
                                                 <span style="font-weight:800; color:#0284c7; font-size:0.9rem;">${c.largo} × ${c.ancho} cm</span>
@@ -396,8 +432,13 @@
                     </div>
 
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px; padding-top:10px; border-top:1.5px dashed #CBD5E1; flex-wrap:wrap; gap:8px;">
-                        <div style="font-size:0.8rem; color:#475569;">
-                            Total de piezas a cortar: <strong style="color:#0F172A;">${totalPieces} unidades</strong> en <strong>${customCutsList.length} cortes distintos</strong>.
+                        <div style="font-size:0.8rem; color:#475569; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+                            <span>Total de piezas a cortar: <strong style="color:#0F172A;">${totalPieces} unidades</strong> en <strong>${customCutsList.length} cortes distintos</strong>.</span>
+                            ${totalAhorroRedondeo > 0 ? `
+                                <span style="background:#DCFCE7; border:1px solid #BBF7D0; color:#15803D; font-weight:800; padding:2px 8px; border-radius:8px; font-size:0.75rem;">
+                                    🎁 Ahorro por redondeo: -$${totalAhorroRedondeo.toLocaleString('es-AR')}
+                                </span>
+                            ` : ''}
                         </div>
                         <div style="display:flex; align-items:center; gap:10px;">
                             ${totalListDiscount > 0 ? `
@@ -484,6 +525,18 @@
                 }
             }
 
+            const selUso = document.getElementById('detail-custom-cut-uso');
+            if (selUso && cut.usoId) {
+                for (let i = 0; i < selUso.options.length; i++) {
+                    if (selUso.options[i].value === cut.usoId) {
+                        selUso.selectedIndex = i;
+                        userPreferredUsoId = cut.usoId;
+                        isUsoAutoSwitched = false;
+                        break;
+                    }
+                }
+            }
+
             const inL = document.getElementById('detail-custom-cut-largo');
             const inW = document.getElementById('detail-custom-cut-ancho');
             if (inL) inL.value = cut.largo;
@@ -535,6 +588,7 @@
                 id: (editingCutIndex >= 0 && customCutsList[editingCutIndex]?.id) ? customCutsList[editingCutIndex].id : ('cut_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6)),
                 material: currentCalculatedCut.materialName,
                 espesor: currentCalculatedCut.espesorText,
+                usoId: currentCalculatedCut.usoId,
                 largo: currentCalculatedCut.autoL,
                 ancho: currentCalculatedCut.autoW,
                 autoL: currentCalculatedCut.autoL,
@@ -554,6 +608,7 @@
                     idx !== editingCutIndex &&
                     (c.material || '').trim().toLowerCase() === (cutData.material || '').trim().toLowerCase() &&
                     (c.espesor || '').trim().toLowerCase() === (cutData.espesor || '').trim().toLowerCase() &&
+                    (c.usoId || '') === (cutData.usoId || '') &&
                     Number(c.autoL) === Number(cutData.autoL) &&
                     Number(c.autoW) === Number(cutData.autoW)
                 );
@@ -572,6 +627,7 @@
                 const existingIdx = customCutsList.findIndex(c => 
                     (c.material || '').trim().toLowerCase() === (cutData.material || '').trim().toLowerCase() &&
                     (c.espesor || '').trim().toLowerCase() === (cutData.espesor || '').trim().toLowerCase() &&
+                    (c.usoId || '') === (cutData.usoId || '') &&
                     Number(c.autoL) === Number(cutData.autoL) &&
                     Number(c.autoW) === Number(cutData.autoW)
                 );
@@ -596,11 +652,25 @@
 
         document.getElementById('btn-add-cut-to-list')?.addEventListener('click', addCutItemToList);
 
+        let userPreferredUsoId = null;
+        let isUsoAutoSwitched = false;
+
+        const selUsoInit = document.getElementById('detail-custom-cut-uso');
+        if (selUsoInit) {
+            userPreferredUsoId = selUsoInit.value;
+            selUsoInit.addEventListener('change', () => {
+                userPreferredUsoId = selUsoInit.value;
+                isUsoAutoSwitched = false;
+                calcCut();
+            });
+        }
+
         const calcCut = () => {
             const inL = document.getElementById('detail-custom-cut-largo');
             const inW = document.getElementById('detail-custom-cut-ancho');
             const selMat = document.getElementById('detail-custom-cut-material');
             const selEsp = document.getElementById('detail-custom-cut-espesor');
+            const selUso = document.getElementById('detail-custom-cut-uso');
             const warnBox = document.getElementById('detail-custom-cut-warning');
 
             const rawL = parseFloat(inL?.value) || 15;
@@ -619,13 +689,10 @@
             const precioM2Base = parseFloat(optEsp?.getAttribute('data-precio')) || parseFloat(optMat?.getAttribute('data-precio')) || (conf.precios?.precio_m2_venta || 48500);
             const limitMsg = optEsp?.getAttribute('data-msg') || optMat?.getAttribute('data-msg') || '';
 
-            let factorUso = 1.0;
-            let recargoFijoUso = 0;
-            let detectedLabel = 'Corte Estándar Cepillado';
-
             const availableUsos = Array.isArray(conf.usos) ? conf.usos.filter(u => u.activo !== false) : [];
-            
-            const matchedUso = availableUsos.find(u => {
+
+            // Auto-sugerir o adaptar uso según dimensiones si el usuario no fijó uno manual incompatible
+            const dimMatchedUso = availableUsos.find(u => {
                 const minW = u.min_ancho || 0;
                 const maxW_uso = u.max_ancho !== undefined ? u.max_ancho : 999;
                 const minL = u.min_largo || 0;
@@ -633,16 +700,42 @@
                 return (autoW >= minW && autoW <= maxW_uso && autoL >= minL && autoL <= maxL_uso);
             }) || availableUsos[0];
 
-            if (matchedUso) {
-                const rawFactor = Number(matchedUso.factor_precio) || 0;
+            let activeUso = null;
+            if (userPreferredUsoId && !isUsoAutoSwitched) {
+                activeUso = availableUsos.find(u => u.id === userPreferredUsoId);
+            }
+            if (!activeUso) {
+                activeUso = dimMatchedUso || availableUsos[0];
+                if (selUso && activeUso) {
+                    selUso.value = activeUso.id;
+                    isUsoAutoSwitched = true;
+                }
+            } else if (selUso && selUso.value !== activeUso.id) {
+                selUso.value = activeUso.id;
+            }
+
+            let factorUso = 1.0;
+            let recargoFijoUso = 0;
+            let detectedLabel = 'Corte Estándar Cepillado';
+            let descUso = 'Cortes estándar de taller con escuadrado y cepillado.';
+
+            if (activeUso) {
+                const rawFactor = Number(activeUso.factor_precio) || 0;
                 if (rawFactor > 0 && rawFactor <= 3) {
                     factorUso = rawFactor;
                 } else {
                     factorUso = 1.0 + (rawFactor / 100);
                 }
-                recargoFijoUso = matchedUso.recargo_fijo || 0;
-                detectedLabel = matchedUso.name || 'Corte Estándar';
+                recargoFijoUso = activeUso.recargo_fijo || 0;
+                detectedLabel = activeUso.name || 'Corte Estándar';
+                descUso = activeUso.desc || activeUso.descripcion || 'Lijado y cepillado calibrado en escuadra de precisión.';
             }
+
+            // Actualizar caja explicativa de Elaboración y Acabado
+            const descTitle = document.getElementById('detail-custom-cut-desc-title');
+            const descText = document.getElementById('detail-custom-cut-desc-text');
+            if (descTitle) descTitle.textContent = `${detectedLabel}:`;
+            if (descText) descText.textContent = descUso;
 
             let isExceeded = false;
             if (autoL > maxL || autoW > maxW) {
@@ -691,13 +784,13 @@
                             <span style="text-decoration:line-through; color:#94A3B8; font-size:0.95rem; font-weight:800; margin-right:4px;">$${rawSubtotalActual.toLocaleString('es-AR')}</span>
                             <span style="color:var(--primary-color, #ea580c); font-weight:900; font-size:1.1rem;">$${subtotalActual.toLocaleString('es-AR')}</span>
                             <span style="font-size:0.8rem; color:#64748B; font-weight:700; margin-left:4px;">($${calcPrice.toLocaleString('es-AR')} c/u)</span>
-                            <span style="font-size:0.75rem; font-weight:800; color:#15803D; background:#DCFCE7; border:1px solid #BBF7D0; padding:2px 8px; border-radius:10px; margin-left:6px; vertical-align:middle;">Redondeado (-$${ahorroTotal.toLocaleString('es-AR')})</span>
+                            <span style="font-size:0.75rem; font-weight:800; color:#15803D; background:#DCFCE7; border:1px solid #BBF7D0; padding:2px 8px; border-radius:10px; margin-left:6px; vertical-align:middle;">🎁 Ahorro por redondeo (-$${ahorroTotal.toLocaleString('es-AR')})</span>
                         `;
                     } else {
                         lblPricePrev.innerHTML = `
                             <span style="text-decoration:line-through; color:#94A3B8; font-size:1rem; font-weight:800; margin-right:6px;">$${rawCalcPrice.toLocaleString('es-AR')}</span>
                             <span style="color:var(--primary-color, #ea580c); font-weight:900; font-size:1.05rem;">$${calcPrice.toLocaleString('es-AR')} c/u</span>
-                            <span style="font-size:0.75rem; font-weight:800; color:#15803D; background:#DCFCE7; border:1px solid #BBF7D0; padding:2px 8px; border-radius:10px; margin-left:6px; vertical-align:middle;">Redondeado (-$${ahorroTotal.toLocaleString('es-AR')})</span>
+                            <span style="font-size:0.75rem; font-weight:800; color:#15803D; background:#DCFCE7; border:1px solid #BBF7D0; padding:2px 8px; border-radius:10px; margin-left:6px; vertical-align:middle;">🎁 Ahorro por redondeo (-$${ahorroTotal.toLocaleString('es-AR')})</span>
                         `;
                     }
                 } else {
@@ -722,6 +815,7 @@
             currentCalculatedCut = {
                 materialName: cleanMatName,
                 espesorText: cleanEspText,
+                usoId: activeUso?.id || 'estante',
                 autoL,
                 autoW,
                 m2Unit: m2,

@@ -27,7 +27,8 @@
                         const pTitle = String(p.title != null ? p.title : '').trim().toLowerCase();
                         const normTitle = pTitle.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
                         const normId = pId.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
-                        return pId === searchClean || pTitle === searchClean || normId === normSearch || normTitle === normSearch || (normSearch.length > 5 && normTitle.includes(normSearch));
+                        const pSlug = (p.title || '').trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-zA-Z0-9\s-]/g, "").replace(/\s+/g, '-').replace(/-+/g, '-').toLowerCase();
+                        return pId === searchClean || pTitle === searchClean || pSlug === searchClean || normId === normSearch || normTitle === normSearch || (normSearch.length > 5 && normTitle.includes(normSearch));
                     });
                     if (found) {
                         if (found.primaryCatId === cat.id) {

@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
             thumbLink.className = 'catalog-thumb-link';
             thumbLink.target = '_parent';
             const fallbackImg = fixImagePath('img/logo_provisional.png');
-            thumbLink.innerHTML = `<img src="${product.image}" class="catalog-thumb" alt="${product.title}" loading="lazy" onerror="this.onerror=null; this.src='${fallbackImg}';">`;
+            thumbLink.innerHTML = `<img src="${fixImagePath(product.image)}" class="catalog-thumb" alt="${product.title}" loading="lazy" onerror="this.onerror=null; this.src='${fallbackImg}';">`;
             thumbLink.addEventListener('click', handleProductClick);
             thumbContainer.appendChild(thumbLink);
 

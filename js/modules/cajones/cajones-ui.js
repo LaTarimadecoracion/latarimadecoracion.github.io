@@ -10,6 +10,9 @@
      */
     function getFormTemplate(activeReglas, activePlacas = []) {
         return `
+            <!-- Banner de Incentivo CP y Bonificación Envíos -->
+            <div id="cajon-cp-bar-container"></div>
+
             <div style="margin-bottom:1.25rem; border-bottom:1.5px solid #E2E8F0; padding-bottom:0.75rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px;">
                 <div style="display:flex; align-items:center; gap:8px;">
                     <span class="material-symbols-outlined" style="color:var(--primary-color, #ea580c); font-size:24px;">design_services</span>
@@ -261,8 +264,8 @@
 
         if (isFreeShipActive) {
             const shipBg = isFreeShipAchieved ? '#15803D' : '#0284C7';
-            chips.push(`<span style="background:${shipBg}; color:white; font-size:0.7rem; font-weight:800; padding:2px 7px; border-radius:6px; display:inline-flex; align-items:center; gap:3px;">
-                ${isFreeShipAchieved ? '✓ ' : ''}🚚 ${freeShipMin}+ uds: Envío GRATIS
+            chips.push(`<span style="background:${shipBg}; color:white; font-size:0.7rem; font-weight:800; padding:2px 7px; border-radius:6px; display:inline-flex; align-items:center; gap:3px;" title="Válido en zonas de cobertura con Logística Flex o Flete propio">
+                ${isFreeShipAchieved ? '✓ ' : ''}🚚 ${freeShipMin}+ uds: Envío GRATIS (Flex / Flete)
             </span>`);
         }
 
@@ -293,11 +296,11 @@
                             `}
                             ${isFreeShipAchieved ? `
                                 <div style="font-size:0.75rem; color:#15803D; font-weight:800; margin-top:3px; display:flex; align-items:center; gap:4px;">
-                                    <span>🚚 ¡Envío 100% Bonificado activo por llevar ${totalQty} cajones!</span>
+                                    <span>🚚 ¡Envío 100% Bonificado activo por llevar ${totalQty} cajones! (Válido para Logística Flex y Flete propio en zonas con CP habilitado)</span>
                                 </div>
                             ` : (faltanEnvioGratis > 0 ? `
                                 <div style="font-size:0.75rem; color:#0284C7; font-weight:700; margin-top:3px; display:flex; align-items:center; gap:4px;">
-                                    <span>📦 Sumá <strong>${faltanEnvioGratis} ${faltanEnvioGratis === 1 ? 'cajón más' : 'cajones más'}</strong> para tener ¡ENVÍO GRATIS!</span>
+                                    <span>📦 Sumá <strong>${faltanEnvioGratis} ${faltanEnvioGratis === 1 ? 'cajón más' : 'cajones más'}</strong> para tener ¡ENVÍO BONIFICADO en Flex o Flete!</span>
                                 </div>
                             ` : '')}
                         </div>
@@ -320,7 +323,7 @@
                             </span>
                             ${faltanEnvioGratis > 0 ? `
                                 <div style="font-size:0.75rem; color:#0369A1; font-weight:700; margin-top:3px;">
-                                    🚚 ¡Envío gratis a partir de ${freeShipMin} cajones! (Te faltan ${faltanEnvioGratis})
+                                    🚚 ¡Envío bonificado en Flex / Flete a partir de ${freeShipMin} cajones! (Te faltan ${faltanEnvioGratis})
                                 </div>
                             ` : ''}
                         </div>

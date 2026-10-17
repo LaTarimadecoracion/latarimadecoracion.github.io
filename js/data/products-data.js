@@ -11757,135 +11757,6 @@ const productsData = [
                 "history": [],
                 "visible": true,
                 "views": 102
-            },
-            {
-                "id": "95",
-                "shortId": "33",
-                "title": "Cajón Pliométrico 3 en 1 CrossFit & Salto",
-                "description": "Cajón de salto pliométrico multifuncional 3 en 1 para CrossFit, entrenamiento funcional y preparación física. Fabricado en Fenólico Industrial de 18 mm con refuerzo estructural interno en cruz y manijas ergonómicas.",
-                "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Fenólico 18mm",
-                        "description": "Placa Fenólica de 18 mm de alta resistencia con refuerzo interno en cruz",
-                        "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Grande Oficial (50 × 60 × 75 cm)",
-                                "link": "apps/cajon.html",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "Configurar",
-                                "iconType": "straighten",
-                                "highlight": true,
-                                "price": 72000,
-                                "cost_price": 22000,
-                                "legend": "Oficial Box CrossFit",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "Mediano (40 × 50 × 60 cm)",
-                                "link": "apps/cajon.html",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "Configurar",
-                                "iconType": "straighten",
-                                "highlight": false,
-                                "price": 58000,
-                                "cost_price": 17000,
-                                "legend": "Intermedio",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "Chico (30 × 40 × 50 cm)",
-                                "link": "apps/cajon.html",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "Configurar",
-                                "iconType": "straighten",
-                                "highlight": false,
-                                "price": 42000,
-                                "cost_price": 12000,
-                                "legend": "Funcional / Principiante",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "A Medida Especial",
-                                "link": "apps/cajon.html",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "Calcular",
-                                "iconType": "straighten",
-                                "highlight": false,
-                                "price": 72000,
-                                "cost_price": 22000,
-                                "legend": "Personalizado",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cajon",
-                    "pliometrico",
-                    "crossfit",
-                    "salto",
-                    "jump box",
-                    "box",
-                    "3 en 1",
-                    "fitness",
-                    "gym",
-                    "entrenamiento funcional",
-                    "fenolico"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteMaxUnits": 10,
-                    "fleteFreeMinUnits": 50,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [
-                    {
-                        "minQty": 3,
-                        "discountPercent": 8
-                    },
-                    {
-                        "minQty": 6,
-                        "discountPercent": 12
-                    }
-                ],
-                "last_modified": 1791831629527,
-                "primaryCatId": "cajones-crossfit",
-                "history": [],
-                "visible": true,
-                "categories": [
-                    "carpinteria-todos",
-                    "cajones-crossfit"
-                ],
-                "rubro": "carpinteria",
-                "views": 57
             }
         ]
     },
@@ -17844,6 +17715,64 @@ const productsData = [
                     "carpinteria-todos",
                     "Organizadores"
                 ],
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "6J",
+                "shortId": "36",
+                "title": "Canasta Cesta Organizador De Mimbre Con Tapa",
+                "description": "Canasto de mimbre tejido con tapa – Organizador multiuso\n\nDale un toque cálido y natural a tu hogar con este hermoso canasto tejido con tapa, ideal para organizar tus espacios y mantener todo en orden.\n\nSu diseño artesanal y su color natural combinan perfectamente con estilos rústicos, modernos, boho y nórdicos. Es una opción práctica y decorativa para distintos ambientes de tu casa.\n\nMÚLTIPLES USOS\n\nBaño: ideal para guardar toallas de mano, esponjas, peines y accesorios de cuidado personal.\n\nDormitorio infantil: perfecto para organizar juguetes, peluches y pequeños objetos.\n\nOficina: podés utilizarlo como papelero o para guardar accesorios.\n\nLiving: ideal para organizar objetos pequeños y complementar la decoración.\n\nDormitorio: práctico para guardar accesorios y mantener el ambiente ordenado.\n\nMEDIDAS DEL PRODUCTO\n\nDiámetro: 26 cm.\n\nAlto: 24 cm.\n\nCARACTERÍSTICAS\n\nCanasto tejido de fibras naturales.\n\nDiseño cilíndrico con tapa incorporada.\n\nColor natural, fácil de combinar con diferentes ambientes.\n\nIdeal para organizar y decorar.\n\nDiseño artesanal con detalles propios del tejido.\n\n\nRealizamos factura A.\n\nLas imágenes son ilustrativas y muestran ejemplos de posibles usos y ambientaciones del producto. Los accesorios, toallas, esponjas, peines, juguetes y demás elementos utilizados en las fotografías no están incluidos.\n\nAl tratarse de un producto tejido artesanalmente, puede presentar pequeñas variaciones de tonalidad, textura y terminación.\n\n¡Organizá tus espacios con estilo y sumá un detalle natural a tu hogar!\n\nSin garantía",
+                "image": "https://http2.mlstatic.com/D_NQ_NP_2X_983994-MLA117974180406_102026-O.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "description": "",
+                        "cover_image": "https://http2.mlstatic.com/D_NQ_NP_2X_983994-MLA117974180406_102026-O.webp",
+                        "images_list": [
+                            "https://http2.mlstatic.com/D_NQ_NP_2X_983994-MLA117974180406_102026-O.webp",
+                            "https://http2.mlstatic.com/D_NQ_NP_2X_749191-MLA117974594918_102026-O.webp",
+                            "https://http2.mlstatic.com/D_NQ_NP_2X_639573-MLA119601555121_102026-O.webp",
+                            "https://http2.mlstatic.com/D_NQ_NP_2X_707319-MLA117972272164_102026-O.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "link": "https://www.mercadolibre.com.ar/canasta-cesta-organizador-de-mimbre-con-tapa/up/MLAU5570386362",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 42000,
+                                "cost_price": 60000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792192563683,
+                "primaryCatId": "Organizadores",
+                "history": [],
                 "rubro": "carpinteria"
             }
         ]
@@ -32103,7 +32032,7 @@ const productsData = [
             {
                 "id": "95",
                 "shortId": "33",
-                "title": "Cajón Pliométrico 3 en 1 CrossFit & Salto",
+                "title": "Cajón / CrossFit & Salto / Hechos a medida",
                 "description": "Cajón de salto pliométrico multifuncional 3 en 1 para CrossFit, entrenamiento funcional y preparación física. Fabricado en Fenólico Industrial de 18 mm con refuerzo estructural interno en cruz y manijas ergonómicas.",
                 "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
                 "acabados_groups": [
@@ -32129,7 +32058,19 @@ const productsData = [
                                 "cost_price": 22000,
                                 "legend": "Oficial Box CrossFit",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 3,
+                                        "discountPercent": 8,
+                                        "shippingDiscountPercent": 0
+                                    },
+                                    {
+                                        "minQty": 6,
+                                        "discountPercent": 12,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             },
                             {
                                 "medida": "Mediano (40 × 50 × 60 cm)",
@@ -32143,7 +32084,19 @@ const productsData = [
                                 "cost_price": 17000,
                                 "legend": "Intermedio",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 3,
+                                        "discountPercent": 8,
+                                        "shippingDiscountPercent": 0
+                                    },
+                                    {
+                                        "minQty": 6,
+                                        "discountPercent": 12,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             },
                             {
                                 "medida": "Chico (30 × 40 × 50 cm)",
@@ -32157,7 +32110,19 @@ const productsData = [
                                 "cost_price": 12000,
                                 "legend": "Funcional / Principiante",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 3,
+                                        "discountPercent": 8,
+                                        "shippingDiscountPercent": 0
+                                    },
+                                    {
+                                        "minQty": 6,
+                                        "discountPercent": 12,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             },
                             {
                                 "medida": "A Medida Especial",
@@ -32171,7 +32136,19 @@ const productsData = [
                                 "cost_price": 22000,
                                 "legend": "Personalizado",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 3,
+                                        "discountPercent": 8,
+                                        "shippingDiscountPercent": 0
+                                    },
+                                    {
+                                        "minQty": 6,
+                                        "discountPercent": 12,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -32210,24 +32187,21 @@ const productsData = [
                 },
                 "quantityDiscounts": [
                     {
-                        "minQty": 3,
-                        "discountPercent": 8
+                        "minUnits": 3,
+                        "discountPercent": 8,
+                        "shippingDiscountPercent": 0
                     },
                     {
-                        "minQty": 6,
-                        "discountPercent": 12
+                        "minUnits": 6,
+                        "discountPercent": 12,
+                        "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1791831629527,
+                "last_modified": 1792210874056,
                 "primaryCatId": "cajones-crossfit",
                 "history": [],
                 "visible": true,
-                "categories": [
-                    "carpinteria-todos",
-                    "cajones-crossfit"
-                ],
-                "rubro": "carpinteria",
-                "views": 57
+                "rubro": "carpinteria"
             }
         ]
     },

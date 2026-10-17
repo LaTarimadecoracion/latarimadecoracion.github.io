@@ -578,6 +578,105 @@
             statusText.innerHTML = `CP ingresado: <strong>${window.offersValidatedCP}</strong>`;
         }
     }
+    window.updateOffersCPStatusDisplay = updateOffersCPStatusDisplay;
+
+    function renderUniversalCPBar(containerId, options = {}) {
+        const targetContainer = typeof containerId === 'string' ? document.getElementById(containerId) : containerId;
+        if (!targetContainer) return;
+
+        const isComplete = window.UserDataManager && typeof window.UserDataManager.hasCompleteProfile === 'function'
+            ? window.UserDataManager.hasCompleteProfile()
+            : false;
+
+        const barId = options.barId || `cp-bar-${Math.random().toString(36).substr(2, 6)}`;
+        const statusTextId = `${barId}-status-text`;
+        const iconBadgeId = `${barId}-icon-badge`;
+        const btnLabelId = `${barId}-btn-label`;
+
+        targetContainer.innerHTML = `
+            <div id="${barId}" class="offers-cp-bar" style="margin-bottom: ${options.marginBottom || '1rem'};">
+                <div class="offers-cp-info-group">
+                    <div id="${iconBadgeId}" class="offers-cp-icon-badge">
+                        <span class="material-symbols-outlined" style="font-size: 16px;">distance</span>
+                    </div>
+                    <div id="${statusTextId}" class="offers-cp-status-text">
+                        📍 Ingresá tu CP para verificar envíos y bonificaciones
+                    </div>
+                </div>
+                <button type="button" class="offers-cp-action-btn" id="${barId}-btn-action">
+                    <span class="material-symbols-outlined" style="font-size: 16px; color: #ffffff;">tune</span>
+                    <span id="${btnLabelId}">⚡ Cargar Datos</span>
+                </button>
+            </div>
+        `;
+
+        const actionBtn = document.getElementById(`${barId}-btn-action`);
+        if (actionBtn) {
+            actionBtn.onclick = () => {
+                if (window.openUserProfileModal) window.openUserProfileModal();
+            };
+        }
+
+        const updateInstance = () => {
+            const cpBar = document.getElementById(barId);
+            const statusText = document.getElementById(statusTextId);
+            const iconBadge = document.getElementById(iconBadgeId);
+            const btnProfileLabel = document.getElementById(btnLabelId);
+            if (!cpBar) return;
+
+            const currentCp = window.getGlobalUserZipCode();
+
+            if (!currentCp) {
+                if (statusText) {
+                    statusText.innerHTML = options.noCpText || '📍 Ingresá tu CP para calcular envíos y bonificaciones';
+                    statusText.style.color = '#ffffff';
+                }
+                if (btnProfileLabel) btnProfileLabel.textContent = '⚡ Cargar Datos';
+                cpBar.style.background = 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)';
+                cpBar.style.borderColor = '#22c55e';
+                if (iconBadge) {
+                    iconBadge.style.background = 'linear-gradient(135deg, #22c55e 0%, #15803d 100%)';
+                    iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">distance</span>';
+                }
+                return;
+            }
+
+            if (btnProfileLabel) btnProfileLabel.textContent = `CP ${currentCp}`;
+
+            if (typeof window.lookupPostalCode === 'function') {
+                const res = window.lookupPostalCode(currentCp);
+                if (res && res.hasLocalMatch !== false) {
+                    statusText.innerHTML = `🎉 <strong>¡Cobertura directa para ${res.localidad}!</strong> (CP ${res.cp})`;
+                    statusText.style.color = '#14532d';
+                    cpBar.style.background = 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)';
+                    cpBar.style.borderColor = '#86efac';
+                    if (iconBadge) {
+                        iconBadge.style.background = '#16a34a';
+                        iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">verified</span>';
+                    }
+                } else {
+                    statusText.innerHTML = `📦 <strong>Zona Interior (CP ${currentCp})</strong> - Expreso / Transporte a coordinar.`;
+                    statusText.style.color = '#78350f';
+                    cpBar.style.background = 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)';
+                    cpBar.style.borderColor = '#fde047';
+                    if (iconBadge) {
+                        iconBadge.style.background = '#d97706';
+                        iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">inventory_2</span>';
+                    }
+                }
+            } else {
+                statusText.innerHTML = `CP ingresado: <strong>${currentCp}</strong>`;
+            }
+        };
+
+        updateInstance();
+
+        window.addEventListener('latarima:cp-updated', () => {
+            updateInstance();
+        });
+    }
+
+    window.renderUniversalCPBar = renderUniversalCPBar;
 
     function startOffersCountdownTimer() {
         if (timerInterval) clearInterval(timerInterval);

@@ -114,18 +114,24 @@ self.addEventListener('fetch', (event) => {
                 }
                 // If not in cache, fetch from network and add to cache
                 return fetch(event.request).then((networkResponse) => {
-                    if (!networkResponse || networkResponse.status !== 200 || networkResponse.type !== 'basic') {
+                    if (!networkResponse || (networkResponse.status !== 200 && networkResponse.type !== 'opaque')) {
                         return networkResponse;
                     }
-                    const responseToCache = networkResponse.clone();
-                    caches.open(CACHE_NAME).then((cache) => {
-                        cache.put(event.request, responseToCache);
-                    });
+                    // Caching same-origin and valid CORS/opaque images
+                    try {
+                        const responseToCache = networkResponse.clone();
+                        caches.open(CACHE_NAME).then((cache) => {
+                            cache.put(event.request, responseToCache);
+                        });
+                    } catch (e) {}
                     return networkResponse;
                 }).catch(async () => {
-                    // Fallback image if totally offline and image not cached
-                    const logoFallback = await caches.match('./img/logo_provisional.png');
-                    return logoFallback || new Response('', { status: 404, statusText: 'Image Not Found' });
+                    // Solo retornar logo de fallback si es una imagen del propio dominio
+                    if (url.origin === location.origin) {
+                        const logoFallback = await caches.match('./img/logo_provisional.png');
+                        return logoFallback || new Response('', { status: 404, statusText: 'Image Not Found' });
+                    }
+                    return new Response('', { status: 404, statusText: 'Image Not Found' });
                 });
             })
         );

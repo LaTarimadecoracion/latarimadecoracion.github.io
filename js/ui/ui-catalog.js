@@ -99,7 +99,11 @@
 
         // Actualizar URL en el historial si es necesario
         const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('prod') !== prodParamVal && urlParams.get('prod') !== product.id) {
+        const currentProdParam = urlParams.get('prod');
+        const hasLegacyParam = urlParams.has('p') || urlParams.has('product') || urlParams.has('s');
+        const hasOtherViewParam = urlParams.has('view') || urlParams.has('cat') || urlParams.has('category');
+        
+        if (currentProdParam !== prodParamVal || hasLegacyParam || hasOtherViewParam) {
             const initialParams = new URLSearchParams();
             initialParams.set('prod', prodParamVal);
             if (preselectedAcabado && preselectedAcabado !== 'Único') initialParams.set(preselectedAcabado, '');
@@ -191,15 +195,7 @@
             const currentParams = new URLSearchParams(window.location.search);
             const newParams = new URLSearchParams();
             
-            // Conservar solo parámetros de enrutamiento del sistema
-            const systemKeys = ['prod', 'product', 'p', 'view', 'cat', 'category'];
-            systemKeys.forEach(key => {
-                if (currentParams.has(key)) {
-                    newParams.set(key, currentParams.get(key));
-                }
-            });
-            
-            // Asegurar el prod con slug amigable si existe
+            // Conservar solo el prod con slug amigable si existe
             const cleanTitleSlug = (product.title || '')
                 .trim()
                 .normalize("NFD")

@@ -20,3 +20,7 @@ Thumbs.db
 # Local build artifacts
 dist/
 minify-local.js
+
+# Distribuidores y catalogos externos de trabajo local
+Catalogo/
+catalogo/

@@ -3226,6 +3226,35 @@ function cleanOrphanImages() {
             });
         }
 
+        // 1.b Escanear también los archivos individuales en data/products/ por seguridad
+        const productsDir = path.join(ROOT_DIR, 'data', 'products');
+        if (fs.existsSync(productsDir)) {
+            const scanProductFiles = (dir) => {
+                const entries = fs.readdirSync(dir, { withFileTypes: true });
+                entries.forEach(entry => {
+                    const full = path.join(dir, entry.name);
+                    if (entry.isDirectory()) {
+                        scanProductFiles(full);
+                    } else if (entry.isFile() && entry.name.endsWith('.json')) {
+                        try {
+                            const p = JSON.parse(fs.readFileSync(full, 'utf8'));
+                            if (typeof p.image === 'string') usedImages.add(path.normalize(p.image));
+                            else if (Array.isArray(p.image)) p.image.forEach(img => usedImages.add(path.normalize(img)));
+                            if (p.acabados_groups && Array.isArray(p.acabados_groups)) {
+                                p.acabados_groups.forEach(g => {
+                                    if (g.cover_image) usedImages.add(path.normalize(g.cover_image));
+                                    if (g.images_list && Array.isArray(g.images_list)) {
+                                        g.images_list.forEach(img => usedImages.add(path.normalize(img)));
+                                    }
+                                });
+                            }
+                        } catch (e) {}
+                    }
+                });
+            };
+            scanProductFiles(productsDir);
+        }
+
         // 2. Recopilar imágenes de Ofertas (offers-data.js)
         const offersDbPath = path.join(ROOT_DIR, 'js', 'data', 'offers-data.js');
         if (fs.existsSync(offersDbPath)) {

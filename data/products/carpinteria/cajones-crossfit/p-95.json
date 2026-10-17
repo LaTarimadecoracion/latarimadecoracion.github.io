@@ -1,7 +1,7 @@
 {
   "id": "95",
   "shortId": "33",
-  "title": "Cajón Pliométrico 3 en 1 CrossFit & Salto",
+  "title": "Cajón / CrossFit & Salto / Hechos a medida",
   "description": "Cajón de salto pliométrico multifuncional 3 en 1 para CrossFit, entrenamiento funcional y preparación física. Fabricado en Fenólico Industrial de 18 mm con refuerzo estructural interno en cruz y manijas ergonómicas.",
   "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
   "acabados_groups": [
@@ -27,7 +27,19 @@
           "cost_price": 22000,
           "legend": "Oficial Box CrossFit",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "volumeDiscounts": [
+            {
+              "minQty": 3,
+              "discountPercent": 8,
+              "shippingDiscountPercent": 0
+            },
+            {
+              "minQty": 6,
+              "discountPercent": 12,
+              "shippingDiscountPercent": 0
+            }
+          ]
         },
         {
           "medida": "Mediano (40 × 50 × 60 cm)",
@@ -41,7 +53,19 @@
           "cost_price": 17000,
           "legend": "Intermedio",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "volumeDiscounts": [
+            {
+              "minQty": 3,
+              "discountPercent": 8,
+              "shippingDiscountPercent": 0
+            },
+            {
+              "minQty": 6,
+              "discountPercent": 12,
+              "shippingDiscountPercent": 0
+            }
+          ]
         },
         {
           "medida": "Chico (30 × 40 × 50 cm)",
@@ -55,7 +79,19 @@
           "cost_price": 12000,
           "legend": "Funcional / Principiante",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "volumeDiscounts": [
+            {
+              "minQty": 3,
+              "discountPercent": 8,
+              "shippingDiscountPercent": 0
+            },
+            {
+              "minQty": 6,
+              "discountPercent": 12,
+              "shippingDiscountPercent": 0
+            }
+          ]
         },
         {
           "medida": "A Medida Especial",
@@ -69,7 +105,19 @@
           "cost_price": 22000,
           "legend": "Personalizado",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "volumeDiscounts": [
+            {
+              "minQty": 3,
+              "discountPercent": 8,
+              "shippingDiscountPercent": 0
+            },
+            {
+              "minQty": 6,
+              "discountPercent": 12,
+              "shippingDiscountPercent": 0
+            }
+          ]
         }
       ],
       "hidden": false
@@ -108,22 +156,19 @@
   },
   "quantityDiscounts": [
     {
-      "minQty": 3,
-      "discountPercent": 8
+      "minUnits": 3,
+      "discountPercent": 8,
+      "shippingDiscountPercent": 0
     },
     {
-      "minQty": 6,
-      "discountPercent": 12
+      "minUnits": 6,
+      "discountPercent": 12,
+      "shippingDiscountPercent": 0
     }
   ],
-  "last_modified": 1791831629527,
+  "last_modified": 1792210874056,
   "primaryCatId": "cajones-crossfit",
   "history": [],
   "visible": true,
-  "categories": [
-    "carpinteria-todos",
-    "cajones-crossfit"
-  ],
-  "rubro": "carpinteria",
-  "views": 57
+  "rubro": "carpinteria"
 }
