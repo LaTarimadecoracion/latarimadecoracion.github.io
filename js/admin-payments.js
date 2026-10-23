@@ -15,6 +15,14 @@
             cuit: '20-35281538-2',
             discountPercent: 0
         },
+        transferCecilia: {
+            active: true,
+            alias: 'latarima.deco',
+            cbu: '0000003100152918804776',
+            bank: 'Mercado Pago',
+            titular: 'Cecilia Beatriz Cerón',
+            cuit: '27-28767339-1'
+        },
         mercadopago: {
             active: false,
             mode: 'sandbox', // 'sandbox' | 'production'
@@ -54,6 +62,7 @@
 
         const config = window.sessionPaymentConfig || defaultPaymentConfig;
         const transfer = config.transfer || defaultPaymentConfig.transfer;
+        const transferCecilia = config.transferCecilia || defaultPaymentConfig.transferCecilia;
         const mp = config.mercadopago || defaultPaymentConfig.mercadopago;
 
         const mpStatusBadge = mp.accessToken
@@ -139,62 +148,104 @@
                     </div>
                 </div>
 
-                <!-- 2. TRANSFERENCIA BANCARIA DIRECTA -->
+                <!-- 2. TRANSFERENCIA BANCARIA DIRECTA (CUENTAS POR RUBRO) -->
                 <div class="admin-card" style="border: 1.5px solid #059669; background: #ffffff; border-radius: 16px; padding: 1.25rem;">
                     <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.75rem;">
                         <div style="display: flex; align-items: center; gap: 10px;">
                             <span class="material-symbols-outlined" style="color: #059669; font-size: 26px;">account_balance</span>
                             <div>
-                                <h4 style="margin: 0; font-size: 1rem; font-weight: 800; color: #0f172a;">🏦 Transferencia Bancaria Directa</h4>
-                                <div style="font-size: 0.73rem; color: #64748b;">Datos bancarios exhibidos en el checkout al pagar</div>
+                                <h4 style="margin: 0; font-size: 1rem; font-weight: 800; color: #0f172a;">🏦 Cuentas Bancarias por Rubro</h4>
+                                <div style="font-size: 0.73rem; color: #64748b;">Diferenciación automática en checkout (Carpintería vs Reventa/Mixto)</div>
                             </div>
                         </div>
                     </div>
 
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div style="display: flex; flex-direction: column; gap: 14px;">
                         
-                        <label style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 800; color: #0f172a; cursor: pointer; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 8px 12px; border-radius: 10px;">
-                            <input type="checkbox" id="admin-transfer-active" ${transfer.active !== false ? 'checked' : ''} style="width: 18px; height: 18px; accent-color: #059669; cursor: pointer;">
-                            <span>Habilitar pago por Transferencia Bancaria</span>
-                        </label>
-
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;">
-                            <div>
-                                <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    ALIAS:
-                                </label>
-                                <input type="text" id="admin-transfer-alias" value="${transfer.alias || ''}" placeholder="Ej: MI.ALIAS.MP" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; font-weight: 700; color: #0f172a; outline: none;">
+                        <!-- CUENTA 1: CARPINTERÍA (TALLER / YONATAN) -->
+                        <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 1rem;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                                <div style="font-size: 0.82rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 6px;">
+                                    <span class="material-symbols-outlined" style="color: #059669; font-size: 18px;">carpenter</span>
+                                    <span>Cuenta Carpintería (Taller Puro)</span>
+                                </div>
+                                <span style="font-size: 0.68rem; font-weight: 800; background: #e0f2fe; color: #0369a1; padding: 2px 8px; border-radius: 6px;">Solo Madera / Fabricación</span>
                             </div>
 
-                            <div>
-                                <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    CBU / CVU:
-                                </label>
-                                <input type="text" id="admin-transfer-cbu" value="${transfer.cbu || ''}" placeholder="Ej: 07200489..." style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.82rem; font-family: monospace; color: #0f172a; outline: none;">
-                            </div>
-                        </div>
-
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;">
-                            <div>
-                                <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    Banco / Entidad:
-                                </label>
-                                <input type="text" id="admin-transfer-bank" value="${transfer.bank || ''}" placeholder="Ej: Banco Santander" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; outline: none;">
-                            </div>
-
-                            <div>
-                                <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    Titular de la Cuenta:
-                                </label>
-                                <input type="text" id="admin-transfer-titular" value="${transfer.titular || ''}" placeholder="Ej: Juan Pérez" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; outline: none;">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                CUIT / CUIL del Titular:
+                            <label style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: #0f172a; cursor: pointer; background: #ffffff; border: 1px solid #cbd5e1; padding: 6px 10px; border-radius: 8px; margin-bottom: 10px;">
+                                <input type="checkbox" id="admin-transfer-active" ${transfer.active !== false ? 'checked' : ''} style="width: 16px; height: 16px; accent-color: #059669; cursor: pointer;">
+                                <span>Habilitar para compras puras de Carpintería</span>
                             </label>
-                            <input type="text" id="admin-transfer-cuit" value="${transfer.cuit || ''}" placeholder="Ej: 20-12345678-9" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; outline: none;">
+
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 8px;">
+                                <div>
+                                    <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 2px;">ALIAS:</label>
+                                    <input type="text" id="admin-transfer-alias" value="${transfer.alias || ''}" placeholder="Ej: VENUS.PULMON.METRO" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.8rem; font-weight: 700; color: #0f172a; outline: none;">
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 2px;">CBU / CVU:</label>
+                                    <input type="text" id="admin-transfer-cbu" value="${transfer.cbu || ''}" placeholder="Ej: 07200489..." style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.8rem; font-family: monospace; color: #0f172a; outline: none;">
+                                </div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 8px;">
+                                <div>
+                                    <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 2px;">Banco / Entidad:</label>
+                                    <input type="text" id="admin-transfer-bank" value="${transfer.bank || ''}" placeholder="Ej: Banco Santander" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.8rem; color: #0f172a; outline: none;">
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 2px;">Titular:</label>
+                                    <input type="text" id="admin-transfer-titular" value="${transfer.titular || ''}" placeholder="Ej: Yonatan Lucas Orellana" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.8rem; color: #0f172a; outline: none;">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 2px;">CUIT / CUIL:</label>
+                                <input type="text" id="admin-transfer-cuit" value="${transfer.cuit || ''}" placeholder="Ej: 20-35281538-2" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.8rem; color: #0f172a; outline: none;">
+                            </div>
+                        </div>
+
+                        <!-- CUENTA 2: REVENTA / PINTURERÍA / CARRITO MIXTO (CECILIA) -->
+                        <div style="background: #fdf4ff; border: 1.5px solid #f0abfc; border-radius: 12px; padding: 1rem;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+                                <div style="font-size: 0.82rem; font-weight: 800; color: #86198f; display: flex; align-items: center; gap: 6px;">
+                                    <span class="material-symbols-outlined" style="color: #a21caf; font-size: 18px;">format_paint</span>
+                                    <span>Cuenta Pinturería, Reventa &amp; Carrito Mixto</span>
+                                </div>
+                                <span style="font-size: 0.68rem; font-weight: 800; background: #fae8ff; color: #86198f; padding: 2px 8px; border-radius: 6px;">Prioridad Checkout Mixto</span>
+                            </div>
+
+                            <label style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700; color: #0f172a; cursor: pointer; background: #ffffff; border: 1px solid #f0abfc; padding: 6px 10px; border-radius: 8px; margin-bottom: 10px;">
+                                <input type="checkbox" id="admin-transfer-cecilia-active" ${transferCecilia.active !== false ? 'checked' : ''} style="width: 16px; height: 16px; accent-color: #a21caf; cursor: pointer;">
+                                <span>Habilitar para Pinturería y Carritos Mixtos</span>
+                            </label>
+
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 8px;">
+                                <div>
+                                    <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 2px;">ALIAS:</label>
+                                    <input type="text" id="admin-transfer-cecilia-alias" value="${transferCecilia.alias || ''}" placeholder="Ej: latarima.deco" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.8rem; font-weight: 700; color: #0f172a; outline: none;">
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 2px;">CBU / CVU:</label>
+                                    <input type="text" id="admin-transfer-cecilia-cbu" value="${transferCecilia.cbu || ''}" placeholder="Ej: 00000031..." style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.8rem; font-family: monospace; color: #0f172a; outline: none;">
+                                </div>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-bottom: 8px;">
+                                <div>
+                                    <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 2px;">Banco / Entidad:</label>
+                                    <input type="text" id="admin-transfer-cecilia-bank" value="${transferCecilia.bank || ''}" placeholder="Ej: Mercado Pago" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.8rem; color: #0f172a; outline: none;">
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 2px;">Titular:</label>
+                                    <input type="text" id="admin-transfer-cecilia-titular" value="${transferCecilia.titular || ''}" placeholder="Ej: Cecilia Beatriz Cerón" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.8rem; color: #0f172a; outline: none;">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 2px;">CUIT / CUIL:</label>
+                                <input type="text" id="admin-transfer-cecilia-cuit" value="${transferCecilia.cuit || ''}" placeholder="Ej: 27-28767339-1" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.8rem; color: #0f172a; outline: none;">
+                            </div>
                         </div>
 
                     </div>
@@ -772,6 +823,13 @@
         const transferTitular = document.getElementById('admin-transfer-titular')?.value.trim() || '';
         const transferCuit = document.getElementById('admin-transfer-cuit')?.value.trim() || '';
 
+        const transferCeciliaActive = document.getElementById('admin-transfer-cecilia-active')?.checked || false;
+        const transferCeciliaAlias = document.getElementById('admin-transfer-cecilia-alias')?.value.trim() || '';
+        const transferCeciliaCbu = document.getElementById('admin-transfer-cecilia-cbu')?.value.trim() || '';
+        const transferCeciliaBank = document.getElementById('admin-transfer-cecilia-bank')?.value.trim() || '';
+        const transferCeciliaTitular = document.getElementById('admin-transfer-cecilia-titular')?.value.trim() || '';
+        const transferCeciliaCuit = document.getElementById('admin-transfer-cecilia-cuit')?.value.trim() || '';
+
         const newConfig = {
             transfer: {
                 active: transferActive,
@@ -780,6 +838,14 @@
                 bank: transferBank,
                 titular: transferTitular,
                 cuit: transferCuit
+            },
+            transferCecilia: {
+                active: transferCeciliaActive,
+                alias: transferCeciliaAlias,
+                cbu: transferCeciliaCbu,
+                bank: transferCeciliaBank,
+                titular: transferCeciliaTitular,
+                cuit: transferCeciliaCuit
             },
             mercadopago: {
                 active: mpActive,

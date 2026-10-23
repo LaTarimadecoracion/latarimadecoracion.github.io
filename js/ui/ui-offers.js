@@ -2063,13 +2063,57 @@
         const formattedOfferPrice = formatCurr(totalOfferVal);
         
         const payConf = window.sessionPaymentConfig || (localStorage.getItem('sessionPaymentConfig') ? JSON.parse(localStorage.getItem('sessionPaymentConfig')) : null) || {};
-        const transferConf = payConf.transfer || {};
+
+        // Helper para resolver el rubro de un producto/item
+        const getItemRubro = (item) => {
+            if (!item) return 'carpinteria';
+            if (item.rubro) return String(item.rubro).toLowerCase().trim();
+            const catId = item.category || item.categoryId || '';
+            if (catId && window.sessionProducts) {
+                const foundCat = window.sessionProducts.find(c => String(c.id).toLowerCase() === String(catId).toLowerCase() || String(c.name).toLowerCase() === String(catId).toLowerCase());
+                if (foundCat && foundCat.rubro) return String(foundCat.rubro).toLowerCase().trim();
+            }
+            if (catId && window.categoriesData) {
+                const foundCat = window.categoriesData.find(c => String(c.id).toLowerCase() === String(catId).toLowerCase() || String(c.name).toLowerCase() === String(catId).toLowerCase());
+                if (foundCat && foundCat.rubro) return String(foundCat.rubro).toLowerCase().trim();
+            }
+            return 'carpinteria';
+        };
+
+        // Evaluar si es carrito mixto o reventa (pinturería / otros rubros)
+        let isResaleOrMixed = false;
+        let transferAccountDesc = 'Cuenta Oficial Taller de Carpintería';
+
+        if (productContext?.cartShippingContext?.cartItems && productContext.cartShippingContext.cartItems.length > 0) {
+            const items = productContext.cartShippingContext.cartItems;
+            const hasNonCarpinteria = items.some(it => {
+                const r = getItemRubro(it);
+                return r && r !== 'carpinteria';
+            });
+            if (hasNonCarpinteria) {
+                isResaleOrMixed = true;
+                const hasCarpinteria = items.some(it => getItemRubro(it) === 'carpinteria');
+                transferAccountDesc = hasCarpinteria
+                    ? 'Cuenta Oficial Reventa / Pedido Mixto'
+                    : 'Cuenta Oficial Pinturería / Reventa';
+            }
+        } else {
+            const offerRubro = getItemRubro(offer);
+            if (offerRubro && offerRubro !== 'carpinteria') {
+                isResaleOrMixed = true;
+                transferAccountDesc = 'Cuenta Oficial Pinturería / Reventa';
+            }
+        }
+
+        const transferConf = (isResaleOrMixed && payConf.transferCecilia && payConf.transferCecilia.active !== false)
+            ? payConf.transferCecilia
+            : (payConf.transfer || {});
         
-        const alias = transferConf.alias || 'VENUS.PULMON.METRO';
-        const cbu = transferConf.cbu || '0720048988000002273736';
-        const bank = transferConf.bank || 'Banco Santander';
-        const titular = transferConf.titular || 'Yonatan Lucas Orellana';
-        const cuit = transferConf.cuit || '20-35281538-2';
+        const alias = transferConf.alias || (isResaleOrMixed ? 'latarima.deco' : 'VENUS.PULMON.METRO');
+        const cbu = transferConf.cbu || (isResaleOrMixed ? '0000003100152918804776' : '0720048988000002273736');
+        const bank = transferConf.bank || (isResaleOrMixed ? 'Mercado Pago' : 'Banco Santander');
+        const titular = transferConf.titular || (isResaleOrMixed ? 'Cecilia Beatriz Cerón' : 'Yonatan Lucas Orellana');
+        const cuit = transferConf.cuit || (isResaleOrMixed ? '27-28767339-1' : '20-35281538-2');
 
         const overlay = document.createElement('div');
         overlay.id = 'offer-payment-modal-overlay';
@@ -2332,7 +2376,7 @@
                             <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.78rem; color: #166534; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
                                 <div style="font-weight: 800; display: flex; align-items: center; gap: 6px;">
                                     <span class="material-symbols-outlined" style="font-size: 18px; color: #16a34a;">verified</span>
-                                    <span>Pago por Transferencia Bancaria Directa</span>
+                                    <span>Pago por Transferencia Bancaria Directa (${transferAccountDesc})</span>
                                 </div>
                                 <span style="font-weight: 800; color: #15803d; background: #ffffff; padding: 2px 8px; border-radius: 6px; font-size: 0.7rem; border: 1px solid #86efac;">Sin Recargo (0% Costo Adicional)</span>
                             </div>
@@ -2340,7 +2384,7 @@
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; width: 100%; box-sizing: border-box; margin-top: 4px;">
                                 <div style="background: #f8fafc; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 0.85rem 1rem; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px; text-align: center; align-items: center; justify-content: space-between;">
                                     <div style="width: 100%;">
-                                        <div style="font-size: 0.65rem; color: #64748b; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">ALIAS (SANTANDER / MP)</div>
+                                        <div style="font-size: 0.65rem; color: #64748b; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">ALIAS (${isResaleOrMixed ? 'MERCADO PAGO' : 'SANTANDER'})</div>
                                         <div style="font-size: 1.1rem; font-weight: 900; color: #0f172a; font-family: monospace; margin-top: 2px; letter-spacing: 0.5px; word-break: break-all;">${alias}</div>
                                     </div>
                                     <button type="button" id="btn-copy-alias" style="background: #0f172a; color: #ffffff; border: none; border-radius: 8px; padding: 7px 14px; font-weight: 700; font-size: 0.78rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; max-width: 150px; box-sizing: border-box; box-shadow: 0 2px 6px rgba(15,23,42,0.12); margin: 0 auto;">

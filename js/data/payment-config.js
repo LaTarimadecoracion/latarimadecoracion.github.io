@@ -11,6 +11,14 @@ window.sessionPaymentConfig = {
         "titular": "Yonatan Lucas Orellana",
         "cuit": "20-35281538-2"
     },
+    "transferCecilia": {
+        "active": true,
+        "alias": "latarima.deco",
+        "cbu": "0000003100152918804776",
+        "bank": "Mercado Pago",
+        "titular": "Cecilia Beatriz Cerón",
+        "cuit": "27-28767339-1"
+    },
     "mercadopago": {
         "active": false,
         "mode": "sandbox",

@@ -30,10 +30,10 @@ window.cajonesConfig = {
             "max_largo": 244,
             "max_ancho": 124,
             "peso_placa": 35,
-            "costo_placa": 35000,
-            "costo_m2": 11568,
+            "costo_placa": 40000,
+            "costo_m2": 13221,
             "margen_pct": 140,
-            "precio_m2": 27763,
+            "precio_m2": 31730,
             "espesores_texto": "18 mm",
             "espesores_disponibles": [
                 "18 mm"
@@ -361,6 +361,7 @@ window.cajonesConfig = {
         "precio_armado_taller": 6000,
         "desperdicio_pct": 10,
         "minimo_cajon": 1000,
+        "redondeo_paso": 500
     },
     "logistica": {
         "flex_max_suma_lados": 150,
