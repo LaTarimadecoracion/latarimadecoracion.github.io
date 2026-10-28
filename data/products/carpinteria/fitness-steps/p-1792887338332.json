@@ -1,0 +1,59 @@
+{
+  "id": "1792887338332",
+  "title": "Step Funcional - Gym Plataforma Fitness Cajón - Escalón",
+  "description": "Publicación importada desde Mercado Libre (MLA2180486792).",
+  "video": "",
+  "image": "img/borrador/portada-imagen.webp",
+  "acabados_groups": [
+    {
+      "name": "Estándar",
+      "images": [
+        "img/borrador/portada-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "name": "Medida Única",
+          "price": 30000,
+          "stock": 987,
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2180486792"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla2180486792",
+    "step",
+    "funcional",
+    "plataforma",
+    "fitness",
+    "cajón",
+    "escalón"
+  ],
+  "last_modified": 1792887338332,
+  "optional_variant": null,
+  "primaryCatId": "Steps",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338332,
+      "details": "Importado como borrador desde Mercado Libre (MLA2180486792)"
+    }
+  ],
+  "views": 0,
+  "paymentConfig": {
+    "mode": "store",
+    "showBuyButton": true,
+    "showCartButton": true
+  },
+  "shippingConfig": {
+    "mode": "both"
+  },
+  "stock": 987,
+  "categories": [
+    "Steps"
+  ],
+  "rubro": "carpinteria",
+  "subcategoria": "fitness"
+}

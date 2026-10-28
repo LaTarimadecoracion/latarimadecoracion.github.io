@@ -1,0 +1,58 @@
+{
+  "id": "1792887338341",
+  "title": "Mesa Mesita Auxiliar Matera Plegable",
+  "description": "Publicación importada desde Mercado Libre (MLA3936714566).",
+  "video": "",
+  "image": "img/borrador/portada-imagen.webp",
+  "acabados_groups": [
+    {
+      "name": "Estándar",
+      "images": [
+        "img/borrador/portada-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "name": "Medida Única",
+          "price": 0,
+          "stock": 1,
+          "link": "https://articulo.mercadolibre.com.ar/MLA-3936714566"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla3936714566",
+    "mesa",
+    "mesita",
+    "auxiliar",
+    "matera",
+    "plegable"
+  ],
+  "last_modified": 1792887338338,
+  "optional_variant": null,
+  "primaryCatId": "Mesas-madera",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338338,
+      "details": "Importado como borrador desde Mercado Libre (MLA3936714566)"
+    }
+  ],
+  "views": 0,
+  "paymentConfig": {
+    "mode": "store",
+    "showBuyButton": true,
+    "showCartButton": true
+  },
+  "shippingConfig": {
+    "mode": "both"
+  },
+  "stock": 1,
+  "categories": [
+    "Mesas-madera"
+  ],
+  "rubro": "carpinteria",
+  "subcategoria": "plegables-materas"
+}

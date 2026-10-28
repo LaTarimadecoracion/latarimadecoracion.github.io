@@ -1,0 +1,60 @@
+{
+  "id": "1792887338352",
+  "title": "Platos Asado Madera Algarrobo Tablita Redonda Calada 20 Cm",
+  "description": "Publicación importada desde Mercado Libre (MLA3993235002).",
+  "video": "",
+  "image": "img/borrador/portada-imagen.webp",
+  "acabados_groups": [
+    {
+      "name": "Estándar",
+      "images": [
+        "img/borrador/portada-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "name": "Medida Única",
+          "price": 12000,
+          "stock": 5,
+          "link": "https://articulo.mercadolibre.com.ar/MLA-3993235002"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla3993235002",
+    "platos",
+    "asado",
+    "madera",
+    "algarrobo",
+    "tablita",
+    "redonda",
+    "calada"
+  ],
+  "last_modified": 1792887338345,
+  "optional_variant": null,
+  "primaryCatId": "productos-algarrobo",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338345,
+      "details": "Importado como borrador desde Mercado Libre (MLA3993235002)"
+    }
+  ],
+  "views": 0,
+  "paymentConfig": {
+    "mode": "store",
+    "showBuyButton": true,
+    "showCartButton": true
+  },
+  "shippingConfig": {
+    "mode": "both"
+  },
+  "stock": 5,
+  "categories": [
+    "productos-algarrobo"
+  ],
+  "rubro": "carpinteria",
+  "subcategoria": "platos-asado"
+}

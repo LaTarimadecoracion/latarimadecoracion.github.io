@@ -1,0 +1,60 @@
+{
+  "id": "1792887338340",
+  "shortId": "3S",
+  "title": "Ménsula Madera 50x50cm - Para Escritorios Nórdicos",
+  "description": "Publicación importada desde Mercado Libre (MLA3345915146).",
+  "image": "img/repisas-estantes/mnsula-madera-50x50cm-para-escritorios-nrdicos/1792896633807-imagenwebp.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "",
+      "description": "",
+      "cover_image": "img/repisas-estantes/mnsula-madera-50x50cm-para-escritorios-nrdicos/1792896633807-imagenwebp.webp",
+      "images_list": [
+        "img/repisas-estantes/mnsula-madera-50x50cm-para-escritorios-nrdicos/1792896633807-imagenwebp.webp"
+      ],
+      "medidas_variants": [],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla3345915146",
+    "ménsula",
+    "madera",
+    "50x50cm",
+    "para",
+    "escritorios",
+    "nórdicos"
+  ],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1792896633811,
+  "primaryCatId": "Estantes",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338337,
+      "details": "Importado como borrador desde Mercado Libre (MLA3345915146)"
+    }
+  ],
+  "categories": [
+    "carpinteria-todos",
+    "Estantes"
+  ],
+  "rubro": "carpinteria"
+}

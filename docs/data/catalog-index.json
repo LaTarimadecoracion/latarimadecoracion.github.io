@@ -1,14 +1,13 @@
 [
   {
     "id": "51",
-    "shortId": null,
+    "shortId": "3Q",
     "title": "Baranda: Desmontable Clásica",
     "rubro": "carpinteria",
     "primaryCatId": "Barandas",
     "categories": [
       "carpinteria-todos",
-      "Barandas",
-      "camas-madera-pino"
+      "Barandas"
     ],
     "subcategoria": "",
     "price": 60000,
@@ -72,15 +71,13 @@
   },
   {
     "id": "52",
-    "shortId": null,
+    "shortId": "3S",
     "title": "Baranda: Desmontable - Estilo Montessori",
     "rubro": "carpinteria",
     "primaryCatId": "Barandas",
     "categories": [
       "carpinteria-todos",
-      "Barandas",
-      "cunas-madera-pino",
-      "camas-madera-pino"
+      "Barandas"
     ],
     "subcategoria": "",
     "price": 60000,
@@ -419,15 +416,13 @@
   },
   {
     "id": "58",
-    "shortId": null,
+    "shortId": "3Q",
     "title": "Baranda Fija: Montessori",
     "rubro": "carpinteria",
     "primaryCatId": "Barandas",
     "categories": [
       "carpinteria-todos",
-      "Barandas",
-      "cunas-madera-pino",
-      "camas-madera-pino"
+      "Barandas"
     ],
     "subcategoria": "",
     "price": 15000,
@@ -581,59 +576,6 @@
     "file": "data/products/carpinteria/bazar-cocina/p-42.json"
   },
   {
-    "id": "43",
-    "shortId": null,
-    "title": "Verdulero Clasico",
-    "rubro": "carpinteria",
-    "primaryCatId": "bazar-cocina",
-    "categories": [
-      "carpinteria-todos",
-      "Organizadores",
-      "bazar-cocina",
-      "cajones-madera"
-    ],
-    "subcategoria": "",
-    "price": 15000,
-    "image": "img/organizadores/estantes-montessori/1.webp",
-    "tags": [
-      "verdulero",
-      "verduras",
-      "organizar",
-      "mueble de cocina",
-      "cosina",
-      "frutas",
-      "frutero",
-      "verduleros",
-      "verdulero clasico",
-      "verdulero madera",
-      "verdulero pino",
-      "cocina",
-      "cajones",
-      "verdulería",
-      "frutería",
-      "organizador cocina",
-      "mueble cocina",
-      "carro verdulero",
-      "berdulero",
-      "berdulería",
-      "verdulero de pino",
-      "verdulero de madera",
-      "verdulería de cocina",
-      "cesta de verduras",
-      "cajonera de pino",
-      "carro de cocina",
-      "mueble para verduras",
-      "cajon verdulero",
-      "organizacion de alimentos",
-      "despensa de pino",
-      "verdulero rustico",
-      "verdulero con cajones",
-      "cesta de frutas"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/bazar-cocina/p-43.json"
-  },
-  {
     "id": "44",
     "shortId": null,
     "title": "Verdule para Mesada",
@@ -687,76 +629,6 @@
     ],
     "visible": true,
     "file": "data/products/carpinteria/bazar-cocina/p-44.json"
-  },
-  {
-    "id": "47",
-    "shortId": null,
-    "title": "Verdulero x3",
-    "rubro": "carpinteria",
-    "primaryCatId": "bazar-cocina",
-    "categories": [
-      "carpinteria-todos",
-      "Organizadores",
-      "bazar-cocina",
-      "cajones-madera"
-    ],
-    "subcategoria": "",
-    "price": 35000,
-    "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
-    "tags": [
-      "verdulero",
-      "carpintería",
-      "madera",
-      "pino",
-      "carpinteria",
-      "rustico",
-      "natural",
-      "mueble",
-      "hogar",
-      "casa",
-      "decoracion",
-      "calidad",
-      "diseño",
-      "artesanal",
-      "comprar",
-      "tienda",
-      "envio",
-      "seguro",
-      "fuerte",
-      "resistente",
-      "lindo",
-      "util",
-      "practico",
-      "duradero",
-      "excelente",
-      "verdulero de madera",
-      "verdulero de pino",
-      "mueble verdulero",
-      "carpintería  verdulero",
-      "carpintería de madera",
-      "carpintería de pino",
-      "mueble carpintería",
-      "carpintería  carpintería",
-      "mueble de madera",
-      "mueble de pino",
-      "carpinteria artesanal",
-      "decoracion del hogar",
-      "mueble rustico",
-      "mueble natural",
-      "hecho a mano",
-      "muebles de calidad",
-      "diseño artesanal",
-      "mueble util",
-      "mueble practico",
-      "muebles para casa",
-      "envios a todo el pais",
-      "directo de fabrica",
-      "fabricacion nacional",
-      "madera de pino",
-      "madera cepillada"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/bazar-cocina/p-47.json"
   },
   {
     "id": "4A",
@@ -4974,10 +4846,13 @@
   {
     "id": "95",
     "shortId": "33",
-    "title": "Cajón / CrossFit & Salto / Hechos a medida",
+    "title": "Cajón Pliométrico 3 en 1 CrossFit & Salto",
     "rubro": "carpinteria",
     "primaryCatId": "cajones-crossfit",
-    "categories": [],
+    "categories": [
+      "carpinteria-todos",
+      "cajones-crossfit"
+    ],
     "subcategoria": "",
     "price": 72000,
     "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
@@ -4998,18 +4873,83 @@
     "file": "data/products/carpinteria/cajones-crossfit/p-95.json"
   },
   {
-    "id": "1792123134173",
-    "shortId": "33",
-    "title": "Pizarra Pizarron Cartel Doble Hoja Grande Vereda",
+    "id": "1792887338328",
+    "shortId": "3S",
+    "title": "Ménsula Madera 45x45cm - Para Escritorios Nórdicos",
     "rubro": "carpinteria",
-    "primaryCatId": "cat-28-mvay9cq6",
-    "categories": [],
+    "primaryCatId": "Estantes",
+    "categories": [
+      "carpinteria-todos",
+      "Estantes"
+    ],
     "subcategoria": "",
-    "price": 25500,
-    "image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
-    "tags": [],
+    "price": 0,
+    "image": "img/repisas-estantes/mnsula-madera-45x45cm-para-escritorios-nrdicos/1792896610285-imagenwebp.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla1248080101",
+      "ménsula",
+      "madera",
+      "45x45cm",
+      "para",
+      "escritorios",
+      "nórdicos"
+    ],
     "visible": true,
-    "file": "data/products/carpinteria/cat-28-mvay9cq6/p-1792123134173.json"
+    "file": "data/products/carpinteria/estantes/p-1792887338328.json"
+  },
+  {
+    "id": "1792887338330",
+    "shortId": "3S",
+    "title": "Mensula De Madera -  La Tarima (30 X 30 Cm) Nordico",
+    "rubro": "carpinteria",
+    "primaryCatId": "Estantes",
+    "categories": [
+      "carpinteria-todos",
+      "Estantes"
+    ],
+    "subcategoria": "",
+    "price": 0,
+    "image": "img/repisas-estantes/mensula-de-madera-la-tarima-30-x-30-cm-nordico/1792896622136-imagenwebp.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla1377475740",
+      "mensula",
+      "madera",
+      "tarima",
+      "nordico"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/estantes/p-1792887338330.json"
+  },
+  {
+    "id": "1792887338340",
+    "shortId": "3S",
+    "title": "Ménsula Madera 50x50cm - Para Escritorios Nórdicos",
+    "rubro": "carpinteria",
+    "primaryCatId": "Estantes",
+    "categories": [
+      "carpinteria-todos",
+      "Estantes"
+    ],
+    "subcategoria": "",
+    "price": 0,
+    "image": "img/repisas-estantes/mnsula-madera-50x50cm-para-escritorios-nrdicos/1792896633807-imagenwebp.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla3345915146",
+      "ménsula",
+      "madera",
+      "50x50cm",
+      "para",
+      "escritorios",
+      "nórdicos"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/estantes/p-1792887338340.json"
   },
   {
     "id": "24",
@@ -5079,6 +5019,547 @@
     ],
     "visible": true,
     "file": "data/products/carpinteria/vinotecas/p-24.json"
+  },
+  {
+    "id": "43",
+    "shortId": "3U",
+    "title": "Verdulero Clasico",
+    "rubro": "carpinteria",
+    "primaryCatId": "Organizadores",
+    "categories": [
+      "Organizadores"
+    ],
+    "subcategoria": "",
+    "price": 15000,
+    "image": "img/organizadores/estantes-montessori/1.webp",
+    "tags": [
+      "verdulero",
+      "verduras",
+      "organizar",
+      "mueble de cocina",
+      "cosina",
+      "frutas",
+      "frutero",
+      "verduleros",
+      "verdulero clasico",
+      "verdulero madera",
+      "verdulero pino",
+      "cocina",
+      "cajones",
+      "verdulería",
+      "frutería",
+      "organizador cocina",
+      "mueble cocina",
+      "carro verdulero",
+      "berdulero",
+      "berdulería",
+      "verdulero de pino",
+      "verdulero de madera",
+      "verdulería de cocina",
+      "cesta de verduras",
+      "cajonera de pino",
+      "carro de cocina",
+      "mueble para verduras",
+      "cajon verdulero",
+      "organizacion de alimentos",
+      "despensa de pino",
+      "verdulero rustico",
+      "verdulero con cajones",
+      "cesta de frutas"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/organizadores/p-43.json"
+  },
+  {
+    "id": "47",
+    "shortId": "3U",
+    "title": "Verdulero x3",
+    "rubro": "carpinteria",
+    "primaryCatId": "Organizadores",
+    "categories": [
+      "Organizadores"
+    ],
+    "subcategoria": "",
+    "price": 35000,
+    "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
+    "tags": [
+      "verdulero",
+      "carpintería",
+      "madera",
+      "pino",
+      "carpinteria",
+      "rustico",
+      "natural",
+      "mueble",
+      "hogar",
+      "casa",
+      "decoracion",
+      "calidad",
+      "diseño",
+      "artesanal",
+      "comprar",
+      "tienda",
+      "envio",
+      "seguro",
+      "fuerte",
+      "resistente",
+      "lindo",
+      "util",
+      "practico",
+      "duradero",
+      "excelente",
+      "verdulero de madera",
+      "verdulero de pino",
+      "mueble verdulero",
+      "carpintería  verdulero",
+      "carpintería de madera",
+      "carpintería de pino",
+      "mueble carpintería",
+      "carpintería  carpintería",
+      "mueble de madera",
+      "mueble de pino",
+      "carpinteria artesanal",
+      "decoracion del hogar",
+      "mueble rustico",
+      "mueble natural",
+      "hecho a mano",
+      "muebles de calidad",
+      "diseño artesanal",
+      "mueble util",
+      "mueble practico",
+      "muebles para casa",
+      "envios a todo el pais",
+      "directo de fabrica",
+      "fabricacion nacional",
+      "madera de pino",
+      "madera cepillada"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/organizadores/p-47.json"
+  },
+  {
+    "id": "1792887338354",
+    "shortId": null,
+    "title": "4 Maceteros Canasta Organizadores En Junco",
+    "rubro": "carpinteria",
+    "primaryCatId": "Organizadores",
+    "categories": [
+      "Organizadores"
+    ],
+    "subcategoria": "canastos-junco",
+    "price": 88000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla4087248102",
+      "maceteros",
+      "canasta",
+      "organizadores",
+      "junco"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/organizadores/p-1792887338354.json"
+  },
+  {
+    "id": "1792887338329",
+    "shortId": null,
+    "title": "Step Madera La Tarima 50x50 Cm Plataforma Fitness",
+    "rubro": "carpinteria",
+    "primaryCatId": "Steps",
+    "categories": [
+      "Steps"
+    ],
+    "subcategoria": "fitness",
+    "price": 55000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla1375418215",
+      "step",
+      "madera",
+      "tarima",
+      "50x50",
+      "plataforma",
+      "fitness"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/fitness-steps/p-1792887338329.json"
+  },
+  {
+    "id": "1792887338332",
+    "shortId": null,
+    "title": "Step Funcional - Gym Plataforma Fitness Cajón - Escalón",
+    "rubro": "carpinteria",
+    "primaryCatId": "Steps",
+    "categories": [
+      "Steps"
+    ],
+    "subcategoria": "fitness",
+    "price": 30000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla2180486792",
+      "step",
+      "funcional",
+      "plataforma",
+      "fitness",
+      "cajón",
+      "escalón"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/fitness-steps/p-1792887338332.json"
+  },
+  {
+    "id": "1792887338346",
+    "shortId": null,
+    "title": "Mesa Y 2 Sillas Infantil (excelente Calidad)",
+    "rubro": "carpinteria",
+    "primaryCatId": "Juguetes",
+    "categories": [
+      "Juguetes"
+    ],
+    "subcategoria": "mesas-sillas-ninos",
+    "price": 140000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla1998800625",
+      "mesa",
+      "sillas",
+      "infantil",
+      "(excelente",
+      "calidad)"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/rincon-infantil/p-1792887338346.json"
+  },
+  {
+    "id": "1792887338341",
+    "shortId": null,
+    "title": "Mesa Mesita Auxiliar Matera Plegable",
+    "rubro": "carpinteria",
+    "primaryCatId": "Mesas-madera",
+    "categories": [
+      "Mesas-madera"
+    ],
+    "subcategoria": "plegables-materas",
+    "price": 0,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla3936714566",
+      "mesa",
+      "mesita",
+      "auxiliar",
+      "matera",
+      "plegable"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/mesas-madera/p-1792887338341.json"
+  },
+  {
+    "id": "1792887338343",
+    "shortId": null,
+    "title": "Mesa Mesita Auxiliar Matera Plegable",
+    "rubro": "carpinteria",
+    "primaryCatId": "Mesas-madera",
+    "categories": [
+      "Mesas-madera"
+    ],
+    "subcategoria": "plegables-materas",
+    "price": 30000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla2073922617",
+      "mesa",
+      "mesita",
+      "auxiliar",
+      "matera",
+      "plegable"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/mesas-madera/p-1792887338343.json"
+  },
+  {
+    "id": "1792887338347",
+    "shortId": null,
+    "title": "Mesa Mesita Auxiliar Matera Plegable",
+    "rubro": "carpinteria",
+    "primaryCatId": "Mesas-madera",
+    "categories": [
+      "Mesas-madera"
+    ],
+    "subcategoria": "plegables-materas",
+    "price": 30000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla2074250953",
+      "mesa",
+      "mesita",
+      "auxiliar",
+      "matera",
+      "plegable"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/mesas-madera/p-1792887338347.json"
+  },
+  {
+    "id": "1792887338348",
+    "shortId": null,
+    "title": "Mesa Plegable Madera Pino Redonda",
+    "rubro": "carpinteria",
+    "primaryCatId": "Mesas-madera",
+    "categories": [
+      "Mesas-madera"
+    ],
+    "subcategoria": "mesas-redondas",
+    "price": 50000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla2083657243",
+      "mesa",
+      "plegable",
+      "madera",
+      "pino",
+      "redonda"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/mesas-madera/p-1792887338348.json"
+  },
+  {
+    "id": "1792887338350",
+    "shortId": null,
+    "title": "Mesa Mesita Auxiliar Matera Plegable",
+    "rubro": "carpinteria",
+    "primaryCatId": "Mesas-madera",
+    "categories": [
+      "Mesas-madera"
+    ],
+    "subcategoria": "plegables-materas",
+    "price": 30000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla3936801982",
+      "mesa",
+      "mesita",
+      "auxiliar",
+      "matera",
+      "plegable"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/mesas-madera/p-1792887338350.json"
+  },
+  {
+    "id": "1792887338333",
+    "shortId": null,
+    "title": "Deck Base Macetas Madera (30 X 40 Cm)",
+    "rubro": "carpinteria",
+    "primaryCatId": "jardin-patio",
+    "categories": [
+      "jardin-patio"
+    ],
+    "subcategoria": "decks-macetas",
+    "price": 14500,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla3322888876",
+      "deck",
+      "base",
+      "macetas",
+      "madera"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/jardin-patio/p-1792887338333.json"
+  },
+  {
+    "id": "1792887338338",
+    "shortId": null,
+    "title": "Deck Base Macetas Madera (50 X 20 Cm)",
+    "rubro": "carpinteria",
+    "primaryCatId": "jardin-patio",
+    "categories": [
+      "jardin-patio"
+    ],
+    "subcategoria": "decks-macetas",
+    "price": 8500,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla2149413391",
+      "deck",
+      "base",
+      "macetas",
+      "madera"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/jardin-patio/p-1792887338338.json"
+  },
+  {
+    "id": "1792887338345",
+    "shortId": null,
+    "title": "Deck Base Macetas Madera (80 X 40 Cm)",
+    "rubro": "carpinteria",
+    "primaryCatId": "jardin-patio",
+    "categories": [
+      "jardin-patio"
+    ],
+    "subcategoria": "decks-macetas",
+    "price": 55000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla3941452422",
+      "deck",
+      "base",
+      "macetas",
+      "madera"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/jardin-patio/p-1792887338345.json"
+  },
+  {
+    "id": "1792887338342",
+    "shortId": null,
+    "title": "Mesa  Plegable Playera Jardín (2 Modelos)",
+    "rubro": "carpinteria",
+    "primaryCatId": "jardin-patio",
+    "categories": [
+      "jardin-patio"
+    ],
+    "subcategoria": "mesas-jardin",
+    "price": 32999,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla1475679709",
+      "mesa",
+      "plegable",
+      "playera",
+      "jardín",
+      "modelos)"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/jardin-patio/p-1792887338342.json"
+  },
+  {
+    "id": "1792887338351",
+    "shortId": null,
+    "title": "Mesa De Madera Plegable Jardín Camping",
+    "rubro": "carpinteria",
+    "primaryCatId": "jardin-patio",
+    "categories": [
+      "jardin-patio"
+    ],
+    "subcategoria": "mesas-camping",
+    "price": 60000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla3946285696",
+      "mesa",
+      "madera",
+      "plegable",
+      "jardín",
+      "camping"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/jardin-patio/p-1792887338351.json"
+  },
+  {
+    "id": "1792887338335",
+    "shortId": null,
+    "title": "Fanal Madera Pino Por Tres Unidades",
+    "rubro": "carpinteria",
+    "primaryCatId": "Hogar",
+    "categories": [
+      "Hogar"
+    ],
+    "subcategoria": "fanales",
+    "price": 24500,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla2164674452",
+      "fanal",
+      "madera",
+      "pino",
+      "tres",
+      "unidades"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/hogar/p-1792887338335.json"
+  },
+  {
+    "id": "1792887338352",
+    "shortId": null,
+    "title": "Platos Asado Madera Algarrobo Tablita Redonda Calada 20 Cm",
+    "rubro": "carpinteria",
+    "primaryCatId": "productos-algarrobo",
+    "categories": [
+      "productos-algarrobo"
+    ],
+    "subcategoria": "platos-asado",
+    "price": 12000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla3993235002",
+      "platos",
+      "asado",
+      "madera",
+      "algarrobo",
+      "tablita",
+      "redonda",
+      "calada"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/productos-algarrobo/p-1792887338352.json"
+  },
+  {
+    "id": "1792887338339",
+    "shortId": null,
+    "title": "Podio De Premiación Profesional - 3 Niveles",
+    "rubro": "carpinteria",
+    "primaryCatId": "Podios",
+    "categories": [
+      "Podios"
+    ],
+    "subcategoria": "profesionales",
+    "price": 500000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla3246798562",
+      "podio",
+      "premiación",
+      "profesional",
+      "niveles"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/podios/p-1792887338339.json"
   },
   {
     "id": "L1",
@@ -5166,12 +5647,30 @@
     "file": "data/products/herrajes/tornillos/p-N1.json"
   },
   {
+    "id": "1792123134173",
+    "shortId": null,
+    "title": "Pizarra Pizarron Cartel Doble Hoja Grande Vereda",
+    "rubro": "carpinteria",
+    "primaryCatId": "cat-28-mvay9cq6",
+    "categories": [
+      "cat-28-mvay9cq6"
+    ],
+    "subcategoria": "pizarras",
+    "price": 31000,
+    "image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
+    "tags": [],
+    "visible": true,
+    "file": "data/products/carpinteria/cat-28-mvay9cq6/p-1792123134173.json"
+  },
+  {
     "id": "1792154576619",
     "shortId": null,
     "title": "Pizarra Pizarron Cartel Doble Hoja",
     "rubro": "carpinteria",
     "primaryCatId": "cat-28-mvay9cq6",
-    "categories": [],
+    "categories": [
+      "cat-28-mvay9cq6"
+    ],
     "subcategoria": "",
     "price": 23000,
     "image": "img/pizarra-pizarron-cartel-doble-hoja/1792154575692-1-imagen.webp",
@@ -5185,7 +5684,9 @@
     "title": "Pizarra Pizarron Cartel Para Colgar 95x54",
     "rubro": "carpinteria",
     "primaryCatId": "cat-28-mvay9cq6",
-    "categories": [],
+    "categories": [
+      "cat-28-mvay9cq6"
+    ],
     "subcategoria": "",
     "price": 20000,
     "image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
@@ -5194,31 +5695,27 @@
     "file": "data/products/carpinteria/cat-28-mvay9cq6/p-S3.json"
   },
   {
-    "id": "1792154736796",
+    "id": "1792887338334",
     "shortId": null,
-    "title": "Canasto Ramillero/paragüero De Mimbre",
+    "title": "Pizarra Pizarron Para Colgar X3",
     "rubro": "carpinteria",
-    "primaryCatId": "Hogar",
-    "categories": [],
-    "subcategoria": "",
-    "price": 42000,
-    "image": "img/canasto-ramillero-paraguero-de-mimbre/1792154735891-1-imagen.webp",
-    "tags": [],
+    "primaryCatId": "cat-28-mvay9cq6",
+    "categories": [
+      "cat-28-mvay9cq6"
+    ],
+    "subcategoria": "pizarras",
+    "price": 25000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla3946726502",
+      "pizarra",
+      "pizarron",
+      "para",
+      "colgar"
+    ],
     "visible": true,
-    "file": "data/products/carpinteria/hogar/p-1792154736796.json"
-  },
-  {
-    "id": "6J",
-    "shortId": "36",
-    "title": "Canasta Cesta Organizador De Mimbre Con Tapa",
-    "rubro": "carpinteria",
-    "primaryCatId": "Organizadores",
-    "categories": [],
-    "subcategoria": "",
-    "price": 42000,
-    "image": "https://http2.mlstatic.com/D_NQ_NP_2X_983994-MLA117974180406_102026-O.webp",
-    "tags": [],
-    "visible": true,
-    "file": "data/products/carpinteria/organizadores/p-6J.json"
+    "file": "data/products/carpinteria/cat-28-mvay9cq6/p-1792887338334.json"
   }
 ]

@@ -2,6 +2,28 @@
 // --- MODULE: ADJUSTMENTS & SETTINGS ---
 
 (function() {
+    
+    window.switchSettingsTab = function(targetTabId) {
+        document.querySelectorAll('.settings-tab-panel').forEach(p => p.style.display = 'none');
+        document.querySelectorAll('.settings-nav-tab').forEach(t => {
+            t.classList.remove('active');
+            t.style.borderBottomColor = 'transparent';
+            t.style.fontWeight = '700';
+            t.style.color = 'var(--admin-text-muted)';
+        });
+
+        const activePanel = document.getElementById('settings-' + targetTabId);
+        if (activePanel) activePanel.style.display = 'block';
+
+        const activeBtn = document.querySelector('[data-settings-tab="' + targetTabId + '"]');
+        if (activeBtn) {
+            activeBtn.classList.add('active');
+            activeBtn.style.borderBottomColor = 'var(--admin-accent)';
+            activeBtn.style.fontWeight = '800';
+            activeBtn.style.color = 'var(--admin-text-main)';
+        }
+    };
+
     window.initSettingsAdmin = function() {
         populateSettingsForm();
 

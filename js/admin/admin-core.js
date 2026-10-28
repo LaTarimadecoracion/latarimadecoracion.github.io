@@ -17,7 +17,7 @@
 
     // Admin UX 2.0 - Lógica de Fases, Buscador, Filtros y Paginación
     let currentAdminPhase = 'categories'; // 'categories' o 'products'
-    let currentAdminTab = 'dashboard'; // 'dashboard', 'catalog', 'pages', 'maintenance'
+    let currentAdminTab = 'orders'; // 'dashboard', 'catalog', 'pages', 'maintenance'
     let editingConfigKey = null;
     let selectedCategoryIdForProducts = null; // id de la categoría elegida (ej: 'Barandas')
     let adminCurrentPage = 1;
@@ -48,7 +48,7 @@ function updateAdminUrlTab(tabKey) {
 }
 
 function initAdminUX20() {
-    const mainTabBtn = document.getElementById('tab-btn-dashboard');
+    const mainTabBtn = document.getElementById('tab-btn-orders');
     if (!mainTabBtn) {
         adminUX20Initialized = false;
         return;
@@ -73,7 +73,7 @@ function initAdminUX20() {
     // Leer la pestaña activa inicial desde la URL (?tab=...) o HASH (#tab)
     const urlParams = new URLSearchParams(window.location.search);
     const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
-    const validTabs = ['dashboard', 'settings', 'catalog', 'ml-importer', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
+    const validTabs = ['dashboard', 'settings', 'catalog', 'ml-importer', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
     if (tabFromUrl && validTabs.includes(tabFromUrl)) {
         currentAdminTab = tabFromUrl;
     }
@@ -374,7 +374,7 @@ function renderAdminUX() {
     }
 
     // Control visual de la barra de navegación del panel (V2)
-        const tabs = ['dashboard', 'settings', 'catalog', 'ml-importer', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users'];
+        const tabs = ['orders', 'quotes', 'catalog', 'ml-importer', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'pages', 'settings', 'users'];
         tabs.forEach(tab => {
             const btn = document.getElementById(`tab-btn-${tab}`);
             if (btn) {
@@ -389,7 +389,7 @@ function renderAdminUX() {
         // Ocultar todas las secciones principales y actualizar el título dinámico del Header
         const tabNames = {
             dashboard: { title: 'Panel de Control', icon: 'dashboard' },
-            settings: { title: 'Ajustes del Negocio', icon: 'settings' },
+            settings: { title: 'Configuración General', icon: 'tune' },
             catalog: { title: 'Catálogo de Productos', icon: 'inventory_2' },
             'ml-importer': { title: 'Importador de Mercado Libre', icon: 'storefront' },
             'bulk-edit': { title: 'Editor Masivo de Precios & Productos', icon: 'table_chart' },
@@ -398,9 +398,7 @@ function renderAdminUX() {
             cortes: { title: 'Cortes de Madera & Precios', icon: 'carpenter' },
             cajones: { title: 'Cajones CrossFit & Pliométricos', icon: 'sports_gymnastics' },
             payments: { title: 'Métodos & Pasarelas de Pago', icon: 'payments' },
-            stock: { title: 'Control de Stock & Inventario', icon: 'inventory' },
-            'pc-stock': { title: 'Control de Stock PC (Escáner)', icon: 'desktop_windows' },
-            pages: { title: 'Páginas & Banners', icon: 'view_quilt' },
+            pages: { title: 'Diseño de Páginas', icon: 'view_quilt' },
             orders: { title: 'Gestión de Pedidos', icon: 'description' },
             quotes: { title: 'Generador de Presupuestos', icon: 'request_quote' },
             users: { title: 'Usuarios & Permisos', icon: 'group' }
@@ -423,8 +421,6 @@ function renderAdminUX() {
             cortes: 'admin-cortes-view',
             cajones: 'admin-cajones-view',
             payments: 'admin-payments-view',
-            stock: 'admin-stock-view',
-            'pc-stock': 'admin-pc-stock-view',
             pages: 'admin-pages-view',
             orders: 'admin-orders-view',
             quotes: 'admin-quotes-view',
@@ -473,14 +469,7 @@ function renderAdminUX() {
                 setTimeout(window.initOrdersIframeAutoHeight, 100);
                 setTimeout(window.initOrdersIframeAutoHeight, 500);
             }
-        } else if (currentAdminTab === 'stock') {
-            if (typeof window.initAdminStockNative === 'function') {
-                window.initAdminStockNative();
-            }
-        } else if (currentAdminTab === 'pc-stock') {
-            if (typeof window.initAdminPcStockModule === 'function') {
-                window.initAdminPcStockModule();
-            }
+
         } else if (currentAdminTab === 'quotes') {
             if (typeof window.renderAdminQuotes === 'function') {
                 window.renderAdminQuotes();

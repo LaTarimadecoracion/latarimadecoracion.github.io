@@ -1,0 +1,58 @@
+{
+  "id": "1792887338335",
+  "title": "Fanal Madera Pino Por Tres Unidades",
+  "description": "Publicación importada desde Mercado Libre (MLA2164674452).",
+  "video": "",
+  "image": "img/borrador/portada-imagen.webp",
+  "acabados_groups": [
+    {
+      "name": "Estándar",
+      "images": [
+        "img/borrador/portada-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "name": "Medida Única",
+          "price": 24500,
+          "stock": 2,
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2164674452"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla2164674452",
+    "fanal",
+    "madera",
+    "pino",
+    "tres",
+    "unidades"
+  ],
+  "last_modified": 1792887338334,
+  "optional_variant": null,
+  "primaryCatId": "Hogar",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338334,
+      "details": "Importado como borrador desde Mercado Libre (MLA2164674452)"
+    }
+  ],
+  "views": 0,
+  "paymentConfig": {
+    "mode": "store",
+    "showBuyButton": true,
+    "showCartButton": true
+  },
+  "shippingConfig": {
+    "mode": "both"
+  },
+  "stock": 2,
+  "categories": [
+    "Hogar"
+  ],
+  "rubro": "carpinteria",
+  "subcategoria": "fanales"
+}

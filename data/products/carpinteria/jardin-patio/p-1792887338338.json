@@ -1,0 +1,57 @@
+{
+  "id": "1792887338338",
+  "title": "Deck Base Macetas Madera (50 X 20 Cm)",
+  "description": "Publicación importada desde Mercado Libre (MLA2149413391).",
+  "video": "",
+  "image": "img/borrador/portada-imagen.webp",
+  "acabados_groups": [
+    {
+      "name": "Estándar",
+      "images": [
+        "img/borrador/portada-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "name": "Medida Única",
+          "price": 8500,
+          "stock": 998,
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2149413391"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla2149413391",
+    "deck",
+    "base",
+    "macetas",
+    "madera"
+  ],
+  "last_modified": 1792887338335,
+  "optional_variant": null,
+  "primaryCatId": "jardin-patio",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338335,
+      "details": "Importado como borrador desde Mercado Libre (MLA2149413391)"
+    }
+  ],
+  "views": 0,
+  "paymentConfig": {
+    "mode": "store",
+    "showBuyButton": true,
+    "showCartButton": true
+  },
+  "shippingConfig": {
+    "mode": "both"
+  },
+  "stock": 998,
+  "categories": [
+    "jardin-patio"
+  ],
+  "rubro": "carpinteria",
+  "subcategoria": "decks-macetas"
+}

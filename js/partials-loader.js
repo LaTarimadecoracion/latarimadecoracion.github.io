@@ -31,14 +31,11 @@ window.loadAdminPartialsOnDemand = async function() {
     
     // Carga paralela de todas las vistas modulares del panel admin
     const adminViews = [
-        'partials/admin/view-dashboard.html',
         'partials/admin/view-offers.html',
         'partials/admin/view-shipping.html',
         'partials/admin/view-cortes.html',
         'partials/admin/view-cajones.html',
         'partials/admin/view-payments.html',
-        'partials/admin/view-stock.html',
-        'partials/admin/view-pc-stock.html',
         'partials/admin/view-bulk-edit.html',
         'partials/admin/view-catalog.html',
         'partials/admin/view-ml-importer.html',
@@ -60,8 +57,6 @@ window.loadAdminPartialsOnDemand = async function() {
     await Promise.all([
         ...adminViews.map(url => loadPartial(url, '#admin-main-container', 'beforeend')),
         loadPartial('partials/admin/modal-offer.html', '#view-admin'),
-        loadPartial('partials/admin/modal-stock-edit.html', '#view-admin'),
-        loadPartial('partials/admin/modal-stock-draft.html', '#view-admin'),
         loadPartial('partials/admin/modals-forms.html', 'body')
     ]);
 

@@ -61,7 +61,7 @@ window.sessionProducts = (() => {
         const exists = localList.find(c => c.id === serverCat.id);
         if (!exists) {
             localList.push(serverCat);
-        } else if (serverCat.id === 'cortes-madera') {
+        } else if (serverCat.id === 'cortes-madera' || serverCat.id === 'cajones-madera' || serverCat.id === 'cajones-crossfit') {
             exists.products = serverCat.products;
             exists.name = serverCat.name;
             exists.visible = serverCat.visible;

@@ -1,0 +1,58 @@
+{
+  "id": "1792887338348",
+  "title": "Mesa Plegable Madera Pino Redonda",
+  "description": "Publicación importada desde Mercado Libre (MLA2083657243).",
+  "video": "",
+  "image": "img/borrador/portada-imagen.webp",
+  "acabados_groups": [
+    {
+      "name": "Estándar",
+      "images": [
+        "img/borrador/portada-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "name": "Medida Única",
+          "price": 50000,
+          "stock": 1,
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2083657243"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla2083657243",
+    "mesa",
+    "plegable",
+    "madera",
+    "pino",
+    "redonda"
+  ],
+  "last_modified": 1792887338342,
+  "optional_variant": null,
+  "primaryCatId": "Mesas-madera",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338342,
+      "details": "Importado como borrador desde Mercado Libre (MLA2083657243)"
+    }
+  ],
+  "views": 0,
+  "paymentConfig": {
+    "mode": "store",
+    "showBuyButton": true,
+    "showCartButton": true
+  },
+  "shippingConfig": {
+    "mode": "both"
+  },
+  "stock": 1,
+  "categories": [
+    "Mesas-madera"
+  ],
+  "rubro": "carpinteria",
+  "subcategoria": "mesas-redondas"
+}

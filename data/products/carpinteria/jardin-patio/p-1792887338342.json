@@ -1,0 +1,58 @@
+{
+  "id": "1792887338342",
+  "title": "Mesa  Plegable Playera Jardín (2 Modelos)",
+  "description": "Publicación importada desde Mercado Libre (MLA1475679709).",
+  "video": "",
+  "image": "img/borrador/portada-imagen.webp",
+  "acabados_groups": [
+    {
+      "name": "Estándar",
+      "images": [
+        "img/borrador/portada-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "name": "Medida Única",
+          "price": 32999,
+          "stock": 4,
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1475679709"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla1475679709",
+    "mesa",
+    "plegable",
+    "playera",
+    "jardín",
+    "modelos)"
+  ],
+  "last_modified": 1792887338338,
+  "optional_variant": null,
+  "primaryCatId": "jardin-patio",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338338,
+      "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
+    }
+  ],
+  "views": 0,
+  "paymentConfig": {
+    "mode": "store",
+    "showBuyButton": true,
+    "showCartButton": true
+  },
+  "shippingConfig": {
+    "mode": "both"
+  },
+  "stock": 4,
+  "categories": [
+    "jardin-patio"
+  ],
+  "rubro": "carpinteria",
+  "subcategoria": "mesas-jardin"
+}

@@ -1,0 +1,60 @@
+{
+  "id": "1792887338328",
+  "shortId": "3S",
+  "title": "Ménsula Madera 45x45cm - Para Escritorios Nórdicos",
+  "description": "Publicación importada desde Mercado Libre (MLA1248080101).",
+  "image": "img/repisas-estantes/mnsula-madera-45x45cm-para-escritorios-nrdicos/1792896610285-imagenwebp.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "",
+      "description": "",
+      "cover_image": "img/repisas-estantes/mnsula-madera-45x45cm-para-escritorios-nrdicos/1792896610285-imagenwebp.webp",
+      "images_list": [
+        "img/repisas-estantes/mnsula-madera-45x45cm-para-escritorios-nrdicos/1792896610285-imagenwebp.webp"
+      ],
+      "medidas_variants": [],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla1248080101",
+    "ménsula",
+    "madera",
+    "45x45cm",
+    "para",
+    "escritorios",
+    "nórdicos"
+  ],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1792896610293,
+  "primaryCatId": "Estantes",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338328,
+      "details": "Importado como borrador desde Mercado Libre (MLA1248080101)"
+    }
+  ],
+  "categories": [
+    "carpinteria-todos",
+    "Estantes"
+  ],
+  "rubro": "carpinteria"
+}

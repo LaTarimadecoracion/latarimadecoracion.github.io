@@ -1,0 +1,110 @@
+{
+  "id": "47",
+  "shortId": "3U",
+  "title": "Verdulero x3",
+  "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
+  "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Natural",
+      "description": "",
+      "cover_image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
+      "images_list": [
+        "img/organizadores/verdulero-x3/1780708453865-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Único",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2414802538-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 35000,
+          "cost_price": 35000,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "verdulero",
+    "carpintería",
+    "madera",
+    "pino",
+    "carpinteria",
+    "rustico",
+    "natural",
+    "mueble",
+    "hogar",
+    "casa",
+    "decoracion",
+    "calidad",
+    "diseño",
+    "artesanal",
+    "comprar",
+    "tienda",
+    "envio",
+    "seguro",
+    "fuerte",
+    "resistente",
+    "lindo",
+    "util",
+    "practico",
+    "duradero",
+    "excelente",
+    "verdulero de madera",
+    "verdulero de pino",
+    "mueble verdulero",
+    "carpintería  verdulero",
+    "carpintería de madera",
+    "carpintería de pino",
+    "mueble carpintería",
+    "carpintería  carpintería",
+    "mueble de madera",
+    "mueble de pino",
+    "carpinteria artesanal",
+    "decoracion del hogar",
+    "mueble rustico",
+    "mueble natural",
+    "hecho a mano",
+    "muebles de calidad",
+    "diseño artesanal",
+    "mueble util",
+    "mueble practico",
+    "muebles para casa",
+    "envios a todo el pais",
+    "directo de fabrica",
+    "fabricacion nacional",
+    "madera de pino",
+    "madera cepillada"
+  ],
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1792895684796,
+  "primaryCatId": "Organizadores",
+  "history": [],
+  "rubro": "carpinteria",
+  "views": 0,
+  "categories": [
+    "Organizadores"
+  ]
+}

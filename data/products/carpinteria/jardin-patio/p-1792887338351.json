@@ -1,0 +1,58 @@
+{
+  "id": "1792887338351",
+  "title": "Mesa De Madera Plegable Jardín Camping",
+  "description": "Publicación importada desde Mercado Libre (MLA3946285696).",
+  "video": "",
+  "image": "img/borrador/portada-imagen.webp",
+  "acabados_groups": [
+    {
+      "name": "Estándar",
+      "images": [
+        "img/borrador/portada-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "name": "Medida Única",
+          "price": 60000,
+          "stock": 1,
+          "link": "https://articulo.mercadolibre.com.ar/MLA-3946285696"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla3946285696",
+    "mesa",
+    "madera",
+    "plegable",
+    "jardín",
+    "camping"
+  ],
+  "last_modified": 1792887338344,
+  "optional_variant": null,
+  "primaryCatId": "jardin-patio",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338344,
+      "details": "Importado como borrador desde Mercado Libre (MLA3946285696)"
+    }
+  ],
+  "views": 0,
+  "paymentConfig": {
+    "mode": "store",
+    "showBuyButton": true,
+    "showCartButton": true
+  },
+  "shippingConfig": {
+    "mode": "both"
+  },
+  "stock": 1,
+  "categories": [
+    "jardin-patio"
+  ],
+  "rubro": "carpinteria",
+  "subcategoria": "mesas-camping"
+}

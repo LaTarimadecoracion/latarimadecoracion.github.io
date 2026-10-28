@@ -1,0 +1,59 @@
+{
+  "id": "1792887338329",
+  "title": "Step Madera La Tarima 50x50 Cm Plataforma Fitness",
+  "description": "Publicación importada desde Mercado Libre (MLA1375418215).",
+  "video": "",
+  "image": "img/borrador/portada-imagen.webp",
+  "acabados_groups": [
+    {
+      "name": "Estándar",
+      "images": [
+        "img/borrador/portada-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "name": "Medida Única",
+          "price": 55000,
+          "stock": 964,
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1375418215"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla1375418215",
+    "step",
+    "madera",
+    "tarima",
+    "50x50",
+    "plataforma",
+    "fitness"
+  ],
+  "last_modified": 1792887338329,
+  "optional_variant": null,
+  "primaryCatId": "Steps",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338329,
+      "details": "Importado como borrador desde Mercado Libre (MLA1375418215)"
+    }
+  ],
+  "views": 0,
+  "paymentConfig": {
+    "mode": "store",
+    "showBuyButton": true,
+    "showCartButton": true
+  },
+  "shippingConfig": {
+    "mode": "both"
+  },
+  "stock": 964,
+  "categories": [
+    "Steps"
+  ],
+  "rubro": "carpinteria",
+  "subcategoria": "fitness"
+}

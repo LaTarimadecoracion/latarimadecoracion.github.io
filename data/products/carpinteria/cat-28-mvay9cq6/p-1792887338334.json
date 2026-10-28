@@ -1,0 +1,57 @@
+{
+  "id": "1792887338334",
+  "title": "Pizarra Pizarron Para Colgar X3",
+  "description": "Publicación importada desde Mercado Libre (MLA3946726502).",
+  "video": "",
+  "image": "img/borrador/portada-imagen.webp",
+  "acabados_groups": [
+    {
+      "name": "Estándar",
+      "images": [
+        "img/borrador/portada-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "name": "Medida Única",
+          "price": 25000,
+          "stock": 7,
+          "link": "https://articulo.mercadolibre.com.ar/MLA-3946726502"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla3946726502",
+    "pizarra",
+    "pizarron",
+    "para",
+    "colgar"
+  ],
+  "last_modified": 1792887338333,
+  "optional_variant": null,
+  "primaryCatId": "cat-28-mvay9cq6",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338333,
+      "details": "Importado como borrador desde Mercado Libre (MLA3946726502)"
+    }
+  ],
+  "views": 0,
+  "paymentConfig": {
+    "mode": "store",
+    "showBuyButton": true,
+    "showCartButton": true
+  },
+  "shippingConfig": {
+    "mode": "both"
+  },
+  "stock": 7,
+  "categories": [
+    "cat-28-mvay9cq6"
+  ],
+  "rubro": "carpinteria",
+  "subcategoria": "pizarras"
+}

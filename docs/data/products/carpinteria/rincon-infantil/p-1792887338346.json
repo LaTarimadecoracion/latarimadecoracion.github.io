@@ -1,0 +1,58 @@
+{
+  "id": "1792887338346",
+  "title": "Mesa Y 2 Sillas Infantil (excelente Calidad)",
+  "description": "Publicación importada desde Mercado Libre (MLA1998800625).",
+  "video": "",
+  "image": "img/borrador/portada-imagen.webp",
+  "acabados_groups": [
+    {
+      "name": "Estándar",
+      "images": [
+        "img/borrador/portada-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "name": "Medida Única",
+          "price": 140000,
+          "stock": 1,
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1998800625"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla1998800625",
+    "mesa",
+    "sillas",
+    "infantil",
+    "(excelente",
+    "calidad)"
+  ],
+  "last_modified": 1792887338341,
+  "optional_variant": null,
+  "primaryCatId": "Juguetes",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338341,
+      "details": "Importado como borrador desde Mercado Libre (MLA1998800625)"
+    }
+  ],
+  "views": 0,
+  "paymentConfig": {
+    "mode": "store",
+    "showBuyButton": true,
+    "showCartButton": true
+  },
+  "shippingConfig": {
+    "mode": "both"
+  },
+  "stock": 1,
+  "categories": [
+    "Juguetes"
+  ],
+  "rubro": "carpinteria",
+  "subcategoria": "mesas-sillas-ninos"
+}

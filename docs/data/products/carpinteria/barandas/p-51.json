@@ -1,5 +1,6 @@
 {
   "id": "51",
+  "shortId": "3Q",
   "title": "Baranda: Desmontable Clásica",
   "description": "Seguridad y comodidad superior para la cama de los más chicos.\nNo dudes en hacer todas tus consultas",
   "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
@@ -7,6 +8,7 @@
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
       "images_list": [
         "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
@@ -30,13 +32,7 @@
           "cost_price": 60000,
           "legend": "",
           "showPrice": true,
-          "stock": 1,
-          "logisticaEnabled": false,
-          "shippingConfig": {
-            "logisticaEnabled": false
-          },
-          "noFlex": true,
-          "disableFlex": true
+          "logisticaEnabled": false
         },
         {
           "medida": "190 x 45 cm",
@@ -50,13 +46,7 @@
           "cost_price": 60000,
           "legend": "",
           "showPrice": true,
-          "stock": 0,
-          "logisticaEnabled": false,
-          "shippingConfig": {
-            "logisticaEnabled": false
-          },
-          "noFlex": true,
-          "disableFlex": true
+          "logisticaEnabled": false
         },
         {
           "medida": "140 x 45 cm",
@@ -70,15 +60,7 @@
           "cost_price": 40000,
           "legend": "",
           "showPrice": true,
-          "stock": 0,
-          "logisticaEnabled": true,
-          "shippingConfig": {
-            "logisticaEnabled": true,
-            "logisticaMaxUnits": 1
-          },
-          "noFlex": false,
-          "disableFlex": false,
-          "logisticaMaxUnits": 1
+          "logisticaEnabled": true
         },
         {
           "medida": "110 x 45 cm",
@@ -92,7 +74,7 @@
           "cost_price": 27000,
           "legend": "",
           "showPrice": true,
-          "stock": 0
+          "logisticaEnabled": true
         },
         {
           "medida": "100 x 45 cm",
@@ -106,7 +88,7 @@
           "cost_price": 27000,
           "legend": "",
           "showPrice": true,
-          "stock": 0
+          "logisticaEnabled": true
         },
         {
           "medida": "90 x 45 cm",
@@ -120,7 +102,7 @@
           "cost_price": 26000,
           "legend": "",
           "showPrice": true,
-          "stock": 0
+          "logisticaEnabled": true
         },
         {
           "medida": "80 x 45 cm",
@@ -134,7 +116,7 @@
           "cost_price": 25000,
           "legend": "",
           "showPrice": true,
-          "stock": 0
+          "logisticaEnabled": true
         },
         {
           "medida": "70 x 45 cm",
@@ -148,7 +130,7 @@
           "cost_price": 24000,
           "legend": "",
           "showPrice": true,
-          "stock": 0
+          "logisticaEnabled": true
         },
         {
           "medida": "60 x 45 cm",
@@ -162,14 +144,14 @@
           "cost_price": 23000,
           "legend": "",
           "showPrice": true,
-          "stock": 0
+          "logisticaEnabled": true
         }
       ],
-      "hidden": false,
-      "stock": 1
+      "hidden": false
     },
     {
       "acabado_name": "Blanca",
+      "description": "",
       "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
       "images_list": [
         "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
@@ -192,7 +174,8 @@
           "price": 45000,
           "cost_price": 45000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "100 x 45 cm",
@@ -205,7 +188,8 @@
           "price": 45000,
           "cost_price": 45000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "90 x 45 cm",
@@ -218,7 +202,8 @@
           "price": 45000,
           "cost_price": 45000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "80 x 45 cm",
@@ -231,7 +216,8 @@
           "price": 45000,
           "cost_price": 45000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "70 x 45 cm",
@@ -244,7 +230,8 @@
           "price": 45000,
           "cost_price": 45000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "60 x 45 cm",
@@ -257,14 +244,15 @@
           "price": 45000,
           "cost_price": 45000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         }
       ],
-      "hidden": false,
-      "stock": 0
+      "hidden": false
     },
     {
       "acabado_name": "Barnizado",
+      "description": "",
       "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
       "images_list": [
         "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
@@ -287,7 +275,8 @@
           "price": 40000,
           "cost_price": 40000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "100 x 45 cm",
@@ -300,7 +289,8 @@
           "price": 40000,
           "cost_price": 40000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "90 x 45 cm",
@@ -313,7 +303,8 @@
           "price": 40000,
           "cost_price": 40000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "80 x 45 cm",
@@ -326,7 +317,8 @@
           "price": 40000,
           "cost_price": 40000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "70 x 45 cm",
@@ -339,7 +331,8 @@
           "price": 40000,
           "cost_price": 40000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "60 x 45 cm",
@@ -352,11 +345,11 @@
           "price": 40000,
           "cost_price": 40000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         }
       ],
-      "hidden": false,
-      "stock": 0
+      "hidden": false
     }
   ],
   "tags": [
@@ -413,7 +406,24 @@
     "protector cuna",
     "barandas de pino"
   ],
-  "last_modified": 1788028327325,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 2,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1792896734813,
   "optional_variant": {
     "label": "Espesor del tirante (opcional)",
     "options": [
@@ -440,23 +450,9 @@
   },
   "primaryCatId": "Barandas",
   "history": [],
-  "views": 82,
-  "paymentConfig": {
-    "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
-  },
-  "shippingConfig": {
-    "logisticaEnabled": true,
-    "fleteEnabled": true,
-    "otroEnabled": false,
-    "logisticaMaxUnits": 2
-  },
-  "stock": 1,
   "categories": [
     "carpinteria-todos",
-    "Barandas",
-    "camas-madera-pino"
+    "Barandas"
   ],
   "rubro": "carpinteria"
 }

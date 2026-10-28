@@ -134,13 +134,13 @@ window.safeRender = function(fn, name) {
                     requestAnimationFrame(step);
                 } else {
                     console.log("💤 Momentum scroll finished. Restoring scroll-snap.");
-                    carousel.style.removeProperty('scroll-snap-type');
+                    if (carousel.classList.contains('product-detail-carousel')) { carousel.style.removeProperty('scroll-snap-type'); }
                 }
             };
             requestAnimationFrame(step);
         } else {
             console.log("Restoring scroll-snap immediately.");
-            carousel.style.removeProperty('scroll-snap-type');
+            if (carousel.classList.contains('product-detail-carousel')) { carousel.style.removeProperty('scroll-snap-type'); }
         }
     };
 

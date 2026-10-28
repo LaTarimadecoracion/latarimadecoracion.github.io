@@ -9,6 +9,7 @@ const productsData = [
         "products": [
             {
                 "id": "51",
+                "shortId": "3Q",
                 "title": "Baranda: Desmontable Clásica",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.\nNo dudes en hacer todas tus consultas",
                 "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
@@ -16,6 +17,7 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
@@ -39,13 +41,7 @@ const productsData = [
                                 "cost_price": 60000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 1,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
+                                "logisticaEnabled": false
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -59,13 +55,7 @@ const productsData = [
                                 "cost_price": 60000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
+                                "logisticaEnabled": false
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -79,15 +69,7 @@ const productsData = [
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "logisticaEnabled": true,
-                                "shippingConfig": {
-                                    "logisticaEnabled": true,
-                                    "logisticaMaxUnits": 1
-                                },
-                                "noFlex": false,
-                                "disableFlex": false,
-                                "logisticaMaxUnits": 1
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -101,7 +83,7 @@ const productsData = [
                                 "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -115,7 +97,7 @@ const productsData = [
                                 "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -129,7 +111,7 @@ const productsData = [
                                 "cost_price": 26000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -143,7 +125,7 @@ const productsData = [
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -157,7 +139,7 @@ const productsData = [
                                 "cost_price": 24000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -171,14 +153,14 @@ const productsData = [
                                 "cost_price": 23000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 1
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Blanca",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
@@ -201,7 +183,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -214,7 +197,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -227,7 +211,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -240,7 +225,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -253,7 +239,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -266,14 +253,15 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Barnizado",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
@@ -296,7 +284,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -309,7 +298,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -322,7 +312,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -335,7 +326,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -348,7 +340,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -361,11 +354,11 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -422,7 +415,24 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1788028327325,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792896734813,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -448,35 +458,18 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "history": [],
-                "views": 82,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Barandas",
-                    "camas-madera-pino"
-                ],
-                "rubro": "carpinteria"
+                "history": []
             },
             {
                 "id": "52",
+                "shortId": "3S",
                 "title": "Baranda: Desmontable - Estilo Montessori",
                 "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
                 "image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
@@ -497,13 +490,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 3,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
+                                "logisticaEnabled": false
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -517,13 +504,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
+                                "logisticaEnabled": false
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -537,11 +518,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "shippingConfig": {
-                                    "logisticaMaxUnits": 1
-                                },
-                                "logisticaMaxUnits": 1
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -555,7 +532,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -569,7 +546,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -583,7 +560,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -597,7 +574,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -611,7 +588,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -625,14 +602,14 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 3
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Blanca",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1780289632908-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-desmontable-montessori/1780289632908-imagen.webp",
@@ -656,7 +633,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -670,7 +647,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -684,7 +661,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -698,7 +675,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -712,7 +689,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -726,14 +703,14 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Barnizado",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438763672-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-desmontable-montessori/1782438763672-imagen.webp",
@@ -753,7 +730,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -766,7 +744,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -779,7 +758,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -792,7 +772,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -805,7 +786,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -818,11 +800,11 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 4
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -871,7 +853,24 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1784430002742,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792896707701,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -907,26 +906,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 14,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 7,
-                "categories": [
-                    "carpinteria-todos",
-                    "Barandas",
-                    "cunas-madera-pino",
-                    "camas-madera-pino"
-                ],
-                "rubro": "carpinteria"
+                "history": []
             },
             {
                 "id": "53",
@@ -2000,12 +1980,14 @@ const productsData = [
             },
             {
                 "id": "58",
+                "shortId": "3Q",
                 "title": "Baranda Fija: Montessori",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
                 "image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
@@ -2020,9 +2002,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 15000,
+                                "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true,
-                                "price": 15000
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -2067,27 +2051,26 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616746091,
-                "primaryCatId": "Barandas",
-                "views": 3,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Barandas",
-                    "cunas-madera-pino",
-                    "camas-madera-pino"
-                ],
-                "rubro": "carpinteria"
+                "quantityDiscounts": [],
+                "last_modified": 1792896741700,
+                "primaryCatId": "Barandas",
+                "history": []
             },
             {
                 "id": "59",
@@ -2318,111 +2301,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "43",
-                "title": "Verdulero Clasico",
-                "description": "Verdulero con estante superior",
-                "image": "img/organizadores/estantes-montessori/1.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
-                        "images_list": [
-                            "img/organizadores/estantes-montessori/1.webp",
-                            "img/organizadores/estantes-montessori/2.webp",
-                            "img/organizadores/verdulero-clasico/3.webp",
-                            "img/organizadores/verdulero-clasico/4.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Cargando...",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508958407-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": false,
-                                "cost_price": 2500,
-                                "price": 15000,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "verdulero",
-                    "verduras",
-                    "organizar",
-                    "mueble de cocina",
-                    "cosina",
-                    "frutas",
-                    "frutero",
-                    "verduleros",
-                    "verdulero clasico",
-                    "verdulero madera",
-                    "verdulero pino",
-                    "cocina",
-                    "cajones",
-                    "verdulería",
-                    "frutería",
-                    "organizador cocina",
-                    "mueble cocina",
-                    "carro verdulero",
-                    "berdulero",
-                    "berdulería",
-                    "verdulero de pino",
-                    "verdulero de madera",
-                    "verdulería de cocina",
-                    "cesta de verduras",
-                    "cajonera de pino",
-                    "carro de cocina",
-                    "mueble para verduras",
-                    "cajon verdulero",
-                    "organizacion de alimentos",
-                    "despensa de pino",
-                    "verdulero rustico",
-                    "verdulero con cajones",
-                    "cesta de frutas"
-                ],
-                "last_modified": 1783637106226,
-                "primaryCatId": "bazar-cocina",
-                "views": 1,
-                "stock": 0,
-                "history": [
-                    {
-                        "date": "27/8, 12:39 a. m.",
-                        "type": "Precio Venta Subió",
-                        "detail": "Venta: $0 ➔ $15.000"
-                    },
-                    {
-                        "date": "27/8, 12:39 a. m.",
-                        "type": "Costo Aumentó",
-                        "detail": "Costo: $0 ➔ $2500"
-                    }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "bazar-cocina",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "44",
                 "title": "Verdule para Mesada",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
@@ -2512,111 +2390,6 @@ const productsData = [
                     "carpinteria-todos",
                     "Organizadores",
                     "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "47",
-                "title": "Verdulero x3",
-                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/verdulero-x3/1780708453865-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Único",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2414802538-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0,
-                                "price": 35000
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "verdulero",
-                    "carpintería",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "duradero",
-                    "excelente",
-                    "verdulero de madera",
-                    "verdulero de pino",
-                    "mueble verdulero",
-                    "carpintería  verdulero",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal",
-                    "mueble util",
-                    "mueble practico",
-                    "muebles para casa",
-                    "envios a todo el pais",
-                    "directo de fabrica",
-                    "fabricacion nacional",
-                    "madera de pino",
-                    "madera cepillada"
-                ],
-                "last_modified": 1783637154745,
-                "primaryCatId": "bazar-cocina",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "stock": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "bazar-cocina",
-                    "cajones-madera"
                 ],
                 "rubro": "carpinteria"
             },
@@ -3027,7 +2800,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4135,7 +3908,7 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 8,
+                "views": 10,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -4500,7 +4273,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -5054,7 +4827,7 @@ const productsData = [
                 "last_modified": 1789446426308,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 10,
+                "views": 11,
                 "categories": [
                     "carpinteria-todos",
                     "Estantes",
@@ -5168,7 +4941,7 @@ const productsData = [
                 "last_modified": 1788907898357,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 5,
+                "views": 7,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",
@@ -5329,7 +5102,7 @@ const productsData = [
                 "last_modified": 1788908106317,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 1,
+                "views": 2,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",
@@ -5707,7 +5480,7 @@ const productsData = [
                 "last_modified": 1788908607231,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 1,
+                "views": 2,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",
@@ -6951,7 +6724,7 @@ const productsData = [
                 "last_modified": 1790378363386,
                 "primaryCatId": "jardin-patio",
                 "history": [],
-                "views": 0,
+                "views": 1,
                 "categories": [
                     "carpinteria-todos",
                     "jardin-patio",
@@ -7445,7 +7218,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334411421,
                 "primaryCatId": "Mesas-madera",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -11442,7 +11215,7 @@ const productsData = [
                     "cortes-madera"
                 ],
                 "rubro": "carpinteria",
-                "views": 17
+                "views": 21
             },
             {
                 "id": "68",
@@ -11550,7 +11323,7 @@ const productsData = [
                 "last_modified": 1791766660527,
                 "primaryCatId": "cortes-madera",
                 "history": [],
-                "views": 4
+                "views": 5
             },
             {
                 "id": "93",
@@ -11756,7 +11529,299 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 102
+                "views": 108
+            },
+            {
+                "id": "95",
+                "shortId": "33",
+                "title": "Cajón Pliométrico 3 en 1 CrossFit & Salto",
+                "description": "Cajón de salto pliométrico multifuncional 3 en 1 para CrossFit, entrenamiento funcional y preparación física. Fabricado en Fenólico Industrial de 18 mm con refuerzo estructural interno en cruz y manijas ergonómicas.",
+                "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Fenólico 18mm",
+                        "description": "Placa Fenólica de 18 mm de alta resistencia con refuerzo interno en cruz",
+                        "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Grande Oficial (50 × 60 × 75 cm)",
+                                "link": "apps/cajon.html",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": true,
+                                "price": 72000,
+                                "cost_price": 22000,
+                                "legend": "Oficial Box CrossFit",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "Mediano (40 × 50 × 60 cm)",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 58000,
+                                "cost_price": 17000,
+                                "legend": "Intermedio",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "Chico (30 × 40 × 50 cm)",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 42000,
+                                "cost_price": 12000,
+                                "legend": "Funcional / Principiante",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "A Medida Especial",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Calcular",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 72000,
+                                "cost_price": 22000,
+                                "legend": "Personalizado",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cajon",
+                    "pliometrico",
+                    "crossfit",
+                    "salto",
+                    "jump box",
+                    "box",
+                    "3 en 1",
+                    "fitness",
+                    "gym",
+                    "entrenamiento funcional",
+                    "fenolico"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "fleteFreeMinUnits": 50,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minQty": 3,
+                        "discountPercent": 8
+                    },
+                    {
+                        "minQty": 6,
+                        "discountPercent": 12
+                    }
+                ],
+                "last_modified": 1791831629527,
+                "primaryCatId": "cajones-crossfit",
+                "history": [],
+                "visible": true,
+                "categories": [
+                    "carpinteria-todos",
+                    "cajones-crossfit"
+                ],
+                "rubro": "carpinteria",
+                "views": 68
+            },
+            {
+                "id": "1792887338328",
+                "shortId": "3S",
+                "title": "Ménsula Madera 45x45cm - Para Escritorios Nórdicos",
+                "description": "Publicación importada desde Mercado Libre (MLA1248080101).",
+                "image": "img/repisas-estantes/mnsula-madera-45x45cm-para-escritorios-nrdicos/1792896610285-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/repisas-estantes/mnsula-madera-45x45cm-para-escritorios-nrdicos/1792896610285-imagenwebp.webp",
+                        "images_list": [
+                            "img/repisas-estantes/mnsula-madera-45x45cm-para-escritorios-nrdicos/1792896610285-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla1248080101",
+                    "ménsula",
+                    "madera",
+                    "45x45cm",
+                    "para",
+                    "escritorios",
+                    "nórdicos"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792896610293,
+                "primaryCatId": "Estantes",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338328,
+                        "details": "Importado como borrador desde Mercado Libre (MLA1248080101)"
+                    }
+                ]
+            },
+            {
+                "id": "1792887338330",
+                "shortId": "3S",
+                "title": "Mensula De Madera -  La Tarima (30 X 30 Cm) Nordico",
+                "description": "Publicación importada desde Mercado Libre (MLA1377475740).",
+                "image": "img/repisas-estantes/mensula-de-madera-la-tarima-30-x-30-cm-nordico/1792896622136-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/repisas-estantes/mensula-de-madera-la-tarima-30-x-30-cm-nordico/1792896622136-imagenwebp.webp",
+                        "images_list": [
+                            "img/repisas-estantes/mensula-de-madera-la-tarima-30-x-30-cm-nordico/1792896622136-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla1377475740",
+                    "mensula",
+                    "madera",
+                    "tarima",
+                    "nordico"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792896622140,
+                "primaryCatId": "Estantes",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338330,
+                        "details": "Importado como borrador desde Mercado Libre (MLA1377475740)"
+                    }
+                ]
+            },
+            {
+                "id": "1792887338340",
+                "shortId": "3S",
+                "title": "Ménsula Madera 50x50cm - Para Escritorios Nórdicos",
+                "description": "Publicación importada desde Mercado Libre (MLA3345915146).",
+                "image": "img/repisas-estantes/mnsula-madera-50x50cm-para-escritorios-nrdicos/1792896633807-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/repisas-estantes/mnsula-madera-50x50cm-para-escritorios-nrdicos/1792896633807-imagenwebp.webp",
+                        "images_list": [
+                            "img/repisas-estantes/mnsula-madera-50x50cm-para-escritorios-nrdicos/1792896633807-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3345915146",
+                    "ménsula",
+                    "madera",
+                    "50x50cm",
+                    "para",
+                    "escritorios",
+                    "nórdicos"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792896633811,
+                "primaryCatId": "Estantes",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338337,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3345915146)"
+                    }
+                ]
             }
         ]
     },
@@ -12709,6 +12774,69 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
+                "id": "4I",
+                "title": "Perchero De Pie Torneado 8 Ganchos Niños",
+                "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
+                "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Percherito",
+                        "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                        "images_list": [
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811091-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811246-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Alto 110 cm",
+                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-8-ganchos-ninos/up/MLAU5114065953?pdp_filters=item_id:MLA2073891131",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 30000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1788918811368,
+                "primaryCatId": "Juguetes",
+                "history": [],
+                "views": 3,
+                "categories": [
+                    "carpinteria-todos",
+                    "Percheros",
+                    "Juguetes"
+                ],
+                "rubro": "carpinteria"
+            },
+            {
                 "id": "33",
                 "title": "Perchero 5 - Rustico",
                 "description": "Medidas:\n63 x 13 cm",
@@ -13657,69 +13785,6 @@ const productsData = [
                     "Percheros"
                 ],
                 "rubro": "carpinteria"
-            },
-            {
-                "id": "4I",
-                "title": "Perchero De Pie Torneado 8 Ganchos Niños",
-                "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
-                "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Percherito",
-                        "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                        "images_list": [
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811091-imagen.webp",
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811246-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Alto 110 cm",
-                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-8-ganchos-ninos/up/MLAU5114065953?pdp_filters=item_id:MLA2073891131",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 30000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "estimatedWeight": 2,
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 1,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788918811368,
-                "primaryCatId": "Juguetes",
-                "history": [],
-                "views": 3,
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros",
-                    "Juguetes"
-                ],
-                "rubro": "carpinteria"
             }
         ]
     },
@@ -13733,6 +13798,7 @@ const productsData = [
         "products": [
             {
                 "id": "51",
+                "shortId": "3Q",
                 "title": "Baranda: Desmontable Clásica",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.\nNo dudes en hacer todas tus consultas",
                 "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
@@ -13740,6 +13806,7 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
@@ -13763,13 +13830,7 @@ const productsData = [
                                 "cost_price": 60000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 1,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
+                                "logisticaEnabled": false
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -13783,13 +13844,7 @@ const productsData = [
                                 "cost_price": 60000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
+                                "logisticaEnabled": false
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -13803,15 +13858,7 @@ const productsData = [
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "logisticaEnabled": true,
-                                "shippingConfig": {
-                                    "logisticaEnabled": true,
-                                    "logisticaMaxUnits": 1
-                                },
-                                "noFlex": false,
-                                "disableFlex": false,
-                                "logisticaMaxUnits": 1
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -13825,7 +13872,7 @@ const productsData = [
                                 "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -13839,7 +13886,7 @@ const productsData = [
                                 "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -13853,7 +13900,7 @@ const productsData = [
                                 "cost_price": 26000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -13867,7 +13914,7 @@ const productsData = [
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -13881,7 +13928,7 @@ const productsData = [
                                 "cost_price": 24000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -13895,14 +13942,14 @@ const productsData = [
                                 "cost_price": 23000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 1
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Blanca",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
@@ -13925,7 +13972,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -13938,7 +13986,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -13951,7 +14000,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -13964,7 +14014,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -13977,7 +14028,8 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -13990,14 +14042,15 @@ const productsData = [
                                 "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Barnizado",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
@@ -14020,7 +14073,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -14033,7 +14087,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -14046,7 +14101,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -14059,7 +14115,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -14072,7 +14129,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -14085,11 +14143,11 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -14146,7 +14204,24 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1788028327325,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792896734813,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -14172,35 +14247,18 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "history": [],
-                "views": 82,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Barandas",
-                    "camas-madera-pino"
-                ],
-                "rubro": "carpinteria"
+                "history": []
             },
             {
                 "id": "52",
+                "shortId": "3S",
                 "title": "Baranda: Desmontable - Estilo Montessori",
                 "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
                 "image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
@@ -14221,13 +14279,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 3,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
+                                "logisticaEnabled": false
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -14241,13 +14293,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
+                                "logisticaEnabled": false
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -14261,11 +14307,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "shippingConfig": {
-                                    "logisticaMaxUnits": 1
-                                },
-                                "logisticaMaxUnits": 1
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -14279,7 +14321,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -14293,7 +14335,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -14307,7 +14349,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -14321,7 +14363,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -14335,7 +14377,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -14349,14 +14391,14 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 3
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Blanca",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1780289632908-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-desmontable-montessori/1780289632908-imagen.webp",
@@ -14380,7 +14422,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -14394,7 +14436,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -14408,7 +14450,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -14422,7 +14464,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -14436,7 +14478,7 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -14450,14 +14492,14 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     },
                     {
                         "acabado_name": "Barnizado",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438763672-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-desmontable-montessori/1782438763672-imagen.webp",
@@ -14477,7 +14519,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -14490,7 +14533,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -14503,7 +14547,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -14516,7 +14561,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -14529,7 +14575,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -14542,11 +14589,11 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 10000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 4
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -14595,7 +14642,24 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1784430002742,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792896707701,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -14631,26 +14695,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 14,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 7,
-                "categories": [
-                    "carpinteria-todos",
-                    "Barandas",
-                    "cunas-madera-pino",
-                    "camas-madera-pino"
-                ],
-                "rubro": "carpinteria"
+                "history": []
             },
             {
                 "id": "53",
@@ -15724,12 +15769,14 @@ const productsData = [
             },
             {
                 "id": "58",
+                "shortId": "3Q",
                 "title": "Baranda Fija: Montessori",
                 "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
                 "image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
@@ -15744,9 +15791,11 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 15000,
+                                "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true,
-                                "price": 15000
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -15791,27 +15840,26 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616746091,
-                "primaryCatId": "Barandas",
-                "views": 3,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Barandas",
-                    "cunas-madera-pino",
-                    "camas-madera-pino"
-                ],
-                "rubro": "carpinteria"
+                "quantityDiscounts": [],
+                "last_modified": 1792896741700,
+                "primaryCatId": "Barandas",
+                "history": []
             },
             {
                 "id": "59",
@@ -16051,111 +16099,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "43",
-                "title": "Verdulero Clasico",
-                "description": "Verdulero con estante superior",
-                "image": "img/organizadores/estantes-montessori/1.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
-                        "images_list": [
-                            "img/organizadores/estantes-montessori/1.webp",
-                            "img/organizadores/estantes-montessori/2.webp",
-                            "img/organizadores/verdulero-clasico/3.webp",
-                            "img/organizadores/verdulero-clasico/4.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Cargando...",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508958407-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": false,
-                                "cost_price": 2500,
-                                "price": 15000,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "verdulero",
-                    "verduras",
-                    "organizar",
-                    "mueble de cocina",
-                    "cosina",
-                    "frutas",
-                    "frutero",
-                    "verduleros",
-                    "verdulero clasico",
-                    "verdulero madera",
-                    "verdulero pino",
-                    "cocina",
-                    "cajones",
-                    "verdulería",
-                    "frutería",
-                    "organizador cocina",
-                    "mueble cocina",
-                    "carro verdulero",
-                    "berdulero",
-                    "berdulería",
-                    "verdulero de pino",
-                    "verdulero de madera",
-                    "verdulería de cocina",
-                    "cesta de verduras",
-                    "cajonera de pino",
-                    "carro de cocina",
-                    "mueble para verduras",
-                    "cajon verdulero",
-                    "organizacion de alimentos",
-                    "despensa de pino",
-                    "verdulero rustico",
-                    "verdulero con cajones",
-                    "cesta de frutas"
-                ],
-                "last_modified": 1783637106226,
-                "primaryCatId": "bazar-cocina",
-                "views": 1,
-                "stock": 0,
-                "history": [
-                    {
-                        "date": "27/8, 12:39 a. m.",
-                        "type": "Precio Venta Subió",
-                        "detail": "Venta: $0 ➔ $15.000"
-                    },
-                    {
-                        "date": "27/8, 12:39 a. m.",
-                        "type": "Costo Aumentó",
-                        "detail": "Costo: $0 ➔ $2500"
-                    }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "bazar-cocina",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "44",
                 "title": "Verdule para Mesada",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
@@ -16249,13 +16192,359 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
+                "id": "45",
+                "shortId": "3E",
+                "title": "Exhibidor Organizador 3 Estantes De Madera",
+                "description": "",
+                "image": "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
+                        "images_list": [
+                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
+                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546875-imagenwebp.webp",
+                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546905-imagenwebp.webp",
+                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546912-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Único",
+                                "link": "https://www.mercadolibre.com.ar/exhibidor-organizador-3-estantes-de-madera/p/MLA2107815138?pdp_filters=item_id:MLA2124213415",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "verdulero",
+                    "verduras",
+                    "organizar",
+                    "mueble de cocina",
+                    "cosina",
+                    "frutas",
+                    "frutero",
+                    "candry",
+                    "bar",
+                    "verduleros",
+                    "verdulero mediano",
+                    "verdulero madera",
+                    "verdulero pino",
+                    "cocina",
+                    "cajones",
+                    "verdulería",
+                    "frutería",
+                    "organizador cocina",
+                    "mueble cocina",
+                    "carro verdulero",
+                    "berdulero",
+                    "berdulería",
+                    "verdulero de pino",
+                    "verdulero de madera",
+                    "verdulería de cocina",
+                    "cesta de verduras",
+                    "cajonera de pino",
+                    "carro de cocina",
+                    "mueble para verduras",
+                    "cajon verdulero",
+                    "organizacion de alimentos",
+                    "despensa de pino",
+                    "verdulero rustico",
+                    "verdulero con cajones",
+                    "cesta de frutas"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1790380546917,
+                "primaryCatId": "Organizadores",
+                "history": [],
+                "views": 4,
+                "categories": [
+                    "carpinteria-todos",
+                    "Organizadores"
+                ],
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "9K",
+                "shortId": "3E",
+                "title": "Exhibidor Organizador 4 Estantes De Madera",
+                "description": "",
+                "image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "cover_image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
+                        "images_list": [
+                            "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
+                            "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790738317690-edit_1790738316527webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Natural",
+                                "link": "https://www.mercadolibre.com.ar/exhibidor-organizador-4-estantes-de-madera/up/MLAU5177919188?pdp_filters=item_id:MLA3941252298",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 23000,
+                                "cost_price": 23000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1790738317696,
+                "primaryCatId": "Organizadores",
+                "history": [],
+                "views": 25,
+                "categories": [
+                    "carpinteria-todos",
+                    "Organizadores"
+                ],
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "7C",
+                "title": "Repisa-estante de pared con toallero",
+                "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
+                "image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                        "images_list": [
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001628-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001772-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001907-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916002040-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Unico",
+                                "link": "https://www.mercadolibre.com.ar/repisaestante-de-pared--con-toallero--madera-de-pino/up/MLAU5148491060?pdp_filters=item_id:MLA2073887919",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2.5,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 10,
+                        "discountPercent": 25,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1788916093301,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "visible": true,
+                "views": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "Organizadores",
+                    "Estantes",
+                    "Hogar"
+                ],
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "43",
+                "shortId": "3U",
+                "title": "Verdulero Clasico",
+                "description": "Verdulero con estante superior",
+                "image": "img/organizadores/estantes-montessori/1.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "",
+                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
+                        "images_list": [
+                            "img/organizadores/estantes-montessori/1.webp",
+                            "img/organizadores/estantes-montessori/2.webp",
+                            "img/organizadores/verdulero-clasico/3.webp",
+                            "img/organizadores/verdulero-clasico/4.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Cargando...",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508958407-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 15000,
+                                "cost_price": 2500,
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "verdulero",
+                    "verduras",
+                    "organizar",
+                    "mueble de cocina",
+                    "cosina",
+                    "frutas",
+                    "frutero",
+                    "verduleros",
+                    "verdulero clasico",
+                    "verdulero madera",
+                    "verdulero pino",
+                    "cocina",
+                    "cajones",
+                    "verdulería",
+                    "frutería",
+                    "organizador cocina",
+                    "mueble cocina",
+                    "carro verdulero",
+                    "berdulero",
+                    "berdulería",
+                    "verdulero de pino",
+                    "verdulero de madera",
+                    "verdulería de cocina",
+                    "cesta de verduras",
+                    "cajonera de pino",
+                    "carro de cocina",
+                    "mueble para verduras",
+                    "cajon verdulero",
+                    "organizacion de alimentos",
+                    "despensa de pino",
+                    "verdulero rustico",
+                    "verdulero con cajones",
+                    "cesta de frutas"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792895672356,
+                "primaryCatId": "Organizadores",
+                "history": [
+                    {
+                        "date": "27/8, 12:39 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $0 ➔ $15.000"
+                    },
+                    {
+                        "date": "27/8, 12:39 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $0 ➔ $2500"
+                    }
+                ],
+                "rubro": "carpinteria",
+                "views": 1
+            },
+            {
                 "id": "47",
+                "shortId": "3U",
                 "title": "Verdulero x3",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
                         "images_list": [
                             "img/organizadores/verdulero-x3/1780708453865-imagen.webp"
@@ -16269,14 +16558,14 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 35000,
+                                "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "price": 35000
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -16331,25 +16620,127 @@ const productsData = [
                     "madera de pino",
                     "madera cepillada"
                 ],
-                "last_modified": 1783637154745,
-                "primaryCatId": "bazar-cocina",
-                "views": 0,
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792895684796,
+                "primaryCatId": "Organizadores",
+                "history": [],
+                "rubro": "carpinteria",
+                "views": 0
+            },
+            {
+                "id": "49",
+                "title": "Organizador Tribuna X3",
+                "description": "Fanales, bandejas y complementos artesanales únicos.",
+                "image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
+                            "img/organizadores/organizador-tribuna-x3/1780323408690-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Único",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "legend": "",
+                                "showPrice": true,
+                                "price": 9000
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "organizador",
+                    "tribuna",
+                    "carpintería",
+                    "madera",
+                    "pino",
+                    "carpinteria",
+                    "rustico",
+                    "natural",
+                    "mueble",
+                    "hogar",
+                    "casa",
+                    "decoracion",
+                    "calidad",
+                    "diseño",
+                    "artesanal",
+                    "comprar",
+                    "tienda",
+                    "envio",
+                    "seguro",
+                    "fuerte",
+                    "resistente",
+                    "lindo",
+                    "util",
+                    "practico",
+                    "duradero",
+                    "organizador de madera",
+                    "organizador de pino",
+                    "mueble organizador",
+                    "carpintería  organizador",
+                    "tribuna de madera",
+                    "tribuna de pino",
+                    "mueble tribuna",
+                    "carpintería  tribuna",
+                    "carpintería de madera",
+                    "carpintería de pino",
+                    "mueble carpintería",
+                    "carpintería  carpintería",
+                    "mueble de madera",
+                    "mueble de pino",
+                    "carpinteria artesanal",
+                    "decoracion del hogar",
+                    "mueble rustico",
+                    "mueble natural",
+                    "hecho a mano",
+                    "muebles de calidad",
+                    "diseño artesanal",
+                    "mueble util",
+                    "mueble practico",
+                    "muebles para casa",
+                    "envios a todo el pais"
+                ],
+                "last_modified": 1783637306441,
+                "primaryCatId": "Organizadores",
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "otroEnabled": false
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 10
                 },
-                "stock": 0,
                 "categories": [
                     "carpinteria-todos",
-                    "Organizadores",
-                    "bazar-cocina",
-                    "cajones-madera"
+                    "Organizadores"
                 ],
                 "rubro": "carpinteria"
             },
@@ -16413,6 +16804,64 @@ const productsData = [
                     "bazar-cocina"
                 ],
                 "rubro": "carpinteria"
+            },
+            {
+                "id": "1792887338354",
+                "title": "4 Maceteros Canasta Organizadores En Junco",
+                "description": "Publicación importada desde Mercado Libre (MLA4087248102).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 88000,
+                                "stock": 1,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-4087248102"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla4087248102",
+                    "maceteros",
+                    "canasta",
+                    "organizadores",
+                    "junco"
+                ],
+                "last_modified": 1792887338346,
+                "optional_variant": null,
+                "primaryCatId": "Organizadores",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338346,
+                        "details": "Importado como borrador desde Mercado Libre (MLA4087248102)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "Organizadores"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "canastos-junco"
             },
             {
                 "id": "41",
@@ -16681,7 +17130,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -16698,86 +17147,6 @@ const productsData = [
                     "Organizadores",
                     "camas-madera-pino",
                     "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "7C",
-                "title": "Repisa-estante de pared con toallero",
-                "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
-                "image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
-                        "images_list": [
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001628-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001772-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001907-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916002040-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Unico",
-                                "link": "https://www.mercadolibre.com.ar/repisaestante-de-pared--con-toallero--madera-de-pino/up/MLAU5148491060?pdp_filters=item_id:MLA2073887919",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 20000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 25,
-                                        "shippingDiscountPercent": 0
-                                    }
-                                ]
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "estimatedWeight": 2.5,
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [
-                    {
-                        "minUnits": 10,
-                        "discountPercent": 25,
-                        "shippingDiscountPercent": 0
-                    }
-                ],
-                "last_modified": 1788916093301,
-                "primaryCatId": "Estantes",
-                "history": [],
-                "visible": true,
-                "views": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Estantes",
-                    "Hogar"
                 ],
                 "rubro": "carpinteria"
             },
@@ -16928,105 +17297,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "45",
-                "shortId": "3E",
-                "title": "Exhibidor Organizador 3 Estantes De Madera",
-                "description": "",
-                "image": "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
-                        "images_list": [
-                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
-                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546875-imagenwebp.webp",
-                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546905-imagenwebp.webp",
-                            "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546912-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Único",
-                                "link": "https://www.mercadolibre.com.ar/exhibidor-organizador-3-estantes-de-madera/p/MLA2107815138?pdp_filters=item_id:MLA2124213415",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "verdulero",
-                    "verduras",
-                    "organizar",
-                    "mueble de cocina",
-                    "cosina",
-                    "frutas",
-                    "frutero",
-                    "candry",
-                    "bar",
-                    "verduleros",
-                    "verdulero mediano",
-                    "verdulero madera",
-                    "verdulero pino",
-                    "cocina",
-                    "cajones",
-                    "verdulería",
-                    "frutería",
-                    "organizador cocina",
-                    "mueble cocina",
-                    "carro verdulero",
-                    "berdulero",
-                    "berdulería",
-                    "verdulero de pino",
-                    "verdulero de madera",
-                    "verdulería de cocina",
-                    "cesta de verduras",
-                    "cajonera de pino",
-                    "carro de cocina",
-                    "mueble para verduras",
-                    "cajon verdulero",
-                    "organizacion de alimentos",
-                    "despensa de pino",
-                    "verdulero rustico",
-                    "verdulero con cajones",
-                    "cesta de frutas"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 1,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1790380546917,
-                "primaryCatId": "Organizadores",
-                "history": [],
-                "views": 4,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "48",
                 "title": "Esquinero x3",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
@@ -17134,108 +17404,6 @@ const productsData = [
                     "carpinteria-todos",
                     "Organizadores",
                     "Estantes"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "49",
-                "title": "Organizador Tribuna X3",
-                "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
-                            "img/organizadores/organizador-tribuna-x3/1780323408690-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Único",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "price": 9000
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "organizador",
-                    "tribuna",
-                    "carpintería",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "duradero",
-                    "organizador de madera",
-                    "organizador de pino",
-                    "mueble organizador",
-                    "carpintería  organizador",
-                    "tribuna de madera",
-                    "tribuna de pino",
-                    "mueble tribuna",
-                    "carpintería  tribuna",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal",
-                    "mueble util",
-                    "mueble practico",
-                    "muebles para casa",
-                    "envios a todo el pais"
-                ],
-                "last_modified": 1783637306441,
-                "primaryCatId": "Organizadores",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 10
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores"
                 ],
                 "rubro": "carpinteria"
             },
@@ -17656,124 +17824,6 @@ const productsData = [
                     "Mesas-madera"
                 ],
                 "rubro": "carpinteria"
-            },
-            {
-                "id": "9K",
-                "shortId": "3E",
-                "title": "Exhibidor Organizador 4 Estantes De Madera",
-                "description": "",
-                "image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "cover_image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
-                        "images_list": [
-                            "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
-                            "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790738317690-edit_1790738316527webp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Natural",
-                                "link": "https://www.mercadolibre.com.ar/exhibidor-organizador-4-estantes-de-madera/up/MLAU5177919188?pdp_filters=item_id:MLA3941252298",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 23000,
-                                "cost_price": 23000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1790738317696,
-                "primaryCatId": "Organizadores",
-                "history": [],
-                "views": 25,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "6J",
-                "shortId": "36",
-                "title": "Canasta Cesta Organizador De Mimbre Con Tapa",
-                "description": "Canasto de mimbre tejido con tapa – Organizador multiuso\n\nDale un toque cálido y natural a tu hogar con este hermoso canasto tejido con tapa, ideal para organizar tus espacios y mantener todo en orden.\n\nSu diseño artesanal y su color natural combinan perfectamente con estilos rústicos, modernos, boho y nórdicos. Es una opción práctica y decorativa para distintos ambientes de tu casa.\n\nMÚLTIPLES USOS\n\nBaño: ideal para guardar toallas de mano, esponjas, peines y accesorios de cuidado personal.\n\nDormitorio infantil: perfecto para organizar juguetes, peluches y pequeños objetos.\n\nOficina: podés utilizarlo como papelero o para guardar accesorios.\n\nLiving: ideal para organizar objetos pequeños y complementar la decoración.\n\nDormitorio: práctico para guardar accesorios y mantener el ambiente ordenado.\n\nMEDIDAS DEL PRODUCTO\n\nDiámetro: 26 cm.\n\nAlto: 24 cm.\n\nCARACTERÍSTICAS\n\nCanasto tejido de fibras naturales.\n\nDiseño cilíndrico con tapa incorporada.\n\nColor natural, fácil de combinar con diferentes ambientes.\n\nIdeal para organizar y decorar.\n\nDiseño artesanal con detalles propios del tejido.\n\n\nRealizamos factura A.\n\nLas imágenes son ilustrativas y muestran ejemplos de posibles usos y ambientaciones del producto. Los accesorios, toallas, esponjas, peines, juguetes y demás elementos utilizados en las fotografías no están incluidos.\n\nAl tratarse de un producto tejido artesanalmente, puede presentar pequeñas variaciones de tonalidad, textura y terminación.\n\n¡Organizá tus espacios con estilo y sumá un detalle natural a tu hogar!\n\nSin garantía",
-                "image": "https://http2.mlstatic.com/D_NQ_NP_2X_983994-MLA117974180406_102026-O.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Estándar",
-                        "description": "",
-                        "cover_image": "https://http2.mlstatic.com/D_NQ_NP_2X_983994-MLA117974180406_102026-O.webp",
-                        "images_list": [
-                            "https://http2.mlstatic.com/D_NQ_NP_2X_983994-MLA117974180406_102026-O.webp",
-                            "https://http2.mlstatic.com/D_NQ_NP_2X_749191-MLA117974594918_102026-O.webp",
-                            "https://http2.mlstatic.com/D_NQ_NP_2X_639573-MLA119601555121_102026-O.webp",
-                            "https://http2.mlstatic.com/D_NQ_NP_2X_707319-MLA117972272164_102026-O.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Estándar",
-                                "link": "https://www.mercadolibre.com.ar/canasta-cesta-organizador-de-mimbre-con-tapa/up/MLAU5570386362",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "Ver en Mercado Libre",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 42000,
-                                "cost_price": 60000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1792192563683,
-                "primaryCatId": "Organizadores",
-                "history": [],
-                "rubro": "carpinteria"
             }
         ]
     },
@@ -17784,6 +17834,61 @@ const productsData = [
         "order": 6,
         "rubro": "carpinteria",
         "products": [
+            {
+                "id": "4H",
+                "title": "Repisa Biblioteca Estantes Montessori",
+                "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
+                "image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158882-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159002-imagen.webp",
+                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159125-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "75 x 60 x 15 cm",
+                                "link": "https://www.mercadolibre.com.ar/repisa-biblioteca-estantes-montessori/up/MLAU4928059473",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 37000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1787715147118,
+                "primaryCatId": "Estantes",
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 1
+                },
+                "categories": [
+                    "carpinteria-todos",
+                    "Estantes",
+                    "Juguetes"
+                ],
+                "rubro": "carpinteria"
+            },
             {
                 "id": "42",
                 "title": "Especiero",
@@ -17921,6 +18026,86 @@ const productsData = [
                     "Organizadores",
                     "Estantes",
                     "bazar-cocina"
+                ],
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "7C",
+                "title": "Repisa-estante de pared con toallero",
+                "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
+                "image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                        "images_list": [
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001628-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001772-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001907-imagen.webp",
+                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916002040-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Unico",
+                                "link": "https://www.mercadolibre.com.ar/repisaestante-de-pared--con-toallero--madera-de-pino/up/MLAU5148491060?pdp_filters=item_id:MLA2073887919",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 10,
+                                        "discountPercent": 25,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2.5,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 10,
+                        "discountPercent": 25,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1788916093301,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "visible": true,
+                "views": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "Organizadores",
+                    "Estantes",
+                    "Hogar"
                 ],
                 "rubro": "carpinteria"
             },
@@ -18180,146 +18365,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "4H",
-                "title": "Repisa Biblioteca Estantes Montessori",
-                "description": "Repisa Flotante Multifunción Tipo Montessori\n\nUn diseño versátil, práctico y cálido, hecho a mano en nuestro taller LA TARIMA DECORACION. Cada pieza se trabaja de forma artesanal, cuidando cada detalle de terminación para ofrecerte un producto duradero, funcional y con la calidez única de la madera de taller.\n\nCaracterísticas principales:\n\nDiseño reversible 2 en 1: Podés instalarla en ambos sentidos. Con los estantes hacia arriba para organizar objetos, o invertida para aprovechar el barral inferior como perchero (ideal para colgar toallas, tazas o ropa).\n\nAutonomía para los más chicos: Pensada bajo el concepto Montessori, colocada a su altura fomenta la independencia de los niños, permitiéndoles alcanzar sus libros o juguetes favoritos de forma segura y ordenada.\n\nUso sin límites: Si bien es ideal como librero infantil, su estética limpia se adapta perfecto a talleres, cocinas o escritorios para organizar frascos, pinturas, lápices y herramientas de trabajo.\n\nInstalación flexible: Apta para apoyar sobre un mueble o amurar directo a la pared.\n\nMedidas:\n\nLargo: 60 cm\nAlto: 75 cm\nProfundidad: 15 cm",
-                "image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
-                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158882-imagen.webp",
-                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159002-imagen.webp",
-                            "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709159125-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "75 x 60 x 15 cm",
-                                "link": "https://www.mercadolibre.com.ar/repisa-biblioteca-estantes-montessori/up/MLAU4928059473",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 37000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1787715147118,
-                "primaryCatId": "Estantes",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes",
-                    "Juguetes"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "62",
-                "title": "Hexagonales",
-                "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/estantes/hexagonales/hexagonales.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/estantes/hexagonales/hexagonales.webp",
-                        "images_list": [
-                            "img/estantes/hexagonales/hexagonales.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Combo",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1487292863-estantes-x3-set-repisas-madera-hexagonos-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 22000,
-                                "cost_price": 11000,
-                                "legend": "",
-                                "showPrice": false,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "estante",
-                    "estantes",
-                    "hexagonal",
-                    "hexagonos",
-                    "repisa",
-                    "repisas",
-                    "estante flotante",
-                    "estante madera",
-                    "estante pino",
-                    "colgar",
-                    "decoracion",
-                    "pared",
-                    "estilo nordico",
-                    "diseño hexagonal",
-                    "geometrico",
-                    "repisa hexagonal",
-                    "repisa hexagono",
-                    "estante hexagonal",
-                    "estantes hexagonales",
-                    "repisas hexagonales",
-                    "mueble hexagonal",
-                    "hexagonos de madera",
-                    "hexagonos de pino",
-                    "decoracion pared hexagono"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 3,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788913987169,
-                "primaryCatId": "Estantes",
-                "history": [],
-                "visible": true,
-                "views": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "63",
                 "title": "Librero",
                 "description": "Organización creativa y estilo para tus paredes.",
@@ -18459,6 +18504,91 @@ const productsData = [
                     "Estantes"
                 ],
                 "primaryCatId": "Estantes",
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "62",
+                "title": "Hexagonales",
+                "description": "Organización creativa y estilo para tus paredes.",
+                "image": "img/estantes/hexagonales/hexagonales.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/estantes/hexagonales/hexagonales.webp",
+                        "images_list": [
+                            "img/estantes/hexagonales/hexagonales.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Combo",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1487292863-estantes-x3-set-repisas-madera-hexagonos-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 22000,
+                                "cost_price": 11000,
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "estante",
+                    "estantes",
+                    "hexagonal",
+                    "hexagonos",
+                    "repisa",
+                    "repisas",
+                    "estante flotante",
+                    "estante madera",
+                    "estante pino",
+                    "colgar",
+                    "decoracion",
+                    "pared",
+                    "estilo nordico",
+                    "diseño hexagonal",
+                    "geometrico",
+                    "repisa hexagonal",
+                    "repisa hexagono",
+                    "estante hexagonal",
+                    "estantes hexagonales",
+                    "repisas hexagonales",
+                    "mueble hexagonal",
+                    "hexagonos de madera",
+                    "hexagonos de pino",
+                    "decoracion pared hexagono"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1788913987169,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "visible": true,
+                "views": 0,
+                "categories": [
+                    "carpinteria-todos",
+                    "Estantes"
+                ],
                 "rubro": "carpinteria"
             },
             {
@@ -18632,86 +18762,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "7C",
-                "title": "Repisa-estante de pared con toallero",
-                "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
-                "image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
-                        "images_list": [
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001628-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001772-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001907-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916002040-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Unico",
-                                "link": "https://www.mercadolibre.com.ar/repisaestante-de-pared--con-toallero--madera-de-pino/up/MLAU5148491060?pdp_filters=item_id:MLA2073887919",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 20000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 25,
-                                        "shippingDiscountPercent": 0
-                                    }
-                                ]
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "estimatedWeight": 2.5,
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [
-                    {
-                        "minUnits": 10,
-                        "discountPercent": 25,
-                        "shippingDiscountPercent": 0
-                    }
-                ],
-                "last_modified": 1788916093301,
-                "primaryCatId": "Estantes",
-                "history": [],
-                "visible": true,
-                "views": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Estantes",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "7D",
                 "shortId": "37",
                 "title": "Estante Repisa Casita X 3 Unidades",
@@ -18769,7 +18819,7 @@ const productsData = [
                 "last_modified": 1789446426308,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 10,
+                "views": 11,
                 "categories": [
                     "carpinteria-todos",
                     "Estantes",
@@ -19033,6 +19083,169 @@ const productsData = [
                     "Estantes"
                 ],
                 "rubro": "carpinteria"
+            },
+            {
+                "id": "1792887338328",
+                "shortId": "3S",
+                "title": "Ménsula Madera 45x45cm - Para Escritorios Nórdicos",
+                "description": "Publicación importada desde Mercado Libre (MLA1248080101).",
+                "image": "img/repisas-estantes/mnsula-madera-45x45cm-para-escritorios-nrdicos/1792896610285-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/repisas-estantes/mnsula-madera-45x45cm-para-escritorios-nrdicos/1792896610285-imagenwebp.webp",
+                        "images_list": [
+                            "img/repisas-estantes/mnsula-madera-45x45cm-para-escritorios-nrdicos/1792896610285-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla1248080101",
+                    "ménsula",
+                    "madera",
+                    "45x45cm",
+                    "para",
+                    "escritorios",
+                    "nórdicos"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792896610293,
+                "primaryCatId": "Estantes",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338328,
+                        "details": "Importado como borrador desde Mercado Libre (MLA1248080101)"
+                    }
+                ]
+            },
+            {
+                "id": "1792887338330",
+                "shortId": "3S",
+                "title": "Mensula De Madera -  La Tarima (30 X 30 Cm) Nordico",
+                "description": "Publicación importada desde Mercado Libre (MLA1377475740).",
+                "image": "img/repisas-estantes/mensula-de-madera-la-tarima-30-x-30-cm-nordico/1792896622136-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/repisas-estantes/mensula-de-madera-la-tarima-30-x-30-cm-nordico/1792896622136-imagenwebp.webp",
+                        "images_list": [
+                            "img/repisas-estantes/mensula-de-madera-la-tarima-30-x-30-cm-nordico/1792896622136-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla1377475740",
+                    "mensula",
+                    "madera",
+                    "tarima",
+                    "nordico"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792896622140,
+                "primaryCatId": "Estantes",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338330,
+                        "details": "Importado como borrador desde Mercado Libre (MLA1377475740)"
+                    }
+                ]
+            },
+            {
+                "id": "1792887338340",
+                "shortId": "3S",
+                "title": "Ménsula Madera 50x50cm - Para Escritorios Nórdicos",
+                "description": "Publicación importada desde Mercado Libre (MLA3345915146).",
+                "image": "img/repisas-estantes/mnsula-madera-50x50cm-para-escritorios-nrdicos/1792896633807-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/repisas-estantes/mnsula-madera-50x50cm-para-escritorios-nrdicos/1792896633807-imagenwebp.webp",
+                        "images_list": [
+                            "img/repisas-estantes/mnsula-madera-50x50cm-para-escritorios-nrdicos/1792896633807-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3345915146",
+                    "ménsula",
+                    "madera",
+                    "50x50cm",
+                    "para",
+                    "escritorios",
+                    "nórdicos"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792896633811,
+                "primaryCatId": "Estantes",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338337,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3345915146)"
+                    }
+                ]
             }
         ]
     },
@@ -19110,7 +19323,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 102
+                "views": 108
             },
             {
                 "id": "67",
@@ -19245,7 +19458,7 @@ const productsData = [
                     "cortes-madera"
                 ],
                 "rubro": "carpinteria",
-                "views": 17
+                "views": 21
             },
             {
                 "id": "68",
@@ -19353,7 +19566,7 @@ const productsData = [
                 "last_modified": 1791766660527,
                 "primaryCatId": "cortes-madera",
                 "history": [],
-                "views": 4
+                "views": 5
             },
             {
                 "id": "93",
@@ -19503,556 +19716,6 @@ const productsData = [
         "order": 8,
         "visible": true,
         "products": [
-            {
-                "id": "52",
-                "title": "Baranda: Desmontable - Estilo Montessori",
-                "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
-                "image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687226-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687407-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687542-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "200 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 3,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
-                            },
-                            {
-                                "medida": "190 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
-                            },
-                            {
-                                "medida": "140 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0,
-                                "shippingConfig": {
-                                    "logisticaMaxUnits": 1
-                                },
-                                "logisticaMaxUnits": 1
-                            },
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-110x45-desmontable/up/MLAU244203090?pdp_filters=item_id:MLA1467804894",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 27000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-100x45-desmontable/up/MLAU3438278874?pdp_filters=item_id:MLA2371249298",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 27000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-100x45-desmontable/up/MLAU3438278874?pdp_filters=item_id:MLA2371249298",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 26000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-80x45-desmontable/up/MLAU233718554?pdp_filters=item_id:MLA1369581373",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "70 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1539322017-baranda-para-cama-montessori-70x45-desmontable-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 23999,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "60 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-60x45-desmontable/up/MLAU3438284744?pdp_filters=item_id:MLA1539346903",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 23000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 3
-                    },
-                    {
-                        "acabado_name": "Blanca",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1780289632908-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780289632908-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541858852-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859223-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859334-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859445-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780289633113-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438785271-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "70 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "60 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    },
-                    {
-                        "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438763672-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438763672-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438763850-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438764011-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438764144-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "70 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "60 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 4
-                    }
-                ],
-                "tags": [
-                    "baranda",
-                    "barandas",
-                    "baranda desmontable",
-                    "baranda montessori",
-                    "baranda cama",
-                    "baranda madera",
-                    "baranda pino",
-                    "niños",
-                    "bebes",
-                    "proteccion",
-                    "seguridad",
-                    "anticaida",
-                    "infantil",
-                    "sommier",
-                    "cuna",
-                    "barrera",
-                    "barandilla",
-                    "barrera cama",
-                    "proteccion cama",
-                    "baranda anticaida",
-                    "seguridad infantil",
-                    "colecho",
-                    "anticaidas",
-                    "estilo montessori",
-                    "varanda",
-                    "varandas",
-                    "barada",
-                    "baradas",
-                    "proteccion cuna",
-                    "seguridad cuna",
-                    "defensa cuna",
-                    "barrera cuna",
-                    "baranda colecho",
-                    "baranda de seguridad",
-                    "reja de cama",
-                    "barandilla cuna",
-                    "barandilla cama",
-                    "barrera anticaida",
-                    "protector de cama",
-                    "baranda de pino",
-                    "baranda de madera",
-                    "anticaidas cuna",
-                    "protector cuna",
-                    "barandas de pino"
-                ],
-                "last_modified": 1784430002742,
-                "optional_variant": {
-                    "label": "Espesor del tirante (opcional)",
-                    "options": [
-                        "1.8 cm",
-                        "1.9 cm",
-                        "2 cm",
-                        "2.1 cm",
-                        "2.2 cm",
-                        "2.3 cm",
-                        "2.4 cm",
-                        "2.5 cm",
-                        "2.6 cm",
-                        "2.7 cm",
-                        "2.8 cm",
-                        "2.9 cm",
-                        "3 cm",
-                        "3.1 cm",
-                        "3.2 cm",
-                        "3.3 cm",
-                        "3.4 cm",
-                        "3.5 cm",
-                        "3.6 cm",
-                        "3.7 cm",
-                        "3.8 cm",
-                        "3.9 cm",
-                        "4 cm",
-                        "4.1 cm",
-                        "4.2 cm",
-                        "4.3 cm",
-                        "4.4 cm",
-                        "4.5 cm",
-                        "Otras medidas"
-                    ]
-                },
-                "primaryCatId": "Barandas",
-                "views": 14,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 7,
-                "categories": [
-                    "carpinteria-todos",
-                    "Barandas",
-                    "cunas-madera-pino",
-                    "camas-madera-pino"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "58",
-                "title": "Baranda Fija: Montessori",
-                "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
-                "image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
-                            "img/barandas-para-cama/baranda-montessori/1780542646603-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "45 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1145213600-baranda-para-cama-barral-seguridad-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "price": 15000
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "baranda",
-                    "barandas",
-                    "baranda montessori",
-                    "baranda cama",
-                    "baranda madera",
-                    "baranda pino",
-                    "niños",
-                    "bebes",
-                    "proteccion",
-                    "seguridad",
-                    "anticaida",
-                    "infantil",
-                    "sommier",
-                    "cuna",
-                    "barrera",
-                    "barandilla",
-                    "estilo montessori",
-                    "varanda",
-                    "varandas",
-                    "barada",
-                    "baradas",
-                    "proteccion cuna",
-                    "seguridad cuna",
-                    "defensa cuna",
-                    "barrera cuna",
-                    "baranda colecho",
-                    "baranda de seguridad",
-                    "reja de cama",
-                    "barandilla cuna",
-                    "barandilla cama",
-                    "barrera anticaida",
-                    "protector de cama",
-                    "baranda de pino",
-                    "baranda de madera",
-                    "anticaidas cuna",
-                    "protector cuna",
-                    "barandas de pino"
-                ],
-                "last_modified": 1783616746091,
-                "primaryCatId": "Barandas",
-                "views": 3,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Barandas",
-                    "cunas-madera-pino",
-                    "camas-madera-pino"
-                ],
-                "rubro": "carpinteria"
-            },
             {
                 "id": "71",
                 "title": "Cuna: Colecho Retro",
@@ -20837,998 +20500,89 @@ const productsData = [
         "order": 9,
         "products": [
             {
-                "id": "51",
-                "title": "Baranda: Desmontable Clásica",
-                "description": "Seguridad y comodidad superior para la cama de los más chicos.\nNo dudes en hacer todas tus consultas",
-                "video": "https://www.youtube.com/shorts/yJaUouU4ZQw",
-                "image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
+                "id": "F3",
+                "shortId": "3D",
+                "title": "Mesita de luz - Angosta",
+                "description": "Mesita de luz - Angosta",
+                "image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
+                        "cover_image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
                         "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437453517-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437453680-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437453830-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437453980-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454194-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454360-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454504-imagen.webp"
+                            "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
+                            "img/hogar/mesita-de-luz-angosta/1790378658840-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "200 x 45 cm",
-                                "link": "",
+                                "medida": "Mesita",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-1-cajon/up/MLAU5310445256",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 60000,
-                                "cost_price": 60000,
+                                "price": 18000,
+                                "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 1,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
-                            },
-                            {
-                                "medida": "190 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "cost_price": 60000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
-                            },
-                            {
-                                "medida": "140 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2102398740-baranda-de-seguridad-para-cama-infantil-adultos-140x45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0,
-                                "logisticaEnabled": true,
-                                "shippingConfig": {
-                                    "logisticaEnabled": true,
-                                    "logisticaMaxUnits": 1
-                                },
-                                "noFlex": false,
-                                "disableFlex": false,
-                                "logisticaMaxUnits": 1
-                            },
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-932165982-baranda-de-seguridad-para-cama-infantil-adultos-reforzada-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": true,
-                                "price": 27000,
-                                "cost_price": 27000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1370369419-baranda-de-seguridad-para-cama-infantil-adultos-100x45cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 27000,
-                                "cost_price": 27000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1140300239-baranda-de-seguridad-para-cama-infantil-adultos-90x45-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 26000,
-                                "cost_price": 26000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1166496084-baranda-de-seguridad-para-cama-infantil-adultos-80x45cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": 25000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "70 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1511557955-baranda-para-cama-desmontable-70-x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 24000,
-                                "cost_price": 24000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "60 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1372978437-baranda-de-seguridad-para-cama-infantil-adultos-60x45cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 23000,
-                                "cost_price": 23000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 1
-                    },
-                    {
-                        "acabado_name": "Blanca",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706066-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706218-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706376-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706528-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706661-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1780289706798-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455785-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 45000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 45000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 45000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 45000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "70 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 45000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "60 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-color-blanca-110-x-45-cm/up/MLAU3348310629",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 45000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    },
-                    {
-                        "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454681-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437454856-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455011-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455164-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455315-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455464-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-clasica/1782437455607-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2013955994-baranda-para-cama-barnizada-110-x-45-cm-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371339468-baranda-para-cama-barnizada-100-x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371261458-baranda-para-cama-barnizada-90x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371326668-baranda-para-cama-barnizada-80x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "70 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371404684-baranda-para-cama-barnizada-70x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "60 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2371249088-baranda-para-cama-barnizada-60x-45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "baranda",
-                    "seguridad",
-                    "cama",
-                    "baranda para cama",
-                    "baranda de seguridad",
-                    "baranda para geriatrico",
-                    "resistentes",
-                    "duras",
-                    "madera",
-                    "medidas",
-                    "amplias",
-                    "grandes",
-                    "barandas",
-                    "baranda desmontable",
-                    "baranda clasica",
-                    "baranda cama",
-                    "baranda madera",
-                    "baranda pino",
-                    "niños",
-                    "bebes",
-                    "proteccion",
-                    "anticaida",
-                    "infantil",
-                    "sommier",
-                    "cuna",
-                    "barrera",
-                    "barandilla",
-                    "barrera cama",
-                    "proteccion cama",
-                    "baranda anticaida",
-                    "seguridad infantil",
-                    "colecho",
-                    "anticaidas",
-                    "varanda",
-                    "varandas",
-                    "barada",
-                    "baradas",
-                    "proteccion cuna",
-                    "seguridad cuna",
-                    "defensa cuna",
-                    "barrera cuna",
-                    "baranda colecho",
-                    "reja de cama",
-                    "barandilla cuna",
-                    "barandilla cama",
-                    "barrera anticaida",
-                    "protector de cama",
-                    "baranda de pino",
-                    "baranda de madera",
-                    "anticaidas cuna",
-                    "protector cuna",
-                    "barandas de pino"
-                ],
-                "last_modified": 1788028327325,
-                "optional_variant": {
-                    "label": "Espesor del tirante (opcional)",
-                    "options": [
-                        "1.8 cm",
-                        "1.9 cm",
-                        "2 cm",
-                        "2.1 cm",
-                        "2.2 cm",
-                        "2.3 cm",
-                        "2.4 cm",
-                        "2.5 cm",
-                        "2.6 cm",
-                        "2.7 cm",
-                        "2.8 cm",
-                        "2.9 cm",
-                        "3 cm",
-                        "3.1 cm",
-                        "3.2 cm",
-                        "3.3 cm",
-                        "3.4 cm",
-                        "3.5 cm",
-                        "Otras medidas"
-                    ]
-                },
-                "primaryCatId": "Barandas",
-                "history": [],
-                "views": 82,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Barandas",
-                    "camas-madera-pino"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "52",
-                "title": "Baranda: Desmontable - Estilo Montessori",
-                "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
-                "image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687226-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687407-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687542-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "200 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 3,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
-                            },
-                            {
-                                "medida": "190 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
-                            },
-                            {
-                                "medida": "140 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0,
-                                "shippingConfig": {
-                                    "logisticaMaxUnits": 1
-                                },
-                                "logisticaMaxUnits": 1
-                            },
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-110x45-desmontable/up/MLAU244203090?pdp_filters=item_id:MLA1467804894",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 27000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-100x45-desmontable/up/MLAU3438278874?pdp_filters=item_id:MLA2371249298",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 27000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-100x45-desmontable/up/MLAU3438278874?pdp_filters=item_id:MLA2371249298",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 26000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-80x45-desmontable/up/MLAU233718554?pdp_filters=item_id:MLA1369581373",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "70 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1539322017-baranda-para-cama-montessori-70x45-desmontable-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 23999,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "60 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-60x45-desmontable/up/MLAU3438284744?pdp_filters=item_id:MLA1539346903",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 23000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 3
-                    },
-                    {
-                        "acabado_name": "Blanca",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1780289632908-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780289632908-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541858852-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859223-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859334-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859445-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780289633113-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438785271-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "70 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "60 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    },
-                    {
-                        "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438763672-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438763672-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438763850-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438764011-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438764144-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "70 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "60 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 4
-                    }
-                ],
-                "tags": [
-                    "baranda",
-                    "barandas",
-                    "baranda desmontable",
-                    "baranda montessori",
-                    "baranda cama",
-                    "baranda madera",
-                    "baranda pino",
-                    "niños",
-                    "bebes",
-                    "proteccion",
-                    "seguridad",
-                    "anticaida",
-                    "infantil",
-                    "sommier",
-                    "cuna",
-                    "barrera",
-                    "barandilla",
-                    "barrera cama",
-                    "proteccion cama",
-                    "baranda anticaida",
-                    "seguridad infantil",
-                    "colecho",
-                    "anticaidas",
-                    "estilo montessori",
-                    "varanda",
-                    "varandas",
-                    "barada",
-                    "baradas",
-                    "proteccion cuna",
-                    "seguridad cuna",
-                    "defensa cuna",
-                    "barrera cuna",
-                    "baranda colecho",
-                    "baranda de seguridad",
-                    "reja de cama",
-                    "barandilla cuna",
-                    "barandilla cama",
-                    "barrera anticaida",
-                    "protector de cama",
-                    "baranda de pino",
-                    "baranda de madera",
-                    "anticaidas cuna",
-                    "protector cuna",
-                    "barandas de pino"
-                ],
-                "last_modified": 1784430002742,
-                "optional_variant": {
-                    "label": "Espesor del tirante (opcional)",
-                    "options": [
-                        "1.8 cm",
-                        "1.9 cm",
-                        "2 cm",
-                        "2.1 cm",
-                        "2.2 cm",
-                        "2.3 cm",
-                        "2.4 cm",
-                        "2.5 cm",
-                        "2.6 cm",
-                        "2.7 cm",
-                        "2.8 cm",
-                        "2.9 cm",
-                        "3 cm",
-                        "3.1 cm",
-                        "3.2 cm",
-                        "3.3 cm",
-                        "3.4 cm",
-                        "3.5 cm",
-                        "3.6 cm",
-                        "3.7 cm",
-                        "3.8 cm",
-                        "3.9 cm",
-                        "4 cm",
-                        "4.1 cm",
-                        "4.2 cm",
-                        "4.3 cm",
-                        "4.4 cm",
-                        "4.5 cm",
-                        "Otras medidas"
-                    ]
-                },
-                "primaryCatId": "Barandas",
-                "views": 14,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 7,
-                "categories": [
-                    "carpinteria-todos",
-                    "Barandas",
-                    "cunas-madera-pino",
-                    "camas-madera-pino"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "58",
-                "title": "Baranda Fija: Montessori",
-                "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
-                "image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
-                            "img/barandas-para-cama/baranda-montessori/1780542646603-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "45 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1145213600-baranda-para-cama-barral-seguridad-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "price": 15000
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
-                "tags": [
-                    "baranda",
-                    "barandas",
-                    "baranda montessori",
-                    "baranda cama",
-                    "baranda madera",
-                    "baranda pino",
-                    "niños",
-                    "bebes",
-                    "proteccion",
-                    "seguridad",
-                    "anticaida",
-                    "infantil",
-                    "sommier",
-                    "cuna",
-                    "barrera",
-                    "barandilla",
-                    "estilo montessori",
-                    "varanda",
-                    "varandas",
-                    "barada",
-                    "baradas",
-                    "proteccion cuna",
-                    "seguridad cuna",
-                    "defensa cuna",
-                    "barrera cuna",
-                    "baranda colecho",
-                    "baranda de seguridad",
-                    "reja de cama",
-                    "barandilla cuna",
-                    "barandilla cama",
-                    "barrera anticaida",
-                    "protector de cama",
-                    "baranda de pino",
-                    "baranda de madera",
-                    "anticaidas cuna",
-                    "protector cuna",
-                    "barandas de pino"
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1790378658845,
+                "primaryCatId": "camas-madera-pino",
+                "history": [],
+                "views": 2,
+                "categories": [
+                    "carpinteria-todos",
+                    "camas-madera-pino",
+                    "Hogar"
                 ],
-                "last_modified": 1783616746091,
-                "primaryCatId": "Barandas",
-                "views": 3,
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "F2",
+                "title": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
+                "description": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
+                "image": "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
+                        "images_list": [
+                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
+                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774793-imagen.webp",
+                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774926-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786334775059,
+                "primaryCatId": "camas-madera-pino",
+                "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21837,13 +20591,116 @@ const productsData = [
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
+                    "otroEnabled": false
                 },
                 "categories": [
                     "carpinteria-todos",
-                    "Barandas",
-                    "cunas-madera-pino",
+                    "camas-madera-pino",
+                    "Hogar"
+                ],
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "79",
+                "title": "Pie de cama romano",
+                "description": "",
+                "image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
+                        "images_list": [
+                            "img/cunas/pie-cama-romano/1786839481815-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "80 cm",
+                                "link": "https://www.mercadolibre.com.ar/banco-romano--pie-de-cama--80-cm-de-ancho/up/MLAU4772479312",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true,
+                                "stock": 0
+                            }
+                        ],
+                        "hidden": false,
+                        "stock": 0
+                    }
+                ],
+                "tags": [
+                    "pie",
+                    "cama",
+                    "romano",
+                    "borrador",
+                    "madera",
+                    "pino",
+                    "carpinteria",
+                    "rustico",
+                    "natural",
+                    "mueble",
+                    "hogar",
+                    "casa",
+                    "decoracion",
+                    "calidad",
+                    "diseño",
+                    "artesanal",
+                    "comprar",
+                    "tienda",
+                    "envio",
+                    "seguro",
+                    "fuerte",
+                    "resistente",
+                    "lindo",
+                    "util",
+                    "practico",
+                    "pie de madera",
+                    "pie de pino",
+                    "mueble pie",
+                    "borrador pie",
+                    "cama de madera",
+                    "cama de pino",
+                    "mueble cama",
+                    "borrador cama",
+                    "romano de madera",
+                    "romano de pino",
+                    "mueble romano",
+                    "borrador romano",
+                    "borrador de madera",
+                    "borrador de pino",
+                    "mueble borrador",
+                    "borrador borrador",
+                    "mueble de madera",
+                    "mueble de pino",
+                    "carpinteria artesanal",
+                    "decoracion del hogar",
+                    "mueble rustico",
+                    "mueble natural",
+                    "hecho a mano",
+                    "muebles de calidad",
+                    "diseño artesanal"
+                ],
+                "last_modified": 1786924556417,
+                "primaryCatId": "Hogar",
+                "visible": true,
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 0,
+                "categories": [
+                    "carpinteria-todos",
                     "camas-madera-pino"
                 ],
                 "rubro": "carpinteria"
@@ -22115,7 +20972,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22296,217 +21153,11 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 8,
+                "views": 10,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
                     "muebles"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "79",
-                "title": "Pie de cama romano",
-                "description": "",
-                "image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
-                        "images_list": [
-                            "img/cunas/pie-cama-romano/1786839481815-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "80 cm",
-                                "link": "https://www.mercadolibre.com.ar/banco-romano--pie-de-cama--80-cm-de-ancho/up/MLAU4772479312",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "pie",
-                    "cama",
-                    "romano",
-                    "borrador",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "pie de madera",
-                    "pie de pino",
-                    "mueble pie",
-                    "borrador pie",
-                    "cama de madera",
-                    "cama de pino",
-                    "mueble cama",
-                    "borrador cama",
-                    "romano de madera",
-                    "romano de pino",
-                    "mueble romano",
-                    "borrador romano",
-                    "borrador de madera",
-                    "borrador de pino",
-                    "mueble borrador",
-                    "borrador borrador",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal"
-                ],
-                "last_modified": 1786924556417,
-                "primaryCatId": "Hogar",
-                "visible": true,
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "stock": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "camas-madera-pino"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "F2",
-                "title": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
-                "description": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
-                "image": "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
-                        "images_list": [
-                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
-                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774793-imagen.webp",
-                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774926-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786334775059,
-                "primaryCatId": "camas-madera-pino",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "camas-madera-pino",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "F3",
-                "shortId": "3D",
-                "title": "Mesita de luz - Angosta",
-                "description": "Mesita de luz - Angosta",
-                "image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
-                        "images_list": [
-                            "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
-                            "img/hogar/mesita-de-luz-angosta/1790378658840-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Mesita",
-                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-1-cajon/up/MLAU5310445256",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 18000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1790378658845,
-                "primaryCatId": "camas-madera-pino",
-                "history": [],
-                "views": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "camas-madera-pino",
-                    "Hogar"
                 ],
                 "rubro": "carpinteria"
             }
@@ -22519,114 +21170,6 @@ const productsData = [
         "order": 10,
         "rubro": "carpinteria",
         "products": [
-            {
-                "id": "4D",
-                "title": "Banco Escalera De Pino 3 Escalones",
-                "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
-                "image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
-                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275705-imagen.webp",
-                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275851-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "60 x 40 x 35 cm",
-                                "link": "https://www.mercadolibre.com.ar/banco-escalera-de-pino-3-escalones/up/MLAU3289044905",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 33000,
-                                "cost_price": 33000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786316089369,
-                "primaryCatId": "muebles",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "muebles"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "4G",
-                "title": "Banco Banquito Escalera Niños Infantil",
-                "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
-                "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408872-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409011-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409155-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30x23x20",
-                                "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 18000,
-                                "cost_price": 33000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786333409298,
-                "primaryCatId": "muebles",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "muebles",
-                    "Juguetes"
-                ],
-                "rubro": "carpinteria"
-            },
             {
                 "id": "91",
                 "title": "Escaleras para cama",
@@ -22749,7 +21292,7 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 8,
+                "views": 10,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -22821,6 +21364,114 @@ const productsData = [
                     "muebles"
                 ],
                 "primaryCatId": "muebles",
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "4D",
+                "title": "Banco Escalera De Pino 3 Escalones",
+                "description": "Banco Escalera De Pino 3 Escalones\n\nAltura Máxima: 60 cm\nProfundidad: 40 cm\nAncho: 35 cm",
+                "image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275705-imagen.webp",
+                            "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275851-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "60 x 40 x 35 cm",
+                                "link": "https://www.mercadolibre.com.ar/banco-escalera-de-pino-3-escalones/up/MLAU3289044905",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786316089369,
+                "primaryCatId": "muebles",
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 1
+                },
+                "categories": [
+                    "carpinteria-todos",
+                    "muebles"
+                ],
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "4G",
+                "title": "Banco Banquito Escalera Niños Infantil",
+                "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
+                "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408872-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409011-imagen.webp",
+                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409155-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x23x20",
+                                "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786333409298,
+                "primaryCatId": "muebles",
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 1
+                },
+                "categories": [
+                    "carpinteria-todos",
+                    "muebles",
+                    "Juguetes"
+                ],
                 "rubro": "carpinteria"
             }
         ]
@@ -22938,7 +21589,7 @@ const productsData = [
                 "last_modified": 1788907898357,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 5,
+                "views": 7,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",
@@ -23099,7 +21750,7 @@ const productsData = [
                 "last_modified": 1788908106317,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 1,
+                "views": 2,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",
@@ -23477,13 +22128,133 @@ const productsData = [
                 "last_modified": 1788908607231,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 1,
+                "views": 2,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",
                     "cajones-madera"
                 ],
                 "rubro": "carpinteria"
+            },
+            {
+                "id": "1792887338329",
+                "title": "Step Madera La Tarima 50x50 Cm Plataforma Fitness",
+                "description": "Publicación importada desde Mercado Libre (MLA1375418215).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 55000,
+                                "stock": 964,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1375418215"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla1375418215",
+                    "step",
+                    "madera",
+                    "tarima",
+                    "50x50",
+                    "plataforma",
+                    "fitness"
+                ],
+                "last_modified": 1792887338329,
+                "optional_variant": null,
+                "primaryCatId": "Steps",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338329,
+                        "details": "Importado como borrador desde Mercado Libre (MLA1375418215)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 964,
+                "categories": [
+                    "carpinteria-todos",
+                    "Steps"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "fitness"
+            },
+            {
+                "id": "1792887338332",
+                "title": "Step Funcional - Gym Plataforma Fitness Cajón - Escalón",
+                "description": "Publicación importada desde Mercado Libre (MLA2180486792).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 30000,
+                                "stock": 987,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2180486792"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla2180486792",
+                    "step",
+                    "funcional",
+                    "plataforma",
+                    "fitness",
+                    "cajón",
+                    "escalón"
+                ],
+                "last_modified": 1792887338332,
+                "optional_variant": null,
+                "primaryCatId": "Steps",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338332,
+                        "details": "Importado como borrador desde Mercado Libre (MLA2180486792)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 987,
+                "categories": [
+                    "carpinteria-todos",
+                    "Steps"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "fitness"
             }
         ]
     },
@@ -23958,7 +22729,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24035,7 +22806,7 @@ const productsData = [
                 "last_modified": 1789446426308,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 10,
+                "views": 11,
                 "categories": [
                     "carpinteria-todos",
                     "Estantes",
@@ -24882,6 +23653,65 @@ const productsData = [
                     "sillas-sillones"
                 ],
                 "rubro": "carpinteria"
+            },
+            {
+                "id": "1792887338346",
+                "title": "Mesa Y 2 Sillas Infantil (excelente Calidad)",
+                "description": "Publicación importada desde Mercado Libre (MLA1998800625).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 140000,
+                                "stock": 1,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1998800625"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla1998800625",
+                    "mesa",
+                    "sillas",
+                    "infantil",
+                    "(excelente",
+                    "calidad)"
+                ],
+                "last_modified": 1792887338341,
+                "optional_variant": null,
+                "primaryCatId": "Juguetes",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338341,
+                        "details": "Importado como borrador desde Mercado Libre (MLA1998800625)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "Juguetes"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "mesas-sillas-ninos"
             }
         ]
     },
@@ -25826,7 +24656,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334411421,
                 "primaryCatId": "Mesas-madera",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -26170,6 +25000,301 @@ const productsData = [
                     "Mesas-madera"
                 ],
                 "rubro": "carpinteria"
+            },
+            {
+                "id": "1792887338341",
+                "title": "Mesa Mesita Auxiliar Matera Plegable",
+                "description": "Publicación importada desde Mercado Libre (MLA3936714566).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 0,
+                                "stock": 1,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3936714566"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3936714566",
+                    "mesa",
+                    "mesita",
+                    "auxiliar",
+                    "matera",
+                    "plegable"
+                ],
+                "last_modified": 1792887338338,
+                "optional_variant": null,
+                "primaryCatId": "Mesas-madera",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338338,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3936714566)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "Mesas-madera"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "plegables-materas"
+            },
+            {
+                "id": "1792887338343",
+                "title": "Mesa Mesita Auxiliar Matera Plegable",
+                "description": "Publicación importada desde Mercado Libre (MLA2073922617).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 30000,
+                                "stock": 2,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2073922617"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla2073922617",
+                    "mesa",
+                    "mesita",
+                    "auxiliar",
+                    "matera",
+                    "plegable"
+                ],
+                "last_modified": 1792887338339,
+                "optional_variant": null,
+                "primaryCatId": "Mesas-madera",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338339,
+                        "details": "Importado como borrador desde Mercado Libre (MLA2073922617)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 2,
+                "categories": [
+                    "carpinteria-todos",
+                    "Mesas-madera"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "plegables-materas"
+            },
+            {
+                "id": "1792887338347",
+                "title": "Mesa Mesita Auxiliar Matera Plegable",
+                "description": "Publicación importada desde Mercado Libre (MLA2074250953).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 30000,
+                                "stock": 1,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2074250953"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla2074250953",
+                    "mesa",
+                    "mesita",
+                    "auxiliar",
+                    "matera",
+                    "plegable"
+                ],
+                "last_modified": 1792887338342,
+                "optional_variant": null,
+                "primaryCatId": "Mesas-madera",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338342,
+                        "details": "Importado como borrador desde Mercado Libre (MLA2074250953)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "Mesas-madera"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "plegables-materas"
+            },
+            {
+                "id": "1792887338348",
+                "title": "Mesa Plegable Madera Pino Redonda",
+                "description": "Publicación importada desde Mercado Libre (MLA2083657243).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 50000,
+                                "stock": 1,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2083657243"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla2083657243",
+                    "mesa",
+                    "plegable",
+                    "madera",
+                    "pino",
+                    "redonda"
+                ],
+                "last_modified": 1792887338342,
+                "optional_variant": null,
+                "primaryCatId": "Mesas-madera",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338342,
+                        "details": "Importado como borrador desde Mercado Libre (MLA2083657243)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "Mesas-madera"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "mesas-redondas"
+            },
+            {
+                "id": "1792887338350",
+                "title": "Mesa Mesita Auxiliar Matera Plegable",
+                "description": "Publicación importada desde Mercado Libre (MLA3936801982).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 30000,
+                                "stock": 1,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3936801982"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3936801982",
+                    "mesa",
+                    "mesita",
+                    "auxiliar",
+                    "matera",
+                    "plegable"
+                ],
+                "last_modified": 1792887338344,
+                "optional_variant": null,
+                "primaryCatId": "Mesas-madera",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338344,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "Mesas-madera"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "plegables-materas"
             }
         ]
     },
@@ -26874,7 +25999,7 @@ const productsData = [
                 "last_modified": 1790378363386,
                 "primaryCatId": "jardin-patio",
                 "history": [],
-                "views": 0,
+                "views": 1,
                 "categories": [
                     "carpinteria-todos",
                     "jardin-patio",
@@ -27088,6 +26213,298 @@ const productsData = [
                     "Hogar"
                 ],
                 "rubro": "carpinteria"
+            },
+            {
+                "id": "1792887338333",
+                "title": "Deck Base Macetas Madera (30 X 40 Cm)",
+                "description": "Publicación importada desde Mercado Libre (MLA3322888876).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 14500,
+                                "stock": 989,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3322888876"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3322888876",
+                    "deck",
+                    "base",
+                    "macetas",
+                    "madera"
+                ],
+                "last_modified": 1792887338332,
+                "optional_variant": null,
+                "primaryCatId": "jardin-patio",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338332,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3322888876)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 989,
+                "categories": [
+                    "carpinteria-todos",
+                    "jardin-patio"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "decks-macetas"
+            },
+            {
+                "id": "1792887338338",
+                "title": "Deck Base Macetas Madera (50 X 20 Cm)",
+                "description": "Publicación importada desde Mercado Libre (MLA2149413391).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 8500,
+                                "stock": 998,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149413391"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla2149413391",
+                    "deck",
+                    "base",
+                    "macetas",
+                    "madera"
+                ],
+                "last_modified": 1792887338335,
+                "optional_variant": null,
+                "primaryCatId": "jardin-patio",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338335,
+                        "details": "Importado como borrador desde Mercado Libre (MLA2149413391)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 998,
+                "categories": [
+                    "carpinteria-todos",
+                    "jardin-patio"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "decks-macetas"
+            },
+            {
+                "id": "1792887338345",
+                "title": "Deck Base Macetas Madera (80 X 40 Cm)",
+                "description": "Publicación importada desde Mercado Libre (MLA3941452422).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 55000,
+                                "stock": 9999,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3941452422"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3941452422",
+                    "deck",
+                    "base",
+                    "macetas",
+                    "madera"
+                ],
+                "last_modified": 1792887338340,
+                "optional_variant": null,
+                "primaryCatId": "jardin-patio",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338340,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3941452422)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 9999,
+                "categories": [
+                    "carpinteria-todos",
+                    "jardin-patio"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "decks-macetas"
+            },
+            {
+                "id": "1792887338342",
+                "title": "Mesa  Plegable Playera Jardín (2 Modelos)",
+                "description": "Publicación importada desde Mercado Libre (MLA1475679709).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 32999,
+                                "stock": 4,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1475679709"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla1475679709",
+                    "mesa",
+                    "plegable",
+                    "playera",
+                    "jardín",
+                    "modelos)"
+                ],
+                "last_modified": 1792887338338,
+                "optional_variant": null,
+                "primaryCatId": "jardin-patio",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338338,
+                        "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 4,
+                "categories": [
+                    "carpinteria-todos",
+                    "jardin-patio"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "mesas-jardin"
+            },
+            {
+                "id": "1792887338351",
+                "title": "Mesa De Madera Plegable Jardín Camping",
+                "description": "Publicación importada desde Mercado Libre (MLA3946285696).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 60000,
+                                "stock": 1,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3946285696"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3946285696",
+                    "mesa",
+                    "madera",
+                    "plegable",
+                    "jardín",
+                    "camping"
+                ],
+                "last_modified": 1792887338344,
+                "optional_variant": null,
+                "primaryCatId": "jardin-patio",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338344,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3946285696)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "jardin-patio"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "mesas-camping"
             }
         ]
     },
@@ -27491,7 +26908,7 @@ const productsData = [
                 "last_modified": 1790378363386,
                 "primaryCatId": "jardin-patio",
                 "history": [],
-                "views": 0,
+                "views": 1,
                 "categories": [
                     "carpinteria-todos",
                     "jardin-patio",
@@ -27623,7 +27040,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334411421,
                 "primaryCatId": "Mesas-madera",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -28123,46 +27540,63 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "1792154736796",
-                "title": "Canasto Ramillero/paragüero De Mimbre",
-                "description": "",
-                "image": "img/canasto-ramillero-paraguero-de-mimbre/1792154735891-1-imagen.webp",
-                "order": 0,
-                "visible": true,
-                "primaryCatId": "Hogar",
+                "id": "1792887338335",
+                "title": "Fanal Madera Pino Por Tres Unidades",
+                "description": "Publicación importada desde Mercado Libre (MLA2164674452).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Estándar",
-                        "cover_image": "img/canasto-ramillero-paraguero-de-mimbre/1792154735891-1-imagen.webp",
-                        "images_list": [
-                            "img/canasto-ramillero-paraguero-de-mimbre/1792154735891-1-imagen.webp",
-                            "img/canasto-ramillero-paraguero-de-mimbre/1792154736053-2-imagen.webp",
-                            "img/canasto-ramillero-paraguero-de-mimbre/1792154736132-3-imagen.webp",
-                            "img/canasto-ramillero-paraguero-de-mimbre/1792154736268-4-imagen.webp",
-                            "img/canasto-ramillero-paraguero-de-mimbre/1792154736340-5-imagen.webp",
-                            "img/canasto-ramillero-paraguero-de-mimbre/1792154736453-6-imagen.webp",
-                            "img/canasto-ramillero-paraguero-de-mimbre/1792154736520-7-imagen.webp",
-                            "img/canasto-ramillero-paraguero-de-mimbre/1792154736631-8-imagen.webp",
-                            "img/canasto-ramillero-paraguero-de-mimbre/1792154736690-9-imagen.webp"
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "Estándar",
-                                "price": 42000,
-                                "cost_price": 21000,
-                                "link": "https://www.mercadolibre.com.ar/canasto-ramilleroparaguero-de-mimbre/up/MLAU5551554652",
-                                "linkLabel": "Ver en Mercado Libre",
-                                "iconType": "local_shipping",
-                                "stock": 5,
-                                "showPrice": true,
-                                "highlight": false,
-                                "default": true,
-                                "hidden": false
+                                "name": "Medida Única",
+                                "price": 24500,
+                                "stock": 2,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2164674452"
                             }
                         ]
                     }
                 ],
-                "rubro": "carpinteria"
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla2164674452",
+                    "fanal",
+                    "madera",
+                    "pino",
+                    "tres",
+                    "unidades"
+                ],
+                "last_modified": 1792887338334,
+                "optional_variant": null,
+                "primaryCatId": "Hogar",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338334,
+                        "details": "Importado como borrador desde Mercado Libre (MLA2164674452)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 2,
+                "categories": [
+                    "carpinteria-todos",
+                    "Hogar"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "fanales"
             }
         ]
     },
@@ -28488,6 +27922,67 @@ const productsData = [
                     "bazar-cocina"
                 ],
                 "rubro": "carpinteria"
+            },
+            {
+                "id": "1792887338352",
+                "title": "Platos Asado Madera Algarrobo Tablita Redonda Calada 20 Cm",
+                "description": "Publicación importada desde Mercado Libre (MLA3993235002).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 12000,
+                                "stock": 5,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3993235002"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3993235002",
+                    "platos",
+                    "asado",
+                    "madera",
+                    "algarrobo",
+                    "tablita",
+                    "redonda",
+                    "calada"
+                ],
+                "last_modified": 1792887338345,
+                "optional_variant": null,
+                "primaryCatId": "productos-algarrobo",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338345,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3993235002)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 5,
+                "categories": [
+                    "carpinteria-todos",
+                    "productos-algarrobo"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "platos-asado"
             }
         ]
     },
@@ -28640,111 +28135,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "43",
-                "title": "Verdulero Clasico",
-                "description": "Verdulero con estante superior",
-                "image": "img/organizadores/estantes-montessori/1.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
-                        "images_list": [
-                            "img/organizadores/estantes-montessori/1.webp",
-                            "img/organizadores/estantes-montessori/2.webp",
-                            "img/organizadores/verdulero-clasico/3.webp",
-                            "img/organizadores/verdulero-clasico/4.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Cargando...",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508958407-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": false,
-                                "cost_price": 2500,
-                                "price": 15000,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "verdulero",
-                    "verduras",
-                    "organizar",
-                    "mueble de cocina",
-                    "cosina",
-                    "frutas",
-                    "frutero",
-                    "verduleros",
-                    "verdulero clasico",
-                    "verdulero madera",
-                    "verdulero pino",
-                    "cocina",
-                    "cajones",
-                    "verdulería",
-                    "frutería",
-                    "organizador cocina",
-                    "mueble cocina",
-                    "carro verdulero",
-                    "berdulero",
-                    "berdulería",
-                    "verdulero de pino",
-                    "verdulero de madera",
-                    "verdulería de cocina",
-                    "cesta de verduras",
-                    "cajonera de pino",
-                    "carro de cocina",
-                    "mueble para verduras",
-                    "cajon verdulero",
-                    "organizacion de alimentos",
-                    "despensa de pino",
-                    "verdulero rustico",
-                    "verdulero con cajones",
-                    "cesta de frutas"
-                ],
-                "last_modified": 1783637106226,
-                "primaryCatId": "bazar-cocina",
-                "views": 1,
-                "stock": 0,
-                "history": [
-                    {
-                        "date": "27/8, 12:39 a. m.",
-                        "type": "Precio Venta Subió",
-                        "detail": "Venta: $0 ➔ $15.000"
-                    },
-                    {
-                        "date": "27/8, 12:39 a. m.",
-                        "type": "Costo Aumentó",
-                        "detail": "Costo: $0 ➔ $2500"
-                    }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "bazar-cocina",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "44",
                 "title": "Verdule para Mesada",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
@@ -28834,111 +28224,6 @@ const productsData = [
                     "carpinteria-todos",
                     "Organizadores",
                     "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "47",
-                "title": "Verdulero x3",
-                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/verdulero-x3/1780708453865-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Único",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2414802538-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0,
-                                "price": 35000
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "verdulero",
-                    "carpintería",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "duradero",
-                    "excelente",
-                    "verdulero de madera",
-                    "verdulero de pino",
-                    "mueble verdulero",
-                    "carpintería  verdulero",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal",
-                    "mueble util",
-                    "mueble practico",
-                    "muebles para casa",
-                    "envios a todo el pais",
-                    "directo de fabrica",
-                    "fabricacion nacional",
-                    "madera de pino",
-                    "madera cepillada"
-                ],
-                "last_modified": 1783637154745,
-                "primaryCatId": "bazar-cocina",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "stock": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "bazar-cocina",
-                    "cajones-madera"
                 ],
                 "rubro": "carpinteria"
             },
@@ -29763,216 +29048,6 @@ const productsData = [
         "visible": false,
         "products": [
             {
-                "id": "43",
-                "title": "Verdulero Clasico",
-                "description": "Verdulero con estante superior",
-                "image": "img/organizadores/estantes-montessori/1.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
-                        "images_list": [
-                            "img/organizadores/estantes-montessori/1.webp",
-                            "img/organizadores/estantes-montessori/2.webp",
-                            "img/organizadores/verdulero-clasico/3.webp",
-                            "img/organizadores/verdulero-clasico/4.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Cargando...",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508958407-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": false,
-                                "cost_price": 2500,
-                                "price": 15000,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "verdulero",
-                    "verduras",
-                    "organizar",
-                    "mueble de cocina",
-                    "cosina",
-                    "frutas",
-                    "frutero",
-                    "verduleros",
-                    "verdulero clasico",
-                    "verdulero madera",
-                    "verdulero pino",
-                    "cocina",
-                    "cajones",
-                    "verdulería",
-                    "frutería",
-                    "organizador cocina",
-                    "mueble cocina",
-                    "carro verdulero",
-                    "berdulero",
-                    "berdulería",
-                    "verdulero de pino",
-                    "verdulero de madera",
-                    "verdulería de cocina",
-                    "cesta de verduras",
-                    "cajonera de pino",
-                    "carro de cocina",
-                    "mueble para verduras",
-                    "cajon verdulero",
-                    "organizacion de alimentos",
-                    "despensa de pino",
-                    "verdulero rustico",
-                    "verdulero con cajones",
-                    "cesta de frutas"
-                ],
-                "last_modified": 1783637106226,
-                "primaryCatId": "bazar-cocina",
-                "views": 1,
-                "stock": 0,
-                "history": [
-                    {
-                        "date": "27/8, 12:39 a. m.",
-                        "type": "Precio Venta Subió",
-                        "detail": "Venta: $0 ➔ $15.000"
-                    },
-                    {
-                        "date": "27/8, 12:39 a. m.",
-                        "type": "Costo Aumentó",
-                        "detail": "Costo: $0 ➔ $2500"
-                    }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "bazar-cocina",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "47",
-                "title": "Verdulero x3",
-                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/verdulero-x3/1780708453865-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Único",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2414802538-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0,
-                                "price": 35000
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "verdulero",
-                    "carpintería",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "duradero",
-                    "excelente",
-                    "verdulero de madera",
-                    "verdulero de pino",
-                    "mueble verdulero",
-                    "carpintería  verdulero",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal",
-                    "mueble util",
-                    "mueble practico",
-                    "muebles para casa",
-                    "envios a todo el pais",
-                    "directo de fabrica",
-                    "fabricacion nacional",
-                    "madera de pino",
-                    "madera cepillada"
-                ],
-                "last_modified": 1783637154745,
-                "primaryCatId": "bazar-cocina",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "stock": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "bazar-cocina",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "41",
                 "title": "Baúl de madera de pino - Mediano (80 cm)",
                 "description": "Baúl organizador y banco juguetero de madera de pino macizo. Medidas: 80 cm de largo x 40 cm de profundidad x 40 cm de alto. Gran capacidad de almacenamiento para dormitorios, pie de cama y salas de juegos.",
@@ -30239,7 +29314,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -30410,7 +29485,7 @@ const productsData = [
                 "last_modified": 1788907898357,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 5,
+                "views": 7,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",
@@ -30571,7 +29646,7 @@ const productsData = [
                 "last_modified": 1788908106317,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 1,
+                "views": 2,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",
@@ -30949,7 +30024,7 @@ const productsData = [
                 "last_modified": 1788908607231,
                 "primaryCatId": "Steps",
                 "history": [],
-                "views": 1,
+                "views": 2,
                 "categories": [
                     "carpinteria-todos",
                     "Steps",
@@ -31325,6 +30400,64 @@ const productsData = [
                 ],
                 "primaryCatId": "Podios",
                 "rubro": "carpinteria"
+            },
+            {
+                "id": "1792887338339",
+                "title": "Podio De Premiación Profesional - 3 Niveles",
+                "description": "Publicación importada desde Mercado Libre (MLA3246798562).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 500000,
+                                "stock": 998,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3246798562"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3246798562",
+                    "podio",
+                    "premiación",
+                    "profesional",
+                    "niveles"
+                ],
+                "last_modified": 1792887338336,
+                "optional_variant": null,
+                "primaryCatId": "Podios",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338336,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3246798562)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 998,
+                "categories": [
+                    "carpinteria-todos",
+                    "Podios"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "profesionales"
             }
         ]
     },
@@ -32032,7 +31165,7 @@ const productsData = [
             {
                 "id": "95",
                 "shortId": "33",
-                "title": "Cajón / CrossFit & Salto / Hechos a medida",
+                "title": "Cajón Pliométrico 3 en 1 CrossFit & Salto",
                 "description": "Cajón de salto pliométrico multifuncional 3 en 1 para CrossFit, entrenamiento funcional y preparación física. Fabricado en Fenólico Industrial de 18 mm con refuerzo estructural interno en cruz y manijas ergonómicas.",
                 "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
                 "acabados_groups": [
@@ -32058,19 +31191,7 @@ const productsData = [
                                 "cost_price": 22000,
                                 "legend": "Oficial Box CrossFit",
                                 "showPrice": true,
-                                "logisticaEnabled": true,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 3,
-                                        "discountPercent": 8,
-                                        "shippingDiscountPercent": 0
-                                    },
-                                    {
-                                        "minQty": 6,
-                                        "discountPercent": 12,
-                                        "shippingDiscountPercent": 0
-                                    }
-                                ]
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Mediano (40 × 50 × 60 cm)",
@@ -32084,19 +31205,7 @@ const productsData = [
                                 "cost_price": 17000,
                                 "legend": "Intermedio",
                                 "showPrice": true,
-                                "logisticaEnabled": true,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 3,
-                                        "discountPercent": 8,
-                                        "shippingDiscountPercent": 0
-                                    },
-                                    {
-                                        "minQty": 6,
-                                        "discountPercent": 12,
-                                        "shippingDiscountPercent": 0
-                                    }
-                                ]
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Chico (30 × 40 × 50 cm)",
@@ -32110,19 +31219,7 @@ const productsData = [
                                 "cost_price": 12000,
                                 "legend": "Funcional / Principiante",
                                 "showPrice": true,
-                                "logisticaEnabled": true,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 3,
-                                        "discountPercent": 8,
-                                        "shippingDiscountPercent": 0
-                                    },
-                                    {
-                                        "minQty": 6,
-                                        "discountPercent": 12,
-                                        "shippingDiscountPercent": 0
-                                    }
-                                ]
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "A Medida Especial",
@@ -32136,19 +31233,7 @@ const productsData = [
                                 "cost_price": 22000,
                                 "legend": "Personalizado",
                                 "showPrice": true,
-                                "logisticaEnabled": true,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 3,
-                                        "discountPercent": 8,
-                                        "shippingDiscountPercent": 0
-                                    },
-                                    {
-                                        "minQty": 6,
-                                        "discountPercent": 12,
-                                        "shippingDiscountPercent": 0
-                                    }
-                                ]
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -32187,21 +31272,24 @@ const productsData = [
                 },
                 "quantityDiscounts": [
                     {
-                        "minUnits": 3,
-                        "discountPercent": 8,
-                        "shippingDiscountPercent": 0
+                        "minQty": 3,
+                        "discountPercent": 8
                     },
                     {
-                        "minUnits": 6,
-                        "discountPercent": 12,
-                        "shippingDiscountPercent": 0
+                        "minQty": 6,
+                        "discountPercent": 12
                     }
                 ],
-                "last_modified": 1792210874056,
+                "last_modified": 1791831629527,
                 "primaryCatId": "cajones-crossfit",
                 "history": [],
                 "visible": true,
-                "rubro": "carpinteria"
+                "categories": [
+                    "carpinteria-todos",
+                    "cajones-crossfit"
+                ],
+                "rubro": "carpinteria",
+                "views": 68
             }
         ]
     },
@@ -32214,61 +31302,49 @@ const productsData = [
         "products": [
             {
                 "id": "1792123134173",
-                "shortId": "33",
                 "title": "Pizarra Pizarron Cartel Doble Hoja Grande Vereda",
                 "description": "PIZARRA  DE MADERA – 100 x 45 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\n\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 100 cm\nAncho: 45 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nLas imagenes son ilustrativas.\n\nSin garantía",
                 "image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
+                "order": 0,
+                "visible": true,
+                "primaryCatId": "cat-28-mvay9cq6",
                 "acabados_groups": [
                     {
                         "acabado_name": "Estándar",
-                        "description": "",
                         "cover_image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
                         "images_list": [
                             "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133598-2-imagen.webp",
                             "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133703-3-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133851-5-imagen.webp"
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133798-4-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133851-5-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133950-6-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123134008-7-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "Estándar",
+                                "price": 31000,
+                                "cost_price": 15500,
                                 "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-doble-hoja-grande-vereda/up/MLAU5156448073",
-                                "default": true,
-                                "hidden": false,
                                 "linkLabel": "Ver en Mercado Libre",
                                 "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25500,
-                                "cost_price": 15000,
-                                "legend": "",
+                                "stock": 5,
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "highlight": false,
+                                "default": true,
+                                "hidden": false
                             }
-                        ],
-                        "hidden": false
+                        ]
                     }
                 ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1792154291110,
-                "primaryCatId": "cat-28-mvay9cq6",
-                "history": [],
-                "visible": true,
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 4,
+                "categories": [
+                    "carpinteria-todos",
+                    "cat-28-mvay9cq6"
+                ],
+                "subcategoria": "pizarras"
             },
             {
                 "id": "1792154576619",
@@ -32310,7 +31386,8 @@ const productsData = [
                         ]
                     }
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 1
             },
             {
                 "id": "S3",
@@ -32369,7 +31446,65 @@ const productsData = [
                 "last_modified": 1792154651487,
                 "primaryCatId": "cat-28-mvay9cq6",
                 "history": [],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 2
+            },
+            {
+                "id": "1792887338334",
+                "title": "Pizarra Pizarron Para Colgar X3",
+                "description": "Publicación importada desde Mercado Libre (MLA3946726502).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 25000,
+                                "stock": 7,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3946726502"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3946726502",
+                    "pizarra",
+                    "pizarron",
+                    "para",
+                    "colgar"
+                ],
+                "last_modified": 1792887338333,
+                "optional_variant": null,
+                "primaryCatId": "cat-28-mvay9cq6",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338333,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3946726502)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 7,
+                "categories": [
+                    "cat-28-mvay9cq6"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "pizarras"
             }
         ]
     }

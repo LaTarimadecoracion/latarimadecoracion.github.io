@@ -1,0 +1,57 @@
+{
+  "id": "1792887338333",
+  "title": "Deck Base Macetas Madera (30 X 40 Cm)",
+  "description": "Publicación importada desde Mercado Libre (MLA3322888876).",
+  "video": "",
+  "image": "img/borrador/portada-imagen.webp",
+  "acabados_groups": [
+    {
+      "name": "Estándar",
+      "images": [
+        "img/borrador/portada-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "name": "Medida Única",
+          "price": 14500,
+          "stock": 989,
+          "link": "https://articulo.mercadolibre.com.ar/MLA-3322888876"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla3322888876",
+    "deck",
+    "base",
+    "macetas",
+    "madera"
+  ],
+  "last_modified": 1792887338332,
+  "optional_variant": null,
+  "primaryCatId": "jardin-patio",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338332,
+      "details": "Importado como borrador desde Mercado Libre (MLA3322888876)"
+    }
+  ],
+  "views": 0,
+  "paymentConfig": {
+    "mode": "store",
+    "showBuyButton": true,
+    "showCartButton": true
+  },
+  "shippingConfig": {
+    "mode": "both"
+  },
+  "stock": 989,
+  "categories": [
+    "jardin-patio"
+  ],
+  "rubro": "carpinteria",
+  "subcategoria": "decks-macetas"
+}

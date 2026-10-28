@@ -1,11 +1,13 @@
 {
   "id": "58",
+  "shortId": "3Q",
   "title": "Baranda Fija: Montessori",
   "description": "Máxima estabilidad y seguridad garantizada para toda la familia.",
   "image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
       "images_list": [
         "img/barandas-para-cama/baranda-montessori/1780542646419-imagen.webp",
@@ -20,9 +22,11 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
+          "price": 15000,
+          "cost_price": 15000,
           "legend": "",
           "showPrice": true,
-          "price": 15000
+          "logisticaEnabled": true
         }
       ],
       "hidden": false
@@ -67,25 +71,29 @@
     "protector cuna",
     "barandas de pino"
   ],
-  "last_modified": 1783616746091,
-  "primaryCatId": "Barandas",
-  "views": 3,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 2,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
   "paymentConfig": {
     "transferEnabled": true,
     "linkEnabled": false,
     "creditEnabled": false
   },
-  "shippingConfig": {
-    "logisticaEnabled": true,
-    "fleteEnabled": true,
-    "otroEnabled": false,
-    "logisticaMaxUnits": 2
-  },
+  "quantityDiscounts": [],
+  "last_modified": 1792896741700,
+  "primaryCatId": "Barandas",
+  "history": [],
   "categories": [
     "carpinteria-todos",
-    "Barandas",
-    "cunas-madera-pino",
-    "camas-madera-pino"
+    "Barandas"
   ],
   "rubro": "carpinteria"
 }

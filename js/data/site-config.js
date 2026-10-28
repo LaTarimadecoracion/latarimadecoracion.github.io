@@ -174,44 +174,6 @@ window.siteConfig = {
     ],
     "sessionAvisos": [
         {
-            "title": "¡Nuevo Ingreso: Canasta Cesta Organizador De Mimbre Con Tapa!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Canasta Cesta Organizador De Mimbre Con Tapa!",
-            "mediaType": "image",
-            "image": "https://http2.mlstatic.com/D_NQ_NP_2X_983994-MLA117974180406_102026-O.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=6J",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=6J",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1792192563691
-        },
-        {
-            "title": "¡Nuevo Ingreso: Pizarra Pizarron Cartel Para Colgar 95x54!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Pizarra Pizarron Cartel Para Colgar 95x54!",
-            "mediaType": "image",
-            "image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=S3",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=S3",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1792154651495
-        },
-        {
             "title": "¡Nuevo Ingreso: Exhibidor Organizador 4 Estantes De Madera!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Exhibidor Organizador 4 Estantes De Madera!",
             "mediaType": "image",

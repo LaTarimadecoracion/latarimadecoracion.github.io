@@ -1,0 +1,58 @@
+{
+  "id": "1792887338330",
+  "shortId": "3S",
+  "title": "Mensula De Madera -  La Tarima (30 X 30 Cm) Nordico",
+  "description": "Publicación importada desde Mercado Libre (MLA1377475740).",
+  "image": "img/repisas-estantes/mensula-de-madera-la-tarima-30-x-30-cm-nordico/1792896622136-imagenwebp.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "",
+      "description": "",
+      "cover_image": "img/repisas-estantes/mensula-de-madera-la-tarima-30-x-30-cm-nordico/1792896622136-imagenwebp.webp",
+      "images_list": [
+        "img/repisas-estantes/mensula-de-madera-la-tarima-30-x-30-cm-nordico/1792896622136-imagenwebp.webp"
+      ],
+      "medidas_variants": [],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla1377475740",
+    "mensula",
+    "madera",
+    "tarima",
+    "nordico"
+  ],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1792896622140,
+  "primaryCatId": "Estantes",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338330,
+      "details": "Importado como borrador desde Mercado Libre (MLA1377475740)"
+    }
+  ],
+  "categories": [
+    "carpinteria-todos",
+    "Estantes"
+  ],
+  "rubro": "carpinteria"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "1792887338354",
+  "title": "4 Maceteros Canasta Organizadores En Junco",
+  "description": "Publicación importada desde Mercado Libre (MLA4087248102).",
+  "video": "",
+  "image": "img/borrador/portada-imagen.webp",
+  "acabados_groups": [
+    {
+      "name": "Estándar",
+      "images": [
+        "img/borrador/portada-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "name": "Medida Única",
+          "price": 88000,
+          "stock": 1,
+          "link": "https://articulo.mercadolibre.com.ar/MLA-4087248102"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla4087248102",
+    "maceteros",
+    "canasta",
+    "organizadores",
+    "junco"
+  ],
+  "last_modified": 1792887338346,
+  "optional_variant": null,
+  "primaryCatId": "Organizadores",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338346,
+      "details": "Importado como borrador desde Mercado Libre (MLA4087248102)"
+    }
+  ],
+  "views": 0,
+  "paymentConfig": {
+    "mode": "store",
+    "showBuyButton": true,
+    "showCartButton": true
+  },
+  "shippingConfig": {
+    "mode": "both"
+  },
+  "stock": 1,
+  "categories": [
+    "Organizadores"
+  ],
+  "rubro": "carpinteria",
+  "subcategoria": "canastos-junco"
+}
