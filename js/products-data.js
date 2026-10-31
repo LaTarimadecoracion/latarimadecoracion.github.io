@@ -8,6 +8,47 @@ const productsData = [
         "order": 0,
         "products": [
             {
+                "id": "1793239693996",
+                "title": "Mesa Mesita De Luz Alta  Economica Pino 2 Cajones",
+                "description": "MESA AUXILIAR DE MADERA – IDEAL PARA LIVING O DORMITORIO\n\nPráctica y funcional mesa auxiliar de madera, ideal para colocar junto al sillón o la cama. Su diseño combina cajones frontales y un espacio de guardado inferior abierto, ofreciendo una solución práctica para organizar tus objetos y aprovechar mejor los espacios.\n\nSu estilo natural permite combinarla con diferentes ambientes y estilos de decoración.\n\nCARACTERÍSTICAS\n\nMaterial: madera de pino natural.\n\nDiseño con cajones frontales y estante inferior abierto.\n\nIdeal para living, dormitorio o espacios reducidos.\n\nTerminación en madera natural.\n\nMEDIDAS\n\nAlto: 75 cm.\n\nAncho: 30 cm.\n\nProfundidad: 23 cm.\n\n\nRealizamos factura A.\n\nIMPORTANTE\n\nLas imágenes son ilustrativas y tienen como finalidad mostrar el producto en un ambiente decorado. Al tratarse de madera natural, las vetas, los nudos y las tonalidades pueden variar de una pieza a otra.\n\nAntes de realizar la compra, verificá las medidas para asegurarte de que el producto se adapte al espacio donde querés colocarlo.\n\nSin garantía",
+                "image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
+                "order": 0,
+                "visible": true,
+                "primaryCatId": "Hogar",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "cover_image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
+                        "images_list": [
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693248-2-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693331-3-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693485-4-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693554-5-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693659-6-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693713-7-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693802-8-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693858-9-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "price": 28000,
+                                "cost_price": 14000,
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-2-cajones/up/MLAU5669889579",
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "stock": 5,
+                                "showPrice": true,
+                                "highlight": false,
+                                "default": true,
+                                "hidden": false
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 "id": "51",
                 "shortId": "3Q",
                 "title": "Baranda: Desmontable Clásica",
@@ -458,7 +499,8 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "history": []
+                "history": [],
+                "views": 83
             },
             {
                 "id": "52",
@@ -906,7 +948,8 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "history": []
+                "history": [],
+                "views": 14
             },
             {
                 "id": "53",
@@ -2070,7 +2113,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1792896741700,
                 "primaryCatId": "Barandas",
-                "history": []
+                "history": [],
+                "views": 3
             },
             {
                 "id": "59",
@@ -11713,7 +11757,8 @@ const productsData = [
                         "timestamp": 1792887338328,
                         "details": "Importado como borrador desde Mercado Libre (MLA1248080101)"
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "1792887338330",
@@ -11766,7 +11811,8 @@ const productsData = [
                         "timestamp": 1792887338330,
                         "details": "Importado como borrador desde Mercado Libre (MLA1377475740)"
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "1792887338340",
@@ -11821,7 +11867,8 @@ const productsData = [
                         "timestamp": 1792887338337,
                         "details": "Importado como borrador desde Mercado Libre (MLA3345915146)"
                     }
-                ]
+                ],
+                "views": 0
             }
         ]
     },
@@ -14247,7 +14294,8 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "history": []
+                "history": [],
+                "views": 83
             },
             {
                 "id": "52",
@@ -14695,7 +14743,8 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "history": []
+                "history": [],
+                "views": 14
             },
             {
                 "id": "53",
@@ -15859,7 +15908,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1792896741700,
                 "primaryCatId": "Barandas",
-                "history": []
+                "history": [],
+                "views": 3
             },
             {
                 "id": "59",
@@ -19137,7 +19187,8 @@ const productsData = [
                         "timestamp": 1792887338328,
                         "details": "Importado como borrador desde Mercado Libre (MLA1248080101)"
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "1792887338330",
@@ -19190,7 +19241,8 @@ const productsData = [
                         "timestamp": 1792887338330,
                         "details": "Importado como borrador desde Mercado Libre (MLA1377475740)"
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "1792887338340",
@@ -19245,7 +19297,8 @@ const productsData = [
                         "timestamp": 1792887338337,
                         "details": "Importado como borrador desde Mercado Libre (MLA3345915146)"
                     }
-                ]
+                ],
+                "views": 0
             }
         ]
     },
@@ -26516,6 +26569,47 @@ const productsData = [
         "order": 16,
         "products": [
             {
+                "id": "1793239693996",
+                "title": "Mesa Mesita De Luz Alta  Economica Pino 2 Cajones",
+                "description": "MESA AUXILIAR DE MADERA – IDEAL PARA LIVING O DORMITORIO\n\nPráctica y funcional mesa auxiliar de madera, ideal para colocar junto al sillón o la cama. Su diseño combina cajones frontales y un espacio de guardado inferior abierto, ofreciendo una solución práctica para organizar tus objetos y aprovechar mejor los espacios.\n\nSu estilo natural permite combinarla con diferentes ambientes y estilos de decoración.\n\nCARACTERÍSTICAS\n\nMaterial: madera de pino natural.\n\nDiseño con cajones frontales y estante inferior abierto.\n\nIdeal para living, dormitorio o espacios reducidos.\n\nTerminación en madera natural.\n\nMEDIDAS\n\nAlto: 75 cm.\n\nAncho: 30 cm.\n\nProfundidad: 23 cm.\n\n\nRealizamos factura A.\n\nIMPORTANTE\n\nLas imágenes son ilustrativas y tienen como finalidad mostrar el producto en un ambiente decorado. Al tratarse de madera natural, las vetas, los nudos y las tonalidades pueden variar de una pieza a otra.\n\nAntes de realizar la compra, verificá las medidas para asegurarte de que el producto se adapte al espacio donde querés colocarlo.\n\nSin garantía",
+                "image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
+                "order": 0,
+                "visible": true,
+                "primaryCatId": "Hogar",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "cover_image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
+                        "images_list": [
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693248-2-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693331-3-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693485-4-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693554-5-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693659-6-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693713-7-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693802-8-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693858-9-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "price": 28000,
+                                "cost_price": 14000,
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-2-cajones/up/MLAU5669889579",
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "stock": 5,
+                                "showPrice": true,
+                                "highlight": false,
+                                "default": true,
+                                "hidden": false
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
                 "id": "7C",
                 "title": "Repisa-estante de pared con toallero",
                 "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
@@ -27581,7 +27675,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA2164674452)"
                     }
                 ],
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "mode": "store",
                     "showBuyButton": true,
@@ -30035,10 +30129,364 @@ const productsData = [
         ]
     },
     {
+        "id": "cajones-crossfit",
+        "name": "Cajones CrossFit & Pliométricos",
+        "rubro": "carpinteria",
+        "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+        "visible": true,
+        "order": 20,
+        "products": [
+            {
+                "id": "95",
+                "shortId": "33",
+                "title": "Cajón Pliométrico 3 en 1 CrossFit & Salto",
+                "description": "Cajón de salto pliométrico multifuncional 3 en 1 para CrossFit, entrenamiento funcional y preparación física. Fabricado en Fenólico Industrial de 18 mm con refuerzo estructural interno en cruz y manijas ergonómicas.",
+                "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Fenólico 18mm",
+                        "description": "Placa Fenólica de 18 mm de alta resistencia con refuerzo interno en cruz",
+                        "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Grande Oficial (50 × 60 × 75 cm)",
+                                "link": "apps/cajon.html",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": true,
+                                "price": 72000,
+                                "cost_price": 22000,
+                                "legend": "Oficial Box CrossFit",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "Mediano (40 × 50 × 60 cm)",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 58000,
+                                "cost_price": 17000,
+                                "legend": "Intermedio",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "Chico (30 × 40 × 50 cm)",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 42000,
+                                "cost_price": 12000,
+                                "legend": "Funcional / Principiante",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "A Medida Especial",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Calcular",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 72000,
+                                "cost_price": 22000,
+                                "legend": "Personalizado",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cajon",
+                    "pliometrico",
+                    "crossfit",
+                    "salto",
+                    "jump box",
+                    "box",
+                    "3 en 1",
+                    "fitness",
+                    "gym",
+                    "entrenamiento funcional",
+                    "fenolico"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "fleteFreeMinUnits": 50,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minQty": 3,
+                        "discountPercent": 8
+                    },
+                    {
+                        "minQty": 6,
+                        "discountPercent": 12
+                    }
+                ],
+                "last_modified": 1791831629527,
+                "primaryCatId": "cajones-crossfit",
+                "history": [],
+                "visible": true,
+                "categories": [
+                    "carpinteria-todos",
+                    "cajones-crossfit"
+                ],
+                "rubro": "carpinteria",
+                "views": 68
+            }
+        ]
+    },
+    {
+        "id": "cat-28-mvay9cq6",
+        "name": "Pizzarones",
+        "image": "img/pizzarones/portada-imagenwebp.webp",
+        "rubro": "carpinteria",
+        "order": 21,
+        "products": [
+            {
+                "id": "1792123134173",
+                "title": "Pizarra Pizarron Cartel Doble Hoja Grande Vereda",
+                "description": "PIZARRA  DE MADERA – 100 x 45 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\n\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 100 cm\nAncho: 45 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nLas imagenes son ilustrativas.\n\nSin garantía",
+                "image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
+                "order": 0,
+                "visible": true,
+                "primaryCatId": "cat-28-mvay9cq6",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "cover_image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
+                        "images_list": [
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133598-2-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133703-3-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133798-4-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133851-5-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133950-6-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123134008-7-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "price": 31000,
+                                "cost_price": 15500,
+                                "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-doble-hoja-grande-vereda/up/MLAU5156448073",
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "stock": 5,
+                                "showPrice": true,
+                                "highlight": false,
+                                "default": true,
+                                "hidden": false
+                            }
+                        ]
+                    }
+                ],
+                "rubro": "carpinteria",
+                "views": 4,
+                "categories": [
+                    "carpinteria-todos",
+                    "cat-28-mvay9cq6"
+                ],
+                "subcategoria": "pizarras"
+            },
+            {
+                "id": "1792154576619",
+                "title": "Pizarra Pizarron Cartel Doble Hoja",
+                "description": "PIZARRA CABALLETE DE MADERA – 80 x 50 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra tipo caballete es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\n\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño tipo caballete, práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 80 cm\nAncho: 50 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nLas imagenes son ilustrativas.\n\nSin garantía",
+                "image": "img/pizarra-pizarron-cartel-doble-hoja/1792154575692-1-imagen.webp",
+                "order": 0,
+                "visible": true,
+                "primaryCatId": "cat-28-mvay9cq6",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "cover_image": "img/pizarra-pizarron-cartel-doble-hoja/1792154575692-1-imagen.webp",
+                        "images_list": [
+                            "img/pizarra-pizarron-cartel-doble-hoja/1792154575692-1-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja/1792154575887-2-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja/1792154575978-3-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576120-4-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576185-5-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576290-6-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576345-7-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576452-8-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576510-9-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "price": 23000,
+                                "cost_price": 11500,
+                                "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-doble-hoja/up/MLAU5507345905",
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "stock": 5,
+                                "showPrice": true,
+                                "highlight": false,
+                                "default": true,
+                                "hidden": false
+                            }
+                        ]
+                    }
+                ],
+                "rubro": "carpinteria",
+                "views": 1
+            },
+            {
+                "id": "S3",
+                "shortId": "34",
+                "title": "Pizarra Pizarron Cartel Para Colgar 95x54",
+                "description": "PIZARRA COLGANTE DE MADERA – 95 x 54 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 95 cm\nAncho: 54 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nLas imagenes son ilustrativas.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nSin garantía",
+                "image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "description": "",
+                        "cover_image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
+                        "images_list": [
+                            "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
+                            "https://http2.mlstatic.com/D_NQ_NP_2X_699397-MLA119487331203_102026-O.webp",
+                            "https://http2.mlstatic.com/D_NQ_NP_2X_770016-MLA119485646423_102026-O.webp",
+                            "https://http2.mlstatic.com/D_NQ_NP_2X_921204-MLA119485229649_102026-O.webp",
+                            "https://http2.mlstatic.com/D_NQ_NP_2X_969672-MLA119482643569_102026-O.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-para-colgar-95x54/up/MLAU5552344028",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792154651487,
+                "primaryCatId": "cat-28-mvay9cq6",
+                "history": [],
+                "rubro": "carpinteria",
+                "views": 2
+            },
+            {
+                "id": "1792887338334",
+                "title": "Pizarra Pizarron Para Colgar X3",
+                "description": "Publicación importada desde Mercado Libre (MLA3946726502).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 25000,
+                                "stock": 7,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3946726502"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3946726502",
+                    "pizarra",
+                    "pizarron",
+                    "para",
+                    "colgar"
+                ],
+                "last_modified": 1792887338333,
+                "optional_variant": null,
+                "primaryCatId": "cat-28-mvay9cq6",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338333,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3946726502)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 7,
+                "categories": [
+                    "cat-28-mvay9cq6"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "pizarras"
+            }
+        ]
+    },
+    {
         "id": "Podios",
         "name": "Podios de Premiacion",
         "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-        "order": 20,
+        "order": 22,
         "rubro": "carpinteria",
         "products": [
             {
@@ -30467,7 +30915,7 @@ const productsData = [
         "rubro": "pintureria",
         "image": "img/logo_provisional.png",
         "visible": true,
-        "order": 21,
+        "order": 23,
         "products": []
     },
     {
@@ -30476,7 +30924,7 @@ const productsData = [
         "rubro": "electricidad",
         "image": "img/logo_provisional.png",
         "visible": false,
-        "order": 22,
+        "order": 24,
         "products": [
             {
                 "id": "L1",
@@ -30734,7 +31182,7 @@ const productsData = [
         "name": "Kits Electricos",
         "image": "img/kits-electricos/portada-imagenwebp.webp",
         "rubro": "electricidad",
-        "order": 23,
+        "order": 25,
         "visible": true,
         "products": [
             {
@@ -30994,7 +31442,7 @@ const productsData = [
         "rubro": "herrajes",
         "image": "img/logo_provisional.png",
         "visible": false,
-        "order": 24,
+        "order": 26,
         "products": [
             {
                 "id": "N1",
@@ -31076,7 +31524,7 @@ const productsData = [
         "name": "Tornillos",
         "image": "img/herrajes/tornillos/portada-imagenwebp.webp",
         "rubro": "herrajes",
-        "order": 25,
+        "order": 27,
         "visible": true,
         "products": [
             {
@@ -31151,360 +31599,6 @@ const productsData = [
                     "cat-23-mu93q76a"
                 ],
                 "rubro": "herrajes"
-            }
-        ]
-    },
-    {
-        "id": "cajones-crossfit",
-        "name": "Cajones CrossFit & Pliométricos",
-        "rubro": "carpinteria",
-        "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-        "visible": true,
-        "order": 26,
-        "products": [
-            {
-                "id": "95",
-                "shortId": "33",
-                "title": "Cajón Pliométrico 3 en 1 CrossFit & Salto",
-                "description": "Cajón de salto pliométrico multifuncional 3 en 1 para CrossFit, entrenamiento funcional y preparación física. Fabricado en Fenólico Industrial de 18 mm con refuerzo estructural interno en cruz y manijas ergonómicas.",
-                "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Fenólico 18mm",
-                        "description": "Placa Fenólica de 18 mm de alta resistencia con refuerzo interno en cruz",
-                        "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Grande Oficial (50 × 60 × 75 cm)",
-                                "link": "apps/cajon.html",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "Configurar",
-                                "iconType": "straighten",
-                                "highlight": true,
-                                "price": 72000,
-                                "cost_price": 22000,
-                                "legend": "Oficial Box CrossFit",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "Mediano (40 × 50 × 60 cm)",
-                                "link": "apps/cajon.html",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "Configurar",
-                                "iconType": "straighten",
-                                "highlight": false,
-                                "price": 58000,
-                                "cost_price": 17000,
-                                "legend": "Intermedio",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "Chico (30 × 40 × 50 cm)",
-                                "link": "apps/cajon.html",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "Configurar",
-                                "iconType": "straighten",
-                                "highlight": false,
-                                "price": 42000,
-                                "cost_price": 12000,
-                                "legend": "Funcional / Principiante",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "A Medida Especial",
-                                "link": "apps/cajon.html",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "Calcular",
-                                "iconType": "straighten",
-                                "highlight": false,
-                                "price": 72000,
-                                "cost_price": 22000,
-                                "legend": "Personalizado",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cajon",
-                    "pliometrico",
-                    "crossfit",
-                    "salto",
-                    "jump box",
-                    "box",
-                    "3 en 1",
-                    "fitness",
-                    "gym",
-                    "entrenamiento funcional",
-                    "fenolico"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteMaxUnits": 10,
-                    "fleteFreeMinUnits": 50,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [
-                    {
-                        "minQty": 3,
-                        "discountPercent": 8
-                    },
-                    {
-                        "minQty": 6,
-                        "discountPercent": 12
-                    }
-                ],
-                "last_modified": 1791831629527,
-                "primaryCatId": "cajones-crossfit",
-                "history": [],
-                "visible": true,
-                "categories": [
-                    "carpinteria-todos",
-                    "cajones-crossfit"
-                ],
-                "rubro": "carpinteria",
-                "views": 68
-            }
-        ]
-    },
-    {
-        "id": "cat-28-mvay9cq6",
-        "name": "Pizzarones",
-        "image": "img/pizzarones/portada-imagenwebp.webp",
-        "rubro": "carpinteria",
-        "order": 27,
-        "products": [
-            {
-                "id": "1792123134173",
-                "title": "Pizarra Pizarron Cartel Doble Hoja Grande Vereda",
-                "description": "PIZARRA  DE MADERA – 100 x 45 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\n\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 100 cm\nAncho: 45 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nLas imagenes son ilustrativas.\n\nSin garantía",
-                "image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
-                "order": 0,
-                "visible": true,
-                "primaryCatId": "cat-28-mvay9cq6",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Estándar",
-                        "cover_image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
-                        "images_list": [
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133598-2-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133703-3-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133798-4-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133851-5-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133950-6-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123134008-7-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Estándar",
-                                "price": 31000,
-                                "cost_price": 15500,
-                                "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-doble-hoja-grande-vereda/up/MLAU5156448073",
-                                "linkLabel": "Ver en Mercado Libre",
-                                "iconType": "local_shipping",
-                                "stock": 5,
-                                "showPrice": true,
-                                "highlight": false,
-                                "default": true,
-                                "hidden": false
-                            }
-                        ]
-                    }
-                ],
-                "rubro": "carpinteria",
-                "views": 4,
-                "categories": [
-                    "carpinteria-todos",
-                    "cat-28-mvay9cq6"
-                ],
-                "subcategoria": "pizarras"
-            },
-            {
-                "id": "1792154576619",
-                "title": "Pizarra Pizarron Cartel Doble Hoja",
-                "description": "PIZARRA CABALLETE DE MADERA – 80 x 50 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra tipo caballete es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\n\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño tipo caballete, práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 80 cm\nAncho: 50 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nLas imagenes son ilustrativas.\n\nSin garantía",
-                "image": "img/pizarra-pizarron-cartel-doble-hoja/1792154575692-1-imagen.webp",
-                "order": 0,
-                "visible": true,
-                "primaryCatId": "cat-28-mvay9cq6",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Estándar",
-                        "cover_image": "img/pizarra-pizarron-cartel-doble-hoja/1792154575692-1-imagen.webp",
-                        "images_list": [
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154575692-1-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154575887-2-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154575978-3-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576120-4-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576185-5-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576290-6-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576345-7-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576452-8-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576510-9-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Estándar",
-                                "price": 23000,
-                                "cost_price": 11500,
-                                "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-doble-hoja/up/MLAU5507345905",
-                                "linkLabel": "Ver en Mercado Libre",
-                                "iconType": "local_shipping",
-                                "stock": 5,
-                                "showPrice": true,
-                                "highlight": false,
-                                "default": true,
-                                "hidden": false
-                            }
-                        ]
-                    }
-                ],
-                "rubro": "carpinteria",
-                "views": 1
-            },
-            {
-                "id": "S3",
-                "shortId": "34",
-                "title": "Pizarra Pizarron Cartel Para Colgar 95x54",
-                "description": "PIZARRA COLGANTE DE MADERA – 95 x 54 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 95 cm\nAncho: 54 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nLas imagenes son ilustrativas.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nSin garantía",
-                "image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Estándar",
-                        "description": "",
-                        "cover_image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
-                        "images_list": [
-                            "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
-                            "https://http2.mlstatic.com/D_NQ_NP_2X_699397-MLA119487331203_102026-O.webp",
-                            "https://http2.mlstatic.com/D_NQ_NP_2X_770016-MLA119485646423_102026-O.webp",
-                            "https://http2.mlstatic.com/D_NQ_NP_2X_921204-MLA119485229649_102026-O.webp",
-                            "https://http2.mlstatic.com/D_NQ_NP_2X_969672-MLA119482643569_102026-O.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Estándar",
-                                "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-para-colgar-95x54/up/MLAU5552344028",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "Ver en Mercado Libre",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1792154651487,
-                "primaryCatId": "cat-28-mvay9cq6",
-                "history": [],
-                "rubro": "carpinteria",
-                "views": 2
-            },
-            {
-                "id": "1792887338334",
-                "title": "Pizarra Pizarron Para Colgar X3",
-                "description": "Publicación importada desde Mercado Libre (MLA3946726502).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "name": "Medida Única",
-                                "price": 25000,
-                                "stock": 7,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-3946726502"
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "borrador",
-                    "mercado libre",
-                    "mla3946726502",
-                    "pizarra",
-                    "pizarron",
-                    "para",
-                    "colgar"
-                ],
-                "last_modified": 1792887338333,
-                "optional_variant": null,
-                "primaryCatId": "cat-28-mvay9cq6",
-                "history": [
-                    {
-                        "type": "import_ml",
-                        "timestamp": 1792887338333,
-                        "details": "Importado como borrador desde Mercado Libre (MLA3946726502)"
-                    }
-                ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 7,
-                "categories": [
-                    "cat-28-mvay9cq6"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "pizarras"
             }
         ]
     }

@@ -131,22 +131,39 @@
         return code;
     }
 
+    // Mapa de compatibilidad histórica para enlaces antiguos (WhatsApp / Meta Catalog / Facebook / Enlaces previos)
+    const LEGACY_PRODUCT_ALIASES = {
+        'F6': '4H', // Repisa Biblioteca Estantes Montessori
+        '6B': '4H', // Repisa Biblioteca Estantes Montessori
+        '61': '4E', // Estantes Montessori
+        '66': '4C', // Ménsulas para estantes
+        '68': '42', // Especiero
+        '82': '79', // Pie de cama romano
+        '93': '4D', // Banco Escalera De Pino 3 Escalones
+        '94': '4G', // Banco Banquito Escalera Niños Infantil
+        '6A': '4B', // Ménsulas para escritorios
+        'B2': '41', // Baúl de madera de pino - Mediano (80 cm)
+        'B3': '4G', // Banco Banquito Escalera Niños Infantil
+        'C4': 'B6', // Juego de Mesa y Sillas Infantiles (Colonial)
+        'C5': 'B5', // Juego de Mesa y Sillas Infantiles (Redondos)
+        'C6': 'B4', // Juego de Mesa y Sillas Infantiles
+        'D1': '46', // Mueble Multifunción - Estilo Nórdico
+        'D5': '4B', // Ménsulas para escritorios
+        'E6': '4F', // Caballetes de madera
+        'F1': 'D6', // Escritorio para PC - Soporte Gabinete
+        'F5': '79', // Pie de cama romano
+        '45': '43'  // Verdulero Mediano / Clasico
+    };
+
     /**
      * Decodifica un código corto Base36 estático o por jerarquía (ej: 121, 9B1A, 1.2.1).
      */
     function decodeShortCode(shortCode) {
         if (!shortCode) return null;
 
-        const cleanCode = String(shortCode).trim().replace(/^\/+|\/+$/g, '');
-        let parts = [];
-
-        if (cleanCode.includes('.')) {
-            parts = cleanCode.split('.');
-        } else if (/^[0-9A-Z]{2,6}$/i.test(cleanCode)) {
-            // Código limpio sin puntos
-            parts = cleanCode.split('');
-        } else {
-            parts = [cleanCode];
+        let cleanCode = String(shortCode).trim().replace(/^\/+|\/+$/g, '');
+        if (LEGACY_PRODUCT_ALIASES[cleanCode]) {
+            cleanCode = LEGACY_PRODUCT_ALIASES[cleanCode];
         }
 
         const categories = getCategoriesData();
@@ -157,15 +174,17 @@
         let medidaIdx = 0;
         let opcionIdx = 0;
 
-        // 1. Buscar primero por shortId de producto directo o coincidencia de categoría/producto
-        if (parts.length >= 2) {
+        // 1. Prioridad: Buscar por ID directo de producto o shortId estático en la lista plana
+        product = flatList.find(p => p.id === cleanCode || p.shortId === cleanCode);
+
+        // 2. Si no es un ID directo y tiene puntos (ej: 1.2, 1.A.2, F.6)
+        if (!product && cleanCode.includes('.')) {
+            const parts = cleanCode.split('.');
             const catCodeStr = parts[0];
             const prodCodeStr = parts[1];
 
-            // Intentar matchear producto por su shortId estático
-            product = flatList.find(p => p.shortId === prodCodeStr || p.shortId === cleanCode);
+            product = flatList.find(p => p.shortId === prodCodeStr || p.id === prodCodeStr);
 
-            // Fallback por índice numérico de categoría y producto
             if (!product) {
                 const catNum = fromBase36(catCodeStr);
                 const prodNum = fromBase36(prodCodeStr);
@@ -183,16 +202,25 @@
             opcionIdx = parts[4] ? fromBase36(parts[4]) : 0;
         }
 
-        // 2. Fallback por ID o shortId directo en lista plana
-        if (!product) {
-            const prodCodeStr = parts[0];
-            product = flatList.find(p => p.shortId === prodCodeStr || p.id === cleanCode || p.id === prodCodeStr);
+        // 3. Fallback para códigos sin punto de más de 2 caracteres (ej: 121, 9B1)
+        if (!product && /^[0-9A-Z]{3,6}$/i.test(cleanCode)) {
+            const parts = cleanCode.split('');
+            const catCodeStr = parts[0];
+            const prodCodeStr = parts[1];
 
-            if (product) {
-                acabadoIdx = parts[1] ? fromBase36(parts[1]) : 0;
-                medidaIdx = parts[2] ? fromBase36(parts[2]) : 0;
-                opcionIdx = parts[3] ? fromBase36(parts[3]) : 0;
+            const catNum = fromBase36(catCodeStr);
+            const prodNum = fromBase36(prodCodeStr);
+
+            if (catNum > 0 && categories[catNum - 1]) {
+                const cat = categories[catNum - 1];
+                if (cat.products && cat.products[prodNum - 1]) {
+                    product = cat.products[prodNum - 1];
+                }
             }
+
+            acabadoIdx = parts[2] ? fromBase36(parts[2]) : 0;
+            medidaIdx = parts[3] ? fromBase36(parts[3]) : 0;
+            opcionIdx = parts[4] ? fromBase36(parts[4]) : 0;
         }
 
         if (!product) {

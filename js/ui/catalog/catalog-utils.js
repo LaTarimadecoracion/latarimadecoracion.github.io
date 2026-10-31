@@ -5,9 +5,21 @@
 (function() {
     'use strict';
 
+    // Mapa de compatibilidad histórica para enlaces antiguos
+    const LEGACY_PRODUCT_ALIASES = {
+        'F6': '4H', '6B': '4H', '61': '4E', '66': '4C', '68': '42',
+        '82': '79', '93': '4D', '94': '4G', '6A': '4B', 'B2': '41',
+        'B3': '4G', 'C4': 'B6', 'C5': 'B5', 'C6': 'B4', 'D1': '46',
+        'D5': '4B', 'E6': '4F', 'F1': 'D6', 'F5': '79', '45': '43'
+    };
+
     function findProductById(prodId) {
         if (!prodId) return null;
-        const searchClean = decodeURIComponent(prodId).trim().toLowerCase();
+        let rawId = decodeURIComponent(prodId).trim();
+        if (LEGACY_PRODUCT_ALIASES[rawId.toUpperCase()]) {
+            rawId = LEGACY_PRODUCT_ALIASES[rawId.toUpperCase()];
+        }
+        const searchClean = rawId.toLowerCase();
         const normSearch = searchClean.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
 
         // 1. Revisar caché individual en memoria

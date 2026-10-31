@@ -147,10 +147,25 @@
     "visible": false
   },
   {
+    "id": "cajones-crossfit",
+    "name": "Cajones CrossFit & Pliométricos",
+    "rubro": "carpinteria",
+    "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+    "visible": true,
+    "order": 20
+  },
+  {
+    "id": "cat-28-mvay9cq6",
+    "name": "Pizzarones",
+    "image": "img/pizzarones/portada-imagenwebp.webp",
+    "rubro": "carpinteria",
+    "order": 21
+  },
+  {
     "id": "Podios",
     "name": "Podios de Premiacion",
     "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-    "order": 20,
+    "order": 22,
     "rubro": "carpinteria"
   },
   {
@@ -159,7 +174,7 @@
     "rubro": "pintureria",
     "image": "img/logo_provisional.png",
     "visible": true,
-    "order": 21
+    "order": 23
   },
   {
     "id": "electricidad-todos",
@@ -167,14 +182,14 @@
     "rubro": "electricidad",
     "image": "img/logo_provisional.png",
     "visible": false,
-    "order": 22
+    "order": 24
   },
   {
     "id": "cat-21-mu7q9i7y",
     "name": "Kits Electricos",
     "image": "img/kits-electricos/portada-imagenwebp.webp",
     "rubro": "electricidad",
-    "order": 23,
+    "order": 25,
     "visible": true
   },
   {
@@ -183,29 +198,14 @@
     "rubro": "herrajes",
     "image": "img/logo_provisional.png",
     "visible": false,
-    "order": 24
+    "order": 26
   },
   {
     "id": "cat-23-mu93q76a",
     "name": "Tornillos",
     "image": "img/herrajes/tornillos/portada-imagenwebp.webp",
     "rubro": "herrajes",
-    "order": 25,
+    "order": 27,
     "visible": true
-  },
-  {
-    "id": "cajones-crossfit",
-    "name": "Cajones CrossFit & Pliométricos",
-    "rubro": "carpinteria",
-    "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-    "visible": true,
-    "order": 26
-  },
-  {
-    "id": "cat-28-mvay9cq6",
-    "name": "Pizzarones",
-    "image": "img/pizzarones/portada-imagenwebp.webp",
-    "rubro": "carpinteria",
-    "order": 27
   }
 ]

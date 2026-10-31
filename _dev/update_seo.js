@@ -237,6 +237,35 @@ function run() {
         });
     });
 
+    // Páginas SEO para aliases históricos (para que links viejos de WhatsApp/Facebook nunca se rompan)
+    const LEGACY_ALIASES = {
+        'F6': '4H', '6B': '4H', '61': '4E', '66': '4C', '68': '42',
+        '82': '79', '93': '4D', '94': '4G', '6A': '4B', 'B2': '41',
+        'B3': '4G', 'C4': 'B6', 'C5': 'B5', 'C6': 'B4', 'D1': '46',
+        'D5': '4B', 'E6': '4F', 'F1': 'D6', 'F5': '79', '45': '43'
+    };
+
+    // Índice de productos planos por ID
+    const flatProdsMap = new Map();
+    productsArray.forEach(cat => {
+        (cat.products || []).forEach(p => {
+            if (p && p.id && !flatProdsMap.has(p.id)) flatProdsMap.set(p.id, { product: p, catName: cat.name || '' });
+        });
+    });
+
+    Object.keys(LEGACY_ALIASES).forEach(legacyCode => {
+        const targetId = LEGACY_ALIASES[legacyCode];
+        const found = flatProdsMap.get(targetId);
+        if (found) {
+            const htmlLegacy = generateSeoHtml(found.product, legacyCode, found.catName);
+            fs.writeFileSync(path.join(rootPDir, `${legacyCode}.html`), htmlLegacy, 'utf8');
+            if (fs.existsSync(DOCS_DIR)) {
+                fs.writeFileSync(path.join(docsPDir, `${legacyCode}.html`), htmlLegacy, 'utf8');
+            }
+            count++;
+        }
+    });
+
     // 2. Generar sitemap.xml enriquecido
     const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
