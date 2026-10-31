@@ -4,17 +4,17 @@
     "shortId": null,
     "title": "Mesa Mesita De Luz Alta  Economica Pino 2 Cajones",
     "rubro": "carpinteria",
-    "primaryCatId": "Hogar",
+    "primaryCatId": "camas-madera-pino",
     "categories": [
       "carpinteria-todos",
-      "Hogar"
+      "camas-madera-pino"
     ],
     "subcategoria": "",
     "price": 28000,
     "image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
     "tags": [],
     "visible": true,
-    "file": "data/products/carpinteria/hogar/p-1793239693996.json"
+    "file": "data/products/carpinteria/camas-madera-pino/p-1793239693996.json"
   },
   {
     "id": "51",
@@ -542,7 +542,7 @@
   },
   {
     "id": "42",
-    "shortId": null,
+    "shortId": "3Q",
     "title": "Especiero",
     "rubro": "carpinteria",
     "primaryCatId": "bazar-cocina",
@@ -554,7 +554,7 @@
     ],
     "subcategoria": "",
     "price": 11000,
-    "image": "img/organizadores/especiero/1782487819564-imagen.webp",
+    "image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
     "tags": [
       "Estante",
       "especiero",
@@ -872,17 +872,14 @@
     "shortId": "2V",
     "title": "Cajon GYM",
     "rubro": "carpinteria",
-    "primaryCatId": "cajones-madera",
-    "categories": [
-      "carpinteria-todos",
-      "cajones-madera"
-    ],
+    "primaryCatId": "Steps",
+    "categories": [],
     "subcategoria": "",
     "price": 0,
     "image": "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp",
     "tags": [],
-    "visible": false,
-    "file": "data/products/carpinteria/cajones-madera/p-J8.json"
+    "visible": true,
+    "file": "data/products/carpinteria/fitness-steps/p-J8.json"
   },
   {
     "id": "81",
@@ -1507,18 +1504,14 @@
   },
   {
     "id": "4G",
-    "shortId": null,
+    "shortId": "3Q",
     "title": "Banco Banquito Escalera Niños Infantil",
     "rubro": "carpinteria",
     "primaryCatId": "muebles",
-    "categories": [
-      "carpinteria-todos",
-      "muebles",
-      "Juguetes"
-    ],
+    "categories": [],
     "subcategoria": "",
-    "price": 18000,
-    "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+    "price": 20000,
+    "image": "img/escaleras/banco-banquito-escalera-nios-infantil/1793485683697-imagenwebp.webp",
     "tags": [],
     "visible": true,
     "file": "data/products/carpinteria/escaleras/p-4G.json"
@@ -1831,8 +1824,7 @@
     "categories": [
       "carpinteria-todos",
       "Organizadores",
-      "Estantes",
-      "Hogar"
+      "Estantes"
     ],
     "subcategoria": "",
     "price": 20000,
@@ -1861,15 +1853,11 @@
   },
   {
     "id": "A1",
-    "shortId": null,
+    "shortId": "3Q",
     "title": "Steps / Cajones / Profesionales",
     "rubro": "carpinteria",
     "primaryCatId": "Steps",
-    "categories": [
-      "carpinteria-todos",
-      "Steps",
-      "cajones-madera"
-    ],
+    "categories": [],
     "subcategoria": "",
     "price": 80000,
     "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
@@ -1900,15 +1888,11 @@
   },
   {
     "id": "A2",
-    "shortId": null,
+    "shortId": "3Q",
     "title": "Steps / Cajones (30 cm)",
     "rubro": "carpinteria",
     "primaryCatId": "Steps",
-    "categories": [
-      "carpinteria-todos",
-      "Steps",
-      "cajones-madera"
-    ],
+    "categories": [],
     "subcategoria": "",
     "price": 15000,
     "image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
@@ -1958,15 +1942,11 @@
   },
   {
     "id": "A3",
-    "shortId": null,
+    "shortId": "3Q",
     "title": "Steps / Cajones (40 cm)",
     "rubro": "carpinteria",
     "primaryCatId": "Steps",
-    "categories": [
-      "carpinteria-todos",
-      "Steps",
-      "cajones-madera"
-    ],
+    "categories": [],
     "subcategoria": "",
     "price": 17000,
     "image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
@@ -2016,14 +1996,13 @@
   },
   {
     "id": "A4",
-    "shortId": null,
+    "shortId": "3Q",
     "title": "Steps / Cajones (50cm)",
     "rubro": "carpinteria",
     "primaryCatId": "Steps",
     "categories": [
       "carpinteria-todos",
-      "Steps",
-      "cajones-madera"
+      "Steps"
     ],
     "subcategoria": "",
     "price": 17000,
@@ -2077,12 +2056,10 @@
     "shortId": null,
     "title": "Mueble Multifunción - Estilo Nórdico",
     "rubro": "carpinteria",
-    "primaryCatId": "Hogar",
+    "primaryCatId": "Organizadores",
     "categories": [
       "carpinteria-todos",
-      "Organizadores",
-      "Mesas-madera",
-      "Hogar"
+      "Organizadores"
     ],
     "subcategoria": "",
     "price": 26000,
@@ -2140,14 +2117,14 @@
       "hecho a mano"
     ],
     "visible": true,
-    "file": "data/products/carpinteria/hogar/p-46.json"
+    "file": "data/products/carpinteria/organizadores/p-46.json"
   },
   {
     "id": "79",
     "shortId": null,
     "title": "Pie de cama romano",
     "rubro": "carpinteria",
-    "primaryCatId": "Hogar",
+    "primaryCatId": "camas-madera-pino",
     "categories": [
       "carpinteria-todos",
       "camas-madera-pino"
@@ -2208,7 +2185,7 @@
       "diseño artesanal"
     ],
     "visible": true,
-    "file": "data/products/carpinteria/hogar/p-79.json"
+    "file": "data/products/carpinteria/camas-madera-pino/p-79.json"
   },
   {
     "id": "F2",
@@ -2218,8 +2195,7 @@
     "primaryCatId": "camas-madera-pino",
     "categories": [
       "carpinteria-todos",
-      "camas-madera-pino",
-      "Hogar"
+      "camas-madera-pino"
     ],
     "subcategoria": "",
     "price": 0,
@@ -2236,12 +2212,11 @@
     "primaryCatId": "camas-madera-pino",
     "categories": [
       "carpinteria-todos",
-      "camas-madera-pino",
-      "Hogar"
+      "camas-madera-pino"
     ],
     "subcategoria": "",
     "price": 18000,
-    "image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
+    "image": "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
     "tags": [],
     "visible": true,
     "file": "data/products/carpinteria/camas-madera-pino/p-F3.json"
@@ -2251,18 +2226,17 @@
     "shortId": null,
     "title": "Tender",
     "rubro": "carpinteria",
-    "primaryCatId": "Hogar",
+    "primaryCatId": "Organizadores",
     "categories": [
       "carpinteria-todos",
-      "Organizadores",
-      "Hogar"
+      "Organizadores"
     ],
     "subcategoria": "",
     "price": 0,
     "image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
     "tags": [],
     "visible": true,
-    "file": "data/products/carpinteria/hogar/p-F4.json"
+    "file": "data/products/carpinteria/organizadores/p-F4.json"
   },
   {
     "id": "G8",
@@ -2529,8 +2503,7 @@
     "primaryCatId": "jardin-patio",
     "categories": [
       "carpinteria-todos",
-      "jardin-patio",
-      "Hogar"
+      "jardin-patio"
     ],
     "subcategoria": "",
     "price": 15000,
@@ -2608,8 +2581,7 @@
     "categories": [
       "carpinteria-todos",
       "Mesas-madera",
-      "jardin-patio",
-      "Hogar"
+      "jardin-patio"
     ],
     "subcategoria": "",
     "price": 0,
@@ -2638,8 +2610,7 @@
     "categories": [
       "carpinteria-todos",
       "Mesas-madera",
-      "jardin-patio",
-      "Hogar"
+      "jardin-patio"
     ],
     "subcategoria": "",
     "price": 0,
@@ -2786,8 +2757,7 @@
     "primaryCatId": "Mesas-madera",
     "categories": [
       "carpinteria-todos",
-      "Mesas-madera",
-      "Hogar"
+      "Mesas-madera"
     ],
     "subcategoria": "",
     "price": 0,
@@ -2805,7 +2775,6 @@
     "categories": [
       "carpinteria-todos",
       "Mesas-madera",
-      "Hogar",
       "bazar-cocina"
     ],
     "subcategoria": "",
@@ -3010,11 +2979,10 @@
     "shortId": null,
     "title": "Ménsulas para escritorios",
     "rubro": "carpinteria",
-    "primaryCatId": "Organizadores",
+    "primaryCatId": "Estantes",
     "categories": [
       "carpinteria-todos",
-      "Organizadores",
-      "Mesas-madera"
+      "Estantes"
     ],
     "subcategoria": "",
     "price": 9000,
@@ -3040,17 +3008,16 @@
       "mensula decorativa"
     ],
     "visible": true,
-    "file": "data/products/carpinteria/organizadores/p-4B.json"
+    "file": "data/products/carpinteria/estantes/p-4B.json"
   },
   {
     "id": "4C",
     "shortId": null,
     "title": "Ménsulas para estantes",
     "rubro": "carpinteria",
-    "primaryCatId": "Organizadores",
+    "primaryCatId": "Estantes",
     "categories": [
       "carpinteria-todos",
-      "Organizadores",
       "Estantes"
     ],
     "subcategoria": "",
@@ -3077,7 +3044,7 @@
       "mensula decorativa"
     ],
     "visible": true,
-    "file": "data/products/carpinteria/organizadores/p-4C.json"
+    "file": "data/products/carpinteria/estantes/p-4C.json"
   },
   {
     "id": "4F",
@@ -4337,11 +4304,10 @@
     "shortId": "3E",
     "title": "Silla infantil",
     "rubro": "carpinteria",
-    "primaryCatId": "sillas-sillones",
+    "primaryCatId": "Juguetes",
     "categories": [
       "carpinteria-todos",
-      "Juguetes",
-      "sillas-sillones"
+      "Juguetes"
     ],
     "subcategoria": "",
     "price": 20000,
@@ -4399,18 +4365,17 @@
       "envios a todo el pais"
     ],
     "visible": true,
-    "file": "data/products/carpinteria/sillas-sillones/p-C2.json"
+    "file": "data/products/carpinteria/rincon-infantil/p-C2.json"
   },
   {
     "id": "C3",
     "shortId": null,
     "title": "Sillon Gervasoni - Chicos",
     "rubro": "carpinteria",
-    "primaryCatId": "sillas-sillones",
+    "primaryCatId": "Juguetes",
     "categories": [
       "carpinteria-todos",
-      "Juguetes",
-      "sillas-sillones"
+      "Juguetes"
     ],
     "subcategoria": "",
     "price": 36000,
@@ -4468,7 +4433,7 @@
       "muebles de living"
     ],
     "visible": true,
-    "file": "data/products/carpinteria/sillas-sillones/p-C3.json"
+    "file": "data/products/carpinteria/rincon-infantil/p-C3.json"
   },
   {
     "id": "21",
@@ -4478,8 +4443,7 @@
     "primaryCatId": "Vinotecas",
     "categories": [
       "carpinteria-todos",
-      "Vinotecas",
-      "Hogar"
+      "Vinotecas"
     ],
     "subcategoria": "",
     "price": 60000,
@@ -4496,8 +4460,7 @@
     "primaryCatId": "Vinotecas",
     "categories": [
       "carpinteria-todos",
-      "Vinotecas",
-      "Hogar"
+      "Vinotecas"
     ],
     "subcategoria": "",
     "price": 70000,
@@ -4567,8 +4530,7 @@
     "primaryCatId": "Vinotecas",
     "categories": [
       "carpinteria-todos",
-      "Vinotecas",
-      "Hogar"
+      "Vinotecas"
     ],
     "subcategoria": "",
     "price": 80000,
@@ -4639,7 +4601,6 @@
     "categories": [
       "carpinteria-todos",
       "Vinotecas",
-      "Hogar",
       "bazar-cocina"
     ],
     "subcategoria": "",
@@ -4863,12 +4824,12 @@
   {
     "id": "95",
     "shortId": "33",
-    "title": "Cajón Pliométrico 3 en 1 CrossFit & Salto",
+    "title": "Cajones a medida (Personalizados)",
     "rubro": "carpinteria",
-    "primaryCatId": "cajones-crossfit",
+    "primaryCatId": "Steps",
     "categories": [
       "carpinteria-todos",
-      "cajones-crossfit"
+      "Steps"
     ],
     "subcategoria": "",
     "price": 72000,
@@ -4887,7 +4848,7 @@
       "fenolico"
     ],
     "visible": true,
-    "file": "data/products/carpinteria/cajones-crossfit/p-95.json"
+    "file": "data/products/carpinteria/fitness-steps/p-95.json"
   },
   {
     "id": "1792887338328",
@@ -4969,6 +4930,126 @@
     "file": "data/products/carpinteria/estantes/p-1792887338340.json"
   },
   {
+    "id": "1792887338334",
+    "shortId": "3R",
+    "title": "Pizarra Pizarron Para Colgar X3",
+    "rubro": "carpinteria",
+    "primaryCatId": "cat-28-mvay9cq6",
+    "categories": [
+      "carpinteria-todos",
+      "cat-28-mvay9cq6"
+    ],
+    "subcategoria": "",
+    "price": 22000,
+    "image": "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla3946726502",
+      "pizarra",
+      "pizarron",
+      "para",
+      "colgar"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/cat-28-mvay9cq6/p-1792887338334.json"
+  },
+  {
+    "id": "1792154576619",
+    "shortId": "3R",
+    "title": "Pizarra Pizarron Cartel Doble Hoja",
+    "rubro": "carpinteria",
+    "primaryCatId": "cat-28-mvay9cq6",
+    "categories": [
+      "carpinteria-todos",
+      "cat-28-mvay9cq6"
+    ],
+    "subcategoria": "",
+    "price": 23000,
+    "image": "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700352-imagenwebp.webp",
+    "tags": [],
+    "visible": true,
+    "file": "data/products/carpinteria/cat-28-mvay9cq6/p-1792154576619.json"
+  },
+  {
+    "id": "1792887338351",
+    "shortId": "3Q",
+    "title": "Mesa De Madera Plegable Jardín Camping",
+    "rubro": "carpinteria",
+    "primaryCatId": "jardin-patio",
+    "categories": [
+      "carpinteria-todos",
+      "jardin-patio"
+    ],
+    "subcategoria": "",
+    "price": 45000,
+    "image": "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla3946285696",
+      "mesa",
+      "madera",
+      "plegable",
+      "jardín",
+      "camping"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/jardin-patio/p-1792887338351.json"
+  },
+  {
+    "id": "1792887338335",
+    "shortId": "3Q",
+    "title": "Fanal Madera Pino Por Tres Unidades",
+    "rubro": "carpinteria",
+    "primaryCatId": "jardin-patio",
+    "categories": [
+      "carpinteria-todos",
+      "jardin-patio"
+    ],
+    "subcategoria": "",
+    "price": 20000,
+    "image": "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla2164674452",
+      "fanal",
+      "madera",
+      "pino",
+      "tres",
+      "unidades"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/jardin-patio/p-1792887338335.json"
+  },
+  {
+    "id": "1792887338342",
+    "shortId": "3Q",
+    "title": "Mesa  Plegable Playera Jardín (2 Modelos)",
+    "rubro": "carpinteria",
+    "primaryCatId": "jardin-patio",
+    "categories": [
+      "carpinteria-todos",
+      "jardin-patio"
+    ],
+    "subcategoria": "",
+    "price": 25000,
+    "image": "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla1475679709",
+      "mesa",
+      "plegable",
+      "playera",
+      "jardín",
+      "modelos)"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/jardin-patio/p-1792887338342.json"
+  },
+  {
     "id": "24",
     "shortId": "2Z",
     "title": "Vinoteca - 17 Vinos",
@@ -5036,6 +5117,58 @@
     ],
     "visible": true,
     "file": "data/products/carpinteria/vinotecas/p-24.json"
+  },
+  {
+    "id": "1792887338329",
+    "shortId": null,
+    "title": "Step Madera La Tarima 50x50 Cm Plataforma Fitness",
+    "rubro": "carpinteria",
+    "primaryCatId": "Steps",
+    "categories": [
+      "Steps"
+    ],
+    "subcategoria": "fitness",
+    "price": 55000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla1375418215",
+      "step",
+      "madera",
+      "tarima",
+      "50x50",
+      "plataforma",
+      "fitness"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/fitness-steps/p-1792887338329.json"
+  },
+  {
+    "id": "1792887338332",
+    "shortId": null,
+    "title": "Step Funcional - Gym Plataforma Fitness Cajón - Escalón",
+    "rubro": "carpinteria",
+    "primaryCatId": "Steps",
+    "categories": [
+      "Steps"
+    ],
+    "subcategoria": "fitness",
+    "price": 30000,
+    "image": "img/borrador/portada-imagen.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla2180486792",
+      "step",
+      "funcional",
+      "plataforma",
+      "fitness",
+      "cajón",
+      "escalón"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/fitness-steps/p-1792887338332.json"
   },
   {
     "id": "43",
@@ -5177,58 +5310,6 @@
     ],
     "visible": true,
     "file": "data/products/carpinteria/organizadores/p-1792887338354.json"
-  },
-  {
-    "id": "1792887338329",
-    "shortId": null,
-    "title": "Step Madera La Tarima 50x50 Cm Plataforma Fitness",
-    "rubro": "carpinteria",
-    "primaryCatId": "Steps",
-    "categories": [
-      "Steps"
-    ],
-    "subcategoria": "fitness",
-    "price": 55000,
-    "image": "img/borrador/portada-imagen.webp",
-    "tags": [
-      "borrador",
-      "mercado libre",
-      "mla1375418215",
-      "step",
-      "madera",
-      "tarima",
-      "50x50",
-      "plataforma",
-      "fitness"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/fitness-steps/p-1792887338329.json"
-  },
-  {
-    "id": "1792887338332",
-    "shortId": null,
-    "title": "Step Funcional - Gym Plataforma Fitness Cajón - Escalón",
-    "rubro": "carpinteria",
-    "primaryCatId": "Steps",
-    "categories": [
-      "Steps"
-    ],
-    "subcategoria": "fitness",
-    "price": 30000,
-    "image": "img/borrador/portada-imagen.webp",
-    "tags": [
-      "borrador",
-      "mercado libre",
-      "mla2180486792",
-      "step",
-      "funcional",
-      "plataforma",
-      "fitness",
-      "cajón",
-      "escalón"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/fitness-steps/p-1792887338332.json"
   },
   {
     "id": "1792887338346",
@@ -5453,81 +5534,6 @@
     "file": "data/products/carpinteria/jardin-patio/p-1792887338345.json"
   },
   {
-    "id": "1792887338342",
-    "shortId": null,
-    "title": "Mesa  Plegable Playera Jardín (2 Modelos)",
-    "rubro": "carpinteria",
-    "primaryCatId": "jardin-patio",
-    "categories": [
-      "jardin-patio"
-    ],
-    "subcategoria": "mesas-jardin",
-    "price": 32999,
-    "image": "img/borrador/portada-imagen.webp",
-    "tags": [
-      "borrador",
-      "mercado libre",
-      "mla1475679709",
-      "mesa",
-      "plegable",
-      "playera",
-      "jardín",
-      "modelos)"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/jardin-patio/p-1792887338342.json"
-  },
-  {
-    "id": "1792887338351",
-    "shortId": null,
-    "title": "Mesa De Madera Plegable Jardín Camping",
-    "rubro": "carpinteria",
-    "primaryCatId": "jardin-patio",
-    "categories": [
-      "jardin-patio"
-    ],
-    "subcategoria": "mesas-camping",
-    "price": 60000,
-    "image": "img/borrador/portada-imagen.webp",
-    "tags": [
-      "borrador",
-      "mercado libre",
-      "mla3946285696",
-      "mesa",
-      "madera",
-      "plegable",
-      "jardín",
-      "camping"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/jardin-patio/p-1792887338351.json"
-  },
-  {
-    "id": "1792887338335",
-    "shortId": null,
-    "title": "Fanal Madera Pino Por Tres Unidades",
-    "rubro": "carpinteria",
-    "primaryCatId": "Hogar",
-    "categories": [
-      "Hogar"
-    ],
-    "subcategoria": "fanales",
-    "price": 24500,
-    "image": "img/borrador/portada-imagen.webp",
-    "tags": [
-      "borrador",
-      "mercado libre",
-      "mla2164674452",
-      "fanal",
-      "madera",
-      "pino",
-      "tres",
-      "unidades"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/hogar/p-1792887338335.json"
-  },
-  {
     "id": "1792887338352",
     "shortId": null,
     "title": "Platos Asado Madera Algarrobo Tablita Redonda Calada 20 Cm",
@@ -5571,22 +5577,6 @@
     "file": "data/products/carpinteria/cat-28-mvay9cq6/p-1792123134173.json"
   },
   {
-    "id": "1792154576619",
-    "shortId": null,
-    "title": "Pizarra Pizarron Cartel Doble Hoja",
-    "rubro": "carpinteria",
-    "primaryCatId": "cat-28-mvay9cq6",
-    "categories": [
-      "cat-28-mvay9cq6"
-    ],
-    "subcategoria": "",
-    "price": 23000,
-    "image": "img/pizarra-pizarron-cartel-doble-hoja/1792154575692-1-imagen.webp",
-    "tags": [],
-    "visible": true,
-    "file": "data/products/carpinteria/cat-28-mvay9cq6/p-1792154576619.json"
-  },
-  {
     "id": "S3",
     "shortId": "34",
     "title": "Pizarra Pizarron Cartel Para Colgar 95x54",
@@ -5601,54 +5591,6 @@
     "tags": [],
     "visible": true,
     "file": "data/products/carpinteria/cat-28-mvay9cq6/p-S3.json"
-  },
-  {
-    "id": "1792887338334",
-    "shortId": null,
-    "title": "Pizarra Pizarron Para Colgar X3",
-    "rubro": "carpinteria",
-    "primaryCatId": "cat-28-mvay9cq6",
-    "categories": [
-      "cat-28-mvay9cq6"
-    ],
-    "subcategoria": "pizarras",
-    "price": 25000,
-    "image": "img/borrador/portada-imagen.webp",
-    "tags": [
-      "borrador",
-      "mercado libre",
-      "mla3946726502",
-      "pizarra",
-      "pizarron",
-      "para",
-      "colgar"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/cat-28-mvay9cq6/p-1792887338334.json"
-  },
-  {
-    "id": "1792887338339",
-    "shortId": null,
-    "title": "Podio De Premiación Profesional - 3 Niveles",
-    "rubro": "carpinteria",
-    "primaryCatId": "Podios",
-    "categories": [
-      "Podios"
-    ],
-    "subcategoria": "profesionales",
-    "price": 500000,
-    "image": "img/borrador/portada-imagen.webp",
-    "tags": [
-      "borrador",
-      "mercado libre",
-      "mla3246798562",
-      "podio",
-      "premiación",
-      "profesional",
-      "niveles"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/podios/p-1792887338339.json"
   },
   {
     "id": "L1",
@@ -5734,5 +5676,19 @@
     "tags": [],
     "visible": true,
     "file": "data/products/herrajes/tornillos/p-N1.json"
+  },
+  {
+    "id": "1793485821041",
+    "shortId": "3R",
+    "title": "Banco Banquito Escalera",
+    "rubro": "carpinteria",
+    "primaryCatId": "muebles",
+    "categories": [],
+    "subcategoria": "",
+    "price": 20000,
+    "image": "img/banco-banquito-escalera/1793485819869-1-imagen.webp",
+    "tags": [],
+    "visible": true,
+    "file": "data/products/carpinteria/escaleras/p-1793485821041.json"
   }
 ]

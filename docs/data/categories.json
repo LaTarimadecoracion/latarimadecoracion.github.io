@@ -17,7 +17,7 @@
   },
   {
     "id": "Vinotecas",
-    "name": "Vinotecas - Bodegas",
+    "name": "Vinotecas & Bodegas",
     "image": "img/vinotecas---bodegas/portada-1780289410168-imagen.webp",
     "order": 2,
     "rubro": "carpinteria"
@@ -31,73 +31,73 @@
   },
   {
     "id": "Barandas",
-    "name": "Barandas para cama",
+    "name": "Barandas para Cama",
     "image": "img/barandas-para-cama/portada-1782437522433-imagen.webp",
     "order": 4,
     "visible": true,
     "rubro": "carpinteria"
   },
   {
-    "id": "Organizadores",
-    "name": "Organizadores",
-    "image": "img/organizadores/portada-imagen.webp",
-    "rubro": "carpinteria",
-    "order": 5
-  },
-  {
-    "id": "Estantes",
-    "name": "Repisas & Estantes",
-    "image": "img/estantes/portada-1780775756126-imagen.webp",
-    "order": 6,
+    "id": "Steps",
+    "name": "Fitness & Steps",
+    "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
+    "order": 5,
     "rubro": "carpinteria"
   },
   {
+    "id": "Organizadores",
+    "name": "Organizadores & Muebles",
+    "image": "img/organizadores/portada-imagen.webp",
+    "rubro": "carpinteria",
+    "order": 6
+  },
+  {
     "id": "cortes-madera",
-    "name": "Cortes de Madera",
+    "name": "Cortes a Medida",
     "rubro": "carpinteria",
     "image": "img/cortes-de-madera/portada-1791766769534-imagen.webp",
     "visible": true,
     "order": 7
   },
   {
+    "id": "Estantes",
+    "name": "Estantes & Repisas",
+    "image": "img/estantes/portada-1780775756126-imagen.webp",
+    "order": 8,
+    "rubro": "carpinteria"
+  },
+  {
     "id": "cunas-madera-pino",
-    "name": "Cunas & Sueños",
+    "name": "Cunas",
     "image": "img/cunas/portada-imagen.webp",
     "rubro": "carpinteria",
-    "order": 8,
+    "order": 9,
     "visible": true
   },
   {
     "id": "camas-madera-pino",
-    "name": "Camas & Mesas de Luz",
+    "name": "Camas & Dormitorio",
     "image": "img/camas-para-ninos/portada-imagen.webp",
     "rubro": "carpinteria",
-    "order": 9
+    "order": 10
   },
   {
     "id": "muebles",
     "name": "Escaleras",
     "image": "img/escaleras/portada-1780288150186-imagen.webp",
-    "order": 10,
-    "rubro": "carpinteria"
-  },
-  {
-    "id": "Steps",
-    "name": "Fitness & Steps",
-    "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
     "order": 11,
     "rubro": "carpinteria"
   },
   {
     "id": "Juguetes",
-    "name": "Rincón Infantil",
+    "name": "Línea Infantil",
     "image": "img/juguetes/portada-1783038439545-imagen.webp",
     "order": 12,
     "rubro": "carpinteria"
   },
   {
     "id": "sillas-sillones",
-    "name": "Sillas y sillones",
+    "name": "Sillas & Sillones",
     "image": "img/sillas-y-sillones/portada-imagen.webp",
     "rubro": "carpinteria",
     "order": 13
@@ -111,61 +111,46 @@
   },
   {
     "id": "jardin-patio",
-    "name": "Jardín",
+    "name": "Jardín & Decks",
     "image": "img/jardin/portada-imagen.webp",
     "rubro": "carpinteria",
     "order": 15
-  },
-  {
-    "id": "Hogar",
-    "name": "Muebles de Hogar",
-    "image": "img/hogar/portada-imagen.webp",
-    "rubro": "carpinteria",
-    "order": 16
   },
   {
     "id": "productos-algarrobo",
     "name": "Línea Algarrobo",
     "image": "img/todo-algarrobo/portada-imagen.webp",
     "rubro": "carpinteria",
-    "order": 17
+    "order": 16
   },
   {
     "id": "bazar-cocina",
     "name": "Bazar & Cocina",
-    "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
+    "image": "img/bazar-cocina/portada-1793480888205-imagen.webp",
+    "rubro": "carpinteria",
+    "order": 17,
+    "visible": true
+  },
+  {
+    "id": "cajones-madera",
+    "name": "Baúles de Madera",
+    "image": "img/baules-de-madera/portada-1793480550075-imagen.webp",
     "rubro": "carpinteria",
     "order": 18,
     "visible": true
   },
   {
-    "id": "cajones-madera",
-    "name": "Cajones de Madera",
-    "image": "img/cajones-de-madera/portada-1791337634850-imagen.webp",
-    "rubro": "carpinteria",
-    "order": 19,
-    "visible": false
-  },
-  {
-    "id": "cajones-crossfit",
-    "name": "Cajones CrossFit & Pliométricos",
-    "rubro": "carpinteria",
-    "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-    "visible": true,
-    "order": 20
-  },
-  {
     "id": "cat-28-mvay9cq6",
-    "name": "Pizzarones",
+    "name": "Pizarras & Carteles",
     "image": "img/pizzarones/portada-imagenwebp.webp",
     "rubro": "carpinteria",
-    "order": 21
+    "order": 19
   },
   {
     "id": "Podios",
-    "name": "Podios de Premiacion",
+    "name": "Podios de Premiación",
     "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-    "order": 22,
+    "order": 20,
     "rubro": "carpinteria"
   },
   {
@@ -174,7 +159,7 @@
     "rubro": "pintureria",
     "image": "img/logo_provisional.png",
     "visible": true,
-    "order": 23
+    "order": 21
   },
   {
     "id": "electricidad-todos",
@@ -182,14 +167,14 @@
     "rubro": "electricidad",
     "image": "img/logo_provisional.png",
     "visible": false,
-    "order": 24
+    "order": 22
   },
   {
     "id": "cat-21-mu7q9i7y",
     "name": "Kits Electricos",
     "image": "img/kits-electricos/portada-imagenwebp.webp",
     "rubro": "electricidad",
-    "order": 25,
+    "order": 23,
     "visible": true
   },
   {
@@ -198,14 +183,14 @@
     "rubro": "herrajes",
     "image": "img/logo_provisional.png",
     "visible": false,
-    "order": 26
+    "order": 24
   },
   {
     "id": "cat-23-mu93q76a",
     "name": "Tornillos",
     "image": "img/herrajes/tornillos/portada-imagenwebp.webp",
     "rubro": "herrajes",
-    "order": 27,
+    "order": 25,
     "visible": true
   }
 ]

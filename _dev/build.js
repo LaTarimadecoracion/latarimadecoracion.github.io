@@ -35,6 +35,14 @@ async function build() {
         console.error('❌ Error generando meta-catalog.csv:', err);
     }
 
+    // Generar catálogo para Tiendanube en tnube/
+    try {
+        console.log('🛒 Generando catálogo actualizado para Tiendanube (tnube/productos-para-importar.csv)...');
+        require('./generate-tiendanube-catalog');
+    } catch (err) {
+        console.error('❌ Error generando catálogo de Tiendanube:', err);
+    }
+
     console.log('📂 Sincronizando carpeta docs...');
     fs.ensureDirSync(distDir);
 

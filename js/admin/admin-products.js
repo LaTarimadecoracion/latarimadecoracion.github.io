@@ -448,8 +448,20 @@ window.initProductsAdmin = function() {
                 for (let i = 0; i < newProductsList.length; i++) {
                     fullProductsList[start + i] = newProductsList[i];
                 }
+
+                // Asignar timestamps actualizados para forzar sincronización y no ser pisado por localStorage
+                const now = Date.now();
+                fullProductsList.forEach((prod, idx) => {
+                    prod.order = idx;
+                    prod.last_modified = now;
+                });
                 
                 sessionProducts[catIdx].products = fullProductsList;
+
+                // Sincronizar localStorage explícitamente para persistencia inmediata en el cliente
+                try {
+                    localStorage.setItem('sessionProducts', JSON.stringify(sessionProducts));
+                } catch(e) {}
                 
                 await saveProductsToServer();
                 renderAdminProducts();
@@ -864,6 +876,13 @@ window.initProductsAdmin = function() {
             window.btnShareHeader.setAttribute('data-category-name', cat.name);
         }
 
+        // Configurar e inicializar barra de subcategorías
+        const subcategoriesBar = document.getElementById('category-feed-subcategories-bar');
+        if (subcategoriesBar) {
+            subcategoriesBar.innerHTML = '';
+            subcategoriesBar.style.display = 'none';
+        }
+
         // Limpiar el feed anterior
         if (categoryFeedList) categoryFeedList.innerHTML = '';
 
@@ -897,12 +916,16 @@ window.initProductsAdmin = function() {
             categoryProducts = (cat.products || []).filter(p => p.visible !== false);
         }
 
-        if (categoryProducts.length === 0) {
-            if (categoryFeedEmpty) categoryFeedEmpty.style.display = 'flex';
-        } else {
+        function renderFeedCards(prodsToRender) {
+            if (!categoryFeedList) return;
+            categoryFeedList.innerHTML = '';
+            if (prodsToRender.length === 0) {
+                if (categoryFeedEmpty) categoryFeedEmpty.style.display = 'flex';
+                return;
+            }
             if (categoryFeedEmpty) categoryFeedEmpty.style.display = 'none';
 
-            categoryProducts.forEach(product => {
+            prodsToRender.forEach(product => {
                 const card = document.createElement('div');
                 card.className = 'feed-card';
                 const productCover = Array.isArray(product.image) ? product.image[0] : product.image;
@@ -923,6 +946,60 @@ window.initProductsAdmin = function() {
                 });
                 categoryFeedList.appendChild(card);
             });
+        }
+
+        if (categoryProducts.length === 0) {
+            if (categoryFeedEmpty) categoryFeedEmpty.style.display = 'flex';
+        } else {
+            if (categoryFeedEmpty) categoryFeedEmpty.style.display = 'none';
+
+            // Detectar subcategorías presentes en los productos
+            const subcatMap = new Map();
+            categoryProducts.forEach(p => {
+                if (p.subcategoria && p.subcategoria_label) {
+                    subcatMap.set(p.subcategoria, p.subcategoria_label);
+                }
+            });
+
+            // Si hay 2 o más subcategorías, armar la barra de chips
+            if (subcategoriesBar && subcatMap.size >= 2) {
+                subcategoriesBar.innerHTML = '';
+                subcategoriesBar.style.display = 'flex';
+
+                // Botón "Todos"
+                const btnAll = document.createElement('button');
+                btnAll.type = 'button';
+                btnAll.className = 'chip active';
+                btnAll.textContent = `Todos (${categoryProducts.length})`;
+                btnAll.addEventListener('click', () => {
+                    subcategoriesBar.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+                    btnAll.classList.add('active');
+                    renderFeedCards(categoryProducts);
+                });
+                subcategoriesBar.appendChild(btnAll);
+
+                // Botón por cada subcategoría
+                subcatMap.forEach((label, subId) => {
+                    const count = categoryProducts.filter(p => p.subcategoria === subId).length;
+                    const btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'chip';
+                    btn.textContent = `${label} (${count})`;
+                    btn.addEventListener('click', () => {
+                        subcategoriesBar.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+                        btn.classList.add('active');
+                        const filtered = categoryProducts.filter(p => p.subcategoria === subId);
+                        renderFeedCards(filtered);
+                    });
+                    subcategoriesBar.appendChild(btn);
+                });
+
+                if (window.enableDragToScroll) {
+                    window.enableDragToScroll(subcategoriesBar);
+                }
+            }
+
+            renderFeedCards(categoryProducts);
         }
     }
 

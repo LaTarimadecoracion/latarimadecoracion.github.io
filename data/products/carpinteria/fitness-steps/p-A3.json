@@ -1,5 +1,6 @@
 {
   "id": "A3",
+  "shortId": "3Q",
   "title": "Steps / Cajones (40 cm)",
   "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
   "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
@@ -7,6 +8,7 @@
   "acabados_groups": [
     {
       "acabado_name": "40x28x9 cm",
+      "description": "",
       "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
       "images_list": [
         "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
@@ -25,7 +27,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 17000,
-          "cost_price": "",
+          "cost_price": 17000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -35,6 +37,7 @@
     },
     {
       "acabado_name": "40x28x16 cm",
+      "description": "",
       "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
       "images_list": [
         "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
@@ -53,7 +56,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 24000,
-          "cost_price": "",
+          "cost_price": 24000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -63,6 +66,7 @@
     },
     {
       "acabado_name": "40x28x23 cm",
+      "description": "",
       "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
       "images_list": [
         "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
@@ -81,7 +85,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 32000,
-          "cost_price": "",
+          "cost_price": 32000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -91,6 +95,7 @@
     },
     {
       "acabado_name": "40x28x30 cm",
+      "description": "",
       "cover_image": "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
       "images_list": [
         "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
@@ -109,7 +114,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 40000,
-          "cost_price": "",
+          "cost_price": 40000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -176,14 +181,8 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1788908470878,
+  "last_modified": 1793481029476,
   "primaryCatId": "Steps",
   "history": [],
-  "views": 0,
-  "categories": [
-    "carpinteria-todos",
-    "Steps",
-    "cajones-madera"
-  ],
   "rubro": "carpinteria"
 }

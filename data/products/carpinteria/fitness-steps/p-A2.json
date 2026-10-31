@@ -1,5 +1,6 @@
 {
   "id": "A2",
+  "shortId": "3Q",
   "title": "Steps / Cajones (30 cm)",
   "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
   "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
@@ -7,6 +8,7 @@
   "acabados_groups": [
     {
       "acabado_name": "30x28x9 cm",
+      "description": "",
       "cover_image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
       "images_list": [
         "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
@@ -25,7 +27,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 15000,
-          "cost_price": "",
+          "cost_price": 15000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -35,6 +37,7 @@
     },
     {
       "acabado_name": "30x28x16 cm",
+      "description": "",
       "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
       "images_list": [
         "img/steps-cajones/cajones-50cm/stepscajones.webp",
@@ -53,7 +56,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 20000,
-          "cost_price": "",
+          "cost_price": 20000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -63,6 +66,7 @@
     },
     {
       "acabado_name": "30x28x23 cm",
+      "description": "",
       "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
       "images_list": [
         "img/steps-cajones/cajones-50cm/stepscajones.webp",
@@ -81,7 +85,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 25000,
-          "cost_price": "",
+          "cost_price": 25000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -148,14 +152,8 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1788908106317,
+  "last_modified": 1793481042956,
   "primaryCatId": "Steps",
   "history": [],
-  "views": 2,
-  "categories": [
-    "carpinteria-todos",
-    "Steps",
-    "cajones-madera"
-  ],
   "rubro": "carpinteria"
 }

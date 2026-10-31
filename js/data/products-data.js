@@ -14,7 +14,7 @@ const productsData = [
                 "image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
                 "order": 0,
                 "visible": true,
-                "primaryCatId": "Hogar",
+                "primaryCatId": "camas-madera-pino",
                 "acabados_groups": [
                     {
                         "acabado_name": "Estándar",
@@ -46,7 +46,9 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "category": "camas-madera-pino",
+                "views": 2
             },
             {
                 "id": "51",
@@ -2206,17 +2208,20 @@ const productsData = [
             },
             {
                 "id": "42",
+                "shortId": "3Q",
                 "title": "Especiero",
                 "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
-                "image": "img/organizadores/especiero/1782487819564-imagen.webp",
+                "image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/especiero/1782487819564-imagen.webp",
+                        "description": "",
+                        "cover_image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
                         "images_list": [
-                            "img/organizadores/especiero/1782487819564-imagen.webp",
-                            "img/organizadores/especiero/1782487819702-imagen.webp",
-                            "img/organizadores/especiero/1782487819842-imagen.webp"
+                            "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
+                            "img/bazar-cocina/especiero/1793480775635-imagenwebp.webp",
+                            "img/bazar-cocina/especiero/1793480775640-imagenwebp.webp",
+                            "img/bazar-cocina/especiero/1793480775647-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -2230,7 +2235,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
@@ -2243,7 +2249,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
@@ -2256,7 +2263,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "34 x 60 x 10 cm",
@@ -2269,7 +2277,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -2309,10 +2318,25 @@ const productsData = [
                     "repisa de cocina",
                     "repisa para condimentos"
                 ],
-                "last_modified": 1787707117443,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 6,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793480775651,
                 "primaryCatId": "bazar-cocina",
-                "views": 2,
-                "stock": 1,
                 "history": [
                     {
                         "date": "27/8, 12:39 a. m.",
@@ -2324,25 +2348,7 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 6
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Estantes",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
+                ]
             },
             {
                 "id": "44",
@@ -2863,51 +2869,6 @@ const productsData = [
                     "cajones-madera"
                 ],
                 "rubro": "carpinteria"
-            },
-            {
-                "id": "J8",
-                "shortId": "2V",
-                "title": "Cajon GYM",
-                "description": "",
-                "image": "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "cover_image": "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp",
-                        "images_list": [
-                            "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1791374134268,
-                "primaryCatId": "cajones-madera",
-                "history": [],
-                "visible": false,
-                "categories": [
-                    "carpinteria-todos",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria",
-                "views": 4
             },
             {
                 "id": "81",
@@ -3772,61 +3733,6 @@ const productsData = [
                 "categories": [
                     "carpinteria-todos",
                     "muebles"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "4G",
-                "title": "Banco Banquito Escalera Niños Infantil",
-                "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
-                "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408872-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409011-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409155-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30x23x20",
-                                "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 18000,
-                                "cost_price": 33000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786333409298,
-                "primaryCatId": "muebles",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "muebles",
-                    "Juguetes"
                 ],
                 "rubro": "carpinteria"
             },
@@ -4880,471 +4786,8 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "A1",
-                "title": "Steps / Cajones / Profesionales",
-                "description": "Escalón de madera multiusos para ejercicios y más",
-                "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892809-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1782417150808-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1782417150969-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "120 x 60 x 20 cm",
-                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-120x60x20-cm/up/MLAU3866210927?pdp_filters=item_id:MLA3118878616",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 80000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "70 x 28 x 12 cm",
-                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-70x28x12-cm/up/MLAU3876890188?pdp_filters=item_id:MLA1726571267",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "60 x 28 x 9",
-                                "link": "https://www.mercadolibre.com.ar/step--plataforma-fitness--60x28x9-cm/up/MLAU3658086641?pdp_filters=item_id:MLA2642214640",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cajon",
-                    "cajones",
-                    "cajon profesional",
-                    "cajon madera",
-                    "cajon pino",
-                    "organizador",
-                    "guardado",
-                    "almacenamiento",
-                    "caja madera",
-                    "caja pino",
-                    "cajonera",
-                    "cajonera profesional",
-                    "cajon de pino",
-                    "cajon de madera",
-                    "organizador profesional",
-                    "cajonera de madera",
-                    "cajonera de pino",
-                    "caja de pino profesional",
-                    "caja de madera profesional",
-                    "caja de almacenamiento"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 1,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788907898357,
-                "primaryCatId": "Steps",
-                "history": [],
-                "views": 7,
-                "categories": [
-                    "carpinteria-todos",
-                    "Steps",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "A2",
-                "title": "Steps / Cajones (30 cm)",
-                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
-                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "30x28x9 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30x28x9 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512937623-step-funcional-plataforma-fitness-cajon-30x28x9-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 15000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "30x28x16 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30x28x16 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989405-step-funcional-plataforma-fitness-cajon-30x28x16-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "30x28x23 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30x28x23 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002101-step-plataforma-fitness-30x28x23-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "steps",
-                    "cajones",
-                    "mil usos",
-                    "madera",
-                    "cajon resistente",
-                    "cajon para gimnasia",
-                    "gym",
-                    "resistente",
-                    "escalera",
-                    "escaleras",
-                    "escaloncitos",
-                    "escalon",
-                    "escalones",
-                    "cajon",
-                    "pino",
-                    "subir",
-                    "alcanzar",
-                    "banquito",
-                    "taburete",
-                    "banqueta",
-                    "cajonera steps",
-                    "organizador",
-                    "escalera de pintor",
-                    "escalera de madera",
-                    "escalera de pino",
-                    "escalera plegable",
-                    "escalera de tijera",
-                    "banquito de madera",
-                    "banquito de pino",
-                    "taburete de madera",
-                    "escalera altillo",
-                    "subida altillo",
-                    "escalon pino",
-                    "escalon madera",
-                    "banquito escalon",
-                    "escalera biblioteca",
-                    "escalera pequeña",
-                    "escalera fija",
-                    "cajonera profesional"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788908106317,
-                "primaryCatId": "Steps",
-                "history": [],
-                "views": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "Steps",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "A3",
-                "title": "Steps / Cajones (40 cm)",
-                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
-                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "40x28x9 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "40x28x9 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2188770122-step-funcional-plataforma-fitness-cajon-40x28x9-cm-gyn-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "40x28x16 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "40x28x16 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989387-step-funcional-plataforma-fitness-cajon-40x28x16-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 24000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "40x28x23 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "40x28x23 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512885451-step-plataforma-fitness-40x28x23-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 32000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "40x28x30 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "40x28x30 cm",
-                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon--40x30x30-cm/up/MLAU3432796747?pdp_filters=item_id:MLA1539760471",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "steps",
-                    "cajones",
-                    "mil usos",
-                    "madera",
-                    "cajon resistente",
-                    "cajon para gimnasia",
-                    "gym",
-                    "resistente",
-                    "escalera",
-                    "escaleras",
-                    "escaloncitos",
-                    "escalon",
-                    "escalones",
-                    "cajon",
-                    "pino",
-                    "subir",
-                    "alcanzar",
-                    "banquito",
-                    "taburete",
-                    "banqueta",
-                    "cajonera steps",
-                    "organizador",
-                    "escalera de pintor",
-                    "escalera de madera",
-                    "escalera de pino",
-                    "escalera plegable",
-                    "escalera de tijera",
-                    "banquito de madera",
-                    "banquito de pino",
-                    "taburete de madera",
-                    "escalera altillo",
-                    "subida altillo",
-                    "escalon pino",
-                    "escalon madera",
-                    "banquito escalon",
-                    "escalera biblioteca",
-                    "escalera pequeña",
-                    "escalera fija",
-                    "cajonera profesional"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788908470878,
-                "primaryCatId": "Steps",
-                "history": [],
-                "views": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Steps",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "A4",
+                "shortId": "3Q",
                 "title": "Steps / Cajones (50cm)",
                 "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
                 "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
@@ -5352,6 +4795,7 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "50x28x9 cm",
+                        "description": "",
                         "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
                             "img/steps-cajones/cajones-50cm/stepscajones.webp",
@@ -5370,7 +4814,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 17000,
-                                "cost_price": "",
+                                "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": true
@@ -5380,6 +4824,7 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50x28x16 cm",
+                        "description": "",
                         "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
                             "img/steps-cajones/cajones-50cm/stepscajones.webp",
@@ -5398,7 +4843,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 25000,
-                                "cost_price": "",
+                                "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": true
@@ -5408,6 +4853,7 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50x28x23 cm",
+                        "description": "",
                         "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
                             "img/steps-cajones/cajones-50cm/stepscajones.webp",
@@ -5426,7 +4872,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 31000,
-                                "cost_price": "",
+                                "cost_price": 31000,
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": true
@@ -5436,6 +4882,7 @@ const productsData = [
                     },
                     {
                         "acabado_name": "50x50x9 cm",
+                        "description": "",
                         "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
                         "images_list": [
                             "img/steps-cajones/cajones-50cm/stepscajones.webp",
@@ -5454,7 +4901,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 32000,
-                                "cost_price": "",
+                                "cost_price": 32000,
                                 "legend": "",
                                 "showPrice": false,
                                 "logisticaEnabled": true
@@ -5521,16 +4968,9 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788908607231,
+                "last_modified": 1793480985540,
                 "primaryCatId": "Steps",
-                "history": [],
-                "views": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "Steps",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
+                "history": []
             },
             {
                 "id": "46",
@@ -5619,7 +5059,7 @@ const productsData = [
                     "hecho a mano"
                 ],
                 "last_modified": 1785084728300,
-                "primaryCatId": "Hogar",
+                "primaryCatId": "Organizadores",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -5638,7 +5078,8 @@ const productsData = [
                     "Mesas-madera",
                     "Hogar"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "category": "Organizadores"
             },
             {
                 "id": "79",
@@ -5725,7 +5166,7 @@ const productsData = [
                     "diseño artesanal"
                 ],
                 "last_modified": 1786924556417,
-                "primaryCatId": "Hogar",
+                "primaryCatId": "camas-madera-pino",
                 "visible": true,
                 "views": 0,
                 "paymentConfig": {
@@ -5743,7 +5184,8 @@ const productsData = [
                     "carpinteria-todos",
                     "camas-madera-pino"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "category": "camas-madera-pino"
             },
             {
                 "id": "F2",
@@ -5789,13 +5231,14 @@ const productsData = [
                 "shortId": "3D",
                 "title": "Mesita de luz - Angosta",
                 "description": "Mesita de luz - Angosta",
-                "image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
+                "image": "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
+                        "description": "",
+                        "cover_image": "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
                         "images_list": [
-                            "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
+                            "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
                             "img/hogar/mesita-de-luz-angosta/1790378658840-imagenwebp.webp"
                         ],
                         "medidas_variants": [
@@ -5808,7 +5251,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 18000,
-                                "cost_price": "",
+                                "cost_price": 18000,
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": true
@@ -5835,16 +5278,10 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1790378658845,
+                "last_modified": 1793479341261,
                 "primaryCatId": "camas-madera-pino",
                 "history": [],
-                "views": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "camas-madera-pino",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
+                "views": 5
             },
             {
                 "id": "F4",
@@ -5865,7 +5302,7 @@ const productsData = [
                 ],
                 "tags": [],
                 "last_modified": 1786334918176,
-                "primaryCatId": "Hogar",
+                "primaryCatId": "Organizadores",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -5882,7 +5319,8 @@ const productsData = [
                     "Organizadores",
                     "Hogar"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "category": "Organizadores"
             },
             {
                 "id": "G8",
@@ -7861,7 +7299,7 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1786315987713,
-                "primaryCatId": "Organizadores",
+                "primaryCatId": "Estantes",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -7879,7 +7317,8 @@ const productsData = [
                     "Organizadores",
                     "Mesas-madera"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "category": "Estantes"
             },
             {
                 "id": "4C",
@@ -8007,7 +7446,7 @@ const productsData = [
                     "mensula decorativa"
                 ],
                 "last_modified": 1787716545046,
-                "primaryCatId": "Organizadores",
+                "primaryCatId": "Estantes",
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -8025,7 +7464,8 @@ const productsData = [
                     "Organizadores",
                     "Estantes"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "category": "Estantes"
             },
             {
                 "id": "4F",
@@ -10459,7 +9899,7 @@ const productsData = [
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1790379461990,
-                "primaryCatId": "sillas-sillones",
+                "primaryCatId": "Juguetes",
                 "history": [],
                 "views": 1,
                 "categories": [
@@ -10467,7 +9907,8 @@ const productsData = [
                     "Juguetes",
                     "sillas-sillones"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "category": "Juguetes"
             },
             {
                 "id": "C3",
@@ -10554,7 +9995,7 @@ const productsData = [
                     "muebles de living"
                 ],
                 "last_modified": 1783907160537,
-                "primaryCatId": "sillas-sillones",
+                "primaryCatId": "Juguetes",
                 "visible": true,
                 "views": 1,
                 "paymentConfig": {
@@ -10572,7 +10013,8 @@ const productsData = [
                     "Juguetes",
                     "sillas-sillones"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "category": "Juguetes"
             },
             {
                 "id": "21",
@@ -11578,7 +11020,7 @@ const productsData = [
             {
                 "id": "95",
                 "shortId": "33",
-                "title": "Cajón Pliométrico 3 en 1 CrossFit & Salto",
+                "title": "Cajones a medida (Personalizados)",
                 "description": "Cajón de salto pliométrico multifuncional 3 en 1 para CrossFit, entrenamiento funcional y preparación física. Fabricado en Fenólico Industrial de 18 mm con refuerzo estructural interno en cruz y manijas ergonómicas.",
                 "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
                 "acabados_groups": [
@@ -11604,7 +11046,19 @@ const productsData = [
                                 "cost_price": 22000,
                                 "legend": "Oficial Box CrossFit",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 3,
+                                        "discountPercent": 8,
+                                        "shippingDiscountPercent": 0
+                                    },
+                                    {
+                                        "minQty": 6,
+                                        "discountPercent": 12,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             },
                             {
                                 "medida": "Mediano (40 × 50 × 60 cm)",
@@ -11618,7 +11072,19 @@ const productsData = [
                                 "cost_price": 17000,
                                 "legend": "Intermedio",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 3,
+                                        "discountPercent": 8,
+                                        "shippingDiscountPercent": 0
+                                    },
+                                    {
+                                        "minQty": 6,
+                                        "discountPercent": 12,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             },
                             {
                                 "medida": "Chico (30 × 40 × 50 cm)",
@@ -11632,7 +11098,19 @@ const productsData = [
                                 "cost_price": 12000,
                                 "legend": "Funcional / Principiante",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 3,
+                                        "discountPercent": 8,
+                                        "shippingDiscountPercent": 0
+                                    },
+                                    {
+                                        "minQty": 6,
+                                        "discountPercent": 12,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             },
                             {
                                 "medida": "A Medida Especial",
@@ -11646,7 +11124,19 @@ const productsData = [
                                 "cost_price": 22000,
                                 "legend": "Personalizado",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 3,
+                                        "discountPercent": 8,
+                                        "shippingDiscountPercent": 0
+                                    },
+                                    {
+                                        "minQty": 6,
+                                        "discountPercent": 12,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -11685,24 +11175,20 @@ const productsData = [
                 },
                 "quantityDiscounts": [
                     {
-                        "minQty": 3,
-                        "discountPercent": 8
+                        "minUnits": 3,
+                        "discountPercent": 8,
+                        "shippingDiscountPercent": 0
                     },
                     {
-                        "minQty": 6,
-                        "discountPercent": 12
+                        "minUnits": 6,
+                        "discountPercent": 12,
+                        "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1791831629527,
-                "primaryCatId": "cajones-crossfit",
+                "last_modified": 1793479955669,
+                "primaryCatId": "Steps",
                 "history": [],
-                "visible": true,
-                "categories": [
-                    "carpinteria-todos",
-                    "cajones-crossfit"
-                ],
-                "rubro": "carpinteria",
-                "views": 68
+                "visible": true
             },
             {
                 "id": "1792887338328",
@@ -11869,6 +11355,347 @@ const productsData = [
                     }
                 ],
                 "views": 0
+            },
+            {
+                "id": "1792887338334",
+                "shortId": "3R",
+                "title": "Pizarra Pizarron Para Colgar X3",
+                "description": "Publicación importada desde Mercado Libre (MLA3946726502).",
+                "image": "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
+                        "images_list": [
+                            "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
+                            "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479566823-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Pizzaron x3",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 22000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3946726502",
+                    "pizarra",
+                    "pizarron",
+                    "para",
+                    "colgar"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793479628428,
+                "primaryCatId": "cat-28-mvay9cq6",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338333,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3946726502)"
+                    }
+                ],
+                "views": 3
+            },
+            {
+                "id": "1792154576619",
+                "shortId": "3R",
+                "title": "Pizarra Pizarron Cartel Doble Hoja",
+                "description": "PIZARRA CABALLETE DE MADERA – 80 x 50 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra tipo caballete es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\n\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño tipo caballete, práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 80 cm\nAncho: 50 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nLas imagenes son ilustrativas.\n\nSin garantía",
+                "image": "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700352-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "description": "",
+                        "cover_image": "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700352-imagenwebp.webp",
+                        "images_list": [
+                            "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700352-imagenwebp.webp",
+                            "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700368-imagenwebp.webp",
+                            "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479738312-edit_1793479717508webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-doble-hoja/up/MLAU5507345905",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 23000,
+                                "cost_price": 11500,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793479781268,
+                "primaryCatId": "cat-28-mvay9cq6",
+                "history": [],
+                "visible": true,
+                "views": 2
+            },
+            {
+                "id": "1792887338351",
+                "shortId": "3Q",
+                "title": "Mesa De Madera Plegable Jardín Camping",
+                "description": "Publicación importada desde Mercado Libre (MLA3946285696).",
+                "image": "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
+                        "images_list": [
+                            "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
+                            "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275111-imagenwebp.webp",
+                            "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275117-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Combo",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3946285696",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "cost_price": 60000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3946285696",
+                    "mesa",
+                    "madera",
+                    "plegable",
+                    "jardín",
+                    "camping"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793480283124,
+                "primaryCatId": "jardin-patio",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338344,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3946285696)"
+                    }
+                ]
+            },
+            {
+                "id": "1792887338335",
+                "shortId": "3Q",
+                "title": "Fanal Madera Pino Por Tres Unidades",
+                "description": "Publicación importada desde Mercado Libre (MLA2164674452).",
+                "image": "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
+                        "images_list": [
+                            "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
+                            "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381852-imagenwebp.webp",
+                            "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381859-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Fanales",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2164674452",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 24500,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla2164674452",
+                    "fanal",
+                    "madera",
+                    "pino",
+                    "tres",
+                    "unidades"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793480381864,
+                "primaryCatId": "jardin-patio",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338334,
+                        "details": "Importado como borrador desde Mercado Libre (MLA2164674452)"
+                    }
+                ]
+            },
+            {
+                "id": "1792887338342",
+                "shortId": "3Q",
+                "title": "Mesa  Plegable Playera Jardín (2 Modelos)",
+                "description": "Publicación importada desde Mercado Libre (MLA1475679709).",
+                "image": "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
+                        "images_list": [
+                            "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
+                            "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476122-imagenwebp.webp",
+                            "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476131-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Mesita",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1475679709",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 32999,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla1475679709",
+                    "mesa",
+                    "plegable",
+                    "playera",
+                    "jardín",
+                    "modelos)"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793480476135,
+                "primaryCatId": "jardin-patio",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338338,
+                        "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
+                    }
+                ]
             }
         ]
     },
@@ -11883,7 +11710,7 @@ const productsData = [
     },
     {
         "id": "Vinotecas",
-        "name": "Vinotecas - Bodegas",
+        "name": "Vinotecas & Bodegas",
         "image": "img/vinotecas---bodegas/portada-1780289410168-imagen.webp",
         "order": 2,
         "rubro": "carpinteria",
@@ -13837,7 +13664,7 @@ const productsData = [
     },
     {
         "id": "Barandas",
-        "name": "Barandas para cama",
+        "name": "Barandas para Cama",
         "image": "img/barandas-para-cama/portada-1782437522433-imagen.webp",
         "order": 4,
         "visible": true,
@@ -16002,25 +15829,1015 @@ const productsData = [
         ]
     },
     {
-        "id": "Organizadores",
-        "name": "Organizadores",
-        "image": "img/organizadores/portada-imagen.webp",
-        "rubro": "carpinteria",
+        "id": "Steps",
+        "name": "Fitness & Steps",
+        "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
         "order": 5,
+        "rubro": "carpinteria",
         "products": [
             {
-                "id": "42",
-                "title": "Especiero",
-                "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
-                "image": "img/organizadores/especiero/1782487819564-imagen.webp",
+                "id": "95",
+                "shortId": "33",
+                "title": "Cajones a medida (Personalizados)",
+                "description": "Cajón de salto pliométrico multifuncional 3 en 1 para CrossFit, entrenamiento funcional y preparación física. Fabricado en Fenólico Industrial de 18 mm con refuerzo estructural interno en cruz y manijas ergonómicas.",
+                "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Fenólico 18mm",
+                        "description": "Placa Fenólica de 18 mm de alta resistencia con refuerzo interno en cruz",
+                        "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Grande Oficial (50 × 60 × 75 cm)",
+                                "link": "apps/cajon.html",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": true,
+                                "price": 72000,
+                                "cost_price": 22000,
+                                "legend": "Oficial Box CrossFit",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 3,
+                                        "discountPercent": 8,
+                                        "shippingDiscountPercent": 0
+                                    },
+                                    {
+                                        "minQty": 6,
+                                        "discountPercent": 12,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "medida": "Mediano (40 × 50 × 60 cm)",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 58000,
+                                "cost_price": 17000,
+                                "legend": "Intermedio",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 3,
+                                        "discountPercent": 8,
+                                        "shippingDiscountPercent": 0
+                                    },
+                                    {
+                                        "minQty": 6,
+                                        "discountPercent": 12,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "medida": "Chico (30 × 40 × 50 cm)",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Configurar",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 42000,
+                                "cost_price": 12000,
+                                "legend": "Funcional / Principiante",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 3,
+                                        "discountPercent": 8,
+                                        "shippingDiscountPercent": 0
+                                    },
+                                    {
+                                        "minQty": 6,
+                                        "discountPercent": 12,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "medida": "A Medida Especial",
+                                "link": "apps/cajon.html",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "Calcular",
+                                "iconType": "straighten",
+                                "highlight": false,
+                                "price": 72000,
+                                "cost_price": 22000,
+                                "legend": "Personalizado",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 3,
+                                        "discountPercent": 8,
+                                        "shippingDiscountPercent": 0
+                                    },
+                                    {
+                                        "minQty": 6,
+                                        "discountPercent": 12,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cajon",
+                    "pliometrico",
+                    "crossfit",
+                    "salto",
+                    "jump box",
+                    "box",
+                    "3 en 1",
+                    "fitness",
+                    "gym",
+                    "entrenamiento funcional",
+                    "fenolico"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "fleteFreeMinUnits": 50,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 3,
+                        "discountPercent": 8,
+                        "shippingDiscountPercent": 0
+                    },
+                    {
+                        "minUnits": 6,
+                        "discountPercent": 12,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1793479955669,
+                "primaryCatId": "Steps",
+                "history": [],
+                "visible": true
+            },
+            {
+                "id": "A1",
+                "shortId": "3Q",
+                "title": "Steps / Cajones / Profesionales",
+                "description": "Escalón de madera multiusos para ejercicios y más",
+                "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/especiero/1782487819564-imagen.webp",
+                        "description": "",
+                        "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
                         "images_list": [
-                            "img/organizadores/especiero/1782487819564-imagen.webp",
-                            "img/organizadores/especiero/1782487819702-imagen.webp",
-                            "img/organizadores/especiero/1782487819842-imagen.webp"
+                            "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1780589892809-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1782417150808-imagen.webp",
+                            "img/steps-cajones/cajones-profesional/1782417150969-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "120 x 60 x 20 cm",
+                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-120x60x20-cm/up/MLAU3866210927?pdp_filters=item_id:MLA3118878616",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 80000,
+                                "cost_price": 80000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "70 x 28 x 12 cm",
+                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-70x28x12-cm/up/MLAU3876890188?pdp_filters=item_id:MLA1726571267",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "60 x 28 x 9",
+                                "link": "https://www.mercadolibre.com.ar/step--plataforma-fitness--60x28x9-cm/up/MLAU3658086641?pdp_filters=item_id:MLA2642214640",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "cost_price": 35000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cajon",
+                    "cajones",
+                    "cajon profesional",
+                    "cajon madera",
+                    "cajon pino",
+                    "organizador",
+                    "guardado",
+                    "almacenamiento",
+                    "caja madera",
+                    "caja pino",
+                    "cajonera",
+                    "cajonera profesional",
+                    "cajon de pino",
+                    "cajon de madera",
+                    "organizador profesional",
+                    "cajonera de madera",
+                    "cajonera de pino",
+                    "caja de pino profesional",
+                    "caja de madera profesional",
+                    "caja de almacenamiento"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793481022357,
+                "primaryCatId": "Steps",
+                "history": [],
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "A2",
+                "shortId": "3Q",
+                "title": "Steps / Cajones (30 cm)",
+                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
+                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
+                "image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "30x28x9 cm",
+                        "description": "",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x28x9 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512937623-step-funcional-plataforma-fitness-cajon-30x28x9-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 15000,
+                                "cost_price": 15000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30x28x16 cm",
+                        "description": "",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x28x16 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989405-step-funcional-plataforma-fitness-cajon-30x28x16-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30x28x23 cm",
+                        "description": "",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "30x28x23 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002101-step-plataforma-fitness-30x28x23-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 25000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "steps",
+                    "cajones",
+                    "mil usos",
+                    "madera",
+                    "cajon resistente",
+                    "cajon para gimnasia",
+                    "gym",
+                    "resistente",
+                    "escalera",
+                    "escaleras",
+                    "escaloncitos",
+                    "escalon",
+                    "escalones",
+                    "cajon",
+                    "pino",
+                    "subir",
+                    "alcanzar",
+                    "banquito",
+                    "taburete",
+                    "banqueta",
+                    "cajonera steps",
+                    "organizador",
+                    "escalera de pintor",
+                    "escalera de madera",
+                    "escalera de pino",
+                    "escalera plegable",
+                    "escalera de tijera",
+                    "banquito de madera",
+                    "banquito de pino",
+                    "taburete de madera",
+                    "escalera altillo",
+                    "subida altillo",
+                    "escalon pino",
+                    "escalon madera",
+                    "banquito escalon",
+                    "escalera biblioteca",
+                    "escalera pequeña",
+                    "escalera fija",
+                    "cajonera profesional"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793481042956,
+                "primaryCatId": "Steps",
+                "history": [],
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "A3",
+                "shortId": "3Q",
+                "title": "Steps / Cajones (40 cm)",
+                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
+                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
+                "image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "40x28x9 cm",
+                        "description": "",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40x28x9 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2188770122-step-funcional-plataforma-fitness-cajon-40x28x9-cm-gyn-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 17000,
+                                "cost_price": 17000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "40x28x16 cm",
+                        "description": "",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40x28x16 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989387-step-funcional-plataforma-fitness-cajon-40x28x16-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 24000,
+                                "cost_price": 24000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "40x28x23 cm",
+                        "description": "",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40x28x23 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512885451-step-plataforma-fitness-40x28x23-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 32000,
+                                "cost_price": 32000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "40x28x30 cm",
+                        "description": "",
+                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "40x28x30 cm",
+                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon--40x30x30-cm/up/MLAU3432796747?pdp_filters=item_id:MLA1539760471",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "steps",
+                    "cajones",
+                    "mil usos",
+                    "madera",
+                    "cajon resistente",
+                    "cajon para gimnasia",
+                    "gym",
+                    "resistente",
+                    "escalera",
+                    "escaleras",
+                    "escaloncitos",
+                    "escalon",
+                    "escalones",
+                    "cajon",
+                    "pino",
+                    "subir",
+                    "alcanzar",
+                    "banquito",
+                    "taburete",
+                    "banqueta",
+                    "cajonera steps",
+                    "organizador",
+                    "escalera de pintor",
+                    "escalera de madera",
+                    "escalera de pino",
+                    "escalera plegable",
+                    "escalera de tijera",
+                    "banquito de madera",
+                    "banquito de pino",
+                    "taburete de madera",
+                    "escalera altillo",
+                    "subida altillo",
+                    "escalon pino",
+                    "escalon madera",
+                    "banquito escalon",
+                    "escalera biblioteca",
+                    "escalera pequeña",
+                    "escalera fija",
+                    "cajonera profesional"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793481029476,
+                "primaryCatId": "Steps",
+                "history": [],
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "A4",
+                "shortId": "3Q",
+                "title": "Steps / Cajones (50cm)",
+                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
+                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
+                "image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "50x28x9 cm",
+                        "description": "",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50x28x9 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002287-step-funcional-plataforma-fitness-cajon-50x28x9-cm-_JM",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 17000,
+                                "cost_price": 17000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50x28x16 cm",
+                        "description": "",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50x28x16 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2072143834-step-funcional-plataforma-fitness-cajon-50x28x16-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 25000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50x28x23 cm",
+                        "description": "",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50x28x23 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1372002007-step-plataforma-fitness-50x28x23-cm-_JM",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 31000,
+                                "cost_price": 31000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50x50x9 cm",
+                        "description": "",
+                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                        "images_list": [
+                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
+                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50x50x9 cm",
+                                "link": "https://www.mercadolibre.com.ar/step-madera-la-tarima-50x50-cm-plataforma-fitness/up/MLAU256659868",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 32000,
+                                "cost_price": 32000,
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "steps",
+                    "cajones",
+                    "mil usos",
+                    "madera",
+                    "cajon resistente",
+                    "cajon para gimnasia",
+                    "gym",
+                    "resistente",
+                    "escalera",
+                    "escaleras",
+                    "escaloncitos",
+                    "escalon",
+                    "escalones",
+                    "cajon",
+                    "pino",
+                    "subir",
+                    "alcanzar",
+                    "banquito",
+                    "taburete",
+                    "banqueta",
+                    "cajonera steps",
+                    "organizador",
+                    "escalera de pintor",
+                    "escalera de madera",
+                    "escalera de pino",
+                    "escalera plegable",
+                    "escalera de tijera",
+                    "banquito de madera",
+                    "banquito de pino",
+                    "taburete de madera",
+                    "escalera altillo",
+                    "subida altillo",
+                    "escalon pino",
+                    "escalon madera",
+                    "banquito escalon",
+                    "escalera biblioteca",
+                    "escalera pequeña",
+                    "escalera fija",
+                    "cajonera profesional"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793480985540,
+                "primaryCatId": "Steps",
+                "history": []
+            },
+            {
+                "id": "1792887338329",
+                "title": "Step Madera La Tarima 50x50 Cm Plataforma Fitness",
+                "description": "Publicación importada desde Mercado Libre (MLA1375418215).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 55000,
+                                "stock": 964,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1375418215"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla1375418215",
+                    "step",
+                    "madera",
+                    "tarima",
+                    "50x50",
+                    "plataforma",
+                    "fitness"
+                ],
+                "last_modified": 1792887338329,
+                "optional_variant": null,
+                "primaryCatId": "Steps",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338329,
+                        "details": "Importado como borrador desde Mercado Libre (MLA1375418215)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 964,
+                "categories": [
+                    "carpinteria-todos",
+                    "Steps"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "fitness"
+            },
+            {
+                "id": "1792887338332",
+                "title": "Step Funcional - Gym Plataforma Fitness Cajón - Escalón",
+                "description": "Publicación importada desde Mercado Libre (MLA2180486792).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 30000,
+                                "stock": 987,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2180486792"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla2180486792",
+                    "step",
+                    "funcional",
+                    "plataforma",
+                    "fitness",
+                    "cajón",
+                    "escalón"
+                ],
+                "last_modified": 1792887338332,
+                "optional_variant": null,
+                "primaryCatId": "Steps",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338332,
+                        "details": "Importado como borrador desde Mercado Libre (MLA2180486792)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 987,
+                "categories": [
+                    "carpinteria-todos",
+                    "Steps"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "fitness"
+            },
+            {
+                "id": "J8",
+                "shortId": "2V",
+                "title": "Cajon GYM",
+                "description": "",
+                "image": "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp",
+                        "images_list": [
+                            "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793481013332,
+                "primaryCatId": "Steps",
+                "history": [],
+                "visible": true,
+                "rubro": "carpinteria"
+            }
+        ]
+    },
+    {
+        "id": "Organizadores",
+        "name": "Organizadores & Muebles",
+        "image": "img/organizadores/portada-imagen.webp",
+        "rubro": "carpinteria",
+        "order": 6,
+        "products": [
+            {
+                "id": "42",
+                "shortId": "3Q",
+                "title": "Especiero",
+                "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
+                "image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "",
+                        "cover_image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
+                        "images_list": [
+                            "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
+                            "img/bazar-cocina/especiero/1793480775635-imagenwebp.webp",
+                            "img/bazar-cocina/especiero/1793480775640-imagenwebp.webp",
+                            "img/bazar-cocina/especiero/1793480775647-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -16034,7 +16851,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
@@ -16047,7 +16865,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
@@ -16060,7 +16879,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "34 x 60 x 10 cm",
@@ -16073,7 +16893,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -16113,10 +16934,25 @@ const productsData = [
                     "repisa de cocina",
                     "repisa para condimentos"
                 ],
-                "last_modified": 1787707117443,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 6,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793480775651,
                 "primaryCatId": "bazar-cocina",
-                "views": 2,
-                "stock": 1,
                 "history": [
                     {
                         "date": "27/8, 12:39 a. m.",
@@ -16128,25 +16964,7 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 6
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Estantes",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
+                ]
             },
             {
                 "id": "44",
@@ -17201,152 +18019,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "46",
-                "title": "Mueble Multifunción - Estilo Nórdico",
-                "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
-                "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
-                "image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
-                            "img/organizadores/Mueble-Multifunción/1780707094497-imagen.webp",
-                            "img/organizadores/Mueble-Multifunción/1780707094652-imagen.webp",
-                            "img/organizadores/Mueble-Multifunción/1780707094874-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "60 x 45 x 30 cm",
-                                "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 26000,
-                                "cost_price": 6500,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mueble",
-                    "multifunción",
-                    "estilo",
-                    "nórdico",
-                    "carpintería",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "mueble mueble",
-                    "carpintería  mueble",
-                    "multifunción de madera",
-                    "multifunción de pino",
-                    "mueble multifunción",
-                    "carpintería  multifunción",
-                    "estilo de madera",
-                    "estilo de pino",
-                    "mueble estilo",
-                    "carpintería  estilo",
-                    "nórdico de madera",
-                    "nórdico de pino",
-                    "mueble nórdico",
-                    "carpintería  nórdico",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano"
-                ],
-                "last_modified": 1785084728300,
-                "primaryCatId": "Hogar",
-                "views": 2,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Mesas-madera",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "F4",
-                "title": "Tender",
-                "description": "",
-                "image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Único",
-                        "cover_image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
-                        "images_list": [
-                            "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
-                            "img/hogar/tendre-ropa-madera/1786334918048-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786334918176,
-                "primaryCatId": "Hogar",
-                "views": 2,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "48",
                 "title": "Esquinero x3",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
@@ -17458,386 +18130,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "4B",
-                "title": "Ménsulas para escritorios",
-                "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
-                "image": "img/organizadores/mensulas/mensulas.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "40 x 40 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 9000,
-                                "cost_price": 9000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": 17000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 33000,
-                                "cost_price": 33000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 47998,
-                                "cost_price": 47998,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "45 x 45 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 18000,
-                                "cost_price": 18000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "cost_price": 35000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 50000,
-                                "cost_price": 50000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "50 x 50 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 11500,
-                                "cost_price": 11500,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 22000,
-                                "cost_price": 22000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 43000,
-                                "cost_price": 43000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 62999,
-                                "cost_price": 62999,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mensula",
-                    "mensulas",
-                    "soporte",
-                    "soportes",
-                    "mensula madera",
-                    "mensula pino",
-                    "colgar estante",
-                    "estante mensula",
-                    "mensula de pino",
-                    "mensula de madera",
-                    "mensulas de pino",
-                    "mensulas de madera",
-                    "mensula estante",
-                    "soporte estante",
-                    "soporte mensula",
-                    "mensula rustica",
-                    "mensulas rusticas",
-                    "mensula decorativa"
-                ],
-                "last_modified": 1786315987713,
-                "primaryCatId": "Organizadores",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 5
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Mesas-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "4C",
-                "title": "Ménsulas para estantes",
-                "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/organizadores/mensulas/mensulas.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "20 x 20 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "https://www.mercadolibre.com.ar/mensula-soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960167374",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 4500,
-                                "cost_price": 500,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "https://www.mercadolibre.com.ar/2-mensulas--soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960301854",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 8000,
-                                "cost_price": 5500,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "30 x 30 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 4500,
-                                "cost_price": 4500,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 8500,
-                                "cost_price": 8500,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": 17000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mensula",
-                    "mensulas",
-                    "soporte",
-                    "soportes",
-                    "mensula madera",
-                    "mensula pino",
-                    "colgar estante",
-                    "estante mensula",
-                    "mensula de pino",
-                    "mensula de madera",
-                    "mensulas de pino",
-                    "mensulas de madera",
-                    "mensula estante",
-                    "soporte estante",
-                    "soporte mensula",
-                    "mensula rustica",
-                    "mensulas rusticas",
-                    "mensula decorativa"
-                ],
-                "last_modified": 1787716545046,
-                "primaryCatId": "Organizadores",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 5
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Estantes"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "4F",
                 "title": "Caballetes de madera",
                 "description": "",
@@ -17874,14 +18166,621 @@ const productsData = [
                     "Mesas-madera"
                 ],
                 "rubro": "carpinteria"
+            },
+            {
+                "id": "46",
+                "title": "Mueble Multifunción - Estilo Nórdico",
+                "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
+                "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
+                "image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094497-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094652-imagen.webp",
+                            "img/organizadores/Mueble-Multifunción/1780707094874-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "60 x 45 x 30 cm",
+                                "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 26000,
+                                "cost_price": 6500,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mueble",
+                    "multifunción",
+                    "estilo",
+                    "nórdico",
+                    "carpintería",
+                    "madera",
+                    "pino",
+                    "carpinteria",
+                    "rustico",
+                    "natural",
+                    "hogar",
+                    "casa",
+                    "decoracion",
+                    "calidad",
+                    "diseño",
+                    "artesanal",
+                    "comprar",
+                    "tienda",
+                    "envio",
+                    "seguro",
+                    "fuerte",
+                    "resistente",
+                    "lindo",
+                    "util",
+                    "practico",
+                    "mueble de madera",
+                    "mueble de pino",
+                    "mueble mueble",
+                    "carpintería  mueble",
+                    "multifunción de madera",
+                    "multifunción de pino",
+                    "mueble multifunción",
+                    "carpintería  multifunción",
+                    "estilo de madera",
+                    "estilo de pino",
+                    "mueble estilo",
+                    "carpintería  estilo",
+                    "nórdico de madera",
+                    "nórdico de pino",
+                    "mueble nórdico",
+                    "carpintería  nórdico",
+                    "carpintería de madera",
+                    "carpintería de pino",
+                    "mueble carpintería",
+                    "carpintería  carpintería",
+                    "carpinteria artesanal",
+                    "decoracion del hogar",
+                    "mueble rustico",
+                    "mueble natural",
+                    "hecho a mano"
+                ],
+                "last_modified": 1785084728300,
+                "primaryCatId": "Organizadores",
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 1
+                },
+                "categories": [
+                    "carpinteria-todos",
+                    "Organizadores",
+                    "Mesas-madera",
+                    "Hogar"
+                ],
+                "rubro": "carpinteria",
+                "category": "Organizadores"
+            },
+            {
+                "id": "F4",
+                "title": "Tender",
+                "description": "",
+                "image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Único",
+                        "cover_image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
+                        "images_list": [
+                            "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
+                            "img/hogar/tendre-ropa-madera/1786334918048-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1786334918176,
+                "primaryCatId": "Organizadores",
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "categories": [
+                    "carpinteria-todos",
+                    "Organizadores",
+                    "Hogar"
+                ],
+                "rubro": "carpinteria",
+                "category": "Organizadores"
+            }
+        ]
+    },
+    {
+        "id": "cortes-madera",
+        "name": "Cortes a Medida",
+        "rubro": "carpinteria",
+        "image": "img/cortes-de-madera/portada-1791766769534-imagen.webp",
+        "visible": true,
+        "order": 7,
+        "products": [
+            {
+                "id": "69",
+                "shortId": "2Z",
+                "title": "Cortes de Madera a Medida",
+                "description": "Calculá tu corte exacto al milímetro para cualquier proyecto: escalones, mesadas, tapas especiales o estantes a medida. Madera maciza de pino seleccionada.",
+                "image": "img/cortes-de-madera/cortes-de-madera-a-medida/1791766460587-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "",
+                        "cover_image": "img/cortes-de-madera/cortes-de-madera-a-medida/1791766460587-imagenwebp.webp",
+                        "images_list": [
+                            "img/cortes-de-madera/cortes-de-madera-a-medida/1791766460587-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "A Medida",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "straighten",
+                                "highlight": true,
+                                "price": "",
+                                "cost_price": 2000,
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "corte",
+                    "a medida",
+                    "personalizado",
+                    "tablas",
+                    "recortes",
+                    "escalon",
+                    "mesada",
+                    "pino"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "fleteFreeMinUnits": 100,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1791766460594,
+                "primaryCatId": "cortes-madera",
+                "history": [],
+                "visible": true,
+                "views": 108
+            },
+            {
+                "id": "67",
+                "shortId": "31",
+                "title": "Estantes a medida",
+                "description": "Tablas de pino macizo seleccionadas y cepilladas en taller. Medidas estándar ideales para repisas flotantes o con ménsulas.",
+                "image": "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "",
+                        "cover_image": "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
+                        "images_list": [
+                            "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
+                            "img/cortes-de-madera/estantes-a-medida/1791766625847-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "20 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 5800,
+                                "cost_price": 1458,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "20 x 80 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 7700,
+                                "cost_price": 1944,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "20 x 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9700,
+                                "cost_price": 2431,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "30 x 60 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 8750,
+                                "cost_price": 2188,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "30 x 80 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 11600,
+                                "cost_price": 2917,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "30 x 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 14500,
+                                "cost_price": 3646,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "fleteFreeMinUnits": 100,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1791766625851,
+                "primaryCatId": "cortes-madera",
+                "history": [],
+                "categories": [
+                    "carpinteria-todos",
+                    "Estantes",
+                    "cortes-madera"
+                ],
+                "rubro": "carpinteria",
+                "views": 21
+            },
+            {
+                "id": "68",
+                "shortId": "31",
+                "title": "Escritorios y Mesas",
+                "description": "Tableros de pino macizo de gran formato, cepillados y pulidos a mano. Ideales para armar escritorios, mesas de comedor, mesadas o escritorios home office.",
+                "image": "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "",
+                        "cover_image": "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp",
+                        "images_list": [
+                            "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "50 x 100 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 27500,
+                                "cost_price": 16500,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "60 x 120 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": true,
+                                "price": 39600,
+                                "cost_price": 23500,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "60 x 140 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 46200,
+                                "cost_price": 27500,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            },
+                            {
+                                "medida": "70 x 140 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 53900,
+                                "cost_price": 32000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "escritorio",
+                    "mesa",
+                    "tapa",
+                    "tablero",
+                    "corte",
+                    "madera",
+                    "pino"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 5,
+                    "fleteFreeMinUnits": 100,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1791766660527,
+                "primaryCatId": "cortes-madera",
+                "history": [],
+                "views": 5
+            },
+            {
+                "id": "93",
+                "shortId": "31",
+                "title": "Placa de Pino Alistonada 124 × 244 cm (18 mm)",
+                "description": "Tablero entero de pino macizo alistonado de primera calidad, secado a horno, cepillado y calibrado. Dimensiones estándar de 124 × 244 cm en 18 mm de espesor. Ideal para carpintería general, tapas de mesas, frentes de placard, estanterías y muebles a medida. Venta por placa cerrada.",
+                "image": "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "Placa entera alistonada calibrada de fábrica, lista para cortar o lijar.",
+                        "cover_image": "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp",
+                        "images_list": [
+                            "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "124 × 244 cm (18 mm)",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": 35000,
+                                "legend": "Consultar precio / cotización inmediata por WhatsApp",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "placa",
+                    "tablero",
+                    "pino",
+                    "alistonado",
+                    "madera",
+                    "18mm",
+                    "124x244",
+                    "placa entera",
+                    "carpinteria",
+                    "muebleria",
+                    "taller"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "otroEnabled": true,
+                    "otroLabel": "Flete externo / A convenir (+ de 10 placas)",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1791766694912,
+                "primaryCatId": "cortes-madera",
+                "history": [],
+                "visible": true,
+                "views": 2
+            },
+            {
+                "id": "94",
+                "shortId": "31",
+                "title": "Placa Fenólico Industrial 124 × 244 cm (1 Cara Buena / Pino 18 mm)",
+                "description": "Tablero fenólico multilaminado industrial con 1 cara buena en madera de pino, espesor 18 mm y medidas estándar de 124 × 244 cm. Gran resistencia estructural, estabilidad dimensional y excelente terminación para encofrados vistos, entrepisos, mobiliario rústico, obradores o revestimientos. Venta por placa cerrada.",
+                "image": "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "Tablero multilaminado fenólico con una cara seleccionada.",
+                        "cover_image": "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp",
+                        "images_list": [
+                            "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "124 × 244 cm (18 mm)",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": 40000,
+                                "legend": "Consultar precio / cotización inmediata por WhatsApp",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "fenolico",
+                    "placa fenolica",
+                    "multilaminado",
+                    "pino",
+                    "1 cara buena",
+                    "18mm",
+                    "124x244",
+                    "tablero industrial",
+                    "encofrado",
+                    "carpinteria",
+                    "obra"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "fleteMaxUnits": 10,
+                    "otroEnabled": true,
+                    "otroLabel": "Flete externo / A convenir (+ de 10 placas)",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1791766726663,
+                "primaryCatId": "cortes-madera",
+                "history": [],
+                "visible": true,
+                "views": 9
             }
         ]
     },
     {
         "id": "Estantes",
-        "name": "Repisas & Estantes",
+        "name": "Estantes & Repisas",
         "image": "img/estantes/portada-1780775756126-imagen.webp",
-        "order": 6,
+        "order": 8,
         "rubro": "carpinteria",
         "products": [
             {
@@ -17941,17 +18840,20 @@ const productsData = [
             },
             {
                 "id": "42",
+                "shortId": "3Q",
                 "title": "Especiero",
                 "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
-                "image": "img/organizadores/especiero/1782487819564-imagen.webp",
+                "image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/especiero/1782487819564-imagen.webp",
+                        "description": "",
+                        "cover_image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
                         "images_list": [
-                            "img/organizadores/especiero/1782487819564-imagen.webp",
-                            "img/organizadores/especiero/1782487819702-imagen.webp",
-                            "img/organizadores/especiero/1782487819842-imagen.webp"
+                            "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
+                            "img/bazar-cocina/especiero/1793480775635-imagenwebp.webp",
+                            "img/bazar-cocina/especiero/1793480775640-imagenwebp.webp",
+                            "img/bazar-cocina/especiero/1793480775647-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -17965,7 +18867,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
@@ -17978,7 +18881,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
@@ -17991,7 +18895,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "34 x 60 x 10 cm",
@@ -18004,7 +18909,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -18044,10 +18950,25 @@ const productsData = [
                     "repisa de cocina",
                     "repisa para condimentos"
                 ],
-                "last_modified": 1787707117443,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 6,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793480775651,
                 "primaryCatId": "bazar-cocina",
-                "views": 2,
-                "stock": 1,
                 "history": [
                     {
                         "date": "27/8, 12:39 a. m.",
@@ -18059,25 +18980,7 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 6
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Estantes",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
+                ]
             },
             {
                 "id": "7C",
@@ -18989,152 +19892,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "4C",
-                "title": "Ménsulas para estantes",
-                "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/organizadores/mensulas/mensulas.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "20 x 20 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "https://www.mercadolibre.com.ar/mensula-soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960167374",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 4500,
-                                "cost_price": 500,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "https://www.mercadolibre.com.ar/2-mensulas--soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960301854",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 8000,
-                                "cost_price": 5500,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "30 x 30 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 4500,
-                                "cost_price": 4500,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 8500,
-                                "cost_price": 8500,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": 17000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mensula",
-                    "mensulas",
-                    "soporte",
-                    "soportes",
-                    "mensula madera",
-                    "mensula pino",
-                    "colgar estante",
-                    "estante mensula",
-                    "mensula de pino",
-                    "mensula de madera",
-                    "mensulas de pino",
-                    "mensulas de madera",
-                    "mensula estante",
-                    "soporte estante",
-                    "soporte mensula",
-                    "mensula rustica",
-                    "mensulas rusticas",
-                    "mensula decorativa"
-                ],
-                "last_modified": 1787716545046,
-                "primaryCatId": "Organizadores",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 5
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Estantes"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "1792887338328",
                 "shortId": "3S",
                 "title": "Ménsula Madera 45x45cm - Para Escritorios Nórdicos",
@@ -19299,474 +20056,397 @@ const productsData = [
                     }
                 ],
                 "views": 0
-            }
-        ]
-    },
-    {
-        "id": "cortes-madera",
-        "name": "Cortes de Madera",
-        "rubro": "carpinteria",
-        "image": "img/cortes-de-madera/portada-1791766769534-imagen.webp",
-        "visible": true,
-        "order": 7,
-        "products": [
+            },
             {
-                "id": "69",
-                "shortId": "2Z",
-                "title": "Cortes de Madera a Medida",
-                "description": "Calculá tu corte exacto al milímetro para cualquier proyecto: escalones, mesadas, tapas especiales o estantes a medida. Madera maciza de pino seleccionada.",
-                "image": "img/cortes-de-madera/cortes-de-madera-a-medida/1791766460587-imagenwebp.webp",
+                "id": "4B",
+                "title": "Ménsulas para escritorios",
+                "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
+                "image": "img/organizadores/mensulas/mensulas.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Natural",
-                        "description": "",
-                        "cover_image": "img/cortes-de-madera/cortes-de-madera-a-medida/1791766460587-imagenwebp.webp",
+                        "acabado_name": "40 x 40 cm",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/cortes-de-madera/cortes-de-madera-a-medida/1791766460587-imagenwebp.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "A Medida",
+                                "medida": "1 Un.",
                                 "link": "",
-                                "default": true,
+                                "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
-                                "iconType": "straighten",
-                                "highlight": true,
-                                "price": "",
-                                "cost_price": 2000,
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 9000,
+                                "cost_price": 9000,
                                 "legend": "",
-                                "showPrice": false,
-                                "logisticaEnabled": true
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 17000,
+                                "cost_price": 17000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 47998,
+                                "cost_price": 47998,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "45 x 45 cm",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/organizadores/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 10000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 18000,
+                                "cost_price": 18000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 35000,
+                                "cost_price": 35000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 50000,
+                                "cost_price": 50000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "50 x 50 cm",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/organizadores/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 11500,
+                                "cost_price": 11500,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 22000,
+                                "cost_price": 22000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "4 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 43000,
+                                "cost_price": 43000,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 62999,
+                                "cost_price": 62999,
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [
-                    "corte",
-                    "a medida",
-                    "personalizado",
-                    "tablas",
-                    "recortes",
-                    "escalon",
-                    "mesada",
-                    "pino"
+                    "mensula",
+                    "mensulas",
+                    "soporte",
+                    "soportes",
+                    "mensula madera",
+                    "mensula pino",
+                    "colgar estante",
+                    "estante mensula",
+                    "mensula de pino",
+                    "mensula de madera",
+                    "mensulas de pino",
+                    "mensulas de madera",
+                    "mensula estante",
+                    "soporte estante",
+                    "soporte mensula",
+                    "mensula rustica",
+                    "mensulas rusticas",
+                    "mensula decorativa"
                 ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 3,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteMaxUnits": 10,
-                    "fleteFreeMinUnits": 100,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
+                "last_modified": 1786315987713,
+                "primaryCatId": "Estantes",
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1791766460594,
-                "primaryCatId": "cortes-madera",
-                "history": [],
-                "visible": true,
-                "views": 108
-            },
-            {
-                "id": "67",
-                "shortId": "31",
-                "title": "Estantes a medida",
-                "description": "Tablas de pino macizo seleccionadas y cepilladas en taller. Medidas estándar ideales para repisas flotantes o con ménsulas.",
-                "image": "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "",
-                        "cover_image": "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
-                        "images_list": [
-                            "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
-                            "img/cortes-de-madera/estantes-a-medida/1791766625847-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "20 x 60 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 5800,
-                                "cost_price": 1458,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "20 x 80 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 7700,
-                                "cost_price": 1944,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "20 x 100 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 9700,
-                                "cost_price": 2431,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "30 x 60 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 8750,
-                                "cost_price": 2188,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "30 x 80 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 11600,
-                                "cost_price": 2917,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "30 x 100 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 14500,
-                                "cost_price": 3646,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
                 "shippingConfig": {
                     "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 3,
                     "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteMaxUnits": 10,
-                    "fleteFreeMinUnits": 100,
                     "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
+                    "logisticaMaxUnits": 5
                 },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1791766625851,
-                "primaryCatId": "cortes-madera",
-                "history": [],
                 "categories": [
                     "carpinteria-todos",
-                    "Estantes",
-                    "cortes-madera"
+                    "Organizadores",
+                    "Mesas-madera"
                 ],
                 "rubro": "carpinteria",
-                "views": 21
+                "category": "Estantes"
             },
             {
-                "id": "68",
-                "shortId": "31",
-                "title": "Escritorios y Mesas",
-                "description": "Tableros de pino macizo de gran formato, cepillados y pulidos a mano. Ideales para armar escritorios, mesas de comedor, mesadas o escritorios home office.",
-                "image": "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp",
+                "id": "4C",
+                "title": "Ménsulas para estantes",
+                "description": "Organización creativa y estilo para tus paredes.",
+                "image": "img/organizadores/mensulas/mensulas.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Natural",
-                        "description": "",
-                        "cover_image": "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp",
+                        "acabado_name": "20 x 20 cm",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
                         "images_list": [
-                            "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp"
+                            "img/organizadores/mensulas/mensulas.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "50 x 100 cm",
+                                "medida": "1 Un.",
+                                "link": "https://www.mercadolibre.com.ar/mensula-soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960167374",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 4500,
+                                "cost_price": 500,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "2 Un.",
+                                "link": "https://www.mercadolibre.com.ar/2-mensulas--soporte-estantes-repisa-madera-pino-20-x-20cm/up/MLAU4960301854",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 8000,
+                                "cost_price": 5500,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "30 x 30 cm",
+                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
+                        "images_list": [
+                            "img/organizadores/mensulas/mensulas.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Un.",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 27500,
-                                "cost_price": 16500,
+                                "price": 4500,
+                                "cost_price": 4500,
                                 "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
+                                "showPrice": true
                             },
                             {
-                                "medida": "60 x 120 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": true,
-                                "price": 39600,
-                                "cost_price": 23500,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "60 x 140 cm",
+                                "medida": "2 Un.",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
-                                "cost_price": 27500,
+                                "price": 8500,
+                                "cost_price": 8500,
                                 "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
+                                "showPrice": true
                             },
                             {
-                                "medida": "70 x 140 cm",
+                                "medida": "4 Un.",
                                 "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 53900,
-                                "cost_price": 32000,
+                                "price": 17000,
+                                "cost_price": 17000,
                                 "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "6 Un.",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [
-                    "escritorio",
-                    "mesa",
-                    "tapa",
-                    "tablero",
-                    "corte",
-                    "madera",
-                    "pino"
+                    "mensula",
+                    "mensulas",
+                    "soporte",
+                    "soportes",
+                    "mensula madera",
+                    "mensula pino",
+                    "colgar estante",
+                    "estante mensula",
+                    "mensula de pino",
+                    "mensula de madera",
+                    "mensulas de pino",
+                    "mensulas de madera",
+                    "mensula estante",
+                    "soporte estante",
+                    "soporte mensula",
+                    "mensula rustica",
+                    "mensulas rusticas",
+                    "mensula decorativa"
                 ],
+                "last_modified": 1787716545046,
+                "primaryCatId": "Estantes",
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
                 "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 1,
+                    "logisticaEnabled": true,
                     "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteMaxUnits": 5,
-                    "fleteFreeMinUnits": 100,
                     "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
+                    "logisticaMaxUnits": 5
                 },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1791766660527,
-                "primaryCatId": "cortes-madera",
-                "history": [],
-                "views": 5
-            },
-            {
-                "id": "93",
-                "shortId": "31",
-                "title": "Placa de Pino Alistonada 124 × 244 cm (18 mm)",
-                "description": "Tablero entero de pino macizo alistonado de primera calidad, secado a horno, cepillado y calibrado. Dimensiones estándar de 124 × 244 cm en 18 mm de espesor. Ideal para carpintería general, tapas de mesas, frentes de placard, estanterías y muebles a medida. Venta por placa cerrada.",
-                "image": "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "Placa entera alistonada calibrada de fábrica, lista para cortar o lijar.",
-                        "cover_image": "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp",
-                        "images_list": [
-                            "img/cortes-de-madera/placa-de-pino-alistonada-124-244-cm-18-mm/1791766694906-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "124 × 244 cm (18 mm)",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": 35000,
-                                "legend": "Consultar precio / cotización inmediata por WhatsApp",
-                                "showPrice": false,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
+                "categories": [
+                    "carpinteria-todos",
+                    "Organizadores",
+                    "Estantes"
                 ],
-                "tags": [
-                    "placa",
-                    "tablero",
-                    "pino",
-                    "alistonado",
-                    "madera",
-                    "18mm",
-                    "124x244",
-                    "placa entera",
-                    "carpinteria",
-                    "muebleria",
-                    "taller"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteMaxUnits": 10,
-                    "otroEnabled": true,
-                    "otroLabel": "Flete externo / A convenir (+ de 10 placas)",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1791766694912,
-                "primaryCatId": "cortes-madera",
-                "history": [],
-                "visible": true,
-                "views": 2
-            },
-            {
-                "id": "94",
-                "shortId": "31",
-                "title": "Placa Fenólico Industrial 124 × 244 cm (1 Cara Buena / Pino 18 mm)",
-                "description": "Tablero fenólico multilaminado industrial con 1 cara buena en madera de pino, espesor 18 mm y medidas estándar de 124 × 244 cm. Gran resistencia estructural, estabilidad dimensional y excelente terminación para encofrados vistos, entrepisos, mobiliario rústico, obradores o revestimientos. Venta por placa cerrada.",
-                "image": "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "Tablero multilaminado fenólico con una cara seleccionada.",
-                        "cover_image": "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp",
-                        "images_list": [
-                            "img/cortes-de-madera/placa-fenlico-industrial-124-244-cm-1-cara-buena-pino-18-mm/1791766726658-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "124 × 244 cm (18 mm)",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": 40000,
-                                "legend": "Consultar precio / cotización inmediata por WhatsApp",
-                                "showPrice": false,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "fenolico",
-                    "placa fenolica",
-                    "multilaminado",
-                    "pino",
-                    "1 cara buena",
-                    "18mm",
-                    "124x244",
-                    "tablero industrial",
-                    "encofrado",
-                    "carpinteria",
-                    "obra"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteMaxUnits": 10,
-                    "otroEnabled": true,
-                    "otroLabel": "Flete externo / A convenir (+ de 10 placas)",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1791766726663,
-                "primaryCatId": "cortes-madera",
-                "history": [],
-                "visible": true,
-                "views": 9
+                "rubro": "carpinteria",
+                "category": "Estantes"
             }
         ]
     },
     {
         "id": "cunas-madera-pino",
-        "name": "Cunas & Sueños",
+        "name": "Cunas",
         "image": "img/cunas/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 8,
+        "order": 9,
         "visible": true,
         "products": [
             {
@@ -20547,23 +21227,24 @@ const productsData = [
     },
     {
         "id": "camas-madera-pino",
-        "name": "Camas & Mesas de Luz",
+        "name": "Camas & Dormitorio",
         "image": "img/camas-para-ninos/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 9,
+        "order": 10,
         "products": [
             {
                 "id": "F3",
                 "shortId": "3D",
                 "title": "Mesita de luz - Angosta",
                 "description": "Mesita de luz - Angosta",
-                "image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
+                "image": "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
+                        "description": "",
+                        "cover_image": "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
                         "images_list": [
-                            "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
+                            "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
                             "img/hogar/mesita-de-luz-angosta/1790378658840-imagenwebp.webp"
                         ],
                         "medidas_variants": [
@@ -20576,7 +21257,7 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 18000,
-                                "cost_price": "",
+                                "cost_price": 18000,
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": true
@@ -20603,16 +21284,10 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1790378658845,
+                "last_modified": 1793479341261,
                 "primaryCatId": "camas-madera-pino",
                 "history": [],
-                "views": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "camas-madera-pino",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
+                "views": 5
             },
             {
                 "id": "F2",
@@ -20650,111 +21325,6 @@ const productsData = [
                     "carpinteria-todos",
                     "camas-madera-pino",
                     "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "79",
-                "title": "Pie de cama romano",
-                "description": "",
-                "image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
-                        "images_list": [
-                            "img/cunas/pie-cama-romano/1786839481815-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "80 cm",
-                                "link": "https://www.mercadolibre.com.ar/banco-romano--pie-de-cama--80-cm-de-ancho/up/MLAU4772479312",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "pie",
-                    "cama",
-                    "romano",
-                    "borrador",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "pie de madera",
-                    "pie de pino",
-                    "mueble pie",
-                    "borrador pie",
-                    "cama de madera",
-                    "cama de pino",
-                    "mueble cama",
-                    "borrador cama",
-                    "romano de madera",
-                    "romano de pino",
-                    "mueble romano",
-                    "borrador romano",
-                    "borrador de madera",
-                    "borrador de pino",
-                    "mueble borrador",
-                    "borrador borrador",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal"
-                ],
-                "last_modified": 1786924556417,
-                "primaryCatId": "Hogar",
-                "visible": true,
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "stock": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "camas-madera-pino"
                 ],
                 "rubro": "carpinteria"
             },
@@ -21213,6 +21783,155 @@ const productsData = [
                     "muebles"
                 ],
                 "rubro": "carpinteria"
+            },
+            {
+                "id": "79",
+                "title": "Pie de cama romano",
+                "description": "",
+                "image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
+                        "images_list": [
+                            "img/cunas/pie-cama-romano/1786839481815-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "80 cm",
+                                "link": "https://www.mercadolibre.com.ar/banco-romano--pie-de-cama--80-cm-de-ancho/up/MLAU4772479312",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true,
+                                "stock": 0
+                            }
+                        ],
+                        "hidden": false,
+                        "stock": 0
+                    }
+                ],
+                "tags": [
+                    "pie",
+                    "cama",
+                    "romano",
+                    "borrador",
+                    "madera",
+                    "pino",
+                    "carpinteria",
+                    "rustico",
+                    "natural",
+                    "mueble",
+                    "hogar",
+                    "casa",
+                    "decoracion",
+                    "calidad",
+                    "diseño",
+                    "artesanal",
+                    "comprar",
+                    "tienda",
+                    "envio",
+                    "seguro",
+                    "fuerte",
+                    "resistente",
+                    "lindo",
+                    "util",
+                    "practico",
+                    "pie de madera",
+                    "pie de pino",
+                    "mueble pie",
+                    "borrador pie",
+                    "cama de madera",
+                    "cama de pino",
+                    "mueble cama",
+                    "borrador cama",
+                    "romano de madera",
+                    "romano de pino",
+                    "mueble romano",
+                    "borrador romano",
+                    "borrador de madera",
+                    "borrador de pino",
+                    "mueble borrador",
+                    "borrador borrador",
+                    "mueble de madera",
+                    "mueble de pino",
+                    "carpinteria artesanal",
+                    "decoracion del hogar",
+                    "mueble rustico",
+                    "mueble natural",
+                    "hecho a mano",
+                    "muebles de calidad",
+                    "diseño artesanal"
+                ],
+                "last_modified": 1786924556417,
+                "primaryCatId": "camas-madera-pino",
+                "visible": true,
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 0,
+                "categories": [
+                    "carpinteria-todos",
+                    "camas-madera-pino"
+                ],
+                "rubro": "carpinteria",
+                "category": "camas-madera-pino"
+            },
+            {
+                "id": "1793239693996",
+                "title": "Mesa Mesita De Luz Alta  Economica Pino 2 Cajones",
+                "description": "MESA AUXILIAR DE MADERA – IDEAL PARA LIVING O DORMITORIO\n\nPráctica y funcional mesa auxiliar de madera, ideal para colocar junto al sillón o la cama. Su diseño combina cajones frontales y un espacio de guardado inferior abierto, ofreciendo una solución práctica para organizar tus objetos y aprovechar mejor los espacios.\n\nSu estilo natural permite combinarla con diferentes ambientes y estilos de decoración.\n\nCARACTERÍSTICAS\n\nMaterial: madera de pino natural.\n\nDiseño con cajones frontales y estante inferior abierto.\n\nIdeal para living, dormitorio o espacios reducidos.\n\nTerminación en madera natural.\n\nMEDIDAS\n\nAlto: 75 cm.\n\nAncho: 30 cm.\n\nProfundidad: 23 cm.\n\n\nRealizamos factura A.\n\nIMPORTANTE\n\nLas imágenes son ilustrativas y tienen como finalidad mostrar el producto en un ambiente decorado. Al tratarse de madera natural, las vetas, los nudos y las tonalidades pueden variar de una pieza a otra.\n\nAntes de realizar la compra, verificá las medidas para asegurarte de que el producto se adapte al espacio donde querés colocarlo.\n\nSin garantía",
+                "image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
+                "order": 0,
+                "visible": true,
+                "primaryCatId": "camas-madera-pino",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "cover_image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
+                        "images_list": [
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693248-2-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693331-3-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693485-4-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693554-5-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693659-6-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693713-7-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693802-8-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693858-9-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "price": 28000,
+                                "cost_price": 14000,
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-2-cajones/up/MLAU5669889579",
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "stock": 5,
+                                "showPrice": true,
+                                "highlight": false,
+                                "default": true,
+                                "hidden": false
+                            }
+                        ]
+                    }
+                ],
+                "category": "camas-madera-pino",
+                "views": 2
             }
         ]
     },
@@ -21220,7 +21939,7 @@ const productsData = [
         "id": "muebles",
         "name": "Escaleras",
         "image": "img/escaleras/portada-1780288150186-imagen.webp",
-        "order": 10,
+        "order": 11,
         "rubro": "carpinteria",
         "products": [
             {
@@ -21474,154 +22193,40 @@ const productsData = [
             },
             {
                 "id": "4G",
+                "shortId": "3Q",
                 "title": "Banco Banquito Escalera Niños Infantil",
                 "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
-                "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                "image": "img/escaleras/banco-banquito-escalera-nios-infantil/1793485683697-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
+                        "description": "",
+                        "cover_image": "img/escaleras/banco-banquito-escalera-nios-infantil/1793485683697-imagenwebp.webp",
                         "images_list": [
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408872-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409011-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409155-imagen.webp"
+                            "img/escaleras/banco-banquito-escalera-nios-infantil/1793485683697-imagenwebp.webp",
+                            "img/escaleras/banco-banquito-escalera-nios-infantil/1793485683712-imagenwebp.webp",
+                            "img/escaleras/banco-banquito-escalera-nios-infantil/1793485683718-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "30x23x20",
+                                "medida": "30 x 30",
                                 "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 18000,
+                                "price": 20000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786333409298,
-                "primaryCatId": "muebles",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "muebles",
-                    "Juguetes"
-                ],
-                "rubro": "carpinteria"
-            }
-        ]
-    },
-    {
-        "id": "Steps",
-        "name": "Fitness & Steps",
-        "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
-        "order": 11,
-        "rubro": "carpinteria",
-        "products": [
-            {
-                "id": "A1",
-                "title": "Steps / Cajones / Profesionales",
-                "description": "Escalón de madera multiusos para ejercicios y más",
-                "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892809-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1782417150808-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1782417150969-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "120 x 60 x 20 cm",
-                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-120x60x20-cm/up/MLAU3866210927?pdp_filters=item_id:MLA3118878616",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 80000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "70 x 28 x 12 cm",
-                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-70x28x12-cm/up/MLAU3876890188?pdp_filters=item_id:MLA1726571267",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "60 x 28 x 9",
-                                "link": "https://www.mercadolibre.com.ar/step--plataforma-fitness--60x28x9-cm/up/MLAU3658086641?pdp_filters=item_id:MLA2642214640",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cajon",
-                    "cajones",
-                    "cajon profesional",
-                    "cajon madera",
-                    "cajon pino",
-                    "organizador",
-                    "guardado",
-                    "almacenamiento",
-                    "caja madera",
-                    "caja pino",
-                    "cajonera",
-                    "cajonera profesional",
-                    "cajon de pino",
-                    "cajon de madera",
-                    "organizador profesional",
-                    "cajonera de madera",
-                    "cajonera de pino",
-                    "caja de pino profesional",
-                    "caja de madera profesional",
-                    "caja de almacenamiento"
-                ],
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "logisticaCost": 0,
@@ -21639,101 +22244,39 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788907898357,
-                "primaryCatId": "Steps",
+                "last_modified": 1793485683722,
+                "primaryCatId": "muebles",
                 "history": [],
-                "views": 7,
-                "categories": [
-                    "carpinteria-todos",
-                    "Steps",
-                    "cajones-madera"
-                ],
                 "rubro": "carpinteria"
             },
             {
-                "id": "A2",
-                "title": "Steps / Cajones (30 cm)",
-                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
-                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                "id": "1793485821041",
+                "shortId": "3R",
+                "title": "Banco Banquito Escalera",
+                "description": "Banquito Escalera Infantil de 2 Escalones – Madera de Pino\n\nPráctico banquito escalera fabricado en madera de pino, ideal para ayudar a los niños a alcanzar el lavamanos, mesadas y otros lugares de uso cotidiano.\n\nSu diseño de 2 escalones brinda una mayor altura de apoyo y es ideal para acompañar a los más pequeños en sus actividades diarias.\n\nCaracterísticas:\n\nFabricado en madera de pino.\n2 escalones.\nAltura total: 29 cm.\nAncho: 35 cm.\nProfundidad: 32 cm.\nAltura del escalón inferior: 15 cm.\nDiseño firme y práctico.\nTerminación en madera natural.\n\nEl producto se entrega en madera de pino natural, tal como se indica en la publicación.\n\nIdeal para baño, cocina, dormitorio y otros espacios del hogar.\n\nLink del mismo modelo pero mas chico : https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176\n\nGarantía del vendedor: 30 días",
+                "image": "img/banco-banquito-escalera/1793485819869-1-imagen.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "30x28x9 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
+                        "acabado_name": "Estándar",
+                        "description": "",
+                        "cover_image": "img/banco-banquito-escalera/1793485819869-1-imagen.webp",
                         "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
+                            "img/banco-banquito-escalera/1793485819869-1-imagen.webp",
+                            "img/banco-banquito-escalera/1793485820153-3-imagen.webp",
+                            "img/banco-banquito-escalera/1793485820425-5-imagen.webp",
+                            "img/banco-banquito-escalera/1793485820651-7-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "30x28x9 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512937623-step-funcional-plataforma-fitness-cajon-30x28x9-cm-_JM",
-                                "default": false,
+                                "medida": "Estándar",
+                                "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera/up/MLAU5336395874",
+                                "default": true,
                                 "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 15000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "30x28x16 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30x28x16 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989405-step-funcional-plataforma-fitness-cajon-30x28x16-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
+                                "linkLabel": "Ver en Mercado Libre",
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 20000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "30x28x23 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30x28x23 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002101-step-plataforma-fitness-30x28x23-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": "",
+                                "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": true
@@ -21742,51 +22285,10 @@ const productsData = [
                         "hidden": false
                     }
                 ],
-                "tags": [
-                    "steps",
-                    "cajones",
-                    "mil usos",
-                    "madera",
-                    "cajon resistente",
-                    "cajon para gimnasia",
-                    "gym",
-                    "resistente",
-                    "escalera",
-                    "escaleras",
-                    "escaloncitos",
-                    "escalon",
-                    "escalones",
-                    "cajon",
-                    "pino",
-                    "subir",
-                    "alcanzar",
-                    "banquito",
-                    "taburete",
-                    "banqueta",
-                    "cajonera steps",
-                    "organizador",
-                    "escalera de pintor",
-                    "escalera de madera",
-                    "escalera de pino",
-                    "escalera plegable",
-                    "escalera de tijera",
-                    "banquito de madera",
-                    "banquito de pino",
-                    "taburete de madera",
-                    "escalera altillo",
-                    "subida altillo",
-                    "escalon pino",
-                    "escalon madera",
-                    "banquito escalon",
-                    "escalera biblioteca",
-                    "escalera pequeña",
-                    "escalera fija",
-                    "cajonera profesional"
-                ],
+                "tags": [],
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
                     "fleteEnabled": true,
                     "fleteCost": 0,
                     "otroEnabled": false,
@@ -21796,524 +22298,21 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788908106317,
-                "primaryCatId": "Steps",
+                "last_modified": 1793485870299,
+                "primaryCatId": "muebles",
                 "history": [],
-                "views": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "Steps",
-                    "cajones-madera"
-                ],
+                "visible": true,
                 "rubro": "carpinteria"
-            },
-            {
-                "id": "A3",
-                "title": "Steps / Cajones (40 cm)",
-                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
-                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "40x28x9 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "40x28x9 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2188770122-step-funcional-plataforma-fitness-cajon-40x28x9-cm-gyn-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "40x28x16 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "40x28x16 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989387-step-funcional-plataforma-fitness-cajon-40x28x16-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 24000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "40x28x23 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "40x28x23 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512885451-step-plataforma-fitness-40x28x23-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 32000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "40x28x30 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "40x28x30 cm",
-                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon--40x30x30-cm/up/MLAU3432796747?pdp_filters=item_id:MLA1539760471",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "steps",
-                    "cajones",
-                    "mil usos",
-                    "madera",
-                    "cajon resistente",
-                    "cajon para gimnasia",
-                    "gym",
-                    "resistente",
-                    "escalera",
-                    "escaleras",
-                    "escaloncitos",
-                    "escalon",
-                    "escalones",
-                    "cajon",
-                    "pino",
-                    "subir",
-                    "alcanzar",
-                    "banquito",
-                    "taburete",
-                    "banqueta",
-                    "cajonera steps",
-                    "organizador",
-                    "escalera de pintor",
-                    "escalera de madera",
-                    "escalera de pino",
-                    "escalera plegable",
-                    "escalera de tijera",
-                    "banquito de madera",
-                    "banquito de pino",
-                    "taburete de madera",
-                    "escalera altillo",
-                    "subida altillo",
-                    "escalon pino",
-                    "escalon madera",
-                    "banquito escalon",
-                    "escalera biblioteca",
-                    "escalera pequeña",
-                    "escalera fija",
-                    "cajonera profesional"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788908470878,
-                "primaryCatId": "Steps",
-                "history": [],
-                "views": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Steps",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "A4",
-                "title": "Steps / Cajones (50cm)",
-                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
-                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "50x28x9 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "50x28x9 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002287-step-funcional-plataforma-fitness-cajon-50x28x9-cm-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "50x28x16 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "50x28x16 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2072143834-step-funcional-plataforma-fitness-cajon-50x28x16-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "50x28x23 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "50x28x23 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1372002007-step-plataforma-fitness-50x28x23-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 31000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "50x50x9 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "50x50x9 cm",
-                                "link": "https://www.mercadolibre.com.ar/step-madera-la-tarima-50x50-cm-plataforma-fitness/up/MLAU256659868",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 32000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "steps",
-                    "cajones",
-                    "mil usos",
-                    "madera",
-                    "cajon resistente",
-                    "cajon para gimnasia",
-                    "gym",
-                    "resistente",
-                    "escalera",
-                    "escaleras",
-                    "escaloncitos",
-                    "escalon",
-                    "escalones",
-                    "cajon",
-                    "pino",
-                    "subir",
-                    "alcanzar",
-                    "banquito",
-                    "taburete",
-                    "banqueta",
-                    "cajonera steps",
-                    "organizador",
-                    "escalera de pintor",
-                    "escalera de madera",
-                    "escalera de pino",
-                    "escalera plegable",
-                    "escalera de tijera",
-                    "banquito de madera",
-                    "banquito de pino",
-                    "taburete de madera",
-                    "escalera altillo",
-                    "subida altillo",
-                    "escalon pino",
-                    "escalon madera",
-                    "banquito escalon",
-                    "escalera biblioteca",
-                    "escalera pequeña",
-                    "escalera fija",
-                    "cajonera profesional"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 1,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788908607231,
-                "primaryCatId": "Steps",
-                "history": [],
-                "views": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "Steps",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "1792887338329",
-                "title": "Step Madera La Tarima 50x50 Cm Plataforma Fitness",
-                "description": "Publicación importada desde Mercado Libre (MLA1375418215).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "name": "Medida Única",
-                                "price": 55000,
-                                "stock": 964,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1375418215"
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "borrador",
-                    "mercado libre",
-                    "mla1375418215",
-                    "step",
-                    "madera",
-                    "tarima",
-                    "50x50",
-                    "plataforma",
-                    "fitness"
-                ],
-                "last_modified": 1792887338329,
-                "optional_variant": null,
-                "primaryCatId": "Steps",
-                "history": [
-                    {
-                        "type": "import_ml",
-                        "timestamp": 1792887338329,
-                        "details": "Importado como borrador desde Mercado Libre (MLA1375418215)"
-                    }
-                ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 964,
-                "categories": [
-                    "carpinteria-todos",
-                    "Steps"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "fitness"
-            },
-            {
-                "id": "1792887338332",
-                "title": "Step Funcional - Gym Plataforma Fitness Cajón - Escalón",
-                "description": "Publicación importada desde Mercado Libre (MLA2180486792).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "name": "Medida Única",
-                                "price": 30000,
-                                "stock": 987,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2180486792"
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "borrador",
-                    "mercado libre",
-                    "mla2180486792",
-                    "step",
-                    "funcional",
-                    "plataforma",
-                    "fitness",
-                    "cajón",
-                    "escalón"
-                ],
-                "last_modified": 1792887338332,
-                "optional_variant": null,
-                "primaryCatId": "Steps",
-                "history": [
-                    {
-                        "type": "import_ml",
-                        "timestamp": 1792887338332,
-                        "details": "Importado como borrador desde Mercado Libre (MLA2180486792)"
-                    }
-                ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 987,
-                "categories": [
-                    "carpinteria-todos",
-                    "Steps"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "fitness"
             }
         ]
     },
     {
         "id": "Juguetes",
-        "name": "Rincón Infantil",
+        "name": "Línea Infantil",
         "image": "img/juguetes/portada-1783038439545-imagen.webp",
         "order": 12,
         "rubro": "carpinteria",
@@ -22432,61 +22431,6 @@ const productsData = [
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
-                    "Juguetes"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "4G",
-                "title": "Banco Banquito Escalera Niños Infantil",
-                "description": "Altura máxima: 20 cm\nProfundidad: 30 cm\nDiámetro: 24 cm\nAncho: 23 cm",
-                "image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408729-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333408872-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409011-imagen.webp",
-                            "img/organizadores/Banco Banquito Escalera Niños Infantil/1786333409155-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30x23x20",
-                                "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 18000,
-                                "cost_price": 33000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786333409298,
-                "primaryCatId": "muebles",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "muebles",
                     "Juguetes"
                 ],
                 "rubro": "carpinteria"
@@ -23490,6 +23434,65 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
+                "id": "1792887338346",
+                "title": "Mesa Y 2 Sillas Infantil (excelente Calidad)",
+                "description": "Publicación importada desde Mercado Libre (MLA1998800625).",
+                "video": "",
+                "image": "img/borrador/portada-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "name": "Estándar",
+                        "images": [
+                            "img/borrador/portada-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "name": "Medida Única",
+                                "price": 140000,
+                                "stock": 1,
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1998800625"
+                            }
+                        ]
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla1998800625",
+                    "mesa",
+                    "sillas",
+                    "infantil",
+                    "(excelente",
+                    "calidad)"
+                ],
+                "last_modified": 1792887338341,
+                "optional_variant": null,
+                "primaryCatId": "Juguetes",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338341,
+                        "details": "Importado como borrador desde Mercado Libre (MLA1998800625)"
+                    }
+                ],
+                "views": 0,
+                "paymentConfig": {
+                    "mode": "store",
+                    "showBuyButton": true,
+                    "showCartButton": true
+                },
+                "shippingConfig": {
+                    "mode": "both"
+                },
+                "stock": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "Juguetes"
+                ],
+                "rubro": "carpinteria",
+                "subcategoria": "mesas-sillas-ninos"
+            },
+            {
                 "id": "C2",
                 "shortId": "3E",
                 "title": "Silla infantil",
@@ -23592,7 +23595,7 @@ const productsData = [
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1790379461990,
-                "primaryCatId": "sillas-sillones",
+                "primaryCatId": "Juguetes",
                 "history": [],
                 "views": 1,
                 "categories": [
@@ -23600,7 +23603,8 @@ const productsData = [
                     "Juguetes",
                     "sillas-sillones"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "category": "Juguetes"
             },
             {
                 "id": "C3",
@@ -23687,7 +23691,7 @@ const productsData = [
                     "muebles de living"
                 ],
                 "last_modified": 1783907160537,
-                "primaryCatId": "sillas-sillones",
+                "primaryCatId": "Juguetes",
                 "visible": true,
                 "views": 1,
                 "paymentConfig": {
@@ -23705,72 +23709,14 @@ const productsData = [
                     "Juguetes",
                     "sillas-sillones"
                 ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "1792887338346",
-                "title": "Mesa Y 2 Sillas Infantil (excelente Calidad)",
-                "description": "Publicación importada desde Mercado Libre (MLA1998800625).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "name": "Medida Única",
-                                "price": 140000,
-                                "stock": 1,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1998800625"
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "borrador",
-                    "mercado libre",
-                    "mla1998800625",
-                    "mesa",
-                    "sillas",
-                    "infantil",
-                    "(excelente",
-                    "calidad)"
-                ],
-                "last_modified": 1792887338341,
-                "optional_variant": null,
-                "primaryCatId": "Juguetes",
-                "history": [
-                    {
-                        "type": "import_ml",
-                        "timestamp": 1792887338341,
-                        "details": "Importado como borrador desde Mercado Libre (MLA1998800625)"
-                    }
-                ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Juguetes"
-                ],
                 "rubro": "carpinteria",
-                "subcategoria": "mesas-sillas-ninos"
+                "category": "Juguetes"
             }
         ]
     },
     {
         "id": "sillas-sillones",
-        "name": "Sillas y sillones",
+        "name": "Sillas & Sillones",
         "image": "img/sillas-y-sillones/portada-imagen.webp",
         "rubro": "carpinteria",
         "order": 13,
@@ -23993,224 +23939,6 @@ const productsData = [
                     "sillas-sillones"
                 ],
                 "rubro": "carpinteria"
-            },
-            {
-                "id": "C2",
-                "shortId": "3E",
-                "title": "Silla infantil",
-                "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
-                        "images_list": [
-                            "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
-                            "img/sillas-y-sillones/silla-infantil/1790379461985-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Colonial (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1516454739-silla-infantil-colonial-_JM?searchVariation=189959819515#polycard_client=search-nordic&searchVariation=189959819515&search_layout=grid&position=3&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 15000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "silla",
-                    "infantil",
-                    "carpintería",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "duradero",
-                    "silla de madera",
-                    "silla de pino",
-                    "mueble silla",
-                    "carpintería  silla",
-                    "infantil de madera",
-                    "infantil de pino",
-                    "mueble infantil",
-                    "carpintería  infantil",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal",
-                    "mueble util",
-                    "mueble practico",
-                    "muebles para casa",
-                    "envios a todo el pais"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1790379461990,
-                "primaryCatId": "sillas-sillones",
-                "history": [],
-                "views": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Juguetes",
-                    "sillas-sillones"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "C3",
-                "title": "Sillon Gervasoni - Chicos",
-                "description": "",
-                "image": "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
-                        "images_list": [
-                            "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
-                            "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814276080-imagen.webp",
-                            "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814276253-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Chico",
-                                "link": "https://www.mercadolibre.com.ar/silla-gervasoni-pino-natural-1-cuerpo-con-apoyabrazos-ninos/up/MLAU4284162507?pdp_filters=item_id:MLA3596352006",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 36000,
-                                "cost_price": 18000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "sillon",
-                    "sillones",
-                    "silla",
-                    "sillas",
-                    "gervasoni",
-                    "madera",
-                    "pino",
-                    "individual",
-                    "living",
-                    "exterior",
-                    "jardin",
-                    "patio",
-                    "comodo",
-                    "asiento",
-                    "asientos",
-                    "descanso",
-                    "deco",
-                    "hogar",
-                    "casa",
-                    "terraza",
-                    "balcon",
-                    "rustico",
-                    "natural",
-                    "madera",
-                    "pino",
-                    "sillon gervasoni",
-                    "sillon de madera",
-                    "sillon de pino",
-                    "silla gervasoni",
-                    "sillon individual",
-                    "sillon de jardin",
-                    "sillon de exterior",
-                    "sillon de living",
-                    "sillones gervasoni",
-                    "sillones de madera",
-                    "sillones de pino",
-                    "sillones de jardin",
-                    "sillon comodo",
-                    "asiento de madera",
-                    "silla de madera",
-                    "silla de pino",
-                    "sillon de terraza",
-                    "sillon de de balcon",
-                    "sillon de descanso",
-                    "sillon gervasoni chico",
-                    "gervasoni de madera",
-                    "gervasoni de pino",
-                    "juego de jardin",
-                    "muebles de exterior",
-                    "muebles de living"
-                ],
-                "last_modified": 1783907160537,
-                "primaryCatId": "sillas-sillones",
-                "visible": true,
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Juguetes",
-                    "sillas-sillones"
-                ],
-                "rubro": "carpinteria"
             }
         ]
     },
@@ -24221,114 +23949,6 @@ const productsData = [
         "rubro": "carpinteria",
         "order": 14,
         "products": [
-            {
-                "id": "46",
-                "title": "Mueble Multifunción - Estilo Nórdico",
-                "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
-                "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
-                "image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
-                            "img/organizadores/Mueble-Multifunción/1780707094497-imagen.webp",
-                            "img/organizadores/Mueble-Multifunción/1780707094652-imagen.webp",
-                            "img/organizadores/Mueble-Multifunción/1780707094874-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "60 x 45 x 30 cm",
-                                "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 26000,
-                                "cost_price": 6500,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mueble",
-                    "multifunción",
-                    "estilo",
-                    "nórdico",
-                    "carpintería",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "mueble mueble",
-                    "carpintería  mueble",
-                    "multifunción de madera",
-                    "multifunción de pino",
-                    "mueble multifunción",
-                    "carpintería  multifunción",
-                    "estilo de madera",
-                    "estilo de pino",
-                    "mueble estilo",
-                    "carpintería  estilo",
-                    "nórdico de madera",
-                    "nórdico de pino",
-                    "mueble nórdico",
-                    "carpintería  nórdico",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano"
-                ],
-                "last_modified": 1785084728300,
-                "primaryCatId": "Hogar",
-                "views": 2,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Mesas-madera",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
             {
                 "id": "D2",
                 "title": "Mesa Plegabe",
@@ -24783,240 +24403,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "4B",
-                "title": "Ménsulas para escritorios",
-                "description": "Ménsulas para escritorios\nIdeal para aquellos que buscan un estilo simple y minimalista",
-                "image": "img/organizadores/mensulas/mensulas.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "40 x 40 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 9000,
-                                "cost_price": 9000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": 17000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 33000,
-                                "cost_price": 33000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 47998,
-                                "cost_price": 47998,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "45 x 45 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 10000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 18000,
-                                "cost_price": 18000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "cost_price": 35000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 50000,
-                                "cost_price": 50000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "50 x 50 cm",
-                        "cover_image": "img/organizadores/mensulas/mensulas.webp",
-                        "images_list": [
-                            "img/organizadores/mensulas/mensulas.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 11500,
-                                "cost_price": 11500,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "2 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 22000,
-                                "cost_price": 22000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "4 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 43000,
-                                "cost_price": 43000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "6 Un.",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 62999,
-                                "cost_price": 62999,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mensula",
-                    "mensulas",
-                    "soporte",
-                    "soportes",
-                    "mensula madera",
-                    "mensula pino",
-                    "colgar estante",
-                    "estante mensula",
-                    "mensula de pino",
-                    "mensula de madera",
-                    "mensulas de pino",
-                    "mensulas de madera",
-                    "mensula estante",
-                    "soporte estante",
-                    "soporte mensula",
-                    "mensula rustica",
-                    "mensulas rusticas",
-                    "mensula decorativa"
-                ],
-                "last_modified": 1786315987713,
-                "primaryCatId": "Organizadores",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 5
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Mesas-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "4F",
                 "title": "Caballetes de madera",
                 "description": "",
@@ -25353,7 +24739,7 @@ const productsData = [
     },
     {
         "id": "jardin-patio",
-        "name": "Jardín",
+        "name": "Jardín & Decks",
         "image": "img/jardin/portada-imagen.webp",
         "rubro": "carpinteria",
         "order": 15,
@@ -26443,24 +25829,37 @@ const productsData = [
             },
             {
                 "id": "1792887338342",
+                "shortId": "3Q",
                 "title": "Mesa  Plegable Playera Jardín (2 Modelos)",
                 "description": "Publicación importada desde Mercado Libre (MLA1475679709).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
+                "image": "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
                 "acabados_groups": [
                     {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
+                        "images_list": [
+                            "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
+                            "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476122-imagenwebp.webp",
+                            "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476131-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "name": "Medida Única",
-                                "price": 32999,
-                                "stock": 4,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1475679709"
+                                "medida": "Mesita",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1475679709",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 32999,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -26473,8 +25872,23 @@ const productsData = [
                     "jardín",
                     "modelos)"
                 ],
-                "last_modified": 1792887338338,
-                "optional_variant": null,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793480476135,
                 "primaryCatId": "jardin-patio",
                 "history": [
                     {
@@ -26482,44 +25896,41 @@ const productsData = [
                         "timestamp": 1792887338338,
                         "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
                     }
-                ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 4,
-                "categories": [
-                    "carpinteria-todos",
-                    "jardin-patio"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "mesas-jardin"
+                ]
             },
             {
                 "id": "1792887338351",
+                "shortId": "3Q",
                 "title": "Mesa De Madera Plegable Jardín Camping",
                 "description": "Publicación importada desde Mercado Libre (MLA3946285696).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
+                "image": "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
                 "acabados_groups": [
                     {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
+                        "images_list": [
+                            "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
+                            "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275111-imagenwebp.webp",
+                            "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275117-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "name": "Medida Única",
-                                "price": 60000,
-                                "stock": 1,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-3946285696"
+                                "medida": "Combo",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3946285696",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "cost_price": 60000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -26532,8 +25943,23 @@ const productsData = [
                     "jardín",
                     "camping"
                 ],
-                "last_modified": 1792887338344,
-                "optional_variant": null,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793480283124,
                 "primaryCatId": "jardin-patio",
                 "history": [
                     {
@@ -26541,1118 +25967,41 @@ const productsData = [
                         "timestamp": 1792887338344,
                         "details": "Importado como borrador desde Mercado Libre (MLA3946285696)"
                     }
-                ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "jardin-patio"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "mesas-camping"
-            }
-        ]
-    },
-    {
-        "id": "Hogar",
-        "name": "Muebles de Hogar",
-        "image": "img/hogar/portada-imagen.webp",
-        "rubro": "carpinteria",
-        "order": 16,
-        "products": [
-            {
-                "id": "1793239693996",
-                "title": "Mesa Mesita De Luz Alta  Economica Pino 2 Cajones",
-                "description": "MESA AUXILIAR DE MADERA – IDEAL PARA LIVING O DORMITORIO\n\nPráctica y funcional mesa auxiliar de madera, ideal para colocar junto al sillón o la cama. Su diseño combina cajones frontales y un espacio de guardado inferior abierto, ofreciendo una solución práctica para organizar tus objetos y aprovechar mejor los espacios.\n\nSu estilo natural permite combinarla con diferentes ambientes y estilos de decoración.\n\nCARACTERÍSTICAS\n\nMaterial: madera de pino natural.\n\nDiseño con cajones frontales y estante inferior abierto.\n\nIdeal para living, dormitorio o espacios reducidos.\n\nTerminación en madera natural.\n\nMEDIDAS\n\nAlto: 75 cm.\n\nAncho: 30 cm.\n\nProfundidad: 23 cm.\n\n\nRealizamos factura A.\n\nIMPORTANTE\n\nLas imágenes son ilustrativas y tienen como finalidad mostrar el producto en un ambiente decorado. Al tratarse de madera natural, las vetas, los nudos y las tonalidades pueden variar de una pieza a otra.\n\nAntes de realizar la compra, verificá las medidas para asegurarte de que el producto se adapte al espacio donde querés colocarlo.\n\nSin garantía",
-                "image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
-                "order": 0,
-                "visible": true,
-                "primaryCatId": "Hogar",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Estándar",
-                        "cover_image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
-                        "images_list": [
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693248-2-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693331-3-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693485-4-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693554-5-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693659-6-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693713-7-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693802-8-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693858-9-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Estándar",
-                                "price": 28000,
-                                "cost_price": 14000,
-                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-2-cajones/up/MLAU5669889579",
-                                "linkLabel": "Ver en Mercado Libre",
-                                "iconType": "local_shipping",
-                                "stock": 5,
-                                "showPrice": true,
-                                "highlight": false,
-                                "default": true,
-                                "hidden": false
-                            }
-                        ]
-                    }
                 ]
             },
             {
-                "id": "7C",
-                "title": "Repisa-estante de pared con toallero",
-                "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
-                "image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                "id": "1792887338335",
+                "shortId": "3Q",
+                "title": "Fanal Madera Pino Por Tres Unidades",
+                "description": "Publicación importada desde Mercado Libre (MLA2164674452).",
+                "image": "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
                         "images_list": [
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001628-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001772-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916001907-imagen.webp",
-                            "img/estantes/repisa-estante-de-pared-con-toallero/1788916002040-imagen.webp"
+                            "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
+                            "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381852-imagenwebp.webp",
+                            "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381859-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "medida": "Unico",
-                                "link": "https://www.mercadolibre.com.ar/repisaestante-de-pared--con-toallero--madera-de-pino/up/MLAU5148491060?pdp_filters=item_id:MLA2073887919",
+                                "medida": "Fanales",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2164674452",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 20000,
-                                "cost_price": 20000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true,
-                                "volumeDiscounts": [
-                                    {
-                                        "minQty": 10,
-                                        "discountPercent": 25,
-                                        "shippingDiscountPercent": 0
-                                    }
-                                ]
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "estimatedWeight": 2.5,
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [
-                    {
-                        "minUnits": 10,
-                        "discountPercent": 25,
-                        "shippingDiscountPercent": 0
-                    }
-                ],
-                "last_modified": 1788916093301,
-                "primaryCatId": "Estantes",
-                "history": [],
-                "visible": true,
-                "views": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Estantes",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "46",
-                "title": "Mueble Multifunción - Estilo Nórdico",
-                "description": "¡Un solo mueble, infinitas posibilidades!\n\nDiseñado bajo un concepto minimalista y funcional, este mueble de pino macizo es ideal para optimizar cualquier rincón de tu hogar. Su estructura robusta y terminación impecable lo convierten en la pieza comodín que te faltaba.\n\n¿Cómo podés usarlo?\n\nEn la entrada: Como banco recibidor para sentarte cómodamente y organizar tus calzados abajo.\n\nEn el living: Como mesa ratona o de centro compacta, perfecta para departamentos.\n\nEn tu espacio de trabajo: Como mini escritorio bajo o elevador robusto para tu configuración de Home Office.\n\nComo soporte: Ideal para lucir tus plantas, audio o decoración de forma ordenada.\n\nMedidas: 60 cm (Ancho) x 30 cm (Alto) x 45 cm (Profundidad).\nHacemos envíos a todo el país. ¡Sumá diseño y practicidad a tu casa!",
-                "video": "https://youtube.com/shorts/Wg8iuP_r0aU?feature=share",
-                "image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
-                            "img/organizadores/Mueble-Multifunción/1780707094497-imagen.webp",
-                            "img/organizadores/Mueble-Multifunción/1780707094652-imagen.webp",
-                            "img/organizadores/Mueble-Multifunción/1780707094874-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "60 x 45 x 30 cm",
-                                "link": "https://www.mercadolibre.com.ar/mueble-multifuncion--estilo-nordico/up/MLAU3500170200",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 26000,
-                                "cost_price": 6500,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mueble",
-                    "multifunción",
-                    "estilo",
-                    "nórdico",
-                    "carpintería",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "mueble mueble",
-                    "carpintería  mueble",
-                    "multifunción de madera",
-                    "multifunción de pino",
-                    "mueble multifunción",
-                    "carpintería  multifunción",
-                    "estilo de madera",
-                    "estilo de pino",
-                    "mueble estilo",
-                    "carpintería  estilo",
-                    "nórdico de madera",
-                    "nórdico de pino",
-                    "mueble nórdico",
-                    "carpintería  nórdico",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano"
-                ],
-                "last_modified": 1785084728300,
-                "primaryCatId": "Hogar",
-                "views": 2,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Mesas-madera",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "F2",
-                "title": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
-                "description": "Mesa De Luz De Pino Con Cajón Y Puerta Nórdica",
-                "image": "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
-                        "images_list": [
-                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774605-imagen.webp",
-                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774793-imagen.webp",
-                            "img/hogar/Mesa De Luz De Pino Con Cajón Y Puerta Nórdica/1786334774926-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786334775059,
-                "primaryCatId": "camas-madera-pino",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "camas-madera-pino",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "F3",
-                "shortId": "3D",
-                "title": "Mesita de luz - Angosta",
-                "description": "Mesita de luz - Angosta",
-                "image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
-                        "images_list": [
-                            "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
-                            "img/hogar/mesita-de-luz-angosta/1790378658840-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Mesita",
-                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-1-cajon/up/MLAU5310445256",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 18000,
-                                "cost_price": "",
+                                "cost_price": 24500,
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1790378658845,
-                "primaryCatId": "camas-madera-pino",
-                "history": [],
-                "views": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "camas-madera-pino",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "F4",
-                "title": "Tender",
-                "description": "",
-                "image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Único",
-                        "cover_image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
-                        "images_list": [
-                            "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
-                            "img/hogar/tendre-ropa-madera/1786334918048-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786334918176,
-                "primaryCatId": "Hogar",
-                "views": 2,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "E4",
-                "shortId": "3D",
-                "title": "Fanal",
-                "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "video": "https://www.youtube.com/shorts/-_xiAyyEIik?feature=share",
-                "image": "img/jardn/fanal/1790378363366-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/jardn/fanal/1790378363366-imagenwebp.webp",
-                        "images_list": [
-                            "img/jardn/fanal/1790378363366-imagenwebp.webp",
-                            "img/jardn/fanal/1790378363377-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Fanal",
-                                "link": "https://www.mercadolibre.com.ar/fanal-madera-pino-por-tres-unidades/up/MLAU3276284211",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 15000,
-                                "cost_price": 3,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "decorar",
-                    "jardin",
-                    "fanales",
-                    "candy",
-                    "bar",
-                    "blanco",
-                    "negro",
-                    "iluminacion",
-                    "santos",
-                    "imagen",
-                    "altar"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1790378363386,
-                "primaryCatId": "jardin-patio",
-                "history": [],
-                "views": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "jardin-patio",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "D2",
-                "title": "Mesa Plegabe",
-                "description": "",
-                "image": "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
-                        "images_list": [
-                            "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
-                            "img/mesas-de-madera/mesa-plegabe/1782601058954-imagen.webp",
-                            "img/mesas-de-madera/mesa-plegabe/1782601059141-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mesa",
-                    "mesita",
-                    "madera",
-                    "plegable",
-                    "jardin",
-                    "playa",
-                    "picnic",
-                    "salida",
-                    "bosque",
-                    "viaje"
-                ],
-                "last_modified": 1783637216140,
-                "primaryCatId": "Mesas-madera",
-                "views": 4,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera",
-                    "jardin-patio",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "D3",
-                "title": "Mesa Plegable - Redonda",
-                "description": "",
-                "image": "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
-                        "images_list": [
-                            "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
-                            "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636382-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mesa",
-                    "mesita",
-                    "madera",
-                    "plegable",
-                    "jardin",
-                    "playa",
-                    "picnic",
-                    "salida",
-                    "bosque",
-                    "viaje"
-                ],
-                "last_modified": 1783637228097,
-                "primaryCatId": "Mesas-madera",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera",
-                    "jardin-patio",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "D6",
-                "title": "Escritorio para PC - Soporte Gabinete",
-                "description": "",
-                "image": "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
-                        "images_list": [
-                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334303185-imagen.webp",
-                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334410946-imagen.webp",
-                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334411078-imagen.webp",
-                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334411190-imagen.webp",
-                            "img/mesas-de-madera/Escritorio-PC-PRO/1786334411310-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786334411421,
-                "primaryCatId": "Mesas-madera",
-                "views": 4,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "D7",
-                "title": "Mesita Matera",
-                "description": "",
-                "image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
-                        "images_list": [
-                            "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
-                            "img/mesas-de-madera/mesita-matera/1786665063420-imagen.webp",
-                            "img/mesas-de-madera/mesita-matera/1786665063603-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Mesita",
-                                "link": "https://www.mercadolibre.com.ar/mesita-matera-plegable/up/MLAU4758741308?pdp_filters=item_id:MLA1995151329",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": 16997,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786811404439,
-                "primaryCatId": "Mesas-madera",
-                "views": 2,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera",
-                    "Hogar",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "21",
-                "shortId": "37",
-                "title": "Vinoteca - 5 Vinos",
-                "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Tintado",
-                        "cover_image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
-                        "images_list": [
-                            "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
-                            "img/vinotecas-bodegas/chico/1783741139706-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "5 Vinos",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1562167173-vinoteca-cava-bodega-madera-mueble-5-vinos-rustica-campo-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "cost_price": 25000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 1,
-                    "logisticaFreeMinUnits": 1,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteFreeMinUnits": 10,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1789442399047,
-                "primaryCatId": "Vinotecas",
-                "history": [
-                    {
-                        "date": "26/8, 11:54 p. m.",
-                        "type": "Costo Aumentó",
-                        "detail": "Costo: $20.000 ➔ $25.000"
-                    },
-                    {
-                        "date": "26/8, 11:52 p. m.",
-                        "type": "Costo Bajó",
-                        "detail": "Costo: $25.000 ➔ $20.000"
-                    },
-                    {
-                        "date": "26/8, 11:51 p. m.",
-                        "type": "Costo Bajó",
-                        "detail": "Costo: $30.000 ➔ $25.000"
-                    },
-                    {
-                        "date": "26/8, 11:47 p. m.",
-                        "type": "Costo Aumentó",
-                        "detail": "Costo: $25.000 ➔ $30.000"
-                    }
-                ],
-                "views": 101,
-                "categories": [
-                    "carpinteria-todos",
-                    "Vinotecas",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "22",
-                "title": "Vinoteca - 9 Vinos",
-                "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Tintado",
-                        "cover_image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
-                        "images_list": [
-                            "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
-                            "img/vinotecas-bodegas/9-vinos/1783741401450-imagen.webp",
-                            "img/vinotecas-bodegas/9-vinos/1783741401599-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "9 Vinos",
-                                "link": "https://www.mercadolibre.com.ar/vinoteca-cava-bodega-madera-mueble-9-vinos-rustica-campo/up/MLAU3969313254",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 70000,
-                                "cost_price": 27000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "vinos",
-                    "vino",
-                    "vinoteca",
-                    "bodega",
-                    "bodegon",
-                    "organizar",
-                    "chupi",
-                    "botellas",
-                    "fernet",
-                    "cerveza",
-                    "decorar",
-                    "papa",
-                    "regalo",
-                    "vinotecas",
-                    "vinoteca 9 vinos",
-                    "vinoteca grande",
-                    "vinoteca madera",
-                    "vinoteca pino",
-                    "cava",
-                    "cavas",
-                    "bodegas",
-                    "botellero",
-                    "copas",
-                    "copero",
-                    "portacopas",
-                    "bar",
-                    "barra",
-                    "bebidas",
-                    "estante vinos",
-                    "porta botellas",
-                    "decoracion bar",
-                    "cava vinos",
-                    "mueble bar",
-                    "binoteca",
-                    "binotecas",
-                    "mueble para vinos",
-                    "organizador de vinos",
-                    "porta copas",
-                    "mueble rustico",
-                    "decoracion hogar",
-                    "regalo hombre",
-                    "bodega madera",
-                    "cava madera",
-                    "vinoteca de pared",
-                    "estante de botellas",
-                    "vinoteca de pino",
-                    "mueble de pino",
-                    "mueble de madera",
-                    "barra bar",
-                    "mini bar casa",
-                    "cava de pino",
-                    "portabotellas de pared"
-                ],
-                "last_modified": 1784083095519,
-                "primaryCatId": "Vinotecas",
-                "views": 11,
-                "stock": 0,
-                "history": [
-                    {
-                        "date": "26/8, 11:55 p. m.",
-                        "type": "Costo Bajó",
-                        "detail": "Costo: $35.000 ➔ $27.000"
-                    }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1,
-                    "logisticaFreeMinUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Vinotecas",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "23",
-                "title": "Vinoteca - 13 Vinos",
-                "description": "Cavas y bodegas rústicas de madera.",
-                "image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Tintado",
-                        "cover_image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
-                        "images_list": [
-                            "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
-                            "img/vinotecas-bodegas/13-vinos/1783741654615-imagen.webp",
-                            "img/vinotecas-bodegas/13-vinos/1783741654752-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "13 Vinos",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2630634704-vinoteca-cava-bodega-madera-mueble-13-vinos-rustica-campo-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 80000,
-                                "cost_price": 31000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "vinos",
-                    "vino",
-                    "vinoteca",
-                    "bodega",
-                    "bodegon",
-                    "organizar",
-                    "chupi",
-                    "botellas",
-                    "fernet",
-                    "cerveza",
-                    "decorar",
-                    "papa",
-                    "regalo",
-                    "vinotecas",
-                    "vinoteca 13 vinos",
-                    "vinoteca grande",
-                    "vinoteca madera",
-                    "vinoteca pino",
-                    "cava",
-                    "cavas",
-                    "bodegas",
-                    "botellero",
-                    "copas",
-                    "copero",
-                    "portacopas",
-                    "bar",
-                    "barra",
-                    "bebidas",
-                    "estante vinos",
-                    "porta botellas",
-                    "decoracion bar",
-                    "cava vinos",
-                    "mueble bar",
-                    "binoteca",
-                    "binotecas",
-                    "mueble para vinos",
-                    "organizador de vinos",
-                    "porta copas",
-                    "mueble rustico",
-                    "decoracion hogar",
-                    "regalo hombre",
-                    "bodega madera",
-                    "cava madera",
-                    "vinoteca de pared",
-                    "estante de botellas",
-                    "vinoteca de pino",
-                    "mueble de pino",
-                    "mueble de madera",
-                    "barra bar",
-                    "mini bar casa",
-                    "cava de pino",
-                    "portabotellas de pared"
-                ],
-                "last_modified": 1784083089360,
-                "primaryCatId": "Vinotecas",
-                "views": 4,
-                "stock": 0,
-                "history": [
-                    {
-                        "date": "26/8, 11:55 p. m.",
-                        "type": "Costo Bajó",
-                        "detail": "Costo: $40.000 ➔ $31.000"
-                    }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1,
-                    "logisticaFreeMinUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Vinotecas",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "25",
-                "title": "Bodega 6 Vinos",
-                "description": "Medidas\nAlto: 40 cm\nAncho: 30 cm\nProfundidad: 23 cm",
-                "image": "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "cover_image": "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
-                        "images_list": [
-                            "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
-                            "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190322-imagen.webp",
-                            "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190438-imagen.webp",
-                            "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190550-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "bodega 6 Vinos",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 22500,
-                                "cost_price": 15000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "bodega",
-                    "bodegas",
-                    "vinoteca",
-                    "vinotecas",
-                    "vino",
-                    "vinos",
-                    "botella",
-                    "botellas",
-                    "copas",
-                    "copero",
-                    "madera",
-                    "pino",
-                    "rustico",
-                    "colgar",
-                    "pared",
-                    "estante",
-                    "bar",
-                    "bebida",
-                    "bebidas",
-                    "mesa",
-                    "organizador",
-                    "vinera",
-                    "quincho",
-                    "madera",
-                    "pino",
-                    "bodega de madera",
-                    "bodega de pino",
-                    "bodega de pared",
-                    "vinoteca de madera",
-                    "vinoteca de pino",
-                    "vinoteca de pared",
-                    "estante para vinos",
-                    "organizador de botellas",
-                    "porta botellas",
-                    "porta copas",
-                    "copero de madera",
-                    "copero de pino",
-                    "bodega rustica",
-                    "vinoteca rustica",
-                    "bodega 6 vinos",
-                    "vinoteca 6 vinos",
-                    "mueble para vinos",
-                    "estante de vino",
-                    "bodega de colgar",
-                    "vinoteca de colgar",
-                    "regalos para asado",
-                    "bar de pared",
-                    "barra de tragos",
-                    "guarda botellas",
-                    "guarda vinos"
-                ],
-                "last_modified": 1784391201352,
-                "primaryCatId": "Vinotecas",
-                "visible": true,
-                "views": 11,
-                "stock": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Vinotecas",
-                    "Hogar",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "1792887338335",
-                "title": "Fanal Madera Pino Por Tres Unidades",
-                "description": "Publicación importada desde Mercado Libre (MLA2164674452).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "name": "Medida Única",
-                                "price": 24500,
-                                "stock": 2,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2164674452"
-                            }
-                        ]
                     }
                 ],
                 "tags": [
@@ -27665,32 +26014,31 @@ const productsData = [
                     "tres",
                     "unidades"
                 ],
-                "last_modified": 1792887338334,
-                "optional_variant": null,
-                "primaryCatId": "Hogar",
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793480381864,
+                "primaryCatId": "jardin-patio",
                 "history": [
                     {
                         "type": "import_ml",
                         "timestamp": 1792887338334,
                         "details": "Importado como borrador desde Mercado Libre (MLA2164674452)"
                     }
-                ],
-                "views": 1,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "fanales"
+                ]
             }
         ]
     },
@@ -27699,7 +26047,7 @@ const productsData = [
         "name": "Línea Algarrobo",
         "image": "img/todo-algarrobo/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 17,
+        "order": 16,
         "products": [
             {
                 "id": "G1",
@@ -28083,24 +26431,27 @@ const productsData = [
     {
         "id": "bazar-cocina",
         "name": "Bazar & Cocina",
-        "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
+        "image": "img/bazar-cocina/portada-1793480888205-imagen.webp",
         "rubro": "carpinteria",
-        "order": 18,
+        "order": 17,
         "visible": true,
         "products": [
             {
                 "id": "42",
+                "shortId": "3Q",
                 "title": "Especiero",
                 "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
-                "image": "img/organizadores/especiero/1782487819564-imagen.webp",
+                "image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/especiero/1782487819564-imagen.webp",
+                        "description": "",
+                        "cover_image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
                         "images_list": [
-                            "img/organizadores/especiero/1782487819564-imagen.webp",
-                            "img/organizadores/especiero/1782487819702-imagen.webp",
-                            "img/organizadores/especiero/1782487819842-imagen.webp"
+                            "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
+                            "img/bazar-cocina/especiero/1793480775635-imagenwebp.webp",
+                            "img/bazar-cocina/especiero/1793480775640-imagenwebp.webp",
+                            "img/bazar-cocina/especiero/1793480775647-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -28114,7 +26465,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "30 x 60 x 10 cm",
@@ -28127,7 +26479,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "34 x 34 x 10 cm",
@@ -28140,7 +26493,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "34 x 60 x 10 cm",
@@ -28153,7 +26507,8 @@ const productsData = [
                                 "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -28193,10 +26548,25 @@ const productsData = [
                     "repisa de cocina",
                     "repisa para condimentos"
                 ],
-                "last_modified": 1787707117443,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 6,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793480775651,
                 "primaryCatId": "bazar-cocina",
-                "views": 2,
-                "stock": 1,
                 "history": [
                     {
                         "date": "27/8, 12:39 a. m.",
@@ -28208,25 +26578,7 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 6
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Estantes",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
+                ]
             },
             {
                 "id": "44",
@@ -29135,11 +27487,11 @@ const productsData = [
     },
     {
         "id": "cajones-madera",
-        "name": "Cajones de Madera",
-        "image": "img/cajones-de-madera/portada-1791337634850-imagen.webp",
+        "name": "Baúles de Madera",
+        "image": "img/baules-de-madera/portada-1793480550075-imagen.webp",
         "rubro": "carpinteria",
-        "order": 19,
-        "visible": false,
+        "order": 18,
+        "visible": true,
         "products": [
             {
                 "id": "41",
@@ -29427,852 +27779,15 @@ const productsData = [
                     "cajones-madera"
                 ],
                 "rubro": "carpinteria"
-            },
-            {
-                "id": "J8",
-                "shortId": "2V",
-                "title": "Cajon GYM",
-                "description": "",
-                "image": "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "cover_image": "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp",
-                        "images_list": [
-                            "img/cajones-de-madera/cajon-gym/1791374134259-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1791374134268,
-                "primaryCatId": "cajones-madera",
-                "history": [],
-                "visible": false,
-                "categories": [
-                    "carpinteria-todos",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria",
-                "views": 4
-            },
-            {
-                "id": "A1",
-                "title": "Steps / Cajones / Profesionales",
-                "description": "Escalón de madera multiusos para ejercicios y más",
-                "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892809-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1782417150808-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1782417150969-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "120 x 60 x 20 cm",
-                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-120x60x20-cm/up/MLAU3866210927?pdp_filters=item_id:MLA3118878616",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 80000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "70 x 28 x 12 cm",
-                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon-70x28x12-cm/up/MLAU3876890188?pdp_filters=item_id:MLA1726571267",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "60 x 28 x 9",
-                                "link": "https://www.mercadolibre.com.ar/step--plataforma-fitness--60x28x9-cm/up/MLAU3658086641?pdp_filters=item_id:MLA2642214640",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cajon",
-                    "cajones",
-                    "cajon profesional",
-                    "cajon madera",
-                    "cajon pino",
-                    "organizador",
-                    "guardado",
-                    "almacenamiento",
-                    "caja madera",
-                    "caja pino",
-                    "cajonera",
-                    "cajonera profesional",
-                    "cajon de pino",
-                    "cajon de madera",
-                    "organizador profesional",
-                    "cajonera de madera",
-                    "cajonera de pino",
-                    "caja de pino profesional",
-                    "caja de madera profesional",
-                    "caja de almacenamiento"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 1,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788907898357,
-                "primaryCatId": "Steps",
-                "history": [],
-                "views": 7,
-                "categories": [
-                    "carpinteria-todos",
-                    "Steps",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "A2",
-                "title": "Steps / Cajones (30 cm)",
-                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
-                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "30x28x9 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30x28x9 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512937623-step-funcional-plataforma-fitness-cajon-30x28x9-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 15000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "30x28x16 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30x28x16 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989405-step-funcional-plataforma-fitness-cajon-30x28x16-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "30x28x23 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "30x28x23 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002101-step-plataforma-fitness-30x28x23-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "steps",
-                    "cajones",
-                    "mil usos",
-                    "madera",
-                    "cajon resistente",
-                    "cajon para gimnasia",
-                    "gym",
-                    "resistente",
-                    "escalera",
-                    "escaleras",
-                    "escaloncitos",
-                    "escalon",
-                    "escalones",
-                    "cajon",
-                    "pino",
-                    "subir",
-                    "alcanzar",
-                    "banquito",
-                    "taburete",
-                    "banqueta",
-                    "cajonera steps",
-                    "organizador",
-                    "escalera de pintor",
-                    "escalera de madera",
-                    "escalera de pino",
-                    "escalera plegable",
-                    "escalera de tijera",
-                    "banquito de madera",
-                    "banquito de pino",
-                    "taburete de madera",
-                    "escalera altillo",
-                    "subida altillo",
-                    "escalon pino",
-                    "escalon madera",
-                    "banquito escalon",
-                    "escalera biblioteca",
-                    "escalera pequeña",
-                    "escalera fija",
-                    "cajonera profesional"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788908106317,
-                "primaryCatId": "Steps",
-                "history": [],
-                "views": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "Steps",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "A3",
-                "title": "Steps / Cajones (40 cm)",
-                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
-                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "40x28x9 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "40x28x9 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2188770122-step-funcional-plataforma-fitness-cajon-40x28x9-cm-gyn-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "40x28x16 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "40x28x16 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512989387-step-funcional-plataforma-fitness-cajon-40x28x16-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 24000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "40x28x23 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "40x28x23 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1512885451-step-plataforma-fitness-40x28x23-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 32000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "40x28x30 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "40x28x30 cm",
-                                "link": "https://www.mercadolibre.com.ar/step-funcional--plataforma-fitness-cajon--40x30x30-cm/up/MLAU3432796747?pdp_filters=item_id:MLA1539760471",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "steps",
-                    "cajones",
-                    "mil usos",
-                    "madera",
-                    "cajon resistente",
-                    "cajon para gimnasia",
-                    "gym",
-                    "resistente",
-                    "escalera",
-                    "escaleras",
-                    "escaloncitos",
-                    "escalon",
-                    "escalones",
-                    "cajon",
-                    "pino",
-                    "subir",
-                    "alcanzar",
-                    "banquito",
-                    "taburete",
-                    "banqueta",
-                    "cajonera steps",
-                    "organizador",
-                    "escalera de pintor",
-                    "escalera de madera",
-                    "escalera de pino",
-                    "escalera plegable",
-                    "escalera de tijera",
-                    "banquito de madera",
-                    "banquito de pino",
-                    "taburete de madera",
-                    "escalera altillo",
-                    "subida altillo",
-                    "escalon pino",
-                    "escalon madera",
-                    "banquito escalon",
-                    "escalera biblioteca",
-                    "escalera pequeña",
-                    "escalera fija",
-                    "cajonera profesional"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788908470878,
-                "primaryCatId": "Steps",
-                "history": [],
-                "views": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Steps",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "A4",
-                "title": "Steps / Cajones (50cm)",
-                "description": "Plataformas funcionales para entrenamiento y uso doméstico.",
-                "video": "https://www.youtube.com/watch?v=qGQ32TUNXSo",
-                "image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "50x28x9 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "50x28x9 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1513002287-step-funcional-plataforma-fitness-cajon-50x28x9-cm-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "50x28x16 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "50x28x16 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2072143834-step-funcional-plataforma-fitness-cajon-50x28x16-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "50x28x23 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "50x28x23 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1372002007-step-plataforma-fitness-50x28x23-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 31000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "50x50x9 cm",
-                        "cover_image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-50cm/stepscajones.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685807-imagen.webp",
-                            "img/steps-cajones/cajones-50cm/1780589685928-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "50x50x9 cm",
-                                "link": "https://www.mercadolibre.com.ar/step-madera-la-tarima-50x50-cm-plataforma-fitness/up/MLAU256659868",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 32000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "steps",
-                    "cajones",
-                    "mil usos",
-                    "madera",
-                    "cajon resistente",
-                    "cajon para gimnasia",
-                    "gym",
-                    "resistente",
-                    "escalera",
-                    "escaleras",
-                    "escaloncitos",
-                    "escalon",
-                    "escalones",
-                    "cajon",
-                    "pino",
-                    "subir",
-                    "alcanzar",
-                    "banquito",
-                    "taburete",
-                    "banqueta",
-                    "cajonera steps",
-                    "organizador",
-                    "escalera de pintor",
-                    "escalera de madera",
-                    "escalera de pino",
-                    "escalera plegable",
-                    "escalera de tijera",
-                    "banquito de madera",
-                    "banquito de pino",
-                    "taburete de madera",
-                    "escalera altillo",
-                    "subida altillo",
-                    "escalon pino",
-                    "escalon madera",
-                    "banquito escalon",
-                    "escalera biblioteca",
-                    "escalera pequeña",
-                    "escalera fija",
-                    "cajonera profesional"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 1,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788908607231,
-                "primaryCatId": "Steps",
-                "history": [],
-                "views": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "Steps",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            }
-        ]
-    },
-    {
-        "id": "cajones-crossfit",
-        "name": "Cajones CrossFit & Pliométricos",
-        "rubro": "carpinteria",
-        "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-        "visible": true,
-        "order": 20,
-        "products": [
-            {
-                "id": "95",
-                "shortId": "33",
-                "title": "Cajón Pliométrico 3 en 1 CrossFit & Salto",
-                "description": "Cajón de salto pliométrico multifuncional 3 en 1 para CrossFit, entrenamiento funcional y preparación física. Fabricado en Fenólico Industrial de 18 mm con refuerzo estructural interno en cruz y manijas ergonómicas.",
-                "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Fenólico 18mm",
-                        "description": "Placa Fenólica de 18 mm de alta resistencia con refuerzo interno en cruz",
-                        "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                        "images_list": [
-                            "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892571-imagen.webp",
-                            "img/steps-cajones/cajones-profesional/1780589892697-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Grande Oficial (50 × 60 × 75 cm)",
-                                "link": "apps/cajon.html",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "Configurar",
-                                "iconType": "straighten",
-                                "highlight": true,
-                                "price": 72000,
-                                "cost_price": 22000,
-                                "legend": "Oficial Box CrossFit",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "Mediano (40 × 50 × 60 cm)",
-                                "link": "apps/cajon.html",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "Configurar",
-                                "iconType": "straighten",
-                                "highlight": false,
-                                "price": 58000,
-                                "cost_price": 17000,
-                                "legend": "Intermedio",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "Chico (30 × 40 × 50 cm)",
-                                "link": "apps/cajon.html",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "Configurar",
-                                "iconType": "straighten",
-                                "highlight": false,
-                                "price": 42000,
-                                "cost_price": 12000,
-                                "legend": "Funcional / Principiante",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "A Medida Especial",
-                                "link": "apps/cajon.html",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "Calcular",
-                                "iconType": "straighten",
-                                "highlight": false,
-                                "price": 72000,
-                                "cost_price": 22000,
-                                "legend": "Personalizado",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cajon",
-                    "pliometrico",
-                    "crossfit",
-                    "salto",
-                    "jump box",
-                    "box",
-                    "3 en 1",
-                    "fitness",
-                    "gym",
-                    "entrenamiento funcional",
-                    "fenolico"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "fleteMaxUnits": 10,
-                    "fleteFreeMinUnits": 50,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [
-                    {
-                        "minQty": 3,
-                        "discountPercent": 8
-                    },
-                    {
-                        "minQty": 6,
-                        "discountPercent": 12
-                    }
-                ],
-                "last_modified": 1791831629527,
-                "primaryCatId": "cajones-crossfit",
-                "history": [],
-                "visible": true,
-                "categories": [
-                    "carpinteria-todos",
-                    "cajones-crossfit"
-                ],
-                "rubro": "carpinteria",
-                "views": 68
             }
         ]
     },
     {
         "id": "cat-28-mvay9cq6",
-        "name": "Pizzarones",
+        "name": "Pizarras & Carteles",
         "image": "img/pizzarones/portada-imagenwebp.webp",
         "rubro": "carpinteria",
-        "order": 21,
+        "order": 19,
         "products": [
             {
                 "id": "1792123134173",
@@ -30313,7 +27828,7 @@ const productsData = [
                     }
                 ],
                 "rubro": "carpinteria",
-                "views": 4,
+                "views": 5,
                 "categories": [
                     "carpinteria-todos",
                     "cat-28-mvay9cq6"
@@ -30322,46 +27837,61 @@ const productsData = [
             },
             {
                 "id": "1792154576619",
+                "shortId": "3R",
                 "title": "Pizarra Pizarron Cartel Doble Hoja",
                 "description": "PIZARRA CABALLETE DE MADERA – 80 x 50 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra tipo caballete es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\n\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño tipo caballete, práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 80 cm\nAncho: 50 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nLas imagenes son ilustrativas.\n\nSin garantía",
-                "image": "img/pizarra-pizarron-cartel-doble-hoja/1792154575692-1-imagen.webp",
-                "order": 0,
-                "visible": true,
-                "primaryCatId": "cat-28-mvay9cq6",
+                "image": "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700352-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Estándar",
-                        "cover_image": "img/pizarra-pizarron-cartel-doble-hoja/1792154575692-1-imagen.webp",
+                        "description": "",
+                        "cover_image": "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700352-imagenwebp.webp",
                         "images_list": [
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154575692-1-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154575887-2-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154575978-3-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576120-4-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576185-5-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576290-6-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576345-7-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576452-8-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja/1792154576510-9-imagen.webp"
+                            "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700352-imagenwebp.webp",
+                            "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700368-imagenwebp.webp",
+                            "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479738312-edit_1793479717508webp.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "Estándar",
-                                "price": 23000,
-                                "cost_price": 11500,
                                 "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-doble-hoja/up/MLAU5507345905",
+                                "default": true,
+                                "hidden": false,
                                 "linkLabel": "Ver en Mercado Libre",
                                 "iconType": "local_shipping",
-                                "stock": 5,
-                                "showPrice": true,
                                 "highlight": false,
-                                "default": true,
-                                "hidden": false
+                                "price": 23000,
+                                "cost_price": 11500,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "rubro": "carpinteria",
-                "views": 1
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793479781268,
+                "primaryCatId": "cat-28-mvay9cq6",
+                "history": [],
+                "visible": true,
+                "views": 2
             },
             {
                 "id": "S3",
@@ -30425,24 +27955,36 @@ const productsData = [
             },
             {
                 "id": "1792887338334",
+                "shortId": "3R",
                 "title": "Pizarra Pizarron Para Colgar X3",
                 "description": "Publicación importada desde Mercado Libre (MLA3946726502).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
+                "image": "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
                 "acabados_groups": [
                     {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
+                        "images_list": [
+                            "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
+                            "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479566823-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "name": "Medida Única",
-                                "price": 25000,
-                                "stock": 7,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-3946726502"
+                                "medida": "Pizzaron x3",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 22000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -30454,8 +27996,23 @@ const productsData = [
                     "para",
                     "colgar"
                 ],
-                "last_modified": 1792887338333,
-                "optional_variant": null,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793479628428,
                 "primaryCatId": "cat-28-mvay9cq6",
                 "history": [
                     {
@@ -30464,29 +28021,15 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3946726502)"
                     }
                 ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 7,
-                "categories": [
-                    "cat-28-mvay9cq6"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "pizarras"
+                "views": 3
             }
         ]
     },
     {
         "id": "Podios",
-        "name": "Podios de Premiacion",
+        "name": "Podios de Premiación",
         "image": "img/podios-de-premiacion/portada-1780773834568-imagen.webp",
-        "order": 22,
+        "order": 20,
         "rubro": "carpinteria",
         "products": [
             {
@@ -30848,64 +28391,6 @@ const productsData = [
                 ],
                 "primaryCatId": "Podios",
                 "rubro": "carpinteria"
-            },
-            {
-                "id": "1792887338339",
-                "title": "Podio De Premiación Profesional - 3 Niveles",
-                "description": "Publicación importada desde Mercado Libre (MLA3246798562).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "name": "Medida Única",
-                                "price": 500000,
-                                "stock": 998,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-3246798562"
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "borrador",
-                    "mercado libre",
-                    "mla3246798562",
-                    "podio",
-                    "premiación",
-                    "profesional",
-                    "niveles"
-                ],
-                "last_modified": 1792887338336,
-                "optional_variant": null,
-                "primaryCatId": "Podios",
-                "history": [
-                    {
-                        "type": "import_ml",
-                        "timestamp": 1792887338336,
-                        "details": "Importado como borrador desde Mercado Libre (MLA3246798562)"
-                    }
-                ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 998,
-                "categories": [
-                    "carpinteria-todos",
-                    "Podios"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "profesionales"
             }
         ]
     },
@@ -30915,7 +28400,7 @@ const productsData = [
         "rubro": "pintureria",
         "image": "img/logo_provisional.png",
         "visible": true,
-        "order": 23,
+        "order": 21,
         "products": []
     },
     {
@@ -30924,7 +28409,7 @@ const productsData = [
         "rubro": "electricidad",
         "image": "img/logo_provisional.png",
         "visible": false,
-        "order": 24,
+        "order": 22,
         "products": [
             {
                 "id": "L1",
@@ -31182,7 +28667,7 @@ const productsData = [
         "name": "Kits Electricos",
         "image": "img/kits-electricos/portada-imagenwebp.webp",
         "rubro": "electricidad",
-        "order": 25,
+        "order": 23,
         "visible": true,
         "products": [
             {
@@ -31442,7 +28927,7 @@ const productsData = [
         "rubro": "herrajes",
         "image": "img/logo_provisional.png",
         "visible": false,
-        "order": 26,
+        "order": 24,
         "products": [
             {
                 "id": "N1",
@@ -31524,7 +29009,7 @@ const productsData = [
         "name": "Tornillos",
         "image": "img/herrajes/tornillos/portada-imagenwebp.webp",
         "rubro": "herrajes",
-        "order": 27,
+        "order": 25,
         "visible": true,
         "products": [
             {

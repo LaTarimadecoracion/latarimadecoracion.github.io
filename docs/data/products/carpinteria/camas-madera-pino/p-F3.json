@@ -3,13 +3,14 @@
   "shortId": "3D",
   "title": "Mesita de luz - Angosta",
   "description": "Mesita de luz - Angosta",
-  "image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
+  "image": "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
-      "cover_image": "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
+      "description": "",
+      "cover_image": "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
       "images_list": [
-        "img/hogar/mesita-luz-angosta/1786334817500-imagen.webp",
+        "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
         "img/hogar/mesita-de-luz-angosta/1790378658840-imagenwebp.webp"
       ],
       "medidas_variants": [
@@ -22,7 +23,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 18000,
-          "cost_price": "",
+          "cost_price": 18000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -49,14 +50,13 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1790378658845,
+  "last_modified": 1793479341261,
   "primaryCatId": "camas-madera-pino",
   "history": [],
-  "views": 2,
+  "views": 5,
   "categories": [
     "carpinteria-todos",
-    "camas-madera-pino",
-    "Hogar"
+    "camas-madera-pino"
   ],
   "rubro": "carpinteria"
 }

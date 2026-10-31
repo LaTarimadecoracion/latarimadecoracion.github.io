@@ -1,0 +1,76 @@
+{
+  "id": "1792887338335",
+  "shortId": "3Q",
+  "title": "Fanal Madera Pino Por Tres Unidades",
+  "description": "Publicación importada desde Mercado Libre (MLA2164674452).",
+  "image": "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "",
+      "description": "",
+      "cover_image": "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
+      "images_list": [
+        "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
+        "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381852-imagenwebp.webp",
+        "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381859-imagenwebp.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Fanales",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2164674452",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 20000,
+          "cost_price": 24500,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [
+    "borrador",
+    "mercado libre",
+    "mla2164674452",
+    "fanal",
+    "madera",
+    "pino",
+    "tres",
+    "unidades"
+  ],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1793480381864,
+  "primaryCatId": "jardin-patio",
+  "history": [
+    {
+      "type": "import_ml",
+      "timestamp": 1792887338334,
+      "details": "Importado como borrador desde Mercado Libre (MLA2164674452)"
+    }
+  ],
+  "categories": [
+    "carpinteria-todos",
+    "jardin-patio"
+  ],
+  "rubro": "carpinteria"
+}

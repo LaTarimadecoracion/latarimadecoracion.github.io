@@ -1,11 +1,13 @@
 {
   "id": "A1",
+  "shortId": "3Q",
   "title": "Steps / Cajones / Profesionales",
   "description": "Escalón de madera multiusos para ejercicios y más",
   "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
       "images_list": [
         "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
@@ -25,7 +27,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 80000,
-          "cost_price": "",
+          "cost_price": 80000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -39,7 +41,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 40000,
-          "cost_price": "",
+          "cost_price": 40000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -53,7 +55,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 35000,
-          "cost_price": "",
+          "cost_price": 35000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -101,14 +103,8 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1788907898357,
+  "last_modified": 1793481022357,
   "primaryCatId": "Steps",
   "history": [],
-  "views": 7,
-  "categories": [
-    "carpinteria-todos",
-    "Steps",
-    "cajones-madera"
-  ],
   "rubro": "carpinteria"
 }

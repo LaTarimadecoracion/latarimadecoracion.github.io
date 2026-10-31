@@ -1,23 +1,36 @@
 {
   "id": "1792887338342",
+  "shortId": "3Q",
   "title": "Mesa  Plegable Playera Jardín (2 Modelos)",
   "description": "Publicación importada desde Mercado Libre (MLA1475679709).",
-  "video": "",
-  "image": "img/borrador/portada-imagen.webp",
+  "image": "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
   "acabados_groups": [
     {
-      "name": "Estándar",
-      "images": [
-        "img/borrador/portada-imagen.webp"
+      "acabado_name": "",
+      "description": "",
+      "cover_image": "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
+      "images_list": [
+        "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
+        "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476122-imagenwebp.webp",
+        "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476131-imagenwebp.webp"
       ],
       "medidas_variants": [
         {
-          "name": "Medida Única",
-          "price": 32999,
-          "stock": 4,
-          "link": "https://articulo.mercadolibre.com.ar/MLA-1475679709"
+          "medida": "Mesita",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-1475679709",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 25000,
+          "cost_price": 32999,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
         }
-      ]
+      ],
+      "hidden": false
     }
   ],
   "tags": [
@@ -30,8 +43,23 @@
     "jardín",
     "modelos)"
   ],
-  "last_modified": 1792887338338,
-  "optional_variant": null,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1793480476135,
   "primaryCatId": "jardin-patio",
   "history": [
     {
@@ -40,19 +68,9 @@
       "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
     }
   ],
-  "views": 0,
-  "paymentConfig": {
-    "mode": "store",
-    "showBuyButton": true,
-    "showCartButton": true
-  },
-  "shippingConfig": {
-    "mode": "both"
-  },
-  "stock": 4,
   "categories": [
+    "carpinteria-todos",
     "jardin-patio"
   ],
-  "rubro": "carpinteria",
-  "subcategoria": "mesas-jardin"
+  "rubro": "carpinteria"
 }

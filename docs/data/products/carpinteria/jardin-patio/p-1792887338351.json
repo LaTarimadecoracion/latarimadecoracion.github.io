@@ -1,23 +1,36 @@
 {
   "id": "1792887338351",
+  "shortId": "3Q",
   "title": "Mesa De Madera Plegable Jardín Camping",
   "description": "Publicación importada desde Mercado Libre (MLA3946285696).",
-  "video": "",
-  "image": "img/borrador/portada-imagen.webp",
+  "image": "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
   "acabados_groups": [
     {
-      "name": "Estándar",
-      "images": [
-        "img/borrador/portada-imagen.webp"
+      "acabado_name": "",
+      "description": "",
+      "cover_image": "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
+      "images_list": [
+        "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
+        "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275111-imagenwebp.webp",
+        "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275117-imagenwebp.webp"
       ],
       "medidas_variants": [
         {
-          "name": "Medida Única",
-          "price": 60000,
-          "stock": 1,
-          "link": "https://articulo.mercadolibre.com.ar/MLA-3946285696"
+          "medida": "Combo",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-3946285696",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 45000,
+          "cost_price": 60000,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
         }
-      ]
+      ],
+      "hidden": false
     }
   ],
   "tags": [
@@ -30,8 +43,23 @@
     "jardín",
     "camping"
   ],
-  "last_modified": 1792887338344,
-  "optional_variant": null,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1793480283124,
   "primaryCatId": "jardin-patio",
   "history": [
     {
@@ -40,19 +68,9 @@
       "details": "Importado como borrador desde Mercado Libre (MLA3946285696)"
     }
   ],
-  "views": 0,
-  "paymentConfig": {
-    "mode": "store",
-    "showBuyButton": true,
-    "showCartButton": true
-  },
-  "shippingConfig": {
-    "mode": "both"
-  },
-  "stock": 1,
   "categories": [
+    "carpinteria-todos",
     "jardin-patio"
   ],
-  "rubro": "carpinteria",
-  "subcategoria": "mesas-camping"
+  "rubro": "carpinteria"
 }

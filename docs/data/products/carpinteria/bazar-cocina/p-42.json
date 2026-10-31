@@ -1,16 +1,19 @@
 {
   "id": "42",
+  "shortId": "3Q",
   "title": "Especiero",
   "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
-  "image": "img/organizadores/especiero/1782487819564-imagen.webp",
+  "image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
-      "cover_image": "img/organizadores/especiero/1782487819564-imagen.webp",
+      "description": "",
+      "cover_image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
       "images_list": [
-        "img/organizadores/especiero/1782487819564-imagen.webp",
-        "img/organizadores/especiero/1782487819702-imagen.webp",
-        "img/organizadores/especiero/1782487819842-imagen.webp"
+        "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
+        "img/bazar-cocina/especiero/1793480775635-imagenwebp.webp",
+        "img/bazar-cocina/especiero/1793480775640-imagenwebp.webp",
+        "img/bazar-cocina/especiero/1793480775647-imagenwebp.webp"
       ],
       "medidas_variants": [
         {
@@ -24,7 +27,8 @@
           "price": 11000,
           "cost_price": 2500,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "30 x 60 x 10 cm",
@@ -37,7 +41,8 @@
           "price": 11000,
           "cost_price": 2500,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "34 x 34 x 10 cm",
@@ -50,7 +55,8 @@
           "price": 11000,
           "cost_price": 2500,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "34 x 60 x 10 cm",
@@ -63,7 +69,8 @@
           "price": 11000,
           "cost_price": 2500,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         }
       ],
       "hidden": false
@@ -103,10 +110,25 @@
     "repisa de cocina",
     "repisa para condimentos"
   ],
-  "last_modified": 1787707117443,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 6,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1793480775651,
   "primaryCatId": "bazar-cocina",
-  "views": 2,
-  "stock": 1,
   "history": [
     {
       "date": "27/8, 12:39 a. m.",
@@ -119,17 +141,6 @@
       "detail": "Costo: $0 ➔ $2500"
     }
   ],
-  "paymentConfig": {
-    "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
-  },
-  "shippingConfig": {
-    "logisticaEnabled": true,
-    "fleteEnabled": true,
-    "otroEnabled": false,
-    "logisticaMaxUnits": 6
-  },
   "categories": [
     "carpinteria-todos",
     "Organizadores",

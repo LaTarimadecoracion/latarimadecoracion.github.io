@@ -2717,6 +2717,7 @@
         }
 
         // Rellenar carrusel de recomendados ("Los más buscados")
+        // Inteligente: prioriza combos activos que incluyan este producto, y luego productos relacionados ordenados DESCENDENTEMENTE por precio (de mayor a menor)
         const relatedList = document.getElementById('detail-related-product-list');
         if (relatedList) {
             relatedList.className = 'carousel-categories';
@@ -2724,27 +2725,168 @@
             
             const sourceData = (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0) ? window.sessionProducts : productsData;
             if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
-                let allProductsList = [];
+                const currentProdId = String(product.id || '').trim();
+                const currentPrimaryCat = product.primaryCatId || product.category;
+                const currentSubcat = product.subcategoria;
+                const currentRubro = (product.rubro || 'carpinteria').toLowerCase();
+
+                // Helper para calcular el precio representativo del producto (mayor precio de variante o base)
+                function getProductMaxPrice(p) {
+                    if (!p) return 0;
+                    let maxP = Number(p.price || 0);
+                    if (Array.isArray(p.acabados_groups)) {
+                        p.acabados_groups.forEach(g => {
+                            if (g.hidden) return;
+                            if (Array.isArray(g.medidas_variants)) {
+                                g.medidas_variants.forEach(m => {
+                                    if (m.hidden) return;
+                                    const pr = Number(m.price || 0);
+                                    if (pr > maxP) maxP = pr;
+                                });
+                            }
+                        });
+                    }
+                    return maxP;
+                }
+
+                // Helper para precio de combo
+                function getComboPrice(combo) {
+                    if (combo.price && Number(combo.price) > 0) return Number(combo.price);
+                    let sum = 0;
+                    if (Array.isArray(combo.product_items)) {
+                        combo.product_items.forEach(it => {
+                            sum += Number(it.price || it.unitPrice || 0) * Number(it.quantity || 1);
+                        });
+                    }
+                    return sum;
+                }
+
+                const combosToRender = [];
+                const productsToRender = [];
                 const seenIds = new Set();
+                seenIds.add(currentProdId);
+
+                // 1. PRIORIDAD MÁXIMA: Ofertas de Combos Activas en el Admin que involucren este producto
+                const rawOffers = (window.sessionOffers && window.sessionOffers.length > 0)
+                    ? window.sessionOffers
+                    : (typeof offersData !== 'undefined' ? offersData : []);
+
+                const activeCombos = rawOffers.filter(o => {
+                    if (o.active === false) return false;
+                    const isCombo = o.stampStyle === 'combo' || (Array.isArray(o.product_items) && o.product_items.length > 1);
+                    if (!isCombo) return false;
+                    if (o.hasTimer && o.expirationDate) {
+                        const exp = new Date(o.expirationDate).getTime();
+                        if (!isNaN(exp) && exp <= Date.now()) return false;
+                    }
+                    if (Array.isArray(o.product_items)) {
+                        return o.product_items.some(it => String(it.productId || it.id).trim() === currentProdId);
+                    }
+                    return false;
+                });
+
+                activeCombos.forEach(combo => {
+                    combosToRender.push({
+                        type: 'combo',
+                        id: combo.id,
+                        title: combo.title,
+                        price: getComboPrice(combo),
+                        image: combo.coverImage || (combo.product_items && combo.product_items[0] && combo.product_items[0].image) || 'img/logo_provisional.png',
+                        badge: '🔥 COMBO AHORRO',
+                        data: combo
+                    });
+                });
+
+                // Ordenar combos de mayor a menor precio si hay más de uno
+                combosToRender.sort((a, b) => b.price - a.price);
+
+                // 2. Extraer todos los productos disponibles del catálogo
+                const allCatalogProds = [];
                 sourceData.forEach(cat => {
                     if (cat.visible === false) return;
                     if (cat.products) {
                         cat.products.forEach(p => {
                             if (p.visible === false) return;
-                            if (!seenIds.has(p.id) && p.id !== product.id) { // Excluir producto actual
-                                seenIds.add(p.id);
-                                const res = findProductById(p.id);
-                                allProductsList.push({ product: p, catName: res ? res.catName : cat.name });
+                            const pid = String(p.id).trim();
+                            if (!seenIds.has(pid)) {
+                                allCatalogProds.push({ 
+                                    product: p, 
+                                    catName: cat.name, 
+                                    catId: cat.id,
+                                    price: getProductMaxPrice(p)
+                                });
                             }
                         });
                     }
                 });
 
-                // Selección aleatoria de 8 productos recomendados
-                const randomSelections = [...allProductsList]
-                    .sort(() => 0.5 - Math.random())
-                    .slice(0, 8);
+                // A) Candidatos de Misma Subcategoría (si tiene)
+                const candidateProds = [];
+                if (currentSubcat) {
+                    const sameSubcat = allCatalogProds.filter(item => item.product.subcategoria === currentSubcat);
+                    sameSubcat.forEach(item => {
+                        seenIds.add(String(item.product.id).trim());
+                        candidateProds.push({
+                            type: 'product',
+                            data: item.product,
+                            catName: item.catName,
+                            price: item.price,
+                            relevance: 1 // máxima afinidad
+                        });
+                    });
+                }
 
+                // B) Candidatos de Misma Categoría (o categorías compartidas)
+                const sameCategory = allCatalogProds.filter(item => {
+                    const pid = String(item.product.id).trim();
+                    if (seenIds.has(pid)) return false;
+                    const p = item.product;
+                    return (p.primaryCatId === currentPrimaryCat) ||
+                           (Array.isArray(p.categories) && p.categories.includes(currentPrimaryCat)) ||
+                           (Array.isArray(product.categories) && product.categories.includes(item.catId));
+                });
+                sameCategory.forEach(item => {
+                    seenIds.add(String(item.product.id).trim());
+                    candidateProds.push({
+                        type: 'product',
+                        data: item.product,
+                        catName: item.catName,
+                        price: item.price,
+                        relevance: 2 // afinidad de categoría
+                    });
+                });
+
+                // C) Fallback: Mismo Rubro para asegurar variedad
+                const sameRubro = allCatalogProds.filter(item => {
+                    const pid = String(item.product.id).trim();
+                    if (seenIds.has(pid)) return false;
+                    return (item.product.rubro || 'carpinteria').toLowerCase() === currentRubro;
+                });
+                sameRubro.forEach(item => {
+                    seenIds.add(String(item.product.id).trim());
+                    candidateProds.push({
+                        type: 'product',
+                        data: item.product,
+                        catName: item.catName,
+                        price: item.price,
+                        relevance: 3 // rubro
+                    });
+                });
+
+                // ORDENAMIENTO ESTRATÉGICO:
+                // Primero por relevancia (subcategoría > categoría > rubro),
+                // y dentro de cada grupo por PRECIO DESCENDENTE (más caro al más económico)
+                candidateProds.sort((a, b) => {
+                    if (a.relevance !== b.relevance) {
+                        return a.relevance - b.relevance;
+                    }
+                    return b.price - a.price; // De mayor a menor precio
+                });
+
+                // Unir Combos primero + Productos descendentes hasta un máximo de 8
+                const itemsToRender = [...combosToRender, ...candidateProds].slice(0, 8);
+
+                // Renderizar carrusel
                 const renderCarousel = (window.setupInfiniteCarousel && typeof window.setupInfiniteCarousel === 'function')
                     ? window.setupInfiniteCarousel
                     : (container, items, renderFn) => {
@@ -2752,28 +2894,49 @@
                         items.forEach((it, i) => container.appendChild(renderFn(it, i)));
                     };
 
-                renderCarousel(relatedList, randomSelections, ({ product: p, catName }, idx) => {
+                renderCarousel(relatedList, itemsToRender, (item, idx) => {
+                    const isEager = idx < 3;
                     const pCard = document.createElement('div');
                     pCard.className = 'category-card';
-                    const productCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
-                    const isEager = idx < 3;
-                    pCard.innerHTML = `
-                        <div class="category-card-img-wrapper" style="position:relative;">
-                            <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${p.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
-                        </div>
-                        <div class="category-overlay">
-                            <span>${p.title}</span>
-                        </div>
-                    `;
-                    pCard.addEventListener('click', () => {
-                        // Navegar al detalle del producto recomendado y desplazarse arriba suavemente
-                        if (window.showProductDetail) {
-                            window.showProductDetail(p, catName);
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
-                            const appContainer = document.getElementById('app-container');
-                            if (appContainer) appContainer.scrollTop = 0;
-                        }
-                    });
+                    pCard.style.cursor = 'pointer';
+
+                    if (item.type === 'combo') {
+                        pCard.innerHTML = `
+                            <div class="category-card-img-wrapper" style="position:relative; border: 2px solid #b38728; border-radius: 12px; overflow: hidden;">
+                                <img src="${item.image}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${item.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
+                                <div style="position: absolute; top: 6px; left: 6px; background: linear-gradient(135deg, #b38728, #fcf6ba); color: #000; font-size: 0.65rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 2;">
+                                    ${item.badge}
+                                </div>
+                            </div>
+                            <div class="category-overlay">
+                                <span>${item.title}</span>
+                            </div>
+                        `;
+                        pCard.addEventListener('click', () => {
+                            if (window.openOfferDetailView) {
+                                window.openOfferDetailView(item.data);
+                            }
+                        });
+                    } else {
+                        const p = item.data;
+                        const productCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
+                        pCard.innerHTML = `
+                            <div class="category-card-img-wrapper" style="position:relative;">
+                                <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${p.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
+                            </div>
+                            <div class="category-overlay">
+                                <span>${p.title}</span>
+                            </div>
+                        `;
+                        pCard.addEventListener('click', () => {
+                            if (window.showProductDetail) {
+                                window.showProductDetail(p, item.catName);
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                                const appContainer = document.getElementById('app-container');
+                                if (appContainer) appContainer.scrollTop = 0;
+                            }
+                        });
+                    }
                     return pCard;
                 });
 

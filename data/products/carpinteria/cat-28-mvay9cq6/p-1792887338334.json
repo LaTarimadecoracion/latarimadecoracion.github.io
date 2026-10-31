@@ -1,23 +1,35 @@
 {
   "id": "1792887338334",
+  "shortId": "3R",
   "title": "Pizarra Pizarron Para Colgar X3",
   "description": "Publicación importada desde Mercado Libre (MLA3946726502).",
-  "video": "",
-  "image": "img/borrador/portada-imagen.webp",
+  "image": "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
   "acabados_groups": [
     {
-      "name": "Estándar",
-      "images": [
-        "img/borrador/portada-imagen.webp"
+      "acabado_name": "",
+      "description": "",
+      "cover_image": "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
+      "images_list": [
+        "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
+        "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479566823-imagenwebp.webp"
       ],
       "medidas_variants": [
         {
-          "name": "Medida Única",
-          "price": 25000,
-          "stock": 7,
-          "link": "https://articulo.mercadolibre.com.ar/MLA-3946726502"
+          "medida": "Pizzaron x3",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 22000,
+          "cost_price": "",
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
         }
-      ]
+      ],
+      "hidden": false
     }
   ],
   "tags": [
@@ -29,8 +41,23 @@
     "para",
     "colgar"
   ],
-  "last_modified": 1792887338333,
-  "optional_variant": null,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1793479628428,
   "primaryCatId": "cat-28-mvay9cq6",
   "history": [
     {
@@ -39,19 +66,10 @@
       "details": "Importado como borrador desde Mercado Libre (MLA3946726502)"
     }
   ],
-  "views": 0,
-  "paymentConfig": {
-    "mode": "store",
-    "showBuyButton": true,
-    "showCartButton": true
-  },
-  "shippingConfig": {
-    "mode": "both"
-  },
-  "stock": 7,
+  "views": 3,
   "categories": [
+    "carpinteria-todos",
     "cat-28-mvay9cq6"
   ],
-  "rubro": "carpinteria",
-  "subcategoria": "pizarras"
+  "rubro": "carpinteria"
 }

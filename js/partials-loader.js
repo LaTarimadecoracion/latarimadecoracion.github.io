@@ -39,6 +39,7 @@ window.loadAdminPartialsOnDemand = async function() {
         'partials/admin/view-bulk-edit.html',
         'partials/admin/view-catalog.html',
         'partials/admin/view-ml-importer.html',
+        'partials/admin/view-tnube.html',
         'partials/admin/view-pages.html',
         'partials/admin/view-settings.html',
         'partials/admin/view-orders.html',

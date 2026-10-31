@@ -73,7 +73,7 @@ function initAdminUX20() {
     // Leer la pestaña activa inicial desde la URL (?tab=...) o HASH (#tab)
     const urlParams = new URLSearchParams(window.location.search);
     const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
-    const validTabs = ['dashboard', 'settings', 'catalog', 'ml-importer', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
+    const validTabs = ['dashboard', 'settings', 'catalog', 'ml-importer', 'tnube', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
     if (tabFromUrl && validTabs.includes(tabFromUrl)) {
         currentAdminTab = tabFromUrl;
     }
@@ -93,6 +93,9 @@ function initAdminUX20() {
                 }
                 if (tab === 'ml-importer' && typeof window.populateMlTargetCategories === 'function') {
                     window.populateMlTargetCategories();
+                }
+                if (tab === 'tnube' && window.AdminTnubeModule && typeof window.AdminTnubeModule.init === 'function') {
+                    window.AdminTnubeModule.init();
                 }
                 renderAdminUX();
             });
@@ -368,13 +371,13 @@ function renderAdminUX() {
     // Asegurar lectura de URL en cada renderizado
     const urlParams = new URLSearchParams(window.location.search);
     const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
-    const validTabs = ['dashboard', 'settings', 'catalog', 'ml-importer', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
+    const validTabs = ['dashboard', 'settings', 'catalog', 'ml-importer', 'tnube', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
     if (tabFromUrl && validTabs.includes(tabFromUrl)) {
         currentAdminTab = tabFromUrl;
     }
 
     // Control visual de la barra de navegación del panel (V2)
-        const tabs = ['orders', 'quotes', 'catalog', 'ml-importer', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'pages', 'settings', 'users'];
+        const tabs = ['orders', 'quotes', 'catalog', 'ml-importer', 'tnube', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'pages', 'settings', 'users'];
         tabs.forEach(tab => {
             const btn = document.getElementById(`tab-btn-${tab}`);
             if (btn) {
@@ -392,6 +395,7 @@ function renderAdminUX() {
             settings: { title: 'Configuración General', icon: 'tune' },
             catalog: { title: 'Catálogo de Productos', icon: 'inventory_2' },
             'ml-importer': { title: 'Importador de Mercado Libre', icon: 'storefront' },
+            'tnube': { title: 'Exportador Tiendanube', icon: 'cloud_upload' },
             'bulk-edit': { title: 'Editor Masivo de Precios & Productos', icon: 'table_chart' },
             offers: { title: 'Ofertas & Combos', icon: 'local_offer' },
             shipping: { title: 'Envíos & Zonas Tarifarias', icon: 'local_shipping' },
@@ -415,6 +419,7 @@ function renderAdminUX() {
             settings: 'admin-settings-view',
             catalog: 'admin-catalog-view',
             'ml-importer': 'admin-ml-importer-view',
+            'tnube': 'admin-tnube-view',
             'bulk-edit': 'admin-bulk-edit-view',
             offers: 'admin-offers-view',
             shipping: 'admin-shipping-view',
@@ -482,7 +487,11 @@ function renderAdminUX() {
             if (typeof window.renderAdminInventoryV3 === 'function') {
                 window.renderAdminInventoryV3();
             }
-        } else if (currentAdminTab === 'catalog') {
+        } else if (currentAdminTab === 'tnube' && window.AdminTnubeModule) {
+            window.AdminTnubeModule.init();
+        }
+
+        if (currentAdminTab === 'catalog') {
             const categoriesView = document.getElementById('admin-categories-view');
             const productsView = document.getElementById('admin-products-view');
 

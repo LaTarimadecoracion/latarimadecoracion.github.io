@@ -1,0 +1,59 @@
+{
+  "id": "1793485821041",
+  "shortId": "3R",
+  "title": "Banco Banquito Escalera",
+  "description": "Banquito Escalera Infantil de 2 Escalones – Madera de Pino\n\nPráctico banquito escalera fabricado en madera de pino, ideal para ayudar a los niños a alcanzar el lavamanos, mesadas y otros lugares de uso cotidiano.\n\nSu diseño de 2 escalones brinda una mayor altura de apoyo y es ideal para acompañar a los más pequeños en sus actividades diarias.\n\nCaracterísticas:\n\nFabricado en madera de pino.\n2 escalones.\nAltura total: 29 cm.\nAncho: 35 cm.\nProfundidad: 32 cm.\nAltura del escalón inferior: 15 cm.\nDiseño firme y práctico.\nTerminación en madera natural.\n\nEl producto se entrega en madera de pino natural, tal como se indica en la publicación.\n\nIdeal para baño, cocina, dormitorio y otros espacios del hogar.\n\nLink del mismo modelo pero mas chico : https://www.mercadolibre.com.ar/banco-banquito-escalera-ninos-infantil/up/MLAU3294874194?pdp_filters=item_id:MLA2174447176\n\nGarantía del vendedor: 30 días",
+  "image": "img/banco-banquito-escalera/1793485819869-1-imagen.webp",
+  "acabados_groups": [
+    {
+      "acabado_name": "Estándar",
+      "description": "",
+      "cover_image": "img/banco-banquito-escalera/1793485819869-1-imagen.webp",
+      "images_list": [
+        "img/banco-banquito-escalera/1793485819869-1-imagen.webp",
+        "img/banco-banquito-escalera/1793485820153-3-imagen.webp",
+        "img/banco-banquito-escalera/1793485820425-5-imagen.webp",
+        "img/banco-banquito-escalera/1793485820651-7-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Estándar",
+          "link": "https://www.mercadolibre.com.ar/banco-banquito-escalera/up/MLAU5336395874",
+          "default": true,
+          "hidden": false,
+          "linkLabel": "Ver en Mercado Libre",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 20000,
+          "cost_price": 10000,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    }
+  ],
+  "tags": [],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1793485870299,
+  "primaryCatId": "muebles",
+  "history": [],
+  "visible": true,
+  "rubro": "carpinteria"
+}

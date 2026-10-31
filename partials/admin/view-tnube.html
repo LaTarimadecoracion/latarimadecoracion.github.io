@@ -1,0 +1,155 @@
+<!-- =============================================================================
+     partials/admin/view-tnube.html
+     Módulo Autónomo: Exportador y Sincronizador de Precios para Tiendanube (#admin-tnube-view)
+     Totalmente modular, con reglas de comisiones, márgenes, redondeos inteligentes y descargas CSV.
+     ============================================================================= -->
+<div id="admin-tnube-view" class="admin-section-view" style="display: none;">
+    <div class="admin-card" style="background: #FFFFFF; border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-md); padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: var(--admin-shadow-sm);">
+        
+        <!-- HEADER DEL MÓDULO -->
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid var(--admin-border-color); padding-bottom: 1.25rem; margin-bottom: 1.5rem;">
+            <div>
+                <h3 style="margin: 0 0 0.4rem 0; font-size: 1.25rem; font-weight: 800; color: #1E293B; display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="color: #0284C7; font-size: 28px;">cloud_upload</span>
+                    Exportador &amp; Calculador de Precios para Tiendanube
+                </h3>
+                <p style="margin: 0; font-size: 0.85rem; color: #64748B;">
+                    Ajustá comisiones, márgenes y redondeos sin alterar los precios base de tu web. Generá el CSV oficial con 1 clic.
+                </p>
+            </div>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <button type="button" id="btn-tnube-reset-overrides" class="btn-outline" style="height: 38px; font-size: 0.82rem; font-weight: 700; border-radius: 8px; padding: 0 14px; cursor: pointer;">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">restart_alt</span>
+                    Restablecer Precios
+                </button>
+                <button type="button" id="btn-tnube-download-csv" class="btn-primary" style="height: 38px; font-size: 0.85rem; font-weight: 800; background: #0284C7; border-color: #0284C7; color: #FFFFFF; border-radius: 8px; padding: 0 16px; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3);">
+                    <span class="material-symbols-outlined" style="font-size: 20px;">download</span>
+                    Descargar CSV Tiendanube
+                </button>
+            </div>
+        </div>
+
+        <!-- CONTROLES GLOBALES DE REGLAS Y COMISIONES -->
+        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem;">
+            <div style="font-size: 0.9rem; font-weight: 800; color: #334155; margin-bottom: 1rem; display: flex; align-items: center; gap: 6px;">
+                <span class="material-symbols-outlined" style="font-size: 20px; color: #3B82F6;">tune</span>
+                Reglas Globales de Ajuste de Precios
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; align-items: end;">
+                
+                <!-- 1. Tipo de Ajuste -->
+                <div>
+                    <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #475569; margin-bottom: 5px;">Tipo de Ajuste:</label>
+                    <select id="tnube-adjust-type" style="width: 100%; height: 38px; border: 1px solid #CBD5E1; border-radius: 8px; padding: 0 10px; font-size: 0.85rem; font-weight: 600; background: #FFFFFF; outline: none;">
+                        <option value="percent">Porcentaje (%) sobre precio web</option>
+                        <option value="fixed">Monto Fijo ($) a sumar</option>
+                    </select>
+                </div>
+
+                <!-- 2. Valor del Ajuste -->
+                <div>
+                    <label id="tnube-adjust-val-label" style="display: block; font-size: 0.78rem; font-weight: 700; color: #475569; margin-bottom: 5px;">Recargo / Comisión (%):</label>
+                    <div style="position: relative; display: flex; align-items: center;">
+                        <input type="number" id="tnube-adjust-value" value="12" step="0.5" style="width: 100%; height: 38px; border: 1px solid #CBD5E1; border-radius: 8px; padding: 0 10px; font-size: 0.95rem; font-weight: 800; color: #0F172A; background: #FFFFFF; outline: none;">
+                        <span id="tnube-adjust-suffix" style="position: absolute; right: 12px; font-size: 0.85rem; font-weight: 700; color: #64748B; pointer-events: none;">%</span>
+                    </div>
+                </div>
+
+                <!-- 3. Redondeo Habilitado -->
+                <div>
+                    <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #475569; margin-bottom: 5px;">Regla de Redondeo:</label>
+                    <select id="tnube-round-step" style="width: 100%; height: 38px; border: 1px solid #CBD5E1; border-radius: 8px; padding: 0 10px; font-size: 0.85rem; font-weight: 600; background: #FFFFFF; outline: none;">
+                        <option value="0">Sin redondeo (número exacto)</option>
+                        <option value="5">Múltiplo de $5</option>
+                        <option value="10">Múltiplo de $10</option>
+                        <option value="50">Múltiplo de $50</option>
+                        <option value="100" selected>Múltiplo de $100 (Recomendado)</option>
+                        <option value="200">Múltiplo de $200</option>
+                        <option value="300">Múltiplo de $300</option>
+                        <option value="500">Múltiplo de $500</option>
+                        <option value="1000">Múltiplo de $1.000</option>
+                    </select>
+                </div>
+
+                <!-- 4. Sentido del Redondeo -->
+                <div>
+                    <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #475569; margin-bottom: 5px;">Sentido del Redondeo:</label>
+                    <select id="tnube-round-direction" style="width: 100%; height: 38px; border: 1px solid #CBD5E1; border-radius: 8px; padding: 0 10px; font-size: 0.85rem; font-weight: 600; background: #FFFFFF; outline: none;">
+                        <option value="nearest" selected>Al más cercano (Estándar)</option>
+                        <option value="up">Hacia arriba / Positivo (Siempre a tu favor)</option>
+                        <option value="down">Hacia abajo / Negativo (Más competitivo)</option>
+                    </select>
+                </div>
+
+                <!-- 5. Precio Promocional Tachado Opcional -->
+                <div>
+                    <label style="display: block; font-size: 0.78rem; font-weight: 700; color: #475569; margin-bottom: 5px;">Precio Tachado / Lista:</label>
+                    <select id="tnube-promo-mode" style="width: 100%; height: 38px; border: 1px solid #CBD5E1; border-radius: 8px; padding: 0 10px; font-size: 0.85rem; font-weight: 600; background: #FFFFFF; outline: none;">
+                        <option value="none" selected>No usar precio tachado</option>
+                        <option value="10">+10% de lista tachado</option>
+                        <option value="15">+15% de lista tachado</option>
+                        <option value="20">+20% de lista tachado</option>
+                        <option value="25">+25% de lista tachado</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Resumen Informativo Rápido -->
+            <div style="margin-top: 1rem; padding-top: 0.8rem; border-top: 1px dashed #CBD5E1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; font-size: 0.82rem; color: #64748B;">
+                <div>
+                    Ejemplo: Un producto de <strong style="color: #0F172A;">$20.000</strong> en tu web $\rightarrow$ en Tiendanube figurará a <strong id="tnube-example-price" style="color: #0284C7; font-size: 0.95rem;">$22.400</strong>.
+                </div>
+                <div style="display: flex; gap: 15px; font-weight: 700;">
+                    <span>📦 Total Productos: <strong id="tnube-stat-total" style="color: #0F172A;">134</strong></span>
+                    <span>📏 Variantes: <strong id="tnube-stat-variants" style="color: #0F172A;">309</strong></span>
+                    <span>✏️ Precios Personalizados: <strong id="tnube-stat-overrides" style="color: #D97706;">0</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- BARRA DE BÚSQUEDA Y FILTROS -->
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 1rem;">
+            <div style="position: relative; width: 320px; max-width: 100%;">
+                <span class="material-symbols-outlined" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 19px; color: #94A3B8;">search</span>
+                <input type="text" id="tnube-search-input" placeholder="Buscar producto o variante..." style="width: 100%; box-sizing: border-box; height: 38px; border: 1px solid #CBD5E1; border-radius: 8px; padding-left: 36px; padding-right: 12px; font-size: 0.85rem; outline: none;">
+            </div>
+
+            <div style="display: flex; gap: 8px; align-items: center;">
+                <select id="tnube-filter-category" style="height: 38px; border: 1px solid #CBD5E1; border-radius: 8px; padding: 0 10px; font-size: 0.83rem; font-weight: 600; background: #FFFFFF; outline: none;">
+                    <option value="all">Todas las Categorías</option>
+                </select>
+                <select id="tnube-filter-custom" style="height: 38px; border: 1px solid #CBD5E1; border-radius: 8px; padding: 0 10px; font-size: 0.83rem; font-weight: 600; background: #FFFFFF; outline: none;">
+                    <option value="all">Todos los productos</option>
+                    <option value="custom">Solo modificados a mano</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- TABLA DE PRECIOS Y VARIANTES -->
+        <div style="overflow-x: auto; border: 1px solid #E2E8F0; border-radius: 10px; background: #FFFFFF; max-height: 550px; overflow-y: auto;">
+            <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.84rem;">
+                <thead style="background: #F1F5F9; position: sticky; top: 0; z-index: 5; border-bottom: 2px solid #CBD5E1;">
+                    <tr>
+                        <th style="padding: 10px 14px; font-weight: 800; color: #475569; width: 60px;">Foto</th>
+                        <th style="padding: 10px 14px; font-weight: 800; color: #475569;">Producto / Variante</th>
+                        <th style="padding: 10px 14px; font-weight: 800; color: #475569; width: 140px;">Categoría</th>
+                        <th style="padding: 10px 14px; font-weight: 800; color: #475569; width: 120px; text-align: right;">Precio Web</th>
+                        <th style="padding: 10px 14px; font-weight: 800; color: #0284C7; width: 150px; text-align: right;">Precio Tiendanube</th>
+                        <th style="padding: 10px 14px; font-weight: 800; color: #16A34A; width: 110px; text-align: right;">Diferencia</th>
+                    </tr>
+                </thead>
+                <tbody id="tnube-table-body">
+                    <tr>
+                        <td colspan="6" style="padding: 2rem; text-align: center; color: #94A3B8;">Cargando catálogo...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 0.75rem; font-size: 0.76rem; color: #94A3B8; text-align: right;">
+            💡 <em>Podés escribir directamente en el campo de precio de cualquier fila para sobreescribir ese valor manualmente.</em>
+        </div>
+
+    </div>
+</div>
