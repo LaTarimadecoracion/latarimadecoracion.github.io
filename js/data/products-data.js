@@ -502,7 +502,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 83
+                "views": 84
             },
             {
                 "id": "52",
@@ -2348,7 +2348,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
+                ],
+                "views": 4
             },
             {
                 "id": "44",
@@ -2659,7 +2660,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 6,
+                "views": 8,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4970,7 +4971,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793480985540,
                 "primaryCatId": "Steps",
-                "history": []
+                "history": [],
+                "views": 3
             },
             {
                 "id": "46",
@@ -6206,7 +6208,7 @@ const productsData = [
                 "last_modified": 1790378363386,
                 "primaryCatId": "jardin-patio",
                 "history": [],
-                "views": 1,
+                "views": 2,
                 "categories": [
                     "carpinteria-todos",
                     "jardin-patio",
@@ -11015,7 +11017,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 108
+                "views": 109
             },
             {
                 "id": "95",
@@ -11188,7 +11190,8 @@ const productsData = [
                 "last_modified": 1793479955669,
                 "primaryCatId": "Steps",
                 "history": [],
-                "visible": true
+                "visible": true,
+                "views": 73
             },
             {
                 "id": "1792887338328",
@@ -11553,7 +11556,8 @@ const productsData = [
                         "timestamp": 1792887338344,
                         "details": "Importado como borrador desde Mercado Libre (MLA3946285696)"
                     }
-                ]
+                ],
+                "views": 1
             },
             {
                 "id": "1792887338335",
@@ -11624,7 +11628,8 @@ const productsData = [
                         "timestamp": 1792887338334,
                         "details": "Importado como borrador desde Mercado Libre (MLA2164674452)"
                     }
-                ]
+                ],
+                "views": 1
             },
             {
                 "id": "1792887338342",
@@ -11695,7 +11700,8 @@ const productsData = [
                         "timestamp": 1792887338338,
                         "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
                     }
-                ]
+                ],
+                "views": 0
             }
         ]
     },
@@ -14122,7 +14128,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 83
+                "views": 84
             },
             {
                 "id": "52",
@@ -16006,7 +16012,8 @@ const productsData = [
                 "last_modified": 1793479955669,
                 "primaryCatId": "Steps",
                 "history": [],
-                "visible": true
+                "visible": true,
+                "views": 73
             },
             {
                 "id": "A1",
@@ -16116,7 +16123,8 @@ const productsData = [
                 "last_modified": 1793481022357,
                 "primaryCatId": "Steps",
                 "history": [],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 9
             },
             {
                 "id": "A2",
@@ -16275,7 +16283,8 @@ const productsData = [
                 "last_modified": 1793481042956,
                 "primaryCatId": "Steps",
                 "history": [],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 8
             },
             {
                 "id": "A3",
@@ -16463,7 +16472,8 @@ const productsData = [
                 "last_modified": 1793481029476,
                 "primaryCatId": "Steps",
                 "history": [],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 0
             },
             {
                 "id": "A4",
@@ -16650,7 +16660,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793480985540,
                 "primaryCatId": "Steps",
-                "history": []
+                "history": [],
+                "views": 3
             },
             {
                 "id": "1792887338329",
@@ -16811,7 +16822,8 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "visible": true,
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 4
             }
         ]
     },
@@ -16964,7 +16976,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
+                ],
+                "views": 4
             },
             {
                 "id": "44",
@@ -17675,24 +17688,40 @@ const productsData = [
             },
             {
                 "id": "1792887338354",
+                "shortId": "3O",
                 "title": "4 Maceteros Canasta Organizadores En Junco",
                 "description": "Publicación importada desde Mercado Libre (MLA4087248102).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
+                "image": "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
                 "acabados_groups": [
                     {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
+                        "images_list": [
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225824-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225831-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225839-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225845-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494240972-edit_1793494239519webp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "name": "Medida Única",
-                                "price": 88000,
-                                "stock": 1,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-4087248102"
+                                "medida": "4 Unidades",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-4087248102",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 65000,
+                                "cost_price": 88000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -17704,8 +17733,23 @@ const productsData = [
                     "organizadores",
                     "junco"
                 ],
-                "last_modified": 1792887338346,
-                "optional_variant": null,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793494240983,
                 "primaryCatId": "Organizadores",
                 "history": [
                     {
@@ -17714,22 +17758,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA4087248102)"
                     }
                 ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "canastos-junco"
+                "rubro": "carpinteria"
             },
             {
                 "id": "41",
@@ -17807,7 +17836,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 6,
+                "views": 8,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18391,7 +18420,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 108
+                "views": 109
             },
             {
                 "id": "67",
@@ -18980,7 +19009,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
+                ],
+                "views": 4
             },
             {
                 "id": "7C",
@@ -21404,7 +21434,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 6,
+                "views": 8,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22247,7 +22277,8 @@ const productsData = [
                 "last_modified": 1793485683722,
                 "primaryCatId": "muebles",
                 "history": [],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 4
             },
             {
                 "id": "1793485821041",
@@ -22306,7 +22337,8 @@ const productsData = [
                 "primaryCatId": "muebles",
                 "history": [],
                 "visible": true,
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 1
             }
         ]
     },
@@ -24441,124 +24473,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "1792887338341",
-                "title": "Mesa Mesita Auxiliar Matera Plegable",
-                "description": "Publicación importada desde Mercado Libre (MLA3936714566).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "name": "Medida Única",
-                                "price": 0,
-                                "stock": 1,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-3936714566"
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "borrador",
-                    "mercado libre",
-                    "mla3936714566",
-                    "mesa",
-                    "mesita",
-                    "auxiliar",
-                    "matera",
-                    "plegable"
-                ],
-                "last_modified": 1792887338338,
-                "optional_variant": null,
-                "primaryCatId": "Mesas-madera",
-                "history": [
-                    {
-                        "type": "import_ml",
-                        "timestamp": 1792887338338,
-                        "details": "Importado como borrador desde Mercado Libre (MLA3936714566)"
-                    }
-                ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "plegables-materas"
-            },
-            {
-                "id": "1792887338343",
-                "title": "Mesa Mesita Auxiliar Matera Plegable",
-                "description": "Publicación importada desde Mercado Libre (MLA2073922617).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "name": "Medida Única",
-                                "price": 30000,
-                                "stock": 2,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2073922617"
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "borrador",
-                    "mercado libre",
-                    "mla2073922617",
-                    "mesa",
-                    "mesita",
-                    "auxiliar",
-                    "matera",
-                    "plegable"
-                ],
-                "last_modified": 1792887338339,
-                "optional_variant": null,
-                "primaryCatId": "Mesas-madera",
-                "history": [
-                    {
-                        "type": "import_ml",
-                        "timestamp": 1792887338339,
-                        "details": "Importado como borrador desde Mercado Libre (MLA2073922617)"
-                    }
-                ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "plegables-materas"
-            },
-            {
                 "id": "1792887338347",
                 "title": "Mesa Mesita Auxiliar Matera Plegable",
                 "description": "Publicación importada desde Mercado Libre (MLA2074250953).",
@@ -24678,24 +24592,110 @@ const productsData = [
             },
             {
                 "id": "1792887338350",
+                "shortId": "3O",
                 "title": "Mesa Mesita Auxiliar Matera Plegable",
-                "description": "Publicación importada desde Mercado Libre (MLA3936801982).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
+                "description": "",
+                "image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
                 "acabados_groups": [
                     {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
+                        "acabado_name": "Vivaro",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "name": "Medida Única",
-                                "price": 30000,
-                                "stock": 1,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-3936801982"
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
                             }
-                        ]
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Wengue",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797068-imagenwebp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797068-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Algarrobo",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797078-imagenwebp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797078-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 25000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Pitiribi",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797084-imagenwebp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797084-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -24708,8 +24708,23 @@ const productsData = [
                     "matera",
                     "plegable"
                 ],
-                "last_modified": 1792887338344,
-                "optional_variant": null,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793491876816,
                 "primaryCatId": "Mesas-madera",
                 "history": [
                     {
@@ -24718,22 +24733,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
                     }
                 ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "plegables-materas"
+                "rubro": "carpinteria"
             }
         ]
     },
@@ -25438,7 +25438,7 @@ const productsData = [
                 "last_modified": 1790378363386,
                 "primaryCatId": "jardin-patio",
                 "history": [],
-                "views": 1,
+                "views": 2,
                 "categories": [
                     "carpinteria-todos",
                     "jardin-patio",
@@ -25752,7 +25752,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA2149413391)"
                     }
                 ],
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "mode": "store",
                     "showBuyButton": true,
@@ -25896,7 +25896,8 @@ const productsData = [
                         "timestamp": 1792887338338,
                         "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "1792887338351",
@@ -25967,7 +25968,8 @@ const productsData = [
                         "timestamp": 1792887338344,
                         "details": "Importado como borrador desde Mercado Libre (MLA3946285696)"
                     }
-                ]
+                ],
+                "views": 1
             },
             {
                 "id": "1792887338335",
@@ -26038,7 +26040,8 @@ const productsData = [
                         "timestamp": 1792887338334,
                         "details": "Importado como borrador desde Mercado Libre (MLA2164674452)"
                     }
-                ]
+                ],
+                "views": 1
             }
         ]
     },
@@ -26578,7 +26581,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
+                ],
+                "views": 4
             },
             {
                 "id": "44",
@@ -27569,7 +27573,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 6,
+                "views": 8,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,

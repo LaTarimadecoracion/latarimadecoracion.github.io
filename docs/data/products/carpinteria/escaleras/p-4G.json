@@ -54,5 +54,9 @@
   "last_modified": 1793485683722,
   "primaryCatId": "muebles",
   "history": [],
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "views": 4,
+  "categories": [
+    "muebles"
+  ]
 }

@@ -37,5 +37,9 @@
   "primaryCatId": "Steps",
   "history": [],
   "visible": true,
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "views": 4,
+  "categories": [
+    "Steps"
+  ]
 }

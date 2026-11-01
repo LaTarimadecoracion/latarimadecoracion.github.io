@@ -1,23 +1,39 @@
 {
   "id": "1792887338354",
+  "shortId": "3O",
   "title": "4 Maceteros Canasta Organizadores En Junco",
   "description": "Publicación importada desde Mercado Libre (MLA4087248102).",
-  "video": "",
-  "image": "img/borrador/portada-imagen.webp",
+  "image": "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
   "acabados_groups": [
     {
-      "name": "Estándar",
-      "images": [
-        "img/borrador/portada-imagen.webp"
+      "acabado_name": "",
+      "description": "",
+      "cover_image": "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
+      "images_list": [
+        "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
+        "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225824-imagenwebp.webp",
+        "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225831-imagenwebp.webp",
+        "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225839-imagenwebp.webp",
+        "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225845-imagenwebp.webp",
+        "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494240972-edit_1793494239519webp.webp"
       ],
       "medidas_variants": [
         {
-          "name": "Medida Única",
-          "price": 88000,
-          "stock": 1,
-          "link": "https://articulo.mercadolibre.com.ar/MLA-4087248102"
+          "medida": "4 Unidades",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-4087248102",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 65000,
+          "cost_price": 88000,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
         }
-      ]
+      ],
+      "hidden": false
     }
   ],
   "tags": [
@@ -29,8 +45,23 @@
     "organizadores",
     "junco"
   ],
-  "last_modified": 1792887338346,
-  "optional_variant": null,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1793494240983,
   "primaryCatId": "Organizadores",
   "history": [
     {
@@ -39,19 +70,5 @@
       "details": "Importado como borrador desde Mercado Libre (MLA4087248102)"
     }
   ],
-  "views": 0,
-  "paymentConfig": {
-    "mode": "store",
-    "showBuyButton": true,
-    "showCartButton": true
-  },
-  "shippingConfig": {
-    "mode": "both"
-  },
-  "stock": 1,
-  "categories": [
-    "Organizadores"
-  ],
-  "rubro": "carpinteria",
-  "subcategoria": "canastos-junco"
+  "rubro": "carpinteria"
 }

@@ -1,23 +1,109 @@
 {
   "id": "1792887338350",
+  "shortId": "3O",
   "title": "Mesa Mesita Auxiliar Matera Plegable",
-  "description": "Publicación importada desde Mercado Libre (MLA3936801982).",
-  "video": "",
-  "image": "img/borrador/portada-imagen.webp",
+  "description": "",
+  "image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
   "acabados_groups": [
     {
-      "name": "Estándar",
-      "images": [
-        "img/borrador/portada-imagen.webp"
+      "acabado_name": "Vivaro",
+      "description": "",
+      "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
+      "images_list": [
+        "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp"
       ],
       "medidas_variants": [
         {
-          "name": "Medida Única",
-          "price": 30000,
-          "stock": 1,
-          "link": "https://articulo.mercadolibre.com.ar/MLA-3936801982"
+          "medida": "Algarrobo",
+          "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": "",
+          "legend": "",
+          "showPrice": false,
+          "logisticaEnabled": true
         }
-      ]
+      ],
+      "hidden": false
+    },
+    {
+      "acabado_name": "Wengue",
+      "description": "",
+      "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797068-imagenwebp.webp",
+      "images_list": [
+        "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797068-imagenwebp.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Algarrobo",
+          "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": "",
+          "legend": "",
+          "showPrice": false,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "acabado_name": "Algarrobo",
+      "description": "",
+      "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797078-imagenwebp.webp",
+      "images_list": [
+        "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797078-imagenwebp.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Algarrobo",
+          "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 25000,
+          "cost_price": 25000,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
+    },
+    {
+      "acabado_name": "Pitiribi",
+      "description": "",
+      "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797084-imagenwebp.webp",
+      "images_list": [
+        "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797084-imagenwebp.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Algarrobo",
+          "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
+          "cost_price": "",
+          "legend": "",
+          "showPrice": false,
+          "logisticaEnabled": true
+        }
+      ],
+      "hidden": false
     }
   ],
   "tags": [
@@ -30,8 +116,23 @@
     "matera",
     "plegable"
   ],
-  "last_modified": 1792887338344,
-  "optional_variant": null,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1793491876816,
   "primaryCatId": "Mesas-madera",
   "history": [
     {
@@ -40,19 +141,5 @@
       "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
     }
   ],
-  "views": 0,
-  "paymentConfig": {
-    "mode": "store",
-    "showBuyButton": true,
-    "showCartButton": true
-  },
-  "shippingConfig": {
-    "mode": "both"
-  },
-  "stock": 1,
-  "categories": [
-    "Mesas-madera"
-  ],
-  "rubro": "carpinteria",
-  "subcategoria": "plegables-materas"
+  "rubro": "carpinteria"
 }
