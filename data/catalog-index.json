@@ -4047,8 +4047,8 @@
   },
   {
     "id": "B4",
-    "shortId": null,
-    "title": "Juego de Mesa y Sillas Infantiles",
+    "shortId": "3N",
+    "title": "Mesa Y 2 Sillas Infantil (excelente Calidad)",
     "rubro": "carpinteria",
     "primaryCatId": "Juguetes",
     "categories": [
@@ -4057,8 +4057,8 @@
       "sillas-sillones"
     ],
     "subcategoria": "",
-    "price": 60000,
-    "image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
+    "price": 100000,
+    "image": "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
     "tags": [],
     "visible": true,
     "file": "data/products/carpinteria/rincon-infantil/p-B4.json"
@@ -4879,6 +4879,83 @@
     "file": "data/products/carpinteria/jardin-patio/p-1792887338342.json"
   },
   {
+    "id": "1792887338350",
+    "shortId": "3O",
+    "title": "Mesa Mesita Auxiliar Matera Plegable",
+    "rubro": "carpinteria",
+    "primaryCatId": "Mesas-madera",
+    "categories": [
+      "carpinteria-todos",
+      "Mesas-madera"
+    ],
+    "subcategoria": "",
+    "price": 0,
+    "image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla3936801982",
+      "mesa",
+      "mesita",
+      "auxiliar",
+      "matera",
+      "plegable"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/mesas-madera/p-1792887338350.json"
+  },
+  {
+    "id": "1792887338354",
+    "shortId": "3O",
+    "title": "4 Maceteros Canasta Organizadores En Junco",
+    "rubro": "carpinteria",
+    "primaryCatId": "Organizadores",
+    "categories": [
+      "carpinteria-todos",
+      "Organizadores"
+    ],
+    "subcategoria": "",
+    "price": 65000,
+    "image": "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla4087248102",
+      "maceteros",
+      "canasta",
+      "organizadores",
+      "junco"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/organizadores/p-1792887338354.json"
+  },
+  {
+    "id": "1792887338348",
+    "shortId": "3O",
+    "title": "Mesa Plegable Madera Pino Redonda",
+    "rubro": "carpinteria",
+    "primaryCatId": "Mesas-madera",
+    "categories": [
+      "carpinteria-todos",
+      "Mesas-madera"
+    ],
+    "subcategoria": "",
+    "price": 37000,
+    "image": "img/mesas-escritorios/mesa-plegable-madera-pino-redonda/1793500205812-edit_1793500204338webp.webp",
+    "tags": [
+      "borrador",
+      "mercado libre",
+      "mla2083657243",
+      "mesa",
+      "plegable",
+      "madera",
+      "pino",
+      "redonda"
+    ],
+    "visible": true,
+    "file": "data/products/carpinteria/mesas-madera/p-1792887338348.json"
+  },
+  {
     "id": "24",
     "shortId": "2Z",
     "title": "Vinoteca - 17 Vinos",
@@ -5282,28 +5359,6 @@
     "file": "data/products/carpinteria/organizadores/p-47.json"
   },
   {
-    "id": "1792887338354",
-    "shortId": "3O",
-    "title": "4 Maceteros Canasta Organizadores En Junco",
-    "rubro": "carpinteria",
-    "primaryCatId": "Organizadores",
-    "categories": [],
-    "subcategoria": "",
-    "price": 65000,
-    "image": "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
-    "tags": [
-      "borrador",
-      "mercado libre",
-      "mla4087248102",
-      "maceteros",
-      "canasta",
-      "organizadores",
-      "junco"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/organizadores/p-1792887338354.json"
-  },
-  {
     "id": "4G",
     "shortId": "3Q",
     "title": "Banco Banquito Escalera Niños Infantil",
@@ -5334,129 +5389,6 @@
     "tags": [],
     "visible": true,
     "file": "data/products/carpinteria/escaleras/p-1793485821041.json"
-  },
-  {
-    "id": "1792887338346",
-    "shortId": null,
-    "title": "Mesa Y 2 Sillas Infantil (excelente Calidad)",
-    "rubro": "carpinteria",
-    "primaryCatId": "Juguetes",
-    "categories": [
-      "Juguetes"
-    ],
-    "subcategoria": "mesas-sillas-ninos",
-    "price": 140000,
-    "image": "img/borrador/portada-imagen.webp",
-    "tags": [
-      "borrador",
-      "mercado libre",
-      "mla1998800625",
-      "mesa",
-      "sillas",
-      "infantil",
-      "(excelente",
-      "calidad)"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/rincon-infantil/p-1792887338346.json"
-  },
-  {
-    "id": "1792887338343",
-    "shortId": null,
-    "title": "Mesa Mesita Auxiliar Matera Plegable",
-    "rubro": "carpinteria",
-    "primaryCatId": "Mesas-madera",
-    "categories": [
-      "Mesas-madera"
-    ],
-    "subcategoria": "plegables-materas",
-    "price": 30000,
-    "image": "img/borrador/portada-imagen.webp",
-    "tags": [
-      "borrador",
-      "mercado libre",
-      "mla2073922617",
-      "mesa",
-      "mesita",
-      "auxiliar",
-      "matera",
-      "plegable"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/mesas-madera/p-1792887338343.json"
-  },
-  {
-    "id": "1792887338347",
-    "shortId": null,
-    "title": "Mesa Mesita Auxiliar Matera Plegable",
-    "rubro": "carpinteria",
-    "primaryCatId": "Mesas-madera",
-    "categories": [
-      "Mesas-madera"
-    ],
-    "subcategoria": "plegables-materas",
-    "price": 30000,
-    "image": "img/borrador/portada-imagen.webp",
-    "tags": [
-      "borrador",
-      "mercado libre",
-      "mla2074250953",
-      "mesa",
-      "mesita",
-      "auxiliar",
-      "matera",
-      "plegable"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/mesas-madera/p-1792887338347.json"
-  },
-  {
-    "id": "1792887338348",
-    "shortId": null,
-    "title": "Mesa Plegable Madera Pino Redonda",
-    "rubro": "carpinteria",
-    "primaryCatId": "Mesas-madera",
-    "categories": [
-      "Mesas-madera"
-    ],
-    "subcategoria": "mesas-redondas",
-    "price": 50000,
-    "image": "img/borrador/portada-imagen.webp",
-    "tags": [
-      "borrador",
-      "mercado libre",
-      "mla2083657243",
-      "mesa",
-      "plegable",
-      "madera",
-      "pino",
-      "redonda"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/mesas-madera/p-1792887338348.json"
-  },
-  {
-    "id": "1792887338350",
-    "shortId": "3O",
-    "title": "Mesa Mesita Auxiliar Matera Plegable",
-    "rubro": "carpinteria",
-    "primaryCatId": "Mesas-madera",
-    "categories": [],
-    "subcategoria": "",
-    "price": 0,
-    "image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
-    "tags": [
-      "borrador",
-      "mercado libre",
-      "mla3936801982",
-      "mesa",
-      "mesita",
-      "auxiliar",
-      "matera",
-      "plegable"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/mesas-madera/p-1792887338350.json"
   },
   {
     "id": "1792887338333",

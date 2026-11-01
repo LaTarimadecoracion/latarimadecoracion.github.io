@@ -1,14 +1,18 @@
 {
   "id": "B4",
-  "title": "Juego de Mesa y Sillas Infantiles",
+  "shortId": "3N",
+  "title": "Mesa Y 2 Sillas Infantil (excelente Calidad)",
   "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
-  "image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
+  "image": "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
   "acabados_groups": [
     {
       "acabado_name": "Pino",
-      "cover_image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
+      "description": "",
+      "cover_image": "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
       "images_list": [
-        "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp"
+        "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
+        "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
+        "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356059-imagenwebp.webp"
       ],
       "medidas_variants": [
         {
@@ -19,29 +23,37 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 60000,
+          "price": 100000,
           "cost_price": 40000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         }
       ],
       "hidden": false
     }
   ],
   "tags": [],
-  "last_modified": 1786925906282,
-  "primaryCatId": "Juguetes",
-  "views": 2,
+  "shippingConfig": {
+    "logisticaEnabled": false,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
   "paymentConfig": {
     "transferEnabled": true,
     "linkEnabled": false,
     "creditEnabled": false
   },
-  "shippingConfig": {
-    "logisticaEnabled": false,
-    "fleteEnabled": true,
-    "otroEnabled": false
-  },
+  "quantityDiscounts": [],
+  "last_modified": 1793504671360,
+  "primaryCatId": "Juguetes",
+  "history": [],
+  "order": 1,
   "categories": [
     "carpinteria-todos",
     "Juguetes",

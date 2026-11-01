@@ -750,18 +750,43 @@
                 // Ordenar combos de mayor a menor precio si hay más de uno
                 combosToRender.sort((a, b) => b.price - a.price);
 
-                // 2. Extraer todos los productos disponibles del catálogo
-                const allCatalogProds = [];
+                // 2. Extraer todos los productos pertenecientes a la MISMA CATEGORÍA (sin mezclar subcategorías de afuera ni otros rubros)
+                const candidateProds = [];
+                const candidateSeenIds = new Set();
+                candidateSeenIds.add(currentProdId);
+
+                // Determinar el ID o IDs de categoría del producto actual
+                const prodCategories = new Set();
+                if (currentPrimaryCat) prodCategories.add(String(currentPrimaryCat).trim());
+                if (product.category) prodCategories.add(String(product.category).trim());
+                if (Array.isArray(product.categories)) {
+                    product.categories.forEach(c => prodCategories.add(String(c).trim()));
+                }
+
                 sourceData.forEach(cat => {
-                    if (cat.visible === false) return;
-                    if (cat.products) {
+                    if (cat.visible === false || String(cat.id).endsWith('-todos')) return;
+                    
+                    // Comprobar si esta categoría es la del producto actual
+                    const isSameCategory = prodCategories.has(String(cat.id).trim());
+
+                    if (cat.products && cat.products.length > 0) {
                         cat.products.forEach(p => {
                             if (p.visible === false) return;
                             const pid = String(p.id).trim();
-                            if (!seenIds.has(pid)) {
-                                allCatalogProds.push({ 
-                                    product: p, 
-                                    catName: cat.name, 
+                            if (candidateSeenIds.has(pid)) return;
+
+                            // Comprobar coincidencia estricta con la categoría del producto
+                            const pCategories = Array.isArray(p.categories) ? p.categories.map(c => String(c).trim()) : [];
+                            const matchesCat = isSameCategory ||
+                                               prodCategories.has(String(p.primaryCatId || p.category).trim()) ||
+                                               pCategories.some(c => prodCategories.has(c));
+
+                            if (matchesCat) {
+                                candidateSeenIds.add(pid);
+                                candidateProds.push({
+                                    type: 'product',
+                                    data: p,
+                                    catName: cat.name,
                                     catId: cat.id,
                                     price: getProductMaxPrice(p)
                                 });
@@ -770,71 +795,11 @@
                     }
                 });
 
-                // A) Candidatos de Misma Subcategoría (si tiene)
-                const candidateProds = [];
-                if (currentSubcat) {
-                    const sameSubcat = allCatalogProds.filter(item => item.product.subcategoria === currentSubcat);
-                    sameSubcat.forEach(item => {
-                        seenIds.add(String(item.product.id).trim());
-                        candidateProds.push({
-                            type: 'product',
-                            data: item.product,
-                            catName: item.catName,
-                            price: item.price,
-                            relevance: 1 // máxima afinidad
-                        });
-                    });
-                }
+                // Ordenar TODOS los productos de la misma categoría de MAYOR a MENOR PRECIO
+                candidateProds.sort((a, b) => b.price - a.price);
 
-                // B) Candidatos de Misma Categoría (o categorías compartidas)
-                const sameCategory = allCatalogProds.filter(item => {
-                    const pid = String(item.product.id).trim();
-                    if (seenIds.has(pid)) return false;
-                    const p = item.product;
-                    return (p.primaryCatId === currentPrimaryCat) ||
-                           (Array.isArray(p.categories) && p.categories.includes(currentPrimaryCat)) ||
-                           (Array.isArray(product.categories) && product.categories.includes(item.catId));
-                });
-                sameCategory.forEach(item => {
-                    seenIds.add(String(item.product.id).trim());
-                    candidateProds.push({
-                        type: 'product',
-                        data: item.product,
-                        catName: item.catName,
-                        price: item.price,
-                        relevance: 2 // afinidad de categoría
-                    });
-                });
-
-                // C) Fallback: Mismo Rubro para asegurar variedad
-                const sameRubro = allCatalogProds.filter(item => {
-                    const pid = String(item.product.id).trim();
-                    if (seenIds.has(pid)) return false;
-                    return (item.product.rubro || 'carpinteria').toLowerCase() === currentRubro;
-                });
-                sameRubro.forEach(item => {
-                    seenIds.add(String(item.product.id).trim());
-                    candidateProds.push({
-                        type: 'product',
-                        data: item.product,
-                        catName: item.catName,
-                        price: item.price,
-                        relevance: 3 // rubro
-                    });
-                });
-
-                // ORDENAMIENTO ESTRATÉGICO:
-                // Primero por relevancia (subcategoría > categoría > rubro),
-                // y dentro de cada grupo por PRECIO DESCENDENTE (más caro al más económico)
-                candidateProds.sort((a, b) => {
-                    if (a.relevance !== b.relevance) {
-                        return a.relevance - b.relevance;
-                    }
-                    return b.price - a.price; // De mayor a menor precio
-                });
-
-                // Unir Combos primero + Productos descendentes hasta un máximo de 8
-                const itemsToRender = [...combosToRender, ...candidateProds].slice(0, 8);
+                // Unir Combos de oferta primero + todos los productos de la categoría
+                const itemsToRender = [...combosToRender, ...candidateProds];
 
                 // Renderizar carrusel
                 const renderCarousel = (window.setupInfiniteCarousel && typeof window.setupInfiniteCarousel === 'function')

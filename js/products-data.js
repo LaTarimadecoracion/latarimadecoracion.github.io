@@ -9581,15 +9581,19 @@ const productsData = [
             },
             {
                 "id": "B4",
-                "title": "Juego de Mesa y Sillas Infantiles",
+                "shortId": "3N",
+                "title": "Mesa Y 2 Sillas Infantil (excelente Calidad)",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
-                "image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
+                "image": "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Pino",
-                        "cover_image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
+                        "description": "",
+                        "cover_image": "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
                         "images_list": [
-                            "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp"
+                            "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
+                            "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
+                            "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356059-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -9600,35 +9604,37 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 60000,
+                                "price": 100000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786925906282,
-                "primaryCatId": "Juguetes",
-                "views": 2,
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Juguetes",
-                    "sillas-sillones"
-                ],
-                "rubro": "carpinteria"
+                "quantityDiscounts": [],
+                "last_modified": 1793504671360,
+                "primaryCatId": "Juguetes",
+                "history": [],
+                "order": 1
             },
             {
                 "id": "B5",
@@ -11702,6 +11708,293 @@ const productsData = [
                     }
                 ],
                 "views": 0
+            },
+            {
+                "id": "1792887338350",
+                "shortId": "3O",
+                "title": "Mesa Mesita Auxiliar Matera Plegable",
+                "description": "",
+                "image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Vivaro",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Wengue",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797068-imagenwebp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797068-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Algarrobo",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797078-imagenwebp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797078-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 25000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Pitiribi",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797084-imagenwebp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797084-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3936801982",
+                    "mesa",
+                    "mesita",
+                    "auxiliar",
+                    "matera",
+                    "plegable"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793491876816,
+                "primaryCatId": "Mesas-madera",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338344,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
+                    }
+                ]
+            },
+            {
+                "id": "1792887338354",
+                "shortId": "3O",
+                "title": "4 Maceteros Canasta Organizadores En Junco",
+                "description": "Publicación importada desde Mercado Libre (MLA4087248102).",
+                "image": "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
+                        "images_list": [
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225824-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225831-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225839-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225845-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494240972-edit_1793494239519webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "4 Unidades",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-4087248102",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 65000,
+                                "cost_price": 88000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla4087248102",
+                    "maceteros",
+                    "canasta",
+                    "organizadores",
+                    "junco"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793494240983,
+                "primaryCatId": "Organizadores",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338346,
+                        "details": "Importado como borrador desde Mercado Libre (MLA4087248102)"
+                    }
+                ]
+            },
+            {
+                "id": "1792887338348",
+                "shortId": "3O",
+                "title": "Mesa Plegable Madera Pino Redonda",
+                "description": "Publicación importada desde Mercado Libre (MLA2083657243).",
+                "image": "img/mesas-escritorios/mesa-plegable-madera-pino-redonda/1793500205812-edit_1793500204338webp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-plegable-madera-pino-redonda/1793500205812-edit_1793500204338webp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-plegable-madera-pino-redonda/1793500205812-edit_1793500204338webp.webp",
+                            "img/mesas-escritorios/mesa-plegable-madera-pino-redonda/1793500205820-edit_1793500195512webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Redonda",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2083657243",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 37000,
+                                "cost_price": 50000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla2083657243",
+                    "mesa",
+                    "plegable",
+                    "madera",
+                    "pino",
+                    "redonda"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793500205826,
+                "primaryCatId": "Mesas-madera",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338342,
+                        "details": "Importado como borrador desde Mercado Libre (MLA2083657243)"
+                    }
+                ]
             }
         ]
     },
@@ -17688,24 +17981,40 @@ const productsData = [
             },
             {
                 "id": "1792887338354",
+                "shortId": "3O",
                 "title": "4 Maceteros Canasta Organizadores En Junco",
                 "description": "Publicación importada desde Mercado Libre (MLA4087248102).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
+                "image": "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
                 "acabados_groups": [
                     {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
+                        "images_list": [
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225824-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225831-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225839-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225845-imagenwebp.webp",
+                            "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494240972-edit_1793494239519webp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "name": "Medida Única",
-                                "price": 88000,
-                                "stock": 1,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-4087248102"
+                                "medida": "4 Unidades",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-4087248102",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 65000,
+                                "cost_price": 88000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -17717,8 +18026,23 @@ const productsData = [
                     "organizadores",
                     "junco"
                 ],
-                "last_modified": 1792887338346,
-                "optional_variant": null,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793494240983,
                 "primaryCatId": "Organizadores",
                 "history": [
                     {
@@ -17726,23 +18050,7 @@ const productsData = [
                         "timestamp": 1792887338346,
                         "details": "Importado como borrador desde Mercado Libre (MLA4087248102)"
                     }
-                ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "canastos-junco"
+                ]
             },
             {
                 "id": "41",
@@ -22334,6 +22642,194 @@ const productsData = [
         "rubro": "carpinteria",
         "products": [
             {
+                "id": "C1",
+                "title": "Banquito de Plaza",
+                "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
+                "image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
+                        "images_list": [
+                            "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
+                            "img/sillas-y-sillones/banquito-de-plaza/1782606557223-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Doble",
+                                "link": "https://www.mercadolibre.com.ar/banquito-de-plaza-para-ninos-montessori/up/MLAU3378028588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true,
+                                "stock": 0
+                            }
+                        ],
+                        "hidden": false,
+                        "stock": 0
+                    }
+                ],
+                "tags": [
+                    "sillon",
+                    "banquito",
+                    "banca",
+                    "plaza",
+                    "niños",
+                    "candy",
+                    "bar",
+                    "niños",
+                    "chicos",
+                    "decoracion"
+                ],
+                "last_modified": 1793504671360,
+                "primaryCatId": "sillas-sillones",
+                "views": 6,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 0,
+                "categories": [
+                    "carpinteria-todos",
+                    "Juguetes",
+                    "sillas-sillones"
+                ],
+                "rubro": "carpinteria",
+                "order": 0
+            },
+            {
+                "id": "B4",
+                "shortId": "3N",
+                "title": "Mesa Y 2 Sillas Infantil (excelente Calidad)",
+                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
+                "image": "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Pino",
+                        "description": "",
+                        "cover_image": "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
+                        "images_list": [
+                            "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
+                            "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
+                            "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356059-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "(Combo 1)",
+                                "link": "https://www.mercadolibre.com.ar/mesa-y-2-sillas-infantil-excelente-calidad/up/MLAU4772559126",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 100000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793504671360,
+                "primaryCatId": "Juguetes",
+                "history": [],
+                "order": 1
+            },
+            {
+                "id": "4I",
+                "title": "Perchero De Pie Torneado 8 Ganchos Niños",
+                "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
+                "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Percherito",
+                        "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                        "images_list": [
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811091-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811246-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Alto 110 cm",
+                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-8-ganchos-ninos/up/MLAU5114065953?pdp_filters=item_id:MLA2073891131",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 30000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793504671360,
+                "primaryCatId": "Juguetes",
+                "history": [],
+                "views": 3,
+                "categories": [
+                    "carpinteria-todos",
+                    "Percheros",
+                    "Juguetes"
+                ],
+                "rubro": "carpinteria",
+                "order": 2
+            },
+            {
                 "id": "4A",
                 "title": "Posa Torta De Madera Torneado Candy Bar",
                 "description": "Posa Torta De Madera Torneado Candy Bar 22 Diam X 21 Alto",
@@ -22391,7 +22887,7 @@ const productsData = [
                     "torneado",
                     "madera"
                 ],
-                "last_modified": 1783908158520,
+                "last_modified": 1793504671360,
                 "primaryCatId": "bazar-cocina",
                 "views": 0,
                 "paymentConfig": {
@@ -22410,7 +22906,60 @@ const productsData = [
                     "Juguetes",
                     "bazar-cocina"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "order": 3
+            },
+            {
+                "id": "B5",
+                "title": "Juego de Mesa y Sillas Infantiles (Redondos)",
+                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
+                "image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Pino",
+                        "cover_image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
+                        "images_list": [
+                            "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "(Combo 1)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1793504671360,
+                "primaryCatId": "Juguetes",
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "categories": [
+                    "carpinteria-todos",
+                    "Juguetes",
+                    "sillas-sillones"
+                ],
+                "rubro": "carpinteria",
+                "order": 4
             },
             {
                 "id": "81",
@@ -22431,7 +22980,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786305162256,
+                "last_modified": 1793504671360,
                 "primaryCatId": "camas-madera-pino",
                 "views": 0,
                 "paymentConfig": {
@@ -22449,7 +22998,123 @@ const productsData = [
                     "camas-madera-pino",
                     "Juguetes"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "order": 5
+            },
+            {
+                "id": "C2",
+                "shortId": "3E",
+                "title": "Silla infantil",
+                "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
+                "image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
+                        "images_list": [
+                            "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
+                            "img/sillas-y-sillones/silla-infantil/1790379461985-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Colonial (1 Unidad)",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1516454739-silla-infantil-colonial-_JM?searchVariation=189959819515#polycard_client=search-nordic&searchVariation=189959819515&search_layout=grid&position=3&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 15000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "silla",
+                    "infantil",
+                    "carpintería",
+                    "madera",
+                    "pino",
+                    "carpinteria",
+                    "rustico",
+                    "natural",
+                    "mueble",
+                    "hogar",
+                    "casa",
+                    "decoracion",
+                    "calidad",
+                    "diseño",
+                    "artesanal",
+                    "comprar",
+                    "tienda",
+                    "envio",
+                    "seguro",
+                    "fuerte",
+                    "resistente",
+                    "lindo",
+                    "util",
+                    "practico",
+                    "duradero",
+                    "silla de madera",
+                    "silla de pino",
+                    "mueble silla",
+                    "carpintería  silla",
+                    "infantil de madera",
+                    "infantil de pino",
+                    "mueble infantil",
+                    "carpintería  infantil",
+                    "carpintería de madera",
+                    "carpintería de pino",
+                    "mueble carpintería",
+                    "carpintería  carpintería",
+                    "mueble de madera",
+                    "mueble de pino",
+                    "carpinteria artesanal",
+                    "decoracion del hogar",
+                    "mueble rustico",
+                    "mueble natural",
+                    "hecho a mano",
+                    "muebles de calidad",
+                    "diseño artesanal",
+                    "mueble util",
+                    "mueble practico",
+                    "muebles para casa",
+                    "envios a todo el pais"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793504671360,
+                "primaryCatId": "Juguetes",
+                "history": [],
+                "views": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "Juguetes",
+                    "sillas-sillones"
+                ],
+                "rubro": "carpinteria",
+                "category": "Juguetes",
+                "order": 6
             },
             {
                 "id": "4E",
@@ -22685,7 +23350,7 @@ const productsData = [
                     "estanteria madera",
                     "organizador pared"
                 ],
-                "last_modified": 1786317536131,
+                "last_modified": 1793504671360,
                 "primaryCatId": "Estantes",
                 "views": 4,
                 "paymentConfig": {
@@ -22704,7 +23369,8 @@ const productsData = [
                     "Estantes",
                     "Juguetes"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "order": 7
             },
             {
                 "id": "4H",
@@ -22740,7 +23406,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1787715147118,
+                "last_modified": 1793504671360,
                 "primaryCatId": "Estantes",
                 "views": 1,
                 "paymentConfig": {
@@ -22759,7 +23425,8 @@ const productsData = [
                     "Estantes",
                     "Juguetes"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "order": 8
             },
             {
                 "id": "7D",
@@ -22816,7 +23483,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789446426308,
+                "last_modified": 1793504671360,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "views": 11,
@@ -22825,7 +23492,8 @@ const productsData = [
                     "Estantes",
                     "Juguetes"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "order": 9
             },
             {
                 "id": "D4",
@@ -23062,7 +23730,7 @@ const productsData = [
                     "banquetes",
                     "atriles"
                 ],
-                "last_modified": 1786564190405,
+                "last_modified": 1793504671360,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
                 "views": 8,
@@ -23081,70 +23749,8 @@ const productsData = [
                     "Juguetes",
                     "Mesas-madera"
                 ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "4I",
-                "title": "Perchero De Pie Torneado 8 Ganchos Niños",
-                "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
-                "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Percherito",
-                        "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                        "images_list": [
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811091-imagen.webp",
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811246-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Alto 110 cm",
-                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-8-ganchos-ninos/up/MLAU5114065953?pdp_filters=item_id:MLA2073891131",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 30000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "estimatedWeight": 2,
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 1,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788918811368,
-                "primaryCatId": "Juguetes",
-                "history": [],
-                "views": 3,
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros",
-                    "Juguetes"
-                ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "order": 10
             },
             {
                 "id": "B1",
@@ -23209,7 +23815,7 @@ const productsData = [
                     "juguete de madera",
                     "jenga madera"
                 ],
-                "last_modified": 1783637073874,
+                "last_modified": 1793504671360,
                 "primaryCatId": "Juguetes",
                 "views": 0,
                 "paymentConfig": {
@@ -23228,109 +23834,8 @@ const productsData = [
                     "carpinteria-todos",
                     "Juguetes"
                 ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "B4",
-                "title": "Juego de Mesa y Sillas Infantiles",
-                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
-                "image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Pino",
-                        "cover_image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
-                        "images_list": [
-                            "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "(Combo 1)",
-                                "link": "https://www.mercadolibre.com.ar/mesa-y-2-sillas-infantil-excelente-calidad/up/MLAU4772559126",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786925906282,
-                "primaryCatId": "Juguetes",
-                "views": 2,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Juguetes",
-                    "sillas-sillones"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "B5",
-                "title": "Juego de Mesa y Sillas Infantiles (Redondos)",
-                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
-                "image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Pino",
-                        "cover_image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
-                        "images_list": [
-                            "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "(Combo 1)",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786839116557,
-                "primaryCatId": "Juguetes",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Juguetes",
-                    "sillas-sillones"
-                ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "order": 11
             },
             {
                 "id": "B6",
@@ -23363,7 +23868,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786839110101,
+                "last_modified": 1793504671360,
                 "primaryCatId": "Juguetes",
                 "views": 1,
                 "paymentConfig": {
@@ -23381,246 +23886,8 @@ const productsData = [
                     "Juguetes",
                     "sillas-sillones"
                 ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "C1",
-                "title": "Banquito de Plaza",
-                "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
-                        "images_list": [
-                            "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
-                            "img/sillas-y-sillones/banquito-de-plaza/1782606557223-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Doble",
-                                "link": "https://www.mercadolibre.com.ar/banquito-de-plaza-para-ninos-montessori/up/MLAU3378028588",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 33000,
-                                "cost_price": 33000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "sillon",
-                    "banquito",
-                    "banca",
-                    "plaza",
-                    "niños",
-                    "candy",
-                    "bar",
-                    "niños",
-                    "chicos",
-                    "decoracion"
-                ],
-                "last_modified": 1786564211621,
-                "primaryCatId": "sillas-sillones",
-                "views": 6,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "stock": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Juguetes",
-                    "sillas-sillones"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "1792887338346",
-                "title": "Mesa Y 2 Sillas Infantil (excelente Calidad)",
-                "description": "Publicación importada desde Mercado Libre (MLA1998800625).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "name": "Medida Única",
-                                "price": 140000,
-                                "stock": 1,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1998800625"
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "borrador",
-                    "mercado libre",
-                    "mla1998800625",
-                    "mesa",
-                    "sillas",
-                    "infantil",
-                    "(excelente",
-                    "calidad)"
-                ],
-                "last_modified": 1792887338341,
-                "optional_variant": null,
-                "primaryCatId": "Juguetes",
-                "history": [
-                    {
-                        "type": "import_ml",
-                        "timestamp": 1792887338341,
-                        "details": "Importado como borrador desde Mercado Libre (MLA1998800625)"
-                    }
-                ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Juguetes"
-                ],
                 "rubro": "carpinteria",
-                "subcategoria": "mesas-sillas-ninos"
-            },
-            {
-                "id": "C2",
-                "shortId": "3E",
-                "title": "Silla infantil",
-                "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
-                        "images_list": [
-                            "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
-                            "img/sillas-y-sillones/silla-infantil/1790379461985-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Colonial (1 Unidad)",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1516454739-silla-infantil-colonial-_JM?searchVariation=189959819515#polycard_client=search-nordic&searchVariation=189959819515&search_layout=grid&position=3&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 15000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "silla",
-                    "infantil",
-                    "carpintería",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "duradero",
-                    "silla de madera",
-                    "silla de pino",
-                    "mueble silla",
-                    "carpintería  silla",
-                    "infantil de madera",
-                    "infantil de pino",
-                    "mueble infantil",
-                    "carpintería  infantil",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal",
-                    "mueble util",
-                    "mueble practico",
-                    "muebles para casa",
-                    "envios a todo el pais"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1790379461990,
-                "primaryCatId": "Juguetes",
-                "history": [],
-                "views": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Juguetes",
-                    "sillas-sillones"
-                ],
-                "rubro": "carpinteria",
-                "category": "Juguetes"
+                "order": 12
             },
             {
                 "id": "C3",
@@ -23706,7 +23973,7 @@ const productsData = [
                     "muebles de exterior",
                     "muebles de living"
                 ],
-                "last_modified": 1783907160537,
+                "last_modified": 1793504671360,
                 "primaryCatId": "Juguetes",
                 "visible": true,
                 "views": 1,
@@ -23726,7 +23993,8 @@ const productsData = [
                     "sillas-sillones"
                 ],
                 "rubro": "carpinteria",
-                "category": "Juguetes"
+                "category": "Juguetes",
+                "order": 13
             }
         ]
     },
@@ -23739,15 +24007,19 @@ const productsData = [
         "products": [
             {
                 "id": "B4",
-                "title": "Juego de Mesa y Sillas Infantiles",
+                "shortId": "3N",
+                "title": "Mesa Y 2 Sillas Infantil (excelente Calidad)",
                 "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
-                "image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
+                "image": "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Pino",
-                        "cover_image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
+                        "description": "",
+                        "cover_image": "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
                         "images_list": [
-                            "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp"
+                            "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
+                            "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
+                            "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356059-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -23758,35 +24030,37 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 60000,
+                                "price": 100000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786925906282,
-                "primaryCatId": "Juguetes",
-                "views": 2,
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Juguetes",
-                    "sillas-sillones"
-                ],
-                "rubro": "carpinteria"
+                "quantityDiscounts": [],
+                "last_modified": 1793504671360,
+                "primaryCatId": "Juguetes",
+                "history": [],
+                "order": 1
             },
             {
                 "id": "B5",
@@ -24457,84 +24731,37 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "1792887338347",
-                "title": "Mesa Mesita Auxiliar Matera Plegable",
-                "description": "Publicación importada desde Mercado Libre (MLA2074250953).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "name": "Medida Única",
-                                "price": 30000,
-                                "stock": 1,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2074250953"
-                            }
-                        ]
-                    }
-                ],
-                "tags": [
-                    "borrador",
-                    "mercado libre",
-                    "mla2074250953",
-                    "mesa",
-                    "mesita",
-                    "auxiliar",
-                    "matera",
-                    "plegable"
-                ],
-                "last_modified": 1792887338342,
-                "optional_variant": null,
-                "primaryCatId": "Mesas-madera",
-                "history": [
-                    {
-                        "type": "import_ml",
-                        "timestamp": 1792887338342,
-                        "details": "Importado como borrador desde Mercado Libre (MLA2074250953)"
-                    }
-                ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "plegables-materas"
-            },
-            {
                 "id": "1792887338348",
+                "shortId": "3O",
                 "title": "Mesa Plegable Madera Pino Redonda",
                 "description": "Publicación importada desde Mercado Libre (MLA2083657243).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
+                "image": "img/mesas-escritorios/mesa-plegable-madera-pino-redonda/1793500205812-edit_1793500204338webp.webp",
                 "acabados_groups": [
                     {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-plegable-madera-pino-redonda/1793500205812-edit_1793500204338webp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-plegable-madera-pino-redonda/1793500205812-edit_1793500204338webp.webp",
+                            "img/mesas-escritorios/mesa-plegable-madera-pino-redonda/1793500205820-edit_1793500195512webp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "name": "Medida Única",
-                                "price": 50000,
-                                "stock": 1,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2083657243"
+                                "medida": "Redonda",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2083657243",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 37000,
+                                "cost_price": 50000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -24547,8 +24774,23 @@ const productsData = [
                     "pino",
                     "redonda"
                 ],
-                "last_modified": 1792887338342,
-                "optional_variant": null,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793500205826,
                 "primaryCatId": "Mesas-madera",
                 "history": [
                     {
@@ -24556,44 +24798,114 @@ const productsData = [
                         "timestamp": 1792887338342,
                         "details": "Importado como borrador desde Mercado Libre (MLA2083657243)"
                     }
-                ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "mesas-redondas"
+                ]
             },
             {
                 "id": "1792887338350",
+                "shortId": "3O",
                 "title": "Mesa Mesita Auxiliar Matera Plegable",
-                "description": "Publicación importada desde Mercado Libre (MLA3936801982).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
+                "description": "",
+                "image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
                 "acabados_groups": [
                     {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
+                        "acabado_name": "Vivaro",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "name": "Medida Única",
-                                "price": 30000,
-                                "stock": 1,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-3936801982"
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
                             }
-                        ]
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Wengue",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797068-imagenwebp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797068-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Algarrobo",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797078-imagenwebp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797078-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 25000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Pitiribi",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797084-imagenwebp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797084-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": false,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -24606,8 +24918,23 @@ const productsData = [
                     "matera",
                     "plegable"
                 ],
-                "last_modified": 1792887338344,
-                "optional_variant": null,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793491876816,
                 "primaryCatId": "Mesas-madera",
                 "history": [
                     {
@@ -24615,23 +24942,7 @@ const productsData = [
                         "timestamp": 1792887338344,
                         "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
                     }
-                ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "plegables-materas"
+                ]
             }
         ]
     },

@@ -1,23 +1,35 @@
 {
   "id": "1792887338348",
+  "shortId": "3O",
   "title": "Mesa Plegable Madera Pino Redonda",
   "description": "Publicación importada desde Mercado Libre (MLA2083657243).",
-  "video": "",
-  "image": "img/borrador/portada-imagen.webp",
+  "image": "img/mesas-escritorios/mesa-plegable-madera-pino-redonda/1793500205812-edit_1793500204338webp.webp",
   "acabados_groups": [
     {
-      "name": "Estándar",
-      "images": [
-        "img/borrador/portada-imagen.webp"
+      "acabado_name": "",
+      "description": "",
+      "cover_image": "img/mesas-escritorios/mesa-plegable-madera-pino-redonda/1793500205812-edit_1793500204338webp.webp",
+      "images_list": [
+        "img/mesas-escritorios/mesa-plegable-madera-pino-redonda/1793500205812-edit_1793500204338webp.webp",
+        "img/mesas-escritorios/mesa-plegable-madera-pino-redonda/1793500205820-edit_1793500195512webp.webp"
       ],
       "medidas_variants": [
         {
-          "name": "Medida Única",
-          "price": 50000,
-          "stock": 1,
-          "link": "https://articulo.mercadolibre.com.ar/MLA-2083657243"
+          "medida": "Redonda",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-2083657243",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 37000,
+          "cost_price": 50000,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
         }
-      ]
+      ],
+      "hidden": false
     }
   ],
   "tags": [
@@ -30,8 +42,23 @@
     "pino",
     "redonda"
   ],
-  "last_modified": 1792887338342,
-  "optional_variant": null,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1793500205826,
   "primaryCatId": "Mesas-madera",
   "history": [
     {
@@ -40,19 +67,9 @@
       "details": "Importado como borrador desde Mercado Libre (MLA2083657243)"
     }
   ],
-  "views": 0,
-  "paymentConfig": {
-    "mode": "store",
-    "showBuyButton": true,
-    "showCartButton": true
-  },
-  "shippingConfig": {
-    "mode": "both"
-  },
-  "stock": 1,
   "categories": [
+    "carpinteria-todos",
     "Mesas-madera"
   ],
-  "rubro": "carpinteria",
-  "subcategoria": "mesas-redondas"
+  "rubro": "carpinteria"
 }
