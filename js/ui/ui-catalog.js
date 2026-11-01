@@ -668,6 +668,7 @@
 
         // Rellenar carrusel de recomendados ("Los más buscados")
         // Inteligente: prioriza combos activos que incluyan este producto, y luego productos relacionados ordenados DESCENDENTEMENTE por precio (de mayor a menor)
+        let carouselProductIds = new Set();
         const relatedList = document.getElementById('detail-related-product-list');
         if (relatedList) {
             relatedList.className = 'carousel-categories';
@@ -755,50 +756,46 @@
                 const candidateSeenIds = new Set();
                 candidateSeenIds.add(currentProdId);
 
-                // Determinar el ID o IDs de categoría del producto actual
-                const prodCategories = new Set();
-                if (currentPrimaryCat) prodCategories.add(String(currentPrimaryCat).trim());
-                if (product.category) prodCategories.add(String(product.category).trim());
-                if (Array.isArray(product.categories)) {
-                    product.categories.forEach(c => prodCategories.add(String(c).trim()));
+// Determinar la categoría concreta del producto actual (evitando categorías contenedor como '-todos')
+                let directCatId = '';
+                if (product.primaryCatId && !String(product.primaryCatId).endsWith('-todos')) {
+                    directCatId = String(product.primaryCatId).trim();
+                } else if (product.category && !String(product.category).endsWith('-todos')) {
+                    directCatId = String(product.category).trim();
+                } else if (categoryName) {
+                    const foundByCatName = sourceData.find(c => c.name === categoryName && !String(c.id).endsWith('-todos'));
+                    if (foundByCatName) directCatId = String(foundByCatName.id).trim();
+                }
+                
+                if (!directCatId && Array.isArray(product.categories)) {
+                    const validCat = product.categories.find(c => !String(c).endsWith('-todos'));
+                    if (validCat) directCatId = String(validCat).trim();
                 }
 
                 sourceData.forEach(cat => {
                     if (cat.visible === false || String(cat.id).endsWith('-todos')) return;
-                    
-                    // Comprobar si esta categoría es la del producto actual
-                    const isSameCategory = prodCategories.has(String(cat.id).trim());
-
-                    if (cat.products && cat.products.length > 0) {
+                    if (String(cat.id).trim() === directCatId && Array.isArray(cat.products)) {
                         cat.products.forEach(p => {
                             if (p.visible === false) return;
                             const pid = String(p.id).trim();
                             if (candidateSeenIds.has(pid)) return;
-
-                            // Comprobar coincidencia estricta con la categoría del producto
-                            const pCategories = Array.isArray(p.categories) ? p.categories.map(c => String(c).trim()) : [];
-                            const matchesCat = isSameCategory ||
-                                               prodCategories.has(String(p.primaryCatId || p.category).trim()) ||
-                                               pCategories.some(c => prodCategories.has(c));
-
-                            if (matchesCat) {
-                                candidateSeenIds.add(pid);
-                                candidateProds.push({
-                                    type: 'product',
-                                    data: p,
-                                    catName: cat.name,
-                                    catId: cat.id,
-                                    price: getProductMaxPrice(p)
-                                });
-                            }
+                            candidateSeenIds.add(pid);
+                            carouselProductIds.add(pid);
+                            candidateProds.push({
+                                type: 'product',
+                                data: p,
+                                catName: cat.name,
+                                catId: cat.id,
+                                price: getProductMaxPrice(p)
+                            });
                         });
                     }
                 });
 
-                // Ordenar TODOS los productos de la misma categoría de MAYOR a MENOR PRECIO
+                // Ordenar los productos de la misma categoría de MAYOR a MENOR PRECIO
                 candidateProds.sort((a, b) => b.price - a.price);
 
-                // Unir Combos de oferta primero + todos los productos de la categoría
+                // Unir Combos de oferta primero + productos de la categoría
                 const itemsToRender = [...combosToRender, ...candidateProds];
 
                 // Renderizar carrusel
@@ -860,6 +857,102 @@
                 }
             } else {
                 relatedList.innerHTML = '<p class="text-muted">No hay productos recomendados disponibles.</p>';
+            }
+
+            // 14. Grilla "Te puede interesar": Mismo rubro del producto, selección aleatoria variada
+            const randomGridSection = document.getElementById('detail-random-product-section');
+            const randomGrid = document.getElementById('detail-random-product-grid');
+            if (randomGrid && randomGridSection) {
+                randomGrid.innerHTML = '';
+                const sourceData = (typeof window.sessionProducts !== 'undefined' && window.sessionProducts.length > 0) ? window.sessionProducts : productsData;
+                
+                if (typeof sourceData !== 'undefined' && sourceData.length > 0) {
+                    const currentProdId = String(product.id || '').trim();
+                    // Rubro del producto actual (o inferido de la categoría actual o datos)
+                    let currentRubro = (product.rubro || '').toLowerCase().trim();
+                    if (!currentRubro) {
+                        const curCatObj = sourceData.find(c => c.name === categoryName || c.id === product.primaryCatId || c.id === product.category);
+                        if (curCatObj && curCatObj.rubro) currentRubro = curCatObj.rubro.toLowerCase().trim();
+                    }
+                    if (!currentRubro) currentRubro = 'carpinteria';
+
+                    // Identificar IDs que ya se están mostrando en el carrusel de arriba o son el actual
+                    const excludedIds = new Set();
+                    excludedIds.add(currentProdId);
+                    carouselProductIds.forEach(id => excludedIds.add(id));
+
+                    // Recolectar productos del MISMO RUBRO que no estén en la misma categoría directa
+                    const rubroPool = [];
+                    const poolSeenIds = new Set();
+
+                    sourceData.forEach(cat => {
+                        if (cat.visible === false || String(cat.id).endsWith('-todos')) return;
+                        if (Array.isArray(cat.products)) {
+                            cat.products.forEach(p => {
+                                if (p.visible === false) return;
+                                const pid = String(p.id).trim();
+                                if (excludedIds.has(pid) || poolSeenIds.has(pid)) return;
+
+                                // Validar estricto mismo rubro
+                                const pRubro = (p.rubro || cat.rubro || 'carpinteria').toLowerCase().trim();
+                                if (pRubro === currentRubro) {
+                                    poolSeenIds.add(pid);
+                                    rubroPool.push({
+                                        product: p,
+                                        catName: cat.name
+                                    });
+                                }
+                            });
+                        }
+                    });
+
+                    // Si el rubro tiene productos disponibles, barajar aleatoriamente (Fisher-Yates)
+                    if (rubroPool.length > 0) {
+                        for (let i = rubroPool.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [rubroPool[i], rubroPool[j]] = [rubroPool[j], rubroPool[i]];
+                        }
+
+                        // Tomar hasta 12 productos para una grilla equilibrada (2x6 móvil, 3x4 tablet, 4x3 desktop)
+                        const selectedItems = rubroPool.slice(0, 12);
+
+                        selectedItems.forEach(item => {
+                            const p = item.product;
+                            const productCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
+                            
+                            const card = document.createElement('div');
+                            card.className = 'feed-card';
+                            card.style.cursor = 'pointer';
+                            card.innerHTML = `
+                                <div class="feed-card-photo-container">
+                                    <img src="${productCover}" class="feed-card-img lazy-img" alt="${p.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                                    <div class="feed-card-gradient"></div>
+                                    <div class="feed-card-info">
+                                        <h3 class="feed-card-title">${p.title}</h3>
+                                        ${p.acabados_groups && p.acabados_groups.length > 0
+                                            ? `<span class="feed-card-variants-badge">${p.acabados_groups.length} acabados</span>`
+                                            : ''}
+                                    </div>
+                                </div>
+                            `;
+                            card.addEventListener('click', () => {
+                                if (window.showProductDetail) {
+                                    window.showProductDetail(p, item.catName);
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    const appContainer = document.getElementById('app-container');
+                                    if (appContainer) appContainer.scrollTop = 0;
+                                }
+                            });
+                            randomGrid.appendChild(card);
+                        });
+
+                        randomGridSection.style.display = 'block';
+                    } else {
+                        randomGridSection.style.display = 'none';
+                    }
+                } else {
+                    randomGridSection.style.display = 'none';
+                }
             }
         }
     }
