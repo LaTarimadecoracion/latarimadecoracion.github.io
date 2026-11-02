@@ -5283,63 +5283,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "F3",
-                "shortId": "3D",
-                "title": "Mesita de luz - Angosta",
-                "description": "Mesita de luz - Angosta",
-                "image": "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "",
-                        "cover_image": "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
-                        "images_list": [
-                            "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
-                            "img/hogar/mesita-de-luz-angosta/1790378658840-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Mesita",
-                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-1-cajon/up/MLAU5310445256",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 18000,
-                                "cost_price": 18000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1793479341261,
-                "primaryCatId": "camas-madera-pino",
-                "history": [],
-                "views": 5
-            },
-            {
                 "id": "F4",
                 "title": "Tender",
                 "description": "",
@@ -21555,7 +21498,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 18000,
+                                "price": 22000,
                                 "cost_price": 18000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21583,11 +21526,10 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586887358,
+                "last_modified": 1793640925719,
                 "primaryCatId": "camas-madera-pino",
                 "history": [],
-                "views": 5,
-                "order": 0
+                "rubro": "carpinteria"
             },
             {
                 "id": "1793239693996",

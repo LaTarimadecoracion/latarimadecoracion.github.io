@@ -93,8 +93,8 @@
     </div>
 
     <!-- Main App Container (SPA Views) -->
-    <!-- Cintillo Superior de Confianza (Punto 5 UX) -->
-    <div id="trust-top-bar" class="trust-top-bar" style="background: #2a241e; color: #fdfbf7; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.3px; line-height: 1; padding: 6px 12px; text-align: center; z-index: 1002; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+    <!-- Cintillo Superior de Confianza (Punto 5 UX con Auto-ocultado y Botón Cerrar) -->
+    <div id="trust-top-bar" class="trust-top-bar" style="background: #2a241e; color: #fdfbf7; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.3px; line-height: 1; padding: 6px 36px 6px 12px; text-align: center; z-index: 1002; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; max-height: 40px; opacity: 1; transition: max-height 0.4s ease, opacity 0.35s ease, padding 0.4s ease;">
         
         <!-- Vista Desktop: 3 pilares juntos alineados -->
         <div class="trust-bar-desktop" style="display: none; align-items: center; justify-content: center; gap: 20px;">
@@ -121,6 +121,11 @@
                 <span>Somos Fabricantes</span>
             </span>
         </div>
+
+        <!-- Botón para ocultar manualmente la barra -->
+        <button type="button" id="btn-close-trust-bar" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; padding: 2px; cursor: pointer; color: #94a3b8; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; transition: color 0.15s ease;" title="Ocultar barra">
+            <span class="material-symbols-outlined" style="font-size: 15px;">close</span>
+        </button>
     </div>
 
     <header class="main-header-bar" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; gap: 8px; background: var(--bg-color); position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); width: 100%; box-sizing: border-box;">
@@ -259,32 +264,7 @@
             <!-- Contenedor de ancho completo para Configuración de Medida en Cortes a Medida -->
             <div id="detail-custom-cutting-bottom-container" style="display: none; width: 100%; box-sizing: border-box; margin-bottom: 1.5rem;"></div>
 
-            <!-- 9. Mini-Tarjetas Informativas (Formas de Pago / Envíos / Garantía) -->
-            <div class="info-badges-grid" style="margin-top: 1.25rem; margin-bottom: 1.25rem; width: 100%; box-sizing: border-box;">
-                <button type="button" id="btn-product-modal-payments" title="Ver formas de pago">
-                    <span class="material-symbols-outlined" style="color: #16a34a; font-size: 20px; flex-shrink: 0;">payments</span>
-                    <div style="min-width: 0;">
-                        <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Formas de Pago</div>
-                        <div style="font-size: 0.68rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Transferencia / Link</div>
-                    </div>
-                </button>
 
-                <button type="button" id="btn-product-modal-shipping" title="Ver envíos y retiros">
-                    <span class="material-symbols-outlined" style="color: #2563eb; font-size: 20px; flex-shrink: 0;">local_shipping</span>
-                    <div style="min-width: 0;">
-                        <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Envíos y Retiro</div>
-                        <div style="font-size: 0.68rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Taller Hurlingham / CP</div>
-                    </div>
-                </button>
-
-                <button type="button" id="btn-product-modal-warranty" title="Ver calidad y garantía">
-                    <span class="material-symbols-outlined" style="color: #8b5cf6; font-size: 20px; flex-shrink: 0;">verified</span>
-                    <div style="min-width: 0;">
-                        <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Calidad & Garantía</div>
-                        <div style="font-size: 0.65rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Madera Maciza 100%</div>
-                    </div>
-                </button>
-            </div>
 
                 <!-- 10. Descripción del Producto -->
                 <div style="background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.1rem; margin-bottom: 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
@@ -294,27 +274,28 @@
                     <p id="detail-description" class="detail-description product-description-text" style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0; white-space: pre-line;"></p>
                 </div>
 
-                <!-- 11. Especificaciones Rápidas: Material - Fabricación - Garantía -->
-                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1rem; margin-bottom: 1.5rem;">
-                    <div class="especificaciones-rapidas-grid" style="display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 8px !important; text-align: center !important; width: 100% !important;">
-                        <div>
-                            <div style="display: flex; justify-content: center; align-items: center; height: 26px;">
-                                <span class="material-symbols-outlined" style="font-size: 22px; color: #b45309;">forest</span>
-                            </div>
-                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; margin-top: 2px;">Material</div>
-                            <div style="font-size: 0.7rem; color: #64748b;">100% Madera Maciza</div>
-                        </div>
-                        <div>
-                            <div style="font-size: 1.2rem;">🔨</div>
-                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; margin-top: 2px;">Fabricación</div>
-                            <div style="font-size: 0.7rem; color: #64748b;">Artesanal Propia</div>
-                        </div>
-                        <div>
-                            <div style="font-size: 1.2rem;">🛡️</div>
-                            <div style="font-size: 0.75rem; font-weight: 800; color: #0f172a; margin-top: 2px;">Garantía</div>
-                            <div style="font-size: 0.7rem; color: #64748b;">Directa de Taller</div>
-                        </div>
+                <!-- 11. Ficha de Detalles del Producto (Estilo Mercado Libre con Acordeón) -->
+                <div id="product-specs-card" style="display: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.15rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
+                    <!-- Título de la Ficha -->
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+                        <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin: 0; display: flex; align-items: center; gap: 7px;">
+                            <span class="material-symbols-outlined" style="font-size: 20px; color: var(--primary-color, #c0510a);">list_alt</span>
+                            <span>Características del producto</span>
+                        </h4>
+                        <span style="font-size: 0.7rem; font-weight: 700; color: #059669; background: #ecfdf5; padding: 2px 7px; border-radius: 6px; border: 1px solid #a7f3d0;">Directo de Fábrica</span>
                     </div>
+
+                    <!-- Primeras 2 filas fijas -->
+                    <div id="product-specs-primary" style="display: flex; flex-direction: column; gap: 8px;"></div>
+
+                    <!-- Filas restantes desplegables -->
+                    <div id="product-specs-extended" style="display: none; flex-direction: column; gap: 8px; margin-top: 8px;"></div>
+
+                    <!-- Botón Ver más detalles / Menos detalles -->
+                    <button type="button" id="btn-toggle-product-specs" style="display: none; width: 100%; margin-top: 0.85rem; padding: 0.55rem; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; font-size: 0.8rem; font-weight: 700; color: #0284c7; cursor: pointer; align-items: center; justify-content: center; gap: 5px; transition: all 0.2s ease;">
+                        <span id="btn-toggle-specs-text">Ver más detalles</span>
+                        <span id="btn-toggle-specs-icon" class="material-symbols-outlined" style="font-size: 18px; transition: transform 0.2s ease;">expand_more</span>
+                    </button>
                 </div>
 
                 <!-- 12. Botón de Consultar por WhatsApp y Copiar Enlace -->
@@ -780,8 +761,44 @@
     <script src="js/modules/videos.js?v=2" defer></script>
     <script src="js/ui/pwa-banner.js?v=2" defer></script>
     <script>
-        // Lógica de rotación suave del cintillo de confianza para móviles (Punto 5 UX)
+        // Lógica del cintillo de confianza: Rotativo, Cierre manual y Auto-ocultado (Punto 5 UX)
         (function() {
+            const barEl = document.getElementById('trust-top-bar');
+            if (!barEl) return;
+
+            // Si ya fue cerrada manualmente en esta sesión, no mostrarla
+            if (sessionStorage.getItem('trustBarDismissed') === 'true') {
+                barEl.style.display = 'none';
+                return;
+            }
+
+            const hideBar = (manual = false) => {
+                barEl.style.opacity = '0';
+                barEl.style.maxHeight = '0';
+                barEl.style.padding = '0';
+                if (manual) {
+                    try { sessionStorage.setItem('trustBarDismissed', 'true'); } catch(e) {}
+                }
+                setTimeout(() => {
+                    barEl.style.display = 'none';
+                }, 400);
+            };
+
+            // Botón de cierre manual
+            const btnClose = document.getElementById('btn-close-trust-bar');
+            if (btnClose) {
+                btnClose.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    hideBar(true);
+                });
+            }
+
+            // Auto-ocultado suave luego de 10 segundos para dejar la web limpia
+            setTimeout(() => {
+                hideBar(false);
+            }, 10000);
+
+            // Rotativo suave en móviles
             const items = [
                 { text: 'Somos Fabricantes', icon: 'carpenter', color: '#eab308' },
                 { text: 'Envíos a todo el país', icon: 'local_shipping', color: '#38bdf8' },
@@ -791,7 +808,11 @@
             const mobileEl = document.getElementById('trust-mobile-item');
             if (!mobileEl) return;
 
-            setInterval(() => {
+            const rotateInterval = setInterval(() => {
+                if (barEl.style.display === 'none' || barEl.style.opacity === '0') {
+                    clearInterval(rotateInterval);
+                    return;
+                }
                 currentIndex = (currentIndex + 1) % items.length;
                 mobileEl.style.opacity = '0';
                 mobileEl.style.transform = 'translateY(-4px)';
@@ -802,7 +823,7 @@
                     mobileEl.style.opacity = '1';
                     mobileEl.style.transform = 'translateY(0)';
                 }, 250);
-            }, 3200);
+            }, 3000);
         })();
     </script>
     <script src="js/apps/assistant.js?v=7" defer></script>

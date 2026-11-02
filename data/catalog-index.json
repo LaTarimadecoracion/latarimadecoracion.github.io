@@ -2039,12 +2039,9 @@
     "title": "Mesita de luz - Angosta",
     "rubro": "carpinteria",
     "primaryCatId": "camas-madera-pino",
-    "categories": [
-      "carpinteria-todos",
-      "camas-madera-pino"
-    ],
+    "categories": [],
     "subcategoria": "",
-    "price": 18000,
+    "price": 22000,
     "image": "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
     "tags": [],
     "visible": true,

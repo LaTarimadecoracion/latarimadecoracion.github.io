@@ -1160,6 +1160,11 @@ window.addEventListener('message', (event) => {
         document.getElementById('admin-opt-options').value = optV.options ? optV.options.join(', ') : '';
         const tagsInput = document.getElementById('admin-tags');
         if (tagsInput) tagsInput.value = existingProd?.tags ? existingProd.tags.join(', ') : '';
+        // Campos de Ficha Técnica personalizada
+        const matInput = document.getElementById('admin-material');
+        if (matInput) matInput.value = existingProd?.material || '';
+        const espInput = document.getElementById('admin-espesor');
+        if (espInput) espInput.value = existingProd?.espesor || existingProd?.grosor || '';
 
         // Configuración de Envíos del Producto
         const shipConf = existingProd?.shippingConfig || {};
@@ -1507,6 +1512,10 @@ window.addEventListener('message', (event) => {
                 last_modified: Date.now()
             };
 
+            const pMaterial = document.getElementById('admin-material')?.value?.trim() || '';
+            if (pMaterial) product.material = pMaterial;
+            const pEspesor = document.getElementById('admin-espesor')?.value?.trim() || '';
+            if (pEspesor) product.espesor = pEspesor;
             if (optLabel && optOptions.length > 0) {
                 product.optional_variant = { label: optLabel, options: optOptions };
             }

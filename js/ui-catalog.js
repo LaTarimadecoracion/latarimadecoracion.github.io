@@ -311,7 +311,162 @@
         window._activeCustomCutsList = customCutsList;
 
         // Helper para actualizar compra y precios usando el módulo catalog-actions.js
+
+        // --- 📋 Ficha de Detalles / Características del Producto estilo Mercado Libre con Acordeón ---
+        const renderProductSpecs = (activeGrupo, currentMedidaName) => {
+            const cardEl = document.getElementById('product-specs-card');
+            const primaryEl = document.getElementById('product-specs-primary');
+            const extendedEl = document.getElementById('product-specs-extended');
+            const toggleBtn = document.getElementById('btn-toggle-product-specs');
+            const toggleText = document.getElementById('btn-toggle-specs-text');
+            const toggleIcon = document.getElementById('btn-toggle-specs-icon');
+
+            if (!cardEl || !primaryEl || !extendedEl) return;
+
+            const rows = [];
+
+            // 1. Madera / Material (solo si aplica o se deduce)
+            const catLower = (categoryName || '').toLowerCase();
+            const titleLower = (product.title || '').toLowerCase();
+            let materialVal = '';
+            if (product.material) {
+                materialVal = product.material;
+            } else if (titleLower.includes('algarrobo') || catLower.includes('algarrobo')) {
+                materialVal = 'Madera Maciza de Algarrobo';
+            } else if (titleLower.includes('eucalipto') || catLower.includes('eucalipto')) {
+                materialVal = 'Madera Maciza de Eucalipto';
+            } else if (titleLower.includes('paraíso') || titleLower.includes('paraiso')) {
+                materialVal = 'Madera Maciza de Paraíso';
+            } else if (titleLower.includes('melamina') || titleLower.includes('mdf')) {
+                materialVal = 'Placa de Madera / MDF';
+            } else if (catLower.includes('cajones') || product.isCajonProduct) {
+                materialVal = 'Fenólico / Madera Multilaminada';
+            } else {
+                materialVal = 'Madera Maciza de Pino Seleccionado';
+            }
+            if (materialVal) {
+                rows.push({
+                    icon: 'forest',
+                    label: 'Material principal',
+                    val: materialVal
+                });
+            }
+
+            // 2. Medidas / Dimensiones (solo si hay medida activa o cotas en el producto)
+            let medidaVal = currentMedidaName ? currentMedidaName.trim() : '';
+            if (medidaVal && medidaVal.toLowerCase() !== 'estándar' && medidaVal.toLowerCase() !== 'estandar' && medidaVal.toLowerCase() !== 'único' && medidaVal.toLowerCase() !== 'unico') {
+                rows.push({
+                    icon: 'straighten',
+                    label: 'Medidas / Dimensiones',
+                    val: medidaVal
+                });
+            } else if (product.medidas_texto) {
+                rows.push({
+                    icon: 'straighten',
+                    label: 'Medidas / Dimensiones',
+                    val: product.medidas_texto
+                });
+            }
+
+            // 3. Acabado / Terminación (solo si está cargado o definido)
+            const acabadoName = activeGrupo ? (activeGrupo.acabado_name || '') : '';
+            if (acabadoName && acabadoName !== 'Único' && acabadoName !== 'unico' && acabadoName.toLowerCase() !== 'estándar') {
+                rows.push({
+                    icon: 'format_paint',
+                    label: 'Acabado / Lustre',
+                    val: acabadoName
+                });
+            }
+
+            // 4. Espesor / Grosor (si está cargado en el producto)
+            if (product.espesor || product.grosor) {
+                rows.push({
+                    icon: 'line_weight',
+                    label: 'Espesor / Grosor',
+                    val: product.espesor || product.grosor
+                });
+            }
+
+            // 5. Estructura y Armado
+            if (product.armado) {
+                rows.push({
+                    icon: 'handyman',
+                    label: 'Estructura y armado',
+                    val: product.armado
+                });
+            } else {
+                rows.push({
+                    icon: 'handyman',
+                    label: 'Estructura y armado',
+                    val: 'Listo para usar'
+                });
+            }
+
+            // 6. Fabricación y Origen
+            rows.push({
+                icon: 'precision_manufacturing',
+                label: 'Origen / Fabricación',
+                val: 'Fabricación propia artesanal (Hurlingham, Bs. As.)'
+            });
+
+            // Si hay menos de 1 fila válida no mostrar
+            if (rows.length === 0) {
+                cardEl.style.display = 'none';
+                return;
+            }
+
+            // Helper para renderizar cada fila
+            const createRowHtml = (r) => `
+                <div style="display: flex; align-items: flex-start; justify-content: space-between; padding: 6px 10px; background: #f8fafc; border-radius: 8px; font-size: 0.82rem; gap: 8px;">
+                    <div style="display: flex; align-items: center; gap: 6px; color: #475569; font-weight: 600; min-width: 140px;">
+                        <span class="material-symbols-outlined" style="font-size: 17px; color: #64748b; flex-shrink: 0;">${r.icon}</span>
+                        <span>${r.label}</span>
+                    </div>
+                    <div style="font-weight: 700; color: #0f172a; text-align: right; word-break: break-word;">
+                        ${r.val}
+                    </div>
+                </div>
+            `;
+
+            // Primeras 2 filas fijas
+            const primaryRows = rows.slice(0, 2);
+            primaryEl.innerHTML = primaryRows.map(createRowHtml).join('');
+
+            // Filas extendidas (a partir de la 3era)
+            const extendedRows = rows.slice(2);
+            if (extendedRows.length > 0) {
+                extendedEl.innerHTML = extendedRows.map(createRowHtml).join('');
+                extendedEl.style.display = 'none'; // colapsado por defecto
+
+                if (toggleBtn) {
+                    toggleBtn.style.display = 'inline-flex';
+                    if (toggleText) toggleText.textContent = `Ver más detalles (${extendedRows.length})`;
+                    if (toggleIcon) toggleIcon.style.transform = 'rotate(0deg)';
+
+                    toggleBtn.onclick = () => {
+                        const isExpanded = extendedEl.style.display === 'flex';
+                        if (isExpanded) {
+                            extendedEl.style.display = 'none';
+                            if (toggleText) toggleText.textContent = `Ver más detalles (${extendedRows.length})`;
+                            if (toggleIcon) toggleIcon.style.transform = 'rotate(0deg)';
+                        } else {
+                            extendedEl.style.display = 'flex';
+                            if (toggleText) toggleText.textContent = 'Ver menos detalles';
+                            if (toggleIcon) toggleIcon.style.transform = 'rotate(180deg)';
+                        }
+                    };
+                }
+            } else {
+                extendedEl.innerHTML = '';
+                extendedEl.style.display = 'none';
+                if (toggleBtn) toggleBtn.style.display = 'none';
+            }
+
+            cardEl.style.display = 'block';
+        };
+
         const updateBuyButton = (grupoParam, medidaNameParam) => {
+            renderProductSpecs(grupoParam, medidaNameParam);
             if (typeof window.updateProductBuyButton === 'function') {
                 window.updateProductBuyButton({
                     product,

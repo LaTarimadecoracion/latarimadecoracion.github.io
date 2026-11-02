@@ -113,6 +113,68 @@ window.initProductsAdmin = function() {
 
 };
 
+    // Helper para obtener la variante principal/representativa de un producto
+    function getProductMainVariantInfo(prod) {
+        if (!prod) return null;
+        if (prod.acabados_groups && Array.isArray(prod.acabados_groups)) {
+            for (let gIdx = 0; gIdx < prod.acabados_groups.length; gIdx++) {
+                const g = prod.acabados_groups[gIdx];
+                if (g && Array.isArray(g.medidas_variants)) {
+                    const mIdx = g.medidas_variants.findIndex(m => m && m.default);
+                    if (mIdx !== -1) {
+                        return { variant: g.medidas_variants[mIdx], groupIndex: gIdx, variantIndex: mIdx, hasMedidas: true };
+                    }
+                }
+            }
+            for (let gIdx = 0; gIdx < prod.acabados_groups.length; gIdx++) {
+                const g = prod.acabados_groups[gIdx];
+                if (g && Array.isArray(g.medidas_variants) && g.medidas_variants.length > 0) {
+                    return { variant: g.medidas_variants[0], groupIndex: gIdx, variantIndex: 0, hasMedidas: true };
+                }
+            }
+            if (prod.acabados_groups.length > 0) {
+                return { variant: null, groupIndex: 0, variantIndex: -1, hasMedidas: false };
+            }
+        }
+        return null;
+    }
+
+    // Helper para actualizar precio o visibilidad en TODAS las copias de sessionProducts por ID
+    function updateProductPriceAndVisibility(productId, newPrice, newShowPrice) {
+        if (!Array.isArray(sessionProducts)) return;
+        sessionProducts.forEach(cat => {
+            if (cat && Array.isArray(cat.products)) {
+                cat.products.forEach(p => {
+                    if (p && p.id === productId) {
+                        if (newPrice !== null && newPrice !== undefined) {
+                            p.price = newPrice !== '' ? parseFloat(newPrice) : '';
+                        }
+                        const vInfo = getProductMainVariantInfo(p);
+                        if (vInfo && vInfo.variant) {
+                            if (newPrice !== null && newPrice !== undefined) {
+                                vInfo.variant.price = newPrice !== '' ? parseFloat(newPrice) : '';
+                            }
+                            if (newShowPrice !== null && newShowPrice !== undefined) {
+                                vInfo.variant.showPrice = newShowPrice;
+                            }
+                        } else if (vInfo && vInfo.groupIndex !== undefined) {
+                            const g = p.acabados_groups[vInfo.groupIndex];
+                            if (!g.medidas_variants) g.medidas_variants = [];
+                            const newVar = {
+                                medida: 'Estándar',
+                                price: (newPrice !== null && newPrice !== undefined && newPrice !== '') ? parseFloat(newPrice) : '',
+                                showPrice: (newShowPrice !== null && newShowPrice !== undefined) ? newShowPrice : true,
+                                default: true,
+                                hidden: false
+                            };
+                            g.medidas_variants.push(newVar);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
     function renderAdminProducts() {
         const oldTableBody = document.getElementById('admin-products-table-body');
         if (!oldTableBody) return;
@@ -211,7 +273,7 @@ window.initProductsAdmin = function() {
         if (paginated.length === 0) {
             tableBody.innerHTML = `
                 <tr>
-                    <td colspan="5" style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                    <td colspan="6" style="text-align: center; padding: 2rem; color: var(--text-muted);">
                         <span class="material-symbols-outlined" style="font-size: 36px; opacity: 0.3; display: block; margin-bottom: 0.5rem;">search_off</span>
                         No se encontraron productos.
                     </td>
@@ -230,6 +292,15 @@ window.initProductsAdmin = function() {
             row.style.borderBottom = '1px solid var(--admin-border-color)';
             
             const isGhost = isGhostProduct(p);
+
+            const vInfo = getProductMainVariantInfo(p);
+            const rawPrice = (vInfo && vInfo.variant && vInfo.variant.price !== undefined && vInfo.variant.price !== '')
+                ? vInfo.variant.price
+                : (p.price !== undefined && p.price !== '' ? p.price : '');
+            const currentPriceVal = rawPrice !== '' ? rawPrice : '';
+            const isPriceVisible = (vInfo && vInfo.variant && vInfo.variant.showPrice !== undefined)
+                ? (vInfo.variant.showPrice !== false)
+                : true;
 
             row.innerHTML = `
                 <td style="padding: 0.75rem 1rem; vertical-align: middle;">
@@ -253,6 +324,29 @@ window.initProductsAdmin = function() {
                     <span style="font-weight: 700; color: var(--admin-accent); font-size: 0.88rem;">
                         ${p.acabados_groups ? p.acabados_groups.length : 1}
                     </span>
+                </td>
+                <td style="padding: 0.75rem 0.75rem; vertical-align: middle;">
+                    <div class="admin-quick-price-container" style="display: inline-flex; align-items: center; gap: 4px; background: var(--admin-surface-hover); padding: 3px 6px; border-radius: 6px; border: 1px solid var(--admin-border-color);">
+                        <span style="font-weight: 700; color: var(--admin-text-muted); font-size: 0.82rem; user-select: none;">$</span>
+                        <input type="number"
+                               class="admin-quick-price-input"
+                               data-prod-id="${p.id}"
+                               value="${currentPriceVal}"
+                               placeholder="Sin precio"
+                               title="Editar precio de venta (Enter o desenfocar para guardar)"
+                               style="width: 85px; padding: 3px 5px; font-size: 0.85rem; font-weight: 700; border: 1px solid transparent; border-radius: 4px; background: transparent; color: var(--admin-text-main); outline: none; transition: all 0.2s ease;"
+                               onfocus="this.style.background='var(--admin-surface)'; this.style.borderColor='var(--admin-accent)';"
+                               onblur="this.style.background='transparent'; this.style.borderColor='transparent';"
+                               min="0" step="any">
+                        <button type="button"
+                                class="btn-toggle-quick-price-vis"
+                                data-prod-id="${p.id}"
+                                data-visible="${isPriceVisible ? 'true' : 'false'}"
+                                title="${isPriceVisible ? 'Precio visible al cliente (Clic para ocultar)' : 'Precio oculto al cliente (Clic para mostrar)'}"
+                                style="background: none; border: none; cursor: pointer; padding: 2px; display: inline-flex; align-items: center; justify-content: center; color: ${isPriceVisible ? 'var(--admin-accent)' : 'var(--admin-text-muted)'}; border-radius: 4px; transition: color 0.15s ease;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">${isPriceVisible ? 'visibility' : 'visibility_off'}</span>
+                        </button>
+                    </div>
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: middle; text-align: center;">
                     <div style="display: flex; gap: 0.4rem; justify-content: center; align-items: center;">
@@ -289,6 +383,60 @@ window.initProductsAdmin = function() {
                     row.classList.remove('dragging');
                     row.setAttribute('draggable', 'false');
                 });
+            }
+
+            // Listener para alternar visibilidad de precio (ojito)
+            const btnPriceVis = row.querySelector('.btn-toggle-quick-price-vis');
+            if (btnPriceVis) {
+                btnPriceVis.addEventListener('click', async (e) => {
+                    e.stopPropagation();
+                    const prodId = btnPriceVis.getAttribute('data-prod-id');
+                    const currentlyVis = btnPriceVis.getAttribute('data-visible') === 'true';
+                    const nextVis = !currentlyVis;
+                    
+                    updateProductPriceAndVisibility(prodId, null, nextVis);
+                    btnPriceVis.setAttribute('data-visible', nextVis ? 'true' : 'false');
+                    const icon = btnPriceVis.querySelector('.material-symbols-outlined');
+                    if (icon) icon.textContent = nextVis ? 'visibility' : 'visibility_off';
+                    btnPriceVis.style.color = nextVis ? 'var(--admin-accent)' : 'var(--admin-text-muted)';
+                    btnPriceVis.title = nextVis ? 'Precio visible al cliente (Clic para ocultar)' : 'Precio oculto al cliente (Clic para mostrar)';
+                    
+                    showAdminToast(nextVis ? '👁️ Precio visible en la tienda' : '👁️‍🗨️ Precio oculto en la tienda');
+                    await saveProductsToServer();
+                });
+            }
+
+            // Listener para editar precio ultra-rápido (input numérico)
+            const priceInput = row.querySelector('.admin-quick-price-input');
+            if (priceInput) {
+                let initialVal = priceInput.value.trim();
+                const saveQuickPrice = async () => {
+                    const newVal = priceInput.value.trim();
+                    if (newVal === initialVal) return;
+                    initialVal = newVal;
+                    
+                    const prodId = priceInput.getAttribute('data-prod-id');
+                    updateProductPriceAndVisibility(prodId, newVal, null);
+                    
+                    priceInput.style.borderColor = '#10b981';
+                    priceInput.style.background = '#ecfdf5';
+                    setTimeout(() => {
+                        priceInput.style.borderColor = 'transparent';
+                        priceInput.style.background = 'transparent';
+                    }, 1200);
+                    
+                    showAdminToast('⚡ Precio actualizado: $' + (newVal || '0'));
+                    await saveProductsToServer();
+                };
+
+                priceInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        priceInput.blur();
+                    }
+                });
+                priceInput.addEventListener('change', saveQuickPrice);
+                priceInput.addEventListener('blur', saveQuickPrice);
             }
 
             row.querySelector('.btn-toggle-prod-visibility').addEventListener('click', async (e) => {
