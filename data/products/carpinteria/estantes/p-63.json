@@ -1,11 +1,13 @@
 {
   "id": "63",
-  "title": "Librero",
+  "shortId": "3N",
+  "title": "Estante Librero Especiero",
   "description": "Organización creativa y estilo para tus paredes.",
   "image": "img/estantes/librero/librero.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/estantes/librero/librero.webp",
       "images_list": [
         "img/estantes/librero/librero.webp"
@@ -15,87 +17,132 @@
           "medida": "100 (1 Unidad)",
           "link": "https://articulo.mercadolibre.com.ar/MLA-1546524765-estante-flotante-nordico-madera-100x10cm-la-tarima-_JM",
           "default": true,
-          "volumeDiscounts": [],
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
           "cost_price": "",
-          "weight": 2.5,
-          "showPrice": true
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "100 (Combo x2)",
           "link": "",
           "default": false,
-          "volumeDiscounts": [],
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
           "cost_price": "",
-          "weight": 2.5,
-          "showPrice": true
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "100 (Combo x3)",
           "link": "",
           "default": false,
-          "volumeDiscounts": [],
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
           "cost_price": "",
-          "weight": 2.5,
-          "showPrice": true
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "80 (1 Unidad)",
           "link": "https://articulo.mercadolibre.com.ar/MLA-1546434559-estante-flotante-nordico-madera-80x10cm-la-tarima-_JM",
           "default": false,
-          "volumeDiscounts": [],
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
           "cost_price": "",
-          "weight": 2.5,
-          "showPrice": true
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "80 (Combo x2)",
           "link": "",
           "default": false,
-          "volumeDiscounts": [],
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
           "cost_price": "",
-          "weight": 2.5,
-          "showPrice": true
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "80 (Combo x3)",
           "link": "",
           "default": false,
-          "volumeDiscounts": [],
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
           "cost_price": "",
-          "weight": 2.5,
-          "showPrice": true
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "60 (1 Unidad)",
           "link": "https://articulo.mercadolibre.com.ar/MLA-2066246148-estante-flotante-nordico-madera-60x10cm-la-tarima-_JM",
           "default": false,
-          "volumeDiscounts": [],
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
           "cost_price": "",
-          "weight": 2.5,
-          "showPrice": true
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "60 (Combo x2)",
           "link": "",
           "default": false,
-          "volumeDiscounts": [],
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
           "cost_price": "",
-          "weight": 2.5,
-          "showPrice": true
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "60 (Combo x3)",
           "link": "",
           "default": false,
-          "volumeDiscounts": [],
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": "",
           "cost_price": "",
-          "weight": 2.5,
-          "showPrice": true
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true
         }
-      ]
+      ],
+      "hidden": false
     }
   ],
-  "views": 0,
   "tags": [
     "estante",
     "estantes",
@@ -122,21 +169,29 @@
     "mueble para libros",
     "estanteria madera"
   ],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 3,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
   "paymentConfig": {
     "transferEnabled": true,
     "linkEnabled": false,
     "creditEnabled": false
   },
-  "shippingConfig": {
-    "logisticaEnabled": true,
-    "fleteEnabled": true,
-    "otroEnabled": false,
-    "logisticaMaxUnits": 3
-  },
+  "quantityDiscounts": [],
+  "last_modified": 1793586175821,
+  "primaryCatId": "Estantes",
+  "history": [],
   "categories": [
     "carpinteria-todos",
     "Estantes"
   ],
-  "primaryCatId": "Estantes",
   "rubro": "carpinteria"
 }

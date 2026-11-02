@@ -453,7 +453,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 4. Popstate event listener for native back/forward navigation support
-    window.addEventListener('popstate', () => {
+    window.addEventListener('popstate', (e) => {
+        // Interceptar modales abiertos antes de cambiar de vista en navegación móvil (Puntos 12, 13 y 91)
+        const openLightbox = document.getElementById('product-lightbox-modal');
+        if (openLightbox && openLightbox.style.display !== 'none') {
+            openLightbox.style.display = 'none';
+            if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll(true);
+            return;
+        }
+
+        const openCheckoutModal = document.getElementById('offer-payment-modal-overlay');
+        if (openCheckoutModal) {
+            openCheckoutModal.remove();
+            if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll(true);
+            return;
+        }
+
+        const openDeliveryModal = document.getElementById('delivery-modal-overlay');
+        if (openDeliveryModal) {
+            openDeliveryModal.remove();
+            if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll(true);
+            return;
+        }
+
+        const openInfoModal = document.querySelector('.delivery-info-overlay');
+        if (openInfoModal) {
+            openInfoModal.remove();
+            if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll(true);
+            return;
+        }
         const urlParams = new URLSearchParams(window.location.search);
         
         let shortCode = urlParams.get('s');

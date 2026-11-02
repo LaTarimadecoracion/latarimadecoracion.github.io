@@ -644,6 +644,7 @@
                 // Realizar cálculo de costos de envío y promociones de Flete Gratis
                 let productsSubtotal = 0;
                 let hasAnyPrice = false;
+                let cartTotalSavings = 0;
 
                 let logisticaAvailable = true;
                 let fleteAvailable = true;
@@ -659,6 +660,22 @@
                         productsSubtotal += item.price * qty;
                         hasAnyPrice = true;
                     }
+
+                    // Punto 61: Calcular ahorro si es oferta/combo o tiene descuento por volumen
+                    try {
+                        const checkProd = findCartProductDetails(item);
+                        if (checkProd) {
+                            if (checkProd.subtotalPrice && checkProd.offerPrice && checkProd.subtotalPrice > checkProd.offerPrice) {
+                                cartTotalSavings += (checkProd.subtotalPrice - checkProd.offerPrice) * qty;
+                            } else if (typeof window.getBestDiscountRule === 'function') {
+                                const discRule = window.getBestDiscountRule(checkProd, qty);
+                                if (discRule && discRule.discountPercent > 0 && item.price) {
+                                    const baseVal = (item.price / (1 - (discRule.discountPercent / 100)));
+                                    cartTotalSavings += (baseVal - item.price) * qty;
+                                }
+                            }
+                        }
+                    } catch(e) {}
 
                     // Verificar promos y bultos del producto original y variante específica
                     const origProd = findCartProductDetails(item);
@@ -856,7 +873,7 @@
                                                     ${isFlexFreeByQty ? '<span class="ml-shipping-badge-free" style="background:#dcfce7; color:#166534;">¡Envío GRATIS!</span>' : '<span class="ml-shipping-badge-free">Rápido</span>'}
                                                 </div>
                                                 <div class="ml-shipping-sub">
-                                                    ${hasValidCp ? (logisticaAvailable ? (isFlexFreeByQty ? '¡Entrega bonificada por cantidad!' : `Entrega a domicilio (${totalLogisticaPackages > 1 ? totalLogisticaPackages + ' bultos' : 'bulto estándar'})`) : 'No disponible para tu zona') : 'Ingresá tu CP para cotizar'}
+                                                    ${hasValidCp ? (logisticaAvailable ? (isFlexFreeByQty ? '¡Entrega bonificada por cantidad!' : `Entrega a domicilio (${totalLogisticaPackages > 1 ? totalLogisticaPackages + ' bultos' : 'bulto estándar'})`) : 'Cotizamos a medida por WhatsApp (Interior / Expreso)') : 'Ingresá tu CP para cotizar'}
                                                 </div>
                                             </div>
                                         </div>
@@ -875,7 +892,7 @@
                                                     ${isFleteFreeByQty ? '<span class="ml-shipping-badge-free" style="background:#dcfce7; color:#166534;">¡Envío GRATIS por volumen!</span>' : ''}
                                                 </div>
                                                 <div class="ml-shipping-sub">
-                                                    ${hasValidCp ? (fleteAvailable ? (isFleteFreeByQty ? '¡Flete bonificado por cantidad!' : `Transporte directo (${totalFletePackages > 1 ? totalFletePackages + ' bultos/fletes' : 'flete directo'})`) : 'No disponible para tu zona') : 'Ingresá tu CP para cotizar'}
+                                                    ${hasValidCp ? (fleteAvailable ? (isFleteFreeByQty ? '¡Flete bonificado por cantidad!' : `Transporte directo (${totalFletePackages > 1 ? totalFletePackages + ' bultos/fletes' : 'flete directo'})`) : 'Cotizamos a medida por WhatsApp (Interior / Expreso)') : 'Ingresá tu CP para cotizar'}
                                                 </div>
                                             </div>
                                         </div>
@@ -929,6 +946,13 @@
                                 </div>
                             </div>
 
+                            ${cartTotalSavings > 0 ? `
+                            <div class="cart-savings-banner" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 1.5px solid #86efac; border-radius: 10px; padding: 0.6rem 0.85rem; margin-top: 0.75rem; display: flex; align-items: center; gap: 8px; font-size: 0.82rem; color: #166534; font-weight: 700;">
+                                <span class="material-symbols-outlined" style="font-size: 19px; color: #15803d; flex-shrink: 0;">savings</span>
+                                <span>¡Estás ahorrando <strong>${formatter.format(cartTotalSavings)}</strong> en este pedido!</span>
+                            </div>
+                            ` : ''}
+
                             <div class="ml-summary-row total-row">
                                 <span>Total a pagar</span>
                                 <span id="cart-grand-total-val" style="color:#0f172a;">
@@ -947,6 +971,27 @@
                                 <span class="material-symbols-outlined" style="font-size:20px; color:#c0510a;">chat</span>
                                 Consultar por WhatsApp
                             </button>
+                            <!-- Punto 63: Botón Seguir Comprando -->
+                            <button type="button" id="btn-cart-continue-shopping" style="display: flex; align-items: center; justify-content: center; gap: 6px; background: none; border: 1.5px dashed #cbd5e1; color: #475569; border-radius: 12px; padding: 0.65rem 1rem; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s;" onmouseenter="this.style.borderColor='#0284c7'; this.style.color='#0284c7'; this.style.background='#f0f9ff';" onmouseleave="this.style.borderColor='#cbd5e1'; this.style.color='#475569'; this.style.background='none';">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">storefront</span>
+                                <span>Seguir explorando productos</span>
+                            </button>
+                        </div>
+
+                        <!-- Sellos de Confianza y Compra Protegida -->
+                        <div class="cart-trust-badges" style="display: flex; align-items: center; justify-content: space-around; gap: 8px; margin-top: 0.85rem; padding: 0.6rem 0.5rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px;">
+                            <div style="display: flex; align-items: center; gap: 5px; font-size: 0.72rem; color: #475569; font-weight: 600;">
+                                <span class="material-symbols-outlined" style="font-size: 16px; color: #0284c7;">lock</span>
+                                <span>SSL Seguro</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 5px; font-size: 0.72rem; color: #475569; font-weight: 600;">
+                                <span class="material-symbols-outlined" style="font-size: 16px; color: #16a34a;">verified_user</span>
+                                <span>Garantía Taller</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 5px; font-size: 0.72rem; color: #475569; font-weight: 600;">
+                                <span class="material-symbols-outlined" style="font-size: 16px; color: #d97706;">carpenter</span>
+                                <span>Fabricantes</span>
+                            </div>
                         </div>
                     </div>
                 `;
@@ -1024,10 +1069,18 @@
 
                 <!-- Sección de Favoritos (Carrito Integrado) -->
                 <div class="cart-section" style="margin-top: 1rem;">
-                    <h4>
-                        <span class="material-symbols-outlined" style="font-size:16px; color:var(--primary-color, #c0510a);">favorite</span>
-                        MI LISTA DE DESEOS (${cartItems.length})
-                    </h4>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem;">
+                        <h4 style="margin: 0; display: flex; align-items: center; gap: 6px;">
+                            <span class="material-symbols-outlined" style="font-size:16px; color:var(--primary-color, #c0510a);">favorite</span>
+                            <span>MI LISTA DE DESEOS (${cartItems.length})</span>
+                        </h4>
+                        ${cartItems.length > 0 ? `
+                        <button type="button" id="btn-clear-cart-all" style="background: none; border: none; color: #94a3b8; font-size: 0.75rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 4px; padding: 4px 8px; border-radius: 6px; transition: all 0.2s;" onmouseenter="this.style.color='#ef4444'; this.style.background='#fef2f2';" onmouseleave="this.style.color='#94a3b8'; this.style.background='none';" title="Vaciar todo el carrito">
+                            <span class="material-symbols-outlined" style="font-size: 15px;">delete_sweep</span>
+                            <span>Vaciar carrito</span>
+                        </button>
+                        ` : ''}
+                    </div>
                     ${cartListHTML}
                 </div>
             `;
@@ -1102,6 +1155,26 @@
                     }
                 });
             });
+
+            // Punto 56: Botón Vaciar Todo el Carrito
+            const btnClearAll = viewContainer.querySelector('#btn-clear-cart-all');
+            if (btnClearAll) {
+                btnClearAll.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const confirmClear = window.confirm('¿Seguro que querés vaciar todos los productos del carrito?');
+                    if (confirmClear) {
+                        cartItems = [];
+                        saveCartItems();
+                        renderPerfilCarritoView();
+                        const toast = document.getElementById('admin-toast');
+                        if (toast) {
+                            toast.textContent = "🗑️ Carrito vaciado";
+                            toast.classList.add('show');
+                            setTimeout(() => toast.classList.remove('show'), 2000);
+                        }
+                    }
+                });
+            }
 
             // Quitar de la lista de deseos
             viewContainer.querySelectorAll('.cart-item-del-btn').forEach(btn => {
@@ -1554,7 +1627,19 @@
 
                         const variantStr = variantDetails.length > 0 ? `\n   └ _${variantDetails.join(' · ')}_` : '';
 
-                        lines.push(`• *${qty}x* ${item.title}${subtotalText}${variantStr}`);
+                        let itemUrlStr = '';
+                        try {
+                            if (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function') {
+                                const shortCode = window.TarimaShortener.encodeShortCode(item.id, item.acabado, item.medida, item.opcion, false);
+                                if (shortCode) {
+                                    const origin = window.location.origin;
+                                    const path = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+                                    itemUrlStr = `\n   Foto / Ficha: ${origin}${path}/p/${shortCode}.html`;
+                                }
+                            }
+                        } catch(e) {}
+
+                        lines.push(`• *${qty}x* ${item.title}${subtotalText}${variantStr}${itemUrlStr}`);
                     });
 
                     lines.push("--------------------------------------");
@@ -1668,7 +1753,33 @@
                     lines.push("\n¡Hola! Les comparto mi presupuesto del carrito. ¿Me confirman disponibilidad y los pasos a seguir?");
 
                     const waMsg = lines.join('\n');
-                    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
+                    // Punto 72: Feedback visual al abrir WhatsApp en carrito
+                    const btnConsult = document.getElementById('btn-cart-consult-wa');
+                    if (btnConsult) {
+                        btnConsult.disabled = true;
+                        btnConsult.style.opacity = '0.85';
+                        btnConsult.innerHTML = '<span class="material-symbols-outlined" style="font-size:20px; animation:spin 1s linear infinite;">sync</span> Abriendo WhatsApp...';
+                    }
+                    setTimeout(() => {
+                        window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waMsg)}`, '_blank');
+                        if (btnConsult) {
+                            setTimeout(() => {
+                                btnConsult.disabled = false;
+                                btnConsult.style.opacity = '1';
+                                btnConsult.innerHTML = '<span class="material-symbols-outlined" style="font-size:20px; color:#c0510a;">chat</span> Consultar por WhatsApp';
+                            }, 2000);
+                        }
+                    }, 350);
+                });
+            }
+
+            // Punto 63: Evento Seguir Comprando
+            const btnContinueShopping = document.getElementById('btn-cart-continue-shopping');
+            if (btnContinueShopping) {
+                btnContinueShopping.addEventListener('click', () => {
+                    if (window.navigateToView) {
+                        window.navigateToView('view-home');
+                    }
                 });
             }
 

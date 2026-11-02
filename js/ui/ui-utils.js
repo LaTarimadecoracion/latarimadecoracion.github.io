@@ -1,4 +1,38 @@
 
+    // Punto 91: Bloqueo y restauración de scroll de fondo para modales
+    let _activeModalCount = 0;
+    let _scrollLockSavedOverflow = '';
+    let _scrollLockSavedContainerOverflow = '';
+
+    window.lockBodyScroll = function() {
+        _activeModalCount++;
+        if (_activeModalCount === 1) {
+            _scrollLockSavedOverflow = document.body.style.overflow || '';
+            document.body.style.overflow = 'hidden';
+            const appContainer = document.getElementById('app-container');
+            if (appContainer) {
+                _scrollLockSavedContainerOverflow = appContainer.style.overflow || '';
+                appContainer.style.overflow = 'hidden';
+            }
+        }
+    };
+
+    window.unlockBodyScroll = function(forceAll = false) {
+        if (forceAll) {
+            _activeModalCount = 0;
+        } else {
+            _activeModalCount = Math.max(0, _activeModalCount - 1);
+        }
+        if (_activeModalCount === 0) {
+            document.body.style.overflow = _scrollLockSavedOverflow;
+            const appContainer = document.getElementById('app-container');
+            if (appContainer) {
+                appContainer.style.overflow = _scrollLockSavedContainerOverflow;
+            }
+        }
+    };
+
+
 
     
     function extractTikTokId(url) {

@@ -700,14 +700,32 @@
         if (cleanDigits && ARG_POSTAL_DATASET[cleanDigits]) {
             match = { ...ARG_POSTAL_DATASET[cleanDigits], cp: cleanDigits };
         } else {
-            const lower = strQuery.toLowerCase();
-            for (const key in ARG_POSTAL_DATASET) {
-                const item = ARG_POSTAL_DATASET[key];
-                if (item.localidad.toLowerCase().includes(lower) || 
-                    (item.departamento && item.departamento.toLowerCase().includes(lower)) || 
-                    (item.provincia && item.provincia.toLowerCase().includes(lower))) {
-                    match = { ...item, cp: key };
-                    break;
+            // Normalizar texto sin tildes para que 'moron' coincida con 'Morón' o 'cordoba' con 'Córdoba'
+            const norm = (s) => (s || '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+            const lowerNorm = norm(strQuery);
+
+            if (lowerNorm.length >= 3) {
+                // Prioridad 1: Coincidencia exacta o directa en nombre de Localidad
+                for (const key in ARG_POSTAL_DATASET) {
+                    const item = ARG_POSTAL_DATASET[key];
+                    const locNorm = norm(item.localidad);
+                    if (locNorm === lowerNorm || locNorm.startsWith(lowerNorm) || locNorm.includes(lowerNorm)) {
+                        match = { ...item, cp: key };
+                        break;
+                    }
+                }
+
+                // Prioridad 2: Coincidencia en Departamento / Partido / Provincia
+                if (!match) {
+                    for (const key in ARG_POSTAL_DATASET) {
+                        const item = ARG_POSTAL_DATASET[key];
+                        const depNorm = norm(item.departamento);
+                        const provNorm = norm(item.provincia);
+                        if (depNorm.includes(lowerNorm) || provNorm.includes(lowerNorm)) {
+                            match = { ...item, cp: key };
+                            break;
+                        }
+                    }
                 }
             }
         }

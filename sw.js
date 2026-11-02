@@ -138,29 +138,46 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // 2. HTML, CSS, JS y JSON (Network First con fallback offline)
+    // 2. HTML, CSS, JS y JSON (Network First con Fallback suave a Caché)
     event.respondWith(
-        fetch(event.request).then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200) {
-                const responseToCache = networkResponse.clone();
-                caches.open(CACHE_NAME).then((cache) => {
-                    cache.put(event.request, responseToCache);
-                });
+        (async () => {
+            try {
+                // Timeout preventivo de red para conexiones móviles lentas (5 segundos)
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+                const networkResponse = await fetch(event.request, { signal: controller.signal });
+                clearTimeout(timeoutId);
+
+                if (networkResponse && networkResponse.status === 200) {
+                    const responseToCache = networkResponse.clone();
+                    caches.open(CACHE_NAME).then((cache) => {
+                        cache.put(event.request, responseToCache);
+                    });
+                }
+                return networkResponse;
+            } catch (err) {
+                // Sin conexión a internet o red muy lenta: recuperar de caché sin romper la página
+                const cachedResponse = await caches.match(event.request, { ignoreSearch: true });
+                if (cachedResponse) {
+                    return cachedResponse;
+                }
+
+                // Si es navegación HTML, entregar siempre la SPA principal index.html
+                if (event.request.mode === 'navigate' || (event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html'))) {
+                    const fallbackHtml = (await caches.match('./index.html')) || (await caches.match('./'));
+                    if (fallbackHtml) return fallbackHtml;
+                }
+
+                // Si falló un JS o CSS secundario y no está en caché, responder vacío 200 para que la app no crashee
+                const isCodeAsset = event.request.destination === 'script' || event.request.destination === 'style' || url.pathname.endsWith('.js') || url.pathname.endsWith('.css');
+                if (isCodeAsset) {
+                    return new Response('', { status: 200, headers: { 'Content-Type': 'text/javascript' } });
+                }
+
+                return new Response('Sin conexión temporal', { status: 503, statusText: 'Offline' });
             }
-            return networkResponse;
-        }).catch(async () => {
-            // Sin conexión a internet, intentar obtener del caché la URL exacta
-            const cachedResponse = await caches.match(event.request);
-            if (cachedResponse) {
-                return cachedResponse;
-            }
-            // Si es una navegación HTML y falló la red, servir el index.html cacheado
-            if (event.request.mode === 'navigate' || (event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html'))) {
-                const fallbackHtml = (await caches.match('./index.html')) || (await caches.match('./'));
-                if (fallbackHtml) return fallbackHtml;
-            }
-            return new Response('', { status: 408, statusText: 'Request timed out or offline' });
-        })
+        })()
     );
 });
 

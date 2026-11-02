@@ -1,11 +1,13 @@
 {
   "id": "44",
-  "title": "Verdule para Mesada",
+  "shortId": "3N",
+  "title": "Organizador Verdulero Frutero Pino 2 Estantes",
   "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
   "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
       "images_list": [
         "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
@@ -21,14 +23,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
+          "price": 20000,
+          "cost_price": 20000,
           "legend": "",
           "showPrice": true,
-          "stock": 0,
-          "price": 20000
+          "logisticaEnabled": true
         }
       ],
-      "hidden": false,
-      "stock": 0
+      "hidden": false
     }
   ],
   "tags": [
@@ -69,21 +71,26 @@
     "panera de madera",
     "panera de pino"
   ],
-  "last_modified": 1783637121354,
-  "primaryCatId": "bazar-cocina",
-  "views": 2,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 2,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
   "paymentConfig": {
     "transferEnabled": true,
     "linkEnabled": false,
     "creditEnabled": false
   },
-  "shippingConfig": {
-    "logisticaEnabled": true,
-    "fleteEnabled": true,
-    "otroEnabled": false,
-    "logisticaMaxUnits": 2
-  },
-  "stock": 0,
+  "quantityDiscounts": [],
+  "last_modified": 1793586378660,
+  "primaryCatId": "bazar-cocina",
+  "history": [],
   "categories": [
     "carpinteria-todos",
     "Organizadores",

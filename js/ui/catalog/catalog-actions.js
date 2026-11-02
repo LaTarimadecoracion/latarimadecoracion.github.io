@@ -444,6 +444,103 @@
         const btnPickup = document.getElementById('btn-buy-pickup');
         if (btnPickup) {
             btnPickup.href = `https://wa.me/${phone}?text=${encodeURIComponent(buildWhatsAppMessage(context))}`;
+            
+            // Punto 72: Feedback visual en botón de consulta por WhatsApp
+            btnPickup.onclick = () => {
+                const icon = btnPickup.querySelector('.material-symbols-outlined');
+                const textSpan = btnPickup.querySelector('span:not(.material-symbols-outlined)');
+                const prevText = textSpan ? textSpan.textContent : 'Consultar por WhatsApp';
+                
+                if (icon) {
+                    icon.textContent = 'sync';
+                    icon.style.animation = 'spin 1s linear infinite';
+                }
+                if (textSpan) textSpan.textContent = 'Abriendo WhatsApp...';
+                
+                setTimeout(() => {
+                    if (icon) {
+                        icon.textContent = 'chat';
+                        icon.style.animation = '';
+                    }
+                    if (textSpan) textSpan.textContent = prevText;
+                }, 2500);
+            };
+        }
+
+        // Punto 30: Botón de copiar enlace directo del producto
+        const btnCopyLink = document.getElementById('btn-copy-product-link');
+        if (btnCopyLink) {
+            btnCopyLink.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const acabName = (grupo && grupo.acabado_name && grupo.acabado_name !== 'Único') ? grupo.acabado_name : '';
+                let finalUrl = window.location.href;
+                if (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function') {
+                    const shortCode = window.TarimaShortener.encodeShortCode(product.id, acabName, medidaName, optText, false);
+                    if (shortCode) {
+                        const origin = window.location.origin;
+                        const path = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+                        finalUrl = `${origin}${path}/p/${shortCode}.html`;
+                    }
+                }
+
+                const copyToClipboard = (text) => {
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+                    } else {
+                        fallbackCopy(text);
+                    }
+                };
+
+                const fallbackCopy = (text) => {
+                    try {
+                        const ta = document.createElement('textarea');
+                        ta.value = text;
+                        ta.style.position = 'fixed';
+                        ta.style.opacity = '0';
+                        document.body.appendChild(ta);
+                        ta.focus();
+                        ta.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(ta);
+                    } catch(err) {}
+                };
+
+                copyToClipboard(finalUrl);
+
+                // Feedback visual en el botón
+                const btnText = document.getElementById('btn-copy-product-link-text');
+                const btnIcon = btnCopyLink.querySelector('.material-symbols-outlined');
+                const prevText = btnText ? btnText.textContent : 'Copiar enlace del producto';
+                
+                if (btnText) btnText.textContent = '¡Enlace copiado al portapapeles!';
+                if (btnIcon) {
+                    btnIcon.textContent = 'check_circle';
+                    btnIcon.style.color = '#16a34a';
+                }
+                btnCopyLink.style.background = '#f0fdf4';
+                btnCopyLink.style.borderColor = '#86efac';
+                btnCopyLink.style.color = '#166534';
+
+                const toast = document.getElementById('admin-toast');
+                if (toast) {
+                    toast.textContent = "🔗 ¡Enlace del producto copiado!";
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 2200);
+                }
+
+                setTimeout(() => {
+                    if (btnText) btnText.textContent = prevText;
+                    if (btnIcon) {
+                        btnIcon.textContent = 'link';
+                        btnIcon.style.color = '#0284c7';
+                    }
+                    btnCopyLink.style.background = '#f8fafc';
+                    btnCopyLink.style.borderColor = '#cbd5e1';
+                    btnCopyLink.style.color = '#475569';
+                }, 2500);
+            };
         }
     }
 

@@ -93,6 +93,36 @@
     </div>
 
     
+    
+    <div id="trust-top-bar" class="trust-top-bar" style="background: #2a241e; color: #fdfbf7; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.3px; line-height: 1; padding: 6px 12px; text-align: center; z-index: 1002; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+        
+        
+        <div class="trust-bar-desktop" style="display: none; align-items: center; justify-content: center; gap: 20px;">
+            <span style="display: inline-flex; align-items: center; gap: 5px;">
+                <span class="material-symbols-outlined" style="font-size: 14px; color: #eab308;">carpenter</span>
+                <span>Somos Fabricantes</span>
+            </span>
+            <span style="opacity: 0.35;">•</span>
+            <span style="display: inline-flex; align-items: center; gap: 5px;">
+                <span class="material-symbols-outlined" style="font-size: 14px; color: #38bdf8;">local_shipping</span>
+                <span>Envíos a todo el país</span>
+            </span>
+            <span style="opacity: 0.35;">•</span>
+            <span style="display: inline-flex; align-items: center; gap: 5px;">
+                <span class="material-symbols-outlined" style="font-size: 14px; color: #4ade80;">credit_card</span>
+                <span>Todos los medios de pago</span>
+            </span>
+        </div>
+
+        
+        <div class="trust-bar-mobile" style="display: flex; align-items: center; justify-content: center; min-height: 16px;">
+            <span id="trust-mobile-item" style="display: inline-flex; align-items: center; gap: 6px; transition: opacity 0.25s ease, transform 0.25s ease; opacity: 1;">
+                <span class="material-symbols-outlined" style="font-size: 14px; color: #eab308;">carpenter</span>
+                <span>Somos Fabricantes</span>
+            </span>
+        </div>
+    </div>
+
     <header class="main-header-bar" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; gap: 8px; background: var(--bg-color); position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); width: 100%; box-sizing: border-box;">
         
         
@@ -105,9 +135,12 @@
         </div>
 
         
-        <div class="search-bar-container" style="flex: 1; margin: 0; padding: 0.4rem 0.6rem; min-width: 0;">
+        <div class="search-bar-container" style="flex: 1; margin: 0; padding: 0.4rem 0.6rem; min-width: 0; position: relative;">
             <span class="material-symbols-outlined search-icon" style="font-size: 18px;">search</span>
-            <input type="text" id="search-input" placeholder="Buscar..." class="search-input" autocomplete="off" onfocus="const activeView = document.querySelector('.view.active'); if(activeView && activeView.id !== 'view-catalogo' && activeView.id !== 'view-calculator' && activeView.id !== 'view-mayorista' && window.navigateToView) window.navigateToView('view-search');" style="font-size: 0.9rem; padding: 0;">
+            <input type="text" id="search-input" placeholder="Buscar muebles, medidas..." class="search-input" autocomplete="off" onfocus="const activeView = document.querySelector('.view.active'); if(activeView && activeView.id !== 'view-catalogo' && activeView.id !== 'view-calculator' && activeView.id !== 'view-mayorista' && window.navigateToView) window.navigateToView('view-search');" style="font-size: 0.9rem; padding: 0;">
+            <button id="btn-clear-search" type="button" style="display: none; background: none; border: none; padding: 0; margin: 0 4px; cursor: pointer; color: #94a3b8; display: none; align-items: center; justify-content: center;" title="Limpiar búsqueda">
+                <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+            </button>
         </div>
 
         
@@ -285,11 +318,17 @@
                 </div>
 
                 
-                <div style="display:flex; flex-direction:column; gap:4px; width:100%; margin-bottom: 1.5rem;">
+                <div style="display:flex; flex-direction:column; gap:8px; width:100%; margin-bottom: 1.5rem;">
                     <a id="btn-buy-pickup" href="#" target="_blank" class="btn-outline giant-btn whatsapp-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.85rem; width: 100%; border-radius: 12px; font-size: 0.95rem; font-weight: 800; background: #fff7ed; border: 1.5px solid #ffedd5; color: #c0510a; box-shadow: 0 2px 8px rgba(192, 81, 10, 0.08); text-decoration: none;">
                         <span class="material-symbols-outlined" style="font-size: 20px;">chat</span>
                         <span>Consultar por WhatsApp</span>
                     </a>
+                    
+                    <button type="button" id="btn-copy-product-link" style="display: flex; align-items: center; justify-content: center; gap: 6px; padding: 0.65rem; width: 100%; border-radius: 10px; font-size: 0.85rem; font-weight: 700; background: #f8fafc; border: 1px solid #cbd5e1; color: #475569; cursor: pointer; transition: all 0.2s ease;">
+                        <span class="material-symbols-outlined" style="font-size: 18px; color: #0284c7;">link</span>
+                        <span id="btn-copy-product-link-text">Copiar enlace del producto</span>
+                    </button>
+
                     <span style="font-size:0.72rem; color:#64748B; text-align:center; margin-top:2px; font-style:italic;">
                         Chateá con nosotros para coordinar transferencias, efectivo o retiros por el taller
                     </span>
@@ -740,6 +779,32 @@
     <script src="js/modules/cajones-widget.js?v=3" defer></script>
     <script src="js/modules/videos.js?v=2" defer></script>
     <script src="js/ui/pwa-banner.js?v=2" defer></script>
+    <script>
+        // Lógica de rotación suave del cintillo de confianza para móviles (Punto 5 UX)
+        (function() {
+            const items = [
+                { text: 'Somos Fabricantes', icon: 'carpenter', color: '#eab308' },
+                { text: 'Envíos a todo el país', icon: 'local_shipping', color: '#38bdf8' },
+                { text: 'Todos los medios de pago', icon: 'credit_card', color: '#4ade80' }
+            ];
+            let currentIndex = 0;
+            const mobileEl = document.getElementById('trust-mobile-item');
+            if (!mobileEl) return;
+
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % items.length;
+                mobileEl.style.opacity = '0';
+                mobileEl.style.transform = 'translateY(-4px)';
+                
+                setTimeout(() => {
+                    const item = items[currentIndex];
+                    mobileEl.innerHTML = `<span class="material-symbols-outlined" style="font-size: 14px; color: ${item.color};">${item.icon}</span><span>${item.text}</span>`;
+                    mobileEl.style.opacity = '1';
+                    mobileEl.style.transform = 'translateY(0)';
+                }, 250);
+            }, 3200);
+        })();
+    </script>
     <script src="js/apps/assistant.js?v=7" defer></script>
     <script>
         // Limpiar el parámetro ?u= de bypass de caché si quedó residual en la URL tras una actualización del SW.

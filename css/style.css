@@ -6842,3 +6842,25 @@ a .material-symbols-outlined {
 }
 
 
+
+/* --- CINTILLO SUPERIOR DE CONFIANZA (PUNTO 5 UX) --- */
+.trust-top-bar {
+    background: #231e19 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+@media (min-width: 768px) {
+    .trust-bar-desktop {
+        display: flex !important;
+    }
+    .trust-bar-mobile {
+        display: none !important;
+    }
+}
+@media (max-width: 767px) {
+    .trust-bar-desktop {
+        display: none !important;
+    }
+    .trust-bar-mobile {
+        display: flex !important;
+    }
+}

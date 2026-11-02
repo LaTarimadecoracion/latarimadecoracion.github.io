@@ -1,11 +1,13 @@
 {
   "id": "65",
-  "title": "Cuadrados",
+  "shortId": "3N",
+  "title": "Estantes x3 Cuadrados",
   "description": "Organización creativa y estilo para tus paredes.",
   "image": "img/estantes/cuadrados/cuadrados.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/estantes/cuadrados/cuadrados.webp",
       "images_list": [
         "img/estantes/cuadrados/cuadrados.webp"
@@ -70,10 +72,9 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1788914028441,
+  "last_modified": 1793586190636,
   "primaryCatId": "Estantes",
   "history": [],
-  "views": 5,
   "categories": [
     "carpinteria-todos",
     "Estantes"

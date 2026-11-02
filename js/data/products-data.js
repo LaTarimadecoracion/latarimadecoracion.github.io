@@ -2209,7 +2209,7 @@ const productsData = [
             {
                 "id": "42",
                 "shortId": "3Q",
-                "title": "Especiero",
+                "title": "Especiero Condimentero para Frascos",
                 "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
                 "image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
                 "acabados_groups": [
@@ -2335,7 +2335,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793480775651,
+                "last_modified": 1793586351484,
                 "primaryCatId": "bazar-cocina",
                 "history": [
                     {
@@ -2348,17 +2348,18 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ],
-                "views": 4
+                ]
             },
             {
                 "id": "44",
-                "title": "Verdule para Mesada",
+                "shortId": "3N",
+                "title": "Organizador Verdulero Frutero Pino 2 Estantes",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
                         "images_list": [
                             "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
@@ -2374,14 +2375,14 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "price": 20000
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -2422,27 +2423,26 @@ const productsData = [
                     "panera de madera",
                     "panera de pino"
                 ],
-                "last_modified": 1783637121354,
-                "primaryCatId": "bazar-cocina",
-                "views": 2,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
+                "quantityDiscounts": [],
+                "last_modified": 1793586378660,
+                "primaryCatId": "bazar-cocina",
+                "history": []
             },
             {
                 "id": "4A",
@@ -3935,13 +3935,15 @@ const productsData = [
             },
             {
                 "id": "4E",
-                "title": "Estantes Montessori",
+                "shortId": "3N",
+                "title": "Estante Librero Condimentero",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
                 "image": "img/organizadores/estantes-montessori/1.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "60 CM",
+                        "description": "",
                         "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
                             "img/organizadores/estantes-montessori/1.webp",
@@ -3960,7 +3962,8 @@ const productsData = [
                                 "price": 13000,
                                 "cost_price": 13000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x2)",
@@ -3973,7 +3976,8 @@ const productsData = [
                                 "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x3)",
@@ -3986,7 +3990,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -3999,13 +4004,15 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     },
                     {
                         "acabado_name": "80 CM",
+                        "description": "",
                         "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
                             "img/organizadores/estantes-montessori/1.webp",
@@ -4024,7 +4031,8 @@ const productsData = [
                                 "price": 14000,
                                 "cost_price": 14000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 80 (Combo x2)",
@@ -4037,7 +4045,8 @@ const productsData = [
                                 "price": 26000,
                                 "cost_price": 26000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 80 (Combo x3)",
@@ -4050,7 +4059,8 @@ const productsData = [
                                 "price": 35998,
                                 "cost_price": 35998,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -4063,13 +4073,15 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     },
                     {
                         "acabado_name": "100 cm",
+                        "description": "",
                         "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
                             "img/organizadores/estantes-montessori/1.webp",
@@ -4088,7 +4100,8 @@ const productsData = [
                                 "price": 15000,
                                 "cost_price": 15000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 100 (Combo x2)",
@@ -4101,7 +4114,8 @@ const productsData = [
                                 "price": 28000,
                                 "cost_price": 28000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 100 (Combo x3)",
@@ -4114,7 +4128,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -4125,9 +4140,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -4167,26 +4183,27 @@ const productsData = [
                     "estanteria madera",
                     "organizador pared"
                 ],
-                "last_modified": 1786317536131,
-                "primaryCatId": "Estantes",
-                "views": 4,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes",
-                    "Juguetes"
-                ],
-                "rubro": "carpinteria"
+                "quantityDiscounts": [],
+                "last_modified": 1793586859102,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "order": 5
             },
             {
                 "id": "4H",
@@ -4245,12 +4262,14 @@ const productsData = [
             },
             {
                 "id": "62",
-                "title": "Hexagonales",
+                "shortId": "3N",
+                "title": "Estantes x3 Hexagonales",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/hexagonales/hexagonales.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/estantes/hexagonales/hexagonales.webp",
                         "images_list": [
                             "img/estantes/hexagonales/hexagonales.webp"
@@ -4317,25 +4336,21 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788913987169,
+                "last_modified": 1793586159405,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "visible": true,
-                "views": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes"
-                ],
-                "rubro": "carpinteria"
+                "visible": true
             },
             {
                 "id": "63",
-                "title": "Librero",
+                "shortId": "3N",
+                "title": "Estante Librero Especiero",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/librero/librero.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/estantes/librero/librero.webp",
                         "images_list": [
                             "img/estantes/librero/librero.webp"
@@ -4345,87 +4360,132 @@ const productsData = [
                                 "medida": "100 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1546524765-estante-flotante-nordico-madera-100x10cm-la-tarima-_JM",
                                 "default": true,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 (Combo x2)",
                                 "link": "",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 (Combo x3)",
                                 "link": "",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1546434559-estante-flotante-nordico-madera-80x10cm-la-tarima-_JM",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 (Combo x2)",
                                 "link": "",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 (Combo x3)",
                                 "link": "",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2066246148-estante-flotante-nordico-madera-60x10cm-la-tarima-_JM",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 (Combo x2)",
                                 "link": "",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 (Combo x3)",
                                 "link": "",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "views": 0,
                 "tags": [
                     "estante",
                     "estantes",
@@ -4452,33 +4512,37 @@ const productsData = [
                     "mueble para libros",
                     "estanteria madera"
                 ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes"
-                ],
+                "quantityDiscounts": [],
+                "last_modified": 1793586175821,
                 "primaryCatId": "Estantes",
-                "rubro": "carpinteria"
+                "history": []
             },
             {
                 "id": "64",
                 "shortId": "38",
-                "title": "Triangulos",
+                "title": "Estante 3 Triángulos",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
                         "images_list": [
                             "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
@@ -4548,24 +4612,20 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789446760226,
+                "last_modified": 1793586145045,
                 "primaryCatId": "Estantes",
-                "history": [],
-                "views": 4,
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes"
-                ],
-                "rubro": "carpinteria"
+                "history": []
             },
             {
                 "id": "65",
-                "title": "Cuadrados",
+                "shortId": "3N",
+                "title": "Estantes x3 Cuadrados",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/cuadrados/cuadrados.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/estantes/cuadrados/cuadrados.webp",
                         "images_list": [
                             "img/estantes/cuadrados/cuadrados.webp"
@@ -4630,15 +4690,9 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788914028441,
+                "last_modified": 1793586190636,
                 "primaryCatId": "Estantes",
-                "history": [],
-                "views": 5,
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes"
-                ],
-                "rubro": "carpinteria"
+                "history": []
             },
             {
                 "id": "7C",
@@ -5062,7 +5116,7 @@ const productsData = [
                 ],
                 "last_modified": 1785084728300,
                 "primaryCatId": "Organizadores",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -6143,80 +6197,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "E4",
-                "shortId": "3D",
-                "title": "Fanal",
-                "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "video": "https://www.youtube.com/shorts/-_xiAyyEIik?feature=share",
-                "image": "img/jardn/fanal/1790378363366-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/jardn/fanal/1790378363366-imagenwebp.webp",
-                        "images_list": [
-                            "img/jardn/fanal/1790378363366-imagenwebp.webp",
-                            "img/jardn/fanal/1790378363377-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Fanal",
-                                "link": "https://www.mercadolibre.com.ar/fanal-madera-pino-por-tres-unidades/up/MLAU3276284211",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 15000,
-                                "cost_price": 3,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "decorar",
-                    "jardin",
-                    "fanales",
-                    "candy",
-                    "bar",
-                    "blanco",
-                    "negro",
-                    "iluminacion",
-                    "santos",
-                    "imagen",
-                    "altar"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1790378363386,
-                "primaryCatId": "jardin-patio",
-                "history": [],
-                "views": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "jardin-patio",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "E5",
                 "title": "Cesto de Basura",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
@@ -6721,61 +6701,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "D7",
-                "title": "Mesita Matera",
-                "description": "",
-                "image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
-                        "images_list": [
-                            "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
-                            "img/mesas-de-madera/mesita-matera/1786665063420-imagen.webp",
-                            "img/mesas-de-madera/mesita-matera/1786665063603-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Mesita",
-                                "link": "https://www.mercadolibre.com.ar/mesita-matera-plegable/up/MLAU4758741308?pdp_filters=item_id:MLA1995151329",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": 16997,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786811404439,
-                "primaryCatId": "Mesas-madera",
-                "views": 2,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera",
-                    "Hogar",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "45",
                 "shortId": "3E",
                 "title": "Exhibidor Organizador 3 Estantes De Madera",
@@ -6867,7 +6792,7 @@ const productsData = [
                 "last_modified": 1790380546917,
                 "primaryCatId": "Organizadores",
                 "history": [],
-                "views": 4,
+                "views": 5,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores"
@@ -9319,12 +9244,14 @@ const productsData = [
             },
             {
                 "id": "G3",
-                "title": "Mate",
+                "shortId": "3M",
+                "title": "Mate - Algarrobo - Criollo",
                 "description": "",
                 "image": "img/todo-algarrobo/Mate/1788927967853-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Algarrobo",
+                        "description": "",
                         "cover_image": "img/todo-algarrobo/Mate/1788927967853-imagen.webp",
                         "images_list": [
                             "img/todo-algarrobo/Mate/1788927967853-imagen.webp",
@@ -9421,16 +9348,9 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788928169150,
+                "last_modified": 1793586660076,
                 "primaryCatId": "productos-algarrobo",
-                "history": [],
-                "views": 13,
-                "categories": [
-                    "carpinteria-todos",
-                    "productos-algarrobo",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
+                "history": []
             },
             {
                 "id": "4I",
@@ -9634,7 +9554,8 @@ const productsData = [
                 "last_modified": 1793504671360,
                 "primaryCatId": "Juguetes",
                 "history": [],
-                "order": 1
+                "order": 1,
+                "views": 10
             },
             {
                 "id": "B5",
@@ -9669,7 +9590,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839116557,
                 "primaryCatId": "Juguetes",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -9785,7 +9706,7 @@ const productsData = [
                 ],
                 "last_modified": 1786564211621,
                 "primaryCatId": "sillas-sillones",
-                "views": 6,
+                "views": 14,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -11732,10 +11653,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 25000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false,
+                                "showPrice": true,
                                 "logisticaEnabled": true
                             }
                         ],
@@ -11757,10 +11678,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 25000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false,
+                                "showPrice": true,
                                 "logisticaEnabled": true
                             }
                         ],
@@ -11807,10 +11728,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 25000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false,
+                                "showPrice": true,
                                 "logisticaEnabled": true
                             }
                         ],
@@ -11843,7 +11764,7 @@ const productsData = [
                     "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793491876816,
+                "last_modified": 1793586546740,
                 "primaryCatId": "Mesas-madera",
                 "history": [
                     {
@@ -11924,7 +11845,8 @@ const productsData = [
                         "timestamp": 1792887338346,
                         "details": "Importado como borrador desde Mercado Libre (MLA4087248102)"
                     }
-                ]
+                ],
+                "views": 1
             },
             {
                 "id": "1792887338348",
@@ -11994,7 +11916,8 @@ const productsData = [
                         "timestamp": 1792887338342,
                         "details": "Importado como borrador desde Mercado Libre (MLA2083657243)"
                     }
-                ]
+                ],
+                "views": 2
             }
         ]
     },
@@ -17130,7 +17053,7 @@ const productsData = [
             {
                 "id": "42",
                 "shortId": "3Q",
-                "title": "Especiero",
+                "title": "Especiero Condimentero para Frascos",
                 "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
                 "image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
                 "acabados_groups": [
@@ -17256,7 +17179,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793480775651,
+                "last_modified": 1793586351484,
                 "primaryCatId": "bazar-cocina",
                 "history": [
                     {
@@ -17269,17 +17192,18 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ],
-                "views": 4
+                ]
             },
             {
                 "id": "44",
-                "title": "Verdule para Mesada",
+                "shortId": "3N",
+                "title": "Organizador Verdulero Frutero Pino 2 Estantes",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
                         "images_list": [
                             "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
@@ -17295,14 +17219,14 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "price": 20000
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -17343,27 +17267,26 @@ const productsData = [
                     "panera de madera",
                     "panera de pino"
                 ],
-                "last_modified": 1783637121354,
-                "primaryCatId": "bazar-cocina",
-                "views": 2,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
+                "quantityDiscounts": [],
+                "last_modified": 1793586378660,
+                "primaryCatId": "bazar-cocina",
+                "history": []
             },
             {
                 "id": "45",
@@ -17457,7 +17380,7 @@ const productsData = [
                 "last_modified": 1790380546917,
                 "primaryCatId": "Organizadores",
                 "history": [],
-                "views": 4,
+                "views": 5,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores"
@@ -18050,7 +17973,8 @@ const productsData = [
                         "timestamp": 1792887338346,
                         "details": "Importado como borrador desde Mercado Libre (MLA4087248102)"
                     }
-                ]
+                ],
+                "views": 1
             },
             {
                 "id": "41",
@@ -18576,7 +18500,7 @@ const productsData = [
                 ],
                 "last_modified": 1785084728300,
                 "primaryCatId": "Organizadores",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -19162,7 +19086,7 @@ const productsData = [
             {
                 "id": "42",
                 "shortId": "3Q",
-                "title": "Especiero",
+                "title": "Especiero Condimentero para Frascos",
                 "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
                 "image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
                 "acabados_groups": [
@@ -19288,7 +19212,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793480775651,
+                "last_modified": 1793586351484,
                 "primaryCatId": "bazar-cocina",
                 "history": [
                     {
@@ -19301,8 +19225,7 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ],
-                "views": 4
+                ]
             },
             {
                 "id": "7C",
@@ -19386,13 +19309,15 @@ const productsData = [
             },
             {
                 "id": "4E",
-                "title": "Estantes Montessori",
+                "shortId": "3N",
+                "title": "Estante Librero Condimentero",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
                 "image": "img/organizadores/estantes-montessori/1.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "60 CM",
+                        "description": "",
                         "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
                             "img/organizadores/estantes-montessori/1.webp",
@@ -19411,7 +19336,8 @@ const productsData = [
                                 "price": 13000,
                                 "cost_price": 13000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x2)",
@@ -19424,7 +19350,8 @@ const productsData = [
                                 "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x3)",
@@ -19437,7 +19364,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -19450,13 +19378,15 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     },
                     {
                         "acabado_name": "80 CM",
+                        "description": "",
                         "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
                             "img/organizadores/estantes-montessori/1.webp",
@@ -19475,7 +19405,8 @@ const productsData = [
                                 "price": 14000,
                                 "cost_price": 14000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 80 (Combo x2)",
@@ -19488,7 +19419,8 @@ const productsData = [
                                 "price": 26000,
                                 "cost_price": 26000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 80 (Combo x3)",
@@ -19501,7 +19433,8 @@ const productsData = [
                                 "price": 35998,
                                 "cost_price": 35998,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -19514,13 +19447,15 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     },
                     {
                         "acabado_name": "100 cm",
+                        "description": "",
                         "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
                             "img/organizadores/estantes-montessori/1.webp",
@@ -19539,7 +19474,8 @@ const productsData = [
                                 "price": 15000,
                                 "cost_price": 15000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 100 (Combo x2)",
@@ -19552,7 +19488,8 @@ const productsData = [
                                 "price": 28000,
                                 "cost_price": 28000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 100 (Combo x3)",
@@ -19565,7 +19502,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -19576,9 +19514,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -19618,35 +19557,38 @@ const productsData = [
                     "estanteria madera",
                     "organizador pared"
                 ],
-                "last_modified": 1786317536131,
-                "primaryCatId": "Estantes",
-                "views": 4,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes",
-                    "Juguetes"
-                ],
-                "rubro": "carpinteria"
+                "quantityDiscounts": [],
+                "last_modified": 1793586859102,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "order": 5
             },
             {
                 "id": "63",
-                "title": "Librero",
+                "shortId": "3N",
+                "title": "Estante Librero Especiero",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/librero/librero.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/estantes/librero/librero.webp",
                         "images_list": [
                             "img/estantes/librero/librero.webp"
@@ -19656,87 +19598,132 @@ const productsData = [
                                 "medida": "100 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1546524765-estante-flotante-nordico-madera-100x10cm-la-tarima-_JM",
                                 "default": true,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 (Combo x2)",
                                 "link": "",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "100 (Combo x3)",
                                 "link": "",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1546434559-estante-flotante-nordico-madera-80x10cm-la-tarima-_JM",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 (Combo x2)",
                                 "link": "",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "80 (Combo x3)",
                                 "link": "",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 (1 Unidad)",
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2066246148-estante-flotante-nordico-madera-60x10cm-la-tarima-_JM",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 (Combo x2)",
                                 "link": "",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "60 (Combo x3)",
                                 "link": "",
                                 "default": false,
-                                "volumeDiscounts": [],
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": "",
                                 "cost_price": "",
-                                "weight": 2.5,
-                                "showPrice": true
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "views": 0,
                 "tags": [
                     "estante",
                     "estantes",
@@ -19763,32 +19750,37 @@ const productsData = [
                     "mueble para libros",
                     "estanteria madera"
                 ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes"
-                ],
+                "quantityDiscounts": [],
+                "last_modified": 1793586175821,
                 "primaryCatId": "Estantes",
-                "rubro": "carpinteria"
+                "history": []
             },
             {
                 "id": "62",
-                "title": "Hexagonales",
+                "shortId": "3N",
+                "title": "Estantes x3 Hexagonales",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/hexagonales/hexagonales.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/estantes/hexagonales/hexagonales.webp",
                         "images_list": [
                             "img/estantes/hexagonales/hexagonales.webp"
@@ -19855,26 +19847,21 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788913987169,
+                "last_modified": 1793586159405,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "visible": true,
-                "views": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes"
-                ],
-                "rubro": "carpinteria"
+                "visible": true
             },
             {
                 "id": "64",
                 "shortId": "38",
-                "title": "Triangulos",
+                "title": "Estante 3 Triángulos",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
                         "images_list": [
                             "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
@@ -19944,24 +19931,20 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789446760226,
+                "last_modified": 1793586145045,
                 "primaryCatId": "Estantes",
-                "history": [],
-                "views": 4,
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes"
-                ],
-                "rubro": "carpinteria"
+                "history": []
             },
             {
                 "id": "65",
-                "title": "Cuadrados",
+                "shortId": "3N",
+                "title": "Estantes x3 Cuadrados",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "image": "img/estantes/cuadrados/cuadrados.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/estantes/cuadrados/cuadrados.webp",
                         "images_list": [
                             "img/estantes/cuadrados/cuadrados.webp"
@@ -20026,15 +20009,9 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788914028441,
+                "last_modified": 1793586190636,
                 "primaryCatId": "Estantes",
-                "history": [],
-                "views": 5,
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes"
-                ],
-                "rubro": "carpinteria"
+                "history": []
             },
             {
                 "id": "7D",
@@ -21606,10 +21583,55 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793479341261,
+                "last_modified": 1793586887358,
                 "primaryCatId": "camas-madera-pino",
                 "history": [],
-                "views": 5
+                "views": 5,
+                "order": 0
+            },
+            {
+                "id": "1793239693996",
+                "title": "Mesa Mesita De Luz Alta  Economica Pino 2 Cajones",
+                "description": "MESA AUXILIAR DE MADERA – IDEAL PARA LIVING O DORMITORIO\n\nPráctica y funcional mesa auxiliar de madera, ideal para colocar junto al sillón o la cama. Su diseño combina cajones frontales y un espacio de guardado inferior abierto, ofreciendo una solución práctica para organizar tus objetos y aprovechar mejor los espacios.\n\nSu estilo natural permite combinarla con diferentes ambientes y estilos de decoración.\n\nCARACTERÍSTICAS\n\nMaterial: madera de pino natural.\n\nDiseño con cajones frontales y estante inferior abierto.\n\nIdeal para living, dormitorio o espacios reducidos.\n\nTerminación en madera natural.\n\nMEDIDAS\n\nAlto: 75 cm.\n\nAncho: 30 cm.\n\nProfundidad: 23 cm.\n\n\nRealizamos factura A.\n\nIMPORTANTE\n\nLas imágenes son ilustrativas y tienen como finalidad mostrar el producto en un ambiente decorado. Al tratarse de madera natural, las vetas, los nudos y las tonalidades pueden variar de una pieza a otra.\n\nAntes de realizar la compra, verificá las medidas para asegurarte de que el producto se adapte al espacio donde querés colocarlo.\n\nSin garantía",
+                "image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
+                "order": 1,
+                "visible": true,
+                "primaryCatId": "camas-madera-pino",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "cover_image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
+                        "images_list": [
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693248-2-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693331-3-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693485-4-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693554-5-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693659-6-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693713-7-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693802-8-imagen.webp",
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693858-9-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "price": 28000,
+                                "cost_price": 14000,
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-2-cajones/up/MLAU5669889579",
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "stock": 5,
+                                "showPrice": true,
+                                "highlight": false,
+                                "default": true,
+                                "hidden": false
+                            }
+                        ]
+                    }
+                ],
+                "category": "camas-madera-pino",
+                "views": 2,
+                "last_modified": 1793586887358
             },
             {
                 "id": "F2",
@@ -21630,7 +21652,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786334775059,
+                "last_modified": 1793586887358,
                 "primaryCatId": "camas-madera-pino",
                 "views": 0,
                 "paymentConfig": {
@@ -21648,333 +21670,8 @@ const productsData = [
                     "camas-madera-pino",
                     "Hogar"
                 ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "41",
-                "title": "Baúl de madera de pino - Mediano (80 cm)",
-                "description": "Baúl organizador y banco juguetero de madera de pino macizo. Medidas: 80 cm de largo x 40 cm de profundidad x 40 cm de alto. Gran capacidad de almacenamiento para dormitorios, pie de cama y salas de juegos.",
-                "image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "Madera de pino cepillada y lista para encerar, barnizar o pintar.",
-                        "cover_image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
-                            "img/organizadores/baul-madera-mediano/1782607702751-imagen.webp",
-                            "img/organizadores/baul-madera-mediano/1782607702897-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "80 x 40 x 40 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 68000,
-                                "cost_price": 34000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 1
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 1
-                    }
-                ],
-                "tags": [
-                    "baul",
-                    "cofre",
-                    "organizar",
-                    "juguetes",
-                    "ropa",
-                    "baules",
-                    "baul madera",
-                    "baul pino",
-                    "baul mediano",
-                    "baul juguetes",
-                    "guardado",
-                    "juguetero",
-                    "almacenamiento",
-                    "organizacion",
-                    "caja madera",
-                    "cajon madera",
-                    "banco baul",
-                    "mueble guardado",
-                    "bahul",
-                    "bahules",
-                    "baul de madera",
-                    "baul de pino",
-                    "organizador de juguetes",
-                    "caja de madera",
-                    "cofre de madera",
-                    "baul infantil",
-                    "mueble de guardado",
-                    "baul rustico",
-                    "juguetero de pino",
-                    "guardajuguetes",
-                    "banco de madera",
-                    "banco baul madera",
-                    "caja de pino",
-                    "guardado de juguetes",
-                    "cajon de juguetes",
-                    "baulera de madera",
-                    "baulera pino"
-                ],
-                "last_modified": 1783906817810,
-                "primaryCatId": "cajones-madera",
-                "views": 8,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "camas-madera-pino",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "J1",
-                "title": "Baúl de madera de pino - Chico (60 cm)",
-                "description": "Baúl juguetero y organizador fabricado en madera de pino macizo de primera calidad. Medidas: 60 cm de largo x 40 cm de profundidad x 40 cm de alto. Ideal para guardar juguetes, ropa de cama, calzado o almohadones.",
-                "image": "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "Madera de pino cepillada y lijada lista para usar, pintar o barnizar.",
-                        "cover_image": "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
-                            "img/organizadores/baul-madera-mediano/1783801038614-imagen.webp",
-                            "img/organizadores/baul-madera-mediano/1783801038778-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "60 x 40 x 40 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 64000,
-                                "cost_price": 32000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 1
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 1
-                    }
-                ],
-                "tags": [
-                    "baul",
-                    "cofre",
-                    "organizar",
-                    "juguetes",
-                    "ropa",
-                    "baules",
-                    "baul madera",
-                    "baul pino",
-                    "baul mediano",
-                    "baul juguetes",
-                    "guardado",
-                    "juguetero",
-                    "almacenamiento",
-                    "organizacion",
-                    "caja madera",
-                    "cajon madera",
-                    "banco baul",
-                    "mueble guardado",
-                    "bahul",
-                    "bahules",
-                    "baul de madera",
-                    "baul de pino",
-                    "organizador de juguetes",
-                    "caja de madera",
-                    "cofre de madera",
-                    "baul infantil",
-                    "mueble de guardado",
-                    "baul rustico",
-                    "juguetero de pino",
-                    "guardajuguetes",
-                    "banco de madera",
-                    "banco baul madera",
-                    "caja de pino",
-                    "guardado de juguetes",
-                    "cajon de juguetes",
-                    "baulera de madera",
-                    "baulera pino"
-                ],
-                "last_modified": 1783906817810,
-                "primaryCatId": "cajones-madera",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "camas-madera-pino",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "J2",
-                "title": "Baúl de madera de pino - Grande (100 cm)",
-                "description": "Baúl extra grande de madera de pino macizo. Medidas: 100 cm de largo (1 metro) x 40 cm de profundidad x 40 cm de alto. Excelente capacidad de guardado, ideal para pie de cama sommier de dos plazas o baulera de herramientas/juguetes.",
-                "image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "Pino seleccionado cepillado y pulido de 1 pulgada, gran resistencia.",
-                        "cover_image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
-                            "img/organizadores/baul-madera-mediano/1783801106027-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "100 x 40 x 40 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 72000,
-                                "cost_price": 36000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 1
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 1
-                    }
-                ],
-                "tags": [
-                    "baul",
-                    "cofre",
-                    "organizar",
-                    "juguetes",
-                    "ropa",
-                    "baules",
-                    "baul madera",
-                    "baul pino",
-                    "baul mediano",
-                    "baul juguetes",
-                    "guardado",
-                    "juguetero",
-                    "almacenamiento",
-                    "organizacion",
-                    "caja madera",
-                    "cajon madera",
-                    "banco baul",
-                    "mueble guardado",
-                    "bahul",
-                    "bahules",
-                    "baul de madera",
-                    "baul de pino",
-                    "organizador de juguetes",
-                    "caja de madera",
-                    "cofre de madera",
-                    "baul infantil",
-                    "mueble de guardado",
-                    "baul rustico",
-                    "juguetero de pino",
-                    "guardajuguetes",
-                    "banco de madera",
-                    "banco baul madera",
-                    "caja de pino",
-                    "guardado de juguetes",
-                    "cajon de juguetes",
-                    "baulera de madera",
-                    "baulera pino"
-                ],
-                "last_modified": 1783906817810,
-                "primaryCatId": "cajones-madera",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "camas-madera-pino",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "81",
-                "title": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
-                "description": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones\nMedidas\n\nTomamos pedidos, con entrega a todo el pais.",
-                "image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
-                        "images_list": [
-                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
-                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161963-imagen.webp",
-                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305162112-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786305162256,
-                "primaryCatId": "camas-madera-pino",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "camas-madera-pino",
-                    "Juguetes"
-                ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "order": 2
             },
             {
                 "id": "91",
@@ -22095,7 +21792,7 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "last_modified": 1788738695697,
+                "last_modified": 1793586887358,
                 "primaryCatId": "muebles",
                 "history": [],
                 "views": 10,
@@ -22104,7 +21801,338 @@ const productsData = [
                     "camas-madera-pino",
                     "muebles"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "order": 3
+            },
+            {
+                "id": "41",
+                "title": "Baúl de madera de pino - Mediano (80 cm)",
+                "description": "Baúl organizador y banco juguetero de madera de pino macizo. Medidas: 80 cm de largo x 40 cm de profundidad x 40 cm de alto. Gran capacidad de almacenamiento para dormitorios, pie de cama y salas de juegos.",
+                "image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "Madera de pino cepillada y lista para encerar, barnizar o pintar.",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1782607702751-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1782607702897-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "80 x 40 x 40 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 68000,
+                                "cost_price": 34000,
+                                "legend": "",
+                                "showPrice": true,
+                                "stock": 1
+                            }
+                        ],
+                        "hidden": false,
+                        "stock": 1
+                    }
+                ],
+                "tags": [
+                    "baul",
+                    "cofre",
+                    "organizar",
+                    "juguetes",
+                    "ropa",
+                    "baules",
+                    "baul madera",
+                    "baul pino",
+                    "baul mediano",
+                    "baul juguetes",
+                    "guardado",
+                    "juguetero",
+                    "almacenamiento",
+                    "organizacion",
+                    "caja madera",
+                    "cajon madera",
+                    "banco baul",
+                    "mueble guardado",
+                    "bahul",
+                    "bahules",
+                    "baul de madera",
+                    "baul de pino",
+                    "organizador de juguetes",
+                    "caja de madera",
+                    "cofre de madera",
+                    "baul infantil",
+                    "mueble de guardado",
+                    "baul rustico",
+                    "juguetero de pino",
+                    "guardajuguetes",
+                    "banco de madera",
+                    "banco baul madera",
+                    "caja de pino",
+                    "guardado de juguetes",
+                    "cajon de juguetes",
+                    "baulera de madera",
+                    "baulera pino"
+                ],
+                "last_modified": 1793586887358,
+                "primaryCatId": "cajones-madera",
+                "views": 8,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "Organizadores",
+                    "camas-madera-pino",
+                    "cajones-madera"
+                ],
+                "rubro": "carpinteria",
+                "order": 4
+            },
+            {
+                "id": "J1",
+                "title": "Baúl de madera de pino - Chico (60 cm)",
+                "description": "Baúl juguetero y organizador fabricado en madera de pino macizo de primera calidad. Medidas: 60 cm de largo x 40 cm de profundidad x 40 cm de alto. Ideal para guardar juguetes, ropa de cama, calzado o almohadones.",
+                "image": "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "Madera de pino cepillada y lijada lista para usar, pintar o barnizar.",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801038614-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801038778-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "60 x 40 x 40 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 64000,
+                                "cost_price": 32000,
+                                "legend": "",
+                                "showPrice": true,
+                                "stock": 1
+                            }
+                        ],
+                        "hidden": false,
+                        "stock": 1
+                    }
+                ],
+                "tags": [
+                    "baul",
+                    "cofre",
+                    "organizar",
+                    "juguetes",
+                    "ropa",
+                    "baules",
+                    "baul madera",
+                    "baul pino",
+                    "baul mediano",
+                    "baul juguetes",
+                    "guardado",
+                    "juguetero",
+                    "almacenamiento",
+                    "organizacion",
+                    "caja madera",
+                    "cajon madera",
+                    "banco baul",
+                    "mueble guardado",
+                    "bahul",
+                    "bahules",
+                    "baul de madera",
+                    "baul de pino",
+                    "organizador de juguetes",
+                    "caja de madera",
+                    "cofre de madera",
+                    "baul infantil",
+                    "mueble de guardado",
+                    "baul rustico",
+                    "juguetero de pino",
+                    "guardajuguetes",
+                    "banco de madera",
+                    "banco baul madera",
+                    "caja de pino",
+                    "guardado de juguetes",
+                    "cajon de juguetes",
+                    "baulera de madera",
+                    "baulera pino"
+                ],
+                "last_modified": 1793586887358,
+                "primaryCatId": "cajones-madera",
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "Organizadores",
+                    "camas-madera-pino",
+                    "cajones-madera"
+                ],
+                "rubro": "carpinteria",
+                "order": 5
+            },
+            {
+                "id": "J2",
+                "title": "Baúl de madera de pino - Grande (100 cm)",
+                "description": "Baúl extra grande de madera de pino macizo. Medidas: 100 cm de largo (1 metro) x 40 cm de profundidad x 40 cm de alto. Excelente capacidad de guardado, ideal para pie de cama sommier de dos plazas o baulera de herramientas/juguetes.",
+                "image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "Pino seleccionado cepillado y pulido de 1 pulgada, gran resistencia.",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801106027-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "100 x 40 x 40 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 72000,
+                                "cost_price": 36000,
+                                "legend": "",
+                                "showPrice": true,
+                                "stock": 1
+                            }
+                        ],
+                        "hidden": false,
+                        "stock": 1
+                    }
+                ],
+                "tags": [
+                    "baul",
+                    "cofre",
+                    "organizar",
+                    "juguetes",
+                    "ropa",
+                    "baules",
+                    "baul madera",
+                    "baul pino",
+                    "baul mediano",
+                    "baul juguetes",
+                    "guardado",
+                    "juguetero",
+                    "almacenamiento",
+                    "organizacion",
+                    "caja madera",
+                    "cajon madera",
+                    "banco baul",
+                    "mueble guardado",
+                    "bahul",
+                    "bahules",
+                    "baul de madera",
+                    "baul de pino",
+                    "organizador de juguetes",
+                    "caja de madera",
+                    "cofre de madera",
+                    "baul infantil",
+                    "mueble de guardado",
+                    "baul rustico",
+                    "juguetero de pino",
+                    "guardajuguetes",
+                    "banco de madera",
+                    "banco baul madera",
+                    "caja de pino",
+                    "guardado de juguetes",
+                    "cajon de juguetes",
+                    "baulera de madera",
+                    "baulera pino"
+                ],
+                "last_modified": 1793586887358,
+                "primaryCatId": "cajones-madera",
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "Organizadores",
+                    "camas-madera-pino",
+                    "cajones-madera"
+                ],
+                "rubro": "carpinteria",
+                "order": 6
+            },
+            {
+                "id": "81",
+                "title": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
+                "description": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones\nMedidas\n\nTomamos pedidos, con entrega a todo el pais.",
+                "image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
+                        "images_list": [
+                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
+                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161963-imagen.webp",
+                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305162112-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1793586887358,
+                "primaryCatId": "camas-madera-pino",
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "categories": [
+                    "carpinteria-todos",
+                    "camas-madera-pino",
+                    "Juguetes"
+                ],
+                "rubro": "carpinteria",
+                "order": 7
             },
             {
                 "id": "79",
@@ -22190,7 +22218,7 @@ const productsData = [
                     "muebles de calidad",
                     "diseño artesanal"
                 ],
-                "last_modified": 1786924556417,
+                "last_modified": 1793586887358,
                 "primaryCatId": "camas-madera-pino",
                 "visible": true,
                 "views": 0,
@@ -22210,50 +22238,8 @@ const productsData = [
                     "camas-madera-pino"
                 ],
                 "rubro": "carpinteria",
-                "category": "camas-madera-pino"
-            },
-            {
-                "id": "1793239693996",
-                "title": "Mesa Mesita De Luz Alta  Economica Pino 2 Cajones",
-                "description": "MESA AUXILIAR DE MADERA – IDEAL PARA LIVING O DORMITORIO\n\nPráctica y funcional mesa auxiliar de madera, ideal para colocar junto al sillón o la cama. Su diseño combina cajones frontales y un espacio de guardado inferior abierto, ofreciendo una solución práctica para organizar tus objetos y aprovechar mejor los espacios.\n\nSu estilo natural permite combinarla con diferentes ambientes y estilos de decoración.\n\nCARACTERÍSTICAS\n\nMaterial: madera de pino natural.\n\nDiseño con cajones frontales y estante inferior abierto.\n\nIdeal para living, dormitorio o espacios reducidos.\n\nTerminación en madera natural.\n\nMEDIDAS\n\nAlto: 75 cm.\n\nAncho: 30 cm.\n\nProfundidad: 23 cm.\n\n\nRealizamos factura A.\n\nIMPORTANTE\n\nLas imágenes son ilustrativas y tienen como finalidad mostrar el producto en un ambiente decorado. Al tratarse de madera natural, las vetas, los nudos y las tonalidades pueden variar de una pieza a otra.\n\nAntes de realizar la compra, verificá las medidas para asegurarte de que el producto se adapte al espacio donde querés colocarlo.\n\nSin garantía",
-                "image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
-                "order": 0,
-                "visible": true,
-                "primaryCatId": "camas-madera-pino",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Estándar",
-                        "cover_image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
-                        "images_list": [
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693248-2-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693331-3-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693485-4-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693554-5-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693659-6-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693713-7-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693802-8-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693858-9-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Estándar",
-                                "price": 28000,
-                                "cost_price": 14000,
-                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-2-cajones/up/MLAU5669889579",
-                                "linkLabel": "Ver en Mercado Libre",
-                                "iconType": "local_shipping",
-                                "stock": 5,
-                                "showPrice": true,
-                                "highlight": false,
-                                "default": true,
-                                "hidden": false
-                            }
-                        ]
-                    }
-                ],
                 "category": "camas-madera-pino",
-                "views": 2
+                "order": 8
             }
         ]
     },
@@ -22686,9 +22672,9 @@ const productsData = [
                     "chicos",
                     "decoracion"
                 ],
-                "last_modified": 1793504671360,
+                "last_modified": 1793586859102,
                 "primaryCatId": "sillas-sillones",
-                "views": 6,
+                "views": 14,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22707,299 +22693,6 @@ const productsData = [
                 ],
                 "rubro": "carpinteria",
                 "order": 0
-            },
-            {
-                "id": "B4",
-                "shortId": "3N",
-                "title": "Mesa Y 2 Sillas Infantil (excelente Calidad)",
-                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
-                "image": "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Pino",
-                        "description": "",
-                        "cover_image": "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
-                        "images_list": [
-                            "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
-                            "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
-                            "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356059-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "(Combo 1)",
-                                "link": "https://www.mercadolibre.com.ar/mesa-y-2-sillas-infantil-excelente-calidad/up/MLAU4772559126",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 100000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1793504671360,
-                "primaryCatId": "Juguetes",
-                "history": [],
-                "order": 1
-            },
-            {
-                "id": "4I",
-                "title": "Perchero De Pie Torneado 8 Ganchos Niños",
-                "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
-                "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Percherito",
-                        "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                        "images_list": [
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811091-imagen.webp",
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811246-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Alto 110 cm",
-                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-8-ganchos-ninos/up/MLAU5114065953?pdp_filters=item_id:MLA2073891131",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 30000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "estimatedWeight": 2,
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 1,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1793504671360,
-                "primaryCatId": "Juguetes",
-                "history": [],
-                "views": 3,
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros",
-                    "Juguetes"
-                ],
-                "rubro": "carpinteria",
-                "order": 2
-            },
-            {
-                "id": "4A",
-                "title": "Posa Torta De Madera Torneado Candy Bar",
-                "description": "Posa Torta De Madera Torneado Candy Bar 22 Diam X 21 Alto",
-                "image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
-                            "img/organizadores/Posa-Tortas/1782622590872-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "22 Diam X 21 Alto",
-                                "link": "https://www.mercadolibre.com.ar/posa-torta-de-madera-torneado-candy-bar-22-diam-x-21-alto/up/MLAU3618805830?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=15&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7&wid=MLA1590370469&sid=search",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 12500,
-                                "cost_price": 6500,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "28 Diam x 17 Alto",
-                                "link": "https://www.mercadolibre.com.ar/soporte-para-tortas-torneado-de-madera-candy-bar/up/MLAU3610970883",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 12500,
-                                "cost_price": 7000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "posa",
-                    "tortas",
-                    "candy",
-                    "bar",
-                    "decoracion",
-                    "pasteles",
-                    "fiesta",
-                    "15 años",
-                    "bebes",
-                    "cumpleaños",
-                    "torneado",
-                    "madera"
-                ],
-                "last_modified": 1793504671360,
-                "primaryCatId": "bazar-cocina",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Juguetes",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria",
-                "order": 3
-            },
-            {
-                "id": "B5",
-                "title": "Juego de Mesa y Sillas Infantiles (Redondos)",
-                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
-                "image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Pino",
-                        "cover_image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
-                        "images_list": [
-                            "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "(Combo 1)",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "cost_price": 40000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1793504671360,
-                "primaryCatId": "Juguetes",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Juguetes",
-                    "sillas-sillones"
-                ],
-                "rubro": "carpinteria",
-                "order": 4
-            },
-            {
-                "id": "81",
-                "title": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
-                "description": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones\nMedidas\n\nTomamos pedidos, con entrega a todo el pais.",
-                "image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
-                        "images_list": [
-                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
-                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161963-imagen.webp",
-                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305162112-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1793504671360,
-                "primaryCatId": "camas-madera-pino",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "camas-madera-pino",
-                    "Juguetes"
-                ],
-                "rubro": "carpinteria",
-                "order": 5
             },
             {
                 "id": "C2",
@@ -23103,7 +22796,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793504671360,
+                "last_modified": 1793586859102,
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "views": 1,
@@ -23114,17 +22807,221 @@ const productsData = [
                 ],
                 "rubro": "carpinteria",
                 "category": "Juguetes",
-                "order": 6
+                "order": 1
+            },
+            {
+                "id": "B4",
+                "shortId": "3N",
+                "title": "Mesa Y 2 Sillas Infantil (excelente Calidad)",
+                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nConstruido a mano mediante el sistema tradicional de caja y espiga, la técnica de ensamble utilizada en la carpintería clásica para garantizar una estructura sólida, estable y de máxima durabilidad.\n\nMaterial: Madera maciza de pino\n\nConstrucción: Encajonado tradicional con uniones en caja y espiga\n\nTrabajo: 100% artesanal",
+                "image": "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Pino",
+                        "description": "",
+                        "cover_image": "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
+                        "images_list": [
+                            "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
+                            "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
+                            "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356059-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "(Combo 1)",
+                                "link": "https://www.mercadolibre.com.ar/mesa-y-2-sillas-infantil-excelente-calidad/up/MLAU4772559126",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 100000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793586859102,
+                "primaryCatId": "Juguetes",
+                "history": [],
+                "order": 2,
+                "views": 10
+            },
+            {
+                "id": "4I",
+                "title": "Perchero De Pie Torneado 8 Ganchos Niños",
+                "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
+                "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Percherito",
+                        "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                        "images_list": [
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811091-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811246-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Alto 110 cm",
+                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-8-ganchos-ninos/up/MLAU5114065953?pdp_filters=item_id:MLA2073891131",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 30000,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "estimatedWeight": 2,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793586859102,
+                "primaryCatId": "Juguetes",
+                "history": [],
+                "views": 3,
+                "categories": [
+                    "carpinteria-todos",
+                    "Percheros",
+                    "Juguetes"
+                ],
+                "rubro": "carpinteria",
+                "order": 3
+            },
+            {
+                "id": "4A",
+                "title": "Posa Torta De Madera Torneado Candy Bar",
+                "description": "Posa Torta De Madera Torneado Candy Bar 22 Diam X 21 Alto",
+                "image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
+                            "img/organizadores/Posa-Tortas/1782622590872-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "22 Diam X 21 Alto",
+                                "link": "https://www.mercadolibre.com.ar/posa-torta-de-madera-torneado-candy-bar-22-diam-x-21-alto/up/MLAU3618805830?pdp_filters=seller_id%3A618512819#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=15&type=product&tracking_id=4af601bc-bddf-4752-8d57-5addb1d27ad7&wid=MLA1590370469&sid=search",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 12500,
+                                "cost_price": 6500,
+                                "legend": "",
+                                "showPrice": true
+                            },
+                            {
+                                "medida": "28 Diam x 17 Alto",
+                                "link": "https://www.mercadolibre.com.ar/soporte-para-tortas-torneado-de-madera-candy-bar/up/MLAU3610970883",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 12500,
+                                "cost_price": 7000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "posa",
+                    "tortas",
+                    "candy",
+                    "bar",
+                    "decoracion",
+                    "pasteles",
+                    "fiesta",
+                    "15 años",
+                    "bebes",
+                    "cumpleaños",
+                    "torneado",
+                    "madera"
+                ],
+                "last_modified": 1793586859102,
+                "primaryCatId": "bazar-cocina",
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 3
+                },
+                "categories": [
+                    "carpinteria-todos",
+                    "Juguetes",
+                    "bazar-cocina"
+                ],
+                "rubro": "carpinteria",
+                "order": 4
             },
             {
                 "id": "4E",
-                "title": "Estantes Montessori",
+                "shortId": "3N",
+                "title": "Estante Librero Condimentero",
                 "description": "Organización creativa y estilo para tus paredes.",
                 "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
                 "image": "img/organizadores/estantes-montessori/1.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "60 CM",
+                        "description": "",
                         "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
                             "img/organizadores/estantes-montessori/1.webp",
@@ -23143,7 +23040,8 @@ const productsData = [
                                 "price": 13000,
                                 "cost_price": 13000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x2)",
@@ -23156,7 +23054,8 @@ const productsData = [
                                 "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 60 (Combo x3)",
@@ -23169,7 +23068,8 @@ const productsData = [
                                 "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -23182,13 +23082,15 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     },
                     {
                         "acabado_name": "80 CM",
+                        "description": "",
                         "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
                             "img/organizadores/estantes-montessori/1.webp",
@@ -23207,7 +23109,8 @@ const productsData = [
                                 "price": 14000,
                                 "cost_price": 14000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 80 (Combo x2)",
@@ -23220,7 +23123,8 @@ const productsData = [
                                 "price": 26000,
                                 "cost_price": 26000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 80 (Combo x3)",
@@ -23233,7 +23137,8 @@ const productsData = [
                                 "price": 35998,
                                 "cost_price": 35998,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -23246,13 +23151,15 @@ const productsData = [
                                 "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
                     },
                     {
                         "acabado_name": "100 cm",
+                        "description": "",
                         "cover_image": "img/organizadores/estantes-montessori/1.webp",
                         "images_list": [
                             "img/organizadores/estantes-montessori/1.webp",
@@ -23271,7 +23178,8 @@ const productsData = [
                                 "price": 15000,
                                 "cost_price": 15000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 100 (Combo x2)",
@@ -23284,7 +23192,8 @@ const productsData = [
                                 "price": 28000,
                                 "cost_price": 28000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "10 x 10 x 100 (Combo x3)",
@@ -23297,7 +23206,8 @@ const productsData = [
                                 "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             },
                             {
                                 "medida": "Combo x3 (60, 80, 100cm)",
@@ -23308,9 +23218,10 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 33000,
-                                "cost_price": "",
+                                "cost_price": 33000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true
                             }
                         ],
                         "hidden": false
@@ -23350,27 +23261,27 @@ const productsData = [
                     "estanteria madera",
                     "organizador pared"
                 ],
-                "last_modified": 1793504671360,
-                "primaryCatId": "Estantes",
-                "views": 4,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Estantes",
-                    "Juguetes"
-                ],
-                "rubro": "carpinteria",
-                "order": 7
+                "quantityDiscounts": [],
+                "last_modified": 1793586859102,
+                "primaryCatId": "Estantes",
+                "history": [],
+                "order": 5
             },
             {
                 "id": "4H",
@@ -23406,7 +23317,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1793504671360,
+                "last_modified": 1793586859102,
                 "primaryCatId": "Estantes",
                 "views": 1,
                 "paymentConfig": {
@@ -23426,7 +23337,7 @@ const productsData = [
                     "Juguetes"
                 ],
                 "rubro": "carpinteria",
-                "order": 8
+                "order": 6
             },
             {
                 "id": "7D",
@@ -23483,7 +23394,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793504671360,
+                "last_modified": 1793586859102,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "views": 11,
@@ -23493,7 +23404,184 @@ const productsData = [
                     "Juguetes"
                 ],
                 "rubro": "carpinteria",
+                "order": 7
+            },
+            {
+                "id": "B5",
+                "title": "Juego de Mesa y Sillas Infantiles (Redondos)",
+                "description": "Juego de Mesa y Sillas Infantiles\n\nFabricado íntegramente en madera maciza de pino con acabado natural.\n\nMaterial: Madera maciza de pino\n\nTrabajo: 100% artesanal",
+                "image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Pino",
+                        "cover_image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
+                        "images_list": [
+                            "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "(Combo 1)",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 40000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1793586859102,
+                "primaryCatId": "Juguetes",
+                "views": 3,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "categories": [
+                    "carpinteria-todos",
+                    "Juguetes",
+                    "sillas-sillones"
+                ],
+                "rubro": "carpinteria",
+                "order": 8
+            },
+            {
+                "id": "B1",
+                "title": "Jenga",
+                "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
+                "image": "img/juguetes/jenga/jenga.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/juguetes/jenga/jenga.webp",
+                        "images_list": [
+                            "img/juguetes/jenga/jenga.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "63 Piezas",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1514956491-yenga-torre-alta-de-madera-63-piezas-la-carpinteria-_JM#polycard_client=search-nordic&search_layout=grid&position=2&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636&wid=MLA1514956491&sid=search",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "legend": "",
+                                "showPrice": false,
+                                "stock": 2
+                            }
+                        ],
+                        "hidden": false,
+                        "stock": 2
+                    }
+                ],
+                "tags": [
+                    "jenga",
+                    "yenga",
+                    "madera",
+                    "juguetes",
+                    "juegos de mesa",
+                    "mesa",
+                    "juegos",
+                    "piezas",
+                    "maderitas",
+                    "juego",
+                    "juego mesa",
+                    "juego madera",
+                    "diversion",
+                    "familiar",
+                    "bloques",
+                    "torres",
+                    "gigante",
+                    "infantil",
+                    "entretenimiento",
+                    "bloques de madera",
+                    "yenga gigante",
+                    "jenga gigante",
+                    "juego de madera",
+                    "juego de mesa",
+                    "juego familiar",
+                    "torre de madera",
+                    "juego de bloques",
+                    "entretenimiento madera",
+                    "yenga madera",
+                    "juguete de madera",
+                    "jenga madera"
+                ],
+                "last_modified": 1793586859102,
+                "primaryCatId": "Juguetes",
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 6
+                },
+                "stock": 2,
+                "categories": [
+                    "carpinteria-todos",
+                    "Juguetes"
+                ],
+                "rubro": "carpinteria",
                 "order": 9
+            },
+            {
+                "id": "81",
+                "title": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones",
+                "description": "Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones\nMedidas\n\nTomamos pedidos, con entrega a todo el pais.",
+                "image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
+                        "images_list": [
+                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161815-imagen.webp",
+                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305161963-imagen.webp",
+                            "img/camas-para-ninos/Cama Superpuesta De Pino Macizo Con 2 Barandas y Cajones/1786305162112-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "last_modified": 1793586859102,
+                "primaryCatId": "camas-madera-pino",
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "categories": [
+                    "carpinteria-todos",
+                    "camas-madera-pino",
+                    "Juguetes"
+                ],
+                "rubro": "carpinteria",
+                "order": 10
             },
             {
                 "id": "D4",
@@ -23730,7 +23818,7 @@ const productsData = [
                     "banquetes",
                     "atriles"
                 ],
-                "last_modified": 1793504671360,
+                "last_modified": 1793586859102,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
                 "views": 8,
@@ -23748,91 +23836,6 @@ const productsData = [
                     "carpinteria-todos",
                     "Juguetes",
                     "Mesas-madera"
-                ],
-                "rubro": "carpinteria",
-                "order": 10
-            },
-            {
-                "id": "B1",
-                "title": "Jenga",
-                "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/juguetes/jenga/jenga.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/juguetes/jenga/jenga.webp",
-                        "images_list": [
-                            "img/juguetes/jenga/jenga.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "63 Piezas",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1514956491-yenga-torre-alta-de-madera-63-piezas-la-carpinteria-_JM#polycard_client=search-nordic&search_layout=grid&position=2&type=item&tracking_id=d6449a4b-7adc-42a9-a224-a1bd5be8b636&wid=MLA1514956491&sid=search",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "legend": "",
-                                "showPrice": false,
-                                "stock": 2
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 2
-                    }
-                ],
-                "tags": [
-                    "jenga",
-                    "yenga",
-                    "madera",
-                    "juguetes",
-                    "juegos de mesa",
-                    "mesa",
-                    "juegos",
-                    "piezas",
-                    "maderitas",
-                    "juego",
-                    "juego mesa",
-                    "juego madera",
-                    "diversion",
-                    "familiar",
-                    "bloques",
-                    "torres",
-                    "gigante",
-                    "infantil",
-                    "entretenimiento",
-                    "bloques de madera",
-                    "yenga gigante",
-                    "jenga gigante",
-                    "juego de madera",
-                    "juego de mesa",
-                    "juego familiar",
-                    "torre de madera",
-                    "juego de bloques",
-                    "entretenimiento madera",
-                    "yenga madera",
-                    "juguete de madera",
-                    "jenga madera"
-                ],
-                "last_modified": 1793504671360,
-                "primaryCatId": "Juguetes",
-                "views": 0,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 6
-                },
-                "stock": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "Juguetes"
                 ],
                 "rubro": "carpinteria",
                 "order": 11
@@ -23868,7 +23871,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1793504671360,
+                "last_modified": 1793586859102,
                 "primaryCatId": "Juguetes",
                 "views": 1,
                 "paymentConfig": {
@@ -23973,7 +23976,7 @@ const productsData = [
                     "muebles de exterior",
                     "muebles de living"
                 ],
-                "last_modified": 1793504671360,
+                "last_modified": 1793586859102,
                 "primaryCatId": "Juguetes",
                 "visible": true,
                 "views": 1,
@@ -24005,6 +24008,73 @@ const productsData = [
         "rubro": "carpinteria",
         "order": 13,
         "products": [
+            {
+                "id": "C1",
+                "title": "Banquito de Plaza",
+                "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
+                "image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
+                        "images_list": [
+                            "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
+                            "img/sillas-y-sillones/banquito-de-plaza/1782606557223-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Doble",
+                                "link": "https://www.mercadolibre.com.ar/banquito-de-plaza-para-ninos-montessori/up/MLAU3378028588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 33000,
+                                "cost_price": 33000,
+                                "legend": "",
+                                "showPrice": true,
+                                "stock": 0
+                            }
+                        ],
+                        "hidden": false,
+                        "stock": 0
+                    }
+                ],
+                "tags": [
+                    "sillon",
+                    "banquito",
+                    "banca",
+                    "plaza",
+                    "niños",
+                    "candy",
+                    "bar",
+                    "niños",
+                    "chicos",
+                    "decoracion"
+                ],
+                "last_modified": 1793586813439,
+                "primaryCatId": "sillas-sillones",
+                "views": 14,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 0,
+                "categories": [
+                    "carpinteria-todos",
+                    "Juguetes",
+                    "sillas-sillones"
+                ],
+                "rubro": "carpinteria",
+                "order": 0
+            },
             {
                 "id": "B4",
                 "shortId": "3N",
@@ -24057,10 +24127,11 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793504671360,
+                "last_modified": 1793586813439,
                 "primaryCatId": "Juguetes",
                 "history": [],
-                "order": 1
+                "order": 1,
+                "views": 10
             },
             {
                 "id": "B5",
@@ -24093,9 +24164,9 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786839116557,
+                "last_modified": 1793586813439,
                 "primaryCatId": "Juguetes",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24111,7 +24182,8 @@ const productsData = [
                     "Juguetes",
                     "sillas-sillones"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "order": 2
             },
             {
                 "id": "B6",
@@ -24144,7 +24216,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786839110101,
+                "last_modified": 1793586813439,
                 "primaryCatId": "Juguetes",
                 "views": 1,
                 "paymentConfig": {
@@ -24162,73 +24234,8 @@ const productsData = [
                     "Juguetes",
                     "sillas-sillones"
                 ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "C1",
-                "title": "Banquito de Plaza",
-                "description": "Productos pensados para fomentar la autonomía de los más pequeños.",
-                "image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
-                        "images_list": [
-                            "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
-                            "img/sillas-y-sillones/banquito-de-plaza/1782606557223-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Doble",
-                                "link": "https://www.mercadolibre.com.ar/banquito-de-plaza-para-ninos-montessori/up/MLAU3378028588",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 33000,
-                                "cost_price": 33000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "sillon",
-                    "banquito",
-                    "banca",
-                    "plaza",
-                    "niños",
-                    "candy",
-                    "bar",
-                    "niños",
-                    "chicos",
-                    "decoracion"
-                ],
-                "last_modified": 1786564211621,
-                "primaryCatId": "sillas-sillones",
-                "views": 6,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "stock": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Juguetes",
-                    "sillas-sillones"
-                ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "order": 3
             }
         ]
     },
@@ -24638,61 +24645,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "D7",
-                "title": "Mesita Matera",
-                "description": "",
-                "image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
-                        "images_list": [
-                            "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
-                            "img/mesas-de-madera/mesita-matera/1786665063420-imagen.webp",
-                            "img/mesas-de-madera/mesita-matera/1786665063603-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Mesita",
-                                "link": "https://www.mercadolibre.com.ar/mesita-matera-plegable/up/MLAU4758741308?pdp_filters=item_id:MLA1995151329",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": 16997,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786811404439,
-                "primaryCatId": "Mesas-madera",
-                "views": 2,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera",
-                    "Hogar",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "4F",
                 "title": "Caballetes de madera",
                 "description": "",
@@ -24798,7 +24750,8 @@ const productsData = [
                         "timestamp": 1792887338342,
                         "details": "Importado como borrador desde Mercado Libre (MLA2083657243)"
                     }
-                ]
+                ],
+                "views": 2
             },
             {
                 "id": "1792887338350",
@@ -24823,10 +24776,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 25000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false,
+                                "showPrice": true,
                                 "logisticaEnabled": true
                             }
                         ],
@@ -24848,10 +24801,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 25000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false,
+                                "showPrice": true,
                                 "logisticaEnabled": true
                             }
                         ],
@@ -24898,10 +24851,10 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
+                                "price": 25000,
                                 "cost_price": "",
                                 "legend": "",
-                                "showPrice": false,
+                                "showPrice": true,
                                 "logisticaEnabled": true
                             }
                         ],
@@ -24934,7 +24887,7 @@ const productsData = [
                     "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793491876816,
+                "last_modified": 1793586546740,
                 "primaryCatId": "Mesas-madera",
                 "history": [
                     {
@@ -24953,6 +24906,542 @@ const productsData = [
         "rubro": "carpinteria",
         "order": 15,
         "products": [
+            {
+                "id": "E3",
+                "title": "Macetas colgante de eucalipto",
+                "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
+                "image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
+                        "images_list": [
+                            "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
+                            "img/jardin/macetas-colgante-eucalipto/1786334564675-imagen.webp",
+                            "img/jardin/macetas-colgante-eucalipto/1786334564815-imagen.webp",
+                            "img/jardin/macetas-colgante-eucalipto/1786334564942-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "26 x 26 x 11 cm",
+                                "link": "https://www.mercadolibre.com.ar/porta-macetas-colgante-de-madera-eucalipto-26-x-26-cm/up/MLAU3980462508?pdp_filters=item_id:MLA1791659295",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 9000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "Porta maceta colgante de madera",
+                    "Portamacetas colgante",
+                    "Soporte colgante para plantas",
+                    "Macetero colgante madera",
+                    "Decoracion con plantas interior",
+                    "Portamaceteros de pared",
+                    "Estante colgante para plantas",
+                    "Porta maceta de madera maciza",
+                    "Decoracion nordica hogar",
+                    "Organizador de plantas vertical",
+                    "Macetas colgantes interior",
+                    "Adornos de madera para pared",
+                    "Portamacetas minimalista",
+                    "Estilo nordico decoracion",
+                    "Plantas colgantes balcon",
+                    "Diseño de interiores madera",
+                    "Base para plantas colgantes",
+                    "Accesorios para plantas interior",
+                    "Porta macetero artesanal",
+                    "Estante flotante macetas",
+                    "Decoracion de ambientes",
+                    "Muebles de pino para plantas",
+                    "Huertas verticales madera",
+                    "Regalos decoracion hogar",
+                    "maceta",
+                    "macetas",
+                    "macetero",
+                    "macetas colgantes",
+                    "madera",
+                    "eucalipto",
+                    "jardin",
+                    "patio",
+                    "balcon",
+                    "exterior",
+                    "terraza",
+                    "porta macetas",
+                    "colgante",
+                    "decoracion jardin",
+                    "plantas",
+                    "flores",
+                    "macetero de madera",
+                    "macetero de eucalipto",
+                    "maceta colgante",
+                    "porta macetas colgante",
+                    "decoracion exterior",
+                    "decoracion patio",
+                    "decoracion balcon",
+                    "macetero balcon",
+                    "piso jardin",
+                    "macetero de exterior",
+                    "colgante eucalipto"
+                ],
+                "last_modified": 1793586789934,
+                "primaryCatId": "jardin-patio",
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false,
+                    "logisticaMaxUnits": 3
+                },
+                "categories": [
+                    "carpinteria-todos",
+                    "jardin-patio"
+                ],
+                "rubro": "carpinteria",
+                "order": 0
+            },
+            {
+                "id": "1792887338335",
+                "shortId": "3Q",
+                "title": "Fanal Madera Pino Por Tres Unidades",
+                "description": "Publicación importada desde Mercado Libre (MLA2164674452).",
+                "image": "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
+                        "images_list": [
+                            "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
+                            "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381852-imagenwebp.webp",
+                            "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381859-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Fanales",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2164674452",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20000,
+                                "cost_price": 24500,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla2164674452",
+                    "fanal",
+                    "madera",
+                    "pino",
+                    "tres",
+                    "unidades"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793586789934,
+                "primaryCatId": "jardin-patio",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338334,
+                        "details": "Importado como borrador desde Mercado Libre (MLA2164674452)"
+                    }
+                ],
+                "views": 1,
+                "order": 1
+            },
+            {
+                "id": "D2",
+                "title": "Mesa Plegabe",
+                "description": "",
+                "image": "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
+                        "images_list": [
+                            "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
+                            "img/mesas-de-madera/mesa-plegabe/1782601058954-imagen.webp",
+                            "img/mesas-de-madera/mesa-plegabe/1782601059141-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mesa",
+                    "mesita",
+                    "madera",
+                    "plegable",
+                    "jardin",
+                    "playa",
+                    "picnic",
+                    "salida",
+                    "bosque",
+                    "viaje"
+                ],
+                "last_modified": 1793586789934,
+                "primaryCatId": "Mesas-madera",
+                "views": 4,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "categories": [
+                    "carpinteria-todos",
+                    "Mesas-madera",
+                    "jardin-patio",
+                    "Hogar"
+                ],
+                "rubro": "carpinteria",
+                "order": 2
+            },
+            {
+                "id": "1792887338351",
+                "shortId": "3Q",
+                "title": "Mesa De Madera Plegable Jardín Camping",
+                "description": "Publicación importada desde Mercado Libre (MLA3946285696).",
+                "image": "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
+                        "images_list": [
+                            "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
+                            "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275111-imagenwebp.webp",
+                            "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275117-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Combo",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3946285696",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 45000,
+                                "cost_price": 60000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3946285696",
+                    "mesa",
+                    "madera",
+                    "plegable",
+                    "jardín",
+                    "camping"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793586789934,
+                "primaryCatId": "jardin-patio",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338344,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3946285696)"
+                    }
+                ],
+                "views": 1,
+                "order": 3
+            },
+            {
+                "id": "1792887338342",
+                "shortId": "3Q",
+                "title": "Mesa  Plegable Playera Jardín (2 Modelos)",
+                "description": "Publicación importada desde Mercado Libre (MLA1475679709).",
+                "image": "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
+                        "images_list": [
+                            "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
+                            "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476122-imagenwebp.webp",
+                            "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476131-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Mesita",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-1475679709",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 32999,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla1475679709",
+                    "mesa",
+                    "plegable",
+                    "playera",
+                    "jardín",
+                    "modelos)"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793586789934,
+                "primaryCatId": "jardin-patio",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338338,
+                        "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
+                    }
+                ],
+                "views": 0,
+                "order": 4
+            },
+            {
+                "id": "D3",
+                "title": "Mesa Plegable - Redonda",
+                "description": "",
+                "image": "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
+                        "images_list": [
+                            "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
+                            "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636382-imagen.webp"
+                        ],
+                        "medidas_variants": [],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "mesa",
+                    "mesita",
+                    "madera",
+                    "plegable",
+                    "jardin",
+                    "playa",
+                    "picnic",
+                    "salida",
+                    "bosque",
+                    "viaje"
+                ],
+                "last_modified": 1793586789934,
+                "primaryCatId": "Mesas-madera",
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "categories": [
+                    "carpinteria-todos",
+                    "Mesas-madera",
+                    "jardin-patio",
+                    "Hogar"
+                ],
+                "rubro": "carpinteria",
+                "order": 5
+            },
+            {
+                "id": "E5",
+                "title": "Cesto de Basura",
+                "description": "Fanales, bandejas y complementos artesanales únicos.",
+                "image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "cover_image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
+                        "images_list": [
+                            "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
+                            "img/jardin/cesto-de-basura/1783742426925-imagen.webp",
+                            "img/jardin/cesto-de-basura/1783742427140-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Natural",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 55000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Barniz + Brea",
+                        "cover_image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
+                        "images_list": [
+                            "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
+                            "img/jardin/cesto-de-basura/1783742426925-imagen.webp",
+                            "img/jardin/cesto-de-basura/1783742427140-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Barniz + Brea",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 85000,
+                                "legend": "",
+                                "showPrice": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "cesto de basura",
+                    "basura",
+                    "tacho",
+                    "campo",
+                    "madera",
+                    "canasto",
+                    "para",
+                    "la",
+                    "canasto para la basura.",
+                    "cesto",
+                    "tacho de basura",
+                    "pino",
+                    "oficina",
+                    "baño",
+                    "cocina",
+                    "papelero",
+                    "organizador",
+                    "canasto basura",
+                    "basurero",
+                    "tacho de madera",
+                    "tacho de pino",
+                    "cesto madera",
+                    "cesto de madera",
+                    "canasto de madera",
+                    "canasto de pino",
+                    "basurero de madera",
+                    "basurero de pino",
+                    "tacho madera",
+                    "papelera de madera",
+                    "papelera pino"
+                ],
+                "last_modified": 1793586789934,
+                "primaryCatId": "jardin-patio",
+                "views": 2,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "categories": [
+                    "carpinteria-todos",
+                    "jardin-patio"
+                ],
+                "rubro": "carpinteria",
+                "order": 6
+            },
             {
                 "id": "E1",
                 "title": "Deck rectangular",
@@ -25171,7 +25660,7 @@ const productsData = [
                     "piso jardin",
                     "deck jardin"
                 ],
-                "last_modified": 1786812318991,
+                "last_modified": 1793586789934,
                 "primaryCatId": "jardin-patio",
                 "views": 12,
                 "paymentConfig": {
@@ -25189,7 +25678,8 @@ const productsData = [
                     "carpinteria-todos",
                     "jardin-patio"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "order": 7
             },
             {
                 "id": "E2",
@@ -25455,7 +25945,7 @@ const productsData = [
                     "piso jardin",
                     "deck jardin"
                 ],
-                "last_modified": 1786812326311,
+                "last_modified": 1793586789934,
                 "primaryCatId": "jardin-patio",
                 "views": 2,
                 "paymentConfig": {
@@ -25473,394 +25963,8 @@ const productsData = [
                     "carpinteria-todos",
                     "jardin-patio"
                 ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "E3",
-                "title": "Macetas colgante de eucalipto",
-                "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
-                "image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
-                        "images_list": [
-                            "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
-                            "img/jardin/macetas-colgante-eucalipto/1786334564675-imagen.webp",
-                            "img/jardin/macetas-colgante-eucalipto/1786334564815-imagen.webp",
-                            "img/jardin/macetas-colgante-eucalipto/1786334564942-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "26 x 26 x 11 cm",
-                                "link": "https://www.mercadolibre.com.ar/porta-macetas-colgante-de-madera-eucalipto-26-x-26-cm/up/MLAU3980462508?pdp_filters=item_id:MLA1791659295",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 9000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "Porta maceta colgante de madera",
-                    "Portamacetas colgante",
-                    "Soporte colgante para plantas",
-                    "Macetero colgante madera",
-                    "Decoracion con plantas interior",
-                    "Portamaceteros de pared",
-                    "Estante colgante para plantas",
-                    "Porta maceta de madera maciza",
-                    "Decoracion nordica hogar",
-                    "Organizador de plantas vertical",
-                    "Macetas colgantes interior",
-                    "Adornos de madera para pared",
-                    "Portamacetas minimalista",
-                    "Estilo nordico decoracion",
-                    "Plantas colgantes balcon",
-                    "Diseño de interiores madera",
-                    "Base para plantas colgantes",
-                    "Accesorios para plantas interior",
-                    "Porta macetero artesanal",
-                    "Estante flotante macetas",
-                    "Decoracion de ambientes",
-                    "Muebles de pino para plantas",
-                    "Huertas verticales madera",
-                    "Regalos decoracion hogar",
-                    "maceta",
-                    "macetas",
-                    "macetero",
-                    "macetas colgantes",
-                    "madera",
-                    "eucalipto",
-                    "jardin",
-                    "patio",
-                    "balcon",
-                    "exterior",
-                    "terraza",
-                    "porta macetas",
-                    "colgante",
-                    "decoracion jardin",
-                    "plantas",
-                    "flores",
-                    "macetero de madera",
-                    "macetero de eucalipto",
-                    "maceta colgante",
-                    "porta macetas colgante",
-                    "decoracion exterior",
-                    "decoracion patio",
-                    "decoracion balcon",
-                    "macetero balcon",
-                    "piso jardin",
-                    "macetero de exterior",
-                    "colgante eucalipto"
-                ],
-                "last_modified": 1786334565073,
-                "primaryCatId": "jardin-patio",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "jardin-patio"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "E4",
-                "shortId": "3D",
-                "title": "Fanal",
-                "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "video": "https://www.youtube.com/shorts/-_xiAyyEIik?feature=share",
-                "image": "img/jardn/fanal/1790378363366-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/jardn/fanal/1790378363366-imagenwebp.webp",
-                        "images_list": [
-                            "img/jardn/fanal/1790378363366-imagenwebp.webp",
-                            "img/jardn/fanal/1790378363377-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Fanal",
-                                "link": "https://www.mercadolibre.com.ar/fanal-madera-pino-por-tres-unidades/up/MLAU3276284211",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 15000,
-                                "cost_price": 3,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "decorar",
-                    "jardin",
-                    "fanales",
-                    "candy",
-                    "bar",
-                    "blanco",
-                    "negro",
-                    "iluminacion",
-                    "santos",
-                    "imagen",
-                    "altar"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1790378363386,
-                "primaryCatId": "jardin-patio",
-                "history": [],
-                "views": 2,
-                "categories": [
-                    "carpinteria-todos",
-                    "jardin-patio",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "E5",
-                "title": "Cesto de Basura",
-                "description": "Fanales, bandejas y complementos artesanales únicos.",
-                "image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
-                        "images_list": [
-                            "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
-                            "img/jardin/cesto-de-basura/1783742426925-imagen.webp",
-                            "img/jardin/cesto-de-basura/1783742427140-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Natural",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 55000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Barniz + Brea",
-                        "cover_image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
-                        "images_list": [
-                            "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
-                            "img/jardin/cesto-de-basura/1783742426925-imagen.webp",
-                            "img/jardin/cesto-de-basura/1783742427140-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Barniz + Brea",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 85000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "cesto de basura",
-                    "basura",
-                    "tacho",
-                    "campo",
-                    "madera",
-                    "canasto",
-                    "para",
-                    "la",
-                    "canasto para la basura.",
-                    "cesto",
-                    "tacho de basura",
-                    "pino",
-                    "oficina",
-                    "baño",
-                    "cocina",
-                    "papelero",
-                    "organizador",
-                    "canasto basura",
-                    "basurero",
-                    "tacho de madera",
-                    "tacho de pino",
-                    "cesto madera",
-                    "cesto de madera",
-                    "canasto de madera",
-                    "canasto de pino",
-                    "basurero de madera",
-                    "basurero de pino",
-                    "tacho madera",
-                    "papelera de madera",
-                    "papelera pino"
-                ],
-                "last_modified": 1783742622011,
-                "primaryCatId": "jardin-patio",
-                "views": 2,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "jardin-patio"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "D2",
-                "title": "Mesa Plegabe",
-                "description": "",
-                "image": "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
-                        "images_list": [
-                            "img/mesas-de-madera/mesa-plegabe/1782601058760-imagen.webp",
-                            "img/mesas-de-madera/mesa-plegabe/1782601058954-imagen.webp",
-                            "img/mesas-de-madera/mesa-plegabe/1782601059141-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mesa",
-                    "mesita",
-                    "madera",
-                    "plegable",
-                    "jardin",
-                    "playa",
-                    "picnic",
-                    "salida",
-                    "bosque",
-                    "viaje"
-                ],
-                "last_modified": 1783637216140,
-                "primaryCatId": "Mesas-madera",
-                "views": 4,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera",
-                    "jardin-patio",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "D3",
-                "title": "Mesa Plegable - Redonda",
-                "description": "",
-                "image": "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
-                        "images_list": [
-                            "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636181-imagen.webp",
-                            "img/mesas-de-madera/mesa-plegable-redonda-chica/1782606636382-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "mesa",
-                    "mesita",
-                    "madera",
-                    "plegable",
-                    "jardin",
-                    "playa",
-                    "picnic",
-                    "salida",
-                    "bosque",
-                    "viaje"
-                ],
-                "last_modified": 1783637228097,
-                "primaryCatId": "Mesas-madera",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera",
-                    "jardin-patio",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "order": 8
             },
             {
                 "id": "1792887338333",
@@ -25893,7 +25997,7 @@ const productsData = [
                     "macetas",
                     "madera"
                 ],
-                "last_modified": 1792887338332,
+                "last_modified": 1793586789934,
                 "optional_variant": null,
                 "primaryCatId": "jardin-patio",
                 "history": [
@@ -25918,7 +26022,8 @@ const productsData = [
                     "jardin-patio"
                 ],
                 "rubro": "carpinteria",
-                "subcategoria": "decks-macetas"
+                "subcategoria": "decks-macetas",
+                "order": 9
             },
             {
                 "id": "1792887338338",
@@ -25951,7 +26056,7 @@ const productsData = [
                     "macetas",
                     "madera"
                 ],
-                "last_modified": 1792887338335,
+                "last_modified": 1793586789934,
                 "optional_variant": null,
                 "primaryCatId": "jardin-patio",
                 "history": [
@@ -25976,7 +26081,8 @@ const productsData = [
                     "jardin-patio"
                 ],
                 "rubro": "carpinteria",
-                "subcategoria": "decks-macetas"
+                "subcategoria": "decks-macetas",
+                "order": 10
             },
             {
                 "id": "1792887338345",
@@ -26009,7 +26115,7 @@ const productsData = [
                     "macetas",
                     "madera"
                 ],
-                "last_modified": 1792887338340,
+                "last_modified": 1793586789934,
                 "optional_variant": null,
                 "primaryCatId": "jardin-patio",
                 "history": [
@@ -26034,223 +26140,8 @@ const productsData = [
                     "jardin-patio"
                 ],
                 "rubro": "carpinteria",
-                "subcategoria": "decks-macetas"
-            },
-            {
-                "id": "1792887338342",
-                "shortId": "3Q",
-                "title": "Mesa  Plegable Playera Jardín (2 Modelos)",
-                "description": "Publicación importada desde Mercado Libre (MLA1475679709).",
-                "image": "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "description": "",
-                        "cover_image": "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
-                        "images_list": [
-                            "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
-                            "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476122-imagenwebp.webp",
-                            "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476131-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Mesita",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1475679709",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": 32999,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "borrador",
-                    "mercado libre",
-                    "mla1475679709",
-                    "mesa",
-                    "plegable",
-                    "playera",
-                    "jardín",
-                    "modelos)"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1793480476135,
-                "primaryCatId": "jardin-patio",
-                "history": [
-                    {
-                        "type": "import_ml",
-                        "timestamp": 1792887338338,
-                        "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
-                    }
-                ],
-                "views": 0
-            },
-            {
-                "id": "1792887338351",
-                "shortId": "3Q",
-                "title": "Mesa De Madera Plegable Jardín Camping",
-                "description": "Publicación importada desde Mercado Libre (MLA3946285696).",
-                "image": "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "description": "",
-                        "cover_image": "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
-                        "images_list": [
-                            "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
-                            "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275111-imagenwebp.webp",
-                            "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275117-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Combo",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-3946285696",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 60000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "borrador",
-                    "mercado libre",
-                    "mla3946285696",
-                    "mesa",
-                    "madera",
-                    "plegable",
-                    "jardín",
-                    "camping"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1793480283124,
-                "primaryCatId": "jardin-patio",
-                "history": [
-                    {
-                        "type": "import_ml",
-                        "timestamp": 1792887338344,
-                        "details": "Importado como borrador desde Mercado Libre (MLA3946285696)"
-                    }
-                ],
-                "views": 1
-            },
-            {
-                "id": "1792887338335",
-                "shortId": "3Q",
-                "title": "Fanal Madera Pino Por Tres Unidades",
-                "description": "Publicación importada desde Mercado Libre (MLA2164674452).",
-                "image": "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "description": "",
-                        "cover_image": "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
-                        "images_list": [
-                            "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
-                            "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381852-imagenwebp.webp",
-                            "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381859-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Fanales",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2164674452",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 24500,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "borrador",
-                    "mercado libre",
-                    "mla2164674452",
-                    "fanal",
-                    "madera",
-                    "pino",
-                    "tres",
-                    "unidades"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1793480381864,
-                "primaryCatId": "jardin-patio",
-                "history": [
-                    {
-                        "type": "import_ml",
-                        "timestamp": 1792887338334,
-                        "details": "Importado como borrador desde Mercado Libre (MLA2164674452)"
-                    }
-                ],
-                "views": 1
+                "subcategoria": "decks-macetas",
+                "order": 11
             }
         ]
     },
@@ -26464,12 +26355,14 @@ const productsData = [
             },
             {
                 "id": "G3",
-                "title": "Mate",
+                "shortId": "3M",
+                "title": "Mate - Algarrobo - Criollo",
                 "description": "",
                 "image": "img/todo-algarrobo/Mate/1788927967853-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Algarrobo",
+                        "description": "",
                         "cover_image": "img/todo-algarrobo/Mate/1788927967853-imagen.webp",
                         "images_list": [
                             "img/todo-algarrobo/Mate/1788927967853-imagen.webp",
@@ -26566,16 +26459,9 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788928169150,
+                "last_modified": 1793586660076,
                 "primaryCatId": "productos-algarrobo",
-                "history": [],
-                "views": 13,
-                "categories": [
-                    "carpinteria-todos",
-                    "productos-algarrobo",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
+                "history": []
             },
             {
                 "id": "1792887338352",
@@ -26651,7 +26537,7 @@ const productsData = [
             {
                 "id": "42",
                 "shortId": "3Q",
-                "title": "Especiero",
+                "title": "Especiero Condimentero para Frascos",
                 "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
                 "image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
                 "acabados_groups": [
@@ -26777,7 +26663,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793480775651,
+                "last_modified": 1793586351484,
                 "primaryCatId": "bazar-cocina",
                 "history": [
                     {
@@ -26790,17 +26676,18 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ],
-                "views": 4
+                ]
             },
             {
                 "id": "44",
-                "title": "Verdule para Mesada",
+                "shortId": "3N",
+                "title": "Organizador Verdulero Frutero Pino 2 Estantes",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
                         "images_list": [
                             "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
@@ -26816,14 +26703,14 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
+                                "price": 20000,
+                                "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0,
-                                "price": 20000
+                                "logisticaEnabled": true
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -26864,27 +26751,26 @@ const productsData = [
                     "panera de madera",
                     "panera de pino"
                 ],
-                "last_modified": 1783637121354,
-                "primaryCatId": "bazar-cocina",
-                "views": 2,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "stock": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
+                "quantityDiscounts": [],
+                "last_modified": 1793586378660,
+                "primaryCatId": "bazar-cocina",
+                "history": []
             },
             {
                 "id": "4A",
@@ -27217,61 +27103,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "D7",
-                "title": "Mesita Matera",
-                "description": "",
-                "image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
-                        "images_list": [
-                            "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
-                            "img/mesas-de-madera/mesita-matera/1786665063420-imagen.webp",
-                            "img/mesas-de-madera/mesita-matera/1786665063603-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Mesita",
-                                "link": "https://www.mercadolibre.com.ar/mesita-matera-plegable/up/MLAU4758741308?pdp_filters=item_id:MLA1995151329",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 17000,
-                                "cost_price": 16997,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786811404439,
-                "primaryCatId": "Mesas-madera",
-                "views": 2,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Mesas-madera",
-                    "Hogar",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "G1",
                 "title": "Platons de Madera - Asado",
                 "description": "",
@@ -27474,12 +27305,14 @@ const productsData = [
             },
             {
                 "id": "G3",
-                "title": "Mate",
+                "shortId": "3M",
+                "title": "Mate - Algarrobo - Criollo",
                 "description": "",
                 "image": "img/todo-algarrobo/Mate/1788927967853-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Algarrobo",
+                        "description": "",
                         "cover_image": "img/todo-algarrobo/Mate/1788927967853-imagen.webp",
                         "images_list": [
                             "img/todo-algarrobo/Mate/1788927967853-imagen.webp",
@@ -27576,16 +27409,9 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788928169150,
+                "last_modified": 1793586660076,
                 "primaryCatId": "productos-algarrobo",
-                "history": [],
-                "views": 13,
-                "categories": [
-                    "carpinteria-todos",
-                    "productos-algarrobo",
-                    "bazar-cocina"
-                ],
-                "rubro": "carpinteria"
+                "history": []
             },
             {
                 "id": "25",

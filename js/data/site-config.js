@@ -478,25 +478,6 @@ window.siteConfig = {
             "timestamp": 1786838965570
         },
         {
-            "title": "¡Nuevo Ingreso: Juego de Mesa y Sillas Infantiles!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Juego de Mesa y Sillas Infantiles!",
-            "mediaType": "image",
-            "image": "img/juguetes/Juego de Mesa y Sillas Infantiles/1786838792263-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=Juego de Mesa y Sillas Infantiles",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=Juego de Mesa y Sillas Infantiles",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1786838792471
-        },
-        {
             "title": "¡Nuevo Ingreso: Soporte Para 12 Vinos Bodega Vinoteca!",
             "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Soporte Para 12 Vinos Bodega Vinoteca!",
             "mediaType": "image",
@@ -533,25 +514,6 @@ window.siteConfig = {
             "linkText": "Ver Producto",
             "linkNewTab": false,
             "timestamp": 1786828039219
-        },
-        {
-            "title": "¡Nuevo Ingreso: Mesita Matera!",
-            "description": "Agregamos un nuevo producto a nuestro catálogo. ¡Hacé clic para conocer todos los detalles de Mesita Matera!",
-            "mediaType": "image",
-            "image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
-            "videoUrl": "",
-            "mapQuery": "",
-            "links": [
-                {
-                    "text": "Ver Producto",
-                    "url": "?view=view-product-detail&prod=mesita-matera",
-                    "newTab": false
-                }
-            ],
-            "linkUrl": "?view=view-product-detail&prod=mesita-matera",
-            "linkText": "Ver Producto",
-            "linkNewTab": false,
-            "timestamp": 1786665063751
         },
         {
             "title": "¡Nuevo Ingreso: Ménsulas para escritorios!",

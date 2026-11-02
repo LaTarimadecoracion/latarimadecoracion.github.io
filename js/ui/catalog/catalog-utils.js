@@ -60,8 +60,18 @@
 
     function openProductLightbox(images, initialIndex = 0, productTitle = '') {
         if (!images || images.length === 0) return;
+        if (typeof window.lockBodyScroll === 'function') window.lockBodyScroll();
 
         let currentIndex = initialIndex;
+        let scale = 1;
+        let posX = 0;
+        let posY = 0;
+        let startDistance = 0;
+        let startScale = 1;
+        let startTouchX = 0;
+        let startTouchY = 0;
+        let isDragging = false;
+        let lastTap = 0;
 
         // Crear el modal solo una vez y reutilizarlo
         let modal = document.getElementById('product-lightbox-modal');
@@ -73,71 +83,95 @@
                 position: fixed;
                 inset: 0;
                 z-index: 99999;
-                background: rgba(0,0,0,0.88);
-                backdrop-filter: blur(6px);
-                -webkit-backdrop-filter: blur(6px);
+                background: rgba(0,0,0,0.92);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
                 align-items: center;
                 justify-content: center;
-                cursor: zoom-out;
+                overflow: hidden;
+                touch-action: none;
+                user-select: none;
             `;
             modal.innerHTML = `
-                <img id="lb-img" style="
-                    max-width: min(92vw, 960px);
-                    max-height: 88vh;
-                    object-fit: contain;
-                    border-radius: 6px;
-                    cursor: default;
-                    display: block;
-                    user-select: none;
-                    -webkit-user-drag: none;
-                " alt="Foto del producto" draggable="false">
+                <div id="lb-viewport" style="position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+                    <img id="lb-img" style="
+                        max-width: min(92vw, 980px);
+                        max-height: 86vh;
+                        object-fit: contain;
+                        border-radius: 6px;
+                        cursor: zoom-in;
+                        display: block;
+                        user-select: none;
+                        -webkit-user-drag: none;
+                        transform-origin: center center;
+                        transition: transform 0.15s ease-out;
+                        will-change: transform;
+                    " alt="Foto del producto" draggable="false">
+                </div>
 
                 <!-- Cerrar -->
                 <button id="lb-close" type="button" title="Cerrar (Esc)" style="
                     position: fixed;
                     top: 18px; right: 18px;
-                    background: rgba(255,255,255,0.12);
+                    background: rgba(255,255,255,0.16);
                     border: none;
                     color: #fff;
-                    width: 40px; height: 40px;
+                    width: 42px; height: 42px;
                     border-radius: 50%;
                     display: flex; align-items: center; justify-content: center;
                     cursor: pointer;
-                    font-size: 22px;
-                    line-height: 1;
-                    transition: background 0.2s;
-                    z-index: 2;
+                    transition: background 0.2s, transform 0.15s;
+                    z-index: 10;
                 ">
-                    <span class="material-symbols-outlined" style="font-size:22px;">close</span>
+                    <span class="material-symbols-outlined" style="font-size:24px;">close</span>
                 </button>
+
+                <!-- Sugerencia sutil de Zoom en móvil -->
+                <div id="lb-hint" style="
+                    position: fixed;
+                    top: 22px; left: 50%; transform: translateX(-50%);
+                    background: rgba(0,0,0,0.5);
+                    color: rgba(255,255,255,0.85);
+                    font-size: 0.72rem;
+                    font-weight: 500;
+                    padding: 4px 12px;
+                    border-radius: 50px;
+                    letter-spacing: 0.02em;
+                    pointer-events: none;
+                    z-index: 10;
+                    display: flex; align-items: center; gap: 4px;
+                ">
+                    <span class="material-symbols-outlined" style="font-size: 14px;">pinch</span>
+                    <span>Doble toque o pellizco para zoom</span>
+                </div>
 
                 <!-- Contador -->
                 <span id="lb-counter" style="
                     position: fixed;
                     bottom: 22px; left: 50%; transform: translateX(-50%);
-                    background: rgba(0,0,0,0.45);
-                    color: rgba(255,255,255,0.85);
+                    background: rgba(0,0,0,0.55);
+                    color: rgba(255,255,255,0.9);
                     font-size: 0.78rem;
                     font-weight: 600;
                     padding: 4px 14px;
                     border-radius: 50px;
                     letter-spacing: 0.04em;
                     pointer-events: none;
-                    z-index: 2;
+                    z-index: 10;
                 "></span>
 
                 <!-- Flecha izquierda -->
                 <button id="lb-prev" type="button" title="Anterior" style="
                     position: fixed;
                     left: 14px; top: 50%; transform: translateY(-50%);
-                    background: rgba(255,255,255,0.1);
+                    background: rgba(255,255,255,0.12);
                     border: none; color: #fff;
                     width: 44px; height: 44px;
                     border-radius: 50%;
                     display: flex; align-items: center; justify-content: center;
                     cursor: pointer;
                     transition: background 0.2s;
-                    z-index: 2;
+                    z-index: 10;
                 ">
                     <span class="material-symbols-outlined" style="font-size:26px;">chevron_left</span>
                 </button>
@@ -146,14 +180,14 @@
                 <button id="lb-next" type="button" title="Siguiente" style="
                     position: fixed;
                     right: 14px; top: 50%; transform: translateY(-50%);
-                    background: rgba(255,255,255,0.1);
+                    background: rgba(255,255,255,0.12);
                     border: none; color: #fff;
                     width: 44px; height: 44px;
                     border-radius: 50%;
                     display: flex; align-items: center; justify-content: center;
                     cursor: pointer;
                     transition: background 0.2s;
-                    z-index: 2;
+                    z-index: 10;
                 ">
                     <span class="material-symbols-outlined" style="font-size:26px;">chevron_right</span>
                 </button>
@@ -167,10 +201,25 @@
         const nextBtn   = modal.querySelector('#lb-next');
         const counterEl = modal.querySelector('#lb-counter');
 
+        function updateTransform(smooth = false) {
+            imgEl.style.transition = smooth ? 'transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1)' : 'none';
+            imgEl.style.transform = `translate3d(${posX}px, ${posY}px, 0px) scale(${scale})`;
+            imgEl.style.cursor = scale > 1 ? 'grab' : 'zoom-in';
+        }
+
+        function resetZoom(smooth = true) {
+            scale = 1;
+            posX = 0;
+            posY = 0;
+            updateTransform(smooth);
+        }
+
         function showImage(index) {
             if (index < 0) index = images.length - 1;
             if (index >= images.length) index = 0;
             currentIndex = index;
+            resetZoom(false);
+
             imgEl.src = images[currentIndex];
             imgEl.alt = productTitle || 'Foto del producto';
             const multi = images.length > 1;
@@ -183,36 +232,134 @@
         function closeLightbox() {
             modal.style.display = 'none';
             document.removeEventListener('keydown', handleKey);
-            modal.removeEventListener('touchstart', onTouchStart);
-            modal.removeEventListener('touchend', onTouchEnd);
+            cleanupTouchEvents();
+            if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll();
         }
 
         function handleKey(e) {
-            if (e.key === 'Escape')      closeLightbox();
-            if (e.key === 'ArrowLeft')   showImage(currentIndex - 1);
-            if (e.key === 'ArrowRight')  showImage(currentIndex + 1);
+            if (e.key === 'Escape') closeLightbox();
+            if (scale === 1) {
+                if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+                if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+            }
         }
 
-        let touchStartX = 0;
-        function onTouchStart(e) { touchStartX = e.touches[0].clientX; }
+        // Doble clic / doble toque para alternar entre 1x y 2.5x
+        function handleDoubleTap(clientX, clientY) {
+            if (scale > 1) {
+                resetZoom(true);
+            } else {
+                scale = 2.5;
+                const rect = imgEl.getBoundingClientRect();
+                const offsetX = (clientX - (rect.left + rect.width / 2)) * -1;
+                const offsetY = (clientY - (rect.top + rect.height / 2)) * -1;
+                posX = Math.max(-rect.width * 0.7, Math.min(rect.width * 0.7, offsetX));
+                posY = Math.max(-rect.height * 0.7, Math.min(rect.height * 0.7, offsetY));
+                updateTransform(true);
+            }
+        }
+
+        // Pinch-to-zoom con 2 dedos y arrastre con 1 dedo cuando hay zoom
+        function getDistance(t1, t2) {
+            return Math.hypot(t2.clientX - t1.clientX, t2.clientY - t1.clientY);
+        }
+
+        function onTouchStart(e) {
+            if (e.touches.length === 2) {
+                // Inicio de Pinch-to-Zoom
+                isDragging = false;
+                startDistance = getDistance(e.touches[0], e.touches[1]);
+                startScale = scale;
+            } else if (e.touches.length === 1) {
+                // Chequear doble tap rápido
+                const now = Date.now();
+                if (now - lastTap < 300) {
+                    handleDoubleTap(e.touches[0].clientX, e.touches[0].clientY);
+                    lastTap = 0;
+                    return;
+                }
+                lastTap = now;
+
+                startTouchX = e.touches[0].clientX - posX;
+                startTouchY = e.touches[0].clientY - posY;
+                isDragging = true;
+            }
+        }
+
+        function onTouchMove(e) {
+            if (e.touches.length === 2 && startDistance > 0) {
+                e.preventDefault();
+                const dist = getDistance(e.touches[0], e.touches[1]);
+                const newScale = startScale * (dist / startDistance);
+                scale = Math.min(Math.max(newScale, 1), 4);
+                updateTransform(false);
+            } else if (e.touches.length === 1 && isDragging) {
+                if (scale > 1) {
+                    e.preventDefault();
+                    posX = e.touches[0].clientX - startTouchX;
+                    posY = e.touches[0].clientY - startTouchY;
+                    updateTransform(false);
+                }
+            }
+        }
+
         function onTouchEnd(e) {
-            const dx = e.changedTouches[0].clientX - touchStartX;
-            if (Math.abs(dx) > 50) dx < 0 ? showImage(currentIndex + 1) : showImage(currentIndex - 1);
+            if (scale <= 1.05) {
+                resetZoom(true);
+                // Si fue swipe lateral en escala normal, cambiar de imagen
+                if (e.changedTouches.length === 1 && isDragging) {
+                    const dx = e.changedTouches[0].clientX - (startTouchX + posX);
+                    if (Math.abs(dx) > 55) {
+                        dx < 0 ? showImage(currentIndex + 1) : showImage(currentIndex - 1);
+                    }
+                }
+            }
+            if (e.touches.length === 0) {
+                isDragging = false;
+            }
         }
 
-        closeBtn.onclick  = (e) => { e.stopPropagation(); closeLightbox(); };
-        prevBtn.onclick   = (e) => { e.stopPropagation(); showImage(currentIndex - 1); };
-        nextBtn.onclick   = (e) => { e.stopPropagation(); showImage(currentIndex + 1); };
-        imgEl.onclick     = (e) => { e.stopPropagation(); };
-        modal.onclick     = (e) => { if (e.target === modal) closeLightbox(); };
+        // Eventos táctiles y de mouse
+        function bindTouchEvents() {
+            modal.addEventListener('touchstart', onTouchStart, { passive: false });
+            modal.addEventListener('touchmove', onTouchMove, { passive: false });
+            modal.addEventListener('touchend', onTouchEnd, { passive: false });
+        }
+
+        function cleanupTouchEvents() {
+            modal.removeEventListener('touchstart', onTouchStart);
+            modal.removeEventListener('touchmove', onTouchMove);
+            modal.removeEventListener('touchend', onTouchEnd);
+        }
+
+        // Zoom en PC con rueda del mouse
+        modal.onwheel = (e) => {
+            e.preventDefault();
+            const delta = e.deltaY * -0.005;
+            scale = Math.min(Math.max(scale + delta, 1), 4);
+            if (scale <= 1) {
+                resetZoom(true);
+            } else {
+                updateTransform(false);
+            }
+        };
+
+        imgEl.ondblclick = (e) => {
+            e.stopPropagation();
+            handleDoubleTap(e.clientX, e.clientY);
+        };
+
+        closeBtn.onclick = (e) => { e.stopPropagation(); closeLightbox(); };
+        prevBtn.onclick  = (e) => { e.stopPropagation(); showImage(currentIndex - 1); };
+        nextBtn.onclick  = (e) => { e.stopPropagation(); showImage(currentIndex + 1); };
+        modal.onclick    = (e) => { if (e.target === modal || e.target.id === 'lb-viewport') closeLightbox(); };
 
         document.addEventListener('keydown', handleKey);
-        modal.addEventListener('touchstart', onTouchStart, { passive: true });
-        modal.addEventListener('touchend', onTouchEnd, { passive: true });
+        bindTouchEvents();
 
         [closeBtn, prevBtn, nextBtn].forEach(btn => {
-            btn.onmouseenter = () => btn.style.background = 'rgba(255,255,255,0.22)';
-            btn.onmouseleave = () => btn.style.background = 'rgba(255,255,255,0.1)';
+            btn.onmouseenter = () => btn.style.background = 'rgba(255,255,255,0.28)';
+            btn.onmouseleave = () => btn.style.background = 'rgba(255,255,255,0.12)';
         });
 
         showImage(initialIndex);

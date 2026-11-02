@@ -1,12 +1,13 @@
 {
   "id": "64",
   "shortId": "38",
-  "title": "Triangulos",
+  "title": "Estante 3 Triángulos",
   "description": "Organización creativa y estilo para tus paredes.",
   "image": "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
       "images_list": [
         "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
@@ -76,10 +77,9 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1789446760226,
+  "last_modified": 1793586145045,
   "primaryCatId": "Estantes",
   "history": [],
-  "views": 4,
   "categories": [
     "carpinteria-todos",
     "Estantes"

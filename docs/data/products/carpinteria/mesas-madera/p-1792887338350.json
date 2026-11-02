@@ -21,10 +21,10 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": "",
+          "price": 25000,
           "cost_price": "",
           "legend": "",
-          "showPrice": false,
+          "showPrice": true,
           "logisticaEnabled": true
         }
       ],
@@ -46,10 +46,10 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": "",
+          "price": 25000,
           "cost_price": "",
           "legend": "",
-          "showPrice": false,
+          "showPrice": true,
           "logisticaEnabled": true
         }
       ],
@@ -96,10 +96,10 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": "",
+          "price": 25000,
           "cost_price": "",
           "legend": "",
-          "showPrice": false,
+          "showPrice": true,
           "logisticaEnabled": true
         }
       ],
@@ -132,7 +132,7 @@
     "creditEnabled": true
   },
   "quantityDiscounts": [],
-  "last_modified": 1793491876816,
+  "last_modified": 1793586546740,
   "primaryCatId": "Mesas-madera",
   "history": [
     {

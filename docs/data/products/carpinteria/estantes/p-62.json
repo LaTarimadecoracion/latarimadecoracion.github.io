@@ -1,11 +1,13 @@
 {
   "id": "62",
-  "title": "Hexagonales",
+  "shortId": "3N",
+  "title": "Estantes x3 Hexagonales",
   "description": "Organización creativa y estilo para tus paredes.",
   "image": "img/estantes/hexagonales/hexagonales.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/estantes/hexagonales/hexagonales.webp",
       "images_list": [
         "img/estantes/hexagonales/hexagonales.webp"
@@ -72,11 +74,10 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1788913987169,
+  "last_modified": 1793586159405,
   "primaryCatId": "Estantes",
   "history": [],
   "visible": true,
-  "views": 0,
   "categories": [
     "carpinteria-todos",
     "Estantes"

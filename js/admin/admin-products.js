@@ -544,6 +544,32 @@ window.initProductsAdmin = function() {
             .toLowerCase();
     };
 
+    // Fonetización en español para tolerar tipeo informal/errores (c/k/q, z/s, b/v, y/ll, h muda)
+    const phoneticNormalize = (str) => {
+        if (!str || typeof str !== 'string') return '';
+        let s = normalizeForSearch(str);
+        s = s.replace(/qu/g, 'k').replace(/q/g, 'k')
+             .replace(/c(?=[eiy])/g, 's').replace(/c(?=[aou])/g, 'k').replace(/c$/g, 'k')
+             .replace(/z/g, 's')
+             .replace(/v/g, 'b')
+             .replace(/h/g, '')
+             .replace(/y(?=[aeiou])/g, 'll')
+             .replace(/([a-z])\1+/g, '$1');
+        return s;
+    };
+
+    // Stemming básico en español para unificar singular/plural y diminutivos de compra
+    const stemWord = (word) => {
+        if (!word || word.length < 3) return word;
+        let w = word;
+        if (w.length > 5 && (w.endsWith('itos') || w.endsWith('itas'))) w = w.slice(0, -4);
+        else if (w.length > 4 && (w.endsWith('ito') || w.endsWith('ita'))) w = w.slice(0, -3);
+        if (w.length > 4 && w.endsWith('ces')) w = w.slice(0, -3) + 'z';
+        else if (w.length > 4 && w.endsWith('es')) w = w.slice(0, -2);
+        else if (w.length > 3 && w.endsWith('s')) w = w.slice(0, -1);
+        return w;
+    };
+
     // Levenshtein distance string similarity ratio
     const getSimilarityRatio = (str1, str2) => {
         const s1 = str1.toLowerCase().trim();
@@ -719,17 +745,46 @@ window.initProductsAdmin = function() {
 
                 if (directMatch) return true;
 
-                // 2. Levenshtein / Prefix check
+                // 2. Levenshtein / Prefix check ampliado (Título, Categoría, Descripción y Tags)
                 const nombreNorm = normalizeForSearch(item.nombre);
                 const nombreWords = nombreNorm.split(/\s+/);
                 const catWords = item.cat && item.cat.name ? normalizeForSearch(item.cat.name).split(/\s+/) : [];
-                const allWords = nombreWords.concat(catWords);
+                const descWords = item.product.description ? normalizeForSearch(item.product.description).replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(w => w.length >= 3) : [];
+                const tagWords = Array.isArray(item.tags) ? item.tags.map(t => normalizeForSearch(t)) : [];
+                
+                // Prioridad 1: Palabras de Título, Categoría y Tags (tolerancia fonética, singular/plural y similitud 0.60)
+                const termStem = stemWord(term);
+                const termPhon = phoneticNormalize(term);
+                const termPhonStem = stemWord(termPhon);
 
-                for (let word of allWords) {
+                const primaryWords = nombreWords.concat(catWords).concat(tagWords);
+                for (let word of primaryWords) {
                     if (word.length < 3) continue;
                     if (term.includes(word) || word.includes(term)) return true;
                     if (sharesRoot(term, word)) return true;
-                    if (word.length >= 3 && getSimilarityRatio(term, word) >= 0.65) return true;
+
+                    // Comparación por raíz morfológica (singular/plural y diminutivos: banquito/bancos, mesita/mesas)
+                    const wStem = stemWord(word);
+                    if (wStem.length >= 3 && termStem.length >= 3) {
+                        if (wStem === termStem || wStem.includes(termStem) || termStem.includes(wStem)) return true;
+                    }
+
+                    // Comparación fonética (banqito -> bankito, plakar -> plakar, siyas -> sillas)
+                    const wPhon = phoneticNormalize(word);
+                    const wPhonStem = stemWord(wPhon);
+                    if (wPhon === termPhon || wPhonStem === termPhonStem) return true;
+                    if (wPhon.length >= 3 && termPhon.length >= 3 && getSimilarityRatio(wPhon, termPhon) >= 0.68) return true;
+
+                    // Distancia Levenshtein directa
+                    if (term.length >= 3 && word.length >= 3 && getSimilarityRatio(term, word) >= 0.60) return true;
+                }
+
+                // Prioridad 2: Palabras de Descripción (tolerancia estricta: 0.75 para no dar falsos positivos)
+                for (let word of descWords) {
+                    if (word.length < 4 || term.length < 4) continue;
+                    if (term === word) return true;
+                    if (sharesRoot(term, word)) return true;
+                    if (getSimilarityRatio(term, word) >= 0.75) return true;
                 }
 
                 return false;
@@ -1014,11 +1069,25 @@ window.initProductsAdmin = function() {
         runSearch();
     }
 
-    // Attach search input listener
+    // Attach search input listener y botón de limpieza rápida
+    const btnClearSearch = document.getElementById('btn-clear-search');
     if (searchInput) {
         searchInput.addEventListener('input', () => {
+            if (btnClearSearch) {
+                btnClearSearch.style.display = searchInput.value.trim() ? 'flex' : 'none';
+            }
             window.runSearch();
         });
+
+        if (btnClearSearch) {
+            btnClearSearch.addEventListener('click', (e) => {
+                e.preventDefault();
+                searchInput.value = '';
+                btnClearSearch.style.display = 'none';
+                searchInput.focus();
+                window.runSearch();
+            });
+        }
     }
 
     // Initialize search when tab is clicked (reset to "all" on direct nav tab click)

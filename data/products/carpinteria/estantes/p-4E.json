@@ -1,12 +1,14 @@
 {
   "id": "4E",
-  "title": "Estantes Montessori",
+  "shortId": "3N",
+  "title": "Estante Librero Condimentero",
   "description": "Organización creativa y estilo para tus paredes.",
   "video": "https://www.youtube.com/watch?v=1f3Yla3t_i0",
   "image": "img/organizadores/estantes-montessori/1.webp",
   "acabados_groups": [
     {
       "acabado_name": "60 CM",
+      "description": "",
       "cover_image": "img/organizadores/estantes-montessori/1.webp",
       "images_list": [
         "img/organizadores/estantes-montessori/1.webp",
@@ -25,7 +27,8 @@
           "price": 13000,
           "cost_price": 13000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "10 x 10 x 60 (Combo x2)",
@@ -38,7 +41,8 @@
           "price": 25000,
           "cost_price": 25000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "10 x 10 x 60 (Combo x3)",
@@ -51,7 +55,8 @@
           "price": 35000,
           "cost_price": 35000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "Combo x3 (60, 80, 100cm)",
@@ -64,13 +69,15 @@
           "price": 33000,
           "cost_price": 33000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         }
       ],
       "hidden": false
     },
     {
       "acabado_name": "80 CM",
+      "description": "",
       "cover_image": "img/organizadores/estantes-montessori/1.webp",
       "images_list": [
         "img/organizadores/estantes-montessori/1.webp",
@@ -89,7 +96,8 @@
           "price": 14000,
           "cost_price": 14000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "10 x 10 x 80 (Combo x2)",
@@ -102,7 +110,8 @@
           "price": 26000,
           "cost_price": 26000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "10 x 10 x 80 (Combo x3)",
@@ -115,7 +124,8 @@
           "price": 35998,
           "cost_price": 35998,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "Combo x3 (60, 80, 100cm)",
@@ -128,13 +138,15 @@
           "price": 33000,
           "cost_price": 33000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         }
       ],
       "hidden": false
     },
     {
       "acabado_name": "100 cm",
+      "description": "",
       "cover_image": "img/organizadores/estantes-montessori/1.webp",
       "images_list": [
         "img/organizadores/estantes-montessori/1.webp",
@@ -153,7 +165,8 @@
           "price": 15000,
           "cost_price": 15000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "10 x 10 x 100 (Combo x2)",
@@ -166,7 +179,8 @@
           "price": 28000,
           "cost_price": 28000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "10 x 10 x 100 (Combo x3)",
@@ -179,7 +193,8 @@
           "price": 40000,
           "cost_price": 40000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         },
         {
           "medida": "Combo x3 (60, 80, 100cm)",
@@ -190,9 +205,10 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 33000,
-          "cost_price": "",
+          "cost_price": 33000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true
         }
       ],
       "hidden": false
@@ -232,20 +248,27 @@
     "estanteria madera",
     "organizador pared"
   ],
-  "last_modified": 1786317536131,
-  "primaryCatId": "Estantes",
-  "views": 4,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 3,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
   "paymentConfig": {
     "transferEnabled": true,
     "linkEnabled": false,
     "creditEnabled": false
   },
-  "shippingConfig": {
-    "logisticaEnabled": true,
-    "fleteEnabled": true,
-    "otroEnabled": false,
-    "logisticaMaxUnits": 3
-  },
+  "quantityDiscounts": [],
+  "last_modified": 1793586859102,
+  "primaryCatId": "Estantes",
+  "history": [],
+  "order": 5,
   "categories": [
     "carpinteria-todos",
     "Estantes",

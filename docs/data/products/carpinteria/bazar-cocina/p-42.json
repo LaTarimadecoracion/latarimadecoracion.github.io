@@ -1,7 +1,7 @@
 {
   "id": "42",
   "shortId": "3Q",
-  "title": "Especiero",
+  "title": "Especiero Condimentero para Frascos",
   "description": "Fanales, bandejas y complementos artesanales únicos.\n\nMedidas (Alto x Largo x Profundidad)\n\nCalculamos el alto para cada frasco:\n\n30 cm = Frascos de 8 cm de alto\n34 cm = Frascos de 11 cm de alto",
   "image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
   "acabados_groups": [
@@ -127,7 +127,7 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1793480775651,
+  "last_modified": 1793586351484,
   "primaryCatId": "bazar-cocina",
   "history": [
     {
@@ -141,7 +141,6 @@
       "detail": "Costo: $0 ➔ $2500"
     }
   ],
-  "views": 4,
   "categories": [
     "carpinteria-todos",
     "Organizadores",

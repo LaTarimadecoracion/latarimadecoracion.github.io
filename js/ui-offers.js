@@ -257,6 +257,8 @@
 
         overlay.appendChild(card);
         document.body.appendChild(overlay);
+        // Punto 91: Lock scroll modal
+        if (typeof window.lockBodyScroll === 'function') window.lockBodyScroll();
 
         requestAnimationFrame(() => {
             overlay.style.opacity = '1';
@@ -1870,11 +1872,14 @@
 
         overlay.appendChild(sheet);
         document.body.appendChild(overlay);
+        // Punto 91: Lock scroll modal
+        if (typeof window.lockBodyScroll === 'function') window.lockBodyScroll();
 
         requestAnimationFrame(() => overlay.classList.add('open'));
 
         const closeModal = () => {
             overlay.classList.remove('open');
+            if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll();
             setTimeout(() => overlay.remove(), 300);
         };
 
@@ -2381,6 +2386,22 @@
                         <span class="material-symbols-outlined" style="font-size: 22px; color: #15803d; flex-shrink: 0;">add_a_photo</span>
                         <span><strong>Aviso de paso final:</strong> Al abrir WhatsApp, recordá adjuntar la foto o comprobante de pago.</span>
                     </div>
+
+                    <!-- 7. Sellos de Confianza y Compra Segura -->
+                    <div class="checkout-trust-badges" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; margin-top: 4px; padding: 0.75rem 0.6rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px;">
+                        <div style="display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: #334155; font-weight: 600;">
+                            <span class="material-symbols-outlined" style="font-size: 18px; color: #0284c7; flex-shrink: 0;">lock</span>
+                            <span>Sitio Cifrado SSL</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: #334155; font-weight: 600;">
+                            <span class="material-symbols-outlined" style="font-size: 18px; color: #16a34a; flex-shrink: 0;">verified_user</span>
+                            <span>Garantía de Fábrica</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 6px; font-size: 0.75rem; color: #334155; font-weight: 600;">
+                            <span class="material-symbols-outlined" style="font-size: 18px; color: #d97706; flex-shrink: 0;">carpenter</span>
+                            <span>Taller Directo</span>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -2454,6 +2475,7 @@
             window.removeEventListener('keydown', handleKeyDown);
             saveUserDataToStorage();
             window.dispatchEvent(new CustomEvent('latarima:cp-updated'));
+            if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll();
             overlay.style.opacity = '0';
             card.style.transform = 'scale(0.92)';
             setTimeout(() => overlay.remove(), 250);
@@ -2798,10 +2820,12 @@
             if (!container) return;
 
             if (!cpRes) {
+                // Punto 49: Mensaje amigable CP
                 container.style.display = 'block';
                 container.innerHTML = `
-                    <div style="background:#fef9c3;border:1px solid #fde047;border-radius:8px;padding:6px 10px;font-size:0.75rem;color:#854d0e;">
-                        ⚠️ Ingresá tu Código Postal arriba para cotizar la logística directa o flete particular.
+                    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:8px 12px;font-size:0.78rem;color:#1e40af;display:flex;align-items:center;gap:8px;">
+                        <span class="material-symbols-outlined" style="font-size:20px;color:#2563eb;flex-shrink:0;">local_shipping</span>
+                        <span>Ingresá tu <strong>Código Postal o Ciudad</strong> para calcular el costo de envío directo.</span>
                     </div>
                 `;
                 return;
@@ -3108,16 +3132,16 @@
             }
         }
 
-        // Listener en campo CP con debounce
+        // Listener en campo CP y Ciudad con autocompletado y debounce
         const cpInput = document.getElementById('pay-ship-cp');
         const ciudadInput = document.getElementById('pay-ship-ciudad');
         const provInput = document.getElementById('pay-ship-provincia');
 
         let cpLookupTimer = null;
-        cpInput?.addEventListener('input', () => {
+        const executePostalLookup = (sourceInput) => {
             clearTimeout(cpLookupTimer);
             cpLookupTimer = setTimeout(() => {
-                const query = cpInput.value.trim();
+                const query = (sourceInput ? sourceInput.value : (cpInput?.value || ciudadInput?.value || '')).trim();
                 if (!query || query.length < 3) {
                     const c = document.getElementById('pay-ship-lookup-result');
                     if (c) c.style.display = 'none';
@@ -3125,6 +3149,10 @@
                 }
                 const res = window.lookupPostalCode ? window.lookupPostalCode(query) : null;
                 if (res) {
+                    // Si el cliente tipeó en Ciudad y no tenía CP, autocompletarle el CP exacto
+                    if (cpInput && !cpInput.value && res.cp) {
+                        cpInput.value = res.cp;
+                    }
                     if (ciudadInput && !ciudadInput.value) ciudadInput.value = res.localidad;
                     if (provInput && !provInput.value) provInput.value = res.provincia;
                     
@@ -3133,13 +3161,21 @@
                         let userData = {};
                         const saved = localStorage.getItem('userData');
                         if (saved) userData = JSON.parse(saved);
-                        userData.zipCode = query;
+                        userData.zipCode = res.cp || query;
                         localStorage.setItem('userData', JSON.stringify(userData));
-                        window.dispatchEvent(new CustomEvent('latarima:cp-updated', { detail: { zipCode: query } }));
+                        window.dispatchEvent(new CustomEvent('latarima:cp-updated', { detail: { zipCode: res.cp || query } }));
                     } catch(e) {}
                 }
                 renderShipOptions(res);
-            }, 500);
+            }, 450);
+        };
+
+        cpInput?.addEventListener('input', () => executePostalLookup(cpInput));
+        ciudadInput?.addEventListener('input', () => {
+            // Si el campo de CP está vacío, permitir que la ciudad dispare el cálculo de envío
+            if (cpInput && !cpInput.value.trim()) {
+                executePostalLookup(ciudadInput);
+            }
         });
 
         // Limpiar estado de envío cuando se vuelve a Retiro
@@ -3290,6 +3326,25 @@
                     if (singleDetails.length > 0) {
                         msgLines.push(`   ${singleDetails.join(' - ')}`);
                     }
+
+                    // Punto 67: Enlace directo con foto / vista previa en WhatsApp
+                    try {
+                        let itemProdUrl = '';
+                        if (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function') {
+                            const shortCode = window.TarimaShortener.encodeShortCode(offer.id, grupoName, medidaName, opcionName, false);
+                            if (shortCode) {
+                                const origin = window.location.origin;
+                                const path = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+                                itemProdUrl = `${origin}${path}/p/${shortCode}.html`;
+                            }
+                        }
+                        if (!itemProdUrl && window.location.origin) {
+                            itemProdUrl = window.location.href;
+                        }
+                        if (itemProdUrl) {
+                            msgLines.push(`   Foto / Ficha: ${itemProdUrl}`);
+                        }
+                    } catch(e) {}
                 } else {
                     msgLines.push(`  • Combo: ${itemDisplayName} ${packQty > 1 ? `(Pack x${packQty})` : ''}`);
                 }
@@ -3346,8 +3401,16 @@
                 }
 
                 const waText = msgLines.join("\n");
-                window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waText)}`, '_blank');
-                closeModal();
+                // Punto 72: Feedback visual al abrir WhatsApp
+                if (waSubmitBtn) {
+                    waSubmitBtn.disabled = true;
+                    waSubmitBtn.style.opacity = '0.85';
+                    waSubmitBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px; animation: spin 1s linear infinite;">sync</span><span>Abriendo WhatsApp...</span>';
+                }
+                setTimeout(() => {
+                    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waText)}`, '_blank');
+                    closeModal();
+                }, 350);
             };
         }
     }

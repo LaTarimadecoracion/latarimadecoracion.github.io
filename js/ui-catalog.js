@@ -73,13 +73,17 @@
             }
 
             if (displayCategory) {
-                detailCategory.textContent = displayCategory;
+                // Punto 12: Migas de pan (Breadcrumb interactivo)
                 if (targetCatId) {
+                    detailCategory.innerHTML = `<span class="detail-breadcrumb-nav" style="display:inline-flex; align-items:center; gap:4px; font-weight:700;"><span class="material-symbols-outlined" style="font-size:15px; vertical-align:middle; color:#0284c7;">arrow_back</span><span>Volver a ${displayCategory}</span></span>`;
                     detailCategory.dataset.categoryId = targetCatId;
                     detailCategory.style.cursor = 'pointer';
+                    detailCategory.style.color = '#0284c7';
                 } else {
+                    detailCategory.textContent = displayCategory;
                     delete detailCategory.dataset.categoryId;
                     detailCategory.style.cursor = 'default';
+                    detailCategory.style.color = '#64748b';
                 }
             } else {
                 detailCategory.textContent = '';

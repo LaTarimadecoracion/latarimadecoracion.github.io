@@ -543,7 +543,7 @@
   {
     "id": "42",
     "shortId": "3Q",
-    "title": "Especiero",
+    "title": "Especiero Condimentero para Frascos",
     "rubro": "carpinteria",
     "primaryCatId": "bazar-cocina",
     "categories": [
@@ -594,8 +594,8 @@
   },
   {
     "id": "44",
-    "shortId": null,
-    "title": "Verdule para Mesada",
+    "shortId": "3N",
+    "title": "Organizador Verdulero Frutero Pino 2 Estantes",
     "rubro": "carpinteria",
     "primaryCatId": "bazar-cocina",
     "categories": [
@@ -1556,8 +1556,8 @@
   },
   {
     "id": "4E",
-    "shortId": null,
-    "title": "Estantes Montessori",
+    "shortId": "3N",
+    "title": "Estante Librero Condimentero",
     "rubro": "carpinteria",
     "primaryCatId": "Estantes",
     "categories": [
@@ -1625,8 +1625,8 @@
   },
   {
     "id": "62",
-    "shortId": null,
-    "title": "Hexagonales",
+    "shortId": "3N",
+    "title": "Estantes x3 Hexagonales",
     "rubro": "carpinteria",
     "primaryCatId": "Estantes",
     "categories": [
@@ -1667,8 +1667,8 @@
   },
   {
     "id": "63",
-    "shortId": null,
-    "title": "Librero",
+    "shortId": "3N",
+    "title": "Estante Librero Especiero",
     "rubro": "carpinteria",
     "primaryCatId": "Estantes",
     "categories": [
@@ -1710,7 +1710,7 @@
   {
     "id": "64",
     "shortId": "38",
-    "title": "Triangulos",
+    "title": "Estante 3 Triángulos",
     "rubro": "carpinteria",
     "primaryCatId": "Estantes",
     "categories": [
@@ -1749,8 +1749,8 @@
   },
   {
     "id": "65",
-    "shortId": null,
-    "title": "Cuadrados",
+    "shortId": "3N",
+    "title": "Estantes x3 Cuadrados",
     "rubro": "carpinteria",
     "primaryCatId": "Estantes",
     "categories": [
@@ -2325,35 +2325,6 @@
     "file": "data/products/carpinteria/jardin-patio/p-E3.json"
   },
   {
-    "id": "E4",
-    "shortId": "3D",
-    "title": "Fanal",
-    "rubro": "carpinteria",
-    "primaryCatId": "jardin-patio",
-    "categories": [
-      "carpinteria-todos",
-      "jardin-patio"
-    ],
-    "subcategoria": "",
-    "price": 15000,
-    "image": "img/jardn/fanal/1790378363366-imagenwebp.webp",
-    "tags": [
-      "decorar",
-      "jardin",
-      "fanales",
-      "candy",
-      "bar",
-      "blanco",
-      "negro",
-      "iluminacion",
-      "santos",
-      "imagen",
-      "altar"
-    ],
-    "visible": true,
-    "file": "data/products/carpinteria/jardin-patio/p-E4.json"
-  },
-  {
     "id": "E5",
     "shortId": null,
     "title": "Cesto de Basura",
@@ -2594,24 +2565,6 @@
     "tags": [],
     "visible": true,
     "file": "data/products/carpinteria/mesas-madera/p-D6.json"
-  },
-  {
-    "id": "D7",
-    "shortId": null,
-    "title": "Mesita Matera",
-    "rubro": "carpinteria",
-    "primaryCatId": "Mesas-madera",
-    "categories": [
-      "carpinteria-todos",
-      "Mesas-madera",
-      "bazar-cocina"
-    ],
-    "subcategoria": "",
-    "price": 17000,
-    "image": "img/mesas-de-madera/mesita-matera/1786665063127-imagen.webp",
-    "tags": [],
-    "visible": true,
-    "file": "data/products/carpinteria/mesas-madera/p-D7.json"
   },
   {
     "id": "45",
@@ -3911,8 +3864,8 @@
   },
   {
     "id": "G3",
-    "shortId": null,
-    "title": "Mate",
+    "shortId": "3M",
+    "title": "Mate - Algarrobo - Criollo",
     "rubro": "carpinteria",
     "primaryCatId": "productos-algarrobo",
     "categories": [
@@ -4889,7 +4842,7 @@
       "Mesas-madera"
     ],
     "subcategoria": "",
-    "price": 0,
+    "price": 25000,
     "image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
     "tags": [
       "borrador",
