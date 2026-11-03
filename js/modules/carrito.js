@@ -971,6 +971,11 @@
                                 <span class="material-symbols-outlined" style="font-size:20px; color:#c0510a;">chat</span>
                                 Consultar por WhatsApp
                             </button>
+                            <!-- Punto 68: Botón Compartir Carrito / Presupuesto -->
+                            <button type="button" id="btn-cart-share-quote" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #f8fafc; color: #1e293b; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.75rem 1rem; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: all 0.2s ease; width: 100%;" onmouseenter="this.style.background='#f1f5f9'; this.style.borderColor='#94a3b8';" onmouseleave="this.style.background='#f8fafc'; this.style.borderColor='#cbd5e1';">
+                                <span class="material-symbols-outlined" style="font-size: 20px; color: #0284c7;">share</span>
+                                <span>Compartir presupuesto / carrito</span>
+                            </button>
                             <!-- Punto 63: Botón Seguir Comprando -->
                             <button type="button" id="btn-cart-continue-shopping" style="display: flex; align-items: center; justify-content: center; gap: 6px; background: none; border: 1.5px dashed #cbd5e1; color: #475569; border-radius: 12px; padding: 0.65rem 1rem; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s;" onmouseenter="this.style.borderColor='#0284c7'; this.style.color='#0284c7'; this.style.background='#f0f9ff';" onmouseleave="this.style.borderColor='#cbd5e1'; this.style.color='#475569'; this.style.background='none';">
                                 <span class="material-symbols-outlined" style="font-size: 18px;">storefront</span>
@@ -1783,10 +1788,16 @@
                 });
             }
 
-            // C. Botón "Compartir Carrito"
-            const btnShareCart = document.getElementById('btn-cart-share');
+            // C. Punto 68: Botón "Compartir Presupuesto / Carrito"
+            const btnShareCart = document.getElementById('btn-cart-share-quote') || document.getElementById('btn-cart-share');
             if (btnShareCart) {
                 btnShareCart.addEventListener('click', () => {
+                    if (cartItems.length === 0) return;
+
+                    loadUserData();
+                    const formatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 });
+
+                    // Enlace directo recargable con deep-linking
                     const encodedCart = cartItems.map(item => {
                         return [
                             item.id,
@@ -1797,24 +1808,81 @@
                         ].join(':');
                     }).join(';');
 
-                    const shareUrl = `${window.location.origin}${window.location.pathname.replace(/\/index\.html$/, '/').replace(/\/$/, '')}/p/carrito.html?cart=${encodedCart}`;
-                    const shareText = `¡Hola! Te comparto mi lista de deseos de La Tarima 🛒\nTotal de productos: ${cartItems.length}`;
+                    const origin = window.location.origin;
+                    const path = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+                    const shareUrl = `${origin}${path}/?cart=${encodedCart}`;
+
+                    // Armar texto de presupuesto completo
+                    let lines = [];
+                    lines.push("📋 *PRESUPUESTO LA TARIMA* 🪵");
+                    lines.push("--------------------------------------");
+                    lines.push("*Productos seleccionados:*");
+
+                    let productsSubtotal = 0;
+                    let hasAnyPrice = false;
+
+                    cartItems.forEach(item => {
+                        const qty = item.qty || 1;
+                        const unitPrice = item.price || null;
+                        let subtotalText = "";
+
+                        if (unitPrice) {
+                            const subtotal = unitPrice * qty;
+                            productsSubtotal += subtotal;
+                            hasAnyPrice = true;
+                            subtotalText = ` -> *${formatter.format(subtotal)}*`;
+                        } else {
+                            subtotalText = " _(Precio a consultar)_";
+                        }
+
+                        let variantDetails = [];
+                        if (item.acabado && item.acabado !== 'Único') variantDetails.push(`Acabado: ${item.acabado}`);
+                        if (item.medida) variantDetails.push(`Medida: ${item.medida}`);
+                        if (item.opcion) variantDetails.push(`${item.opcionLabel || 'Opción'}: ${item.opcion}`);
+
+                        const variantStr = variantDetails.length > 0 ? `\n   └ _${variantDetails.join(' · ')}_` : '';
+
+                        let itemUrlStr = '';
+                        try {
+                            if (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function') {
+                                const shortCode = window.TarimaShortener.encodeShortCode(item.id, item.acabado, item.medida, item.opcion, false);
+                                if (shortCode) {
+                                    itemUrlStr = `\n   Ver foto/ficha: ${origin}${path}/p/${shortCode}.html`;
+                                }
+                            }
+                        } catch(e) {}
+
+                        lines.push(`• *${qty}x* ${item.title}${subtotalText}${variantStr}${itemUrlStr}`);
+                    });
+
+                    lines.push("--------------------------------------");
+                    if (hasAnyPrice) {
+                        lines.push(`*Total Estimado:* *${formatter.format(productsSubtotal)}*`);
+                    } else {
+                        lines.push("*Total Estimado:* A consultar");
+                    }
+
+                    lines.push("*Plazo Estimado de Elaboración:* 7 a 10 días hábiles");
+                    lines.push("\n🛒 *Ver y abrir este carrito directamente en la web:*");
+                    lines.push(shareUrl);
+
+                    const fullBudgetMsg = lines.join('\n');
+
+                    const showToast = (msg) => {
+                        const toast = document.getElementById('admin-toast');
+                        if (toast) {
+                            toast.textContent = msg;
+                            toast.classList.add('show');
+                            setTimeout(() => toast.classList.remove('show'), 2500);
+                        } else {
+                            alert(msg);
+                        }
+                    };
 
                     const copyTextToClipboard = (textToCopy) => {
-                        const showToast = () => {
-                            const toast = document.getElementById('admin-toast');
-                            if (toast) {
-                                toast.textContent = "🔗 ¡Enlace de carrito copiado!";
-                                toast.classList.add('show');
-                                setTimeout(() => toast.classList.remove('show'), 2000);
-                            } else {
-                                alert("¡Enlace copiado al portapapeles!");
-                            }
-                        };
-
                         if (navigator.clipboard && navigator.clipboard.writeText) {
                             navigator.clipboard.writeText(textToCopy)
-                                .then(showToast)
+                                .then(() => showToast("📋 ¡Presupuesto copiado al portapapeles!"))
                                 .catch(err => {
                                     console.warn('Clipboard fallback:', err);
                                     fallbackCopy(textToCopy);
@@ -1843,7 +1911,7 @@
                                 const successful = document.execCommand('copy');
                                 document.body.removeChild(textArea);
                                 if (successful) {
-                                    showToast();
+                                    showToast("📋 ¡Presupuesto copiado al portapapeles!");
                                 } else {
                                     alert("No se pudo copiar automáticamente.");
                                 }
@@ -1853,23 +1921,24 @@
                         }
                     };
 
+                    // Si soporta Share nativo (móviles y navegadores modernos)
                     if (navigator.share) {
                         navigator.share({
-                            title: 'Lista de Deseos La Tarima',
-                            text: shareText,
-                            url: shareUrl
+                            title: 'Presupuesto La Tarima',
+                            text: fullBudgetMsg
                         }).catch(err => {
-                            console.log('Error sharing:', err);
-                            copyTextToClipboard(`${shareText}\n${shareUrl}`);
+                            if (err && err.name !== 'AbortError') {
+                                copyTextToClipboard(fullBudgetMsg);
+                            }
                         });
                     } else {
-                        copyTextToClipboard(`${shareText}\n${shareUrl}`);
+                        // En desktop: copiar al portapapeles
+                        copyTextToClipboard(fullBudgetMsg);
                     }
                 });
             }
 
-
-        } catch (e) {
+            } catch (e) {
             console.error('[Carrito Module] Error rendering Perfil-Carrito view:', e);
         }
     }

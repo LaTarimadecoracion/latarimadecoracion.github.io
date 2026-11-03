@@ -807,6 +807,287 @@ window.initProductsAdmin = function() {
         });
     }
 
+    
+    // Helper Central: Formateador de Precio y Helper de Rango de Precios
+    const feedCurrencyFormatter = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 });
+
+    function getProductPriceDisplay(product, specificAcabadoName = null) {
+        if (!product) return '<span class="feed-card-price-custom">Consultar precio</span>';
+        
+        let allPrices = [];
+        
+        // Si hay un acabado específico seleccionado
+        if (specificAcabadoName && product.acabados_groups && Array.isArray(product.acabados_groups)) {
+            const grp = product.acabados_groups.find(g => (g.acabado_name || '').trim().toLowerCase() === specificAcabadoName.trim().toLowerCase());
+            if (grp && grp.medidas_variants) {
+                grp.medidas_variants.forEach(m => {
+                    if (m && m.hidden !== true && m.showPrice !== false && m.price !== undefined && m.price !== '' && !isNaN(parseFloat(m.price))) {
+                        allPrices.push(parseFloat(m.price));
+                    }
+                });
+            }
+        }
+        
+        // Si no se encontraron o es general para toda la tarjeta de categoría
+        if (allPrices.length === 0) {
+            if (product.acabados_groups && Array.isArray(product.acabados_groups)) {
+                product.acabados_groups.forEach(g => {
+                    if (g && g.hidden !== true && g.medidas_variants) {
+                        g.medidas_variants.forEach(m => {
+                            if (m && m.hidden !== true && m.showPrice !== false && m.price !== undefined && m.price !== '' && !isNaN(parseFloat(m.price))) {
+                                allPrices.push(parseFloat(m.price));
+                            }
+                        });
+                    }
+                });
+            }
+            if (product.medidas_variants && Array.isArray(product.medidas_variants)) {
+                product.medidas_variants.forEach(m => {
+                    if (m && m.hidden !== true && m.showPrice !== false && m.price !== undefined && m.price !== '' && !isNaN(parseFloat(m.price))) {
+                        allPrices.push(parseFloat(m.price));
+                    }
+                });
+            }
+        }
+
+        if (allPrices.length === 0) {
+            return '<span class="feed-card-price-custom">Consultar precio</span>';
+        }
+
+        const minPrice = Math.min(...allPrices);
+        const maxPrice = Math.max(...allPrices);
+
+        if (minPrice === maxPrice) {
+            return `<span class="feed-card-price-current">${feedCurrencyFormatter.format(minPrice)}</span>`;
+        } else {
+            return `<span class="feed-card-price-prefix">Desde</span><span class="feed-card-price-current">${feedCurrencyFormatter.format(minPrice)}</span>`;
+        }
+    }
+
+    // Helper para verificar si un producto o variante está en el carrito
+    function checkProductCartStatus(productId, acabadoName = '') {
+        try {
+            const raw = localStorage.getItem('cartItems');
+            if (!raw) return false;
+            const items = JSON.parse(raw);
+            return items.some(item => 
+                String(item.id) === String(productId) &&
+                (!acabadoName || (item.acabado || '').trim().toLowerCase() === acabadoName.trim().toLowerCase())
+            );
+        } catch(e) { return false; }
+    }
+
+    // Helper para verificar si está en favoritos
+    
+    // Helper de Compartir Producto desde Feed
+    
+    // Helper Central Reutilizable: Crea una tarjeta feed-card completa e interactiva con el nuevo diseño
+    function createFeedProductCard(product, options = {}) {
+        const catName = options.catName || '';
+        const acabado = options.acabado || (product.acabados_groups && product.acabados_groups[0]?.acabado_name) || '';
+        const imageOverride = options.imageOverride || null;
+        const extraClass = options.extraClass || '';
+
+        const card = document.createElement('div');
+        card.className = ('feed-card ' + extraClass).trim();
+        
+        const isFav = checkProductFavStatus(product.id, acabado);
+        const inCart = checkProductCartStatus(product.id, acabado);
+        const priceHtml = getProductPriceDisplay(product, acabado);
+        const coverImg = imageOverride || (Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png'));
+
+        // Badge flotante superior izquierdo
+        const variantsCount = (product.acabados_groups && product.acabados_groups.length) || 0;
+        let badgeHtml = '';
+        if (variantsCount > 1) {
+            badgeHtml = `<div class="feed-card-floating-badge" title="${variantsCount} acabados disponibles">
+                <span class="material-symbols-outlined" style="font-size: 14px; color: #f59e0b;">palette</span>
+                <span>${variantsCount} acabados</span>
+            </div>`;
+        } else if (acabado && acabado.toLowerCase() !== 'único' && acabado.toLowerCase() !== 'unico' && acabado.toLowerCase() !== 'estándar') {
+            badgeHtml = `<div class="feed-card-floating-badge" title="Acabado: ${acabado}">
+                <span class="material-symbols-outlined" style="font-size: 14px; color: #f59e0b;">palette</span>
+                <span>${acabado}</span>
+            </div>`;
+        }
+
+        const safeTitle = (product.title || '').replace(/"/g, '&quot;');
+
+        card.innerHTML = `
+            <div class="feed-card-photo-container">
+                <img src="${coverImg}" class="feed-card-img lazy-img" alt="${safeTitle}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                ${badgeHtml}
+                <!-- Botones Flotantes: 1. Corazón, 2. Carrito, 3. Compartir -->
+                <div class="feed-card-actions-float">
+                    <button type="button" class="feed-action-btn btn-feed-fav ${isFav ? 'is-fav' : ''}" title="${isFav ? 'Guardado en favoritos' : 'Guardar en favoritos'}">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">${isFav ? 'favorite' : 'favorite_border'}</span>
+                    </button>
+                    <button type="button" class="feed-action-btn btn-feed-cart ${inCart ? 'in-cart' : ''}" title="${inCart ? 'Ya está en el carrito' : 'Agregar al carrito'}">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">${inCart ? 'shopping_bag' : 'add_shopping_cart'}</span>
+                    </button>
+                    <button type="button" class="feed-action-btn btn-feed-share" title="Compartir producto">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">share</span>
+                    </button>
+                </div>
+            </div>
+            <div class="feed-card-info">
+                <div class="feed-card-title-container">
+                    <h3 class="feed-card-title" title="${safeTitle}">${product.title}</h3>
+                </div>
+                <div class="feed-card-price-row">
+                    ${priceHtml}
+                </div>
+            </div>
+        `;
+
+        // Marquee al desbordar
+        setTimeout(() => {
+            const titleEl = card.querySelector('.feed-card-title');
+            if (titleEl && titleEl.scrollWidth > titleEl.clientWidth + 2) {
+                titleEl.classList.add('has-overflow');
+            }
+        }, 80);
+
+        // Soporte táctil en mobile
+        let touchTimer = null;
+        card.addEventListener('touchstart', () => {
+            touchTimer = setTimeout(() => card.classList.add('is-active-marquee'), 250);
+        }, { passive: true });
+        card.addEventListener('touchend', () => {
+            clearTimeout(touchTimer);
+            setTimeout(() => card.classList.remove('is-active-marquee'), 2000);
+        }, { passive: true });
+
+        // Click en Corazón
+        const favBtn = card.querySelector('.btn-feed-fav');
+        if (favBtn) {
+            favBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (window.CarritoModule && window.CarritoModule.toggle) {
+                    window.CarritoModule.toggle(product, acabado || 'Único', catName || '');
+                    const isNowFav = checkProductFavStatus(product.id, acabado);
+                    favBtn.classList.toggle('is-fav', isNowFav);
+                    favBtn.querySelector('.material-symbols-outlined').textContent = isNowFav ? 'favorite' : 'favorite_border';
+                    const cartBtn = card.querySelector('.btn-feed-cart');
+                    if (cartBtn) {
+                        cartBtn.classList.toggle('in-cart', isNowFav);
+                        cartBtn.querySelector('.material-symbols-outlined').textContent = isNowFav ? 'shopping_bag' : 'add_shopping_cart';
+                    }
+                }
+            });
+        }
+
+        // Click en Carrito
+        const cartBtn = card.querySelector('.btn-feed-cart');
+        if (cartBtn) {
+            cartBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                if (window.CarritoModule && window.CarritoModule.toggle) {
+                    window.CarritoModule.toggle(product, acabado || 'Único', catName || '');
+                    const isNowCart = checkProductCartStatus(product.id, acabado);
+                    cartBtn.classList.toggle('in-cart', isNowCart);
+                    cartBtn.querySelector('.material-symbols-outlined').textContent = isNowCart ? 'shopping_bag' : 'add_shopping_cart';
+                    if (favBtn) {
+                        favBtn.classList.toggle('is-fav', isNowCart);
+                        favBtn.querySelector('.material-symbols-outlined').textContent = isNowCart ? 'favorite' : 'favorite_border';
+                    }
+                }
+            });
+        }
+
+        // Click en Compartir
+        const shareBtn = card.querySelector('.btn-feed-share');
+        if (shareBtn) {
+            shareBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                handleShareProduct(product, acabado || '');
+            });
+        }
+
+        // Click en Tarjeta
+        card.addEventListener('click', () => {
+            if (window.trackSearchClick) window.trackSearchClick(product.id, acabado);
+            if (window.showProductDetail) {
+                window.showProductDetail(product, catName || '', acabado || '');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                const appContainer = document.getElementById('app-container');
+                if (appContainer) appContainer.scrollTop = 0;
+            }
+        });
+
+        return card;
+    }
+
+    function handleShareProduct(product, acabadoName = '') {
+        try {
+            const origin = window.location.origin;
+            const path = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+            let shareUrl = `${origin}${path}/?prod=${encodeURIComponent(product.id)}`;
+            
+            if (acabadoName) {
+                shareUrl += `&acabado=${encodeURIComponent(acabadoName)}`;
+            }
+
+            // Si hay acortador disponible para ficha técnica corta
+            if (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function') {
+                const shortCode = window.TarimaShortener.encodeShortCode(product.id, acabadoName, '', '', false);
+                if (shortCode) {
+                    shareUrl = `${origin}${path}/p/${shortCode}.html`;
+                }
+            }
+
+            const title = product.title + (acabadoName ? ` (${acabadoName})` : '');
+            const shareText = `🪵 ¡Mirá este mueble en La Tarima!: ${title}`;
+
+            const showToast = (msg) => {
+                const toast = document.getElementById('admin-toast');
+                if (toast) {
+                    toast.textContent = msg;
+                    toast.classList.add('show');
+                    setTimeout(() => toast.classList.remove('show'), 2200);
+                } else {
+                    alert(msg);
+                }
+            };
+
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    text: shareText,
+                    url: shareUrl
+                }).catch(err => {
+                    if (err && err.name !== 'AbortError') {
+                        copyToClipboard(`${shareText} ${shareUrl}`, showToast);
+                    }
+                });
+            } else {
+                copyToClipboard(shareUrl, showToast);
+            }
+        } catch(e) {
+            console.error('Error sharing product:', e);
+        }
+    }
+
+    function copyToClipboard(text, callback) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => callback("🔗 ¡Enlace del producto copiado!"));
+        } else {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            callback("🔗 ¡Enlace del producto copiado!");
+        }
+    }
+
+    function checkProductFavStatus(productId, acabadoName = '') {
+        return checkProductCartStatus(productId, acabadoName);
+    }
+
     function runSearch() {
         const sourceData = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0) ? sessionProducts : productsData;
         if (!searchResultsContainer || typeof sourceData === 'undefined') return;
@@ -996,30 +1277,113 @@ window.initProductsAdmin = function() {
             const card = document.createElement('div');
             card.className = 'feed-card';
             
-            // Badge premium de variante si aplica
-            const acabadoBadge = acabado 
-                ? `<span style="position: absolute; top: 12px; right: 12px; z-index: 5; background: var(--primary-color, #c0510a); color: white; border: none; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; font-size: 0.68rem; padding: 0.25rem 0.65rem; border-radius: 50px; box-shadow: 0 2px 6px rgba(0,0,0,0.25);">${acabado}</span>`
-                : '';
-
+            const isFav = checkProductFavStatus(product.id, acabado);
+            const inCart = checkProductCartStatus(product.id, acabado);
+            const priceHtml = getProductPriceDisplay(product, acabado);
             const productCover = Array.isArray(image) ? image[0] : (image || 'img/logo_provisional.png');
+
+            // 1. Badge flotante de variante / color (Icono 3)
+            const acabadoBadge = acabado 
+                ? `<div class="feed-card-floating-badge" title="Acabado: ${acabado}">
+                    <span class="material-symbols-outlined" style="font-size: 14px; color: #f59e0b;">palette</span>
+                    <span>${acabado}</span>
+                   </div>`
+                : '';
 
             card.innerHTML = `
                 <div class="feed-card-photo-container">
                     <img src="${productCover}" class="feed-card-img lazy-img" alt="${nombre}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
                     ${acabadoBadge}
-                    <div class="feed-card-gradient"></div>
-                    <div class="feed-card-info">
-                        <span class="feed-card-cat" data-category-id="${cat.id}">${cat.name}</span>
-                        <h3 class="feed-card-title">${nombre}</h3>
+                    <!-- Iconos Flotantes: Corazón (1) y Carrito (2) -->
+                    <div class="feed-card-actions-float">
+                        <button type="button" class="feed-action-btn btn-feed-fav ${isFav ? 'is-fav' : ''}" title="${isFav ? 'Guardado en favoritos' : 'Guardar en favoritos'}">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">${isFav ? 'favorite' : 'favorite_border'}</span>
+                        </button>
+                        <button type="button" class="feed-action-btn btn-feed-cart ${inCart ? 'in-cart' : ''}" title="${inCart ? 'Ya está en el carrito' : 'Agregar al carrito'}">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">${inCart ? 'shopping_bag' : 'add_shopping_cart'}</span>
+                        </button>
+                        <button type="button" class="feed-action-btn btn-feed-share" title="Compartir producto">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">share</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="feed-card-info">
+                    <div class="feed-card-title-container">
+                        <h3 class="feed-card-title" title="${nombre}">${nombre}</h3>
+                    </div>
+                    <div class="feed-card-price-row">
+                        ${priceHtml}
                     </div>
                 </div>
             `;
+
+            // Detectar si el título desborda para activar el marquee
+            setTimeout(() => {
+                const titleEl = card.querySelector('.feed-card-title');
+                if (titleEl && titleEl.scrollWidth > titleEl.clientWidth + 2) {
+                    titleEl.classList.add('has-overflow');
+                }
+            }, 60);
+
+            // Soporte táctil en mobile para activar animación al mantener presionado
+            let touchTimer = null;
+            card.addEventListener('touchstart', () => {
+                touchTimer = setTimeout(() => card.classList.add('is-active-marquee'), 250);
+            }, { passive: true });
+            card.addEventListener('touchend', () => {
+                clearTimeout(touchTimer);
+                setTimeout(() => card.classList.remove('is-active-marquee'), 2000);
+            }, { passive: true });
+
+            // Click en Corazón
+            const favBtn = card.querySelector('.btn-feed-fav');
+            if (favBtn) {
+                favBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (window.CarritoModule && window.CarritoModule.toggle) {
+                        window.CarritoModule.toggle(product, acabado || 'Único', cat.name);
+                        const isNowFav = checkProductFavStatus(product.id, acabado);
+                        favBtn.classList.toggle('is-fav', isNowFav);
+                        favBtn.querySelector('.material-symbols-outlined').textContent = isNowFav ? 'favorite' : 'favorite_border';
+                        const cartBtn = card.querySelector('.btn-feed-cart');
+                        if (cartBtn) {
+                            cartBtn.classList.toggle('in-cart', isNowFav);
+                            cartBtn.querySelector('.material-symbols-outlined').textContent = isNowFav ? 'shopping_bag' : 'add_shopping_cart';
+                        }
+                    }
+                });
+            }
+
+            // Click en Carrito Rápido
+            const cartBtn = card.querySelector('.btn-feed-cart');
+            if (cartBtn) {
+                cartBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (window.CarritoModule && window.CarritoModule.toggle) {
+                        window.CarritoModule.toggle(product, acabado || 'Único', cat.name);
+                        const isNowCart = checkProductCartStatus(product.id, acabado);
+                        cartBtn.classList.toggle('in-cart', isNowCart);
+                        cartBtn.querySelector('.material-symbols-outlined').textContent = isNowCart ? 'shopping_bag' : 'add_shopping_cart';
+                        if (favBtn) {
+                            favBtn.classList.toggle('is-fav', isNowCart);
+                            favBtn.querySelector('.material-symbols-outlined').textContent = isNowCart ? 'favorite' : 'favorite_border';
+                        }
+                    }
+                });
+            }
+
+            // Click en Compartir
+            const shareBtn = card.querySelector('.btn-feed-share');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    handleShareProduct(product, acabado || '');
+                });
+            }
             
+            // Click en la tarjeta abre el detalle
             card.addEventListener('click', () => {
-                // Registrar tracking de popularidad (base + variante)
                 if (window.trackSearchClick) window.trackSearchClick(product.id, acabado);
-                
-                // Mostrar detalle con acabado preseleccionado
                 if (window.showProductDetail) window.showProductDetail(product, cat.name, acabado);
             });
             
@@ -1131,19 +1495,113 @@ window.initProductsAdmin = function() {
             prodsToRender.forEach(product => {
                 const card = document.createElement('div');
                 card.className = 'feed-card';
+                
+                const defaultAcabado = (product.acabados_groups && product.acabados_groups[0]?.acabado_name) || '';
+                const isFav = checkProductFavStatus(product.id, defaultAcabado);
+                const inCart = checkProductCartStatus(product.id, defaultAcabado);
+                const priceHtml = getProductPriceDisplay(product);
                 const productCover = Array.isArray(product.image) ? product.image[0] : product.image;
+
+                // Badge de variantes si tiene más de 1 acabado
+                const variantsCount = (product.acabados_groups && product.acabados_groups.length) || 0;
+                const variantsBadge = variantsCount > 1 
+                    ? `<div class="feed-card-floating-badge" title="${variantsCount} acabados disponibles">
+                        <span class="material-symbols-outlined" style="font-size: 14px; color: #f59e0b;">palette</span>
+                        <span>${variantsCount} acabados</span>
+                       </div>`
+                    : (defaultAcabado && defaultAcabado.toLowerCase() !== 'único' ? `<div class="feed-card-floating-badge"><span class="material-symbols-outlined" style="font-size: 14px; color: #f59e0b;">palette</span><span>${defaultAcabado}</span></div>` : '');
+
                 card.innerHTML = `
                     <div class="feed-card-photo-container">
                         <img src="${productCover}" class="feed-card-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
-                        <div class="feed-card-gradient"></div>
-                        <div class="feed-card-info">
-                            <h3 class="feed-card-title">${product.title}</h3>
-                            ${product.acabados_groups && product.acabados_groups.length > 0
-                                ? `<span class="feed-card-variants-badge">${product.acabados_groups.length} acabados</span>`
-                                : ''}
+                        ${variantsBadge}
+                        <!-- Iconos Flotantes: Corazón (1) y Carrito (2) -->
+                        <div class="feed-card-actions-float">
+                            <button type="button" class="feed-action-btn btn-feed-fav ${isFav ? 'is-fav' : ''}" title="${isFav ? 'Guardado en favoritos' : 'Guardar en favoritos'}">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">${isFav ? 'favorite' : 'favorite_border'}</span>
+                            </button>
+                            <button type="button" class="feed-action-btn btn-feed-cart ${inCart ? 'in-cart' : ''}" title="${inCart ? 'Ya está en el carrito' : 'Agregar al carrito'}">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">${inCart ? 'shopping_bag' : 'add_shopping_cart'}</span>
+                            </button>
+                            <button type="button" class="feed-action-btn btn-feed-share" title="Compartir producto">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">share</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="feed-card-info">
+                        <div class="feed-card-title-container">
+                            <h3 class="feed-card-title" title="${product.title}">${product.title}</h3>
+                        </div>
+                        <div class="feed-card-price-row">
+                            ${priceHtml}
                         </div>
                     </div>
                 `;
+
+                // Detectar desborde de título para marquee
+                setTimeout(() => {
+                    const titleEl = card.querySelector('.feed-card-title');
+                    if (titleEl && titleEl.scrollWidth > titleEl.clientWidth + 2) {
+                        titleEl.classList.add('has-overflow');
+                    }
+                }, 60);
+
+                // Soporte táctil mobile
+                let touchTimer = null;
+                card.addEventListener('touchstart', () => {
+                    touchTimer = setTimeout(() => card.classList.add('is-active-marquee'), 250);
+                }, { passive: true });
+                card.addEventListener('touchend', () => {
+                    clearTimeout(touchTimer);
+                    setTimeout(() => card.classList.remove('is-active-marquee'), 2000);
+                }, { passive: true });
+
+                // Click en Corazón
+                const favBtn = card.querySelector('.btn-feed-fav');
+                if (favBtn) {
+                    favBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (window.CarritoModule && window.CarritoModule.toggle) {
+                            window.CarritoModule.toggle(product, defaultAcabado || 'Único', cat.name);
+                            const isNowFav = checkProductFavStatus(product.id, defaultAcabado);
+                            favBtn.classList.toggle('is-fav', isNowFav);
+                            favBtn.querySelector('.material-symbols-outlined').textContent = isNowFav ? 'favorite' : 'favorite_border';
+                            const cartBtn = card.querySelector('.btn-feed-cart');
+                            if (cartBtn) {
+                                cartBtn.classList.toggle('in-cart', isNowFav);
+                                cartBtn.querySelector('.material-symbols-outlined').textContent = isNowFav ? 'shopping_bag' : 'add_shopping_cart';
+                            }
+                        }
+                    });
+                }
+
+                // Click en Carrito Rápido
+                const cartBtn = card.querySelector('.btn-feed-cart');
+                if (cartBtn) {
+                    cartBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        if (window.CarritoModule && window.CarritoModule.toggle) {
+                            window.CarritoModule.toggle(product, defaultAcabado || 'Único', cat.name);
+                            const isNowCart = checkProductCartStatus(product.id, defaultAcabado);
+                            cartBtn.classList.toggle('in-cart', isNowCart);
+                            cartBtn.querySelector('.material-symbols-outlined').textContent = isNowCart ? 'shopping_bag' : 'add_shopping_cart';
+                            if (favBtn) {
+                                favBtn.classList.toggle('is-fav', isNowCart);
+                                favBtn.querySelector('.material-symbols-outlined').textContent = isNowCart ? 'favorite' : 'favorite_border';
+                            }
+                        }
+                    });
+                }
+
+                // Click en Compartir
+                const shareBtn = card.querySelector('.btn-feed-share');
+                if (shareBtn) {
+                    shareBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        handleShareProduct(product, defaultAcabado || '');
+                    });
+                }
+
                 card.addEventListener('click', () => {
                     showProductDetail(product, cat.name);
                 });
@@ -1249,6 +1707,12 @@ window.initProductsAdmin = function() {
     }
 
     // Exponer al scope global
+    
+    window.createFeedProductCard = createFeedProductCard;
+    window.getProductPriceDisplay = getProductPriceDisplay;
+    window.checkProductFavStatus = checkProductFavStatus;
+    window.checkProductCartStatus = checkProductCartStatus;
+    window.handleShareProduct = handleShareProduct;
     window.runSearch = runSearch;
     window.renderSearchRubrosTabs = renderSearchRubrosTabs;
     window.navigateToCategoryFeed = navigateToCategoryFeed;

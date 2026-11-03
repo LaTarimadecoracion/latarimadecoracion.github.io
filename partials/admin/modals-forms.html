@@ -88,7 +88,7 @@
                 </div>
 
                 <!-- ── Formulario Modal de Categoría (Oculto por defecto, con overlay difuminado) ── -->
-                <div id="admin-category-modal" class="modal-overlay" style="display: none; z-index: 1200;">
+                <div id="admin-category-modal" class="modal-overlay" style="display: none; z-index: 10050;">
                     <div class="modal-content">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
                             <h3 id="admin-category-form-title" style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Crear Nueva Categoría</h3>
@@ -226,24 +226,46 @@
                                                 <small style="color: #64748b; font-size: 0.72rem; display: block; margin-top: 2px;">Ruta local MP4 para vista previa inmersiva.</small>
                                             </div>
 
-                                              <!-- Ficha de Detalles / Características Técnicas (Opcional) -->
-                                              <div style="background: #F1F5F9; border: 1px dashed #CBD5E1; border-radius: 8px; padding: 0.65rem 0.75rem; margin-top: 0.3rem;">
-                                                  <div style="font-size: 0.8rem; font-weight: 700; color: #334155; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 5px;">
-                                                      <span class="material-symbols-outlined" style="font-size: 16px; color: var(--primary-color);">list_alt</span>
-                                                      <span>Ficha Técnica Personalizada (Opcional)</span>
-                                                  </div>
-                                                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                                                      <div class="form-group" style="margin: 0;">
-                                                          <label style="font-size: 0.75rem; color: #475569; font-weight: 600; margin-bottom: 2px; display: block;">Material / Madera:</label>
-                                                          <input type="text" id="admin-material" placeholder="ej: Pino Macizo 1 pulgada" style="font-size: 0.82rem; padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #CBD5E1; width: 100%; box-sizing: border-box;">
-                                                      </div>
-                                                      <div class="form-group" style="margin: 0;">
-                                                          <label style="font-size: 0.75rem; color: #475569; font-weight: 600; margin-bottom: 2px; display: block;">Espesor / Grosor:</label>
-                                                          <input type="text" id="admin-espesor" placeholder="ej: 18 mm / 2 pulgadas" style="font-size: 0.82rem; padding: 0.4rem 0.6rem; border-radius: 6px; border: 1px solid #CBD5E1; width: 100%; box-sizing: border-box;">
-                                                      </div>
-                                                  </div>
-                                                  <small style="color: #64748b; font-size: 0.7rem; display: block; margin-top: 4px;">Si los dejás vacíos, se calculan automáticamente según el rubro y título del producto.</small>
-                                              </div>
+
+                                        </div>
+                                    </details>
+
+                                    
+                                    <!-- 2. Características del Producto (Ficha Técnica General) -->
+                                    <details id="admin-product-specs-details" class="form-group" style="border: 1px solid #CBD5E1; border-radius: 8px; padding: 0.6rem 0.8rem; background: #FFFFFF; margin-bottom: 0.8rem; cursor: pointer; transition: all 0.2s ease;">
+                                        <summary style="display: flex; align-items: center; justify-content: space-between; font-weight: 600; color: var(--text-main); list-style: none; user-select: none; font-size: 0.85rem;">
+                                            <span style="display: flex; align-items: center; gap: 0.4rem;">
+                                                <span class="material-symbols-outlined" style="font-size:18px; color:#0284c7;">list_alt</span>
+                                                Características del Producto (Ficha Técnica)
+                                            </span>
+                                            <span class="material-symbols-outlined expand-arrow" style="font-size: 18px; transition: transform 0.2s;">expand_more</span>
+                                        </summary>
+                                        <div style="padding-top:0.6rem; margin-top:0.6rem; border-top:1px solid #CBD5E1; display: flex; flex-direction: column; gap: 0.65rem; cursor: default;">
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label style="font-size: 0.8rem; color: #334155; font-weight: 700; margin-bottom: 2px; display: block;">Material / Madera Principal:</label>
+                                                    <input type="text" id="admin-material" placeholder="ej: Madera Maciza de Pino Seleccionado" style="font-size: 0.85rem; padding: 0.45rem 0.65rem; border-radius: 6px; border: 1px solid #CBD5E1; width: 100%; box-sizing: border-box;">
+                                                </div>
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label style="font-size: 0.8rem; color: #334155; font-weight: 700; margin-bottom: 2px; display: block;">Espesor / Grosor de Madera:</label>
+                                                    <input type="text" id="admin-espesor" placeholder="ej: 18 mm / 1 pulgada" style="font-size: 0.85rem; padding: 0.45rem 0.65rem; border-radius: 6px; border: 1px solid #CBD5E1; width: 100%; box-sizing: border-box;">
+                                                </div>
+                                            </div>
+
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label style="font-size: 0.8rem; color: #334155; font-weight: 700; margin-bottom: 2px; display: block;">Estructura y Armado:</label>
+                                                    <input type="text" id="admin-armado" placeholder="ej: Listo para usar" style="font-size: 0.85rem; padding: 0.45rem 0.65rem; border-radius: 6px; border: 1px solid #CBD5E1; width: 100%; box-sizing: border-box;">
+                                                </div>
+                                                <div class="form-group" style="margin: 0;">
+                                                    <label style="font-size: 0.8rem; color: #334155; font-weight: 700; margin-bottom: 2px; display: block;">Uso Recomendado / Detalle:</label>
+                                                    <input type="text" id="admin-specs-extra" placeholder="ej: Interior / Galerías techadas" style="font-size: 0.85rem; padding: 0.45rem 0.65rem; border-radius: 6px; border: 1px solid #CBD5E1; width: 100%; box-sizing: border-box;">
+                                                </div>
+                                            </div>
+
+                                            <small style="color: #64748b; font-size: 0.72rem; display: block; line-height: 1.4;">
+                                                💡 <strong>Nota:</strong> Estos datos se muestran en la ficha técnica pública del producto. Si en una variante específica abrís su ficha <code>[ 📋 ]</code> y le asignás un espesor o material distinto, esa variante usará su valor propio. Si dejás estos campos vacíos, la web los calcula automáticamente según el título del producto.
+                                            </small>
                                         </div>
                                     </details>
 
@@ -646,7 +668,7 @@
                 </div>
 
                 <!-- ── Formulario Modal de Icono de Enlace (Oculto por defecto) ── -->
-                <div id="admin-link-modal" class="modal-overlay" style="display: none; z-index: 1300;">
+                <div id="admin-link-modal" class="modal-overlay" style="display: none; z-index: 10050;">
                     <div class="modal-content" style="max-width: 450px;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
                             <h3 style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main);">Editar Botón de Pago</h3>
@@ -775,7 +797,63 @@
                 </div>
 
                 <!-- ── Modal Flotante de Editor Completo de Fotos (Encuadre 3:2, Fondos, Marcas de Agua, Filtros) ── -->
-                <div id="admin-cropper-modal" class="modal-overlay" style="display: none; z-index: 99999;">
+                
+                <!-- ── Formulario Modal de Ficha Técnica / Características de Variante ── -->
+                <div id="admin-variant-specs-modal" class="modal-overlay" style="display: none; z-index: 10050;">
+                    <div class="modal-content" style="max-width: 480px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 1.25rem;">
+                            <h3 style="font-size: 1.05rem; margin:0; font-weight:700; color:var(--text-main); display:flex; align-items:center; gap:6px;">
+                                <span class="material-symbols-outlined" style="color:var(--primary-color);">list_alt</span>
+                                Ficha Técnica de la Variante
+                            </h3>
+                            <button type="button" id="btn-cancel-variant-specs" class="btn-outline" style="padding:0.4rem 1rem; width:auto; font-size:0.85rem;">Cerrar</button>
+                        </div>
+                        <form id="admin-variant-specs-form" class="admin-form" onsubmit="event.preventDefault();">
+                            <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 0.65rem 0.85rem; margin-bottom: 1rem;">
+                                <div style="font-size: 0.78rem; font-weight: 700; color: #475569;" id="modal-specs-variant-title">Variante: -</div>
+                                <div style="font-size: 0.72rem; color: #64748b; margin-top: 2px;">Completá las características específicas de esta variante. Si dejás algún campo en blanco, tomará el valor general del producto o el valor automático.</div>
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 0.75rem;">
+                                <label style="font-size: 0.82rem; font-weight: 600; color: #334155; margin-bottom: 3px; display: flex; align-items: center; gap: 5px;">
+                                    <span class="material-symbols-outlined" style="font-size: 16px; color: var(--primary-color);">forest</span>
+                                    Material / Tipo de Madera
+                                </label>
+                                <input type="text" id="admin-vspec-material" placeholder="ej: Madera Maciza de Pino Seleccionado" style="width: 100%; font-size: 0.85rem; padding: 0.45rem 0.65rem; border-radius: 6px; border: 1px solid #CBD5E1;">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 0.75rem;">
+                                <label style="font-size: 0.82rem; font-weight: 600; color: #334155; margin-bottom: 3px; display: flex; align-items: center; gap: 5px;">
+                                    <span class="material-symbols-outlined" style="font-size: 16px; color: var(--primary-color);">line_weight</span>
+                                    Espesor / Grosor de Madera
+                                </label>
+                                <input type="text" id="admin-vspec-espesor" placeholder="ej: 18 mm / 1 pulgada" style="width: 100%; font-size: 0.85rem; padding: 0.45rem 0.65rem; border-radius: 6px; border: 1px solid #CBD5E1;">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 0.75rem;">
+                                <label style="font-size: 0.82rem; font-weight: 600; color: #334155; margin-bottom: 3px; display: flex; align-items: center; gap: 5px;">
+                                    <span class="material-symbols-outlined" style="font-size: 16px; color: var(--primary-color);">handyman</span>
+                                    Estructura y Armado
+                                </label>
+                                <input type="text" id="admin-vspec-armado" placeholder="ej: Listo para usar" style="width: 100%; font-size: 0.85rem; padding: 0.45rem 0.65rem; border-radius: 6px; border: 1px solid #CBD5E1;">
+                            </div>
+
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label style="font-size: 0.82rem; font-weight: 600; color: #334155; margin-bottom: 3px; display: flex; align-items: center; gap: 5px;">
+                                    <span class="material-symbols-outlined" style="font-size: 16px; color: var(--primary-color);">info</span>
+                                    Detalle / Característica Extra
+                                </label>
+                                <input type="text" id="admin-vspec-extra" placeholder="ej: Soporta hasta 120 kg / 5 estantes" style="width: 100%; font-size: 0.85rem; padding: 0.45rem 0.65rem; border-radius: 6px; border: 1px solid #CBD5E1;">
+                            </div>
+
+                            <div class="admin-actions mt-2 pt-2" style="border-top:1.5px solid #EEF0F3; display: flex; gap: 8px;">
+                                <button type="button" id="btn-save-variant-specs" class="btn-primary" style="flex: 1; max-width: none;">Guardar Características</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+<div id="admin-cropper-modal" class="modal-overlay" style="display: none; z-index: 99999;">
                     <div class="modal-content" style="max-width: 950px; width: 95%; height: 90vh; max-height: 850px; padding: 1rem; display: flex; flex-direction: column;">
                         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.75rem; flex-shrink: 0;">
                             <h3 style="font-size: 1.1rem; margin:0; font-weight:800; color:var(--text-main); display:flex; align-items:center; gap:6px;">

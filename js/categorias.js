@@ -140,37 +140,26 @@ window.renderCategoriesMenu = function() {
         }
 
         const offersCard = document.createElement('div');
-        offersCard.className = 'feed-card offer-category-tile';
-        offersCard.style.cssText = `
-            margin: 0; 
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            border: 2px solid #b38728;
-            border-radius: 12px;
-            overflow: hidden;
-        `;
+        offersCard.className = 'category-tile offer-category-tile';
+        offersCard.style.border = '2px solid #b38728';
         offersCard.innerHTML = `
-            <div class="feed-card-photo-container" style="background: linear-gradient(135deg, #1a1a1a, #2d2a26);">
-                <div class="feed-card-img-wrapper" style="position:relative; opacity: 0.85;">
-                    <img src="img/borrador/portada-imagen.webp" class="feed-card-img loaded" alt="Ofertas y Combos" loading="lazy">
-                </div>
+            <div class="category-tile-photo" style="background: linear-gradient(135deg, #1a1a1a, #2d2a26);">
+                <img src="img/borrador/portada-imagen.webp" class="category-tile-img loaded" alt="Ofertas y Combos" loading="lazy">
                 <div class="stamp-badge pro-gold" style="position: absolute; top: 10px; left: 10px; z-index: 5;">
                     🔥 OFERTA PRO GOLD
                 </div>
-                <div class="feed-card-gradient"></div>
-                <div class="feed-card-info" style="bottom: 0; left: 0; right: 0; padding: 0.5rem; text-align: center; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);">
-                    <h3 class="feed-card-title" style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0; color: #fcf6ba; text-align: center; width: 100%;">
-                        🏷️ OFERTA Y COMBOS
-                    </h3>
-                    <span style="font-size: 0.75rem; color: #e2b043; font-weight: 700;">${promoSubtitle}</span>
+                <div class="category-tile-gradient"></div>
+                <span class="category-tile-count-badge" style="background: rgba(179, 135, 40, 0.88); border-color: rgba(252, 246, 186, 0.5); color: #fff;">
+                    <span class="material-symbols-outlined" style="font-size: 13px; color: #fcf6ba;">local_fire_department</span>
+                    <span>${totalPromos} ${totalPromos === 1 ? 'promo' : 'promos'}</span>
+                </span>
+                <div class="category-tile-info">
+                    <h3 class="category-tile-title" style="color: #fcf6ba !important;">🏷️ OFERTAS Y COMBOS</h3>
                 </div>
             </div>
         `;
         offersCard.addEventListener('click', () => {
-            if (window.navigateToView) {
-                window.navigateToView('view-offers');
-            }
+            if (window.navigateToView) window.navigateToView('view-offers');
         });
         container.appendChild(offersCard);
     }
@@ -187,53 +176,32 @@ window.renderCategoriesMenu = function() {
             if (catRubro !== window.activeCategoriesRubro) return;
         }
 
-        const catCard = document.createElement('div');
-        catCard.className = 'feed-card';
-        // Ajustamos márgenes para que la grilla los maneje limpios
-        catCard.style.cssText = `
-            margin: 0; 
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        `;
+        const prodsCount = (cat.products && Array.isArray(cat.products)) ? cat.products.filter(p => p.visible !== false).length : 0;
+        const countText = prodsCount > 0 ? `${prodsCount} ${prodsCount === 1 ? 'modelo' : 'modelos'}` : '';
 
+        const catCard = document.createElement('div');
+        catCard.className = 'category-tile';
         const catCover = Array.isArray(cat.image) ? cat.image[0] : (cat.image || 'img/logo_provisional.png');
-        
+
         catCard.innerHTML = `
-            <div class="feed-card-photo-container">
-                <div class="feed-card-img-wrapper" style="position:relative;">
-                    <img src="${catCover}" class="feed-card-img lazy-img" alt="${cat.name}" loading="lazy" decoding="async" onload="this.classList.add('loaded')">
-                </div>
-                <div class="feed-card-gradient"></div>
-                <div class="feed-card-info" style="bottom: 0; left: 0; right: 0; padding: 0.35rem 0.5rem; text-align: center;">
-                    <h3 class="feed-card-title" style="font-size: 1.05rem; margin-bottom: 0; text-align: center; width: 100%;">${cat.name}</h3>
+            <div class="category-tile-photo">
+                <img src="${catCover}" class="category-tile-img lazy-img" alt="${cat.name}" loading="lazy" decoding="async" onload="this.classList.add('loaded')" onerror="if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                <div class="category-tile-gradient"></div>
+                ${countText ? `<span class="category-tile-count-badge">
+                    <span class="material-symbols-outlined" style="font-size: 13px; color: #f59e0b;">chair</span>
+                    <span>${countText}</span>
+                </span>` : ''}
+                <div class="category-tile-info">
+                    <h3 class="category-tile-title">${cat.name}</h3>
                 </div>
             </div>
         `;
 
-        // Navegación al tocar la categoría
         catCard.addEventListener('click', () => {
             if (window.navigateToCategoryFeed) {
                 window.navigateToCategoryFeed(cat.id);
-            } else {
-                console.warn('[Categorias] navigateToCategoryFeed no está definido.');
             }
         });
-
-        // Animación suave al pasar el mouse (para desktop)
-        catCard.addEventListener('mouseenter', () => {
-            catCard.style.transform = 'translateY(-3px)';
-            catCard.style.boxShadow = '0 6px 15px rgba(0,0,0,0.08)';
-            const img = catCard.querySelector('.feed-card-img');
-            if(img) img.style.transform = 'scale(1.05)';
-        });
-        catCard.addEventListener('mouseleave', () => {
-            catCard.style.transform = 'translateY(0)';
-            catCard.style.boxShadow = '0 4px 10px rgba(0,0,0,0.04)';
-            const img = catCard.querySelector('.feed-card-img');
-            if(img) img.style.transform = 'scale(1)';
-        });
-
         container.appendChild(catCard);
     });
 };

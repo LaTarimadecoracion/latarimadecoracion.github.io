@@ -6034,112 +6034,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "E3",
-                "title": "Macetas colgante de eucalipto",
-                "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
-                "image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
-                        "images_list": [
-                            "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
-                            "img/jardin/macetas-colgante-eucalipto/1786334564675-imagen.webp",
-                            "img/jardin/macetas-colgante-eucalipto/1786334564815-imagen.webp",
-                            "img/jardin/macetas-colgante-eucalipto/1786334564942-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "26 x 26 x 11 cm",
-                                "link": "https://www.mercadolibre.com.ar/porta-macetas-colgante-de-madera-eucalipto-26-x-26-cm/up/MLAU3980462508?pdp_filters=item_id:MLA1791659295",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 9000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "Porta maceta colgante de madera",
-                    "Portamacetas colgante",
-                    "Soporte colgante para plantas",
-                    "Macetero colgante madera",
-                    "Decoracion con plantas interior",
-                    "Portamaceteros de pared",
-                    "Estante colgante para plantas",
-                    "Porta maceta de madera maciza",
-                    "Decoracion nordica hogar",
-                    "Organizador de plantas vertical",
-                    "Macetas colgantes interior",
-                    "Adornos de madera para pared",
-                    "Portamacetas minimalista",
-                    "Estilo nordico decoracion",
-                    "Plantas colgantes balcon",
-                    "Diseño de interiores madera",
-                    "Base para plantas colgantes",
-                    "Accesorios para plantas interior",
-                    "Porta macetero artesanal",
-                    "Estante flotante macetas",
-                    "Decoracion de ambientes",
-                    "Muebles de pino para plantas",
-                    "Huertas verticales madera",
-                    "Regalos decoracion hogar",
-                    "maceta",
-                    "macetas",
-                    "macetero",
-                    "macetas colgantes",
-                    "madera",
-                    "eucalipto",
-                    "jardin",
-                    "patio",
-                    "balcon",
-                    "exterior",
-                    "terraza",
-                    "porta macetas",
-                    "colgante",
-                    "decoracion jardin",
-                    "plantas",
-                    "flores",
-                    "macetero de madera",
-                    "macetero de eucalipto",
-                    "maceta colgante",
-                    "porta macetas colgante",
-                    "decoracion exterior",
-                    "decoracion patio",
-                    "decoracion balcon",
-                    "macetero balcon",
-                    "piso jardin",
-                    "macetero de exterior",
-                    "colgante eucalipto"
-                ],
-                "last_modified": 1786334565073,
-                "primaryCatId": "jardin-patio",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "jardin-patio"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "E5",
                 "title": "Cesto de Basura",
                 "description": "Fanales, bandejas y complementos artesanales únicos.",
@@ -24850,14 +24744,19 @@ const productsData = [
         "products": [
             {
                 "id": "E3",
+                "shortId": "3L",
                 "title": "Macetas colgante de eucalipto",
                 "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
-                "image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
+                "image": "img/jardn-decks/macetas-colgante-de-eucalipto/1793681585775-edit_1793681583731webp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
+                        "description": "",
+                        "cover_image": "img/jardn-decks/macetas-colgante-de-eucalipto/1793681585775-edit_1793681583731webp.webp",
                         "images_list": [
+                            "img/jardn-decks/macetas-colgante-de-eucalipto/1793681585775-edit_1793681583731webp.webp",
+                            "img/jardn-decks/macetas-colgante-de-eucalipto/1793681627862-imagenwebp.webp",
+                            "img/jardn-decks/macetas-colgante-de-eucalipto/1793681645222-edit_1793681644255webp.webp",
                             "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
                             "img/jardin/macetas-colgante-eucalipto/1786334564675-imagen.webp",
                             "img/jardin/macetas-colgante-eucalipto/1786334564815-imagen.webp",
@@ -24875,7 +24774,12 @@ const productsData = [
                                 "price": 20000,
                                 "cost_price": 9000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -24934,26 +24838,27 @@ const productsData = [
                     "macetero de exterior",
                     "colgante eucalipto"
                 ],
-                "last_modified": 1793586789934,
-                "primaryCatId": "jardin-patio",
-                "views": 1,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "jardin-patio"
-                ],
-                "rubro": "carpinteria",
-                "order": 0
+                "quantityDiscounts": [],
+                "last_modified": 1793681645232,
+                "primaryCatId": "jardin-patio",
+                "history": [],
+                "rubro": "carpinteria"
             },
             {
                 "id": "1792887338335",

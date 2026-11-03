@@ -171,7 +171,7 @@ window.addEventListener('message', (event) => {
     });
 
     // Helper: Crear fila de Medida con soporte Drag & Drop y diseño horizontal amplio de igual medida
-    function createMedidaRow(groupId, medida = '', link = '', isDefault = false, isHidden = false, linkLabel = '', iconType = 'local_shipping', highlight = false, price = '', legend = '', showPrice = false, costPrice = '', multiplier = '') {
+    function createMedidaRow(groupId, medida = '', link = '', isDefault = false, isHidden = false, linkLabel = '', iconType = 'local_shipping', highlight = false, price = '', legend = '', showPrice = false, costPrice = '', multiplier = '', logisticaEnabled = undefined, specs = {}) {
         const row = document.createElement('div');
         row.className = 'medida-admin-row';
         row.setAttribute('draggable', 'false'); // Deshabilitado por defecto, activado al tocar el handle
@@ -184,7 +184,12 @@ window.addEventListener('message', (event) => {
         row.dataset.iconType = iconType;
         row.dataset.highlight = highlight ? 'true' : 'false';
         row.dataset.showPrice = showPrice ? 'true' : 'false';
-        row.dataset.logisticaEnabled = (arguments[13] !== undefined && arguments[13] !== null) ? (arguments[13] ? 'true' : 'false') : 'true';
+        row.dataset.logisticaEnabled = (logisticaEnabled !== undefined && logisticaEnabled !== null) ? (logisticaEnabled ? 'true' : 'false') : ((arguments[13] !== undefined && arguments[13] !== null) ? (arguments[13] ? 'true' : 'false') : 'true');
+        const vSpecs = specs || arguments[14] || {};
+        row.dataset.vspecMaterial = vSpecs.material || '';
+        row.dataset.vspecEspesor = vSpecs.espesor || '';
+        row.dataset.vspecArmado = vSpecs.armado || '';
+        row.dataset.vspecExtra = vSpecs.extra || '';
 
         let costPriceVal = costPrice;
         let priceVal = price;
@@ -237,6 +242,10 @@ window.addEventListener('message', (event) => {
                         style="background:none;border:none;cursor:pointer;color:var(--text-muted);padding:0.4rem;display:flex;align-items:center;justify-content:center;" title="${isHidden ? 'Mostrar link' : 'Ocultar link'}">
                     <span class="material-symbols-outlined" style="font-size: 18px;">${isHidden ? 'visibility_off' : 'visibility'}</span>
                 </button>
+                <button type="button" class="btn-toggle-inline-specs"
+                        style="background:none;border:none;cursor:pointer;color:${(vSpecs.material || vSpecs.espesor || vSpecs.armado || vSpecs.extra) ? '#16a34a' : '#0284c7'};padding:0.4rem;display:flex;align-items:center;justify-content:center;" title="Desplegar Ficha Técnica de esta Variante">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">list_alt</span>
+                </button>
                 <button type="button" class="btn-edit-link-label"
                         style="background:none;border:none;cursor:pointer;color:var(--primary-color);padding:0.4rem;display:flex;align-items:center;justify-content:center;" title="Editar ícono y texto del botón">
                     <span class="material-symbols-outlined" style="font-size: 18px;">edit</span>
@@ -247,6 +256,34 @@ window.addEventListener('message', (event) => {
                 </button>
                 <button type="button" class="btn-remove-medida"
                         style="background:none;border:none;cursor:pointer;color:#EF4444;font-size:1.4rem;line-height:1;padding:0.4rem;display:flex;align-items:center;justify-content:center;" title="Eliminar">&times;</button>
+            </div>
+            <!-- Subpanel Desplegable Inline: Ficha Técnica de la Variante -->
+            <div class="variant-inline-specs-panel" style="display: none; width: 100%; background: #F8FAFC; border: 1.5px dashed #CBD5E1; border-radius: 8px; padding: 0.75rem; margin-top: 6px; box-sizing: border-box;">
+                <div style="font-size: 0.78rem; font-weight: 700; color: #0284c7; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+                    <span style="display: flex; align-items: center; gap: 5px;">
+                        <span class="material-symbols-outlined" style="font-size: 16px;">list_alt</span>
+                        <span>Ficha Técnica Específica para esta Variante</span>
+                    </span>
+                    <span style="font-size: 0.72rem; color: #64748b; font-weight: normal;">(Vacío = toma el valor general del producto)</span>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                    <div>
+                        <label style="font-size: 0.74rem; font-weight: 700; color: #475569; display: block; margin-bottom: 2px;">Madera / Material:</label>
+                        <input type="text" class="vspec-input-material" placeholder="ej: Pino Seleccionado 1 pulgada" value="${vSpecs.material || ''}" style="width: 100%; font-size: 0.8rem; padding: 0.35rem 0.5rem; border-radius: 5px; border: 1px solid #CBD5E1; box-sizing: border-box;">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.74rem; font-weight: 700; color: #475569; display: block; margin-bottom: 2px;">Espesor / Grosor:</label>
+                        <input type="text" class="vspec-input-espesor" placeholder="ej: 18 mm / 22 mm" value="${vSpecs.espesor || ''}" style="width: 100%; font-size: 0.8rem; padding: 0.35rem 0.5rem; border-radius: 5px; border: 1px solid #CBD5E1; box-sizing: border-box;">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.74rem; font-weight: 700; color: #475569; display: block; margin-bottom: 2px;">Estructura y Armado:</label>
+                        <input type="text" class="vspec-input-armado" placeholder="ej: Listo para usar" value="${vSpecs.armado || ''}" style="width: 100%; font-size: 0.8rem; padding: 0.35rem 0.5rem; border-radius: 5px; border: 1px solid #CBD5E1; box-sizing: border-box;">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.74rem; font-weight: 700; color: #475569; display: block; margin-bottom: 2px;">Detalle Extra:</label>
+                        <input type="text" class="vspec-input-extra" placeholder="ej: Soporta 120 kg / Reforzado" value="${vSpecs.extra || ''}" style="width: 100%; font-size: 0.8rem; padding: 0.35rem 0.5rem; border-radius: 5px; border: 1px solid #CBD5E1; box-sizing: border-box;">
+                    </div>
+                </div>
             </div>
         `;
 
@@ -265,6 +302,48 @@ window.addEventListener('message', (event) => {
                     btnToggleFlex.querySelector('.material-symbols-outlined').textContent = 'local_shipping';
                     btnToggleFlex.title = 'Logística Flex Permitida en esta variante (Clic para deshabilitar)';
                 }
+            });
+        }
+
+        // Desplegable Inline de Ficha Técnica
+        const btnToggleSpecs = row.querySelector('.btn-toggle-inline-specs');
+        const specsPanel = row.querySelector('.variant-inline-specs-panel');
+        if (btnToggleSpecs && specsPanel) {
+            btnToggleSpecs.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isExpanded = specsPanel.style.display !== 'none';
+                if (isExpanded) {
+                    specsPanel.style.display = 'none';
+                    btnToggleSpecs.style.background = 'none';
+                } else {
+                    specsPanel.style.display = 'block';
+                    btnToggleSpecs.style.background = '#e0f2fe';
+                    btnToggleSpecs.style.borderRadius = '6px';
+                    const firstInp = specsPanel.querySelector('.vspec-input-material');
+                    if (firstInp) firstInp.focus();
+                }
+            });
+
+            // Actualizar color del botón si el usuario tipea algo en los campos inline
+            const syncBtnSpecsColor = () => {
+                const mat = specsPanel.querySelector('.vspec-input-material')?.value?.trim() || '';
+                const esp = specsPanel.querySelector('.vspec-input-espesor')?.value?.trim() || '';
+                const arm = specsPanel.querySelector('.vspec-input-armado')?.value?.trim() || '';
+                const ext = specsPanel.querySelector('.vspec-input-extra')?.value?.trim() || '';
+                row.dataset.vspecMaterial = mat;
+                row.dataset.vspecEspesor = esp;
+                row.dataset.vspecArmado = arm;
+                row.dataset.vspecExtra = ext;
+                if (mat || esp || arm || ext) {
+                    btnToggleSpecs.style.color = '#16a34a';
+                    btnToggleSpecs.title = 'Ficha técnica personalizada cargada en esta variante (Clic para ver/editar)';
+                } else {
+                    btnToggleSpecs.style.color = '#0284c7';
+                    btnToggleSpecs.title = 'Desplegar Ficha Técnica de esta Variante';
+                }
+            };
+            specsPanel.querySelectorAll('input').forEach(inp => {
+                inp.addEventListener('input', syncBtnSpecsColor);
             });
         }
 
@@ -343,7 +422,14 @@ window.addEventListener('message', (event) => {
             const currentMultiplier = row.querySelector('.medida-multiplicador') ? row.querySelector('.medida-multiplicador').value.trim() : '';
             
             // Crear nueva fila clonada
-            const newRow = createMedidaRow(groupId, currentMedida, currentLink, false, currentHidden, currentLabel, currentIcon, currentHighlight, currentPrice, currentLegend, currentShowPrice, currentCost, currentMultiplier);
+            const currentLogEnabled = row.dataset.logisticaEnabled !== 'false';
+            const currentSpecs = {
+                material: row.querySelector('.vspec-input-material')?.value?.trim() || row.dataset.vspecMaterial || '',
+                espesor: row.querySelector('.vspec-input-espesor')?.value?.trim() || row.dataset.vspecEspesor || '',
+                armado: row.querySelector('.vspec-input-armado')?.value?.trim() || row.dataset.vspecArmado || '',
+                extra: row.querySelector('.vspec-input-extra')?.value?.trim() || row.dataset.vspecExtra || ''
+            };
+            const newRow = createMedidaRow(groupId, currentMedida, currentLink, false, currentHidden, currentLabel, currentIcon, currentHighlight, currentPrice, currentLegend, currentShowPrice, currentCost, currentMultiplier, currentLogEnabled, currentSpecs);
             
             // Insertar exactamente debajo de la original en el DOM
             row.after(newRow);
@@ -923,7 +1009,13 @@ window.addEventListener('message', (event) => {
         if (groupData && groupData.medidas_variants) {
             groupData.medidas_variants.forEach(m => {
                 const isLog = m.logisticaEnabled !== false && m.noFlex !== true && m.disableFlex !== true;
-                medidasContainer.appendChild(createMedidaRow(groupId, m.medida, m.link, m.default, m.hidden, m.linkLabel, m.iconType, m.highlight, m.price !== undefined ? m.price : '', m.legend !== undefined ? m.legend : '', m.showPrice !== undefined ? m.showPrice : false, m.cost_price !== undefined ? m.cost_price : '', '', isLog));
+                const vSpecs = {
+                    material: m.material || m.specs?.material || '',
+                    espesor: m.espesor || m.specs?.espesor || '',
+                    armado: m.armado || m.specs?.armado || '',
+                    extra: m.extra || m.specs?.extra || ''
+                };
+                medidasContainer.appendChild(createMedidaRow(groupId, m.medida, m.link, m.default, m.hidden, m.linkLabel, m.iconType, m.highlight, m.price !== undefined ? m.price : '', m.legend !== undefined ? m.legend : '', m.showPrice !== undefined ? m.showPrice : false, m.cost_price !== undefined ? m.cost_price : '', '', isLog, vSpecs));
             });
             updateMedidaGroupColors(medidasContainer);
         }
@@ -1165,6 +1257,10 @@ window.addEventListener('message', (event) => {
         if (matInput) matInput.value = existingProd?.material || '';
         const espInput = document.getElementById('admin-espesor');
         if (espInput) espInput.value = existingProd?.espesor || existingProd?.grosor || '';
+        const armInput = document.getElementById('admin-armado');
+        if (armInput) armInput.value = existingProd?.armado || '';
+        const extraInput = document.getElementById('admin-specs-extra');
+        if (extraInput) extraInput.value = existingProd?.specs_extra || existingProd?.extra || '';
 
         // Configuración de Envíos del Producto
         const shipConf = existingProd?.shippingConfig || {};
@@ -1416,7 +1512,11 @@ window.addEventListener('message', (event) => {
                         cost_price: costVal !== '' ? parseFloat(costVal) : '',
                         legend: row.querySelector('.medida-leyenda') ? row.querySelector('.medida-leyenda').value.trim() : '',
                         showPrice: row.dataset.showPrice === 'true',
-                        logisticaEnabled: row.dataset.logisticaEnabled !== 'false'
+                        logisticaEnabled: row.dataset.logisticaEnabled !== 'false',
+                        material: row.querySelector('.vspec-input-material')?.value?.trim() || row.dataset.vspecMaterial || '',
+                        espesor: row.querySelector('.vspec-input-espesor')?.value?.trim() || row.dataset.vspecEspesor || '',
+                        armado: row.querySelector('.vspec-input-armado')?.value?.trim() || row.dataset.vspecArmado || '',
+                        extra: row.querySelector('.vspec-input-extra')?.value?.trim() || row.dataset.vspecExtra || ''
                     };
 
                     if (quantityDiscounts && quantityDiscounts.length > 0) {
@@ -1516,6 +1616,10 @@ window.addEventListener('message', (event) => {
             if (pMaterial) product.material = pMaterial;
             const pEspesor = document.getElementById('admin-espesor')?.value?.trim() || '';
             if (pEspesor) product.espesor = pEspesor;
+            const pArmado = document.getElementById('admin-armado')?.value?.trim() || '';
+            if (pArmado) product.armado = pArmado;
+            const pSpecsExtra = document.getElementById('admin-specs-extra')?.value?.trim() || '';
+            if (pSpecsExtra) product.specs_extra = pSpecsExtra;
             if (optLabel && optOptions.length > 0) {
                 product.optional_variant = { label: optLabel, options: optOptions };
             }

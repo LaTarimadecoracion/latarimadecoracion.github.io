@@ -198,7 +198,6 @@
 
     function startConfetti() {
         if (isRunning) return;
-        if (!isFestiveTheme()) return;
         isRunning = true;
         loop();
     }
@@ -215,19 +214,20 @@
         }
     }
 
-    window.checkConfettiStatus = function() {
-        if (isFestiveTheme()) {
-            startConfetti();
-        } else {
+    // Exponer función para ráfaga temporal de confeti (ej: al enviar un pedido)
+    window.launchConfettiBurst = function(durationMs = 4000) {
+        startConfetti();
+        setTimeout(() => {
             stopConfetti();
-        }
+        }, durationMs);
     };
 
-    // ── Arrancar cuando el DOM esté listo ─────────────────────────
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => window.checkConfettiStatus());
-    } else {
-        window.checkConfettiStatus();
-    }
+    window.checkConfettiStatus = function() {
+        // En el ingreso general el confeti permanece apagado para optimizar rendimiento móvil (Punto 10 UX)
+        stopConfetti();
+    };
+
+    // Al cargar la web, asegurar que no corra en bucle continuo de fondo
+    stopConfetti();
 
 })();

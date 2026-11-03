@@ -325,11 +325,22 @@
 
             const rows = [];
 
-            // 1. Madera / Material (solo si aplica o se deduce)
+            // Buscar variante activa para extraer sus specs específicas
+            let activeVariantObj = null;
+            if (activeGrupo && activeGrupo.medidas_variants && currentMedidaName) {
+                activeVariantObj = activeGrupo.medidas_variants.find(m => (m.medida || '').trim() === currentMedidaName.trim());
+            }
+            if (!activeVariantObj && product.medidas_variants && currentMedidaName) {
+                activeVariantObj = product.medidas_variants.find(m => (m.medida || '').trim() === currentMedidaName.trim());
+            }
+
+            // 1. Madera / Material (específico de variante > general del producto > automático por título)
             const catLower = (categoryName || '').toLowerCase();
             const titleLower = (product.title || '').toLowerCase();
             let materialVal = '';
-            if (product.material) {
+            if (activeVariantObj && (activeVariantObj.material || activeVariantObj.specs?.material)) {
+                materialVal = activeVariantObj.material || activeVariantObj.specs?.material;
+            } else if (product.material) {
                 materialVal = product.material;
             } else if (titleLower.includes('algarrobo') || catLower.includes('algarrobo')) {
                 materialVal = 'Madera Maciza de Algarrobo';
@@ -378,31 +389,37 @@
                 });
             }
 
-            // 4. Espesor / Grosor (si está cargado en el producto)
-            if (product.espesor || product.grosor) {
+            // 4. Espesor / Grosor (específico de variante > general del producto)
+            const vEspesor = activeVariantObj ? (activeVariantObj.espesor || activeVariantObj.specs?.espesor) : '';
+            const finalEspesor = vEspesor || product.espesor || product.grosor;
+            if (finalEspesor) {
                 rows.push({
                     icon: 'line_weight',
                     label: 'Espesor / Grosor',
-                    val: product.espesor || product.grosor
+                    val: finalEspesor
                 });
             }
 
-            // 5. Estructura y Armado
-            if (product.armado) {
+            // 5. Estructura y Armado (específico de variante > general del producto > defecto)
+            const vArmado = activeVariantObj ? (activeVariantObj.armado || activeVariantObj.specs?.armado) : '';
+            const finalArmado = vArmado || product.armado || 'Listo para usar';
+            rows.push({
+                icon: 'handyman',
+                label: 'Estructura y armado',
+                val: finalArmado
+            });
+
+            // 6. Característica Extra / Detalle de variante (si existe)
+            const vExtra = activeVariantObj ? (activeVariantObj.extra || activeVariantObj.specs?.extra) : '';
+            if (vExtra) {
                 rows.push({
-                    icon: 'handyman',
-                    label: 'Estructura y armado',
-                    val: product.armado
-                });
-            } else {
-                rows.push({
-                    icon: 'handyman',
-                    label: 'Estructura y armado',
-                    val: 'Listo para usar'
+                    icon: 'info',
+                    label: 'Detalle técnico',
+                    val: vExtra
                 });
             }
 
-            // 6. Fabricación y Origen
+            // 7. Fabricación y Origen
             rows.push({
                 icon: 'precision_manufacturing',
                 label: 'Origen / Fabricación',
@@ -967,11 +984,11 @@
 
                 renderCarousel(relatedList, itemsToRender, (item, idx) => {
                     const isEager = idx < 3;
-                    const pCard = document.createElement('div');
-                    pCard.className = 'category-card';
-                    pCard.style.cursor = 'pointer';
 
                     if (item.type === 'combo') {
+                        const pCard = document.createElement('div');
+                        pCard.className = 'category-card';
+                        pCard.style.cursor = 'pointer';
                         pCard.innerHTML = `
                             <div class="category-card-img-wrapper" style="position:relative; border: 2px solid #b38728; border-radius: 12px; overflow: hidden;">
                                 <img src="${item.image}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${item.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
@@ -988,27 +1005,37 @@
                                 window.openOfferDetailView(item.data);
                             }
                         });
+                        return pCard;
                     } else {
                         const p = item.data;
+                        if (typeof window.createFeedProductCard === 'function') {
+                            return window.createFeedProductCard(p, {
+                                catName: item.catName || '',
+                                extraClass: 'carousel-feed-item',
+                                isCarousel: true
+                            });
+                        }
+
+                        // Fallback
+                        const pCard = document.createElement('div');
+                        pCard.className = 'feed-card carousel-feed-item';
+                        pCard.style.cursor = 'pointer';
                         const productCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
                         pCard.innerHTML = `
-                            <div class="category-card-img-wrapper" style="position:relative;">
-                                <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${p.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
+                            <div class="feed-card-photo-container">
+                                <img src="${productCover}" class="feed-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${p.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
                             </div>
-                            <div class="category-overlay">
-                                <span>${p.title}</span>
+                            <div class="feed-card-info">
+                                <div class="feed-card-title-container">
+                                    <h3 class="feed-card-title" title="${p.title}">${p.title}</h3>
+                                </div>
                             </div>
                         `;
                         pCard.addEventListener('click', () => {
-                            if (window.showProductDetail) {
-                                window.showProductDetail(p, item.catName);
-                                window.scrollTo({ top: 0, behavior: 'smooth' });
-                                const appContainer = document.getElementById('app-container');
-                                if (appContainer) appContainer.scrollTop = 0;
-                            }
+                            if (window.showProductDetail) window.showProductDetail(p, item.catName);
                         });
+                        return pCard;
                     }
-                    return pCard;
                 });
 
                 if (typeof window.enableDragToScroll === 'function') {
@@ -1077,32 +1104,36 @@
 
                         selectedItems.forEach(item => {
                             const p = item.product;
-                            const productCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
-                            
-                            const card = document.createElement('div');
-                            card.className = 'feed-card';
-                            card.style.cursor = 'pointer';
-                            card.innerHTML = `
-                                <div class="feed-card-photo-container">
-                                    <img src="${productCover}" class="feed-card-img lazy-img" alt="${p.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
-                                    <div class="feed-card-gradient"></div>
-                                    <div class="feed-card-info">
-                                        <h3 class="feed-card-title">${p.title}</h3>
-                                        ${p.acabados_groups && p.acabados_groups.length > 0
-                                            ? `<span class="feed-card-variants-badge">${p.acabados_groups.length} acabados</span>`
-                                            : ''}
+                            if (typeof window.createFeedProductCard === 'function') {
+                                const card = window.createFeedProductCard(p, {
+                                    catName: item.catName || ''
+                                });
+                                randomGrid.appendChild(card);
+                            } else {
+                                const productCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
+                                const card = document.createElement('div');
+                                card.className = 'feed-card';
+                                card.style.cursor = 'pointer';
+                                card.innerHTML = `
+                                    <div class="feed-card-photo-container">
+                                        <img src="${productCover}" class="feed-card-img lazy-img" alt="${p.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
+                                        <div class="feed-card-info">
+                                            <div class="feed-card-title-container">
+                                                <h3 class="feed-card-title">${p.title}</h3>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            `;
-                            card.addEventListener('click', () => {
-                                if (window.showProductDetail) {
-                                    window.showProductDetail(p, item.catName);
-                                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                                    const appContainer = document.getElementById('app-container');
-                                    if (appContainer) appContainer.scrollTop = 0;
-                                }
-                            });
-                            randomGrid.appendChild(card);
+                                `;
+                                card.addEventListener('click', () => {
+                                    if (window.showProductDetail) {
+                                        window.showProductDetail(p, item.catName);
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                        const appContainer = document.getElementById('app-container');
+                                        if (appContainer) appContainer.scrollTop = 0;
+                                    }
+                                });
+                                randomGrid.appendChild(card);
+                            }
                         });
 
                         randomGridSection.style.display = 'block';
