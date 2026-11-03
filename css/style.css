@@ -1334,7 +1334,7 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     display: inline-flex;
     flex-direction: column;
     break-inside: avoid;
-    border-radius: 20px;
+    border-radius: 6px;
     overflow: hidden;
     cursor: pointer;
     position: relative;
@@ -7029,7 +7029,7 @@ a .material-symbols-outlined {
     margin: 0;
     display: block;
     position: relative;
-    border-radius: 18px;
+    border-radius: 6px;
     overflow: hidden;
     cursor: pointer;
     box-shadow: 0 4px 16px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
@@ -7123,4 +7123,27 @@ a .material-symbols-outlined {
     display: flex;
     align-items: center;
     gap: 4px;
+}
+
+/* ==========================================================================
+   📐 REGLA MAESTRA: ESQUINAS MINIMALISTAS (4px) EN TODAS LAS MINIATURAS
+   ========================================================================== */
+.category-card,
+.category-card-img-wrapper,
+.category-card-img,
+.feed-card,
+.feed-card-photo,
+.feed-card-photo-container,
+.feed-card-img,
+.category-tile,
+.category-tile-photo,
+.category-tile-img,
+.carousel-categories .category-card,
+.carousel-categories .feed-card,
+#home-new-designs-list .category-card,
+#carousel-categories .category-card,
+#detail-related-product-list .category-card,
+#detail-related-product-list .feed-card,
+#detail-random-product-grid .feed-card {
+    border-radius: 4px !important;
 }
