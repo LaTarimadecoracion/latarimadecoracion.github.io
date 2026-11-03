@@ -1425,6 +1425,13 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     gap: 6px;
 }
 
+/* En dispositivos móviles y tablets touch, ocultar la botonera flotante para no tapar la foto */
+@media (max-width: 768px), (pointer: coarse) {
+    .feed-card-actions-float {
+        display: none !important;
+    }
+}
+
 .feed-action-btn {
     width: 34px;
     height: 34px;

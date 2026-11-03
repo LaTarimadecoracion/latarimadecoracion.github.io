@@ -644,27 +644,17 @@
                                         return placeholderCard;
                                     }
 
-                                    if (typeof window.createFeedProductCard === 'function') {
-                                        return window.createFeedProductCard(product, {
-                                            catName: catName || '',
-                                            extraClass: 'carousel-feed-item',
-                                            isCarousel: true
-                                        });
-                                    }
-
                                     const card = document.createElement('div');
-                                    card.className = 'feed-card carousel-feed-item';
+                                    card.className = 'category-card';
                                     const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
                                     const isEager = idx < 3;
                                     const safeTitle = (product.title || '').replace(/"/g, '&quot;');
                                     card.innerHTML = `
-                                        <div class="feed-card-photo-container">
-                                            <img src="${productCover}" class="feed-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${safeTitle}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
+                                        <div class="category-card-img-wrapper" style="position:relative;">
+                                            <img src="${productCover}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${safeTitle}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
                                         </div>
-                                        <div class="feed-card-info">
-                                            <div class="feed-card-title-container">
-                                                <h3 class="feed-card-title" title="${safeTitle}">${product.title}</h3>
-                                            </div>
+                                        <div class="category-overlay">
+                                            <span>${safeTitle}</span>
                                         </div>
                                     `;
                                     card.addEventListener('click', () => {
