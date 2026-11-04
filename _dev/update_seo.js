@@ -166,6 +166,11 @@ ${JSON.stringify(schemaData, null, 2)}
 </html>`;
 }
 
+// Cargar módulo de shortener para códigos Base36
+global.window = { productsData: productsArray, location: { origin: BASE_URL, pathname: '/' } };
+eval(fs.readFileSync(path.join(__dirname, '..', 'js', 'modules', 'shortener.js'), 'utf8'));
+const TarimaShortener = global.window.TarimaShortener;
+
 function run() {
     const rootPDir = path.join(ROOT_DIR, 'p');
     const docsPDir = path.join(DOCS_DIR, 'p');
@@ -236,6 +241,47 @@ function run() {
             }
         });
     });
+
+    // Páginas para códigos cortos de carrito y variantes (ej: B3D11, 121, etc.)
+    if (TarimaShortener && typeof TarimaShortener.encodeShortCode === 'function') {
+        productsArray.forEach(cat => {
+            (cat.products || []).forEach(prod => {
+                if (!prod || !prod.id) return;
+                const catName = cat.name || '';
+                const variantCodes = new Set();
+                const baseC = TarimaShortener.encodeShortCode(prod.id, '', '', '', false);
+                variantCodes.add(baseC);
+                const grupos = (prod.acabados_groups || []).filter(g => !g.hidden);
+                grupos.forEach(g => {
+                    const medidas = g.medidas_variants || prod.medidas_variants || [];
+                    if (medidas.length > 0) {
+                        medidas.forEach(m => {
+                            variantCodes.add(TarimaShortener.encodeShortCode(prod.id, g.acabado_name, m.medida, '', false));
+                        });
+                    } else {
+                        variantCodes.add(TarimaShortener.encodeShortCode(prod.id, g.acabado_name, '', '', false));
+                    }
+                });
+
+                variantCodes.forEach(vCode => {
+                    if (vCode && !addedShortCodes.has(vCode)) {
+                        addedShortCodes.add(vCode);
+                        const htmlVar = generateSeoHtml(prod, vCode, catName);
+                        fs.writeFileSync(path.join(rootPDir, `${vCode}.html`), htmlVar, 'utf8');
+                        if (fs.existsSync(DOCS_DIR)) {
+                            fs.writeFileSync(path.join(docsPDir, `${vCode}.html`), htmlVar, 'utf8');
+                        }
+                        count++;
+                        sitemapUrls.push({
+                            loc: `${BASE_URL}/p/${vCode}.html`,
+                            priority: '0.7',
+                            changefreq: 'weekly'
+                        });
+                    }
+                });
+            });
+        });
+    }
 
     // Páginas SEO para aliases históricos (para que links viejos de WhatsApp/Facebook nunca se rompan)
     const LEGACY_ALIASES = {

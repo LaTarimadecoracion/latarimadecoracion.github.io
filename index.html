@@ -362,6 +362,32 @@
             <div class="view-content">
                 <!-- Tabs de Rubros para el buscador B2B/B2C -->
                 <div id="search-rubros-tabs-container" class="rubros-tabs-bar"></div>
+
+                <!-- Historial de Búsquedas Recientes y Sugerencias Instantáneas (Puntos 7 y 8 UX) -->
+                <div id="search-quick-assistant" style="padding: 0.6rem 0.75rem 0.3rem; background: #ffffff; border-bottom: 1px solid #f1f5f9; display: none;">
+                    <!-- Historial Reciente -->
+                    <div id="search-history-container" style="display: none; margin-bottom: 0.5rem;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.35rem;">
+                            <span style="font-size: 0.76rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.4px; display: inline-flex; align-items: center; gap: 4px;">
+                                <span class="material-symbols-outlined" style="font-size: 14px; color: #94a3b8;">history</span>
+                                Búsquedas recientes
+                            </span>
+                            <button type="button" id="btn-clear-all-history" style="background: none; border: none; font-size: 0.72rem; color: #94a3b8; font-weight: 600; cursor: pointer; padding: 2px 4px;">
+                                Borrar historial
+                            </button>
+                        </div>
+                        <div id="search-history-chips" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+                    </div>
+
+                    <!-- Sugerencias en tiempo real (Categorías y términos rápidos) -->
+                    <div id="search-suggestions-container" style="display: none;">
+                        <span style="font-size: 0.76rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.4px; display: inline-flex; align-items: center; gap: 4px; margin-bottom: 0.35rem;">
+                            <span class="material-symbols-outlined" style="font-size: 14px; color: #f59e0b;">bolt</span>
+                            Sugerencias
+                        </span>
+                        <div id="search-suggestions-chips" style="display: flex; flex-wrap: wrap; gap: 6px;"></div>
+                    </div>
+                </div>
                 
                 <!-- Resultados de búsqueda (feed inmersivo) -->
                 <div id="search-results-container" class="product-feed">

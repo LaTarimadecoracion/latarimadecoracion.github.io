@@ -52,24 +52,51 @@
         let catIndexFallback = -1;
         let prodIndexFallback = -1;
 
-        for (let c = 0; c < categories.length; c++) {
-            const cat = categories[c];
-            if (cat.products && Array.isArray(cat.products)) {
-                const pIdx = cat.products.findIndex(p => p && p.id === productId);
-                if (pIdx !== -1) {
-                    catObj = cat;
-                    catIndexFallback = c;
-                    prodIndexFallback = pIdx;
-                    product = cat.products[pIdx];
-                    break;
+        // 1. Obtener producto de la lista plana
+        const flatList = getAllProductsFlat();
+        product = flatList.find(p => p && (p.id === productId || p.shortId === productId));
+
+        // 2. Resolver categoría idónea: priorizar primaryCatId de producto si existe
+        if (product && product.primaryCatId) {
+            const cIdx = categories.findIndex(c => c.id === product.primaryCatId);
+            if (cIdx !== -1) {
+                catObj = categories[cIdx];
+                catIndexFallback = cIdx;
+                prodIndexFallback = (catObj.products || []).findIndex(p => p && p.id === product.id);
+            }
+        }
+
+        // Si no se resolvió por primaryCatId, buscar en categorías públicas/visibles primero
+        if (!catObj && product) {
+            for (let c = 0; c < categories.length; c++) {
+                const cat = categories[c];
+                if (cat.visible === false) continue;
+                if (cat.products && Array.isArray(cat.products)) {
+                    const pIdx = cat.products.findIndex(p => p && p.id === product.id);
+                    if (pIdx !== -1) {
+                        catObj = cat;
+                        catIndexFallback = c;
+                        prodIndexFallback = pIdx;
+                        break;
+                    }
                 }
             }
         }
 
-        if (!product) {
-            // Buscar en lista plana (por si está en Borradores o Mover a Respaldo)
-            const flatList = getAllProductsFlat();
-            product = flatList.find(p => p && p.id === productId);
+        // Fallback final: buscar en cualquier categoría
+        if (!catObj && product) {
+            for (let c = 0; c < categories.length; c++) {
+                const cat = categories[c];
+                if (cat.products && Array.isArray(cat.products)) {
+                    const pIdx = cat.products.findIndex(p => p && p.id === product.id);
+                    if (pIdx !== -1) {
+                        catObj = cat;
+                        catIndexFallback = c;
+                        prodIndexFallback = pIdx;
+                        break;
+                    }
+                }
+            }
         }
 
         if (!product) {
@@ -177,24 +204,26 @@
         // 1. Prioridad: Buscar por ID directo de producto o shortId estático en la lista plana
         product = flatList.find(p => p.id === cleanCode || p.shortId === cleanCode);
 
-        // 2. Si no es un ID directo y tiene puntos (ej: 1.2, 1.A.2, F.6)
+        // 2. Si tiene puntos (ej: 1.2, 1.A.2, B.3D.1.1, F.6)
         if (!product && cleanCode.includes('.')) {
             const parts = cleanCode.split('.');
             const catCodeStr = parts[0];
             const prodCodeStr = parts[1];
 
-            product = flatList.find(p => p.shortId === prodCodeStr || p.id === prodCodeStr);
-
-            if (!product) {
-                const catNum = fromBase36(catCodeStr);
-                const prodNum = fromBase36(prodCodeStr);
-
-                if (catNum > 0 && categories[catNum - 1]) {
-                    const cat = categories[catNum - 1];
-                    if (cat.products && cat.products[prodNum - 1]) {
+            const catNum = fromBase36(catCodeStr);
+            if (catNum > 0 && categories[catNum - 1]) {
+                const cat = categories[catNum - 1];
+                product = (cat.products || []).find(p => p.shortId === prodCodeStr || p.id === prodCodeStr);
+                if (!product) {
+                    const prodNum = fromBase36(prodCodeStr);
+                    if (prodNum > 0 && cat.products && cat.products[prodNum - 1]) {
                         product = cat.products[prodNum - 1];
                     }
                 }
+            }
+
+            if (!product) {
+                product = flatList.find(p => p.shortId === prodCodeStr || p.id === prodCodeStr);
             }
 
             acabadoIdx = parts[2] ? fromBase36(parts[2]) : 0;
@@ -202,25 +231,49 @@
             opcionIdx = parts[4] ? fromBase36(parts[4]) : 0;
         }
 
-        // 3. Fallback para códigos sin punto de más de 2 caracteres (ej: 121, 9B1)
-        if (!product && /^[0-9A-Z]{3,6}$/i.test(cleanCode)) {
-            const parts = cleanCode.split('');
-            const catCodeStr = parts[0];
-            const prodCodeStr = parts[1];
+        // 3. Fallback para códigos compactos sin punto de 2 a 7 caracteres (ej: B3D11, 121, 9B1, GA, B8)
+        if (!product && /^[0-9A-Z]{2,7}$/i.test(cleanCode)) {
+            // Intentar desarmar [catCode][prodCode][acabadoIdx][medidaIdx][opcionIdx]
+            for (let catLen = 1; catLen <= 2 && catLen < cleanCode.length; catLen++) {
+                const catCodeStr = cleanCode.substring(0, catLen);
+                const catNum = fromBase36(catCodeStr);
+                if (catNum > 0 && categories[catNum - 1]) {
+                    const cat = categories[catNum - 1];
+                    const remaining = cleanCode.substring(catLen);
 
-            const catNum = fromBase36(catCodeStr);
-            const prodNum = fromBase36(prodCodeStr);
+                    // 3a. Coincidencia por shortId o ID de producto dentro de la categoría (longitud de 2 a 1)
+                    for (let prodLen = Math.min(4, remaining.length); prodLen >= 1; prodLen--) {
+                        const prodCodeStr = remaining.substring(0, prodLen);
+                        const foundInCat = (cat.products || []).find(p => p.shortId === prodCodeStr || p.id === prodCodeStr);
+                        if (foundInCat) {
+                            product = foundInCat;
+                            const rest = remaining.substring(prodLen);
+                            acabadoIdx = rest[0] ? fromBase36(rest[0]) : 0;
+                            medidaIdx = rest[1] ? fromBase36(rest[1]) : 0;
+                            opcionIdx = rest[2] ? fromBase36(rest[2]) : 0;
+                            break;
+                        }
+                    }
 
-            if (catNum > 0 && categories[catNum - 1]) {
-                const cat = categories[catNum - 1];
-                if (cat.products && cat.products[prodNum - 1]) {
-                    product = cat.products[prodNum - 1];
+                    if (product) break;
+
+                    // 3b. Coincidencia por índice de producto dentro de la categoría
+                    for (let prodLen = Math.min(2, remaining.length); prodLen >= 1; prodLen--) {
+                        const prodCodeStr = remaining.substring(0, prodLen);
+                        const prodNum = fromBase36(prodCodeStr);
+                        if (prodNum > 0 && cat.products && cat.products[prodNum - 1]) {
+                            product = cat.products[prodNum - 1];
+                            const rest = remaining.substring(prodLen);
+                            acabadoIdx = rest[0] ? fromBase36(rest[0]) : 0;
+                            medidaIdx = rest[1] ? fromBase36(rest[1]) : 0;
+                            opcionIdx = rest[2] ? fromBase36(rest[2]) : 0;
+                            break;
+                        }
+                    }
+
+                    if (product) break;
                 }
             }
-
-            acabadoIdx = parts[2] ? fromBase36(parts[2]) : 0;
-            medidaIdx = parts[3] ? fromBase36(parts[3]) : 0;
-            opcionIdx = parts[4] ? fromBase36(parts[4]) : 0;
         }
 
         if (!product) {

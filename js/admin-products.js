@@ -1088,6 +1088,154 @@ window.initProductsAdmin = function() {
         return checkProductCartStatus(productId, acabadoName);
     }
 
+    
+    // ══════════════════════════════════════════════════════════════════════════
+    // 🔍 Puntos 7 y 8 UX: Historial de Búsquedas Recientes y Sugerencias Rápidas
+    // ══════════════════════════════════════════════════════════════════════════
+    const SEARCH_HISTORY_KEY = 'tarima_recent_searches';
+
+    function getSearchHistory() {
+        try {
+            const raw = localStorage.getItem(SEARCH_HISTORY_KEY);
+            return raw ? JSON.parse(raw) : [];
+        } catch(e) { return []; }
+    }
+
+    function saveSearchTerm(term) {
+        if (!term || typeof term !== 'string') return;
+        const clean = term.trim();
+        if (clean.length < 2) return;
+        try {
+            let history = getSearchHistory();
+            history = history.filter(item => item.toLowerCase() !== clean.toLowerCase());
+            history.unshift(clean);
+            if (history.length > 8) history = history.slice(0, 8);
+            localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(history));
+            renderSearchAssistant();
+        } catch(e) {}
+    }
+
+    function removeSearchHistoryItem(termToRemove) {
+        try {
+            let history = getSearchHistory();
+            history = history.filter(item => item.toLowerCase() !== termToRemove.toLowerCase());
+            localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(history));
+            renderSearchAssistant();
+        } catch(e) {}
+    }
+
+    function clearAllSearchHistory() {
+        try {
+            localStorage.removeItem(SEARCH_HISTORY_KEY);
+            renderSearchAssistant();
+        } catch(e) {}
+    }
+
+    function renderSearchAssistant() {
+        const assistant = document.getElementById('search-quick-assistant');
+        const historyBox = document.getElementById('search-history-container');
+        const historyChips = document.getElementById('search-history-chips');
+        const suggestBox = document.getElementById('search-suggestions-container');
+        const suggestChips = document.getElementById('search-suggestions-chips');
+        if (!assistant || !historyBox || !historyChips || !suggestBox || !suggestChips) return;
+
+        const currentVal = (searchInput ? searchInput.value : '').trim();
+        const history = getSearchHistory();
+
+        // 1. Historial: solo visible si el input está vacío y hay historial guardado
+        if (!currentVal && history.length > 0) {
+            historyChips.innerHTML = '';
+            history.forEach(term => {
+                const chip = document.createElement('div');
+                chip.className = 'search-chip';
+                chip.innerHTML = `
+                    <span class="material-symbols-outlined" style="font-size: 13px; color: #94a3b8;">history</span>
+                    <span>${term}</span>
+                    <span class="search-chip-remove" title="Quitar">✕</span>
+                `;
+                chip.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('search-chip-remove')) {
+                        e.stopPropagation();
+                        removeSearchHistoryItem(term);
+                    } else {
+                        if (searchInput) {
+                            searchInput.value = term;
+                            if (btnClearSearch) btnClearSearch.style.display = 'flex';
+                            window.runSearch();
+                        }
+                    }
+                });
+                historyChips.appendChild(chip);
+            });
+            historyBox.style.display = 'block';
+        } else {
+            historyBox.style.display = 'none';
+        }
+
+        // 2. Sugerencias Rápidas: si escribe al menos 2 letras, sugerir categorías y coincidencias
+        if (currentVal.length >= 2) {
+            const norm = normalizeForSearch(currentVal);
+            const sourceData = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0) ? sessionProducts : (typeof productsData !== 'undefined' ? productsData : []);
+            const suggestions = new Set();
+
+            // Buscar en nombres de categorías
+            sourceData.forEach(cat => {
+                if (cat.visible === false || String(cat.id).endsWith('-todos')) return;
+                const catNorm = normalizeForSearch(cat.name || '');
+                if (catNorm.includes(norm) && cat.name.toLowerCase() !== currentVal.toLowerCase()) {
+                    suggestions.add(cat.name);
+                }
+            });
+
+            // Buscar en títulos de productos destacados
+            if (suggestions.size < 6) {
+                const indexed = getIndexedProducts();
+                for (const it of indexed) {
+                    if (suggestions.size >= 6) break;
+                    const pNorm = normalizeForSearch(it.nombre || '');
+                    if (pNorm.includes(norm)) {
+                        // Extraer un término clave conciso
+                        const shortTitle = it.nombre.split(' - ')[0].split(':')[0].trim();
+                        if (shortTitle && shortTitle.length < 28 && shortTitle.toLowerCase() !== currentVal.toLowerCase()) {
+                            suggestions.add(shortTitle);
+                        }
+                    }
+                }
+            }
+
+            if (suggestions.size > 0) {
+                suggestChips.innerHTML = '';
+                suggestions.forEach(sug => {
+                    const chip = document.createElement('div');
+                    chip.className = 'search-chip search-chip-suggest';
+                    chip.innerHTML = `
+                        <span class="material-symbols-outlined" style="font-size: 13px;">search</span>
+                        <span>${sug}</span>
+                    `;
+                    chip.addEventListener('click', () => {
+                        if (searchInput) {
+                            searchInput.value = sug;
+                            if (btnClearSearch) btnClearSearch.style.display = 'flex';
+                            saveSearchTerm(sug);
+                            window.runSearch();
+                        }
+                    });
+                    suggestChips.appendChild(chip);
+                });
+                suggestBox.style.display = 'block';
+            } else {
+                suggestBox.style.display = 'none';
+            }
+        } else {
+            suggestBox.style.display = 'none';
+        }
+
+        // Mostrar u ocultar el panel general
+        const hasHistory = historyBox.style.display === 'block';
+        const hasSuggest = suggestBox.style.display === 'block';
+        assistant.style.display = (hasHistory || hasSuggest) ? 'block' : 'none';
+    }
+
     function runSearch() {
         const sourceData = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0) ? sessionProducts : productsData;
         if (!searchResultsContainer || typeof sourceData === 'undefined') return;
@@ -1676,6 +1824,15 @@ window.initProductsAdmin = function() {
     }
 
     // Attach search input listener y botón de limpieza rápida
+    
+        const btnClearHistory = document.getElementById('btn-clear-all-history');
+        if (btnClearHistory) {
+            btnClearHistory.addEventListener('click', (e) => {
+                e.preventDefault();
+                clearAllSearchHistory();
+            });
+        }
+
     const btnClearSearch = document.getElementById('btn-clear-search');
     if (searchInput) {
         searchInput.addEventListener('input', () => {
