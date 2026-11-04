@@ -28,10 +28,14 @@
             return { product: cachedP, catName: cachedP.primaryCatId || '' };
         }
 
-        // 2. Revisar window.sessionProducts
-        if (window.sessionProducts) {
+        // 2. Revisar fuente de catálogo (sessionProducts con fallback a productsData)
+        const catalogSource = (window.sessionProducts && window.sessionProducts.length > 0)
+            ? window.sessionProducts
+            : (window.productsData && window.productsData.length > 0 ? window.productsData : null);
+
+        if (catalogSource) {
             let fallback = null;
-            for (const cat of window.sessionProducts) {
+            for (const cat of catalogSource) {
                 if (cat.products) {
                     const found = cat.products.find(p => {
                         if (!p) return false;

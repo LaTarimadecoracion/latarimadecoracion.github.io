@@ -263,6 +263,20 @@ function run() {
                     }
                 });
 
+                // Generar también variante canónica con puntos (ej: B.1.1.1)
+                const dotBaseC = TarimaShortener.encodeShortCode(prod.id, '', '', '', true);
+                variantCodes.add(dotBaseC);
+                grupos.forEach(g => {
+                    const medidas = g.medidas_variants || prod.medidas_variants || [];
+                    if (medidas.length > 0) {
+                        medidas.forEach(m => {
+                            variantCodes.add(TarimaShortener.encodeShortCode(prod.id, g.acabado_name, m.medida, '', true));
+                        });
+                    } else {
+                        variantCodes.add(TarimaShortener.encodeShortCode(prod.id, g.acabado_name, '', '', true));
+                    }
+                });
+
                 variantCodes.forEach(vCode => {
                     if (vCode && !addedShortCodes.has(vCode)) {
                         addedShortCodes.add(vCode);

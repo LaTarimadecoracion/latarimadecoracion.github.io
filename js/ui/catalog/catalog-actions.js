@@ -87,7 +87,7 @@
         let productUrl = window.location.href;
         if (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function') {
             const acabName = (grupo && grupo.acabado_name) ? grupo.acabado_name : '';
-            const shortCode = window.TarimaShortener.encodeShortCode(product.id, acabName, medidaName, optText, false);
+            const shortCode = window.TarimaShortener.encodeShortCode(product.id, acabName, medidaName, optText, true);
             if (shortCode) {
                 const origin = window.location.origin;
                 const path = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');

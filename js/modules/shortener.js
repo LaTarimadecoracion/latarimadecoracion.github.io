@@ -1,6 +1,7 @@
 /**
  * shortener.js - Motor de acortamiento de URLs nativo en Base36 para La Tarima
- * Genera enlaces ultracortos (ej: /1.A.2) jerárquicos por categoría, producto y variantes.
+ * Genera enlaces ultracortos jerárquicos canónicos (ej: /p/B.1.1.1.html o /?s=B.1.1.1)
+ * y garantiza compatibilidad retroactiva 100% con enlaces antiguos (ej: B3D11, F6, etc.).
  */
 (function () {
     'use strict';
@@ -22,7 +23,7 @@
             : (typeof window.productsData !== 'undefined' ? window.productsData : []);
     }
 
-    // Función auxiliar para obtener la lista plana de todos los productos (para fallback retrocompatible)
+    // Obtener lista plana de productos
     function getAllProductsFlat() {
         const source = getCategoriesData();
         const list = [];
@@ -41,79 +42,51 @@
         return list;
     }
 
-    /**
-     * Convierte un ID de producto y sus variantes a un código Base36 corto estático e inmutable.
-     * Prioriza catShortId y shortId estáticos asignados a cada entidad.
-     */
-    function encodeShortCode(productId, preselectedAcabado = '', preselectedMedida = '', preselectedOpcion = '', useDots = false) {
-        const categories = getCategoriesData();
-        let catObj = null;
-        let product = null;
-        let catIndexFallback = -1;
-        let prodIndexFallback = -1;
+    // Resuelve la coordenada primaria (Categoría, Índice de Producto) inequívoca
+    function getPrimaryCoordinate(product, categories) {
+        if (!product || !categories || categories.length === 0) return null;
 
-        // 1. Obtener producto de la lista plana
-        const flatList = getAllProductsFlat();
-        product = flatList.find(p => p && (p.id === productId || p.shortId === productId));
-
-        // 2. Resolver categoría idónea: priorizar primaryCatId de producto si existe
-        if (product && product.primaryCatId) {
+        if (product.primaryCatId) {
             const cIdx = categories.findIndex(c => c.id === product.primaryCatId);
             if (cIdx !== -1) {
-                catObj = categories[cIdx];
-                catIndexFallback = cIdx;
-                prodIndexFallback = (catObj.products || []).findIndex(p => p && p.id === product.id);
+                const pIdx = (categories[cIdx].products || []).findIndex(p => p && p.id === product.id);
+                if (pIdx !== -1) return { cIdx, pIdx };
             }
         }
 
-        // Si no se resolvió por primaryCatId, buscar en categorías públicas/visibles primero
-        if (!catObj && product) {
-            for (let c = 0; c < categories.length; c++) {
-                const cat = categories[c];
-                if (cat.visible === false) continue;
-                if (cat.products && Array.isArray(cat.products)) {
-                    const pIdx = cat.products.findIndex(p => p && p.id === product.id);
-                    if (pIdx !== -1) {
-                        catObj = cat;
-                        catIndexFallback = c;
-                        prodIndexFallback = pIdx;
-                        break;
-                    }
-                }
-            }
+        // Buscar en categorías visibles primero
+        for (let c = 0; c < categories.length; c++) {
+            if (categories[c].visible === false) continue;
+            const pIdx = (categories[c].products || []).findIndex(p => p && p.id === product.id);
+            if (pIdx !== -1) return { cIdx: c, pIdx };
         }
 
-        // Fallback final: buscar en cualquier categoría
-        if (!catObj && product) {
-            for (let c = 0; c < categories.length; c++) {
-                const cat = categories[c];
-                if (cat.products && Array.isArray(cat.products)) {
-                    const pIdx = cat.products.findIndex(p => p && p.id === product.id);
-                    if (pIdx !== -1) {
-                        catObj = cat;
-                        catIndexFallback = c;
-                        prodIndexFallback = pIdx;
-                        break;
-                    }
-                }
-            }
+        // Fallback a cualquier categoría
+        for (let c = 0; c < categories.length; c++) {
+            const pIdx = (categories[c].products || []).findIndex(p => p && p.id === product.id);
+            if (pIdx !== -1) return { cIdx: c, pIdx };
         }
+
+        return null;
+    }
+
+    /**
+     * Convierte un ID de producto y sus variantes a un código canónico Base36 inequívoco.
+     * Por defecto useDots = true para evitar ambigüedades en WhatsApp y URLs.
+     */
+    function encodeShortCode(productId, preselectedAcabado = '', preselectedMedida = '', preselectedOpcion = '', useDots = true) {
+        const categories = getCategoriesData();
+        const flatList = getAllProductsFlat();
+        let product = flatList.find(p => p && p.id === productId);
+        if (!product) product = flatList.find(p => p && p.shortId === productId);
 
         if (!product) {
-            return productId; // Fallback al ID original en texto si no existe
+            return productId;
         }
 
-        // Obtener código de categoría estático (o fallback por índice)
-        let catCode = '1';
-        if (catObj) {
-            catCode = catObj.catShortId || catObj.shortId || toBase36(catIndexFallback + 1);
-        } else if (product.primaryCatId) {
-            const foundCat = categories.find(c => c.id === product.primaryCatId);
-            if (foundCat) catCode = foundCat.catShortId || foundCat.shortId || '1';
-        }
-
-        // Obtener código de producto estático (o fallback por índice)
-        const prodCode = product.shortId || (prodIndexFallback !== -1 ? toBase36(prodIndexFallback + 1) : toBase36(fromBase36(product.id.substring(0, 4)) || 1));
+        const coord = getPrimaryCoordinate(product, categories);
+        const catCode = coord ? toBase36(coord.cIdx + 1) : '1';
+        const prodCode = coord ? toBase36(coord.pIdx + 1) : toBase36(fromBase36(product.id.substring(0, 4)) || 1);
 
         let acabadoIdx = 0;
         let medidaIdx = 0;
@@ -130,7 +103,7 @@
         const activeGrupo = grupos[acabadoIdx > 0 ? acabadoIdx - 1 : 0] || {};
         const medidas = activeGrupo.medidas_variants || product.medidas_variants || [];
         if (preselectedMedida && medidas.length > 0) {
-            const foundMedidaIdx = medidas.findIndex(m => (m.medida || '').trim().toLowerCase() === preselectedMedida.trim().toLowerCase());
+            const foundMedidaIdx = medidas.findIndex(m => (m.medida || m.name || '').trim().toLowerCase() === preselectedMedida.trim().toLowerCase());
             if (foundMedidaIdx !== -1) medidaIdx = foundMedidaIdx + 1;
         }
 
@@ -143,7 +116,7 @@
 
         const sep = useDots ? '.' : '';
 
-        // Construir código compacto Base36 (ej: 121, 9B1A, 1.2.1)
+        // Construir código canónico Base36 (ej: B.1.1.1, 1.2.1)
         let code = `${catCode}${sep}${prodCode}`;
         if (acabadoIdx > 0 || medidaIdx > 0 || opcionIdx > 0) {
             code += `${sep}${toBase36(acabadoIdx)}`;
@@ -179,18 +152,35 @@
         'E6': '4F', // Caballetes de madera
         'F1': 'D6', // Escritorio para PC - Soporte Gabinete
         'F5': '79', // Pie de cama romano
-        '45': '43'  // Verdulero Mediano / Clasico
+        '45': '43', // Verdulero Mediano / Clasico
+        'B3D11': { id: 'F3', acabado: 'Natural', medida: 'Mesita' },
+        'B3D': { id: 'F3', acabado: '', medida: '' }
     };
 
     /**
-     * Decodifica un código corto Base36 estático o por jerarquía (ej: 121, 9B1A, 1.2.1).
+     * Decodifica un código corto Base36 estático o por jerarquía (ej: B.1.1.1, B3D11, 1.2.1).
      */
     function decodeShortCode(shortCode) {
         if (!shortCode) return null;
 
         let cleanCode = String(shortCode).trim().replace(/^\/+|\/+$/g, '');
         if (LEGACY_PRODUCT_ALIASES[cleanCode]) {
-            cleanCode = LEGACY_PRODUCT_ALIASES[cleanCode];
+            const alias = LEGACY_PRODUCT_ALIASES[cleanCode];
+            if (typeof alias === 'object') {
+                const flat = getAllProductsFlat();
+                const p = flat.find(x => x.id === alias.id);
+                if (p) {
+                    return {
+                        productId: p.id,
+                        productTitle: p.title,
+                        product: p,
+                        preselectedAcabado: alias.acabado || '',
+                        preselectedMedida: alias.medida || '',
+                        preselectedOpcion: ''
+                    };
+                }
+            }
+            cleanCode = alias;
         }
 
         const categories = getCategoriesData();
@@ -201,29 +191,25 @@
         let medidaIdx = 0;
         let opcionIdx = 0;
 
-        // 1. Prioridad: Buscar por ID directo de producto o shortId estático en la lista plana
-        product = flatList.find(p => p.id === cleanCode || p.shortId === cleanCode);
-
-        // 2. Si tiene puntos (ej: 1.2, 1.A.2, B.3D.1.1, F.6)
-        if (!product && cleanCode.includes('.')) {
+        // 1. Canónico con puntos: cat.prod.acabado.medida.opcion (ej: B.1.1.1, 1.2.1)
+        if (cleanCode.includes('.')) {
             const parts = cleanCode.split('.');
             const catCodeStr = parts[0];
             const prodCodeStr = parts[1];
 
             const catNum = fromBase36(catCodeStr);
+            const prodNum = fromBase36(prodCodeStr);
+
             if (catNum > 0 && categories[catNum - 1]) {
                 const cat = categories[catNum - 1];
-                product = (cat.products || []).find(p => p.shortId === prodCodeStr || p.id === prodCodeStr);
-                if (!product) {
-                    const prodNum = fromBase36(prodCodeStr);
-                    if (prodNum > 0 && cat.products && cat.products[prodNum - 1]) {
-                        product = cat.products[prodNum - 1];
-                    }
+                if (prodNum > 0 && cat.products && cat.products[prodNum - 1]) {
+                    product = cat.products[prodNum - 1];
                 }
             }
 
             if (!product) {
-                product = flatList.find(p => p.shortId === prodCodeStr || p.id === prodCodeStr);
+                // Fallback a búsqueda directa por ID o shortId de la segunda parte
+                product = flatList.find(p => p.id === prodCodeStr || p.shortId === prodCodeStr);
             }
 
             acabadoIdx = parts[2] ? fromBase36(parts[2]) : 0;
@@ -231,9 +217,14 @@
             opcionIdx = parts[4] ? fromBase36(parts[4]) : 0;
         }
 
-        // 3. Fallback para códigos compactos sin punto de 2 a 7 caracteres (ej: B3D11, 121, 9B1, GA, B8)
+        // 2. ID exacto directo en la lista plana
+        if (!product) {
+            product = flatList.find(p => p.id === cleanCode);
+            if (!product) product = flatList.find(p => p.shortId === cleanCode);
+        }
+
+        // 3. Fallback para códigos compactos sin punto (ej: B3D11, 121, GA)
         if (!product && /^[0-9A-Z]{2,7}$/i.test(cleanCode)) {
-            // Intentar desarmar [catCode][prodCode][acabadoIdx][medidaIdx][opcionIdx]
             for (let catLen = 1; catLen <= 2 && catLen < cleanCode.length; catLen++) {
                 const catCodeStr = cleanCode.substring(0, catLen);
                 const catNum = fromBase36(catCodeStr);
@@ -241,7 +232,7 @@
                     const cat = categories[catNum - 1];
                     const remaining = cleanCode.substring(catLen);
 
-                    // 3a. Coincidencia por shortId o ID de producto dentro de la categoría (longitud de 2 a 1)
+                    // 3a. Coincidencia por shortId o ID de producto dentro de la categoría
                     for (let prodLen = Math.min(4, remaining.length); prodLen >= 1; prodLen--) {
                         const prodCodeStr = remaining.substring(0, prodLen);
                         const foundInCat = (cat.products || []).find(p => p.shortId === prodCodeStr || p.id === prodCodeStr);
@@ -277,7 +268,7 @@
         }
 
         if (!product) {
-            return null; // Producto no encontrado o eliminado por completo
+            return null;
         }
 
         let preselectedAcabado = '';
@@ -293,7 +284,7 @@
         const activeGrupo = grupos[acabadoIdx > 0 ? acabadoIdx - 1 : 0] || grupos[0] || {};
         const medidas = activeGrupo.medidas_variants || product.medidas_variants || [];
         if (medidaIdx > 0 && medidas[medidaIdx - 1]) {
-            preselectedMedida = medidas[medidaIdx - 1].medida || '';
+            preselectedMedida = medidas[medidaIdx - 1].medida || medidas[medidaIdx - 1].name || '';
         }
 
         const optVariant = product.optional_variant;
@@ -311,51 +302,41 @@
         };
     }
 
-    function getOffersData() {
-        return (typeof window.sessionOffers !== 'undefined' && Array.isArray(window.sessionOffers) && window.sessionOffers.length > 0)
-            ? window.sessionOffers
-            : (typeof window.offersData !== 'undefined' ? window.offersData : []);
-    }
-
     /**
-     * Codifica un ID de oferta a un código Base36 super corto (ej: O.1, O.2, O.A)
+     * Codifica una oferta de flash sale a código Base36 (ej: O.1)
      */
     function encodeOfferShortCode(offerId) {
         if (!offerId) return 'O.1';
-        const offers = getOffersData();
-        const idx = offers.findIndex(o => o && o.id === offerId);
-        if (idx !== -1) {
-            return `O.${toBase36(idx + 1)}`;
-        }
-        return `O.${offerId}`;
+        const offersData = (typeof window.offersData !== 'undefined' && Array.isArray(window.offersData))
+            ? window.offersData
+            : [];
+        const index = offersData.findIndex(o => o && o.id === offerId);
+        const codeNum = index !== -1 ? (index + 1) : 1;
+        return `O.${toBase36(codeNum)}`;
     }
 
     /**
-     * Decodifica un código corto de oferta (ej: O.1 o o.1 o O.A)
+     * Decodifica un código de oferta (ej: O.1 -> oferta en index 0)
      */
-    function decodeOfferShortCode(shortCode) {
-        if (!shortCode) return null;
-        const clean = String(shortCode).trim().replace(/^\/+|\/+$/g, '');
-        const offers = getOffersData();
+    function decodeOfferShortCode(code) {
+        if (!code) return null;
+        const clean = String(code).trim().replace(/^\/+|\/+$/g, '');
+        const match = clean.match(/^O\.([0-9A-Z]+)$/i);
+        if (!match) return null;
 
-        if (/^O\.[0-9A-Z]+$/i.test(clean)) {
-            const raw = clean.substring(2);
-            const num = fromBase36(raw);
-            if (num > 0 && offers[num - 1]) {
-                return offers[num - 1];
-            }
-            // Fallback por ID directo
-            const found = offers.find(o => o.id === raw || o.id === clean);
-            if (found) return found;
+        const idx = fromBase36(match[1]) - 1;
+        const offersData = (typeof window.offersData !== 'undefined' && Array.isArray(window.offersData))
+            ? window.offersData
+            : [];
+
+        if (idx >= 0 && idx < offersData.length) {
+            return offersData[idx];
         }
 
-        const foundDirect = offers.find(o => o.id === clean);
+        const foundDirect = offersData.find(o => o && o.id === clean);
         return foundDirect || null;
     }
 
-    /**
-     * Genera la URL corta completa para una oferta (ej: https://latarimadecoracion.com/?s=O.1 o /O.1)
-     */
     function getShortOfferUrl(offerId) {
         const code = encodeOfferShortCode(offerId);
         const origin = window.location.origin;
@@ -364,15 +345,12 @@
         return `${origin}${basePath}?s=${code}`;
     }
 
-    /**
-     * Genera la URL corta completa directa con diagonal (ej: https://latarimadecoracion.com/1.A.2)
-     */
     function getShortProductUrl(productId, preselectedAcabado = '', preselectedMedida = '', preselectedOpcion = '') {
-        const code = encodeShortCode(productId, preselectedAcabado, preselectedMedida, preselectedOpcion);
+        const code = encodeShortCode(productId, preselectedAcabado, preselectedMedida, preselectedOpcion, true);
         const origin = window.location.origin;
         const path = window.location.pathname.replace(/\/index\.html$/, '/');
         const basePath = path.endsWith('/') ? path : path + '/';
-        return `${origin}${basePath}${code}`;
+        return `${origin}${basePath}p/${code}.html`;
     }
 
     // Exponer API global
@@ -391,4 +369,3 @@
     window.getShortProductUrl = getShortProductUrl;
     window.getShortOfferUrl = getShortOfferUrl;
 })();
-
