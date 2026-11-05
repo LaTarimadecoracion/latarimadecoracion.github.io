@@ -86,7 +86,8 @@
     function createFallbackCard(product, catName) {
         const card = document.createElement('div');
         card.className = 'feed-card';
-        const coverImg = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+        const rawCoverImg = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+        const coverImg = window.getThumbUrl ? window.getThumbUrl(rawCoverImg) : rawCoverImg;
         const safeTitle = (product.title || '').replace(/"/g, '&quot;');
         const priceHtml = (typeof window.getProductPriceDisplay === 'function')
             ? window.getProductPriceDisplay(product)

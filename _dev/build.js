@@ -44,6 +44,7 @@ async function build() {
     }
 
     console.log('📂 Sincronizando carpeta docs...');
+    try { const { scanAndGenerateThumbs } = require('./generate-thumbs'); await scanAndGenerateThumbs(path.join(srcDir, 'img')); } catch (err) { console.error('❌ Error generando miniaturas:', err); }
     fs.ensureDirSync(distDir);
 
     const smartCopySync = (src, dest) => {

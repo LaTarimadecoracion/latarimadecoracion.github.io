@@ -991,7 +991,7 @@
                         pCard.style.cursor = 'pointer';
                         pCard.innerHTML = `
                             <div class="category-card-img-wrapper" style="position:relative; border: 2px solid #b38728; border-radius: 12px; overflow: hidden;">
-                                <img src="${item.image}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${item.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
+                                <img src="${window.getThumbUrl ? window.getThumbUrl(item.image) : item.image}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${item.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
                                 <div style="position: absolute; top: 6px; left: 6px; background: linear-gradient(135deg, #b38728, #fcf6ba); color: #000; font-size: 0.65rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 2;">
                                     ${item.badge}
                                 </div>
@@ -1020,7 +1020,8 @@
                         const pCard = document.createElement('div');
                         pCard.className = 'feed-card carousel-feed-item';
                         pCard.style.cursor = 'pointer';
-                        const productCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
+                        const rawProductCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
+                        const productCover = window.getThumbUrl ? window.getThumbUrl(rawProductCover) : rawProductCover;
                         pCard.innerHTML = `
                             <div class="feed-card-photo-container">
                                 <img src="${productCover}" class="feed-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${p.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
@@ -1110,7 +1111,8 @@
                                 });
                                 randomGrid.appendChild(card);
                             } else {
-                                const productCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
+                                const rawProductCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
+                        const productCover = window.getThumbUrl ? window.getThumbUrl(rawProductCover) : rawProductCover;
                                 const card = document.createElement('div');
                                 card.className = 'feed-card';
                                 card.style.cursor = 'pointer';

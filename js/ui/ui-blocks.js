@@ -179,7 +179,7 @@
                     mediaHtml = `
                     <div class="aviso-card-img-wrapper">
                         <span class="aviso-badge-nuevo">NUEVO INGRESO</span>
-                        <img src="${displayImg}" alt="${cleanTitle}" class="aviso-card-img lazy-img loaded" style="opacity: 1;" loading="lazy" onload="this.classList.add('loaded')" onerror="this.src='img/logo_provisional.png'; this.classList.add('loaded');">
+                        <img src="${window.getThumbUrl ? window.getThumbUrl(displayImg) : displayImg}" alt="${cleanTitle}" class="aviso-card-img lazy-img loaded" style="opacity: 1;" loading="lazy" onload="this.classList.add('loaded')" onerror="if(window.__imgFallback) window.__imgFallback(this); else { this.src='img/logo_provisional.png'; } this.classList.add('loaded');">
                     </div>`;
                 } else if (mType === 'video' && block.videoUrl) {
                     const ytId = extractYouTubeId(block.videoUrl);

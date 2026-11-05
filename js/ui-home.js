@@ -503,7 +503,8 @@
                         setupInfiniteCarousel(containerEl, visibleCategories, (cat, idx) => {
                             const catCard = document.createElement('div');
                             catCard.className = 'category-card';
-                            const catCover = Array.isArray(cat.image) ? cat.image[0] : (cat.image || 'img/logo_provisional.png');
+                            const rawCatCover = Array.isArray(cat.image) ? cat.image[0] : (cat.image || 'img/logo_provisional.png');
+                            const catCover = window.getThumbUrl ? window.getThumbUrl(rawCatCover) : rawCatCover;
                             const isEager = idx < 3;
                             catCard.innerHTML = `
                                 <div class="category-card-img-wrapper" style="position:relative;">

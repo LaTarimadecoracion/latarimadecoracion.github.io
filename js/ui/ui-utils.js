@@ -1,4 +1,25 @@
 
+    // Sistema global de Miniaturas (_thumb.webp) para carga ultrarrápida de vistas previas
+    window.getThumbUrl = function(url) {
+        if (!url || typeof url !== 'string') return url || 'img/logo_provisional.png';
+        if (url.startsWith('http') || url.startsWith('data:') || url.includes('_thumb.webp') || url.includes('logo_provisional') || url.includes('logo-dark') || url.includes('logo-light')) {
+            return url;
+        }
+        return url.replace(/\.(webp|jpe?g|png)$/i, '_thumb.webp');
+    };
+
+    window.__imgFallback = function(imgEl) {
+        if (!imgEl) return;
+        const currentSrc = imgEl.getAttribute('src') || '';
+        if (currentSrc.includes('_thumb.webp') && !imgEl.dataset.triedOriginal) {
+            imgEl.dataset.triedOriginal = '1';
+            imgEl.src = currentSrc.replace(/_thumb\.webp$/i, '.webp');
+            return;
+        }
+        imgEl.onerror = null;
+        imgEl.src = 'img/logo_provisional.png';
+    };
+
     // Punto 91: Bloqueo y restauración de scroll de fondo para modales
     let _activeModalCount = 0;
     let _scrollLockSavedOverflow = '';

@@ -144,7 +144,7 @@ window.renderCategoriesMenu = function() {
         offersCard.style.border = '2px solid #b38728';
         offersCard.innerHTML = `
             <div class="category-tile-photo" style="background: linear-gradient(135deg, #1a1a1a, #2d2a26);">
-                <img src="img/borrador/portada-imagen.webp" class="category-tile-img loaded" alt="Ofertas y Combos" loading="lazy">
+                <img src="${window.getThumbUrl ? window.getThumbUrl('img/borrador/portada-imagen.webp') : 'img/borrador/portada-imagen.webp'}" class="category-tile-img loaded" alt="Ofertas y Combos" loading="lazy">
                 <div class="stamp-badge pro-gold" style="position: absolute; top: 10px; left: 10px; z-index: 5;">
                     🔥 OFERTA PRO GOLD
                 </div>
@@ -181,7 +181,8 @@ window.renderCategoriesMenu = function() {
 
         const catCard = document.createElement('div');
         catCard.className = 'category-tile';
-        const catCover = Array.isArray(cat.image) ? cat.image[0] : (cat.image || 'img/logo_provisional.png');
+        const rawCatCover = Array.isArray(cat.image) ? cat.image[0] : (cat.image || 'img/logo_provisional.png');
+        const catCover = window.getThumbUrl ? window.getThumbUrl(rawCatCover) : rawCatCover;
 
         catCard.innerHTML = `
             <div class="category-tile-photo">

@@ -672,6 +672,13 @@ app.post('/api/save-products', (req, res) => {
             activeImagePaths.add('img/logo-dark.png');
             activeImagePaths.add('img/logo-light.png');
 
+            // Proteger también las miniaturas (_thumb.webp) correspondientes a cada imagen activa
+            for (const imgP of Array.from(activeImagePaths)) {
+                if (/\.(webp|jpe?g|png)$/i.test(imgP) && !imgP.endsWith('_thumb.webp')) {
+                    activeImagePaths.add(imgP.replace(/\.(webp|jpe?g|png)$/i, '_thumb.webp'));
+                }
+            }
+
             // Función recursiva para escanear y eliminar imágenes físicas que ya no están en productos
             const cleanOrphanImages = (dirPath) => {
                 if (!fs.existsSync(dirPath)) return;
@@ -906,6 +913,15 @@ app.post('/api/download-remote-images', async (req, res) => {
                 await sharp(buffer)
                     .webp({ quality: 85 })
                     .toFile(finalPath);
+
+                try {
+                    const { generateThumbForFile } = require('./generate-thumbs');
+                    const thumbPath = await generateThumbForFile(finalPath);
+                    if (thumbPath) {
+                        const docsThumbPath = docsFinalPath.replace(/\.webp$/i, '_thumb.webp');
+                        try { fs.copyFileSync(thumbPath, docsThumbPath); } catch (e) {}
+                    }
+                } catch (e) {}
 
                 try { fs.copyFileSync(finalPath, docsFinalPath); } catch (e) {}
 
@@ -1316,7 +1332,11 @@ app.post('/api/upload-image', upload.single('image'), async (req, res) => {
                 .toBuffer();
             
             fs.writeFileSync(req.file.path, processedBuffer);
-            console.log(`✨ Imagen subida estandarizada con éxito (1200x791, WebP): ${req.file.path}`);
+            try {
+                const { generateThumbForFile } = require('./generate-thumbs');
+                await generateThumbForFile(req.file.path);
+            } catch (e) {}
+            console.log(`✨ Imagen subida estandarizada con éxito (1200x791, WebP + miniatura): ${req.file.path}`);
         } catch (sharpError) {
             console.error('⚠️ Error al estandarizar la imagen con Sharp:', sharpError.message);
         }
@@ -1404,6 +1424,10 @@ app.post('/api/categories/edit', upload.single('image'), async (req, res) => {
 
             // Multer la deja temporalmente en el destino asignado; la renombramos
             fs.renameSync(req.file.path, finalImgPath);
+            try {
+                const { generateThumbForFile } = require('./generate-thumbs');
+                await generateThumbForFile(finalImgPath);
+            } catch (e) {}
             finalImageUrl = publicPath + finalImgName;
         }
 

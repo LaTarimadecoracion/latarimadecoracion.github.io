@@ -59,10 +59,11 @@
             galleryHTML += `
                 <div class="gallery-acabados-overlay" onclick="event.stopPropagation();">
                     ${grupos.map((g, i) => {
-                        const imgUrl = g.cover_image || (g.images_list && g.images_list.length > 0 ? g.images_list[0] : null);
+                        const rawImgUrl = g.cover_image || (g.images_list && g.images_list.length > 0 ? g.images_list[0] : null);
+                        const imgUrl = (rawImgUrl && window.getThumbUrl) ? window.getThumbUrl(rawImgUrl) : rawImgUrl;
                         return `
                             <button type="button" class="gallery-acabado-btn ${i === currentGroupIndex ? 'active' : ''}" data-index="${i}" style="width: ${btnWidthPct} !important; min-width: ${btnWidthPct} !important; flex: 1 1 ${btnWidthPct} !important;" title="Ver acabado ${g.acabado_name}">
-                                ${imgUrl ? `<img src="${imgUrl}" class="gallery-acabado-thumb" alt="${g.acabado_name}">` : ''}
+                                ${imgUrl ? `<img src="${imgUrl}" class="gallery-acabado-thumb" alt="${g.acabado_name}" onerror="if(window.__imgFallback) window.__imgFallback(this);">` : ''}
                                 <span class="gallery-acabado-label">${g.acabado_name}</span>
                             </button>
                         `;

@@ -305,7 +305,7 @@ window.initProductsAdmin = function() {
             row.innerHTML = `
                 <td style="padding: 0.75rem 1rem; vertical-align: middle;">
                     <div style="display: flex; align-items: center; gap: 0.6rem;">
-                        <div class="product-thumb-drag" title="${showDragHandle ? 'Mantén presionado para arrastrar y reordenar' : ''}" style="width: 44px; height: 44px; border-radius: var(--admin-radius-sm); background-image: url('${p.image}'); background-size: cover; background-position: center; border: 1px solid var(--admin-border-color); flex-shrink: 0; cursor: ${showDragHandle ? 'grab' : 'default'};"></div>
+                        <div class="product-thumb-drag" title="${showDragHandle ? 'Mantén presionado para arrastrar y reordenar' : ''}" style="width: 44px; height: 44px; border-radius: var(--admin-radius-sm); background-image: url('${window.getThumbUrl ? window.getThumbUrl(Array.isArray(p.image) ? p.image[0] : p.image) : p.image}'); background-size: cover; background-position: center; border: 1px solid var(--admin-border-color); flex-shrink: 0; cursor: ${showDragHandle ? 'grab' : 'default'};"></div>
                     </div>
                 </td>
                 <td style="padding: 0.75rem 1rem; vertical-align: middle;">
@@ -939,7 +939,8 @@ window.initProductsAdmin = function() {
         const isFav = checkProductFavStatus(product.id, acabado);
         const inCart = checkProductCartStatus(product.id, acabado);
         const priceHtml = getProductPriceDisplay(product, acabado);
-        const coverImg = imageOverride || (Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png'));
+        const rawCoverImg = imageOverride || (Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png'));
+        const coverImg = window.getThumbUrl ? window.getThumbUrl(rawCoverImg) : rawCoverImg;
 
         // Badge flotante superior izquierdo
         const variantsCount = (product.acabados_groups && product.acabados_groups.length) || 0;
@@ -1404,7 +1405,8 @@ window.initProductsAdmin = function() {
             const isFav = checkProductFavStatus(product.id, acabado);
             const inCart = checkProductCartStatus(product.id, acabado);
             const priceHtml = getProductPriceDisplay(product, acabado);
-            const productCover = Array.isArray(image) ? image[0] : (image || 'img/logo_provisional.png');
+            const rawProductCover = Array.isArray(image) ? image[0] : (image || 'img/logo_provisional.png');
+            const productCover = window.getThumbUrl ? window.getThumbUrl(rawProductCover) : rawProductCover;
 
             // 1. Badge flotante de variante / color (Icono 3)
             const acabadoBadge = acabado 
@@ -1627,7 +1629,8 @@ window.initProductsAdmin = function() {
                 const isFav = checkProductFavStatus(product.id, defaultAcabado);
                 const inCart = checkProductCartStatus(product.id, defaultAcabado);
                 const priceHtml = getProductPriceDisplay(product);
-                const productCover = Array.isArray(product.image) ? product.image[0] : product.image;
+                const rawProductCover = Array.isArray(product.image) ? product.image[0] : product.image;
+                const productCover = window.getThumbUrl ? window.getThumbUrl(rawProductCover) : rawProductCover;
 
                 // Badge de variantes si tiene más de 1 acabado
                 const variantsCount = (product.acabados_groups && product.acabados_groups.length) || 0;

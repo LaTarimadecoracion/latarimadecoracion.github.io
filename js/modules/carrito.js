@@ -810,7 +810,7 @@
                                 <!-- Fila superior: thumb + datos + borrar -->
                                 <div class="cart-item-top">
                                     <div class="cart-item-clickable-area" data-id="${item.id}" data-acabado="${item.acabado}" data-medida="${item.medida || ''}" data-opcion="${item.opcion || ''}" title="Ver producto">
-                                        <div class="cart-item-thumb" style="background-image: url('${item.image}');"></div>
+                                        <div class="cart-item-thumb" style="background-image: url('${window.getThumbUrl ? window.getThumbUrl(item.image) : item.image}');"></div>
                                         <div class="cart-item-details">
                                             <h5>${item.title}</h5>
                                             ${variantDetails ? `<p>${variantDetails}</p>` : ''}
