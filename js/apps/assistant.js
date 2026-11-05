@@ -848,77 +848,109 @@
             });
         });
         
-        // Apply matching terms logic from runSearch()
-        const matchProductWithTerms = (item, terms, logic) => {
-            const checkTerm = (term) => {
-                const termNorm = term.replace(/\s+/g, '');
-                
-                // Helper: check if two words share a common root/prefix of at least 4 chars
-                const sharesRoot = (a, b) => {
-                    const minLen = Math.min(a.length, b.length);
-                    if (minLen < 4) return false;
-                    const prefixLen = Math.min(minLen, Math.max(4, Math.floor(minLen * 0.7)));
-                    return a.substring(0, prefixLen) === b.substring(0, prefixLen);
-                };
-                
-                // 1. Direct contains check
-                const directMatch = normalizeForSearch(item.nombre).includes(term) ||
-                    (item.cat && item.cat.name && normalizeForSearch(item.cat.name).includes(term)) ||
-                    (item.acabado && normalizeForSearch(item.acabado).includes(term)) ||
-                    (item.description && normalizeForSearch(item.description).includes(term)) ||
-                    (item.tags && item.tags.some(tag => normalizeForSearch(tag).includes(term))) ||
-                    (item.medidas && item.medidas.some(medida => {
-                        const normMedida = normalizeForSearch(medida).replace(/\s+/g, '');
-                        return normMedida.includes(termNorm);
-                    }));
-                
-                if (directMatch) return true;
-                
-                // 2. Reverse contains / Levenshtein / Prefix check
-                const nombreNorm = normalizeForSearch(item.nombre);
-                const nombreWords = nombreNorm.split(/\s+/);
-                const catWords = item.cat && item.cat.name ? normalizeForSearch(item.cat.name).split(/\s+/) : [];
-                const allWords = nombreWords.concat(catWords);
-                
-                for (let word of allWords) {
-                    if (word.length < 3) continue;
-                    if (term.includes(word) || word.includes(term)) return true;
-                    if (sharesRoot(term, word)) return true;
-                    if (word.length >= 3 && getSimilarityRatio(term, word) >= 0.65) return true;
-                }
-                
-                return false;
-            };
-
-            if (logic === 'AND') {
-                return terms.every(checkTerm);
-            } else {
-                return terms.some(checkTerm);
-            }
+        // Stemming y tokenización por niveles de relevancia sincronizados con runSearch()
+        const stemAsistWord = (word) => {
+            if (!word || word.length < 3) return word;
+            let w = word;
+            if (w.length > 5 && (w.endsWith('quitos') || w.endsWith('quitas'))) w = w.slice(0, -6) + 'co';
+            else if (w.length > 4 && (w.endsWith('quito') || w.endsWith('quita'))) w = w.slice(0, -5) + 'co';
+            else if (w.length > 5 && (w.endsWith('citos') || w.endsWith('citas'))) w = w.slice(0, -5);
+            else if (w.length > 4 && (w.endsWith('cito') || w.endsWith('cita'))) w = w.slice(0, -4);
+            else if (w.length > 5 && (w.endsWith('itos') || w.endsWith('itas'))) w = w.slice(0, -4);
+            else if (w.length > 4 && (w.endsWith('ito') || w.endsWith('ita'))) w = w.slice(0, -3);
+            if (w.length > 4 && w.endsWith('ces')) w = w.slice(0, -3) + 'z';
+            else if (w.length > 4 && w.endsWith('es') && /[rlndzj]es$/.test(w)) w = w.slice(0, -2);
+            else if (w.length > 3 && w.endsWith('s')) w = w.slice(0, -1);
+            if (w.length >= 4 && /[oae]$/.test(w)) w = w.slice(0, -1);
+            return w;
         };
 
-        // 1. Try AND search
-        let matchedItems = indexed.filter(item => matchProductWithTerms(item, queryTerms, 'AND'));
-        let usedOrLogic = false;
+        const tokenizeAsistWords = (str) => {
+            if (!str || typeof str !== 'string') return [];
+            return normalizeForSearch(str).replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(w => w.length >= 2);
+        };
 
-        // 2. Fall back to OR search if no results and query has multiple terms
-        if (matchedItems.length === 0 && queryTerms.length > 1) {
-            matchedItems = indexed.filter(item => matchProductWithTerms(item, queryTerms, 'OR'));
-            usedOrLogic = true;
-        }
+        const matchAsistTerm = (term, words, allowFuzzy = false) => {
+            const termStem = stemAsistWord(term);
+            for (const word of words) {
+                if (word === term) return 100;
+                const wStem = stemAsistWord(word);
+                if (wStem.length >= 3 && termStem.length >= 3) {
+                    if (wStem === termStem) return 95;
+                    if (word.startsWith(term) && term.length >= 3) return 85;
+                    if (wStem.startsWith(termStem) && termStem.length >= 4) return 85;
+                } else if (word.startsWith(term) && term.length >= 2) {
+                    return 80;
+                }
+                if (allowFuzzy && term.length >= 4 && word.length >= 4 && Math.abs(term.length - word.length) <= 2) {
+                    if (getSimilarityRatio(term, word) >= 0.82) return 70;
+                }
+            }
+            return 0;
+        };
 
-        // Deduplicate and return results
-        const results = [];
-        matchedItems.forEach(item => {
-            if (!results.some(r => r.product.id === item.product.id)) {
-                results.push(item);
+        const evaluateItemForTerm = (item, term) => {
+            const titleWords = tokenizeAsistWords(item.nombre || '');
+            const catWords = tokenizeAsistWords(item.cat && item.cat.name ? item.cat.name : '');
+            const acabadoWords = tokenizeAsistWords(item.acabado || '');
+
+            const titleExact = matchAsistTerm(term, titleWords, false);
+            if (titleExact > 0) return { tier: 1, score: titleExact + 200 };
+
+            const acabExact = matchAsistTerm(term, acabadoWords, false);
+            if (acabExact > 0) return { tier: 1, score: acabExact + 180 };
+
+            const catExact = matchAsistTerm(term, catWords, false);
+            if (catExact > 0) return { tier: 2, score: catExact + 100 };
+
+            const titleFuzzy = matchAsistTerm(term, titleWords, true);
+            if (titleFuzzy > 0) return { tier: 3, score: titleFuzzy + 50 };
+
+            const tagWords = [];
+            if (Array.isArray(item.tags)) item.tags.forEach(t => tagWords.push(...tokenizeAsistWords(t)));
+            const tagMatch = matchAsistTerm(term, tagWords, false);
+            if (tagMatch > 0) return { tier: 4, score: tagMatch };
+
+            return null;
+        };
+
+        let scoredItems = [];
+        indexed.forEach(item => {
+            const termEvals = queryTerms.map(t => evaluateItemForTerm(item, t));
+            if (termEvals.every(Boolean)) {
+                const worstTier = Math.max(...termEvals.map(e => e.tier));
+                const totalScore = termEvals.reduce((acc, e) => acc + e.score, 0);
+                scoredItems.push({ item, tier: worstTier, score: totalScore, matchedCount: queryTerms.length });
             }
         });
 
-        if (usedOrLogic) {
-            // Sort by relevance (most term matches first)
-            const countMatches = (item) => queryTerms.filter(term => matchProductWithTerms(item, [term], 'AND')).length;
-            results.sort((a, b) => countMatches(b) - countMatches(a));
+        if (scoredItems.length === 0 && queryTerms.length > 1) {
+            indexed.forEach(item => {
+                const termEvals = queryTerms.map(t => evaluateItemForTerm(item, t)).filter(Boolean);
+                if (termEvals.length > 0) {
+                    const bestTier = Math.min(...termEvals.map(e => e.tier));
+                    const totalScore = termEvals.reduce((acc, e) => acc + e.score, 0);
+                    if (bestTier <= 2) {
+                        scoredItems.push({ item, tier: bestTier, score: totalScore, matchedCount: termEvals.length });
+                    }
+                }
+            });
+        }
+
+        const results = [];
+        if (scoredItems.length > 0) {
+            const bestTierFound = Math.min(...scoredItems.map(s => s.tier));
+            const filteredScored = scoredItems.filter(s => s.tier <= bestTierFound);
+            filteredScored.sort((a, b) => {
+                if (b.matchedCount !== a.matchedCount) return b.matchedCount - a.matchedCount;
+                if (a.tier !== b.tier) return a.tier - b.tier;
+                return b.score - a.score;
+            });
+            filteredScored.forEach(s => {
+                if (!results.some(r => r.product.id === s.item.product.id)) {
+                    results.push(s.item);
+                }
+            });
         }
 
         return results.slice(0, 3);

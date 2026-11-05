@@ -706,16 +706,61 @@ window.initProductsAdmin = function() {
         return s;
     };
 
-    // Stemming básico en español para unificar singular/plural y diminutivos de compra
+    // Stemming morfológico en español para unificar singular/plural y diminutivos de compra sin cortar raíces
     const stemWord = (word) => {
         if (!word || word.length < 3) return word;
         let w = word;
-        if (w.length > 5 && (w.endsWith('itos') || w.endsWith('itas'))) w = w.slice(0, -4);
+        if (w.length > 5 && (w.endsWith('quitos') || w.endsWith('quitas'))) w = w.slice(0, -6) + 'co';
+        else if (w.length > 4 && (w.endsWith('quito') || w.endsWith('quita'))) w = w.slice(0, -5) + 'co';
+        else if (w.length > 5 && (w.endsWith('citos') || w.endsWith('citas'))) w = w.slice(0, -5);
+        else if (w.length > 4 && (w.endsWith('cito') || w.endsWith('cita'))) w = w.slice(0, -4);
+        else if (w.length > 5 && (w.endsWith('itos') || w.endsWith('itas'))) w = w.slice(0, -4);
         else if (w.length > 4 && (w.endsWith('ito') || w.endsWith('ita'))) w = w.slice(0, -3);
+
         if (w.length > 4 && w.endsWith('ces')) w = w.slice(0, -3) + 'z';
-        else if (w.length > 4 && w.endsWith('es')) w = w.slice(0, -2);
+        else if (w.length > 4 && w.endsWith('es') && /[rlndzj]es$/.test(w)) w = w.slice(0, -2);
         else if (w.length > 3 && w.endsWith('s')) w = w.slice(0, -1);
+
+        if (w.length >= 4 && /[oae]$/.test(w)) w = w.slice(0, -1);
         return w;
+    };
+
+    const tokenizeWords = (str) => {
+        if (!str || typeof str !== 'string') return [];
+        return normalizeForSearch(str)
+            .replace(/[^a-z0-9\s]/g, ' ')
+            .split(/\s+/)
+            .filter(w => w.length >= 2);
+    };
+
+    const matchTermInWords = (term, words, allowFuzzy = false) => {
+        const termStem = stemWord(term);
+        const termPhon = phoneticNormalize(term);
+        const termPhonStem = stemWord(termPhon);
+
+        for (const word of words) {
+            if (word === term) return 100;
+
+            const wStem = stemWord(word);
+            if (wStem.length >= 3 && termStem.length >= 3) {
+                if (wStem === termStem) return 95;
+                if (word.startsWith(term) && term.length >= 3) return 85;
+                if (wStem.startsWith(termStem) && termStem.length >= 4) return 85;
+            } else if (word.startsWith(term) && term.length >= 2) {
+                return 80;
+            }
+
+            if (allowFuzzy && term.length >= 4 && word.length >= 4) {
+                const wPhon = phoneticNormalize(word);
+                const wPhonStem = stemWord(wPhon);
+                if (wPhon === termPhon || (wPhonStem.length >= 3 && wPhonStem === termPhonStem)) return 75;
+                if (Math.abs(term.length - word.length) <= 2) {
+                    if (getSimilarityRatio(term, word) >= 0.82) return 70;
+                    if (getSimilarityRatio(termPhon, wPhon) >= 0.85) return 68;
+                }
+            }
+        }
+        return 0;
     };
 
     // Levenshtein distance string similarity ratio
@@ -1090,14 +1135,15 @@ window.initProductsAdmin = function() {
 
     
     // ══════════════════════════════════════════════════════════════════════════
-    // 🔍 Puntos 7 y 8 UX: Historial de Búsquedas Recientes y Sugerencias Rápidas
+    // 🔍 Desplegable de Últimas 3 Búsquedas estilo Mercado Libre (en el mismo buscador)
     // ══════════════════════════════════════════════════════════════════════════
     const SEARCH_HISTORY_KEY = 'tarima_recent_searches';
 
     function getSearchHistory() {
         try {
             const raw = localStorage.getItem(SEARCH_HISTORY_KEY);
-            return raw ? JSON.parse(raw) : [];
+            const arr = raw ? JSON.parse(raw) : [];
+            return Array.isArray(arr) ? arr.slice(0, 3) : [];
         } catch(e) { return []; }
     }
 
@@ -1109,9 +1155,8 @@ window.initProductsAdmin = function() {
             let history = getSearchHistory();
             history = history.filter(item => item.toLowerCase() !== clean.toLowerCase());
             history.unshift(clean);
-            if (history.length > 8) history = history.slice(0, 8);
+            if (history.length > 3) history = history.slice(0, 3);
             localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(history));
-            renderSearchAssistant();
         } catch(e) {}
     }
 
@@ -1120,121 +1165,63 @@ window.initProductsAdmin = function() {
             let history = getSearchHistory();
             history = history.filter(item => item.toLowerCase() !== termToRemove.toLowerCase());
             localStorage.setItem(SEARCH_HISTORY_KEY, JSON.stringify(history));
-            renderSearchAssistant();
+            renderRecentSearchesDropdown();
         } catch(e) {}
     }
 
-    function clearAllSearchHistory() {
-        try {
-            localStorage.removeItem(SEARCH_HISTORY_KEY);
-            renderSearchAssistant();
-        } catch(e) {}
+    function hideRecentSearchesDropdown() {
+        const dropdown = document.getElementById('search-recent-dropdown');
+        if (dropdown) dropdown.style.display = 'none';
     }
 
-    function renderSearchAssistant() {
-        const assistant = document.getElementById('search-quick-assistant');
-        const historyBox = document.getElementById('search-history-container');
-        const historyChips = document.getElementById('search-history-chips');
-        const suggestBox = document.getElementById('search-suggestions-container');
-        const suggestChips = document.getElementById('search-suggestions-chips');
-        if (!assistant || !historyBox || !historyChips || !suggestBox || !suggestChips) return;
+    function renderRecentSearchesDropdown() {
+        const dropdown = document.getElementById('search-recent-dropdown');
+        if (!dropdown || !searchInput) return;
 
-        const currentVal = (searchInput ? searchInput.value : '').trim();
+        const currentVal = searchInput.value.trim();
         const history = getSearchHistory();
 
-        // 1. Historial: solo visible si el input está vacío y hay historial guardado
-        if (!currentVal && history.length > 0) {
-            historyChips.innerHTML = '';
-            history.forEach(term => {
-                const chip = document.createElement('div');
-                chip.className = 'search-chip';
-                chip.innerHTML = `
-                    <span class="material-symbols-outlined" style="font-size: 13px; color: #94a3b8;">history</span>
-                    <span>${term}</span>
-                    <span class="search-chip-remove" title="Quitar">✕</span>
-                `;
-                chip.addEventListener('click', (e) => {
-                    if (e.target.classList.contains('search-chip-remove')) {
-                        e.stopPropagation();
-                        removeSearchHistoryItem(term);
-                    } else {
-                        if (searchInput) {
-                            searchInput.value = term;
-                            if (btnClearSearch) btnClearSearch.style.display = 'flex';
-                            window.runSearch();
-                        }
-                    }
-                });
-                historyChips.appendChild(chip);
-            });
-            historyBox.style.display = 'block';
-        } else {
-            historyBox.style.display = 'none';
+        // Solo mostrar cuando el buscador está enfocado, vacío y hay búsquedas recientes (hasta 3)
+        if (currentVal.length > 0 || history.length === 0 || document.activeElement !== searchInput) {
+            dropdown.style.display = 'none';
+            return;
         }
 
-        // 2. Sugerencias Rápidas: si escribe al menos 2 letras, sugerir categorías y coincidencias
-        if (currentVal.length >= 2) {
-            const norm = normalizeForSearch(currentVal);
-            const sourceData = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0) ? sessionProducts : (typeof productsData !== 'undefined' ? productsData : []);
-            const suggestions = new Set();
+        dropdown.innerHTML = '';
+        history.slice(0, 3).forEach(term => {
+            const row = document.createElement('div');
+            row.className = 'search-recent-item';
+            row.innerHTML = `
+                <div class="search-recent-item-left">
+                    <span class="material-symbols-outlined search-recent-icon">schedule</span>
+                    <span class="search-recent-text"></span>
+                </div>
+                <span class="material-symbols-outlined search-recent-remove" title="Quitar del historial" role="button" aria-label="Quitar">close</span>
+            `;
+            row.querySelector('.search-recent-text').textContent = term;
 
-            // Buscar en nombres de categorías
-            sourceData.forEach(cat => {
-                if (cat.visible === false || String(cat.id).endsWith('-todos')) return;
-                const catNorm = normalizeForSearch(cat.name || '');
-                if (catNorm.includes(norm) && cat.name.toLowerCase() !== currentVal.toLowerCase()) {
-                    suggestions.add(cat.name);
+            // Usar mousedown para que ejecute antes de que el input pierda foco
+            row.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                if (e.target.closest('.search-recent-remove')) {
+                    removeSearchHistoryItem(term);
+                    return;
                 }
+                searchInput.value = term;
+                if (btnClearSearch) btnClearSearch.style.display = 'flex';
+                hideRecentSearchesDropdown();
+                saveSearchTerm(term);
+                window.runSearch();
             });
 
-            // Buscar en títulos de productos destacados
-            if (suggestions.size < 6) {
-                const indexed = getIndexedProducts();
-                for (const it of indexed) {
-                    if (suggestions.size >= 6) break;
-                    const pNorm = normalizeForSearch(it.nombre || '');
-                    if (pNorm.includes(norm)) {
-                        // Extraer un término clave conciso
-                        const shortTitle = it.nombre.split(' - ')[0].split(':')[0].trim();
-                        if (shortTitle && shortTitle.length < 28 && shortTitle.toLowerCase() !== currentVal.toLowerCase()) {
-                            suggestions.add(shortTitle);
-                        }
-                    }
-                }
-            }
+            dropdown.appendChild(row);
+        });
 
-            if (suggestions.size > 0) {
-                suggestChips.innerHTML = '';
-                suggestions.forEach(sug => {
-                    const chip = document.createElement('div');
-                    chip.className = 'search-chip search-chip-suggest';
-                    chip.innerHTML = `
-                        <span class="material-symbols-outlined" style="font-size: 13px;">search</span>
-                        <span>${sug}</span>
-                    `;
-                    chip.addEventListener('click', () => {
-                        if (searchInput) {
-                            searchInput.value = sug;
-                            if (btnClearSearch) btnClearSearch.style.display = 'flex';
-                            saveSearchTerm(sug);
-                            window.runSearch();
-                        }
-                    });
-                    suggestChips.appendChild(chip);
-                });
-                suggestBox.style.display = 'block';
-            } else {
-                suggestBox.style.display = 'none';
-            }
-        } else {
-            suggestBox.style.display = 'none';
-        }
-
-        // Mostrar u ocultar el panel general
-        const hasHistory = historyBox.style.display === 'block';
-        const hasSuggest = suggestBox.style.display === 'block';
-        assistant.style.display = (hasHistory || hasSuggest) ? 'block' : 'none';
+        dropdown.style.display = 'block';
     }
+
+    window.showRecentSearchesDropdown = renderRecentSearchesDropdown;
+    window.hideRecentSearchesDropdown = hideRecentSearchesDropdown;
 
     function runSearch() {
         const sourceData = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0) ? sessionProducts : productsData;
@@ -1291,125 +1278,114 @@ window.initProductsAdmin = function() {
             return;
         }
 
-        // Definimos la función de coincidencia para un producto y términos con una lógica dada ('AND' o 'OR')
-        const matchProductWithTerms = (item, terms, logic) => {
-            const checkTerm = (term) => {
-                const termNorm = term.replace(/\s+/g, '');
-                
-                // Helper: check if two words share a common root/prefix of at least 4 chars
-                const sharesRoot = (a, b) => {
-                    const minLen = Math.min(a.length, b.length);
-                    if (minLen < 4) return false;
-                    const prefixLen = Math.min(minLen, Math.max(4, Math.floor(minLen * 0.7)));
-                    return a.substring(0, prefixLen) === b.substring(0, prefixLen);
-                };
+        // Evaluación por niveles de relevancia (Tiers) para evitar que tags secundarios o descripciones contaminen búsquedas específicas
+        const evaluateItemForTerm = (item, term) => {
+            const titleWords = tokenizeWords(item.nombre || '');
+            const catWords = tokenizeWords(item.cat && item.cat.name ? item.cat.name : '');
+            const acabadoWords = tokenizeWords((item.acabado || '') + ' ' + (item.acabadosSearch || ''));
 
-                // 1. Direct contains check (Títulos, Categoría, Descripción, Acabados, Medidas)
+            // Nivel 1: Coincidencia directa o morfológica en el Título del producto
+            const titleExact = matchTermInWords(term, titleWords, false);
+            if (titleExact > 0) return { tier: 1, score: titleExact + 200 };
+
+            // Nivel 1B: Coincidencia en Medidas (si contiene números) o Acabado específico
+            if (/\d/.test(term) && Array.isArray(item.medidas)) {
                 const normTermNoSpaces = term.replace(/[\s\-\_cmx]/g, '');
-                const directMatch = normalizeForSearch(item.nombre).includes(term) ||
-                    (item.cat && item.cat.name && normalizeForSearch(item.cat.name).includes(term)) ||
-                    (item.acabado && normalizeForSearch(item.acabado).includes(term)) ||
-                    (item.acabadosSearch && normalizeForSearch(item.acabadosSearch).includes(term)) ||
-                    (item.product.description && normalizeForSearch(item.product.description).includes(term)) ||
-                    (item.tags && item.tags.some(tag => normalizeForSearch(tag).includes(term))) ||
-                    (item.medidas && item.medidas.some(medida => {
-                        const normMedida = normalizeForSearch(medida);
-                        if (normMedida.includes(term)) return true;
-                        // Comparación ultra-flexible sin espacios ni unidades (ej: "140x60" -> "14060")
-                        const normMedidaClean = normMedida.replace(/[\s\-\_cmx]/g, '');
-                        return normTermNoSpaces.length > 1 && normMedidaClean.includes(normTermNoSpaces);
-                    }));
-
-                if (directMatch) return true;
-
-                // 2. Levenshtein / Prefix check ampliado (Título, Categoría, Descripción y Tags)
-                const nombreNorm = normalizeForSearch(item.nombre);
-                const nombreWords = nombreNorm.split(/\s+/);
-                const catWords = item.cat && item.cat.name ? normalizeForSearch(item.cat.name).split(/\s+/) : [];
-                const descWords = item.product.description ? normalizeForSearch(item.product.description).replace(/[^a-z0-9\s]/g, ' ').split(/\s+/).filter(w => w.length >= 3) : [];
-                const tagWords = Array.isArray(item.tags) ? item.tags.map(t => normalizeForSearch(t)) : [];
-                
-                // Prioridad 1: Palabras de Título, Categoría y Tags (tolerancia fonética, singular/plural y similitud 0.60)
-                const termStem = stemWord(term);
-                const termPhon = phoneticNormalize(term);
-                const termPhonStem = stemWord(termPhon);
-
-                const primaryWords = nombreWords.concat(catWords).concat(tagWords);
-                for (let word of primaryWords) {
-                    if (word.length < 3) continue;
-                    if (term.includes(word) || word.includes(term)) return true;
-                    if (sharesRoot(term, word)) return true;
-
-                    // Comparación por raíz morfológica (singular/plural y diminutivos: banquito/bancos, mesita/mesas)
-                    const wStem = stemWord(word);
-                    if (wStem.length >= 3 && termStem.length >= 3) {
-                        if (wStem === termStem || wStem.includes(termStem) || termStem.includes(wStem)) return true;
-                    }
-
-                    // Comparación fonética (banqito -> bankito, plakar -> plakar, siyas -> sillas)
-                    const wPhon = phoneticNormalize(word);
-                    const wPhonStem = stemWord(wPhon);
-                    if (wPhon === termPhon || wPhonStem === termPhonStem) return true;
-                    if (wPhon.length >= 3 && termPhon.length >= 3 && getSimilarityRatio(wPhon, termPhon) >= 0.68) return true;
-
-                    // Distancia Levenshtein directa
-                    if (term.length >= 3 && word.length >= 3 && getSimilarityRatio(term, word) >= 0.60) return true;
-                }
-
-                // Prioridad 2: Palabras de Descripción (tolerancia estricta: 0.75 para no dar falsos positivos)
-                for (let word of descWords) {
-                    if (word.length < 4 || term.length < 4) continue;
-                    if (term === word) return true;
-                    if (sharesRoot(term, word)) return true;
-                    if (getSimilarityRatio(term, word) >= 0.75) return true;
-                }
-
-                return false;
-            };
-
-            if (logic === 'AND') {
-                return terms.every(checkTerm);
-            } else {
-                return terms.some(checkTerm);
+                const hasMedida = item.medidas.some(medida => {
+                    const normMedida = normalizeForSearch(medida);
+                    if (normMedida.includes(term)) return true;
+                    const normMedidaClean = normMedida.replace(/[\s\-\_cmx]/g, '');
+                    return normTermNoSpaces.length >= 2 && normMedidaClean.includes(normTermNoSpaces);
+                });
+                if (hasMedida) return { tier: 1, score: 250 };
             }
+            const acabExact = matchTermInWords(term, acabadoWords, false);
+            if (acabExact > 0) return { tier: 1, score: acabExact + 180 };
+
+            // Nivel 2: Coincidencia exacta/morfológica en el Nombre de Categoría
+            const catExact = matchTermInWords(term, catWords, false);
+            if (catExact > 0) return { tier: 2, score: catExact + 100 };
+
+            // Nivel 3: Tolerancia a errores de tipeo (fonética / Levenshtein estricto) en Título o Categoría
+            const titleFuzzy = matchTermInWords(term, titleWords, true);
+            if (titleFuzzy > 0) return { tier: 3, score: titleFuzzy + 50 };
+            const catFuzzy = matchTermInWords(term, catWords, true);
+            if (catFuzzy > 0) return { tier: 3, score: catFuzzy + 40 };
+
+            // Nivel 4: Coincidencia en Tags (tokenizados por palabra, solo actúa como respaldo si no hay Nivel 1..3)
+            const tagWords = [];
+            if (Array.isArray(item.tags)) {
+                item.tags.forEach(t => tagWords.push(...tokenizeWords(t)));
+            }
+            const tagMatch = matchTermInWords(term, tagWords, false);
+            if (tagMatch > 0) return { tier: 4, score: tagMatch };
+
+            // Nivel 5: Coincidencia exacta/raíz en Descripción (último respaldo)
+            const descText = (item.product && item.product.description) || item.description || '';
+            const descWords = tokenizeWords(descText).filter(w => w.length >= 4);
+            const descMatch = matchTermInWords(term, descWords, false);
+            if (descMatch >= 95) return { tier: 5, score: 30 };
+
+            return null;
         };
 
-        let matchedItems = [];
-        let usedOrLogic = false;
+        let results = [];
 
         if (queryTerms.length === 0) {
-            matchedItems = rubroFiltered;
+            results = [...rubroFiltered];
+            results.sort((a, b) => {
+                const nameA = (a.nombre || '').toLowerCase();
+                const nameB = (b.nombre || '').toLowerCase();
+                return nameA.localeCompare(nameB, 'es', { sensitivity: 'base' });
+            });
         } else {
-            // 2. Probar búsqueda tipo AND (todos los términos deben coincidir)
-            matchedItems = rubroFiltered.filter(item => matchProductWithTerms(item, queryTerms, 'AND'));
+            // Evaluar cada producto con lógica AND primero
+            let scoredItems = [];
+            rubroFiltered.forEach(item => {
+                const termEvals = queryTerms.map(t => evaluateItemForTerm(item, t));
+                if (termEvals.every(Boolean)) {
+                    const worstTier = Math.max(...termEvals.map(e => e.tier));
+                    const totalScore = termEvals.reduce((acc, e) => acc + e.score, 0);
+                    scoredItems.push({ item, tier: worstTier, score: totalScore, matchedCount: queryTerms.length });
+                }
+            });
 
-            // 3. Si no hay resultados de tipo AND, usar tipo OR si hay más de un término
-            if (matchedItems.length === 0 && queryTerms.length > 1) {
-                matchedItems = rubroFiltered.filter(item => matchProductWithTerms(item, queryTerms, 'OR'));
-                usedOrLogic = true;
+            // Si hay varios términos y la búsqueda AND dio solo coincidencias débiles (Tier >= 4) o ninguna,
+            // verificar si todos los términos tienen coincidencias fuertes (Tier 1..2) por separado (ej. "mesa y escalera")
+            const hasStrongAnd = scoredItems.some(s => s.tier <= 3);
+            if (!hasStrongAnd && queryTerms.length > 1) {
+                const orScored = [];
+                rubroFiltered.forEach(item => {
+                    const termEvals = queryTerms.map(t => evaluateItemForTerm(item, t)).filter(Boolean);
+                    if (termEvals.length > 0) {
+                        const bestTier = Math.min(...termEvals.map(e => e.tier));
+                        const totalScore = termEvals.reduce((acc, e) => acc + e.score, 0);
+                        if (bestTier <= 2 || scoredItems.length === 0) {
+                            orScored.push({ item, tier: bestTier, score: totalScore, matchedCount: termEvals.length });
+                        }
+                    }
+                });
+                if (orScored.length > 0) {
+                    scoredItems = orScored;
+                }
             }
-        }
 
-        // Resultados únicos de acabados (getIndexedProducts ya garantiza 1 tarjeta por acabado único)
-        let results = matchedItems;
+            if (scoredItems.length > 0) {
+                // Filtrar por el mejor nivel de relevancia encontrado (si hay coincidencias en Título [Tier 1], descartar ruido de Tags/Descripción)
+                const bestTierFound = Math.min(...scoredItems.map(s => s.tier));
+                const filteredScored = scoredItems.filter(s => s.tier <= bestTierFound);
 
-        // Ordenar
-        if (usedOrLogic) {
-            // Si usamos OR, ordenar por relevancia: cantidad de términos coincidentes de mayor a menor
-            const countMatches = (item) => queryTerms.filter(term => matchProductWithTerms(item, [term], 'AND')).length;
-            results.sort((a, b) => {
-                const diff = countMatches(b) - countMatches(a);
-                if (diff !== 0) return diff;
-                const nameA = (a.nombre || '').toLowerCase();
-                const nameB = (b.nombre || '').toLowerCase();
-                return nameA.localeCompare(nameB, 'es', { sensitivity: 'base' });
-            });
-        } else {
-            results.sort((a, b) => {
-                const nameA = (a.nombre || '').toLowerCase();
-                const nameB = (b.nombre || '').toLowerCase();
-                return nameA.localeCompare(nameB, 'es', { sensitivity: 'base' });
-            });
+                filteredScored.sort((a, b) => {
+                    if (b.matchedCount !== a.matchedCount) return b.matchedCount - a.matchedCount;
+                    if (a.tier !== b.tier) return a.tier - b.tier;
+                    if (b.score !== a.score) return b.score - a.score;
+                    const nameA = (a.item.nombre || '').toLowerCase();
+                    const nameB = (b.item.nombre || '').toLowerCase();
+                    return nameA.localeCompare(nameB, 'es', { sensitivity: 'base' });
+                });
+
+                results = filteredScored.map(s => s.item);
+            }
         }
 
         searchResultsContainer.innerHTML = '';
@@ -1529,8 +1505,11 @@ window.initProductsAdmin = function() {
                 });
             }
             
-            // Click en la tarjeta abre el detalle
+            // Click en la tarjeta abre el detalle (guarda el término buscado en el historial antes de limpiar el buscador)
             card.addEventListener('click', () => {
+                if (searchInput && searchInput.value.trim()) {
+                    saveSearchTerm(searchInput.value.trim());
+                }
                 if (window.trackSearchClick) window.trackSearchClick(product.id, acabado);
                 if (window.showProductDetail) window.showProductDetail(product, cat.name, acabado);
             });
@@ -1823,21 +1802,43 @@ window.initProductsAdmin = function() {
         runSearch();
     }
 
-    // Attach search input listener y botón de limpieza rápida
-    
-        const btnClearHistory = document.getElementById('btn-clear-all-history');
-        if (btnClearHistory) {
-            btnClearHistory.addEventListener('click', (e) => {
-                e.preventDefault();
-                clearAllSearchHistory();
-            });
-        }
-
+    // Attach search input listener, desplegable de últimas 3 búsquedas y botón de limpieza rápida
     const btnClearSearch = document.getElementById('btn-clear-search');
     if (searchInput) {
+        searchInput.addEventListener('focus', () => {
+            renderRecentSearchesDropdown();
+        });
+
+        searchInput.addEventListener('click', () => {
+            renderRecentSearchesDropdown();
+        });
+
+        searchInput.addEventListener('blur', () => {
+            setTimeout(() => {
+                hideRecentSearchesDropdown();
+            }, 150);
+        });
+
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const val = searchInput.value.trim();
+                if (val.length >= 2) saveSearchTerm(val);
+                hideRecentSearchesDropdown();
+                searchInput.blur();
+            } else if (e.key === 'Escape') {
+                hideRecentSearchesDropdown();
+            }
+        });
+
         searchInput.addEventListener('input', () => {
+            const hasText = !!searchInput.value.trim();
             if (btnClearSearch) {
-                btnClearSearch.style.display = searchInput.value.trim() ? 'flex' : 'none';
+                btnClearSearch.style.display = hasText ? 'flex' : 'none';
+            }
+            if (hasText) {
+                hideRecentSearchesDropdown();
+            } else {
+                renderRecentSearchesDropdown();
             }
             window.runSearch();
         });
@@ -1848,10 +1849,17 @@ window.initProductsAdmin = function() {
                 searchInput.value = '';
                 btnClearSearch.style.display = 'none';
                 searchInput.focus();
+                renderRecentSearchesDropdown();
                 window.runSearch();
             });
         }
     }
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-bar-container')) {
+            hideRecentSearchesDropdown();
+        }
+    });
 
     // Initialize search when tab is clicked (reset to "all" on direct nav tab click)
     const searchNavItem = document.querySelector('.nav-item[data-target="view-search"]');

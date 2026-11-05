@@ -755,9 +755,14 @@
             }
         });
 
-        // Re-inicializar drag-to-scroll en todos los carruseles creados
+                // Re-inicializar drag-to-scroll en todos los carruseles creados
         if (typeof window.enableDragToScroll === 'function') {
             document.querySelectorAll('.carousel-categories').forEach(el => window.enableDragToScroll(el));
+        }
+
+        // Inicializar módulo autónomo de Catálogo Completo al final del Inicio (carga fila por fila)
+        if (typeof window.initHomeInfiniteCatalog === 'function') {
+            window.initHomeInfiniteCatalog(homeContent);
         }
     }
 

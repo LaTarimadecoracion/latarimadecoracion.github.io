@@ -326,6 +326,19 @@
             }
         }
 
+        // Limpiar el input del buscador automáticamente al salir de las vistas de búsqueda/catálogo (ej. al entrar a un producto o cambiar de sección)
+        if (viewId !== 'view-search' && viewId !== 'view-catalogo' && viewId !== 'view-mayorista') {
+            const globalSearchInput = document.getElementById('search-input');
+            const globalBtnClear = document.getElementById('btn-clear-search');
+            if (globalSearchInput && globalSearchInput.value) {
+                globalSearchInput.value = '';
+                globalSearchInput.blur();
+            }
+            if (globalBtnClear) {
+                globalBtnClear.style.display = 'none';
+            }
+        }
+
         // Activar el item del nav correspondiente si aplica
         const matchingNavItem = document.querySelector(`.nav-item[data-target="${viewId}"]`);
         if (matchingNavItem) {

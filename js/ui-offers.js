@@ -2210,19 +2210,50 @@
                             </div>
                         </div>
 
-                        <!-- Factura A integrada dentro de la tarjeta de monto -->
-                        <div style="border-top: 1px dashed #cbd5e1; padding-top: 10px;">
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 0.85rem; font-weight: 800; color: #0f172a; margin: 0;">
-                                <input type="checkbox" id="chk-factura-a" style="width: 18px; height: 18px; accent-color: #0f172a; cursor: pointer;">
-                                <span>Necesito Factura A (Responsable Inscripto)</span>
-                            </label>
+                        <!-- Opciones de Facturación (Factura C / Factura A) -->
+                        <div style="border-top: 1px dashed #cbd5e1; padding-top: 10px; display: flex; flex-direction: column; gap: 8px;">
+                            <div style="font-size: 0.74rem; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.4px;">
+                                📄 ¿Precisás Factura para tu compra?
+                            </div>
 
-                            <div id="factura-a-expand-menu" style="display: none; flex-direction: column; gap: 10px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #cbd5e1;">
-                                <div style="font-size: 0.73rem; color: #475569; line-height: 1.35; background: #ffffff; padding: 6px 10px; border-radius: 8px; border: 1px solid #e2e8f0;">
-                                    ⚠️ Adiciona <strong>+21% de IVA</strong> + <strong>3.5% de Ingresos Brutos PBA</strong>.
+                            <div style="display: flex; flex-direction: column; gap: 6px;">
+                                <!-- Opción Factura C (Consumidor Final / Organismos / Monotributo) -->
+                                <label style="display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; font-size: 0.82rem; font-weight: 700; color: #0f172a; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 8px 12px; transition: all 0.2s;" id="lbl-factura-c">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <input type="checkbox" id="chk-factura-c" style="width: 17px; height: 17px; accent-color: #0f172a; cursor: pointer;">
+                                        <div>
+                                            <span style="font-weight: 800;">Solicitar Factura C</span>
+                                            <div style="font-size: 0.72rem; color: #64748b; font-weight: 500;">Mismo precio estándar (Organismos, empresas, final)</div>
+                                        </div>
+                                    </div>
+                                    
+                                </label>
+
+                                <!-- Opción Factura A (Responsable Inscripto) -->
+                                <label style="display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; font-size: 0.82rem; font-weight: 700; color: #0f172a; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 8px 12px; transition: all 0.2s;" id="lbl-factura-a">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <input type="checkbox" id="chk-factura-a" style="width: 17px; height: 17px; accent-color: #0f172a; cursor: pointer;">
+                                        <div>
+                                            <span style="font-weight: 800;">Solicitar Factura A</span>
+                                            <div style="font-size: 0.72rem; color: #64748b; font-weight: 500;">Discrimina IVA (Responsable Inscripto)</div>
+                                        </div>
+                                    </div>
+                                    <span style="font-size: 0.72rem; font-weight: 800; background: #eff6ff; color: #0284c7; padding: 2px 7px; border-radius: 6px; border: 1px solid #bfdbfe;">+IVA e IIBB</span>
+                                </label>
+                            </div>
+
+                            <!-- Menú Desplegable de Datos Fiscales -->
+                            <div id="factura-expand-menu" style="display: none; flex-direction: column; gap: 10px; margin-top: 4px; padding-top: 10px; border-top: 1px dashed #cbd5e1;">
+                                <!-- Banner informativo dinámico -->
+                                <div id="factura-c-info-banner" style="display: none; font-size: 0.75rem; color: #047857; background: #ecfdf5; padding: 7px 10px; border-radius: 8px; border: 1px solid #a7f3d0; line-height: 1.35;">
+                                    ✅ <strong>Factura C:</strong> Se emite a consumidor final o a nombre de la entidad/persona con los datos detallados abajo, sin ningún recargo sobre el total.
+                                </div>
+                                <div id="factura-a-info-banner" style="display: none; font-size: 0.75rem; color: #0369a1; background: #f0f9ff; padding: 7px 10px; border-radius: 8px; border: 1px solid #bae6fd; line-height: 1.35;">
+                                    ⚠️ <strong>Factura A:</strong> Adiciona <strong>+21% de IVA</strong> + <strong>3.5% de Ingresos Brutos PBA</strong> discriminados en el comprobante.
                                 </div>
 
-                                <div id="factura-a-breakdown" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; flex-direction: column; gap: 6px; font-size: 0.78rem; color: #334155;">
+                                <!-- Desglose impositivo solo para Factura A -->
+                                <div id="factura-a-breakdown" style="display: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.75rem 0.9rem; flex-direction: column; gap: 6px; font-size: 0.78rem; color: #334155;">
                                     <div style="display: flex; justify-content: space-between; align-items: center;">
                                         <span style="color: #64748b; font-weight: 600;">Base Producto:</span>
                                         <span id="factura-base-val" style="font-weight: 700; color: #0f172a; font-family: monospace;"></span>
@@ -2249,26 +2280,60 @@
                                     </div>
                                 </div>
 
+                                <!-- Formulario de Datos de Facturación (Orden oficial estilo ARCA) -->
                                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 4px;">
-                                    <div>
-                                        <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
-                                            Razón Social / Empresa:
-                                        </label>
-                                        <input type="text" id="factura-razon-social" placeholder="Ej: La Tarima SRL" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
-                                    </div>
-
-                                    <div>
-                                        <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
-                                            CUIT:
-                                        </label>
-                                        <input type="text" id="factura-cuit" placeholder="Ej: 30-12345678-9" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
-                                    </div>
-
+                                    <!-- 1. Persona / Empresa / Entidad -->
                                     <div style="grid-column: 1 / -1; width: 100%;">
                                         <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
-                                            Dirección Fiscal:
+                                            1. Persona / Empresa / Entidad:
                                         </label>
-                                        <input type="text" id="factura-direccion-fiscal" placeholder="Av. Rivadavia 1234, Ciudad/localidad, Provincia" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                        <input type="text" id="factura-razon-social" placeholder="Ej: ARCA (Agencia de Recaudación y Control Aduanero) o Tu Nombre" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                    </div>
+
+                                    <!-- 2. Domicilio -->
+                                    <div style="grid-column: 1 / -1; width: 100%;">
+                                        <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
+                                            2. Domicilio:
+                                        </label>
+                                        <input type="text" id="factura-direccion-fiscal" placeholder="Ej: Hipólito Yrigoyen 370, 4.° piso" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                    </div>
+
+                                    <!-- 3. Provincia / Localidad -->
+                                    <div>
+                                        <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
+                                            3. Provincia / Jurisdicción:
+                                        </label>
+                                        <input type="text" id="factura-provincia" placeholder="Ej: Ciudad Autónoma de Buenos Aires" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                    </div>
+
+                                    <!-- 4. CUIT / CUIL -->
+                                    <div>
+                                        <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
+                                            4. CUIT / CUIL / DNI:
+                                        </label>
+                                        <input type="text" id="factura-cuit" placeholder="Ej: 33-69345023-9" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                    </div>
+
+                                    <!-- 5. Condición frente al IVA (Select con opciones tributarias) -->
+                                    <div style="grid-column: 1 / -1; width: 100%;">
+                                        <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
+                                            5. Condición frente al IVA:
+                                        </label>
+                                        <select id="factura-condicion-iva" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none; background: #ffffff; cursor: pointer;">
+                                            <option value="Consumidor Final" selected>Consumidor Final (ARCA / Organismos / Personas)</option>
+                                            <option value="Responsable Inscripto">IVA Responsable Inscripto (Empresas - Factura A)</option>
+                                            <option value="Responsable Monotributo">Responsable Monotributo</option>
+                                            <option value="IVA Exento">IVA Exento / No Gravado</option>
+                                            <option value="Sujeto No Categorizado">Sujeto No Categorizado</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- 6. Correo Electrónico (para envío de la factura digital) -->
+                                    <div style="grid-column: 1 / -1; width: 100%;">
+                                        <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
+                                            6. Correo Electrónico (para envío de factura):
+                                        </label>
+                                        <input type="email" id="factura-email" placeholder="Ej: compras@arca.gob.ar o tu-correo@gmail.com" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
                                     </div>
                                 </div>
                             </div>
@@ -2454,7 +2519,10 @@
                     email: document.getElementById('pay-ship-email')?.value || '',
                     razonSocial: document.getElementById('factura-razon-social')?.value || '',
                     cuit: document.getElementById('factura-cuit')?.value || '',
-                    dirFiscal: document.getElementById('factura-direccion-fiscal')?.value || ''
+                    dirFiscal: document.getElementById('factura-direccion-fiscal')?.value || '',
+                    provFiscal: document.getElementById('factura-provincia')?.value || '',
+                    condIva: document.getElementById('factura-condicion-iva')?.value || '',
+                    emailFiscal: document.getElementById('factura-email')?.value || ''
                 };
                 localStorage.setItem('latarima_checkout_user_data', JSON.stringify(data));
 
@@ -2566,8 +2634,10 @@
 
             const isShipping = document.getElementById('pay-mode-shipping')?.checked;
             if (isShipping) {
-                fieldsToValidate.push({ id: 'pay-ship-dir', name: 'Dirección' });
+                fieldsToValidate.push({ id: 'pay-ship-dir', name: 'Dirección (Calle y Altura)' });
                 fieldsToValidate.push({ id: 'pay-ship-cp', name: 'Código Postal' });
+                fieldsToValidate.push({ id: 'pay-ship-ciudad', name: 'Ciudad / Localidad' });
+                fieldsToValidate.push({ id: 'pay-ship-provincia', name: 'Provincia' });
             }
 
             fieldsToValidate.forEach(item => {
@@ -2599,9 +2669,59 @@
             return isValid;
         }
 
+        function validateStep2() {
+            const isFactA = document.getElementById('chk-factura-a')?.checked;
+            const isFactC = document.getElementById('chk-factura-c')?.checked;
+
+            if (!isFactA && !isFactC) return true; // No pidió factura, continúa normalmente
+
+            let isValid = true;
+            let firstInvalid = null;
+
+            const facturaFields = [
+                { id: 'factura-razon-social', name: 'Persona / Empresa / Entidad' },
+                { id: 'factura-direccion-fiscal', name: 'Domicilio' },
+                { id: 'factura-provincia', name: 'Provincia / Jurisdicción' },
+                { id: 'factura-cuit', name: 'CUIT / CUIL / DNI' },
+                { id: 'factura-email', name: 'Correo Electrónico' }
+            ];
+
+            facturaFields.forEach(item => {
+                const input = document.getElementById(item.id);
+                if (!input) return;
+                const val = input.value.trim();
+                if (!val) {
+                    isValid = false;
+                    input.style.borderColor = '#ef4444';
+                    input.style.background = '#fef2f2';
+                    if (!firstInvalid) firstInvalid = input;
+
+                    const clearError = () => {
+                        input.style.borderColor = '#cbd5e1';
+                        input.style.background = '#ffffff';
+                        input.removeEventListener('input', clearError);
+                    };
+                    input.addEventListener('input', clearError);
+                }
+            });
+
+            if (!isValid && firstInvalid) {
+                firstInvalid.focus();
+                // Feedback visual sutil
+                const expandMenu = document.getElementById('factura-expand-menu');
+                if (expandMenu) {
+                    expandMenu.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+
+            return isValid;
+        }
+
         btnNext?.addEventListener('click', () => {
             if (currentStep === 1) {
                 if (!validateStep1()) return;
+            } else if (currentStep === 2) {
+                if (!validateStep2()) return;
             }
             if (currentStep < 3) {
                 currentStep++;
@@ -2674,24 +2794,65 @@
             });
         }
 
-        // Evento Checkbox Factura A (Expande Menú, Recalcula e incluye Razón Social y CUIT)
+        // Eventos de Facturación (Factura C vs Factura A)
+        const chkFacturaC = document.getElementById('chk-factura-c');
         const chkFacturaA = document.getElementById('chk-factura-a');
-        const expandMenu = document.getElementById('factura-a-expand-menu');
+        const expandMenu = document.getElementById('factura-expand-menu');
+        const bannerFacturaC = document.getElementById('factura-c-info-banner');
+        const bannerFacturaA = document.getElementById('factura-a-info-banner');
+        const breakdownFacturaA = document.getElementById('factura-a-breakdown');
+        const lblFacturaC = document.getElementById('lbl-factura-c');
+        const lblFacturaA = document.getElementById('lbl-factura-a');
         const priceDisplay = document.getElementById('pay-modal-display-price');
         const taxBadge = document.getElementById('pay-modal-tax-badge');
 
-        chkFacturaA?.addEventListener('change', () => {
-            updateTotalDisplay();
-            if (chkFacturaA.checked) {
+        const syncFacturaUI = () => {
+            const wantC = chkFacturaC && chkFacturaC.checked;
+            const wantA = chkFacturaA && chkFacturaA.checked;
+
+            if (lblFacturaC) {
+                lblFacturaC.style.borderColor = wantC ? '#059669' : '#cbd5e1';
+                lblFacturaC.style.background = wantC ? '#ecfdf5' : '#ffffff';
+            }
+            if (lblFacturaA) {
+                lblFacturaA.style.borderColor = wantA ? '#0284c7' : '#cbd5e1';
+                lblFacturaA.style.background = wantA ? '#f0f9ff' : '#ffffff';
+            }
+
+            if (wantA) {
                 if (taxBadge) taxBadge.style.display = 'block';
                 if (tooltipBtn) tooltipBtn.style.display = 'none';
                 if (tooltipPopover) tooltipPopover.style.display = 'none';
                 if (expandMenu) expandMenu.style.display = 'flex';
+                if (bannerFacturaA) bannerFacturaA.style.display = 'block';
+                if (bannerFacturaC) bannerFacturaC.style.display = 'none';
+                if (breakdownFacturaA) breakdownFacturaA.style.display = 'flex';
+            } else if (wantC) {
+                if (taxBadge) taxBadge.style.display = 'none';
+                if (tooltipBtn) tooltipBtn.style.display = 'inline-flex';
+                if (expandMenu) expandMenu.style.display = 'flex';
+                if (bannerFacturaC) bannerFacturaC.style.display = 'block';
+                if (bannerFacturaA) bannerFacturaA.style.display = 'none';
+                if (breakdownFacturaA) breakdownFacturaA.style.display = 'none';
             } else {
                 if (taxBadge) taxBadge.style.display = 'none';
                 if (tooltipBtn) tooltipBtn.style.display = 'inline-flex';
                 if (expandMenu) expandMenu.style.display = 'none';
+                if (bannerFacturaC) bannerFacturaC.style.display = 'none';
+                if (bannerFacturaA) bannerFacturaA.style.display = 'none';
+                if (breakdownFacturaA) breakdownFacturaA.style.display = 'none';
             }
+            updateTotalDisplay();
+        };
+
+        chkFacturaC?.addEventListener('change', () => {
+            if (chkFacturaC.checked && chkFacturaA) chkFacturaA.checked = false;
+            syncFacturaUI();
+        });
+
+        chkFacturaA?.addEventListener('change', () => {
+            if (chkFacturaA.checked && chkFacturaC) chkFacturaC.checked = false;
+            syncFacturaUI();
         });
 
         // Evento Selección de Forma de Entrega (Retiro vs Envío)
@@ -2828,17 +2989,6 @@
                         <span>Ingresá tu <strong>Código Postal o Ciudad</strong> para calcular el costo de envío directo.</span>
                     </div>
                 `;
-                return;
-            }
-
-            // Si envío gratis
-            if (shipConf.isFreeShipping) {
-                container.style.display = 'block';
-                container.innerHTML = '<div style="background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:8px 12px;font-size:0.78rem;font-weight:800;color:#15803d;">🎉 ¡Envío Gratis incluido!</div>';
-                window._checkoutSelectedShipCost = 0;
-                window._checkoutSelectedShipLabel = 'Envío Gratis';
-                updateShipLine();
-                updateTotalDisplay();
                 return;
             }
 
@@ -2986,10 +3136,54 @@
                 options.push({ key: 'otro', label: '🚚 ' + label, cleanLabel: label, detail: 'Acordar con vendedor', cost, active: true });
             }
 
+            // Cabecera con ciudad detectada
+            const locationHeaderHtml = '<div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:8px 12px;margin-bottom:8px;">'
+                + '<div style="font-size:0.68rem;font-weight:800;color:#0369a1;text-transform:uppercase;margin-bottom:3px;">📍 Ubicación detectada</div>'
+                + '<div style="font-size:0.85rem;font-weight:800;color:#0f172a;">' + cpRes.localidad + ', ' + cpRes.provincia + ' (CP ' + cpRes.cp + ')</div>'
+                + '</div>';
+
+            // Si cumple con la regla de Envío Gratis (por oferta/producto o por volumen/cantidad), mostrar directamente cartel verde llamativo
+            const freeOpt = options.find(o => o.isFreeByQty);
+            const isOrderFreeShipping = !!(shipConf.isFreeShipping || shipConf.isFree || freeOpt);
+
+            if (isOrderFreeShipping) {
+                const freeSubtitle = freeOpt
+                    ? `${freeOpt.detail} · ¡Sin cargo adicional a tu domicilio!`
+                    : '¡Tu pedido califica para envío a domicilio 100% bonificado!';
+                const freeCleanLabel = freeOpt ? `${freeOpt.cleanLabel} (¡ENVÍO GRATIS!)` : '¡ENVÍO GRATIS!';
+
+                container.innerHTML = locationHeaderHtml + `
+                    <div style="background:linear-gradient(135deg, #16a34a 0%, #15803d 100%);border:2px solid #22c55e;border-radius:12px;padding:14px 16px;color:#ffffff;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 6px 18px rgba(22,163,74,0.28);">
+                        <div style="display:flex;align-items:center;gap:12px;">
+                            <div style="background:rgba(255,255,255,0.22);width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;">
+                                🚚
+                            </div>
+                            <div>
+                                <div style="font-size:1.08rem;font-weight:900;letter-spacing:0.5px;text-transform:uppercase;line-height:1.15;">
+                                    🎉 ¡ENVÍO GRATIS!!!
+                                </div>
+                                <div style="font-size:0.76rem;font-weight:700;color:#dcfce7;margin-top:4px;line-height:1.3;">
+                                    ${freeSubtitle}
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background:#ffffff;color:#15803d;font-size:0.82rem;font-weight:900;padding:6px 11px;border-radius:8px;white-space:nowrap;box-shadow:0 2px 6px rgba(0,0,0,0.12);">
+                            $ 0 · GRATIS
+                        </div>
+                    </div>
+                `;
+                container.style.display = 'block';
+                window._checkoutSelectedShipCost = 0;
+                window._checkoutSelectedShipLabel = freeCleanLabel;
+                updateShipLine();
+                updateTotalDisplay();
+                return;
+            }
+
             // Si no hay opciones directas activas
             if (options.length === 0) {
                 container.style.display = 'block';
-                container.innerHTML = '<div style="background:#fff7ed;border:1px solid #ffedd5;border-radius:8px;padding:8px 12px;font-size:0.75rem;color:#c0510a;font-weight:700;">💬 Te cotizamos el envío particular o por expreso directamente por WhatsApp al enviar tu consulta.</div>';
+                container.innerHTML = locationHeaderHtml + '<div style="background:#fff7ed;border:1px solid #ffedd5;border-radius:8px;padding:8px 12px;font-size:0.75rem;color:#c0510a;font-weight:700;">💬 Te cotizamos el envío particular o por expreso directamente por WhatsApp al enviar tu consulta.</div>';
                 window._checkoutSelectedShipCost = 0;
                 window._checkoutSelectedShipLabel = 'A convenir';
                 updateShipLine();
@@ -2997,11 +3191,7 @@
                 return;
             }
 
-            // Cabecera con ciudad detectada
-            let html = '<div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:10px;padding:8px 12px;margin-bottom:6px;">';
-            html += '<div style="font-size:0.68rem;font-weight:800;color:#0369a1;text-transform:uppercase;margin-bottom:3px;">📍 Ubicación detectada</div>';
-            html += '<div style="font-size:0.85rem;font-weight:800;color:#0f172a;">' + cpRes.localidad + ', ' + cpRes.provincia + ' (CP ' + cpRes.cp + ')</div>';
-            html += '</div>';
+            let html = locationHeaderHtml;
 
             // Opciones de envío como radio buttons
             html += '<div style="font-size:0.68rem;font-weight:800;color:#475569;text-transform:uppercase;margin-bottom:5px;">Elegí el método de envío:</div>';
@@ -3013,14 +3203,14 @@
             if (defaultOptIdx === -1) defaultOptIdx = 0;
 
             options.forEach((opt, idx) => {
-                const costLabel = opt.cost > 0 ? formatCurr(opt.cost) : 'Cotizar por WA';
+                const costLabel = opt.isFreeByQty ? '¡GRATIS!' : (opt.cost > 0 ? formatCurr(opt.cost) : 'Cotizar por WA');
                 const isChecked = idx === defaultOptIdx;
                 html += `<label style="display:flex;align-items:center;justify-content:space-between;gap:8px;background:${isChecked ? '#f0f9ff' : '#f8fafc'};border:1.5px solid ${isChecked ? '#0284c7' : '#e2e8f0'};border-radius:10px;padding:8px 12px;cursor:pointer;" data-cost="${opt.cost}" data-label="${opt.cleanLabel}">
                     <span style="display:flex;align-items:center;gap:8px;font-size:0.8rem;font-weight:700;color:#0f172a;">
                         <input type="radio" name="ship-method-choice" value="${opt.key}" ${isChecked ? 'checked' : ''} style="accent-color:#0f172a;cursor:pointer;">
                         <span>${opt.label}<br><span style="font-size:0.68rem;font-weight:600;color:#64748b;">${opt.detail}</span></span>
                     </span>
-                    <span style="font-size:0.88rem;font-weight:900;color:${opt.cost > 0 ? '#0284c7' : '#64748b'};white-space:nowrap;">${costLabel}</span>
+                    <span style="font-size:0.88rem;font-weight:900;color:${opt.isFreeByQty ? '#16a34a' : (opt.cost > 0 ? '#0284c7' : '#64748b')};white-space:nowrap;">${costLabel}</span>
                 </label>`;
             });
 
@@ -3090,8 +3280,13 @@
                     breakdownBox.style.display = 'flex';
                     if (shipRow) {
                         shipRow.style.display = 'flex';
+                        const isFreeShip = shipCost === 0 && shipLabel.toLowerCase().includes('gratis');
                         if (shipLbl) shipLbl.textContent = '🚚 Envío (' + shipLabel + '):';
-                        if (shipVal) shipVal.textContent = shipCost > 0 ? formatCurr(shipCost) : 'Gratis / A cotizar';
+                        if (shipVal) {
+                            shipVal.textContent = shipCost > 0 ? formatCurr(shipCost) : (isFreeShip ? '¡ENVÍO GRATIS! ($ 0)' : 'A cotizar');
+                            shipVal.style.color = isFreeShip ? '#15803d' : '';
+                            shipVal.style.fontWeight = isFreeShip ? '900' : '';
+                        }
                     }
                 } else {
                     breakdownBox.style.display = 'none';
@@ -3099,8 +3294,8 @@
             }
 
             // Actualizar desglose Factura A
-            const expandMenu = document.getElementById('factura-a-expand-menu');
-            if (isFacturaA && expandMenu) {
+            const breakdownFactA = document.getElementById('factura-a-breakdown');
+            if (isFacturaA && breakdownFactA) {
                 const factBase = document.getElementById('factura-base-val');
                 const factShipRow = document.getElementById('factura-ship-row');
                 const factShipLbl = document.getElementById('factura-ship-label');
@@ -3331,7 +3526,7 @@
                     try {
                         let itemProdUrl = '';
                         if (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function') {
-                            const shortCode = window.TarimaShortener.encodeShortCode(offer.id, grupoName, medidaName, opcionName, false);
+                            const shortCode = window.TarimaShortener.encodeShortCode(offer.id, grupoName, medidaName, opcionName, true);
                             if (shortCode) {
                                 const origin = window.location.origin;
                                 const path = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
@@ -3349,20 +3544,30 @@
                     msgLines.push(`  • Combo: ${itemDisplayName} ${packQty > 1 ? `(Pack x${packQty})` : ''}`);
                 }
                 msgLines.push(`- Monto abonado: ${finalPriceFormatted}`);
+                const isFacturaC = document.getElementById('chk-factura-c')?.checked || false;
                 if (isFacturaA) {
                     msgLines.push("- Comprobante solicitado: Factura A (Responsable Inscripto)");
+                } else if (isFacturaC) {
+                    msgLines.push("- Comprobante solicitado: Factura C");
                 }
 
-                if (isFacturaA) {
-                    const razon = document.getElementById('factura-razon-social')?.value.trim() || 'No especificada';
+                if (isFacturaA || isFacturaC) {
+                    const razon = document.getElementById('factura-razon-social')?.value.trim() || 'No especificado';
+                    const dirFiscal = document.getElementById('factura-direccion-fiscal')?.value.trim() || 'No especificado';
+                    const provFiscal = document.getElementById('factura-provincia')?.value.trim() || 'No especificada';
                     const cuitEmp = document.getElementById('factura-cuit')?.value.trim() || 'No especificado';
-                    const dirFiscal = document.getElementById('factura-direccion-fiscal')?.value.trim() || 'No especificada';
+                    const condIva = document.getElementById('factura-condicion-iva')?.value || 'Consumidor Final';
                     
                     msgLines.push("");
-                    msgLines.push("Datos de facturación:");
-                    msgLines.push(`- Razón Social: ${razon}`);
+                    const emailFiscal = document.getElementById('factura-email')?.value.trim() || 'No especificado';
+
+                    msgLines.push(`Datos de facturación (${isFacturaA ? 'Factura A' : 'Factura C'}):`);
+                    msgLines.push(`- Entidad / Razón Social: ${razon}`);
+                    msgLines.push(`- Domicilio: ${dirFiscal}`);
+                    msgLines.push(`- Provincia: ${provFiscal}`);
                     msgLines.push(`- CUIT: ${cuitEmp}`);
-                    msgLines.push(`- Dirección Fiscal: ${dirFiscal}`);
+                    msgLines.push(`- Condición frente al IVA: ${condIva}`);
+                    msgLines.push(`- Correo Facturación: ${emailFiscal}`);
                 }
 
                 msgLines.push("");
@@ -3374,8 +3579,12 @@
                     const prov = document.getElementById('pay-ship-provincia')?.value.trim() || 'No especificada';
                     const email = document.getElementById('pay-ship-email')?.value.trim() || '';
                     
+                    const isFreeShipSelected = (window._checkoutSelectedShipCost === 0) && (window._checkoutSelectedShipLabel || '').toLowerCase().includes('gratis');
+                    const shipCostStr = window._checkoutSelectedShipCost > 0
+                        ? formatCurr(window._checkoutSelectedShipCost)
+                        : (isFreeShipSelected ? '¡ENVÍO GRATIS! ($ 0)' : 'A cotizar');
                     msgLines.push("- Método: Envío a domicilio / flete");
-                    msgLines.push(`- Envío: ${window._checkoutSelectedShipLabel || 'A confirmar'} — ${window._checkoutSelectedShipCost > 0 ? formatCurr(window._checkoutSelectedShipCost) : 'A cotizar'}`);
+                    msgLines.push(`- Envío: ${window._checkoutSelectedShipLabel || 'A confirmar'} — ${shipCostStr}`);
                     msgLines.push(`- Dirección: ${dir}`);
                     msgLines.push(`- CP: ${cp}`);
                     msgLines.push(`- Localidad: ${ciudad}`);

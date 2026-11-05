@@ -545,22 +545,93 @@ document.addEventListener('DOMContentLoaded', () => {
         renderCatalogList(allProducts);
     };
 
-    // 5. Filtrar por término de búsqueda (Llamado desde el main window)
+    // 5. Filtrar por término de búsqueda con prioridad por niveles (Llamado desde el main window)
+    const stemCatalogWord = (word) => {
+        if (!word || word.length < 3) return word;
+        let w = word;
+        if (w.length > 5 && (w.endsWith('quitos') || w.endsWith('quitas'))) w = w.slice(0, -6) + 'co';
+        else if (w.length > 4 && (w.endsWith('quito') || w.endsWith('quita'))) w = w.slice(0, -5) + 'co';
+        else if (w.length > 5 && (w.endsWith('citos') || w.endsWith('citas'))) w = w.slice(0, -5);
+        else if (w.length > 4 && (w.endsWith('cito') || w.endsWith('cita'))) w = w.slice(0, -4);
+        else if (w.length > 5 && (w.endsWith('itos') || w.endsWith('itas'))) w = w.slice(0, -4);
+        else if (w.length > 4 && (w.endsWith('ito') || w.endsWith('ita'))) w = w.slice(0, -3);
+        if (w.length > 4 && w.endsWith('ces')) w = w.slice(0, -3) + 'z';
+        else if (w.length > 4 && w.endsWith('es') && /[rlndzj]es$/.test(w)) w = w.slice(0, -2);
+        else if (w.length > 3 && w.endsWith('s')) w = w.slice(0, -1);
+        if (w.length >= 4 && /[oae]$/.test(w)) w = w.slice(0, -1);
+        return w;
+    };
+
+    const tokenizeCatalogWords = (str) => {
+        if (!str) return [];
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+            .replace(/[^a-z0-9\s]/g, ' ')
+            .split(/\s+/)
+            .filter(w => w.length >= 2);
+    };
+
+    const matchCatalogTerm = (term, words) => {
+        const termStem = stemCatalogWord(term);
+        for (const w of words) {
+            if (w === term) return 100;
+            const wStem = stemCatalogWord(w);
+            if (wStem.length >= 3 && termStem.length >= 3) {
+                if (wStem === termStem) return 95;
+                if (w.startsWith(term) && term.length >= 3) return 85;
+                if (wStem.startsWith(termStem) && termStem.length >= 4) return 85;
+            } else if (w.startsWith(term) && term.length >= 2) {
+                return 80;
+            }
+        }
+        return 0;
+    };
+
     window.filterCatalogAZ = function(query) {
-        if (!query) {
+        if (!query || !query.trim()) {
             renderCatalogList(allProducts);
             return;
         }
         
-        const q = query.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
-        
-        const filtered = allProducts.filter(p => {
-            const t = (p.title || '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-            const d = (p.description || '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-            const c = (p.categoryName || '').normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-            
-            return t.includes(q) || d.includes(q) || c.includes(q);
+        const terms = tokenizeCatalogWords(query);
+        if (terms.length === 0) {
+            renderCatalogList(allProducts);
+            return;
+        }
+
+        const scored = [];
+        allProducts.forEach(p => {
+            const titleWords = tokenizeCatalogWords((p.title || '') + ' ' + (p.acabado || ''));
+            const catWords = tokenizeCatalogWords(p.categoryName || '');
+            const descWords = tokenizeCatalogWords(p.description || '').filter(w => w.length >= 4);
+
+            let worstTier = 0;
+            let allMatched = true;
+            for (const term of terms) {
+                const tMatch = matchCatalogTerm(term, titleWords);
+                if (tMatch > 0) {
+                    worstTier = Math.max(worstTier, 1);
+                    continue;
+                }
+                const cMatch = matchCatalogTerm(term, catWords);
+                if (cMatch > 0) {
+                    worstTier = Math.max(worstTier, 2);
+                    continue;
+                }
+                const dMatch = matchCatalogTerm(term, descWords);
+                if (dMatch >= 95) {
+                    worstTier = Math.max(worstTier, 3);
+                    continue;
+                }
+                allMatched = false;
+                break;
+            }
+            if (allMatched) {
+                scored.push({ p, tier: worstTier });
+            }
         });
+
+        const bestTier = scored.length > 0 ? Math.min(...scored.map(s => s.tier)) : 99;
+        const filtered = scored.filter(s => s.tier <= bestTier).map(s => s.p);
 
         renderCatalogList(filtered);
     };
