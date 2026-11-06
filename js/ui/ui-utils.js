@@ -2,7 +2,7 @@
     // Sistema global de Miniaturas (_thumb.webp) para carga ultrarrápida de vistas previas
     window.getThumbUrl = function(url) {
         if (!url || typeof url !== 'string') return url || 'img/logo_provisional.png';
-        if (url.startsWith('http') || url.startsWith('data:') || url.includes('_thumb.webp') || url.includes('logo_provisional') || url.includes('logo-dark') || url.includes('logo-light')) {
+        if (url.startsWith('http') || url.startsWith('data:') || url.includes('_thumb.webp') || url.includes('logo_provisional') || url.includes('logo-dark') || url.includes('logo-light') || url.toLowerCase().includes('platinum')) {
             return url;
         }
         return url.replace(/\.(webp|jpe?g|png)$/i, '_thumb.webp');

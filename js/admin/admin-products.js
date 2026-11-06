@@ -1283,7 +1283,7 @@ window.initProductsAdmin = function() {
         const evaluateItemForTerm = (item, term) => {
             const titleWords = tokenizeWords(item.nombre || '');
             const catWords = tokenizeWords(item.cat && item.cat.name ? item.cat.name : '');
-            const acabadoWords = tokenizeWords((item.acabado || '') + ' ' + (item.acabadosSearch || ''));
+            const acabadoWords = tokenizeWords(item.acabado || '');
 
             // Nivel 1: Coincidencia directa o morfológica en el Título del producto
             const titleExact = matchTermInWords(term, titleWords, false);
@@ -1309,7 +1309,7 @@ window.initProductsAdmin = function() {
 
             // Nivel 3: Tolerancia a errores de tipeo (fonética / Levenshtein estricto) en Título o Categoría
             const titleFuzzy = matchTermInWords(term, titleWords, true);
-            if (titleFuzzy > 0) return { tier: 3, score: titleFuzzy + 50 };
+            if (titleFuzzy > 0) return { tier: 3, score: titleFuzzy + 50 }; const acabFuzzy = matchTermInWords(term, acabadoWords, true); if (acabFuzzy > 0) return { tier: 3, score: acabFuzzy + 45 };
             const catFuzzy = matchTermInWords(term, catWords, true);
             if (catFuzzy > 0) return { tier: 3, score: catFuzzy + 40 };
 

@@ -94,10 +94,48 @@
 
     
     
-    <div id="trust-top-bar" class="trust-top-bar" style="background: #2a241e; color: #fdfbf7; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.3px; line-height: 1; padding: 6px 36px 6px 12px; text-align: center; z-index: 1002; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; max-height: 40px; opacity: 1; transition: max-height 0.4s ease, opacity 0.35s ease, padding 0.4s ease;">
+    <div id="trust-top-bar" class="trust-top-bar" style="background: #2a241e; color: #fdfbf7; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.3px; line-height: 1; padding: 6px 36px 6px 72px; text-align: center; z-index: 1005; position: relative; overflow: visible; display: flex; align-items: center; justify-content: center; max-height: 40px; opacity: 1; transition: max-height 0.4s ease, opacity 0.35s ease, padding 0.4s ease;">
+        <style>
+            @keyframes platinumMedalFloat {
+                0%, 100% { transform: translateY(0) scale(1) rotate(-3deg); }
+                50% { transform: translateY(2px) scale(1.07) rotate(2deg); }
+            }
+            .trust-platinum-medal-seal {
+                position: absolute;
+                left: 6px;
+                top: 0px;
+                width: 62px;
+                height: 62px;
+                z-index: 1050;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
+                animation: platinumMedalFloat 2.6s ease-in-out infinite;
+                transition: transform 0.35s ease, opacity 0.35s ease;
+                pointer-events: auto;
+            }
+            @media (min-width: 768px) {
+                .trust-platinum-medal-seal {
+                    left: 18px;
+                    top: 0px;
+                    width: 74px;
+                    height: 74px;
+                }
+            }
+        </style>
+
         
+        <div id="trust-platinum-medal" class="trust-platinum-medal-seal" title="¡Somos MercadoLíder Platinum!">
+            <img src="img/Platinum.png" alt="MercadoLíder Platinum" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+
         
-        <div class="trust-bar-desktop" style="display: none; align-items: center; justify-content: center; gap: 20px;">
+        <div class="trust-bar-desktop" style="display: none; align-items: center; justify-content: center; gap: 18px;">
+            <span style="display: inline-flex; align-items: center; gap: 5px; color: #7dd3fc; font-weight: 800;">
+                <span>🏆 MercadoLíder Platinum</span>
+            </span>
+            <span style="opacity: 0.35;">•</span>
             <span style="display: inline-flex; align-items: center; gap: 5px;">
                 <span class="material-symbols-outlined" style="font-size: 14px; color: #eab308;">carpenter</span>
                 <span>Somos Fabricantes</span>
@@ -115,10 +153,9 @@
         </div>
 
         
-        <div class="trust-bar-mobile" style="display: flex; align-items: center; justify-content: center; min-height: 16px;">
+        <div class="trust-bar-mobile" style="display: flex; align-items: center; justify-content: center; min-height: 18px;">
             <span id="trust-mobile-item" style="display: inline-flex; align-items: center; gap: 6px; transition: opacity 0.25s ease, transform 0.25s ease; opacity: 1;">
-                <span class="material-symbols-outlined" style="font-size: 14px; color: #eab308;">carpenter</span>
-                <span>Somos Fabricantes</span>
+                <span style="color: #7dd3fc; font-weight: 800;">🏆 MercadoLíder Platinum</span>
             </span>
         </div>
 
@@ -562,13 +599,440 @@
 
         
         <section id="view-about" class="view">
-            <div class="view-content" style="padding: 1rem;">
+            <div class="view-content nosotros-redesign-wrapper" style="padding: 1rem; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem;">
+                <style>
+                    .nosotros-hero-banner {
+                        background: linear-gradient(135deg, #2a241e 0%, #3d332a 55%, #1e1915 100%);
+                        border-radius: 22px;
+                        padding: 1.75rem 1.4rem;
+                        color: #fdfbf7;
+                        position: relative;
+                        overflow: hidden;
+                        box-shadow: 0 12px 30px rgba(42, 36, 30, 0.22);
+                        border: 1px solid rgba(234, 179, 8, 0.25);
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        text-align: center;
+                        gap: 0.85rem;
+                    }
+                    .nosotros-hero-badge {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 6px;
+                        background: rgba(234, 179, 8, 0.16);
+                        border: 1px solid rgba(234, 179, 8, 0.4);
+                        color: #fde047;
+                        font-size: 0.72rem;
+                        font-weight: 800;
+                        padding: 4px 12px;
+                        border-radius: 50px;
+                        letter-spacing: 0.6px;
+                        text-transform: uppercase;
+                    }
+                    .nosotros-hero-title {
+                        font-size: 1.5rem;
+                        font-weight: 900;
+                        margin: 0;
+                        line-height: 1.2;
+                        color: #ffffff;
+                    }
+                    .nosotros-hero-desc {
+                        font-size: 0.92rem;
+                        line-height: 1.55;
+                        color: #e2e8f0;
+                        max-width: 600px;
+                        margin: 0;
+                    }
+                    .nosotros-pillars-row {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                        gap: 10px;
+                        width: 100%;
+                        margin-top: 0.35rem;
+                    }
+                    .nosotros-pillar-chip {
+                        background: rgba(255, 255, 255, 0.07);
+                        border: 1px solid rgba(255, 255, 255, 0.12);
+                        border-radius: 14px;
+                        padding: 0.75rem 0.8rem;
+                        display: flex;
+                        align-items: center;
+                        gap: 9px;
+                        text-align: left;
+                    }
+                    .nosotros-section-card {
+                        background: var(--surface-color, #ffffff);
+                        border: 1px solid rgba(0, 0, 0, 0.07);
+                        border-radius: 20px;
+                        padding: 1.5rem 1.25rem;
+                        box-shadow: 0 6px 22px rgba(0, 0, 0, 0.04);
+                    }
+                    .nosotros-section-header {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        margin-bottom: 1rem;
+                    }
+                    .nosotros-section-icon {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 12px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        flex-shrink: 0;
+                    }
+                    .nosotros-guide-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                        gap: 12px;
+                    }
+                    .nosotros-step-card {
+                        background: #f8fafc;
+                        border: 1.5px solid #e2e8f0;
+                        border-radius: 16px;
+                        padding: 1rem;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 6px;
+                        position: relative;
+                        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+                    }
+                    .nosotros-step-card:hover {
+                        transform: translateY(-2px);
+                        border-color: #cbd5e1;
+                        box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+                    }
+                    .nosotros-step-num {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 24px;
+                        height: 24px;
+                        border-radius: 50%;
+                        background: var(--primary-color, #c0510a);
+                        color: #ffffff;
+                        font-size: 0.75rem;
+                        font-weight: 800;
+                    }
+                    .nosotros-shortcuts-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+                        gap: 10px;
+                    }
+                    .nosotros-shortcut-btn {
+                        background: #ffffff;
+                        border: 1.5px solid #e2e8f0;
+                        border-radius: 14px;
+                        padding: 0.85rem 0.75rem;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 6px;
+                        text-align: center;
+                        cursor: pointer;
+                        text-decoration: none;
+                        color: #1e293b;
+                        font-family: inherit;
+                        transition: all 0.2s ease;
+                        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+                    }
+                    .nosotros-shortcut-btn:hover {
+                        border-color: var(--primary-color, #c0510a);
+                        background: #fffaf5;
+                        transform: translateY(-2px);
+                        box-shadow: 0 6px 14px rgba(192, 81, 10, 0.1);
+                    }
+                    .nosotros-faq-list {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 8px;
+                    }
+                    .nosotros-faq-item {
+                        border: 1px solid #e2e8f0;
+                        border-radius: 12px;
+                        background: #f8fafc;
+                        overflow: hidden;
+                    }
+                    .nosotros-faq-item summary {
+                        padding: 0.85rem 1rem;
+                        font-weight: 700;
+                        font-size: 0.88rem;
+                        color: #0f172a;
+                        cursor: pointer;
+                        list-style: none;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: 8px;
+                    }
+                    .nosotros-faq-item summary::-webkit-details-marker {
+                        display: none;
+                    }
+                    .nosotros-faq-item p {
+                        padding: 0 1rem 0.9rem 1rem;
+                        margin: 0;
+                        font-size: 0.84rem;
+                        line-height: 1.55;
+                        color: #475569;
+                    }
+                </style>
+
                 
+                <div class="nosotros-hero-banner">
+                    <span class="nosotros-hero-badge">
+                        <span class="material-symbols-outlined" style="font-size: 15px;">carpenter</span>
+                        <span>Fábrica Directa en Hurlingham, Buenos Aires</span>
+                    </span>
+                    <h2 class="nosotros-hero-title">¡Bienvenidos a La Tarima! 🪵</h2>
+                    <p class="nosotros-hero-desc">
+                        Somos fabricantes apasionados por la madera. Creamos muebles y accesorios con diseño, seguros, resistentes y pensados para acompañar cada rincón de tu hogar, ¡a precio directo de taller!
+                    </p>
+                    <div class="nosotros-pillars-row">
+                        <div class="nosotros-pillar-chip">
+                            <span class="material-symbols-outlined" style="color: #facc15; font-size: 22px;">handyman</span>
+                            <div>
+                                <strong style="display: block; font-size: 0.8rem; color: #fff;">Somos Fabricantes</strong>
+                                <span style="font-size: 0.72rem; color: #cbd5e1;">Sin intermediarios</span>
+                            </div>
+                        </div>
+                        <div class="nosotros-pillar-chip">
+                            <span class="material-symbols-outlined" style="color: #38bdf8; font-size: 22px;">local_shipping</span>
+                            <div>
+                                <strong style="display: block; font-size: 0.8rem; color: #fff;">Envíos a todo el país</strong>
+                                <span style="font-size: 0.72rem; color: #cbd5e1;">Logística, flete o retiro</span>
+                            </div>
+                        </div>
+                        <div class="nosotros-pillar-chip">
+                            <span class="material-symbols-outlined" style="color: #4ade80; font-size: 22px;">savings</span>
+                            <div>
+                                <strong style="display: block; font-size: 0.8rem; color: #fff;">Precios de Taller</strong>
+                                <span style="font-size: 0.72rem; color: #cbd5e1;">Ahorrá en compra directa</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <section class="nosotros-section-card">
+                    <div class="nosotros-section-header">
+                        <div class="nosotros-section-icon" style="background: #fff7ed; color: #ea580c; border: 1px solid #fed7aa;">
+                            <span class="material-symbols-outlined">touch_app</span>
+                        </div>
+                        <div>
+                            <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: #0f172a;">¿Cómo usar nuestra web?</h3>
+                            <p style="margin: 2px 0 0 0; font-size: 0.8rem; color: #64748b;">Seguí estos 4 pasos simples para armar tu pedido en segundos</p>
+                        </div>
+                    </div>
+
+                    <div class="nosotros-guide-grid">
+                        
+                        <div class="nosotros-step-card">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <span class="nosotros-step-num">1</span>
+                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 22px;">manage_search</span>
+                            </div>
+                            <strong style="font-size: 0.92rem; color: #0f172a;">Explorá y Buscá</strong>
+                            <p style="font-size: 0.8rem; color: #475569; margin: 0; line-height: 1.45;">
+                                Usá el <strong>buscador de arriba</strong> (podés buscar por mueble, color o medida), navegá por <strong>Categorías</strong> o desplegá el <strong>Catálogo Completo</strong> al final del Inicio.
+                            </p>
+                        </div>
+
+                        
+                        <div class="nosotros-step-card">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <span class="nosotros-step-num">2</span>
+                                <span class="material-symbols-outlined" style="color: #d97706; font-size: 22px;">palette</span>
+                            </div>
+                            <strong style="font-size: 0.92rem; color: #0f172a;">Elegí Acabado y Medida</strong>
+                            <p style="font-size: 0.8rem; color: #475569; margin: 0; line-height: 1.45;">
+                                Dentro de cada producto podés elegir el acabado (<strong>Natural, Barnizado, Blanco</strong>, etc.) y la medida. El precio y las promociones por cantidad se actualizan solos.
+                            </p>
+                        </div>
+
+                        
+                        <div class="nosotros-step-card">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <span class="nosotros-step-num">3</span>
+                                <span class="material-symbols-outlined" style="color: #16a34a; font-size: 22px;">local_shipping</span>
+                            </div>
+                            <strong style="font-size: 0.92rem; color: #0f172a;">Cotizá tu Envío con tu CP</strong>
+                            <p style="font-size: 0.8rem; color: #475569; margin: 0; line-height: 1.45;">
+                                Ingresá tu <strong>Código Postal</strong> para ver al instante el costo de envío a domicilio, flete particular o si tenés <strong>¡ENVÍO GRATIS!</strong> (también podés retirar gratis en Hurlingham).
+                            </p>
+                        </div>
+
+                        
+                        <div class="nosotros-step-card">
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <span class="nosotros-step-num">4</span>
+                                <span class="material-symbols-outlined" style="color: #15803d; font-size: 22px;">shopping_cart_checkout</span>
+                            </div>
+                            <strong style="font-size: 0.92rem; color: #0f172a;">Pedí por WhatsApp o Carrito</strong>
+                            <p style="font-size: 0.8rem; color: #475569; margin: 0; line-height: 1.45;">
+                                Sumá varios productos al <strong>Carrito 🛒</strong> o tocá <strong>Comprar ahora</strong>. Tu pedido nos llega armado por WhatsApp y te damos un <strong>código de seguimiento</strong> en vivo.
+                            </p>
+                        </div>
+                    </div>
+
+                    
+                    <div style="margin-top: 1.2rem; padding-top: 1rem; border-top: 1px dashed #e2e8f0;">
+                        <div style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 0.65rem; text-align: center;">
+                            ⚡ Accesos rápidos a las herramientas de la tienda
+                        </div>
+                        <div class="nosotros-shortcuts-grid">
+                            <button type="button" class="nosotros-shortcut-btn" onclick="if(window.navigateToView) window.navigateToView('view-categories');">
+                                <span class="material-symbols-outlined" style="font-size: 24px; color: #c0510a;">grid_view</span>
+                                <strong style="font-size: 0.82rem;">Ver Categorías</strong>
+                                <span style="font-size: 0.7rem; color: #64748b;">Muebles por rubro</span>
+                            </button>
+                            <button type="button" class="nosotros-shortcut-btn" onclick="if(window.navigateToView) window.navigateToView('view-catalogo');">
+                                <span class="material-symbols-outlined" style="font-size: 24px; color: #0284c7;">list_alt</span>
+                                <strong style="font-size: 0.82rem;">Catálogo A-Z</strong>
+                                <span style="font-size: 0.7rem; color: #64748b;">Listado rápido de precios</span>
+                            </button>
+                            <button type="button" class="nosotros-shortcut-btn" onclick="if(window.navigateToView) window.navigateToView('view-profile');">
+                                <span class="material-symbols-outlined" style="font-size: 24px; color: #16a34a;">shopping_cart</span>
+                                <strong style="font-size: 0.82rem;">Mi Carrito y Perfil</strong>
+                                <span style="font-size: 0.7rem; color: #64748b;">Tus datos y deseos</span>
+                            </button>
+                            <button type="button" class="nosotros-shortcut-btn" onclick="if(window.openTrackingSheet) window.openTrackingSheet(); else if(window.navigateToView) window.navigateToView('view-pedidos');">
+                                <span class="material-symbols-outlined" style="font-size: 24px; color: #7c3aed;">local_shipping</span>
+                                <strong style="font-size: 0.82rem;">Seguir mi Pedido</strong>
+                                <span style="font-size: 0.7rem; color: #64748b;">Estado en tiempo real</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                
+                <article class="nosotros-platinum-card" style="background: linear-gradient(145deg, #0f172a 0%, #1e293b 55%, #0c4a6e 100%); border: 1.5px solid rgba(56, 189, 248, 0.38); border-radius: 20px; padding: 1.75rem 1.5rem; color: #f8fafc; box-shadow: 0 14px 32px rgba(15, 23, 42, 0.25), 0 0 24px rgba(56, 189, 248, 0.14); position: relative; overflow: hidden; text-align: center;">
+                    
+                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #0284c7, #38bdf8, #e0f2fe, #38bdf8, #0284c7);"></div>
+
+                    
+                    <div style="display: flex; justify-content: center; margin-bottom: 0.9rem;">
+                        <img src="img/Platinum.png" alt="Medalla MercadoLíder Platinum" style="width: 116px; height: 116px; object-fit: contain; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.5)) drop-shadow(0 0 16px rgba(56, 189, 248, 0.45));">
+                    </div>
+
+                    <span style="display: inline-block; background: rgba(56, 189, 248, 0.16); border: 1px solid rgba(56, 189, 248, 0.4); color: #7dd3fc; font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; margin-bottom: 0.6rem;">
+                        🏆 Máxima Distinción Oficial
+                    </span>
+
+                    <h2 style="font-size: 1.35rem; font-weight: 800; color: #ffffff; margin: 0 0 0.65rem 0; line-height: 1.25;">
+                        ¡Somos MercadoLíder Platinum!
+                    </h2>
+
+                    <p style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.6; max-width: 580px; margin: 0 auto 1.25rem auto;">
+                        El sello <strong>MercadoLíder Platinum</strong> es el máximo reconocimiento que otorga Mercado Libre a los vendedores con mejor trayectoria, volumen de ventas y excelencia en el país. En <strong>La Tarima</strong>, esta medalla respalda nuestro compromiso real con vos:
+                    </p>
+
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; text-align: left; margin-bottom: 1.4rem;">
+                        <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; align-items: flex-start; gap: 10px;">
+                            <span class="material-symbols-outlined" style="color: #38bdf8; font-size: 22px; flex-shrink: 0;">verified</span>
+                            <div>
+                                <strong style="display: block; font-size: 0.83rem; color: #ffffff; margin-bottom: 2px;">Miles de ventas exitosas</strong>
+                                <span style="font-size: 0.76rem; color: #94a3b8; line-height: 1.35; display: block;">Trayectoria comprobada entregando muebles en todo el país.</span>
+                            </div>
+                        </div>
+                        <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; align-items: flex-start; gap: 10px;">
+                            <span class="material-symbols-outlined" style="color: #4ade80; font-size: 22px; flex-shrink: 0;">schedule</span>
+                            <div>
+                                <strong style="display: block; font-size: 0.83rem; color: #ffffff; margin-bottom: 2px;">Despachos en tiempo y forma</strong>
+                                <span style="font-size: 0.76rem; color: #94a3b8; line-height: 1.35; display: block;">Cumplimiento estricto en los plazos de fabricación y envío.</span>
+                            </div>
+                        </div>
+                        <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; align-items: flex-start; gap: 10px;">
+                            <span class="material-symbols-outlined" style="color: #facc15; font-size: 22px; flex-shrink: 0;">workspace_premium</span>
+                            <div>
+                                <strong style="display: block; font-size: 0.83rem; color: #ffffff; margin-bottom: 2px;">Atención y postventa 5 estrellas</strong>
+                                <span style="font-size: 0.76rem; color: #94a3b8; line-height: 1.35; display: block;">Acompañamiento directo de fábrica antes y después de tu compra.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <a href="https://www.mercadolibre.com.ar/pagina/latarima" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, #ffe600 0%, #facc15 100%); color: #0f172a; font-weight: 800; font-size: 0.92rem; padding: 0.8rem 1.5rem; border-radius: 50px; text-decoration: none; box-shadow: 0 6px 18px rgba(250, 204, 21, 0.35); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 22px rgba(250, 204, 21, 0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 18px rgba(250, 204, 21, 0.35)';">
+                        <span class="material-symbols-outlined" style="font-size: 20px;">storefront</span>
+                        <span>Visitar nuestra Tienda en Mercado Libre</span>
+                        <span class="material-symbols-outlined" style="font-size: 18px;">open_in_new</span>
+                    </a>
+                </article>
+
                 
                 <div id="nosotros-blocks-container">
                     
                 </div>
 
+                
+                <section class="nosotros-section-card">
+                    <div class="nosotros-section-header">
+                        <div class="nosotros-section-icon" style="background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0;">
+                            <span class="material-symbols-outlined">help</span>
+                        </div>
+                        <div>
+                            <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: #0f172a;">Preguntas Frecuentes</h3>
+                            <p style="margin: 2px 0 0 0; font-size: 0.8rem; color: #64748b;">Todo lo que necesitás saber antes de hacer tu pedido</p>
+                        </div>
+                    </div>
+
+                    <div class="nosotros-faq-list">
+                        <details class="nosotros-faq-item">
+                            <summary>
+                                <span>💰 ¿Por qué conviene comprar directo desde esta web?</span>
+                                <span class="material-symbols-outlined" style="font-size: 18px; color: #64748b;">expand_more</span>
+                            </summary>
+                            <p>
+                                Los precios publicados en esta web son exclusivos de <strong>compra directa de fábrica</strong>, sin las comisiones ni recargos de plataformas externas. Además tenés descuentos automáticos por cantidad y promociones de envío bonificado.
+                            </p>
+                        </details>
+                        <details class="nosotros-faq-item">
+                            <summary>
+                                <span>🚚 ¿Cómo funcionan los envíos y el retiro por el taller?</span>
+                                <span class="material-symbols-outlined" style="font-size: 18px; color: #64748b;">expand_more</span>
+                            </summary>
+                            <p>
+                                Podés retirar <strong>sin cargo por nuestro taller en Hurlingham</strong> coordinando horario, o pedir envío a domicilio mediante Logística Rápida (CABA y GBA), Flete Particular o Expreso a todo el país. ¡Poniendo tu Código Postal en cualquier producto ves las opciones al instante!
+                            </p>
+                        </details>
+                        <details class="nosotros-faq-item">
+                            <summary>
+                                <span>🪚 ¿Hacen cortes de madera o cajones a medida?</span>
+                                <span class="material-symbols-outlined" style="font-size: 18px; color: #64748b;">expand_more</span>
+                            </summary>
+                            <p>
+                                ¡Sí! Contamos con cotizadores automáticos de cortes a medida y cajones dentro del catálogo, o podés escribirnos directamente por WhatsApp con las medidas que necesitás para que un asesor te arme el presupuesto.
+                            </p>
+                        </details>
+                        <details class="nosotros-faq-item">
+                            <summary>
+                                <span>📦 ¿Cómo sigo el estado de mi pedido?</span>
+                                <span class="material-symbols-outlined" style="font-size: 18px; color: #64748b;">expand_more</span>
+                            </summary>
+                            <p>
+                                Una vez confirmado tu pedido, te asignamos un número de orden. Tocando el botón flotante del camioncito 🚚 (o escribiendo tu número en el buscador) podés ver en qué etapa de fabricación o envío está tu compra.
+                            </p>
+                        </details>
+                    </div>
+
+                    
+                    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 1.5px solid #86efac; border-radius: 16px; padding: 1rem 1.2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <span class="material-symbols-outlined" style="font-size: 28px; color: #15803d;">support_agent</span>
+                            <div>
+                                <strong style="display: block; font-size: 0.92rem; color: #14532d;">¿Tenés alguna duda o consulta especial?</strong>
+                                <span style="font-size: 0.8rem; color: #166534;">Hablá directo con nosotros por WhatsApp, ¡te respondemos enseguida!</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5491167007723?text=%C2%A1Hola%20La%20Tarima!%20Tengo%20una%20consulta%20desde%20la%20web" target="_blank" rel="noopener" style="background: #16a34a; color: #ffffff; font-weight: 800; font-size: 0.85rem; padding: 0.65rem 1.2rem; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">chat</span>
+                            <span>Escribir por WhatsApp</span>
+                        </a>
+                    </div>
+                </section>
 
             </div>
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
@@ -778,6 +1242,11 @@
             }
 
             const hideBar = (manual = false) => {
+                const medalEl = document.getElementById('trust-platinum-medal');
+                if (medalEl) {
+                    medalEl.style.opacity = '0';
+                    medalEl.style.transform = 'scale(0.5) translateY(-10px)';
+                }
                 barEl.style.opacity = '0';
                 barEl.style.maxHeight = '0';
                 barEl.style.padding = '0';
@@ -798,13 +1267,14 @@
                 });
             }
 
-            // Auto-ocultado suave luego de 10 segundos para dejar la web limpia
+            // Auto-ocultado suave luego de 12 segundos para dejar la web limpia
             setTimeout(() => {
                 hideBar(false);
-            }, 10000);
+            }, 12000);
 
-            // Rotativo suave en móviles
+            // Rotativo suave en móviles (la medalla grande queda fija sobresaliendo a la izquierda)
             const items = [
+                { text: '🏆 MercadoLíder Platinum', isHighlight: true },
                 { text: 'Somos Fabricantes', icon: 'carpenter', color: '#eab308' },
                 { text: 'Envíos a todo el país', icon: 'local_shipping', color: '#38bdf8' },
                 { text: 'Todos los medios de pago', icon: 'credit_card', color: '#4ade80' }
@@ -824,11 +1294,15 @@
                 
                 setTimeout(() => {
                     const item = items[currentIndex];
-                    mobileEl.innerHTML = `<span class="material-symbols-outlined" style="font-size: 14px; color: ${item.color};">${item.icon}</span><span>${item.text}</span>`;
+                    if (item.isHighlight) {
+                        mobileEl.innerHTML = `<span style="color: #7dd3fc; font-weight: 800;">${item.text}</span>`;
+                    } else {
+                        mobileEl.innerHTML = `<span class="material-symbols-outlined" style="font-size: 14px; color: ${item.color};">${item.icon}</span><span>${item.text}</span>`;
+                    }
                     mobileEl.style.opacity = '1';
                     mobileEl.style.transform = 'translateY(0)';
                 }, 250);
-            }, 3000);
+            }, 2800);
         })();
     </script>
     <script src="js/apps/assistant.js?v=7" defer></script>

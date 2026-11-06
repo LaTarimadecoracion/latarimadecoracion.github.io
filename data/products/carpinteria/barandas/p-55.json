@@ -1,11 +1,13 @@
 {
   "id": "55",
+  "shortId": "3L",
   "title": "Baranda: Para camas Sommier - Triple",
   "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
   "image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
       "images_list": [
         "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
@@ -27,11 +29,10 @@
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": false,
-          "shippingConfig": {
-            "logisticaEnabled": false
-          },
-          "noFlex": true,
-          "disableFlex": true
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "110 x 60 cm",
@@ -45,7 +46,11 @@
           "cost_price": 10000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "70 x 60 cm",
@@ -60,16 +65,17 @@
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true,
-          "shippingConfig": {
-            "logisticaMaxUnits": 2
-          },
-          "logisticaMaxUnits": 2
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
     },
     {
       "acabado_name": "Barnizado",
+      "description": "",
       "cover_image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739280-imagen.webp",
       "images_list": [
         "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739280-imagen.webp",
@@ -87,15 +93,14 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 70000,
-          "cost_price": "",
+          "cost_price": 70000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": false,
-          "shippingConfig": {
-            "logisticaEnabled": false
-          },
-          "noFlex": true,
-          "disableFlex": true
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "110 x 60 cm",
@@ -106,10 +111,14 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 55000,
-          "cost_price": "",
+          "cost_price": 55000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "70 x 60 cm",
@@ -120,20 +129,21 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 45000,
-          "cost_price": "",
+          "cost_price": 45000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true,
-          "shippingConfig": {
-            "logisticaMaxUnits": 2
-          },
-          "logisticaMaxUnits": 2
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
     },
     {
       "acabado_name": "Blanco",
+      "description": "",
       "cover_image": "img/barandas-para-cama/baranda-sommier-triple/1780589029876-imagen.webp",
       "images_list": [
         "img/barandas-para-cama/baranda-sommier-triple/1780589029876-imagen.webp",
@@ -154,7 +164,11 @@
           "cost_price": 10000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "70 x 60 cm",
@@ -169,10 +183,10 @@
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true,
-          "shippingConfig": {
-            "logisticaMaxUnits": 2
-          },
-          "logisticaMaxUnits": 2
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
@@ -223,7 +237,6 @@
     "protector cuna",
     "barandas de pino"
   ],
-  "estimatedWeight": 3,
   "shippingConfig": {
     "logisticaEnabled": true,
     "logisticaCost": 0,
@@ -241,13 +254,8 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1788928739326,
+  "last_modified": 1793965208814,
   "primaryCatId": "Barandas",
   "history": [],
-  "views": 62,
-  "categories": [
-    "carpinteria-todos",
-    "Barandas"
-  ],
   "rubro": "carpinteria"
 }

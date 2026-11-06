@@ -53,11 +53,12 @@
   "last_modified": 1788918811368,
   "primaryCatId": "Juguetes",
   "history": [],
-  "views": 3,
+  "views": 4,
   "categories": [
     "carpinteria-todos",
     "Percheros",
     "Juguetes"
   ],
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "price": 30000
 }

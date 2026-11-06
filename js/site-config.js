@@ -159,15 +159,21 @@ window.siteConfig = {
             "linkNewTab": false
         },
         {
-            "title": "Precios y venta online!",
-            "description": "Los precios de los productos dentro de la pagina no incluyen son solo de compra directa.\nSi va a comprar dentro de cualquier plataforma, o tienda online, a estos mismos se le suman los impuestos y comisiones de dichas paginas.\nCualquier cosa, puede enviarnos un wpp:",
+            "title": "Precios directos de fábrica",
+            "description": "Los precios publicados dentro de nuestra web son exclusivos de compra directa con nosotros (sin intermediarios).\nEn otras plataformas o tiendas online externas se suman las comisiones e impuestos propios de cada sitio.\n¡Ante cualquier consulta, escribinos por WhatsApp!",
             "mediaType": "image",
             "image": "img/borrador/portada-imagen.webp",
             "videoUrl": "",
             "mapQuery": "",
-            "links": [],
-            "linkUrl": "",
-            "linkText": "",
+            "links": [
+                {
+                    "text": "Consultar por WhatsApp",
+                    "url": "https://wa.me/5491167007723",
+                    "newTab": true
+                }
+            ],
+            "linkUrl": "https://wa.me/5491167007723",
+            "linkText": "Consultar por WhatsApp",
             "linkNewTab": true,
             "timestamp": 1785464761697
         }

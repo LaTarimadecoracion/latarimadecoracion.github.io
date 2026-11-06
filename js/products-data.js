@@ -48,7 +48,7 @@ const productsData = [
                     }
                 ],
                 "category": "camas-madera-pino",
-                "views": 2
+                "views": 7
             },
             {
                 "id": "51",
@@ -502,7 +502,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 84
+                "views": 86
             },
             {
                 "id": "52",
@@ -951,7 +951,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 14
+                "views": 16
             },
             {
                 "id": "53",
@@ -1242,7 +1242,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -1355,7 +1355,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 35000,
+                                "price": 40000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
@@ -1595,7 +1595,8 @@ const productsData = [
                     "carpinteria-todos",
                     "Barandas"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 40000
             },
             {
                 "id": "55",
@@ -2005,7 +2006,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 4,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -2188,7 +2189,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616752912,
                 "primaryCatId": "Barandas",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -2348,101 +2349,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
-            },
-            {
-                "id": "44",
-                "shortId": "3N",
-                "title": "Organizador Verdulero Frutero Pino 2 Estantes",
-                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "",
-                        "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                            "img/organizadores/verdule-para-mesada/1782439355270-imagen.webp",
-                            "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Chico",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508818173-organizador-verdulero-frutero-pino-2-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 20000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
                 ],
-                "tags": [
-                    "verdulero",
-                    "verduras",
-                    "organizar",
-                    "mueble de cocina",
-                    "cosina",
-                    "frutas",
-                    "frutero",
-                    "candry",
-                    "bar",
-                    "verduleros",
-                    "verdulero mesada",
-                    "verdulero mini",
-                    "verdulero madera",
-                    "verdulero pino",
-                    "cocina",
-                    "cajones",
-                    "organizador cocina",
-                    "mueble cocina",
-                    "panera",
-                    "berdulero",
-                    "berdulería",
-                    "verdulero de pino",
-                    "verdulero de madera",
-                    "verdulería de cocina",
-                    "cesta de verduras",
-                    "cajonera de pino",
-                    "carro de cocina",
-                    "mueble para verduras",
-                    "cajon verdulero",
-                    "organizacion de alimentos",
-                    "despensa de pino",
-                    "verdulero rustico",
-                    "verdulero con cajones",
-                    "cesta de frutas",
-                    "panera de madera",
-                    "panera de pino"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1793586378660,
-                "primaryCatId": "bazar-cocina",
-                "history": []
+                "views": 7
             },
             {
                 "id": "4A",
@@ -2576,7 +2484,7 @@ const productsData = [
                 "last_modified": 1790378932962,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 1,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores",
@@ -2660,7 +2568,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -2756,7 +2664,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -2851,7 +2759,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -3082,7 +2990,7 @@ const productsData = [
                 ],
                 "last_modified": 1786811672934,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -3573,7 +3481,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411576658,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -3859,7 +3767,7 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 10,
+                "views": 11,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -3883,7 +3791,7 @@ const productsData = [
                         "medidas_variants": []
                     }
                 ],
-                "views": 0,
+                "views": 1,
                 "tags": [
                     "escalera",
                     "escaleras",
@@ -4203,7 +4111,8 @@ const productsData = [
                 "last_modified": 1793586859102,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "order": 5
+                "order": 5,
+                "views": 8
             },
             {
                 "id": "4H",
@@ -4241,7 +4150,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4339,7 +4248,8 @@ const productsData = [
                 "last_modified": 1793586159405,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "visible": true
+                "visible": true,
+                "views": 1
             },
             {
                 "id": "63",
@@ -4531,7 +4441,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586175821,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 0
             },
             {
                 "id": "64",
@@ -4614,7 +4525,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586145045,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 6
             },
             {
                 "id": "65",
@@ -4692,7 +4604,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586190636,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 5
             },
             {
                 "id": "7C",
@@ -4765,7 +4678,7 @@ const productsData = [
                 "primaryCatId": "Estantes",
                 "history": [],
                 "visible": true,
-                "views": 1,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores",
@@ -4832,7 +4745,7 @@ const productsData = [
                 "last_modified": 1789446426308,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 11,
+                "views": 12,
                 "categories": [
                     "carpinteria-todos",
                     "Estantes",
@@ -5283,63 +5196,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "F3",
-                "shortId": "3D",
-                "title": "Mesita de luz - Angosta",
-                "description": "Mesita de luz - Angosta",
-                "image": "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "",
-                        "cover_image": "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
-                        "images_list": [
-                            "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
-                            "img/hogar/mesita-de-luz-angosta/1790378658840-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Mesita",
-                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-1-cajon/up/MLAU5310445256",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 18000,
-                                "cost_price": 18000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1793479341261,
-                "primaryCatId": "camas-madera-pino",
-                "history": [],
-                "views": 5
-            },
-            {
                 "id": "F4",
                 "title": "Tender",
                 "description": "",
@@ -5359,7 +5215,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334918176,
                 "primaryCatId": "Organizadores",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -5561,7 +5417,7 @@ const productsData = [
                 "last_modified": 1788917344040,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 1,
+                "views": 2,
                 "categories": [
                     "carpinteria-todos",
                     "bazar-cocina"
@@ -5788,7 +5644,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812318991,
                 "primaryCatId": "jardin-patio",
-                "views": 12,
+                "views": 13,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -6072,7 +5928,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812326311,
                 "primaryCatId": "jardin-patio",
-                "views": 2,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -6083,112 +5939,6 @@ const productsData = [
                     "fleteEnabled": true,
                     "otroEnabled": false,
                     "logisticaMaxUnits": 5
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "jardin-patio"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "E3",
-                "title": "Macetas colgante de eucalipto",
-                "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
-                "image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
-                        "images_list": [
-                            "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
-                            "img/jardin/macetas-colgante-eucalipto/1786334564675-imagen.webp",
-                            "img/jardin/macetas-colgante-eucalipto/1786334564815-imagen.webp",
-                            "img/jardin/macetas-colgante-eucalipto/1786334564942-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "26 x 26 x 11 cm",
-                                "link": "https://www.mercadolibre.com.ar/porta-macetas-colgante-de-madera-eucalipto-26-x-26-cm/up/MLAU3980462508?pdp_filters=item_id:MLA1791659295",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 9000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "Porta maceta colgante de madera",
-                    "Portamacetas colgante",
-                    "Soporte colgante para plantas",
-                    "Macetero colgante madera",
-                    "Decoracion con plantas interior",
-                    "Portamaceteros de pared",
-                    "Estante colgante para plantas",
-                    "Porta maceta de madera maciza",
-                    "Decoracion nordica hogar",
-                    "Organizador de plantas vertical",
-                    "Macetas colgantes interior",
-                    "Adornos de madera para pared",
-                    "Portamacetas minimalista",
-                    "Estilo nordico decoracion",
-                    "Plantas colgantes balcon",
-                    "Diseño de interiores madera",
-                    "Base para plantas colgantes",
-                    "Accesorios para plantas interior",
-                    "Porta macetero artesanal",
-                    "Estante flotante macetas",
-                    "Decoracion de ambientes",
-                    "Muebles de pino para plantas",
-                    "Huertas verticales madera",
-                    "Regalos decoracion hogar",
-                    "maceta",
-                    "macetas",
-                    "macetero",
-                    "macetas colgantes",
-                    "madera",
-                    "eucalipto",
-                    "jardin",
-                    "patio",
-                    "balcon",
-                    "exterior",
-                    "terraza",
-                    "porta macetas",
-                    "colgante",
-                    "decoracion jardin",
-                    "plantas",
-                    "flores",
-                    "macetero de madera",
-                    "macetero de eucalipto",
-                    "maceta colgante",
-                    "porta macetas colgante",
-                    "decoracion exterior",
-                    "decoracion patio",
-                    "decoracion balcon",
-                    "macetero balcon",
-                    "piso jardin",
-                    "macetero de exterior",
-                    "colgante eucalipto"
-                ],
-                "last_modified": 1786334565073,
-                "primaryCatId": "jardin-patio",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
                 },
                 "categories": [
                     "carpinteria-todos",
@@ -6285,7 +6035,7 @@ const productsData = [
                 ],
                 "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -6334,7 +6084,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637216140,
                 "primaryCatId": "Mesas-madera",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -6641,7 +6391,7 @@ const productsData = [
                 "last_modified": 1786564190405,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -7413,7 +7163,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "Organizadores",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -7581,7 +7331,7 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 15,
+                "views": 16,
                 "stock": 0,
                 "history": [
                     {
@@ -7700,7 +7450,7 @@ const productsData = [
                 ],
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 7,
+                "views": 9,
                 "stock": 0,
                 "history": [
                     {
@@ -8509,7 +8259,7 @@ const productsData = [
                 "last_modified": 1784773120669,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 1,
+                "views": 3,
                 "stock": 0,
                 "history": [
                     {
@@ -8650,7 +8400,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 8,
+                "views": 9,
                 "stock": 0,
                 "history": [
                     {
@@ -9129,7 +8879,7 @@ const productsData = [
                 ],
                 "last_modified": 1784081486789,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -9221,7 +8971,7 @@ const productsData = [
                 ],
                 "last_modified": 1783636741117,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0,
+                "views": 2,
                 "stock": 2,
                 "history": [],
                 "paymentConfig": {
@@ -9350,7 +9100,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586660076,
                 "primaryCatId": "productos-algarrobo",
-                "history": []
+                "history": [],
+                "views": 16
             },
             {
                 "id": "4I",
@@ -9407,13 +9158,14 @@ const productsData = [
                 "last_modified": 1788918811368,
                 "primaryCatId": "Juguetes",
                 "history": [],
-                "views": 3,
+                "views": 4,
                 "categories": [
                     "carpinteria-todos",
                     "Percheros",
                     "Juguetes"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 30000
             },
             {
                 "id": "B1",
@@ -9555,7 +9307,7 @@ const productsData = [
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "order": 1,
-                "views": 10
+                "views": 11
             },
             {
                 "id": "B5",
@@ -9590,7 +9342,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839116557,
                 "primaryCatId": "Juguetes",
-                "views": 3,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -9641,7 +9393,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839110101,
                 "primaryCatId": "Juguetes",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -9706,7 +9458,7 @@ const productsData = [
                 ],
                 "last_modified": 1786564211621,
                 "primaryCatId": "sillas-sillones",
-                "views": 14,
+                "views": 16,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -10022,7 +9774,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 101,
+                "views": 110,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -10053,7 +9805,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 70000,
+                                "price": 80000,
                                 "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true
@@ -10118,7 +9870,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 11,
+                "views": 12,
                 "stock": 0,
                 "history": [
                     {
@@ -10144,7 +9896,8 @@ const productsData = [
                     "Vinotecas",
                     "Hogar"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 80000
             },
             {
                 "id": "23",
@@ -10169,7 +9922,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 80000,
+                                "price": 100000,
                                 "cost_price": 31000,
                                 "legend": "",
                                 "showPrice": true
@@ -10234,7 +9987,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
-                "views": 4,
+                "views": 7,
                 "stock": 0,
                 "history": [
                     {
@@ -10260,7 +10013,8 @@ const productsData = [
                     "Vinotecas",
                     "Hogar"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 100000
             },
             {
                 "id": "25",
@@ -10465,7 +10219,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 8,
+                "views": 9,
                 "stock": 0,
                 "history": [
                     {
@@ -10807,7 +10561,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 2
+                "views": 3
             },
             {
                 "id": "94",
@@ -10944,7 +10698,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 109
+                "views": 110
             },
             {
                 "id": "95",
@@ -11118,7 +10872,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "visible": true,
-                "views": 73
+                "views": 77
             },
             {
                 "id": "1792887338328",
@@ -11174,7 +10928,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA1248080101)"
                     }
                 ],
-                "views": 0
+                "views": 1
             },
             {
                 "id": "1792887338330",
@@ -11556,7 +11310,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA2164674452)"
                     }
                 ],
-                "views": 1
+                "views": 4
             },
             {
                 "id": "1792887338342",
@@ -11628,7 +11382,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
                     }
                 ],
-                "views": 0
+                "views": 3
             },
             {
                 "id": "1792887338350",
@@ -11772,7 +11526,8 @@ const productsData = [
                         "timestamp": 1792887338344,
                         "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
                     }
-                ]
+                ],
+                "views": 5
             },
             {
                 "id": "1792887338354",
@@ -12014,7 +11769,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 101,
+                "views": 110,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -12045,7 +11800,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 70000,
+                                "price": 80000,
                                 "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true
@@ -12110,7 +11865,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 11,
+                "views": 12,
                 "stock": 0,
                 "history": [
                     {
@@ -12136,7 +11891,8 @@ const productsData = [
                     "Vinotecas",
                     "Hogar"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 80000
             },
             {
                 "id": "23",
@@ -12161,7 +11917,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 80000,
+                                "price": 100000,
                                 "cost_price": 31000,
                                 "legend": "",
                                 "showPrice": true
@@ -12226,7 +11982,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
-                "views": 4,
+                "views": 7,
                 "stock": 0,
                 "history": [
                     {
@@ -12252,7 +12008,8 @@ const productsData = [
                     "Vinotecas",
                     "Hogar"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 100000
             },
             {
                 "id": "24",
@@ -12278,7 +12035,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 90000,
+                                "price": 120000,
                                 "cost_price": 36000,
                                 "legend": "",
                                 "showPrice": true,
@@ -12384,7 +12141,8 @@ const productsData = [
                     }
                 ],
                 "rubro": "carpinteria",
-                "views": 11
+                "views": 11,
+                "price": 120000
             },
             {
                 "id": "25",
@@ -12589,7 +12347,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 8,
+                "views": 9,
                 "stock": 0,
                 "history": [
                     {
@@ -12719,7 +12477,7 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 15,
+                "views": 16,
                 "stock": 0,
                 "history": [
                     {
@@ -12838,7 +12596,7 @@ const productsData = [
                 ],
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 7,
+                "views": 9,
                 "stock": 0,
                 "history": [
                     {
@@ -12924,13 +12682,14 @@ const productsData = [
                 "last_modified": 1788918811368,
                 "primaryCatId": "Juguetes",
                 "history": [],
-                "views": 3,
+                "views": 4,
                 "categories": [
                     "carpinteria-todos",
                     "Percheros",
                     "Juguetes"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 30000
             },
             {
                 "id": "33",
@@ -13710,7 +13469,7 @@ const productsData = [
                 "last_modified": 1784773120669,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 1,
+                "views": 3,
                 "stock": 0,
                 "history": [
                     {
@@ -13851,7 +13610,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 8,
+                "views": 9,
                 "stock": 0,
                 "history": [
                     {
@@ -14344,7 +14103,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 84
+                "views": 86
             },
             {
                 "id": "52",
@@ -14793,7 +14552,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 14
+                "views": 16
             },
             {
                 "id": "53",
@@ -15084,7 +14843,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -15197,7 +14956,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 35000,
+                                "price": 40000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
@@ -15437,7 +15196,8 @@ const productsData = [
                     "carpinteria-todos",
                     "Barandas"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 40000
             },
             {
                 "id": "55",
@@ -15847,7 +15607,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 4,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -16030,7 +15790,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616752912,
                 "primaryCatId": "Barandas",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -16229,7 +15989,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "visible": true,
-                "views": 73
+                "views": 77
             },
             {
                 "id": "A1",
@@ -16340,7 +16100,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 9
+                "views": 10
             },
             {
                 "id": "A2",
@@ -16689,7 +16449,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "A4",
@@ -16922,7 +16682,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA1375418215)"
                     }
                 ],
-                "views": 0,
+                "views": 2,
                 "paymentConfig": {
                     "mode": "store",
                     "showBuyButton": true,
@@ -16982,7 +16742,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA2180486792)"
                     }
                 ],
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "mode": "store",
                     "showBuyButton": true,
@@ -17039,7 +16799,7 @@ const productsData = [
                 "history": [],
                 "visible": true,
                 "rubro": "carpinteria",
-                "views": 4
+                "views": 6
             }
         ]
     },
@@ -17192,101 +16952,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
-            },
-            {
-                "id": "44",
-                "shortId": "3N",
-                "title": "Organizador Verdulero Frutero Pino 2 Estantes",
-                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "",
-                        "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                            "img/organizadores/verdule-para-mesada/1782439355270-imagen.webp",
-                            "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Chico",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508818173-organizador-verdulero-frutero-pino-2-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 20000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
                 ],
-                "tags": [
-                    "verdulero",
-                    "verduras",
-                    "organizar",
-                    "mueble de cocina",
-                    "cosina",
-                    "frutas",
-                    "frutero",
-                    "candry",
-                    "bar",
-                    "verduleros",
-                    "verdulero mesada",
-                    "verdulero mini",
-                    "verdulero madera",
-                    "verdulero pino",
-                    "cocina",
-                    "cajones",
-                    "organizador cocina",
-                    "mueble cocina",
-                    "panera",
-                    "berdulero",
-                    "berdulería",
-                    "verdulero de pino",
-                    "verdulero de madera",
-                    "verdulería de cocina",
-                    "cesta de verduras",
-                    "cajonera de pino",
-                    "carro de cocina",
-                    "mueble para verduras",
-                    "cajon verdulero",
-                    "organizacion de alimentos",
-                    "despensa de pino",
-                    "verdulero rustico",
-                    "verdulero con cajones",
-                    "cesta de frutas",
-                    "panera de madera",
-                    "panera de pino"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1793586378660,
-                "primaryCatId": "bazar-cocina",
-                "history": []
+                "views": 7
             },
             {
                 "id": "45",
@@ -17518,7 +17185,7 @@ const productsData = [
                 "primaryCatId": "Estantes",
                 "history": [],
                 "visible": true,
-                "views": 1,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores",
@@ -17894,7 +17561,7 @@ const productsData = [
                 "last_modified": 1790378932962,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 1,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores",
@@ -18052,7 +17719,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18148,7 +17815,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18243,7 +17910,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18393,7 +18060,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "Organizadores",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18541,7 +18208,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334918176,
                 "primaryCatId": "Organizadores",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18636,7 +18303,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 109
+                "views": 110
             },
             {
                 "id": "67",
@@ -18948,7 +18615,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 2
+                "views": 3
             },
             {
                 "id": "94",
@@ -19064,7 +18731,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -19225,7 +18892,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
+                ],
+                "views": 7
             },
             {
                 "id": "7C",
@@ -19298,7 +18966,7 @@ const productsData = [
                 "primaryCatId": "Estantes",
                 "history": [],
                 "visible": true,
-                "views": 1,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores",
@@ -19577,7 +19245,8 @@ const productsData = [
                 "last_modified": 1793586859102,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "order": 5
+                "order": 5,
+                "views": 8
             },
             {
                 "id": "63",
@@ -19769,7 +19438,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586175821,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 0
             },
             {
                 "id": "62",
@@ -19850,7 +19520,8 @@ const productsData = [
                 "last_modified": 1793586159405,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "visible": true
+                "visible": true,
+                "views": 1
             },
             {
                 "id": "64",
@@ -19933,7 +19604,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586145045,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 6
             },
             {
                 "id": "65",
@@ -20011,7 +19683,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586190636,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 5
             },
             {
                 "id": "7D",
@@ -20071,7 +19744,7 @@ const productsData = [
                 "last_modified": 1789446426308,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 11,
+                "views": 12,
                 "categories": [
                     "carpinteria-todos",
                     "Estantes",
@@ -20244,7 +19917,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA1248080101)"
                     }
                 ],
-                "views": 0
+                "views": 1
             },
             {
                 "id": "1792887338330",
@@ -20920,7 +20593,7 @@ const productsData = [
                 ],
                 "last_modified": 1786811672934,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21411,7 +21084,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411576658,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21555,7 +21228,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 18000,
+                                "price": 22000,
                                 "cost_price": 18000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21583,11 +21256,11 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586887358,
+                "last_modified": 1793640925719,
                 "primaryCatId": "camas-madera-pino",
                 "history": [],
-                "views": 5,
-                "order": 0
+                "rubro": "carpinteria",
+                "views": 17
             },
             {
                 "id": "1793239693996",
@@ -21630,7 +21303,7 @@ const productsData = [
                     }
                 ],
                 "category": "camas-madera-pino",
-                "views": 2,
+                "views": 7,
                 "last_modified": 1793586887358
             },
             {
@@ -21795,7 +21468,7 @@ const productsData = [
                 "last_modified": 1793586887358,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 10,
+                "views": 11,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -21880,7 +21553,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586887358,
                 "primaryCatId": "cajones-madera",
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21977,7 +21650,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586887358,
                 "primaryCatId": "cajones-madera",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22073,7 +21746,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586887358,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22372,7 +22045,7 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 10,
+                "views": 11,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -22396,7 +22069,7 @@ const productsData = [
                         "medidas_variants": []
                     }
                 ],
-                "views": 0,
+                "views": 1,
                 "tags": [
                     "escalera",
                     "escaleras",
@@ -22556,7 +22229,7 @@ const productsData = [
                 "primaryCatId": "muebles",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 4
+                "views": 5
             },
             {
                 "id": "1793485821041",
@@ -22616,7 +22289,7 @@ const productsData = [
                 "history": [],
                 "visible": true,
                 "rubro": "carpinteria",
-                "views": 1
+                "views": 5
             }
         ]
     },
@@ -22674,7 +22347,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586859102,
                 "primaryCatId": "sillas-sillones",
-                "views": 14,
+                "views": 16,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22865,7 +22538,7 @@ const productsData = [
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "order": 2,
-                "views": 10
+                "views": 11
             },
             {
                 "id": "4I",
@@ -22922,14 +22595,15 @@ const productsData = [
                 "last_modified": 1793586859102,
                 "primaryCatId": "Juguetes",
                 "history": [],
-                "views": 3,
+                "views": 4,
                 "categories": [
                     "carpinteria-todos",
                     "Percheros",
                     "Juguetes"
                 ],
                 "rubro": "carpinteria",
-                "order": 3
+                "order": 3,
+                "price": 30000
             },
             {
                 "id": "4A",
@@ -23281,7 +22955,8 @@ const productsData = [
                 "last_modified": 1793586859102,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "order": 5
+                "order": 5,
+                "views": 8
             },
             {
                 "id": "4H",
@@ -23319,7 +22994,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1793586859102,
                 "primaryCatId": "Estantes",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23397,7 +23072,7 @@ const productsData = [
                 "last_modified": 1793586859102,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 11,
+                "views": 12,
                 "categories": [
                     "carpinteria-todos",
                     "Estantes",
@@ -23439,7 +23114,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1793586859102,
                 "primaryCatId": "Juguetes",
-                "views": 3,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23821,7 +23496,7 @@ const productsData = [
                 "last_modified": 1793586859102,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23873,7 +23548,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1793586859102,
                 "primaryCatId": "Juguetes",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24055,7 +23730,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586813439,
                 "primaryCatId": "sillas-sillones",
-                "views": 14,
+                "views": 16,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24131,7 +23806,7 @@ const productsData = [
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "order": 1,
-                "views": 10
+                "views": 11
             },
             {
                 "id": "B5",
@@ -24166,7 +23841,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1793586813439,
                 "primaryCatId": "Juguetes",
-                "views": 3,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24218,7 +23893,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1793586813439,
                 "primaryCatId": "Juguetes",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24278,7 +23953,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637216140,
                 "primaryCatId": "Mesas-madera",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24585,7 +24260,7 @@ const productsData = [
                 "last_modified": 1786564190405,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24663,7 +24338,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "Organizadores",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24895,7 +24570,8 @@ const productsData = [
                         "timestamp": 1792887338344,
                         "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
                     }
-                ]
+                ],
+                "views": 5
             }
         ]
     },
@@ -24908,14 +24584,19 @@ const productsData = [
         "products": [
             {
                 "id": "E3",
+                "shortId": "3L",
                 "title": "Macetas colgante de eucalipto",
                 "description": "Porta maceta colgante de madera. Funciona y decora cualquier ambiente de tu casa.\n\nCalidad Artesanal: Hechos a mano con dedicación y cuidado en cada detalle, asegurando un producto firme y diseñado para durar.\n\nMedidas: Externas: 26 x 26 x 11 cm\n\nInternas: 17 x 17 cm (ideal para macetas de esa medida)\n\nMaterial: Madera eucalipto de primera (ya está seco).",
-                "image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
+                "image": "img/jardn-decks/macetas-colgante-de-eucalipto/1793681585775-edit_1793681583731webp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
-                        "cover_image": "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
+                        "description": "",
+                        "cover_image": "img/jardn-decks/macetas-colgante-de-eucalipto/1793681585775-edit_1793681583731webp.webp",
                         "images_list": [
+                            "img/jardn-decks/macetas-colgante-de-eucalipto/1793681585775-edit_1793681583731webp.webp",
+                            "img/jardn-decks/macetas-colgante-de-eucalipto/1793681627862-imagenwebp.webp",
+                            "img/jardn-decks/macetas-colgante-de-eucalipto/1793681645222-edit_1793681644255webp.webp",
                             "img/jardin/macetas-colgante-eucalipto/1786334564549-imagen.webp",
                             "img/jardin/macetas-colgante-eucalipto/1786334564675-imagen.webp",
                             "img/jardin/macetas-colgante-eucalipto/1786334564815-imagen.webp",
@@ -24933,7 +24614,12 @@ const productsData = [
                                 "price": 20000,
                                 "cost_price": 9000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -24992,26 +24678,28 @@ const productsData = [
                     "macetero de exterior",
                     "colgante eucalipto"
                 ],
-                "last_modified": 1793586789934,
-                "primaryCatId": "jardin-patio",
-                "views": 1,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "jardin-patio"
-                ],
+                "quantityDiscounts": [],
+                "last_modified": 1793681645232,
+                "primaryCatId": "jardin-patio",
+                "history": [],
                 "rubro": "carpinteria",
-                "order": 0
+                "views": 13
             },
             {
                 "id": "1792887338335",
@@ -25083,7 +24771,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA2164674452)"
                     }
                 ],
-                "views": 1,
+                "views": 4,
                 "order": 1
             },
             {
@@ -25118,7 +24806,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586789934,
                 "primaryCatId": "Mesas-madera",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -25281,7 +24969,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
                     }
                 ],
-                "views": 0,
+                "views": 3,
                 "order": 4
             },
             {
@@ -25424,7 +25112,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586789934,
                 "primaryCatId": "jardin-patio",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -25662,7 +25350,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586789934,
                 "primaryCatId": "jardin-patio",
-                "views": 12,
+                "views": 13,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -25947,7 +25635,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586789934,
                 "primaryCatId": "jardin-patio",
-                "views": 2,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -26240,7 +25928,7 @@ const productsData = [
                 ],
                 "last_modified": 1784081486789,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -26332,7 +26020,7 @@ const productsData = [
                 ],
                 "last_modified": 1783636741117,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0,
+                "views": 2,
                 "stock": 2,
                 "history": [],
                 "paymentConfig": {
@@ -26461,7 +26149,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586660076,
                 "primaryCatId": "productos-algarrobo",
-                "history": []
+                "history": [],
+                "views": 16
             },
             {
                 "id": "1792887338352",
@@ -26507,7 +26196,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3993235002)"
                     }
                 ],
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "mode": "store",
                     "showBuyButton": true,
@@ -26676,23 +26365,27 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
+                ],
+                "views": 7
             },
             {
                 "id": "44",
                 "shortId": "3N",
                 "title": "Organizador Verdulero Frutero Pino 2 Estantes",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+                "image": "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887981518-edit_1793887970524webp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
                         "description": "",
-                        "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+                        "cover_image": "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887981518-edit_1793887970524webp.webp",
                         "images_list": [
+                            "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887981518-edit_1793887970524webp.webp",
+                            "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887981525-imagenwebp.webp",
                             "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
                             "img/organizadores/verdule-para-mesada/1782439355270-imagen.webp",
-                            "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp"
+                            "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp",
+                            "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887949991-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -26703,11 +26396,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20000,
+                                "price": 13000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -26768,9 +26465,11 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586378660,
+                "last_modified": 1793887981528,
                 "primaryCatId": "bazar-cocina",
-                "history": []
+                "history": [],
+                "rubro": "carpinteria",
+                "views": 6
             },
             {
                 "id": "4A",
@@ -26904,7 +26603,7 @@ const productsData = [
                 "last_modified": 1790378932962,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 1,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores",
@@ -27095,7 +26794,7 @@ const productsData = [
                 "last_modified": 1788917344040,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 1,
+                "views": 2,
                 "categories": [
                     "carpinteria-todos",
                     "bazar-cocina"
@@ -27190,7 +26889,7 @@ const productsData = [
                 ],
                 "last_modified": 1784081486789,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -27282,7 +26981,7 @@ const productsData = [
                 ],
                 "last_modified": 1783636741117,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0,
+                "views": 2,
                 "stock": 2,
                 "history": [],
                 "paymentConfig": {
@@ -27411,7 +27110,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586660076,
                 "primaryCatId": "productos-algarrobo",
-                "history": []
+                "history": [],
+                "views": 16
             },
             {
                 "id": "25",
@@ -27608,7 +27308,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -27704,7 +27404,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -27799,7 +27499,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -28630,7 +28330,7 @@ const productsData = [
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": [],
                 "visible": true,
-                "views": 0,
+                "views": 2,
                 "categories": [
                     "electricidad-todos",
                     "cat-21-mu7q9i7y"
@@ -28889,7 +28589,7 @@ const productsData = [
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": [],
                 "visible": true,
-                "views": 0,
+                "views": 2,
                 "categories": [
                     "electricidad-todos",
                     "cat-21-mu7q9i7y"

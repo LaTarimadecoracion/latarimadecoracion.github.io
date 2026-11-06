@@ -21,7 +21,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 80000,
+          "price": 100000,
           "cost_price": 31000,
           "legend": "",
           "showPrice": true
@@ -86,7 +86,7 @@
   ],
   "last_modified": 1784083089360,
   "primaryCatId": "Vinotecas",
-  "views": 4,
+  "views": 7,
   "stock": 0,
   "history": [
     {
@@ -111,5 +111,6 @@
     "carpinteria-todos",
     "Vinotecas"
   ],
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "price": 100000
 }

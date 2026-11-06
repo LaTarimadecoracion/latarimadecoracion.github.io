@@ -7002,7 +7002,7 @@ a .material-symbols-outlined {
 
 /* --- CINTILLO SUPERIOR DE CONFIANZA (PUNTO 5 UX) --- */
 .trust-top-bar {
-    background: #231e19 !important;
+    background: #231e19 !important; overflow: visible !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 @media (min-width: 768px) {

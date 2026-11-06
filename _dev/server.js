@@ -671,6 +671,7 @@ app.post('/api/save-products', (req, res) => {
             activeImagePaths.add('img/logo_provisional.png');
             activeImagePaths.add('img/logo-dark.png');
             activeImagePaths.add('img/logo-light.png');
+            activeImagePaths.add('img/Platinum.png');
 
             // Proteger también las miniaturas (_thumb.webp) correspondientes a cada imagen activa
             for (const imgP of Array.from(activeImagePaths)) {

@@ -1,11 +1,13 @@
 {
   "id": "54",
+  "shortId": "3L",
   "title": "Baranda: Para camas Sommier",
   "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
   "image": "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
       "images_list": [
         "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
@@ -21,16 +23,15 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 65000,
+          "price": 75000,
           "cost_price": 65000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": false,
-          "shippingConfig": {
-            "logisticaEnabled": false
-          },
-          "noFlex": true,
-          "disableFlex": true
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "190 x 45 cm",
@@ -40,16 +41,15 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 65000,
+          "price": 75000,
           "cost_price": 65000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": false,
-          "shippingConfig": {
-            "logisticaEnabled": false
-          },
-          "noFlex": true,
-          "disableFlex": true
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "140 x 45 cm",
@@ -63,10 +63,11 @@
           "cost_price": 45000,
           "legend": "",
           "showPrice": true,
-          "shippingConfig": {
-            "logisticaMaxUnits": 1
-          },
-          "logisticaMaxUnits": 1
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "130 x 45 cm",
@@ -80,10 +81,11 @@
           "cost_price": 45000,
           "legend": "",
           "showPrice": true,
-          "shippingConfig": {
-            "logisticaMaxUnits": 1
-          },
-          "logisticaMaxUnits": 1
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "110 x 45 cm",
@@ -93,55 +95,94 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 35000,
+          "price": 40000,
           "cost_price": 35000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "100 x 45 cm",
-          "link": "https://articulo.mercadolibre.com.ar/MLA-2277798420-baranda-de-seguridad-para-sommier-100x45-cm-_JM",
+          "link": "",
           "default": false,
           "hidden": false,
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 35000,
+          "price": 40000,
           "cost_price": 35000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "90 x 45 cm",
-          "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-90x45-cm/up/MLAU3378213128?pdp_filters=item_id:MLA2277798442",
+          "link": "",
           "default": false,
           "hidden": false,
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 35000,
+          "price": 40000,
           "cost_price": 35000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "80 x 45 cm",
+          "link": "",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
+          "price": 40000,
+          "cost_price": 35000,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
+        },
+        {
+          "medida": "70 x 45 cm",
           "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-80x45-cm/up/MLAU3372077063?pdp_filters=item_id:MLA1516468901",
           "default": false,
           "hidden": false,
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 35000,
+          "price": 40000,
           "cost_price": 35000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
     },
     {
       "acabado_name": "Barnizado",
+      "description": "",
       "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
       "images_list": [
         "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
@@ -161,7 +202,12 @@
           "price": 50000,
           "cost_price": 50000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "100 x 45 cm",
@@ -174,7 +220,12 @@
           "price": 50000,
           "cost_price": 50000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "90 x 45 cm",
@@ -187,7 +238,12 @@
           "price": 50000,
           "cost_price": 50000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "80 x 45 cm",
@@ -200,13 +256,19 @@
           "price": 50000,
           "cost_price": 50000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
     },
     {
       "acabado_name": "Blanca",
+      "description": "",
       "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/1780589141478-imagen.webp",
       "images_list": [
         "img/barandas-para-cama/baranda-sommier-clasica/1780589141478-imagen.webp",
@@ -225,7 +287,12 @@
           "price": 55000,
           "cost_price": 55000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "100 x 45 cm",
@@ -238,7 +305,12 @@
           "price": 55000,
           "cost_price": 55000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "90 x 45 cm",
@@ -251,7 +323,12 @@
           "price": 55000,
           "cost_price": 55000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "80 x 45 cm",
@@ -264,7 +341,12 @@
           "price": 55000,
           "cost_price": 55000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
@@ -315,23 +397,25 @@
     "protector cuna",
     "barandas de pino"
   ],
-  "last_modified": 1784430041975,
-  "primaryCatId": "Barandas",
-  "views": 3,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 2,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
   "paymentConfig": {
     "transferEnabled": true,
     "linkEnabled": false,
     "creditEnabled": false
   },
-  "shippingConfig": {
-    "logisticaEnabled": true,
-    "fleteEnabled": true,
-    "otroEnabled": false,
-    "logisticaMaxUnits": 2
-  },
-  "categories": [
-    "carpinteria-todos",
-    "Barandas"
-  ],
+  "quantityDiscounts": [],
+  "last_modified": 1793923031277,
+  "primaryCatId": "Barandas",
+  "history": [],
   "rubro": "carpinteria"
 }

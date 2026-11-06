@@ -48,7 +48,7 @@ const productsData = [
                     }
                 ],
                 "category": "camas-madera-pino",
-                "views": 2
+                "views": 7
             },
             {
                 "id": "51",
@@ -502,7 +502,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 84
+                "views": 86
             },
             {
                 "id": "52",
@@ -951,7 +951,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 14
+                "views": 16
             },
             {
                 "id": "53",
@@ -1242,7 +1242,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -1254,596 +1254,6 @@ const productsData = [
                     "otroEnabled": false,
                     "logisticaMaxUnits": 1
                 },
-                "categories": [
-                    "carpinteria-todos",
-                    "Barandas"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "54",
-                "title": "Baranda: Para camas Sommier",
-                "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
-                "image": "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/1780602269617-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/02.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "200 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 65000,
-                                "cost_price": 65000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
-                            },
-                            {
-                                "medida": "190 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 65000,
-                                "cost_price": 65000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
-                            },
-                            {
-                                "medida": "140 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-140x45-cm/up/MLAU3372086081?pdp_filters=item_id:MLA2277988838",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 45000,
-                                "legend": "",
-                                "showPrice": true,
-                                "shippingConfig": {
-                                    "logisticaMaxUnits": 1
-                                },
-                                "logisticaMaxUnits": 1
-                            },
-                            {
-                                "medida": "130 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-130x45-cm/up/MLAU3372085021?pdp_filters=item_id:MLA2277685204",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 45000,
-                                "legend": "",
-                                "showPrice": true,
-                                "shippingConfig": {
-                                    "logisticaMaxUnits": 1
-                                },
-                                "logisticaMaxUnits": 1
-                            },
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-cama-universal-110-x-45-cm/up/MLAU3269858321#polycard_client=search-desktop&be_origin=backend&search_layout=grid&position=30&type=product&tracking_id=a22ec83d-c5e7-4dd1-aff8-61c0645d8dc4&wid=MLA1508195513&sid=search",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "cost_price": 35000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2277798420-baranda-de-seguridad-para-sommier-100x45-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "cost_price": 35000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-90x45-cm/up/MLAU3378213128?pdp_filters=item_id:MLA2277798442",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "cost_price": 35000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-80x45-cm/up/MLAU3372077063?pdp_filters=item_id:MLA1516468901",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "cost_price": 35000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/02.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/03.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/04.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 50000,
-                                "cost_price": 50000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 50000,
-                                "cost_price": 50000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 50000,
-                                "cost_price": 50000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1545790215-baranda-de-seguridad-para-cama-sommier-110x60cm-barnizada-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 50000,
-                                "cost_price": 50000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Blanca",
-                        "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/1780589141478-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-sommier-clasica/1780589141478-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/1780589141607-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-clasica/1780589141755-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 55000,
-                                "cost_price": 55000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 55000,
-                                "cost_price": 55000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 55000,
-                                "cost_price": 55000,
-                                "legend": "",
-                                "showPrice": true
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1230906965-baranda-de-seguridad-para-sommier-110x45cm-blanca-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 55000,
-                                "cost_price": 55000,
-                                "legend": "",
-                                "showPrice": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "baranda",
-                    "barandas",
-                    "baranda sommier",
-                    "baranda clasica",
-                    "baranda cama",
-                    "baranda madera",
-                    "baranda pino",
-                    "niños",
-                    "bebes",
-                    "proteccion",
-                    "seguridad",
-                    "anticaida",
-                    "infantil",
-                    "sommier",
-                    "cuna",
-                    "barrera",
-                    "barandilla",
-                    "barrera cama",
-                    "proteccion cama",
-                    "baranda anticaida",
-                    "seguridad infantil",
-                    "colecho",
-                    "anticaidas",
-                    "varanda",
-                    "varandas",
-                    "barada",
-                    "baradas",
-                    "proteccion cuna",
-                    "seguridad cuna",
-                    "defensa cuna",
-                    "barrera cuna",
-                    "baranda colecho",
-                    "baranda de seguridad",
-                    "reja de cama",
-                    "barandilla cuna",
-                    "barandilla cama",
-                    "barrera anticaida",
-                    "protector de cama",
-                    "baranda de pino",
-                    "baranda de madera",
-                    "anticaidas cuna",
-                    "protector cuna",
-                    "barandas de pino"
-                ],
-                "last_modified": 1784430041975,
-                "primaryCatId": "Barandas",
-                "views": 3,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Barandas"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "55",
-                "title": "Baranda: Para camas Sommier - Triple",
-                "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
-                "image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
-                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739244-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-triple/1780602364557-imagen.webp",
-                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739261-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "140 x 60 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-la-tarima-140x60cm-plegable/up/MLAU3734270229?pdp_filters=item_id:MLA2792477832",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
-                            },
-                            {
-                                "medida": "110 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1439861656-baranda-de-seguridad-para-cama-sommier-110x60cm-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "70 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1393562489-baranda-para-cama-bebes-ninos-adultos-70-x-60-cm-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true,
-                                "shippingConfig": {
-                                    "logisticaMaxUnits": 2
-                                },
-                                "logisticaMaxUnits": 2
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Barnizado",
-                        "cover_image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739280-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739280-imagen.webp",
-                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739296-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-triple/1780602364557-imagen.webp",
-                            "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739321-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "140 x 60 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 70000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
-                            },
-                            {
-                                "medida": "110 x 60 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 55000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "70 x 60 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true,
-                                "shippingConfig": {
-                                    "logisticaMaxUnits": 2
-                                },
-                                "logisticaMaxUnits": 2
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Blanco",
-                        "cover_image": "img/barandas-para-cama/baranda-sommier-triple/1780589029876-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-sommier-triple/1780589029876-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-triple/1780589030031-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-triple/1780589030175-imagen.webp",
-                            "img/barandas-para-cama/baranda-sommier-triple/1780589030314-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "110 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1348081575-baranda-de-seguridad-para-sommier-110-x-60-cm-blanca-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 75000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "70 x 60 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1348081575-baranda-de-seguridad-para-sommier-110-x-60-cm-blanca-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 75000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true,
-                                "shippingConfig": {
-                                    "logisticaMaxUnits": 2
-                                },
-                                "logisticaMaxUnits": 2
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "baranda",
-                    "barandas",
-                    "baranda sommier",
-                    "baranda triple",
-                    "baranda cama",
-                    "baranda madera",
-                    "baranda pino",
-                    "niños",
-                    "bebes",
-                    "proteccion",
-                    "seguridad",
-                    "anticaida",
-                    "infantil",
-                    "sommier",
-                    "cuna",
-                    "barrera",
-                    "barandilla",
-                    "barrera cama",
-                    "proteccion cama",
-                    "baranda anticaida",
-                    "seguridad infantil",
-                    "colecho",
-                    "anticaidas",
-                    "varanda",
-                    "varandas",
-                    "barada",
-                    "baradas",
-                    "proteccion cuna",
-                    "seguridad cuna",
-                    "defensa cuna",
-                    "barrera cuna",
-                    "baranda colecho",
-                    "baranda de seguridad",
-                    "reja de cama",
-                    "barandilla cuna",
-                    "barandilla cama",
-                    "barrera anticaida",
-                    "protector de cama",
-                    "baranda de pino",
-                    "baranda de madera",
-                    "anticaidas cuna",
-                    "protector cuna",
-                    "barandas de pino"
-                ],
-                "estimatedWeight": 3,
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 1,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1788928739326,
-                "primaryCatId": "Barandas",
-                "history": [],
-                "views": 62,
                 "categories": [
                     "carpinteria-todos",
                     "Barandas"
@@ -2005,7 +1415,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 4,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -2188,7 +1598,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616752912,
                 "primaryCatId": "Barandas",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -2348,101 +1758,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
-            },
-            {
-                "id": "44",
-                "shortId": "3N",
-                "title": "Organizador Verdulero Frutero Pino 2 Estantes",
-                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "",
-                        "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                            "img/organizadores/verdule-para-mesada/1782439355270-imagen.webp",
-                            "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Chico",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508818173-organizador-verdulero-frutero-pino-2-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 20000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
                 ],
-                "tags": [
-                    "verdulero",
-                    "verduras",
-                    "organizar",
-                    "mueble de cocina",
-                    "cosina",
-                    "frutas",
-                    "frutero",
-                    "candry",
-                    "bar",
-                    "verduleros",
-                    "verdulero mesada",
-                    "verdulero mini",
-                    "verdulero madera",
-                    "verdulero pino",
-                    "cocina",
-                    "cajones",
-                    "organizador cocina",
-                    "mueble cocina",
-                    "panera",
-                    "berdulero",
-                    "berdulería",
-                    "verdulero de pino",
-                    "verdulero de madera",
-                    "verdulería de cocina",
-                    "cesta de verduras",
-                    "cajonera de pino",
-                    "carro de cocina",
-                    "mueble para verduras",
-                    "cajon verdulero",
-                    "organizacion de alimentos",
-                    "despensa de pino",
-                    "verdulero rustico",
-                    "verdulero con cajones",
-                    "cesta de frutas",
-                    "panera de madera",
-                    "panera de pino"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1793586378660,
-                "primaryCatId": "bazar-cocina",
-                "history": []
+                "views": 7
             },
             {
                 "id": "4A",
@@ -2576,7 +1893,7 @@ const productsData = [
                 "last_modified": 1790378932962,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 1,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores",
@@ -2660,7 +1977,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -2756,7 +2073,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -2851,7 +2168,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -3082,7 +2399,7 @@ const productsData = [
                 ],
                 "last_modified": 1786811672934,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -3573,7 +2890,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411576658,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -3859,7 +3176,7 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 10,
+                "views": 11,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -3883,7 +3200,7 @@ const productsData = [
                         "medidas_variants": []
                     }
                 ],
-                "views": 0,
+                "views": 1,
                 "tags": [
                     "escalera",
                     "escaleras",
@@ -4203,7 +3520,8 @@ const productsData = [
                 "last_modified": 1793586859102,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "order": 5
+                "order": 5,
+                "views": 8
             },
             {
                 "id": "4H",
@@ -4241,7 +3559,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4339,7 +3657,8 @@ const productsData = [
                 "last_modified": 1793586159405,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "visible": true
+                "visible": true,
+                "views": 1
             },
             {
                 "id": "63",
@@ -4531,7 +3850,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586175821,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 0
             },
             {
                 "id": "64",
@@ -4614,7 +3934,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586145045,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 6
             },
             {
                 "id": "65",
@@ -4692,7 +4013,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586190636,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 5
             },
             {
                 "id": "7C",
@@ -4765,7 +4087,7 @@ const productsData = [
                 "primaryCatId": "Estantes",
                 "history": [],
                 "visible": true,
-                "views": 1,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores",
@@ -4832,7 +4154,7 @@ const productsData = [
                 "last_modified": 1789446426308,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 11,
+                "views": 12,
                 "categories": [
                     "carpinteria-todos",
                     "Estantes",
@@ -5302,7 +4624,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334918176,
                 "primaryCatId": "Organizadores",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -5504,7 +4826,7 @@ const productsData = [
                 "last_modified": 1788917344040,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 1,
+                "views": 2,
                 "categories": [
                     "carpinteria-todos",
                     "bazar-cocina"
@@ -5731,7 +5053,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812318991,
                 "primaryCatId": "jardin-patio",
-                "views": 12,
+                "views": 13,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -6015,7 +5337,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812326311,
                 "primaryCatId": "jardin-patio",
-                "views": 2,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -6122,7 +5444,7 @@ const productsData = [
                 ],
                 "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -6171,7 +5493,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637216140,
                 "primaryCatId": "Mesas-madera",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -6478,7 +5800,7 @@ const productsData = [
                 "last_modified": 1786564190405,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -7250,7 +6572,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "Organizadores",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -7418,7 +6740,7 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 15,
+                "views": 16,
                 "stock": 0,
                 "history": [
                     {
@@ -7537,7 +6859,7 @@ const productsData = [
                 ],
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 7,
+                "views": 9,
                 "stock": 0,
                 "history": [
                     {
@@ -8346,7 +7668,7 @@ const productsData = [
                 "last_modified": 1784773120669,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 1,
+                "views": 3,
                 "stock": 0,
                 "history": [
                     {
@@ -8487,7 +7809,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 8,
+                "views": 9,
                 "stock": 0,
                 "history": [
                     {
@@ -8966,7 +8288,7 @@ const productsData = [
                 ],
                 "last_modified": 1784081486789,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -9058,7 +8380,7 @@ const productsData = [
                 ],
                 "last_modified": 1783636741117,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0,
+                "views": 2,
                 "stock": 2,
                 "history": [],
                 "paymentConfig": {
@@ -9187,7 +8509,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586660076,
                 "primaryCatId": "productos-algarrobo",
-                "history": []
+                "history": [],
+                "views": 16
             },
             {
                 "id": "4I",
@@ -9244,13 +8567,14 @@ const productsData = [
                 "last_modified": 1788918811368,
                 "primaryCatId": "Juguetes",
                 "history": [],
-                "views": 3,
+                "views": 4,
                 "categories": [
                     "carpinteria-todos",
                     "Percheros",
                     "Juguetes"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 30000
             },
             {
                 "id": "B1",
@@ -9392,7 +8716,7 @@ const productsData = [
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "order": 1,
-                "views": 10
+                "views": 11
             },
             {
                 "id": "B5",
@@ -9427,7 +8751,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839116557,
                 "primaryCatId": "Juguetes",
-                "views": 3,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -9478,7 +8802,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839110101,
                 "primaryCatId": "Juguetes",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -9543,7 +8867,7 @@ const productsData = [
                 ],
                 "last_modified": 1786564211621,
                 "primaryCatId": "sillas-sillones",
-                "views": 14,
+                "views": 16,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -9859,7 +9183,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 101,
+                "views": 110,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -9890,7 +9214,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 70000,
+                                "price": 80000,
                                 "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true
@@ -9955,7 +9279,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 11,
+                "views": 12,
                 "stock": 0,
                 "history": [
                     {
@@ -9981,7 +9305,8 @@ const productsData = [
                     "Vinotecas",
                     "Hogar"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 80000
             },
             {
                 "id": "23",
@@ -10006,7 +9331,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 80000,
+                                "price": 100000,
                                 "cost_price": 31000,
                                 "legend": "",
                                 "showPrice": true
@@ -10071,7 +9396,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
-                "views": 4,
+                "views": 7,
                 "stock": 0,
                 "history": [
                     {
@@ -10097,7 +9422,8 @@ const productsData = [
                     "Vinotecas",
                     "Hogar"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 100000
             },
             {
                 "id": "25",
@@ -10302,7 +9628,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 8,
+                "views": 9,
                 "stock": 0,
                 "history": [
                     {
@@ -10644,7 +9970,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 2
+                "views": 3
             },
             {
                 "id": "94",
@@ -10781,7 +10107,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 109
+                "views": 110
             },
             {
                 "id": "95",
@@ -10955,7 +10281,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "visible": true,
-                "views": 73
+                "views": 77
             },
             {
                 "id": "1792887338328",
@@ -11011,7 +10337,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA1248080101)"
                     }
                 ],
-                "views": 0
+                "views": 1
             },
             {
                 "id": "1792887338330",
@@ -11393,7 +10719,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA2164674452)"
                     }
                 ],
-                "views": 1
+                "views": 4
             },
             {
                 "id": "1792887338342",
@@ -11465,7 +10791,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
                     }
                 ],
-                "views": 0
+                "views": 3
             },
             {
                 "id": "1792887338350",
@@ -11609,7 +10935,8 @@ const productsData = [
                         "timestamp": 1792887338344,
                         "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
                     }
-                ]
+                ],
+                "views": 5
             },
             {
                 "id": "1792887338354",
@@ -11851,7 +11178,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 101,
+                "views": 110,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -11882,7 +11209,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 70000,
+                                "price": 80000,
                                 "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true
@@ -11947,7 +11274,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 11,
+                "views": 12,
                 "stock": 0,
                 "history": [
                     {
@@ -11973,7 +11300,8 @@ const productsData = [
                     "Vinotecas",
                     "Hogar"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 80000
             },
             {
                 "id": "23",
@@ -11998,7 +11326,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 80000,
+                                "price": 100000,
                                 "cost_price": 31000,
                                 "legend": "",
                                 "showPrice": true
@@ -12063,7 +11391,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083089360,
                 "primaryCatId": "Vinotecas",
-                "views": 4,
+                "views": 7,
                 "stock": 0,
                 "history": [
                     {
@@ -12089,7 +11417,8 @@ const productsData = [
                     "Vinotecas",
                     "Hogar"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 100000
             },
             {
                 "id": "24",
@@ -12115,7 +11444,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 90000,
+                                "price": 120000,
                                 "cost_price": 36000,
                                 "legend": "",
                                 "showPrice": true,
@@ -12221,7 +11550,8 @@ const productsData = [
                     }
                 ],
                 "rubro": "carpinteria",
-                "views": 11
+                "views": 11,
+                "price": 120000
             },
             {
                 "id": "25",
@@ -12426,7 +11756,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 8,
+                "views": 9,
                 "stock": 0,
                 "history": [
                     {
@@ -12556,7 +11886,7 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 15,
+                "views": 16,
                 "stock": 0,
                 "history": [
                     {
@@ -12675,7 +12005,7 @@ const productsData = [
                 ],
                 "last_modified": 1786923534481,
                 "primaryCatId": "Percheros",
-                "views": 7,
+                "views": 9,
                 "stock": 0,
                 "history": [
                     {
@@ -12761,13 +12091,14 @@ const productsData = [
                 "last_modified": 1788918811368,
                 "primaryCatId": "Juguetes",
                 "history": [],
-                "views": 3,
+                "views": 4,
                 "categories": [
                     "carpinteria-todos",
                     "Percheros",
                     "Juguetes"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 30000
             },
             {
                 "id": "33",
@@ -13547,7 +12878,7 @@ const productsData = [
                 "last_modified": 1784773120669,
                 "primaryCatId": "Percheros",
                 "visible": true,
-                "views": 1,
+                "views": 3,
                 "stock": 0,
                 "history": [
                     {
@@ -13688,7 +13019,7 @@ const productsData = [
                 ],
                 "last_modified": 1783617272723,
                 "primaryCatId": "Percheros",
-                "views": 8,
+                "views": 9,
                 "stock": 0,
                 "history": [
                     {
@@ -14181,7 +13512,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 84
+                "views": 86
             },
             {
                 "id": "52",
@@ -14630,7 +13961,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 14
+                "views": 16
             },
             {
                 "id": "53",
@@ -14921,7 +14252,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -14941,12 +14272,14 @@ const productsData = [
             },
             {
                 "id": "54",
+                "shortId": "3L",
                 "title": "Baranda: Para camas Sommier",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
                 "image": "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-sommier-clasica/1780602269421-imagen.webp",
@@ -14962,16 +14295,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 65000,
+                                "price": 75000,
                                 "cost_price": 65000,
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -14981,16 +14313,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 65000,
+                                "price": 75000,
                                 "cost_price": 65000,
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -15004,10 +14335,11 @@ const productsData = [
                                 "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true,
-                                "shippingConfig": {
-                                    "logisticaMaxUnits": 1
-                                },
-                                "logisticaMaxUnits": 1
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "130 x 45 cm",
@@ -15021,10 +14353,11 @@ const productsData = [
                                 "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true,
-                                "shippingConfig": {
-                                    "logisticaMaxUnits": 1
-                                },
-                                "logisticaMaxUnits": 1
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -15034,55 +14367,94 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 35000,
+                                "price": 40000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2277798420-baranda-de-seguridad-para-sommier-100x45-cm-_JM",
+                                "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 35000,
+                                "price": 40000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-90x45-cm/up/MLAU3378213128?pdp_filters=item_id:MLA2277798442",
+                                "link": "",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 35000,
+                                "price": 40000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 40000,
+                                "cost_price": 35000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
+                            },
+                            {
+                                "medida": "70 x 45 cm",
                                 "link": "https://www.mercadolibre.com.ar/baranda-de-seguridad-para-sommier-80x45-cm/up/MLAU3372077063?pdp_filters=item_id:MLA1516468901",
                                 "default": false,
                                 "hidden": false,
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 35000,
+                                "price": 40000,
                                 "cost_price": 35000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
                     },
                     {
                         "acabado_name": "Barnizado",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-sommier-clasica/01.webp",
@@ -15102,7 +14474,12 @@ const productsData = [
                                 "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -15115,7 +14492,12 @@ const productsData = [
                                 "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -15128,7 +14510,12 @@ const productsData = [
                                 "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -15141,13 +14528,19 @@ const productsData = [
                                 "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
                     },
                     {
                         "acabado_name": "Blanca",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-sommier-clasica/1780589141478-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-sommier-clasica/1780589141478-imagen.webp",
@@ -15166,7 +14559,12 @@ const productsData = [
                                 "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -15179,7 +14577,12 @@ const productsData = [
                                 "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -15192,7 +14595,12 @@ const productsData = [
                                 "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -15205,7 +14613,12 @@ const productsData = [
                                 "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -15256,34 +14669,38 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1784430041975,
-                "primaryCatId": "Barandas",
-                "views": 3,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 2,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 2
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Barandas"
-                ],
+                "quantityDiscounts": [],
+                "last_modified": 1793923031277,
+                "primaryCatId": "Barandas",
+                "history": [],
                 "rubro": "carpinteria"
             },
             {
                 "id": "55",
+                "shortId": "3L",
                 "title": "Baranda: Para camas Sommier - Triple",
                 "description": "Diseño exclusivo reforzado, especial para sommiers y camas altas.",
                 "image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739223-imagen.webp",
@@ -15305,11 +14722,10 @@ const productsData = [
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "110 x 60 cm",
@@ -15323,7 +14739,11 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -15338,16 +14758,17 @@ const productsData = [
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": true,
-                                "shippingConfig": {
-                                    "logisticaMaxUnits": 2
-                                },
-                                "logisticaMaxUnits": 2
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
                     },
                     {
                         "acabado_name": "Barnizado",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739280-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-para-camas-sommier-triple/1788928739280-imagen.webp",
@@ -15365,15 +14786,14 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 70000,
-                                "cost_price": "",
+                                "cost_price": 70000,
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": false,
-                                "shippingConfig": {
-                                    "logisticaEnabled": false
-                                },
-                                "noFlex": true,
-                                "disableFlex": true
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "110 x 60 cm",
@@ -15384,10 +14804,14 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 55000,
-                                "cost_price": "",
+                                "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -15398,20 +14822,21 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 45000,
-                                "cost_price": "",
+                                "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": true,
-                                "shippingConfig": {
-                                    "logisticaMaxUnits": 2
-                                },
-                                "logisticaMaxUnits": 2
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
                     },
                     {
                         "acabado_name": "Blanco",
+                        "description": "",
                         "cover_image": "img/barandas-para-cama/baranda-sommier-triple/1780589029876-imagen.webp",
                         "images_list": [
                             "img/barandas-para-cama/baranda-sommier-triple/1780589029876-imagen.webp",
@@ -15432,7 +14857,11 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "70 x 60 cm",
@@ -15447,10 +14876,10 @@ const productsData = [
                                 "legend": "",
                                 "showPrice": true,
                                 "logisticaEnabled": true,
-                                "shippingConfig": {
-                                    "logisticaMaxUnits": 2
-                                },
-                                "logisticaMaxUnits": 2
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -15501,7 +14930,6 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "estimatedWeight": 3,
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "logisticaCost": 0,
@@ -15519,14 +14947,9 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1788928739326,
+                "last_modified": 1793965208814,
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 62,
-                "categories": [
-                    "carpinteria-todos",
-                    "Barandas"
-                ],
                 "rubro": "carpinteria"
             },
             {
@@ -15684,7 +15107,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 4,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -15867,7 +15290,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616752912,
                 "primaryCatId": "Barandas",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -16066,7 +15489,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "visible": true,
-                "views": 73
+                "views": 77
             },
             {
                 "id": "A1",
@@ -16177,7 +15600,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 9
+                "views": 10
             },
             {
                 "id": "A2",
@@ -16526,7 +15949,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 0
+                "views": 1
             },
             {
                 "id": "A4",
@@ -16759,7 +16182,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA1375418215)"
                     }
                 ],
-                "views": 0,
+                "views": 2,
                 "paymentConfig": {
                     "mode": "store",
                     "showBuyButton": true,
@@ -16819,7 +16242,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA2180486792)"
                     }
                 ],
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "mode": "store",
                     "showBuyButton": true,
@@ -16876,7 +16299,7 @@ const productsData = [
                 "history": [],
                 "visible": true,
                 "rubro": "carpinteria",
-                "views": 4
+                "views": 6
             }
         ]
     },
@@ -17029,101 +16452,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
-            },
-            {
-                "id": "44",
-                "shortId": "3N",
-                "title": "Organizador Verdulero Frutero Pino 2 Estantes",
-                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "",
-                        "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
-                            "img/organizadores/verdule-para-mesada/1782439355270-imagen.webp",
-                            "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Chico",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508818173-organizador-verdulero-frutero-pino-2-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20000,
-                                "cost_price": 20000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
                 ],
-                "tags": [
-                    "verdulero",
-                    "verduras",
-                    "organizar",
-                    "mueble de cocina",
-                    "cosina",
-                    "frutas",
-                    "frutero",
-                    "candry",
-                    "bar",
-                    "verduleros",
-                    "verdulero mesada",
-                    "verdulero mini",
-                    "verdulero madera",
-                    "verdulero pino",
-                    "cocina",
-                    "cajones",
-                    "organizador cocina",
-                    "mueble cocina",
-                    "panera",
-                    "berdulero",
-                    "berdulería",
-                    "verdulero de pino",
-                    "verdulero de madera",
-                    "verdulería de cocina",
-                    "cesta de verduras",
-                    "cajonera de pino",
-                    "carro de cocina",
-                    "mueble para verduras",
-                    "cajon verdulero",
-                    "organizacion de alimentos",
-                    "despensa de pino",
-                    "verdulero rustico",
-                    "verdulero con cajones",
-                    "cesta de frutas",
-                    "panera de madera",
-                    "panera de pino"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1793586378660,
-                "primaryCatId": "bazar-cocina",
-                "history": []
+                "views": 7
             },
             {
                 "id": "45",
@@ -17355,7 +16685,7 @@ const productsData = [
                 "primaryCatId": "Estantes",
                 "history": [],
                 "visible": true,
-                "views": 1,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores",
@@ -17731,7 +17061,7 @@ const productsData = [
                 "last_modified": 1790378932962,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 1,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores",
@@ -17889,7 +17219,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -17985,7 +17315,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18080,7 +17410,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18230,7 +17560,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "Organizadores",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18378,7 +17708,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334918176,
                 "primaryCatId": "Organizadores",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18473,7 +17803,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 109
+                "views": 110
             },
             {
                 "id": "67",
@@ -18785,7 +18115,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 2
+                "views": 3
             },
             {
                 "id": "94",
@@ -18901,7 +18231,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -19062,7 +18392,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
+                ],
+                "views": 7
             },
             {
                 "id": "7C",
@@ -19135,7 +18466,7 @@ const productsData = [
                 "primaryCatId": "Estantes",
                 "history": [],
                 "visible": true,
-                "views": 1,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores",
@@ -19414,7 +18745,8 @@ const productsData = [
                 "last_modified": 1793586859102,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "order": 5
+                "order": 5,
+                "views": 8
             },
             {
                 "id": "63",
@@ -19606,7 +18938,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586175821,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 0
             },
             {
                 "id": "62",
@@ -19687,7 +19020,8 @@ const productsData = [
                 "last_modified": 1793586159405,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "visible": true
+                "visible": true,
+                "views": 1
             },
             {
                 "id": "64",
@@ -19770,7 +19104,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586145045,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 6
             },
             {
                 "id": "65",
@@ -19848,7 +19183,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586190636,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 5
             },
             {
                 "id": "7D",
@@ -19908,7 +19244,7 @@ const productsData = [
                 "last_modified": 1789446426308,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 11,
+                "views": 12,
                 "categories": [
                     "carpinteria-todos",
                     "Estantes",
@@ -20081,7 +19417,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA1248080101)"
                     }
                 ],
-                "views": 0
+                "views": 1
             },
             {
                 "id": "1792887338330",
@@ -20757,7 +20093,7 @@ const productsData = [
                 ],
                 "last_modified": 1786811672934,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21248,7 +20584,7 @@ const productsData = [
                 ],
                 "last_modified": 1784411576658,
                 "primaryCatId": "cunas-madera-pino",
-                "views": 0,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21423,7 +20759,8 @@ const productsData = [
                 "last_modified": 1793640925719,
                 "primaryCatId": "camas-madera-pino",
                 "history": [],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 17
             },
             {
                 "id": "1793239693996",
@@ -21466,7 +20803,7 @@ const productsData = [
                     }
                 ],
                 "category": "camas-madera-pino",
-                "views": 2,
+                "views": 7,
                 "last_modified": 1793586887358
             },
             {
@@ -21631,7 +20968,7 @@ const productsData = [
                 "last_modified": 1793586887358,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 10,
+                "views": 11,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -21716,7 +21053,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586887358,
                 "primaryCatId": "cajones-madera",
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21813,7 +21150,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586887358,
                 "primaryCatId": "cajones-madera",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21909,7 +21246,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586887358,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22208,7 +21545,7 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 10,
+                "views": 11,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -22232,7 +21569,7 @@ const productsData = [
                         "medidas_variants": []
                     }
                 ],
-                "views": 0,
+                "views": 1,
                 "tags": [
                     "escalera",
                     "escaleras",
@@ -22392,7 +21729,7 @@ const productsData = [
                 "primaryCatId": "muebles",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 4
+                "views": 5
             },
             {
                 "id": "1793485821041",
@@ -22452,7 +21789,7 @@ const productsData = [
                 "history": [],
                 "visible": true,
                 "rubro": "carpinteria",
-                "views": 1
+                "views": 5
             }
         ]
     },
@@ -22510,7 +21847,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586859102,
                 "primaryCatId": "sillas-sillones",
-                "views": 14,
+                "views": 16,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22701,7 +22038,7 @@ const productsData = [
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "order": 2,
-                "views": 10
+                "views": 11
             },
             {
                 "id": "4I",
@@ -22758,14 +22095,15 @@ const productsData = [
                 "last_modified": 1793586859102,
                 "primaryCatId": "Juguetes",
                 "history": [],
-                "views": 3,
+                "views": 4,
                 "categories": [
                     "carpinteria-todos",
                     "Percheros",
                     "Juguetes"
                 ],
                 "rubro": "carpinteria",
-                "order": 3
+                "order": 3,
+                "price": 30000
             },
             {
                 "id": "4A",
@@ -23117,7 +22455,8 @@ const productsData = [
                 "last_modified": 1793586859102,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "order": 5
+                "order": 5,
+                "views": 8
             },
             {
                 "id": "4H",
@@ -23155,7 +22494,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1793586859102,
                 "primaryCatId": "Estantes",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23233,7 +22572,7 @@ const productsData = [
                 "last_modified": 1793586859102,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 11,
+                "views": 12,
                 "categories": [
                     "carpinteria-todos",
                     "Estantes",
@@ -23275,7 +22614,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1793586859102,
                 "primaryCatId": "Juguetes",
-                "views": 3,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23657,7 +22996,7 @@ const productsData = [
                 "last_modified": 1793586859102,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23709,7 +23048,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1793586859102,
                 "primaryCatId": "Juguetes",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23891,7 +23230,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586813439,
                 "primaryCatId": "sillas-sillones",
-                "views": 14,
+                "views": 16,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23967,7 +23306,7 @@ const productsData = [
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "order": 1,
-                "views": 10
+                "views": 11
             },
             {
                 "id": "B5",
@@ -24002,7 +23341,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1793586813439,
                 "primaryCatId": "Juguetes",
-                "views": 3,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24054,7 +23393,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1793586813439,
                 "primaryCatId": "Juguetes",
-                "views": 1,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24114,7 +23453,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637216140,
                 "primaryCatId": "Mesas-madera",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24421,7 +23760,7 @@ const productsData = [
                 "last_modified": 1786564190405,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24499,7 +23838,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786332743079,
                 "primaryCatId": "Organizadores",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24731,7 +24070,8 @@ const productsData = [
                         "timestamp": 1792887338344,
                         "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
                     }
-                ]
+                ],
+                "views": 5
             }
         ]
     },
@@ -24858,7 +24198,8 @@ const productsData = [
                 "last_modified": 1793681645232,
                 "primaryCatId": "jardin-patio",
                 "history": [],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 13
             },
             {
                 "id": "1792887338335",
@@ -24930,7 +24271,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA2164674452)"
                     }
                 ],
-                "views": 1,
+                "views": 4,
                 "order": 1
             },
             {
@@ -24965,7 +24306,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586789934,
                 "primaryCatId": "Mesas-madera",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -25128,7 +24469,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
                     }
                 ],
-                "views": 0,
+                "views": 3,
                 "order": 4
             },
             {
@@ -25271,7 +24612,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586789934,
                 "primaryCatId": "jardin-patio",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -25509,7 +24850,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586789934,
                 "primaryCatId": "jardin-patio",
-                "views": 12,
+                "views": 13,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -25794,7 +25135,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586789934,
                 "primaryCatId": "jardin-patio",
-                "views": 2,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -26087,7 +25428,7 @@ const productsData = [
                 ],
                 "last_modified": 1784081486789,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -26179,7 +25520,7 @@ const productsData = [
                 ],
                 "last_modified": 1783636741117,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0,
+                "views": 2,
                 "stock": 2,
                 "history": [],
                 "paymentConfig": {
@@ -26308,7 +25649,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586660076,
                 "primaryCatId": "productos-algarrobo",
-                "history": []
+                "history": [],
+                "views": 16
             },
             {
                 "id": "1792887338352",
@@ -26354,7 +25696,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3993235002)"
                     }
                 ],
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "mode": "store",
                     "showBuyButton": true,
@@ -26523,23 +25865,27 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $2500"
                     }
-                ]
+                ],
+                "views": 7
             },
             {
                 "id": "44",
                 "shortId": "3N",
                 "title": "Organizador Verdulero Frutero Pino 2 Estantes",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+                "image": "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887981518-edit_1793887970524webp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
                         "description": "",
-                        "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+                        "cover_image": "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887981518-edit_1793887970524webp.webp",
                         "images_list": [
+                            "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887981518-edit_1793887970524webp.webp",
+                            "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887981525-imagenwebp.webp",
                             "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
                             "img/organizadores/verdule-para-mesada/1782439355270-imagen.webp",
-                            "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp"
+                            "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp",
+                            "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887949991-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -26550,11 +25896,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20000,
+                                "price": 13000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -26615,9 +25965,11 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586378660,
+                "last_modified": 1793887981528,
                 "primaryCatId": "bazar-cocina",
-                "history": []
+                "history": [],
+                "rubro": "carpinteria",
+                "views": 6
             },
             {
                 "id": "4A",
@@ -26751,7 +26103,7 @@ const productsData = [
                 "last_modified": 1790378932962,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 1,
+                "views": 3,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores",
@@ -26942,7 +26294,7 @@ const productsData = [
                 "last_modified": 1788917344040,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 1,
+                "views": 2,
                 "categories": [
                     "carpinteria-todos",
                     "bazar-cocina"
@@ -27037,7 +26389,7 @@ const productsData = [
                 ],
                 "last_modified": 1784081486789,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -27129,7 +26481,7 @@ const productsData = [
                 ],
                 "last_modified": 1783636741117,
                 "primaryCatId": "productos-algarrobo",
-                "views": 0,
+                "views": 2,
                 "stock": 2,
                 "history": [],
                 "paymentConfig": {
@@ -27258,7 +26610,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1793586660076,
                 "primaryCatId": "productos-algarrobo",
-                "history": []
+                "history": [],
+                "views": 16
             },
             {
                 "id": "25",
@@ -27455,7 +26808,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 8,
+                "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -27551,7 +26904,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -27646,7 +26999,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -28477,7 +27830,7 @@ const productsData = [
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": [],
                 "visible": true,
-                "views": 0,
+                "views": 2,
                 "categories": [
                     "electricidad-todos",
                     "cat-21-mu7q9i7y"
@@ -28736,7 +28089,7 @@ const productsData = [
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": [],
                 "visible": true,
-                "views": 0,
+                "views": 2,
                 "categories": [
                     "electricidad-todos",
                     "cat-21-mu7q9i7y"

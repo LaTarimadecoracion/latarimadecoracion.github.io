@@ -3,16 +3,19 @@
   "shortId": "3N",
   "title": "Organizador Verdulero Frutero Pino 2 Estantes",
   "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-  "image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+  "image": "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887981518-edit_1793887970524webp.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
       "description": "",
-      "cover_image": "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
+      "cover_image": "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887981518-edit_1793887970524webp.webp",
       "images_list": [
+        "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887981518-edit_1793887970524webp.webp",
+        "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887981525-imagenwebp.webp",
         "img/organizadores/verdule-para-mesada/1782439355150-imagen.webp",
         "img/organizadores/verdule-para-mesada/1782439355270-imagen.webp",
-        "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp"
+        "img/organizadores/verdule-para-mesada/1782439355394-imagen.webp",
+        "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887949991-imagenwebp.webp"
       ],
       "medidas_variants": [
         {
@@ -23,11 +26,15 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 20000,
+          "price": 13000,
           "cost_price": 20000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
@@ -88,13 +95,12 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1793586378660,
+  "last_modified": 1793887981528,
   "primaryCatId": "bazar-cocina",
   "history": [],
+  "rubro": "carpinteria",
+  "views": 6,
   "categories": [
-    "carpinteria-todos",
-    "Organizadores",
     "bazar-cocina"
-  ],
-  "rubro": "carpinteria"
+  ]
 }

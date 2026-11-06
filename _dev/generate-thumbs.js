@@ -22,7 +22,7 @@ async function generateThumbForFile(filePath, force = false) {
         // Evitar procesar miniaturas existentes o logos del sistema
         if (baseName.endsWith('_thumb')) return false;
         const lowerBase = baseName.toLowerCase();
-        if (lowerBase === 'logo_provisional' || lowerBase === 'logo-dark' || lowerBase === 'logo-light') return false;
+        if (lowerBase === 'logo_provisional' || lowerBase === 'logo-dark' || lowerBase === 'logo-light' || lowerBase === 'platinum') return false;
 
         const dirName = path.dirname(filePath);
         const thumbPath = path.join(dirName, `${baseName}_thumb.webp`);
