@@ -3307,6 +3307,9 @@ function cleanOrphanImages() {
         // Imágenes protegidas del sistema
         const protectedImages = [
             'img/logo_provisional.png',
+            'img/Platinum.png',
+            'img/logo-dark.png',
+            'img/logo-light.png',
             'img/borrador/portada-imagen.webp',
             'favicon.ico',
             'LOGO.png'
