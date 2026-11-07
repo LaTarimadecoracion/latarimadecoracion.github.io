@@ -1,33 +1,10 @@
-const CACHE_NAME = 'tarima-cache-v66-' + Date.now();
+const CACHE_NAME = 'tarima-cache-v67';
+// Solo pre-cacheamos el esqueleto mínimo (< 60 KB) en la instalación para NO competir
+// con el ancho de banda del usuario cuando entra por primera vez a la web.
+// El resto de JS, CSS e imágenes se guarda automáticamente en caché a medida que se usan.
 const STATIC_ASSETS = [
     './',
     './index.html',
-    './css/style.css',
-    './data/catalog-index.json',
-    './data/categories.json',
-    './js/data/site-config.js',
-    './js/ui/confetti-arg.js',
-    './js/ui/header-deco-arg.js',
-    './js/data/products-data.js',
-    './js/data/rentals-data.js',
-    './js/data/data.js',
-    './js/ui/ui-dom.js',
-    './js/ui/ui-utils.js',
-    './js/ui/ui-core.js',
-    './js/ui/ui-navigation.js',
-    './js/ui/ui-search-feed.js',
-    './js/ui/ui-home.js',
-    './js/ui/catalog/catalog-utils.js',
-    './js/ui/catalog/catalog-shipping-calc.js',
-    './js/ui/catalog/catalog-actions.js',
-    './js/ui/catalog/catalog-gallery.js',
-    './js/ui/ui-catalog.js',
-    './js/ui/ui-rentals.js',
-    './js/ui/ui-blocks.js',
-    './js/modules/carrito.js',
-    './js/modules/main.js',
-    './js/modules/categorias.js',
-    './js/ui/pwa-banner.js',
     './manifest.json',
     './favicon.ico',
     './img/logo_provisional.png'

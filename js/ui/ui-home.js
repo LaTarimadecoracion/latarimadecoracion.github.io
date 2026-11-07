@@ -60,7 +60,8 @@
                     card.className = 'feed-card';
                     card.style.cssText = 'margin-bottom: 1.25rem; position: relative;';
                     // Resolver imagen: puede ser array (variantes) o string directo
-                    const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                    const rawProductCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                    const productCover = window.getThumbUrl ? window.getThumbUrl(rawProductCover) : rawProductCover;
                     const badgeText = comp.badge || 'Destacado';
                     
                     let catObj = null;
@@ -647,7 +648,8 @@
 
                                     const card = document.createElement('div');
                                     card.className = 'category-card';
-                                    const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                                    const rawProductCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                                    const productCover = window.getThumbUrl ? window.getThumbUrl(rawProductCover) : rawProductCover;
                                     const isEager = idx < 3;
                                     const safeTitle = (product.title || '').replace(/"/g, '&quot;');
                                     card.innerHTML = `
@@ -725,7 +727,8 @@
                                 }
                                 const pCard = document.createElement('div');
                                 pCard.className = 'feed-card carousel-feed-item';
-                                const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                                const rawProductCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
+                                const productCover = window.getThumbUrl ? window.getThumbUrl(rawProductCover) : rawProductCover;
                                 const isEager = idx < 3;
                                 const safeTitle = (product.title || '').replace(/"/g, '&quot;');
                                 pCard.innerHTML = `
