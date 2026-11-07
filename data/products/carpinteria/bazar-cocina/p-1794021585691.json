@@ -38,5 +38,9 @@
       ]
     }
   ],
+  "categories": [
+    "carpinteria-todos",
+    "bazar-cocina"
+  ],
   "rubro": "carpinteria"
 }

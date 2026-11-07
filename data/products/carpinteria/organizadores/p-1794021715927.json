@@ -1,42 +1,68 @@
 {
   "id": "1794021715927",
+  "shortId": "3O",
   "title": "Organizador  Estante De Baño/cocina Pino",
   "description": "Estantería Organizadora de Madera – 3 Niveles\n\nPráctica y funcional estantería de madera natural, ideal para organizar y aprovechar espacios en distintos ambientes del hogar.\n\nSu diseño compacto permite utilizarla en baños, cocinas, lavaderos, dormitorios o cualquier espacio donde necesites sumar lugar de guardado.\n\nCuenta con tres estantes con bordes elevados que ayudan a mantener los objetos en su lugar. Su estructura de madera ofrece firmeza y un estilo natural que combina con diferentes ambientes.\n\nCARACTERÍSTICAS\n\nMaterial: madera de pino natural \n\nDiseño de 3 niveles.\n\nEstantes con bordes elevados de 4 cm.\n\nDistancia entre estantes: 24 cm.\n\nEstructura compacta y funcional.\n\n\nMEDIDAS DEL PRODUCTO\n\nAlto: 70 cm.\n\nAncho: 32 cm.\n\nProfundidad: 26 cm.\n\nAltura de los bordes de los estantes: 4 cm.\n\nDistancia entre estantes: 24 cm.\n\nFACTURACIÓN\n\nRealizamos factura A y factura B.\n\nIMPORTANTE\n\nLas imágenes publicadas son ilustrativas y tienen como finalidad mostrar posibles usos y formas de ambientación del producto. Los accesorios y elementos decorativos que aparecen en las fotografías no están incluidos.\n\nEl producto se entrega sin los elementos decorativos de las imágenes.\n\nSin garantía",
   "image": "img/organizador-estante-de-bano-cocina-pino/1794021714967-1-imagen.webp",
-  "order": 0,
-  "visible": true,
-  "primaryCatId": "Organizadores",
   "acabados_groups": [
     {
       "acabado_name": "Estándar",
+      "description": "",
       "cover_image": "img/organizador-estante-de-bano-cocina-pino/1794021714967-1-imagen.webp",
       "images_list": [
         "img/organizador-estante-de-bano-cocina-pino/1794021714967-1-imagen.webp",
-        "img/organizador-estante-de-bano-cocina-pino/1794021715097-2-imagen.webp",
         "img/organizador-estante-de-bano-cocina-pino/1794021715184-3-imagen.webp",
-        "img/organizador-estante-de-bano-cocina-pino/1794021715317-4-imagen.webp",
-        "img/organizador-estante-de-bano-cocina-pino/1794021715388-5-imagen.webp",
-        "img/organizador-estante-de-bano-cocina-pino/1794021715521-6-imagen.webp",
-        "img/organizador-estante-de-bano-cocina-pino/1794021715580-7-imagen.webp",
-        "img/organizador-estante-de-bano-cocina-pino/1794021715696-8-imagen.webp",
-        "img/organizador-estante-de-bano-cocina-pino/1794021715772-9-imagen.webp"
+        "img/organizadores-muebles/organizador-estante-de-baococina-pino/1794021952792-edit_1794021950818webp.webp",
+        "img/organizadores-muebles/organizador-estante-de-baococina-pino/1794021952801-edit_1794021944292webp.webp"
       ],
       "medidas_variants": [
         {
           "medida": "Estándar",
-          "price": 28000,
-          "cost_price": 14000,
           "link": "https://www.mercadolibre.com.ar/organizador--estante-de-banococina-pino/up/MLAU5835370576",
+          "default": true,
+          "hidden": false,
           "linkLabel": "Ver en Mercado Libre",
           "iconType": "local_shipping",
-          "stock": 5,
-          "showPrice": true,
           "highlight": false,
-          "default": true,
-          "hidden": false
+          "price": 28000,
+          "cost_price": 14000,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
-      ]
+      ],
+      "hidden": false
     }
+  ],
+  "tags": [],
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1794021964488,
+  "primaryCatId": "Organizadores",
+  "history": [],
+  "visible": true,
+  "order": 1,
+  "categories": [
+    "carpinteria-todos",
+    "Organizadores"
   ],
   "rubro": "carpinteria"
 }

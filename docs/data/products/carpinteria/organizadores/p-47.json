@@ -99,11 +99,12 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1792895684796,
+  "last_modified": 1794021964488,
   "primaryCatId": "Organizadores",
   "history": [],
   "rubro": "carpinteria",
   "views": 0,
+  "order": 6,
   "categories": [
     "Organizadores"
   ]

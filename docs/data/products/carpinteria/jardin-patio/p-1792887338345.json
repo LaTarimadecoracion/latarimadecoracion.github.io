@@ -69,5 +69,9 @@
       "details": "Importado como borrador desde Mercado Libre (MLA3941452422)"
     }
   ],
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "views": 1,
+  "categories": [
+    "jardin-patio"
+  ]
 }
