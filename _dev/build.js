@@ -46,6 +46,13 @@ async function build() {
     console.log('📂 Sincronizando carpeta docs...');
     try { const { scanAndGenerateThumbs } = require('./generate-thumbs'); await scanAndGenerateThumbs(path.join(srcDir, 'img')); } catch (err) { console.error('❌ Error generando miniaturas:', err); }
     fs.ensureDirSync(distDir);
+    const safeWriteFileSync = (targetPath, data) => {
+        if (fs.existsSync(targetPath)) {
+            try { fs.unlinkSync(targetPath); } catch (e) {}
+        }
+        fs.writeFileSync(targetPath, data, 'utf8');
+    };
+
 
     const smartCopySync = (src, dest) => {
         fs.copySync(src, dest, {
@@ -112,7 +119,7 @@ async function build() {
                 console.log('⚙️ Minificando sw.js...');
                 const content = fs.readFileSync(fileSrc, 'utf8');
                 const minified = await minify(content, { mangle: false });
-                fs.writeFileSync(path.join(distDir, file), minified.code);
+                safeWriteFileSync(path.join(distDir, file), minified.code);
             } else {
                 console.log(`📄 Copiando ${file}...`);
                 fs.copySync(fileSrc, path.join(distDir, file));
@@ -128,7 +135,7 @@ async function build() {
             console.log(`📄 Copiando y limpiando comentarios en ${html}...`);
             let content = fs.readFileSync(htmlSrc, 'utf8');
             content = content.replace(/<!--[\s\S]*?-->/g, '');
-            fs.writeFileSync(path.join(distDir, html), content);
+            safeWriteFileSync(path.join(distDir, html), content);
         }
     }
 
@@ -147,7 +154,7 @@ async function build() {
             if (minified.errors.length) {
                 console.error(`❌ Error en CSS ${file}:`, minified.errors);
             }
-            fs.writeFileSync(path.join(cssDistDir, file), minified.styles);
+            safeWriteFileSync(path.join(cssDistDir, file), minified.styles);
             console.log(`   ⚡ CSS Minificado: ${file}`);
         }
     }
@@ -174,7 +181,7 @@ async function build() {
                         mangle: false,
                         compress: { passes: 2 }
                     });
-                    fs.writeFileSync(distPath, minified.code);
+                    safeWriteFileSync(distPath, minified.code);
                     const relName = path.relative(jsSrcDir, srcPath).replace(/\\/g, '/');
                     console.log(`   ⚡ JS Minificado: ${relName}`);
                 } catch (err) {

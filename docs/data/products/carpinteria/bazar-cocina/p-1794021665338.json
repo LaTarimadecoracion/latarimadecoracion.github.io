@@ -1,0 +1,44 @@
+{
+  "id": "1794021665338",
+  "title": "Caja De Madera Organizadora Multiuso",
+  "description": "",
+  "image": "img/caja-de-madera-organizadora-multiuso/1794021663825-1-imagen.webp",
+  "order": 0,
+  "visible": true,
+  "primaryCatId": "bazar-cocina",
+  "acabados_groups": [
+    {
+      "acabado_name": "Estándar",
+      "cover_image": "img/caja-de-madera-organizadora-multiuso/1794021663825-1-imagen.webp",
+      "images_list": [
+        "img/caja-de-madera-organizadora-multiuso/1794021663825-1-imagen.webp",
+        "img/caja-de-madera-organizadora-multiuso/1794021663951-2-imagen.webp",
+        "img/caja-de-madera-organizadora-multiuso/1794021664019-3-imagen.webp",
+        "img/caja-de-madera-organizadora-multiuso/1794021664138-4-imagen.webp",
+        "img/caja-de-madera-organizadora-multiuso/1794021664206-5-imagen.webp",
+        "img/caja-de-madera-organizadora-multiuso/1794021664330-6-imagen.webp",
+        "img/caja-de-madera-organizadora-multiuso/1794021664393-7-imagen.webp",
+        "img/caja-de-madera-organizadora-multiuso/1794021664500-8-imagen.webp",
+        "img/caja-de-madera-organizadora-multiuso/1794021664821-9-imagen.webp",
+        "img/caja-de-madera-organizadora-multiuso/1794021665127-10-imagen.webp",
+        "img/caja-de-madera-organizadora-multiuso/1794021665186-11-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Estándar",
+          "price": 13000,
+          "cost_price": 6500,
+          "link": "https://www.mercadolibre.com.ar/caja-de-madera-organizadora-multiuso/up/MLAU5782902933",
+          "linkLabel": "Ver en Mercado Libre",
+          "iconType": "local_shipping",
+          "stock": 5,
+          "showPrice": true,
+          "highlight": false,
+          "default": true,
+          "hidden": false
+        }
+      ]
+    }
+  ],
+  "rubro": "carpinteria"
+}

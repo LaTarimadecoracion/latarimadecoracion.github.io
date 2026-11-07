@@ -1,0 +1,42 @@
+{
+  "id": "1794021585691",
+  "title": "Tabla De Madera Picada Sushi",
+  "description": "Lo que tenés que saber de este producto\nEspesor: 2 cm\nAncho: 10 cm\nLargo: 25 cm\nCantidad de envases: 1\nForma: Rectangular\nMaterial: madera.",
+  "image": "img/tabla-de-madera-picada-sushi/1794021584757-1-imagen.webp",
+  "order": 0,
+  "visible": true,
+  "primaryCatId": "bazar-cocina",
+  "acabados_groups": [
+    {
+      "acabado_name": "Estándar",
+      "cover_image": "img/tabla-de-madera-picada-sushi/1794021584757-1-imagen.webp",
+      "images_list": [
+        "img/tabla-de-madera-picada-sushi/1794021584757-1-imagen.webp",
+        "img/tabla-de-madera-picada-sushi/1794021585020-2-imagen.webp",
+        "img/tabla-de-madera-picada-sushi/1794021585090-3-imagen.webp",
+        "img/tabla-de-madera-picada-sushi/1794021585217-4-imagen.webp",
+        "img/tabla-de-madera-picada-sushi/1794021585279-5-imagen.webp",
+        "img/tabla-de-madera-picada-sushi/1794021585352-6-imagen.webp",
+        "img/tabla-de-madera-picada-sushi/1794021585398-7-imagen.webp",
+        "img/tabla-de-madera-picada-sushi/1794021585480-8-imagen.webp",
+        "img/tabla-de-madera-picada-sushi/1794021585531-9-imagen.webp"
+      ],
+      "medidas_variants": [
+        {
+          "medida": "Estándar",
+          "price": 7500,
+          "cost_price": 3750,
+          "link": "https://www.mercadolibre.com.ar/tabla-de-madera-picada-sushi/up/MLAU5782447121",
+          "linkLabel": "Ver en Mercado Libre",
+          "iconType": "local_shipping",
+          "stock": 5,
+          "showPrice": true,
+          "highlight": false,
+          "default": true,
+          "hidden": false
+        }
+      ]
+    }
+  ],
+  "rubro": "carpinteria"
+}

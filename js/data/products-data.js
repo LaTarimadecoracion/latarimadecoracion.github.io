@@ -3938,85 +3938,6 @@ const productsData = [
                 "views": 6
             },
             {
-                "id": "65",
-                "shortId": "3N",
-                "title": "Estantes x3 Cuadrados",
-                "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/estantes/cuadrados/cuadrados.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "",
-                        "cover_image": "img/estantes/cuadrados/cuadrados.webp",
-                        "images_list": [
-                            "img/estantes/cuadrados/cuadrados.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Combo x3",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508934203-estante-cuadrado-combo-x3un-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": "",
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": false,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "estante",
-                    "estantes",
-                    "cuadrado",
-                    "cuadrados",
-                    "repisa",
-                    "repisas",
-                    "estante flotante",
-                    "estante madera",
-                    "estante pino",
-                    "colgar",
-                    "decoracion",
-                    "pared",
-                    "combo estantes",
-                    "repisa cuadrada",
-                    "repisa cuadrado",
-                    "estante cuadrado",
-                    "estantes cuadrados",
-                    "repisas cuadradas",
-                    "diseño cuadrado",
-                    "cuadrados de madera",
-                    "cuadrados de pino",
-                    "decoracion pared cuadrado"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1793586190636,
-                "primaryCatId": "Estantes",
-                "history": [],
-                "views": 5
-            },
-            {
                 "id": "7C",
                 "title": "Repisa-estante de pared con toallero",
                 "description": "Nuevo\nRepisa-estante De Pared Con Toallero Madera De Pino\nAgregar a favoritos\n$\n25.000\n6 cuotas de \n$\n5.624\n,\n58\n con tarjetas de crédito\n\nPrecio sin impuestos nacionales: \n$\n20.661\n\nCréditos de Mercado Pago\nActivá la Línea de Crédito\n\nDisponible para pagar en hasta 12 cuotas\n\n\nActivar\nVer los medios de pago\nAcabado y Color:Natural\n\nNatural\nLo que tenés que saber de este producto\nMaterial: Madera de pino\nEspesor: 1.7 cm\nProfundidad: 12 cm\nAltura: 50 cm\nLargo: 40 cm\nHecho en madera de pino.",
@@ -19110,15 +19031,17 @@ const productsData = [
             {
                 "id": "65",
                 "shortId": "3N",
-                "title": "Estantes x3 Cuadrados",
+                "title": "Estante Cuadrado Combo X3un",
                 "description": "Organización creativa y estilo para tus paredes.",
-                "image": "img/estantes/cuadrados/cuadrados.webp",
+                "image": "img/estantes-repisas/estantes-x3-cuadrados/1794021464288-imagenwebp.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
                         "description": "",
-                        "cover_image": "img/estantes/cuadrados/cuadrados.webp",
+                        "cover_image": "img/estantes-repisas/estantes-x3-cuadrados/1794021464288-imagenwebp.webp",
                         "images_list": [
+                            "img/estantes-repisas/estantes-x3-cuadrados/1794021464288-imagenwebp.webp",
+                            "img/estantes-repisas/estantes-x3-cuadrados/1794021464295-imagenwebp.webp",
                             "img/estantes/cuadrados/cuadrados.webp"
                         ],
                         "medidas_variants": [
@@ -19130,11 +19053,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": "",
-                                "cost_price": "",
+                                "price": 20000,
+                                "cost_price": 20000,
                                 "legend": "",
-                                "showPrice": false,
-                                "logisticaEnabled": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -19181,10 +19108,10 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586190636,
+                "last_modified": 1794021508802,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 5
+                "rubro": "carpinteria"
             },
             {
                 "id": "7D",
@@ -25215,24 +25142,39 @@ const productsData = [
             },
             {
                 "id": "1792887338338",
+                "shortId": "3L",
                 "title": "Deck Base Macetas Madera (50 X 20 Cm)",
                 "description": "Publicación importada desde Mercado Libre (MLA2149413391).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
+                "image": "img/jardn-decks/deck-base-macetas-madera-50-x-20-cm/1794017501386-imagenwebp.webp",
                 "acabados_groups": [
                     {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/jardn-decks/deck-base-macetas-madera-50-x-20-cm/1794017501386-imagenwebp.webp",
+                        "images_list": [
+                            "img/jardn-decks/deck-base-macetas-madera-50-x-20-cm/1794017501386-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "name": "Medida Única",
+                                "medida": "50 x 20 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149413391",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 8500,
-                                "stock": 998,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2149413391"
+                                "cost_price": 8500,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -25244,8 +25186,23 @@ const productsData = [
                     "macetas",
                     "madera"
                 ],
-                "last_modified": 1793586789934,
-                "optional_variant": null,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1794017501407,
                 "primaryCatId": "jardin-patio",
                 "history": [
                     {
@@ -25254,44 +25211,43 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA2149413391)"
                     }
                 ],
-                "views": 1,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 998,
-                "categories": [
-                    "carpinteria-todos",
-                    "jardin-patio"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "decks-macetas",
-                "order": 10
+                "rubro": "carpinteria"
             },
             {
                 "id": "1792887338345",
+                "shortId": "3L",
                 "title": "Deck Base Macetas Madera (80 X 40 Cm)",
                 "description": "Publicación importada desde Mercado Libre (MLA3941452422).",
-                "video": "",
-                "image": "img/borrador/portada-imagen.webp",
+                "image": "img/jardn-decks/deck-base-macetas-madera-80-x-40-cm/1794017570899-imagenwebp.webp",
                 "acabados_groups": [
                     {
-                        "name": "Estándar",
-                        "images": [
-                            "img/borrador/portada-imagen.webp"
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/jardn-decks/deck-base-macetas-madera-80-x-40-cm/1794017570899-imagenwebp.webp",
+                        "images_list": [
+                            "img/jardn-decks/deck-base-macetas-madera-80-x-40-cm/1794017570899-imagenwebp.webp"
                         ],
                         "medidas_variants": [
                             {
-                                "name": "Medida Única",
+                                "medida": "80 x 40 cm",
+                                "link": "https://articulo.mercadolibre.com.ar/MLA-3941452422",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
                                 "price": 55000,
-                                "stock": 9999,
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-3941452422"
+                                "cost_price": 55000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -25303,8 +25259,23 @@ const productsData = [
                     "macetas",
                     "madera"
                 ],
-                "last_modified": 1793586789934,
-                "optional_variant": null,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1794017570905,
                 "primaryCatId": "jardin-patio",
                 "history": [
                     {
@@ -25313,23 +25284,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3941452422)"
                     }
                 ],
-                "views": 0,
-                "paymentConfig": {
-                    "mode": "store",
-                    "showBuyButton": true,
-                    "showCartButton": true
-                },
-                "shippingConfig": {
-                    "mode": "both"
-                },
-                "stock": 9999,
-                "categories": [
-                    "carpinteria-todos",
-                    "jardin-patio"
-                ],
-                "rubro": "carpinteria",
-                "subcategoria": "decks-macetas",
-                "order": 11
+                "rubro": "carpinteria"
             }
         ]
     },
@@ -26719,6 +26674,92 @@ const productsData = [
                     "Vinotecas",
                     "Hogar",
                     "bazar-cocina"
+                ],
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "1794021585691",
+                "title": "Tabla De Madera Picada Sushi",
+                "description": "Lo que tenés que saber de este producto\nEspesor: 2 cm\nAncho: 10 cm\nLargo: 25 cm\nCantidad de envases: 1\nForma: Rectangular\nMaterial: madera.",
+                "image": "img/tabla-de-madera-picada-sushi/1794021584757-1-imagen.webp",
+                "order": 0,
+                "visible": true,
+                "primaryCatId": "bazar-cocina",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "cover_image": "img/tabla-de-madera-picada-sushi/1794021584757-1-imagen.webp",
+                        "images_list": [
+                            "img/tabla-de-madera-picada-sushi/1794021584757-1-imagen.webp",
+                            "img/tabla-de-madera-picada-sushi/1794021585020-2-imagen.webp",
+                            "img/tabla-de-madera-picada-sushi/1794021585090-3-imagen.webp",
+                            "img/tabla-de-madera-picada-sushi/1794021585217-4-imagen.webp",
+                            "img/tabla-de-madera-picada-sushi/1794021585279-5-imagen.webp",
+                            "img/tabla-de-madera-picada-sushi/1794021585352-6-imagen.webp",
+                            "img/tabla-de-madera-picada-sushi/1794021585398-7-imagen.webp",
+                            "img/tabla-de-madera-picada-sushi/1794021585480-8-imagen.webp",
+                            "img/tabla-de-madera-picada-sushi/1794021585531-9-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "price": 7500,
+                                "cost_price": 3750,
+                                "link": "https://www.mercadolibre.com.ar/tabla-de-madera-picada-sushi/up/MLAU5782447121",
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "stock": 5,
+                                "showPrice": true,
+                                "highlight": false,
+                                "default": true,
+                                "hidden": false
+                            }
+                        ]
+                    }
+                ],
+                "rubro": "carpinteria"
+            },
+            {
+                "id": "1794021665338",
+                "title": "Caja De Madera Organizadora Multiuso",
+                "description": "",
+                "image": "img/caja-de-madera-organizadora-multiuso/1794021663825-1-imagen.webp",
+                "order": 0,
+                "visible": true,
+                "primaryCatId": "bazar-cocina",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "cover_image": "img/caja-de-madera-organizadora-multiuso/1794021663825-1-imagen.webp",
+                        "images_list": [
+                            "img/caja-de-madera-organizadora-multiuso/1794021663825-1-imagen.webp",
+                            "img/caja-de-madera-organizadora-multiuso/1794021663951-2-imagen.webp",
+                            "img/caja-de-madera-organizadora-multiuso/1794021664019-3-imagen.webp",
+                            "img/caja-de-madera-organizadora-multiuso/1794021664138-4-imagen.webp",
+                            "img/caja-de-madera-organizadora-multiuso/1794021664206-5-imagen.webp",
+                            "img/caja-de-madera-organizadora-multiuso/1794021664330-6-imagen.webp",
+                            "img/caja-de-madera-organizadora-multiuso/1794021664393-7-imagen.webp",
+                            "img/caja-de-madera-organizadora-multiuso/1794021664500-8-imagen.webp",
+                            "img/caja-de-madera-organizadora-multiuso/1794021664821-9-imagen.webp",
+                            "img/caja-de-madera-organizadora-multiuso/1794021665127-10-imagen.webp",
+                            "img/caja-de-madera-organizadora-multiuso/1794021665186-11-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "price": 13000,
+                                "cost_price": 6500,
+                                "link": "https://www.mercadolibre.com.ar/caja-de-madera-organizadora-multiuso/up/MLAU5782902933",
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "stock": 5,
+                                "showPrice": true,
+                                "highlight": false,
+                                "default": true,
+                                "hidden": false
+                            }
+                        ]
+                    }
                 ],
                 "rubro": "carpinteria"
             }

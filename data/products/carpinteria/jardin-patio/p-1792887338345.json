@@ -1,23 +1,38 @@
 {
   "id": "1792887338345",
+  "shortId": "3L",
   "title": "Deck Base Macetas Madera (80 X 40 Cm)",
   "description": "Publicación importada desde Mercado Libre (MLA3941452422).",
-  "video": "",
-  "image": "img/borrador/portada-imagen.webp",
+  "image": "img/jardn-decks/deck-base-macetas-madera-80-x-40-cm/1794017570899-imagenwebp.webp",
   "acabados_groups": [
     {
-      "name": "Estándar",
-      "images": [
-        "img/borrador/portada-imagen.webp"
+      "acabado_name": "",
+      "description": "",
+      "cover_image": "img/jardn-decks/deck-base-macetas-madera-80-x-40-cm/1794017570899-imagenwebp.webp",
+      "images_list": [
+        "img/jardn-decks/deck-base-macetas-madera-80-x-40-cm/1794017570899-imagenwebp.webp"
       ],
       "medidas_variants": [
         {
-          "name": "Medida Única",
+          "medida": "80 x 40 cm",
+          "link": "https://articulo.mercadolibre.com.ar/MLA-3941452422",
+          "default": false,
+          "hidden": false,
+          "linkLabel": "",
+          "iconType": "local_shipping",
+          "highlight": false,
           "price": 55000,
-          "stock": 9999,
-          "link": "https://articulo.mercadolibre.com.ar/MLA-3941452422"
+          "cost_price": 55000,
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
-      ]
+      ],
+      "hidden": false
     }
   ],
   "tags": [
@@ -29,8 +44,23 @@
     "macetas",
     "madera"
   ],
-  "last_modified": 1793586789934,
-  "optional_variant": null,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": true,
+    "creditEnabled": true
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1794017570905,
   "primaryCatId": "jardin-patio",
   "history": [
     {
@@ -39,20 +69,5 @@
       "details": "Importado como borrador desde Mercado Libre (MLA3941452422)"
     }
   ],
-  "views": 0,
-  "paymentConfig": {
-    "mode": "store",
-    "showBuyButton": true,
-    "showCartButton": true
-  },
-  "shippingConfig": {
-    "mode": "both"
-  },
-  "stock": 9999,
-  "categories": [
-    "jardin-patio"
-  ],
-  "rubro": "carpinteria",
-  "subcategoria": "decks-macetas",
-  "order": 11
+  "rubro": "carpinteria"
 }

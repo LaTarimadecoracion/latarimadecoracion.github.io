@@ -1689,16 +1689,13 @@
   {
     "id": "65",
     "shortId": "3N",
-    "title": "Estantes x3 Cuadrados",
+    "title": "Estante Cuadrado Combo X3un",
     "rubro": "carpinteria",
     "primaryCatId": "Estantes",
-    "categories": [
-      "carpinteria-todos",
-      "Estantes"
-    ],
+    "categories": [],
     "subcategoria": "",
-    "price": 0,
-    "image": "img/estantes/cuadrados/cuadrados.webp",
+    "price": 20000,
+    "image": "img/estantes-repisas/estantes-x3-cuadrados/1794021464288-imagenwebp.webp",
     "tags": [
       "estante",
       "estantes",
@@ -5306,16 +5303,14 @@
   },
   {
     "id": "1792887338338",
-    "shortId": null,
+    "shortId": "3L",
     "title": "Deck Base Macetas Madera (50 X 20 Cm)",
     "rubro": "carpinteria",
     "primaryCatId": "jardin-patio",
-    "categories": [
-      "jardin-patio"
-    ],
-    "subcategoria": "decks-macetas",
+    "categories": [],
+    "subcategoria": "",
     "price": 8500,
-    "image": "img/borrador/portada-imagen.webp",
+    "image": "img/jardn-decks/deck-base-macetas-madera-50-x-20-cm/1794017501386-imagenwebp.webp",
     "tags": [
       "borrador",
       "mercado libre",
@@ -5330,16 +5325,14 @@
   },
   {
     "id": "1792887338345",
-    "shortId": null,
+    "shortId": "3L",
     "title": "Deck Base Macetas Madera (80 X 40 Cm)",
     "rubro": "carpinteria",
     "primaryCatId": "jardin-patio",
-    "categories": [
-      "jardin-patio"
-    ],
-    "subcategoria": "decks-macetas",
+    "categories": [],
+    "subcategoria": "",
     "price": 55000,
-    "image": "img/borrador/portada-imagen.webp",
+    "image": "img/jardn-decks/deck-base-macetas-madera-80-x-40-cm/1794017570899-imagenwebp.webp",
     "tags": [
       "borrador",
       "mercado libre",
@@ -5548,5 +5541,33 @@
     "tags": [],
     "visible": true,
     "file": "data/products/herrajes/tornillos/p-N1.json"
+  },
+  {
+    "id": "1794021585691",
+    "shortId": null,
+    "title": "Tabla De Madera Picada Sushi",
+    "rubro": "carpinteria",
+    "primaryCatId": "bazar-cocina",
+    "categories": [],
+    "subcategoria": "",
+    "price": 7500,
+    "image": "img/tabla-de-madera-picada-sushi/1794021584757-1-imagen.webp",
+    "tags": [],
+    "visible": true,
+    "file": "data/products/carpinteria/bazar-cocina/p-1794021585691.json"
+  },
+  {
+    "id": "1794021665338",
+    "shortId": null,
+    "title": "Caja De Madera Organizadora Multiuso",
+    "rubro": "carpinteria",
+    "primaryCatId": "bazar-cocina",
+    "categories": [],
+    "subcategoria": "",
+    "price": 13000,
+    "image": "img/caja-de-madera-organizadora-multiuso/1794021663825-1-imagen.webp",
+    "tags": [],
+    "visible": true,
+    "file": "data/products/carpinteria/bazar-cocina/p-1794021665338.json"
   }
 ]

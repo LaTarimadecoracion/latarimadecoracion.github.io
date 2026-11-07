@@ -38,17 +38,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     
-    <link rel="stylesheet" href="css/style.css?v=53">
-    <link rel="stylesheet" href="css/assistant.css?v=2">
-    <link rel="stylesheet" href="css/admin-styles.css?v=7">
+    <link rel="stylesheet" href="css/style.css?v=54">
+    
+    
 
     
     
-    <script defer src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-    <script defer src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" />
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
+    
+    
+    
+    
+    
 
     <script src="js/data/site-config.js"></script>
     <script src="js/data/payment-config.js?v=1"></script>
@@ -242,134 +242,145 @@
         
         <section id="view-product-detail" class="view detail-view">
             
-            <div class="detail-main-grid">
+            <div id="product-publication-card" class="product-publication-card">
                 
-                <div id="detail-header-info" style="padding: 1.25rem 1.25rem 0.5rem; text-align: left;">
-                    <h2 id="detail-title" style="margin: 0 0 0.25rem 0; font-size: 1.45rem; font-weight: 900; color: var(--text-main); line-height: 1.25; font-family: var(--font-main);"></h2>
-                    <span id="detail-category" style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;"></span>
-                </div>
-
-                
-                <div class="detail-img-container" style="margin-bottom: 1.25rem;"></div>
-
-                
-                <div class="detail-content" style="padding: 0 1.25rem;">
-
+                <div class="detail-main-grid">
                     
-                    <div id="detail-attributes-container" style="margin-bottom: 1.25rem;"></div>
-
-                    
-                    <div style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 2px solid #86efac; border-radius: 16px; padding: 1.15rem 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08); display: flex; flex-direction: column; gap: 8px;">
-                        
-                        <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
-                            
-                            <div class="qty-selector-wrapper" style="margin: 0;">
-                                <div class="qty-controls" style="background: white; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 4px 10px; display: inline-flex; align-items: center;">
-                                    <span class="qty-selector-label" style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-right: 4px;">Un.</span>
-                                    <button type="button" class="qty-btn" id="btn-qty-minus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">−</button>
-                                    <span class="qty-value" id="qty-value" style="font-size: 0.95rem; font-weight: 900; color: #0f172a; min-width: 24px; text-align: center;">1</span>
-                                    <button type="button" class="qty-btn" id="btn-qty-plus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">+</button>
-                                </div>
-                            </div>
-
-                            
-                            <div id="detail-price-display" class="detail-price" style="margin: 0; display: none; text-align: right;"></div>
-                        </div>
-
-                        
-                        <div id="detail-qty-discount-banner" style="display: none; padding: 6px 10px; border-radius: 8px; font-size: 0.74rem; font-weight: 700; width: 100%; box-sizing: border-box;"></div>
-
-                        
-                        <div id="detail-shipping-best-price-badge" style="margin-top: 2px; padding-top: 8px; border-top: 1px dashed #cbd5e1; font-size: 0.82rem;"></div>
+                    <div id="detail-header-info" style="padding: 1.25rem 1.25rem 0.5rem; text-align: left;">
+                        <h2 id="detail-title" style="margin: 0 0 0.25rem 0; font-size: 1.45rem; font-weight: 900; color: var(--text-main); line-height: 1.25; font-family: var(--font-main);"></h2>
+                        <span id="detail-category" style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;"></span>
                     </div>
 
                     
-                    <div class="detail-actions" id="detail-actions-container" style="display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.5rem;">
-                        
-                        <button type="button" id="btn-buy-now-product" class="btn-primary giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.95rem; width: 100%; border-radius: 12px; font-size: 1.05rem; font-weight: 900; background: linear-gradient(135deg, #059669, #10b981); border: none; color: white; box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35); cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;">
-                            <span class="material-symbols-outlined" style="font-size: 24px;">bolt</span>
-                            <span>COMPRAR YA</span>
-                        </button>
+                    <div class="detail-img-container" style="margin-bottom: 1.25rem;"></div>
+
+                    
+                    <div class="detail-content" style="padding: 0 1.25rem;">
 
                         
-                        <button type="button" id="btn-add-cart-product" class="btn-outline giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.85rem; width: 100%; border-radius: 12px; font-size: 0.95rem; font-weight: 800; background: #f0fdf4; border: 1.5px solid #86efac; color: #166534; text-decoration: none; cursor: pointer; transition: all 0.2s ease;">
-                            <span class="material-symbols-outlined" style="font-size: 20px;">shopping_cart</span>
-                            <span id="btn-add-cart-text">Agregar al Carrito</span>
+                        <div id="detail-attributes-container" style="margin-bottom: 1.25rem;"></div>
+
+                        
+                        <div style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 2px solid #86efac; border-radius: 16px; padding: 1.15rem 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08); display: flex; flex-direction: column; gap: 8px;">
+                            
+                            <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                                
+                                <div class="qty-selector-wrapper" style="margin: 0;">
+                                    <div class="qty-controls" style="background: white; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 4px 10px; display: inline-flex; align-items: center;">
+                                        <span class="qty-selector-label" style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-right: 4px;">Un.</span>
+                                        <button type="button" class="qty-btn" id="btn-qty-minus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">−</button>
+                                        <span class="qty-value" id="qty-value" style="font-size: 0.95rem; font-weight: 900; color: #0f172a; min-width: 24px; text-align: center;">1</span>
+                                        <button type="button" class="qty-btn" id="btn-qty-plus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">+</button>
+                                    </div>
+                                </div>
+
+                                
+                                <div id="detail-price-display" class="detail-price" style="margin: 0; display: none; text-align: right;"></div>
+                            </div>
+
+                            
+                            <div id="detail-qty-discount-banner" style="display: none; padding: 6px 10px; border-radius: 8px; font-size: 0.74rem; font-weight: 700; width: 100%; box-sizing: border-box;"></div>
+
+                            
+                            <div id="detail-shipping-best-price-badge" style="margin-top: 2px; padding-top: 8px; border-top: 1px dashed #cbd5e1; font-size: 0.82rem;"></div>
+                        </div>
+
+                        
+                        <div class="detail-actions" id="detail-actions-container" style="display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.5rem;">
+                            
+                            <button type="button" id="btn-buy-now-product" class="btn-primary giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.95rem; width: 100%; border-radius: 12px; font-size: 1.05rem; font-weight: 900; background: linear-gradient(135deg, #059669, #10b981); border: none; color: white; box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35); cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;">
+                                <span class="material-symbols-outlined" style="font-size: 24px;">bolt</span>
+                                <span>COMPRAR YA</span>
+                            </button>
+
+                            
+                            <button type="button" id="btn-add-cart-product" class="btn-outline giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.85rem; width: 100%; border-radius: 12px; font-size: 0.95rem; font-weight: 800; background: #f0fdf4; border: 1.5px solid #86efac; color: #166534; text-decoration: none; cursor: pointer; transition: all 0.2s ease;">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">shopping_cart</span>
+                                <span id="btn-add-cart-text">Agregar al Carrito</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="detail-publication-body">
+                    
+                    <div id="detail-custom-cutting-bottom-container" style="display: none; width: 100%; box-sizing: border-box; margin-bottom: 1.5rem;"></div>
+
+                    
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.1rem; margin-bottom: 1.25rem;">
+                        <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.6rem 0; display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a);">description</span> Descripción del Producto
+                        </h3>
+                        <p id="detail-description" class="detail-description product-description-text" style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0; white-space: pre-line;"></p>
+                    </div>
+
+                    
+                    <div id="product-specs-card" style="display: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.15rem; margin-bottom: 1.25rem;">
+                        
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin: 0; display: flex; align-items: center; gap: 7px;">
+                                <span class="material-symbols-outlined" style="font-size: 20px; color: var(--primary-color, #c0510a);">list_alt</span>
+                                <span>Características del producto</span>
+                            </h4>
+                            <span style="font-size: 0.7rem; font-weight: 700; color: #059669; background: #ecfdf5; padding: 2px 7px; border-radius: 6px; border: 1px solid #a7f3d0;">Directo de Fábrica</span>
+                        </div>
+
+                        
+                        <div id="product-specs-primary" style="display: flex; flex-direction: column; gap: 8px;"></div>
+
+                        
+                        <div id="product-specs-extended" style="display: none; flex-direction: column; gap: 8px; margin-top: 8px;"></div>
+
+                        
+                        <button type="button" id="btn-toggle-product-specs" style="display: none; width: 100%; margin-top: 0.85rem; padding: 0.55rem; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; font-size: 0.8rem; font-weight: 700; color: #0284c7; cursor: pointer; align-items: center; justify-content: center; gap: 5px; transition: all 0.2s ease;">
+                            <span id="btn-toggle-specs-text">Ver más detalles</span>
+                            <span id="btn-toggle-specs-icon" class="material-symbols-outlined" style="font-size: 18px; transition: transform 0.2s ease;">expand_more</span>
                         </button>
+                    </div>
+
+                    
+                    <div style="display:flex; flex-direction:column; gap:8px; width:100%; margin-bottom: 0.25rem;">
+                        <a id="btn-buy-pickup" href="#" target="_blank" class="btn-outline giant-btn whatsapp-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.85rem; width: 100%; border-radius: 12px; font-size: 0.95rem; font-weight: 800; background: #fff7ed; border: 1.5px solid #ffedd5; color: #c0510a; box-shadow: 0 2px 8px rgba(192, 81, 10, 0.08); text-decoration: none;">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">chat</span>
+                            <span>Consultar por WhatsApp</span>
+                        </a>
+
+                        <span style="font-size:0.72rem; color:#64748B; text-align:center; margin-top:2px; font-style:italic;">
+                            Chateá con nosotros para coordinar transferencias, efectivo o retiros por el taller
+                        </span>
                     </div>
                 </div>
             </div>
 
             
-            <div id="detail-custom-cutting-bottom-container" style="display: none; width: 100%; box-sizing: border-box; margin-bottom: 1.5rem;"></div>
+            <div id="detail-publication-meta-bar" class="detail-publication-meta-bar">
+                <button type="button" id="btn-copy-pub-id" class="detail-pub-id-btn" title="Clic para copiar el ID de la publicación">
+                    Publicación <strong id="detail-pub-id-label">#---</strong>
+                </button>
+                <span class="detail-pub-meta-divider">|</span>
+                <a id="btn-report-pub-error" href="#" target="_blank" rel="noopener" class="detail-pub-report-link">
+                    Reportar error
+                </a>
+            </div>
 
-
-
+            
+            <div class="detail-outside-recommendations">
                 
-                <div style="background: white; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.1rem; margin-bottom: 1.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
-                    <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.6rem 0; display: flex; align-items: center; gap: 8px;">
-                        <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a);">description</span> Descripción del Producto
-                    </h3>
-                    <p id="detail-description" class="detail-description product-description-text" style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0; white-space: pre-line;"></p>
-                </div>
-
-                
-                <div id="product-specs-card" style="display: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.15rem; margin-bottom: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.03);">
-                    
-                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
-                        <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin: 0; display: flex; align-items: center; gap: 7px;">
-                            <span class="material-symbols-outlined" style="font-size: 20px; color: var(--primary-color, #c0510a);">list_alt</span>
-                            <span>Características del producto</span>
-                        </h4>
-                        <span style="font-size: 0.7rem; font-weight: 700; color: #059669; background: #ecfdf5; padding: 2px 7px; border-radius: 6px; border: 1px solid #a7f3d0;">Directo de Fábrica</span>
-                    </div>
-
-                    
-                    <div id="product-specs-primary" style="display: flex; flex-direction: column; gap: 8px;"></div>
-
-                    
-                    <div id="product-specs-extended" style="display: none; flex-direction: column; gap: 8px; margin-top: 8px;"></div>
-
-                    
-                    <button type="button" id="btn-toggle-product-specs" style="display: none; width: 100%; margin-top: 0.85rem; padding: 0.55rem; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; font-size: 0.8rem; font-weight: 700; color: #0284c7; cursor: pointer; align-items: center; justify-content: center; gap: 5px; transition: all 0.2s ease;">
-                        <span id="btn-toggle-specs-text">Ver más detalles</span>
-                        <span id="btn-toggle-specs-icon" class="material-symbols-outlined" style="font-size: 18px; transition: transform 0.2s ease;">expand_more</span>
-                    </button>
-                </div>
-
-                
-                <div style="display:flex; flex-direction:column; gap:8px; width:100%; margin-bottom: 1.5rem;">
-                    <a id="btn-buy-pickup" href="#" target="_blank" class="btn-outline giant-btn whatsapp-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.85rem; width: 100%; border-radius: 12px; font-size: 0.95rem; font-weight: 800; background: #fff7ed; border: 1.5px solid #ffedd5; color: #c0510a; box-shadow: 0 2px 8px rgba(192, 81, 10, 0.08); text-decoration: none;">
-                        <span class="material-symbols-outlined" style="font-size: 20px;">chat</span>
-                        <span>Consultar por WhatsApp</span>
-                    </a>
-                    
-                    <button type="button" id="btn-copy-product-link" style="display: flex; align-items: center; justify-content: center; gap: 6px; padding: 0.65rem; width: 100%; border-radius: 10px; font-size: 0.85rem; font-weight: 700; background: #f8fafc; border: 1px solid #cbd5e1; color: #475569; cursor: pointer; transition: all 0.2s ease;">
-                        <span class="material-symbols-outlined" style="font-size: 18px; color: #0284c7;">link</span>
-                        <span id="btn-copy-product-link-text">Copiar enlace del producto</span>
-                    </button>
-
-                    <span style="font-size:0.72rem; color:#64748B; text-align:center; margin-top:2px; font-style:italic;">
-                        Chateá con nosotros para coordinar transferencias, efectivo o retiros por el taller
-                    </span>
-                </div>
-
-                
-                <div style="margin-top: 2rem; border-top: 1px solid #e2e8f0; padding-top: 1.5rem;">
-                    <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; text-align: left;">
+                <div style="margin-top: 1.25rem; padding-top: 0.5rem;">
+                    <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.85rem; text-align: left;">
                         🔥 Los más buscados
                     </h3>
                     <div id="detail-related-product-list" class="carousel-categories" style="padding: 10px 0;"></div>
                 </div>
 
                 
-                <div id="detail-random-product-section" style="margin-top: 2.5rem; border-top: 1px solid #e2e8f0; padding-top: 1.5rem; display: none;">
-                    <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--text-main); margin-bottom: 1rem; text-align: left;">
+                <div id="detail-random-product-section" style="margin-top: 2rem; border-top: 1px solid rgba(148, 163, 184, 0.25); padding-top: 1.5rem; display: none;">
+                    <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.85rem; text-align: left;">
                         ✨ Te puede interesar
                     </h3>
                     <div id="detail-random-product-grid" class="category-feed-list" style="padding: 0.5rem 0 2rem 0;"></div>
                 </div>
-
             </div>
         </section>
 
@@ -522,63 +533,63 @@
         
         <section id="view-catalogo" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
-                <iframe src="apps/catalogo.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Catálogo A-Z"></iframe>
+                <iframe data-src="apps/catalogo.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Catálogo A-Z"></iframe>
             </div>
         </section>
 
         
         <section id="view-calculator" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
-                <iframe src="apps/calcular.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Calcular Altura Ideal"></iframe>
+                <iframe data-src="apps/calcular.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Calcular Altura Ideal"></iframe>
             </div>
         </section>
 
         
         <section id="view-mayorista" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
-                <iframe src="apps/mayorista.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Catálogo Mayorista"></iframe>
+                <iframe data-src="apps/mayorista.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Catálogo Mayorista"></iframe>
             </div>
         </section>
 
         
         <section id="view-stock" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
-                <iframe src="apps/stock.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Control de Stock Personal"></iframe>
+                <iframe data-src="apps/stock.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Control de Stock Personal"></iframe>
             </div>
         </section>
 
         
         <section id="view-musica" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
-                <iframe src="apps/musica.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Música y Enganchados"></iframe>
+                <iframe data-src="apps/musica.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Música y Enganchados"></iframe>
             </div>
         </section>
 
         
         <section id="view-ayudin" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
-                <iframe src="apps/ayudin.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Ayudín para Emprendedores"></iframe>
+                <iframe data-src="apps/ayudin.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Ayudín para Emprendedores"></iframe>
             </div>
         </section>
 
         
         <section id="view-pedidos" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
-                <iframe src="pedidos/index.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Seguimiento de Pedido"></iframe>
+                <iframe data-src="pedidos/index.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Seguimiento de Pedido"></iframe>
             </div>
         </section>
 
         
         <section id="view-pedidos-admin" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
-                <iframe src="pedidos/admin.html" style="width: 100%; flex: 1; border: none; display: block;" title="Administración de Pedidos"></iframe>
+                <iframe data-src="pedidos/admin.html" style="width: 100%; flex: 1; border: none; display: block;" title="Administración de Pedidos"></iframe>
             </div>
         </section>
 
         
         <section id="view-editor" class="view" style="height: 100%;">
             <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
-                <iframe src="apps/editor-fotos.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Editor Masivo de Fotos 3:2"></iframe>
+                <iframe data-src="apps/editor-fotos.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Editor Masivo de Fotos 3:2"></iframe>
             </div>
         </section>
 
@@ -598,445 +609,8 @@
         </section>
 
         
-        <section id="view-about" class="view">
-            <div class="view-content nosotros-redesign-wrapper" style="padding: 1rem; max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem;">
-                <style>
-                    .nosotros-hero-banner {
-                        background: linear-gradient(135deg, #2a241e 0%, #3d332a 55%, #1e1915 100%);
-                        border-radius: 22px;
-                        padding: 1.75rem 1.4rem;
-                        color: #fdfbf7;
-                        position: relative;
-                        overflow: hidden;
-                        box-shadow: 0 12px 30px rgba(42, 36, 30, 0.22);
-                        border: 1px solid rgba(234, 179, 8, 0.25);
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        text-align: center;
-                        gap: 0.85rem;
-                    }
-                    .nosotros-hero-badge {
-                        display: inline-flex;
-                        align-items: center;
-                        gap: 6px;
-                        background: rgba(234, 179, 8, 0.16);
-                        border: 1px solid rgba(234, 179, 8, 0.4);
-                        color: #fde047;
-                        font-size: 0.72rem;
-                        font-weight: 800;
-                        padding: 4px 12px;
-                        border-radius: 50px;
-                        letter-spacing: 0.6px;
-                        text-transform: uppercase;
-                    }
-                    .nosotros-hero-title {
-                        font-size: 1.5rem;
-                        font-weight: 900;
-                        margin: 0;
-                        line-height: 1.2;
-                        color: #ffffff;
-                    }
-                    .nosotros-hero-desc {
-                        font-size: 0.92rem;
-                        line-height: 1.55;
-                        color: #e2e8f0;
-                        max-width: 600px;
-                        margin: 0;
-                    }
-                    .nosotros-pillars-row {
-                        display: grid;
-                        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                        gap: 10px;
-                        width: 100%;
-                        margin-top: 0.35rem;
-                    }
-                    .nosotros-pillar-chip {
-                        background: rgba(255, 255, 255, 0.07);
-                        border: 1px solid rgba(255, 255, 255, 0.12);
-                        border-radius: 14px;
-                        padding: 0.75rem 0.8rem;
-                        display: flex;
-                        align-items: center;
-                        gap: 9px;
-                        text-align: left;
-                    }
-                    .nosotros-section-card {
-                        background: var(--surface-color, #ffffff);
-                        border: 1px solid rgba(0, 0, 0, 0.07);
-                        border-radius: 20px;
-                        padding: 1.5rem 1.25rem;
-                        box-shadow: 0 6px 22px rgba(0, 0, 0, 0.04);
-                    }
-                    .nosotros-section-header {
-                        display: flex;
-                        align-items: center;
-                        gap: 10px;
-                        margin-bottom: 1rem;
-                    }
-                    .nosotros-section-icon {
-                        width: 40px;
-                        height: 40px;
-                        border-radius: 12px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        flex-shrink: 0;
-                    }
-                    .nosotros-guide-grid {
-                        display: grid;
-                        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-                        gap: 12px;
-                    }
-                    .nosotros-step-card {
-                        background: #f8fafc;
-                        border: 1.5px solid #e2e8f0;
-                        border-radius: 16px;
-                        padding: 1rem;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 6px;
-                        position: relative;
-                        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-                    }
-                    .nosotros-step-card:hover {
-                        transform: translateY(-2px);
-                        border-color: #cbd5e1;
-                        box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
-                    }
-                    .nosotros-step-num {
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 24px;
-                        height: 24px;
-                        border-radius: 50%;
-                        background: var(--primary-color, #c0510a);
-                        color: #ffffff;
-                        font-size: 0.75rem;
-                        font-weight: 800;
-                    }
-                    .nosotros-shortcuts-grid {
-                        display: grid;
-                        grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
-                        gap: 10px;
-                    }
-                    .nosotros-shortcut-btn {
-                        background: #ffffff;
-                        border: 1.5px solid #e2e8f0;
-                        border-radius: 14px;
-                        padding: 0.85rem 0.75rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 6px;
-                        text-align: center;
-                        cursor: pointer;
-                        text-decoration: none;
-                        color: #1e293b;
-                        font-family: inherit;
-                        transition: all 0.2s ease;
-                        box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-                    }
-                    .nosotros-shortcut-btn:hover {
-                        border-color: var(--primary-color, #c0510a);
-                        background: #fffaf5;
-                        transform: translateY(-2px);
-                        box-shadow: 0 6px 14px rgba(192, 81, 10, 0.1);
-                    }
-                    .nosotros-faq-list {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 8px;
-                    }
-                    .nosotros-faq-item {
-                        border: 1px solid #e2e8f0;
-                        border-radius: 12px;
-                        background: #f8fafc;
-                        overflow: hidden;
-                    }
-                    .nosotros-faq-item summary {
-                        padding: 0.85rem 1rem;
-                        font-weight: 700;
-                        font-size: 0.88rem;
-                        color: #0f172a;
-                        cursor: pointer;
-                        list-style: none;
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        gap: 8px;
-                    }
-                    .nosotros-faq-item summary::-webkit-details-marker {
-                        display: none;
-                    }
-                    .nosotros-faq-item p {
-                        padding: 0 1rem 0.9rem 1rem;
-                        margin: 0;
-                        font-size: 0.84rem;
-                        line-height: 1.55;
-                        color: #475569;
-                    }
-                </style>
-
-                
-                <div class="nosotros-hero-banner">
-                    <span class="nosotros-hero-badge">
-                        <span class="material-symbols-outlined" style="font-size: 15px;">carpenter</span>
-                        <span>Fábrica Directa en Hurlingham, Buenos Aires</span>
-                    </span>
-                    <h2 class="nosotros-hero-title">¡Bienvenidos a La Tarima! 🪵</h2>
-                    <p class="nosotros-hero-desc">
-                        Somos fabricantes apasionados por la madera. Creamos muebles y accesorios con diseño, seguros, resistentes y pensados para acompañar cada rincón de tu hogar, ¡a precio directo de taller!
-                    </p>
-                    <div class="nosotros-pillars-row">
-                        <div class="nosotros-pillar-chip">
-                            <span class="material-symbols-outlined" style="color: #facc15; font-size: 22px;">handyman</span>
-                            <div>
-                                <strong style="display: block; font-size: 0.8rem; color: #fff;">Somos Fabricantes</strong>
-                                <span style="font-size: 0.72rem; color: #cbd5e1;">Sin intermediarios</span>
-                            </div>
-                        </div>
-                        <div class="nosotros-pillar-chip">
-                            <span class="material-symbols-outlined" style="color: #38bdf8; font-size: 22px;">local_shipping</span>
-                            <div>
-                                <strong style="display: block; font-size: 0.8rem; color: #fff;">Envíos a todo el país</strong>
-                                <span style="font-size: 0.72rem; color: #cbd5e1;">Logística, flete o retiro</span>
-                            </div>
-                        </div>
-                        <div class="nosotros-pillar-chip">
-                            <span class="material-symbols-outlined" style="color: #4ade80; font-size: 22px;">savings</span>
-                            <div>
-                                <strong style="display: block; font-size: 0.8rem; color: #fff;">Precios de Taller</strong>
-                                <span style="font-size: 0.72rem; color: #cbd5e1;">Ahorrá en compra directa</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <section class="nosotros-section-card">
-                    <div class="nosotros-section-header">
-                        <div class="nosotros-section-icon" style="background: #fff7ed; color: #ea580c; border: 1px solid #fed7aa;">
-                            <span class="material-symbols-outlined">touch_app</span>
-                        </div>
-                        <div>
-                            <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: #0f172a;">¿Cómo usar nuestra web?</h3>
-                            <p style="margin: 2px 0 0 0; font-size: 0.8rem; color: #64748b;">Seguí estos 4 pasos simples para armar tu pedido en segundos</p>
-                        </div>
-                    </div>
-
-                    <div class="nosotros-guide-grid">
-                        
-                        <div class="nosotros-step-card">
-                            <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span class="nosotros-step-num">1</span>
-                                <span class="material-symbols-outlined" style="color: #0284c7; font-size: 22px;">manage_search</span>
-                            </div>
-                            <strong style="font-size: 0.92rem; color: #0f172a;">Explorá y Buscá</strong>
-                            <p style="font-size: 0.8rem; color: #475569; margin: 0; line-height: 1.45;">
-                                Usá el <strong>buscador de arriba</strong> (podés buscar por mueble, color o medida), navegá por <strong>Categorías</strong> o desplegá el <strong>Catálogo Completo</strong> al final del Inicio.
-                            </p>
-                        </div>
-
-                        
-                        <div class="nosotros-step-card">
-                            <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span class="nosotros-step-num">2</span>
-                                <span class="material-symbols-outlined" style="color: #d97706; font-size: 22px;">palette</span>
-                            </div>
-                            <strong style="font-size: 0.92rem; color: #0f172a;">Elegí Acabado y Medida</strong>
-                            <p style="font-size: 0.8rem; color: #475569; margin: 0; line-height: 1.45;">
-                                Dentro de cada producto podés elegir el acabado (<strong>Natural, Barnizado, Blanco</strong>, etc.) y la medida. El precio y las promociones por cantidad se actualizan solos.
-                            </p>
-                        </div>
-
-                        
-                        <div class="nosotros-step-card">
-                            <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span class="nosotros-step-num">3</span>
-                                <span class="material-symbols-outlined" style="color: #16a34a; font-size: 22px;">local_shipping</span>
-                            </div>
-                            <strong style="font-size: 0.92rem; color: #0f172a;">Cotizá tu Envío con tu CP</strong>
-                            <p style="font-size: 0.8rem; color: #475569; margin: 0; line-height: 1.45;">
-                                Ingresá tu <strong>Código Postal</strong> para ver al instante el costo de envío a domicilio, flete particular o si tenés <strong>¡ENVÍO GRATIS!</strong> (también podés retirar gratis en Hurlingham).
-                            </p>
-                        </div>
-
-                        
-                        <div class="nosotros-step-card">
-                            <div style="display: flex; align-items: center; justify-content: space-between;">
-                                <span class="nosotros-step-num">4</span>
-                                <span class="material-symbols-outlined" style="color: #15803d; font-size: 22px;">shopping_cart_checkout</span>
-                            </div>
-                            <strong style="font-size: 0.92rem; color: #0f172a;">Pedí por WhatsApp o Carrito</strong>
-                            <p style="font-size: 0.8rem; color: #475569; margin: 0; line-height: 1.45;">
-                                Sumá varios productos al <strong>Carrito 🛒</strong> o tocá <strong>Comprar ahora</strong>. Tu pedido nos llega armado por WhatsApp y te damos un <strong>código de seguimiento</strong> en vivo.
-                            </p>
-                        </div>
-                    </div>
-
-                    
-                    <div style="margin-top: 1.2rem; padding-top: 1rem; border-top: 1px dashed #e2e8f0;">
-                        <div style="font-size: 0.75rem; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 0.65rem; text-align: center;">
-                            ⚡ Accesos rápidos a las herramientas de la tienda
-                        </div>
-                        <div class="nosotros-shortcuts-grid">
-                            <button type="button" class="nosotros-shortcut-btn" onclick="if(window.navigateToView) window.navigateToView('view-categories');">
-                                <span class="material-symbols-outlined" style="font-size: 24px; color: #c0510a;">grid_view</span>
-                                <strong style="font-size: 0.82rem;">Ver Categorías</strong>
-                                <span style="font-size: 0.7rem; color: #64748b;">Muebles por rubro</span>
-                            </button>
-                            <button type="button" class="nosotros-shortcut-btn" onclick="if(window.navigateToView) window.navigateToView('view-catalogo');">
-                                <span class="material-symbols-outlined" style="font-size: 24px; color: #0284c7;">list_alt</span>
-                                <strong style="font-size: 0.82rem;">Catálogo A-Z</strong>
-                                <span style="font-size: 0.7rem; color: #64748b;">Listado rápido de precios</span>
-                            </button>
-                            <button type="button" class="nosotros-shortcut-btn" onclick="if(window.navigateToView) window.navigateToView('view-profile');">
-                                <span class="material-symbols-outlined" style="font-size: 24px; color: #16a34a;">shopping_cart</span>
-                                <strong style="font-size: 0.82rem;">Mi Carrito y Perfil</strong>
-                                <span style="font-size: 0.7rem; color: #64748b;">Tus datos y deseos</span>
-                            </button>
-                            <button type="button" class="nosotros-shortcut-btn" onclick="if(window.openTrackingSheet) window.openTrackingSheet(); else if(window.navigateToView) window.navigateToView('view-pedidos');">
-                                <span class="material-symbols-outlined" style="font-size: 24px; color: #7c3aed;">local_shipping</span>
-                                <strong style="font-size: 0.82rem;">Seguir mi Pedido</strong>
-                                <span style="font-size: 0.7rem; color: #64748b;">Estado en tiempo real</span>
-                            </button>
-                        </div>
-                    </div>
-                </section>
-
-                
-                <article class="nosotros-platinum-card" style="background: linear-gradient(145deg, #0f172a 0%, #1e293b 55%, #0c4a6e 100%); border: 1.5px solid rgba(56, 189, 248, 0.38); border-radius: 20px; padding: 1.75rem 1.5rem; color: #f8fafc; box-shadow: 0 14px 32px rgba(15, 23, 42, 0.25), 0 0 24px rgba(56, 189, 248, 0.14); position: relative; overflow: hidden; text-align: center;">
-                    
-                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #0284c7, #38bdf8, #e0f2fe, #38bdf8, #0284c7);"></div>
-
-                    
-                    <div style="display: flex; justify-content: center; margin-bottom: 0.9rem;">
-                        <img src="img/Platinum.png" alt="Medalla MercadoLíder Platinum" style="width: 116px; height: 116px; object-fit: contain; filter: drop-shadow(0 8px 18px rgba(0,0,0,0.5)) drop-shadow(0 0 16px rgba(56, 189, 248, 0.45));">
-                    </div>
-
-                    <span style="display: inline-block; background: rgba(56, 189, 248, 0.16); border: 1px solid rgba(56, 189, 248, 0.4); color: #7dd3fc; font-size: 0.7rem; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; margin-bottom: 0.6rem;">
-                        🏆 Máxima Distinción Oficial
-                    </span>
-
-                    <h2 style="font-size: 1.35rem; font-weight: 800; color: #ffffff; margin: 0 0 0.65rem 0; line-height: 1.25;">
-                        ¡Somos MercadoLíder Platinum!
-                    </h2>
-
-                    <p style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.6; max-width: 580px; margin: 0 auto 1.25rem auto;">
-                        El sello <strong>MercadoLíder Platinum</strong> es el máximo reconocimiento que otorga Mercado Libre a los vendedores con mejor trayectoria, volumen de ventas y excelencia en el país. En <strong>La Tarima</strong>, esta medalla respalda nuestro compromiso real con vos:
-                    </p>
-
-                    
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; text-align: left; margin-bottom: 1.4rem;">
-                        <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; align-items: flex-start; gap: 10px;">
-                            <span class="material-symbols-outlined" style="color: #38bdf8; font-size: 22px; flex-shrink: 0;">verified</span>
-                            <div>
-                                <strong style="display: block; font-size: 0.83rem; color: #ffffff; margin-bottom: 2px;">Miles de ventas exitosas</strong>
-                                <span style="font-size: 0.76rem; color: #94a3b8; line-height: 1.35; display: block;">Trayectoria comprobada entregando muebles en todo el país.</span>
-                            </div>
-                        </div>
-                        <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; align-items: flex-start; gap: 10px;">
-                            <span class="material-symbols-outlined" style="color: #4ade80; font-size: 22px; flex-shrink: 0;">schedule</span>
-                            <div>
-                                <strong style="display: block; font-size: 0.83rem; color: #ffffff; margin-bottom: 2px;">Despachos en tiempo y forma</strong>
-                                <span style="font-size: 0.76rem; color: #94a3b8; line-height: 1.35; display: block;">Cumplimiento estricto en los plazos de fabricación y envío.</span>
-                            </div>
-                        </div>
-                        <div style="background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 0.75rem 0.9rem; display: flex; align-items: flex-start; gap: 10px;">
-                            <span class="material-symbols-outlined" style="color: #facc15; font-size: 22px; flex-shrink: 0;">workspace_premium</span>
-                            <div>
-                                <strong style="display: block; font-size: 0.83rem; color: #ffffff; margin-bottom: 2px;">Atención y postventa 5 estrellas</strong>
-                                <span style="font-size: 0.76rem; color: #94a3b8; line-height: 1.35; display: block;">Acompañamiento directo de fábrica antes y después de tu compra.</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                    <a href="https://www.mercadolibre.com.ar/pagina/latarima" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, #ffe600 0%, #facc15 100%); color: #0f172a; font-weight: 800; font-size: 0.92rem; padding: 0.8rem 1.5rem; border-radius: 50px; text-decoration: none; box-shadow: 0 6px 18px rgba(250, 204, 21, 0.35); transition: transform 0.2s ease, box-shadow 0.2s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 22px rgba(250, 204, 21, 0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 6px 18px rgba(250, 204, 21, 0.35)';">
-                        <span class="material-symbols-outlined" style="font-size: 20px;">storefront</span>
-                        <span>Visitar nuestra Tienda en Mercado Libre</span>
-                        <span class="material-symbols-outlined" style="font-size: 18px;">open_in_new</span>
-                    </a>
-                </article>
-
-                
-                <div id="nosotros-blocks-container">
-                    
-                </div>
-
-                
-                <section class="nosotros-section-card">
-                    <div class="nosotros-section-header">
-                        <div class="nosotros-section-icon" style="background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0;">
-                            <span class="material-symbols-outlined">help</span>
-                        </div>
-                        <div>
-                            <h3 style="margin: 0; font-size: 1.15rem; font-weight: 800; color: #0f172a;">Preguntas Frecuentes</h3>
-                            <p style="margin: 2px 0 0 0; font-size: 0.8rem; color: #64748b;">Todo lo que necesitás saber antes de hacer tu pedido</p>
-                        </div>
-                    </div>
-
-                    <div class="nosotros-faq-list">
-                        <details class="nosotros-faq-item">
-                            <summary>
-                                <span>💰 ¿Por qué conviene comprar directo desde esta web?</span>
-                                <span class="material-symbols-outlined" style="font-size: 18px; color: #64748b;">expand_more</span>
-                            </summary>
-                            <p>
-                                Los precios publicados en esta web son exclusivos de <strong>compra directa de fábrica</strong>, sin las comisiones ni recargos de plataformas externas. Además tenés descuentos automáticos por cantidad y promociones de envío bonificado.
-                            </p>
-                        </details>
-                        <details class="nosotros-faq-item">
-                            <summary>
-                                <span>🚚 ¿Cómo funcionan los envíos y el retiro por el taller?</span>
-                                <span class="material-symbols-outlined" style="font-size: 18px; color: #64748b;">expand_more</span>
-                            </summary>
-                            <p>
-                                Podés retirar <strong>sin cargo por nuestro taller en Hurlingham</strong> coordinando horario, o pedir envío a domicilio mediante Logística Rápida (CABA y GBA), Flete Particular o Expreso a todo el país. ¡Poniendo tu Código Postal en cualquier producto ves las opciones al instante!
-                            </p>
-                        </details>
-                        <details class="nosotros-faq-item">
-                            <summary>
-                                <span>🪚 ¿Hacen cortes de madera o cajones a medida?</span>
-                                <span class="material-symbols-outlined" style="font-size: 18px; color: #64748b;">expand_more</span>
-                            </summary>
-                            <p>
-                                ¡Sí! Contamos con cotizadores automáticos de cortes a medida y cajones dentro del catálogo, o podés escribirnos directamente por WhatsApp con las medidas que necesitás para que un asesor te arme el presupuesto.
-                            </p>
-                        </details>
-                        <details class="nosotros-faq-item">
-                            <summary>
-                                <span>📦 ¿Cómo sigo el estado de mi pedido?</span>
-                                <span class="material-symbols-outlined" style="font-size: 18px; color: #64748b;">expand_more</span>
-                            </summary>
-                            <p>
-                                Una vez confirmado tu pedido, te asignamos un número de orden. Tocando el botón flotante del camioncito 🚚 (o escribiendo tu número en el buscador) podés ver en qué etapa de fabricación o envío está tu compra.
-                            </p>
-                        </details>
-                    </div>
-
-                    
-                    <div style="margin-top: 1.25rem; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border: 1.5px solid #86efac; border-radius: 16px; padding: 1rem 1.2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <span class="material-symbols-outlined" style="font-size: 28px; color: #15803d;">support_agent</span>
-                            <div>
-                                <strong style="display: block; font-size: 0.92rem; color: #14532d;">¿Tenés alguna duda o consulta especial?</strong>
-                                <span style="font-size: 0.8rem; color: #166534;">Hablá directo con nosotros por WhatsApp, ¡te respondemos enseguida!</span>
-                            </div>
-                        </div>
-                        <a href="https://wa.me/5491167007723?text=%C2%A1Hola%20La%20Tarima!%20Tengo%20una%20consulta%20desde%20la%20web" target="_blank" rel="noopener" style="background: #16a34a; color: #ffffff; font-weight: 800; font-size: 0.85rem; padding: 0.65rem 1.2rem; border-radius: 50px; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);">
-                            <span class="material-symbols-outlined" style="font-size: 18px;">chat</span>
-                            <span>Escribir por WhatsApp</span>
-                        </a>
-                    </div>
-                </section>
-
-            </div>
-            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
-        </section>
+        
+        <section id="view-about" class="view"></section>
 
         <template id="social-links-template">
             <div class="social-links mt-2" style="margin-top: 3rem; text-align: center;">
@@ -1175,59 +749,29 @@
     <script src="js/data/products-data.js?v=6" defer></script>
     <script src="js/data/rentals-data.js?v=5" defer></script>
     <script src="js/data/offers-data.js?v=1" defer></script>
+    <script src="js/data/shipping-config.js?v=1" defer></script>
+    <script src="js/data/cortes-config.js?v=1" defer></script>
+    <script src="js/data/cajones-config.js?v=2" defer></script>
     <script src="js/data/data.js?v=10" defer></script>
     <script src="js/modules/shortener.js?v=11" defer></script>
     <script src="js/ui/ui-dom.js?v=2" defer></script>
     <script src="js/ui/ui-utils.js?v=1" defer></script>
     <script src="js/ui/ui-core.js?v=1" defer></script>
-    <script src="js/ui/ui-navigation.js?v=4" defer></script>
+    <script src="js/ui/ui-navigation.js?v=5" defer></script>
     <script src="js/ui/ui-offers.js?v=7" defer></script>
     <script src="js/ui/catalog/catalog-utils.js?v=4" defer></script>
+    <script src="js/ui/ui-search-feed.js?v=1" defer></script>
     <script src="js/modules/home-infinite-catalog.js?v=1" defer></script>
     <script src="js/ui/ui-home.js?v=5" defer></script>
     <script src="js/ui/catalog/catalog-shipping-calc.js?v=1" defer></script>
-    <script src="js/ui/catalog/catalog-actions.js?v=1" defer></script>
+    <script src="js/ui/catalog/catalog-actions.js?v=3" defer></script>
     <script src="js/ui/catalog/catalog-gallery.js?v=1" defer></script>
-    <script src="js/modules/cortes-widget.js?v=1" defer></script>
-    <script src="js/ui/ui-catalog.js?v=22" defer></script>
+    <script src="js/ui/ui-catalog.js?v=23" defer></script>
     <script src="js/ui/ui-rentals.js?v=2" defer></script>
     <script src="js/ui/ui-blocks.js?v=1" defer></script>
-    <script src="js/admin/admin-utils.js?v=1" defer></script>
-    <script src="js/admin/admin-settings.js" defer></script>
-    <script src="js/admin/admin-core.js?v=3" defer></script>
-    <script src="js/admin/admin-categories.js?v=1" defer></script>
-    <script src="js/admin/admin-categories-form.js?v=1" defer></script>
-    <script src="js/admin/admin-products.js?v=5" defer></script>
-    <script src="js/admin/admin-products-form.js?v=6" defer></script>
-    <script src="js/admin/importer/admin-ml-importer.js?v=2" defer></script>
-    <script src="js/admin/admin-tnube.js?v=1" defer></script>
-    <script src="js/admin/admin-bulk-edit.js?v=1" defer></script>
-    <script src="js/admin/admin-rentals.js?v=1" defer></script>
-    <script src="js/admin/admin-offers.js?v=1" defer></script>
-    <script src="js/data/shipping-config.js?v=1" defer></script>
-    <script src="js/data/cortes-config.js?v=1" defer></script>
-    <script src="js/data/cajones-config.js?v=2" defer></script>
-    <script src="js/modules/postal-lookup.js?v=1" defer></script>
-    <script src="js/admin/admin-shipping.js?v=1" defer></script>
-    <script src="js/admin/admin-cortes.js?v=1" defer></script>
-    <script src="js/admin/cajones/cajones-drag.js?v=1" defer></script>
-    <script src="js/admin/cajones/cajones-materials.js?v=1" defer></script>
-    <script src="js/admin/cajones/cajones-rules.js?v=1" defer></script>
-    <script src="js/admin/cajones/cajones-discounts.js?v=1" defer></script>
-    <script src="js/admin/cajones/cajones-simulator.js?v=1" defer></script>
-    <script src="js/admin/admin-cajones.js?v=3" defer></script>
-    <script src="js/admin/admin-payments.js?v=1" defer></script>
-    <script src="js/admin/admin-pages.js?v=4" defer></script>
-    <script src="js/admin/admin-quotes.js?v=1" defer></script>
-    <script src="js/admin/admin-users.js?v=1" defer></script>
-    
     <script src="js/modules/carrito.js?v=9" defer></script>
     <script src="js/modules/main.js?v=5" defer></script>
     <script src="js/modules/categorias.js?v=3" defer></script>
-    <script src="js/modules/cajones/cajones-calc.js?v=2" defer></script>
-    <script src="js/modules/cajones/cajones-ui.js?v=2" defer></script>
-    <script src="js/modules/cajones-widget.js?v=3" defer></script>
-    <script src="js/modules/videos.js?v=2" defer></script>
     <script src="js/ui/pwa-banner.js?v=2" defer></script>
     <script>
         // Lógica del cintillo de confianza: Rotativo, Cierre manual y Auto-ocultado (Punto 5 UX)
@@ -1305,7 +849,7 @@
             }, 2800);
         })();
     </script>
-    <script src="js/apps/assistant.js?v=7" defer></script>
+    
     <script>
         // Limpiar el parámetro ?u= de bypass de caché si quedó residual en la URL tras una actualización del SW.
         (function() {

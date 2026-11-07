@@ -243,17 +243,33 @@
             }
             
             // Renderizado dinámico condicional al navegar
+            const lazyIframe = targetView.querySelector('iframe[data-src]');
+            let iframeJustInitialized = false;
+            if (lazyIframe && (!lazyIframe.getAttribute('src') || lazyIframe.getAttribute('src') === 'about:blank')) {
+                if (viewId !== 'view-pedidos') {
+                    lazyIframe.src = lazyIframe.getAttribute('data-src');
+                    iframeJustInitialized = true;
+                }
+            }
+
             if (viewId === 'view-offers') {
+                if (window.ensurePostalLookupLoaded) window.ensurePostalLookupLoaded();
                 if (window.renderOffersFrontend) window.renderOffersFrontend();
             } else if (viewId === 'view-home') {
                 if (window.renderHome) window.renderHome();
             } else if (viewId === 'view-categories') {
                 if (window.renderCategoriesMenu) window.renderCategoriesMenu();
             } else if (viewId === 'view-videos') {
-                if (window.renderVideosView) window.renderVideosView();
+                if (window.ensureVideosModuleLoaded) {
+                    window.ensureVideosModuleLoaded().then(() => {
+                        if (window.renderVideosView) window.renderVideosView();
+                    });
+                } else if (window.renderVideosView) {
+                    window.renderVideosView();
+                }
             } else if (viewId === 'view-catalogo') {
                 const iframe = document.querySelector('#view-catalogo iframe');
-                if (iframe && iframe.contentWindow) {
+                if (iframe && iframe.contentWindow && !iframeJustInitialized) {
                     if (typeof iframe.contentWindow.refreshCatalog === 'function') {
                         iframe.contentWindow.refreshCatalog();
                     } else {
@@ -262,12 +278,12 @@
                 }
             } else if (viewId === 'view-mayorista') {
                 const iframe = document.querySelector('#view-mayorista iframe');
-                if (iframe && iframe.contentWindow) {
+                if (iframe && iframe.contentWindow && !iframeJustInitialized) {
                     iframe.contentWindow.location.reload();
                 }
             } else if (viewId === 'view-musica') {
                 const iframe = document.querySelector('#view-musica iframe');
-                if (iframe && iframe.contentWindow) {
+                if (iframe && iframe.contentWindow && !iframeJustInitialized) {
                     if (typeof iframe.contentWindow.refreshTrackList === 'function') {
                         iframe.contentWindow.refreshTrackList();
                     } else {
@@ -276,7 +292,7 @@
                 }
             } else if (viewId === 'view-ayudin') {
                 const iframe = document.querySelector('#view-ayudin iframe');
-                if (iframe && iframe.contentWindow) {
+                if (iframe && iframe.contentWindow && !iframeJustInitialized) {
                     iframe.contentWindow.location.reload();
                 }
             } else if (viewId === 'view-pedidos') {
@@ -293,11 +309,17 @@
                 }
             } else if (viewId === 'view-editor') {
                 const iframe = document.querySelector('#view-editor iframe');
-                if (iframe && iframe.contentWindow) {
+                if (iframe && iframe.contentWindow && !iframeJustInitialized) {
                     iframe.contentWindow.location.reload();
                 }
             } else if (viewId === 'view-about') {
-                renderNosotrosBlocksCliente();
+                if (window.loadAboutPartialOnDemand) {
+                    window.loadAboutPartialOnDemand().then(() => {
+                        if (typeof renderNosotrosBlocksCliente === 'function') renderNosotrosBlocksCliente();
+                    });
+                } else if (typeof renderNosotrosBlocksCliente === 'function') {
+                    renderNosotrosBlocksCliente();
+                }
             } else if (viewId === 'view-notifications') {
                 // Marcar avisos como leídos
                 const badge = document.getElementById('header-nav-badge');
@@ -316,6 +338,7 @@
             } else if (viewId === 'view-rentals') {
                 renderRentals();
             } else if (viewId === 'view-profile') {
+                if (window.ensurePostalLookupLoaded) window.ensurePostalLookupLoaded();
                 if (typeof window.renderPerfilCarritoView === 'function') {
                     window.renderPerfilCarritoView();
                 } else if (window.CarritoModule && window.CarritoModule.render) {
@@ -330,7 +353,13 @@
                 } else if (!window.currentAdminTab) {
                     window.currentAdminTab = 'dashboard';
                 }
-                if (window.renderAdminUX) window.renderAdminUX();
+                if (window.loadAdminPartialsOnDemand) {
+                    window.loadAdminPartialsOnDemand().then(() => {
+                        if (window.renderAdminUX) window.renderAdminUX();
+                    });
+                } else if (window.renderAdminUX) {
+                    window.renderAdminUX();
+                }
             }
         }
 

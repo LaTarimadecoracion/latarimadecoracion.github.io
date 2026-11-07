@@ -467,80 +467,53 @@
             };
         }
 
-        // Punto 30: Botón de copiar enlace directo del producto
-        const btnCopyLink = document.getElementById('btn-copy-product-link');
-        if (btnCopyLink) {
-            btnCopyLink.onclick = (e) => {
-                e.preventDefault();
-                e.stopPropagation();
+        // 5. Barra inferior estilo Mercado Libre: ID de publicación y Reportar error por WhatsApp
+        try {
+            const pubIdLabel = document.getElementById('detail-pub-id-label');
+            const btnCopyPubId = document.getElementById('btn-copy-pub-id');
+            const btnReportError = document.getElementById('btn-report-pub-error');
 
-                const acabName = (grupo && grupo.acabado_name && grupo.acabado_name !== 'Único') ? grupo.acabado_name : '';
-                let finalUrl = window.location.href;
-                if (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function') {
-                    const shortCode = window.TarimaShortener.encodeShortCode(product.id, acabName, medidaName, optText, false);
-                    if (shortCode) {
-                        const origin = window.location.origin;
-                        const path = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
-                        finalUrl = `${origin}${path}/p/${shortCode}.html`;
-                    }
+            const acabName = (grupo && grupo.acabado_name && grupo.acabado_name !== 'Único') ? grupo.acabado_name : '';
+            const selOpt = divOpt ? divOpt.querySelector('select') : null;
+            const optText = (selOpt && selOpt.selectedIndex !== -1) ? (selOpt.options[selOpt.selectedIndex]?.text || '') : '';
+
+            let pubUrl = window.location.href;
+            if (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function') {
+                const shortCode = window.TarimaShortener.encodeShortCode(product.id, acabName, medidaName, optText, false);
+                if (shortCode) {
+                    const origin = window.location.origin;
+                    const pathName = window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '');
+                    pubUrl = `${origin}${pathName}/p/${shortCode}.html`;
                 }
+            }
 
-                const copyToClipboard = (text) => {
+            if (pubIdLabel) {
+                pubIdLabel.textContent = `#${product.id}`;
+            }
+
+            if (btnCopyPubId) {
+                btnCopyPubId.onclick = (e) => {
+                    e.preventDefault();
+                    const idText = `#${product.id}`;
                     if (navigator.clipboard && navigator.clipboard.writeText) {
-                        navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
-                    } else {
-                        fallbackCopy(text);
+                        navigator.clipboard.writeText(idText).catch(() => {});
+                    }
+                    const toast = document.getElementById('admin-toast');
+                    if (toast) {
+                        toast.textContent = `📋 ID de publicación copiado (${idText})`;
+                        toast.classList.add('show');
+                        setTimeout(() => toast.classList.remove('show'), 2000);
                     }
                 };
+            }
 
-                const fallbackCopy = (text) => {
-                    try {
-                        const ta = document.createElement('textarea');
-                        ta.value = text;
-                        ta.style.position = 'fixed';
-                        ta.style.opacity = '0';
-                        document.body.appendChild(ta);
-                        ta.focus();
-                        ta.select();
-                        document.execCommand('copy');
-                        document.body.removeChild(ta);
-                    } catch(err) {}
-                };
-
-                copyToClipboard(finalUrl);
-
-                // Feedback visual en el botón
-                const btnText = document.getElementById('btn-copy-product-link-text');
-                const btnIcon = btnCopyLink.querySelector('.material-symbols-outlined');
-                const prevText = btnText ? btnText.textContent : 'Copiar enlace del producto';
-                
-                if (btnText) btnText.textContent = '¡Enlace copiado al portapapeles!';
-                if (btnIcon) {
-                    btnIcon.textContent = 'check_circle';
-                    btnIcon.style.color = '#16a34a';
-                }
-                btnCopyLink.style.background = '#f0fdf4';
-                btnCopyLink.style.borderColor = '#86efac';
-                btnCopyLink.style.color = '#166534';
-
-                const toast = document.getElementById('admin-toast');
-                if (toast) {
-                    toast.textContent = "🔗 ¡Enlace del producto copiado!";
-                    toast.classList.add('show');
-                    setTimeout(() => toast.classList.remove('show'), 2200);
-                }
-
-                setTimeout(() => {
-                    if (btnText) btnText.textContent = prevText;
-                    if (btnIcon) {
-                        btnIcon.textContent = 'link';
-                        btnIcon.style.color = '#0284c7';
-                    }
-                    btnCopyLink.style.background = '#f8fafc';
-                    btnCopyLink.style.borderColor = '#cbd5e1';
-                    btnCopyLink.style.color = '#475569';
-                }, 2500);
-            };
+            if (btnReportError) {
+                const variantDetail = [acabName, medidaName, optText].filter(Boolean).join(' - ');
+                const reportMessage = `Hola! Detecté un error en esta publicación:\n• *Producto:* ${product.title}${variantDetail ? ' (' + variantDetail + ')' : ''}\n• *ID de publicación:* #${product.id}\n• *Link:* ${pubUrl}`;
+                btnReportError.href = `https://wa.me/${phone}?text=${encodeURIComponent(reportMessage)}`;
+            }
+        } catch (err) {
+            console.warn('Error actualizando barra de publicación:', err);
         }
     }
 

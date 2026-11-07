@@ -1,15 +1,17 @@
 {
   "id": "65",
   "shortId": "3N",
-  "title": "Estantes x3 Cuadrados",
+  "title": "Estante Cuadrado Combo X3un",
   "description": "Organización creativa y estilo para tus paredes.",
-  "image": "img/estantes/cuadrados/cuadrados.webp",
+  "image": "img/estantes-repisas/estantes-x3-cuadrados/1794021464288-imagenwebp.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
       "description": "",
-      "cover_image": "img/estantes/cuadrados/cuadrados.webp",
+      "cover_image": "img/estantes-repisas/estantes-x3-cuadrados/1794021464288-imagenwebp.webp",
       "images_list": [
+        "img/estantes-repisas/estantes-x3-cuadrados/1794021464288-imagenwebp.webp",
+        "img/estantes-repisas/estantes-x3-cuadrados/1794021464295-imagenwebp.webp",
         "img/estantes/cuadrados/cuadrados.webp"
       ],
       "medidas_variants": [
@@ -21,11 +23,15 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": "",
-          "cost_price": "",
+          "price": 20000,
+          "cost_price": 20000,
           "legend": "",
-          "showPrice": false,
-          "logisticaEnabled": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
@@ -72,13 +78,8 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1793586190636,
+  "last_modified": 1794021508802,
   "primaryCatId": "Estantes",
   "history": [],
-  "views": 5,
-  "categories": [
-    "carpinteria-todos",
-    "Estantes"
-  ],
   "rubro": "carpinteria"
 }
