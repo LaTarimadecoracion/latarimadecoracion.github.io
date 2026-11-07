@@ -68,7 +68,8 @@ const productsData = [
                 "primaryCatId": "Organizadores",
                 "history": [],
                 "visible": true,
-                "order": 1
+                "order": 1,
+                "views": 0
             },
             {
                 "id": "1794021665338",
@@ -111,7 +112,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "1794021585691",
@@ -152,7 +154,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 1
             },
             {
                 "id": "1793239693996",
@@ -195,7 +198,7 @@ const productsData = [
                     }
                 ],
                 "category": "camas-madera-pino",
-                "views": 7
+                "views": 6
             },
             {
                 "id": "51",
@@ -2315,7 +2318,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 2,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -3323,7 +3326,7 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 11,
+                "views": 9,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -3706,7 +3709,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 2,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4166,7 +4169,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1794021508802,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 7
             },
             {
                 "id": "7C",
@@ -5596,7 +5600,7 @@ const productsData = [
                 ],
                 "last_modified": 1783742622011,
                 "primaryCatId": "jardin-patio",
-                "views": 6,
+                "views": 7,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -6103,7 +6107,7 @@ const productsData = [
                 "last_modified": 1790380546917,
                 "primaryCatId": "Organizadores",
                 "history": [],
-                "views": 5,
+                "views": 4,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores"
@@ -9335,7 +9339,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 110,
+                "views": 103,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -9721,7 +9725,7 @@ const productsData = [
                 "last_modified": 1786828055190,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 4,
+                "views": 5,
                 "stock": 0,
                 "history": [
                     {
@@ -9945,7 +9949,7 @@ const productsData = [
                     "cortes-madera"
                 ],
                 "rubro": "carpinteria",
-                "views": 21
+                "views": 18
             },
             {
                 "id": "68",
@@ -10259,7 +10263,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 110
+                "views": 109
             },
             {
                 "id": "95",
@@ -10433,7 +10437,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "visible": true,
-                "views": 77
+                "views": 74
             },
             {
                 "id": "1792887338328",
@@ -10968,7 +10972,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 25000,
+                                "price": 23000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -11088,7 +11092,8 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
                     }
                 ],
-                "views": 5
+                "views": 5,
+                "price": 23000
             },
             {
                 "id": "1792887338354",
@@ -11330,7 +11335,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 110,
+                "views": 103,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -11849,7 +11854,7 @@ const productsData = [
                 "last_modified": 1786828055190,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 4,
+                "views": 5,
                 "stock": 0,
                 "history": [
                     {
@@ -15643,7 +15648,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "visible": true,
-                "views": 77
+                "views": 74
             },
             {
                 "id": "A1",
@@ -16671,7 +16676,8 @@ const productsData = [
                 "primaryCatId": "Organizadores",
                 "history": [],
                 "visible": true,
-                "order": 1
+                "order": 1,
+                "views": 0
             },
             {
                 "id": "45",
@@ -16765,7 +16771,7 @@ const productsData = [
                 "last_modified": 1794021964488,
                 "primaryCatId": "Organizadores",
                 "history": [],
-                "views": 5,
+                "views": 4,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores"
@@ -17638,7 +17644,7 @@ const productsData = [
                 ],
                 "last_modified": 1794021964488,
                 "primaryCatId": "cajones-madera",
-                "views": 2,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -18036,7 +18042,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 110
+                "views": 109
             },
             {
                 "id": "67",
@@ -18171,7 +18177,7 @@ const productsData = [
                     "cortes-madera"
                 ],
                 "rubro": "carpinteria",
-                "views": 21
+                "views": 18
             },
             {
                 "id": "68",
@@ -18464,7 +18470,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 2,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -19422,7 +19428,8 @@ const productsData = [
                 "quantityDiscounts": [],
                 "last_modified": 1794021508802,
                 "primaryCatId": "Estantes",
-                "history": []
+                "history": [],
+                "views": 7
             },
             {
                 "id": "7D",
@@ -20966,7 +20973,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 22000,
+                                "price": 25000,
                                 "cost_price": 18000,
                                 "legend": "",
                                 "showPrice": true,
@@ -20998,7 +21005,8 @@ const productsData = [
                 "primaryCatId": "camas-madera-pino",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 17
+                "views": 17,
+                "price": 25000
             },
             {
                 "id": "1793239693996",
@@ -21041,7 +21049,7 @@ const productsData = [
                     }
                 ],
                 "category": "camas-madera-pino",
-                "views": 7,
+                "views": 6,
                 "last_modified": 1793586887358
             },
             {
@@ -21206,7 +21214,7 @@ const productsData = [
                 "last_modified": 1793586887358,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 11,
+                "views": 9,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -21484,7 +21492,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586887358,
                 "primaryCatId": "cajones-madera",
-                "views": 2,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21783,7 +21791,7 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 11,
+                "views": 9,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -22732,7 +22740,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1793586859102,
                 "primaryCatId": "Estantes",
-                "views": 2,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24189,7 +24197,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 25000,
+                                "price": 23000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -24309,7 +24317,8 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
                     }
                 ],
-                "views": 5
+                "views": 5,
+                "price": 23000
             }
         ]
     },
@@ -24850,7 +24859,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586789934,
                 "primaryCatId": "jardin-patio",
-                "views": 6,
+                "views": 7,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -26032,7 +26041,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 0
             },
             {
                 "id": "1794021585691",
@@ -26073,7 +26083,8 @@ const productsData = [
                             }
                         ]
                     }
-                ]
+                ],
+                "views": 1
             },
             {
                 "id": "42",
@@ -27351,7 +27362,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 2,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -27419,7 +27430,7 @@ const productsData = [
                     }
                 ],
                 "rubro": "carpinteria",
-                "views": 5,
+                "views": 4,
                 "categories": [
                     "carpinteria-todos",
                     "cat-28-mvay9cq6"

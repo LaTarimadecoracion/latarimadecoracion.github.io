@@ -126,8 +126,8 @@ window.ensureCajonesModulesLoaded = function() {
     _cajonesModulePromise = loadScriptsSequential([
         'js/data/cajones-config.js?v=2',
         'js/modules/cajones/cajones-calc.js?v=2',
-        'js/modules/cajones/cajones-ui.js?v=2',
-        'js/modules/cajones-widget.js?v=3'
+        'js/modules/cajones/cajones-ui.js?v=3',
+        'js/modules/cajones-widget.js?v=5'
     ]);
     return _cajonesModulePromise;
 };

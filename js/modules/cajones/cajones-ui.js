@@ -140,12 +140,16 @@
     /**
      * Devuelve el HTML de la tabla con los cajones agregados a la lista.
      */
-    function getCajonesListTableTemplate(cajonesList, editingIndex) {
+    function getCajonesListTableTemplate(cajonesList, editingIndex, activeRule = null) {
         const totalPieces = cajonesList.reduce((acc, c) => acc + (c.qty || 1), 0);
         const totalM2 = cajonesList.reduce((acc, c) => acc + ((c.m2Unit || 0) * (c.qty || 1)), 0);
         const totalSubtotal = cajonesList.reduce((acc, c) => acc + (c.subtotal || 0), 0);
         const totalRawSubtotal = cajonesList.reduce((acc, c) => acc + ((c.rawUnitPrice || c.unitPrice || 0) * (c.qty || 1)), 0);
         const totalAhorroRedondeo = totalRawSubtotal - totalSubtotal;
+
+        const discPct = (activeRule && activeRule.discountPercent > 0) ? activeRule.discountPercent : 0;
+        const discountAmount = discPct > 0 ? Math.round(totalSubtotal * (discPct / 100)) : 0;
+        const finalNetTotal = totalSubtotal - discountAmount;
 
         return `
             <div style="background:#FFFFFF; border:1.5px solid #CBD5E1; border-radius:14px; padding:1.25rem; box-shadow:0 4px 16px rgba(0,0,0,0.04); width:100%; box-sizing:border-box;">
@@ -226,8 +230,14 @@
                             </span>
                         ` : ''}
                     </div>
-                    <div style="font-size:1rem; font-weight:800; color:#0F172A;">
-                        Total: <span style="color:#0284c7; font-size:1.2rem;">$${Number(totalSubtotal).toLocaleString('es-AR')}</span>
+                    <div style="font-size:1rem; font-weight:800; color:#0F172A; display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:flex-end;">
+                        ${discPct > 0 ? `
+                            <span style="text-decoration:line-through; color:#94A3B8; font-size:0.95rem; font-weight:600;">$${Number(totalSubtotal).toLocaleString('es-AR')}</span>
+                            <span style="background:#10B981; color:#FFFFFF; font-size:0.72rem; font-weight:800; padding:2px 7px; border-radius:10px;">${discPct}% OFF (-$${Number(discountAmount).toLocaleString('es-AR')})</span>
+                            <span>Total: <span style="color:#c0510a; font-size:1.25rem; font-weight:900;">$${Number(finalNetTotal).toLocaleString('es-AR')}</span></span>
+                        ` : `
+                            <span>Total: <span style="color:#0284c7; font-size:1.2rem;">$${Number(totalSubtotal).toLocaleString('es-AR')}</span></span>
+                        `}
                     </div>
                 </div>
             </div>

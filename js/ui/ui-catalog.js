@@ -749,7 +749,20 @@
                 let qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1', 10) : 1;
 
                 const activeCuts = window._activeCustomCutsList || customCutsList;
-                if ((product.isCustomCutting === true || product.id === '69') && Array.isArray(activeCuts) && activeCuts.length > 0) {
+                const activeCajones = window._activeCajonesList || [];
+                if ((product.isCajonProduct === true || product.id === '95') && Array.isArray(activeCajones) && activeCajones.length > 0) {
+                    const totalPieces = activeCajones.reduce((acc, c) => acc + (c.qty || 1), 0);
+                    const rawSub = activeCajones.reduce((acc, c) => acc + (c.subtotal || 0), 0);
+                    const rule = window.getBestDiscountRule ? window.getBestDiscountRule(product, totalPieces, activeVariant) : null;
+                    let netSubtotal = rawSub;
+                    if (rule && rule.discountPercent > 0) {
+                        netSubtotal = rawSub - Math.round(rawSub * (rule.discountPercent / 100));
+                    }
+                    const boxesSummary = activeCajones.map(c => `${c.qty}x ${c.reglaName || 'Cajón'} ${c.largo}x${c.ancho}x${c.alto}cm`).join(' | ');
+                    medidaText = `A Medida (${totalPieces} cajones: ${boxesSummary})`;
+                    variantPrice = Math.round(netSubtotal / totalPieces);
+                    qtyVal = totalPieces;
+                } else if ((product.isCustomCutting === true || product.id === '69') && Array.isArray(activeCuts) && activeCuts.length > 0) {
                     const totalPieces = activeCuts.reduce((acc, c) => acc + (c.qty || 1), 0);
                     let netSubtotal = 0;
                     activeCuts.forEach(c => {
@@ -801,7 +814,20 @@
                     let qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1', 10) : 1;
 
                     const activeCuts = window._activeCustomCutsList || customCutsList;
-                    if ((product.isCustomCutting === true || product.id === '69') && Array.isArray(activeCuts) && activeCuts.length > 0) {
+                    const activeCajones = window._activeCajonesList || [];
+                    if ((product.isCajonProduct === true || product.id === '95') && Array.isArray(activeCajones) && activeCajones.length > 0) {
+                        const totalPieces = activeCajones.reduce((acc, c) => acc + (c.qty || 1), 0);
+                        const rawSub = activeCajones.reduce((acc, c) => acc + (c.subtotal || 0), 0);
+                        const rule = window.getBestDiscountRule ? window.getBestDiscountRule(product, totalPieces, activeVariant) : null;
+                        let netSubtotal = rawSub;
+                        if (rule && rule.discountPercent > 0) {
+                            netSubtotal = rawSub - Math.round(rawSub * (rule.discountPercent / 100));
+                        }
+                        const boxesSummary = activeCajones.map(c => `${c.qty}x ${c.reglaName || 'Cajón'} ${c.largo}x${c.ancho}x${c.alto}cm`).join(' | ');
+                        medidaText = `A Medida (${totalPieces} cajones: ${boxesSummary})`;
+                        itemPrice = Math.round(netSubtotal / totalPieces);
+                        qtyVal = totalPieces;
+                    } else if ((product.isCustomCutting === true || product.id === '69') && Array.isArray(activeCuts) && activeCuts.length > 0) {
                         const totalPieces = activeCuts.reduce((acc, c) => acc + (c.qty || 1), 0);
                         let netSubtotal = 0;
                         activeCuts.forEach(c => {

@@ -18,8 +18,18 @@
             (Array.isArray(product.categories) && product.categories.includes('cortes-madera'))
         );
 
+        const isCajonProduct = product && (
+            product.isCajonProduct === true ||
+            product.id === '95' ||
+            product.category === 'cajones-crossfit' ||
+            product.primaryCatId === 'cajones-crossfit' ||
+            (Array.isArray(product.categories) && product.categories.includes('cajones-crossfit'))
+        );
+
         if (isCortesProduct && window.cortesConfig?.descuentos?.activo !== false && Array.isArray(window.cortesConfig?.descuentos?.escalas) && window.cortesConfig.descuentos.escalas.length > 0) {
             discounts = window.cortesConfig.descuentos.escalas;
+        } else if (isCajonProduct && Array.isArray(window.cajonesConfig?.descuentos_box) && window.cajonesConfig.descuentos_box.length > 0) {
+            discounts = window.cajonesConfig.descuentos_box;
         }
         return discounts || [];
     }
@@ -126,9 +136,14 @@
         if (container) {
             container.innerHTML = '';
             
+            const isCustomConfigurator = product && (product.isCajonProduct === true || product.id === '95' || product.isCustomCutting === true || product.id === '69');
             let linksToRender = [];
-            if (grupo.medidas_variants && grupo.medidas_variants.length > 0) {
-                linksToRender = grupo.medidas_variants.filter(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
+            if (!isCustomConfigurator && grupo.medidas_variants && grupo.medidas_variants.length > 0) {
+                linksToRender = grupo.medidas_variants.filter(m => {
+                    if (m.hidden === true || (m.medida || '').trim() !== medidaName) return false;
+                    const l = (m.link || '').trim().toLowerCase();
+                    return l.startsWith('http://') || l.startsWith('https://');
+                });
             }
             
             if (linksToRender.length > 0) {
@@ -256,15 +271,15 @@
                     let discountedCutsSummary = [];
 
                     if (hasCajonesList) {
-                        totalDiscountAmount = 0;
-                        activeCajones.forEach(box => {
-                            const rule = getBestDiscountRule(product, box.qty || 1, activeVariant);
-                            if (rule && rule.discountPercent > 0) {
-                                const boxSub = box.subtotal || 0;
-                                const boxDisc = boxSub * (rule.discountPercent / 100);
-                                totalDiscountAmount += boxDisc;
+                        discountRule = getBestDiscountRule(product, effectiveQty, activeVariant);
+                        if (discountRule) {
+                            if (discountRule.discountPercent !== undefined && discountRule.discountPercent > 0) {
+                                totalDiscountAmount = Math.round(effectiveSubtotal * (discountRule.discountPercent / 100));
+                            } else if (discountRule.discountValue !== undefined && discountRule.discountValue > 0) {
+                                const minUnits = discountRule.minQty !== undefined ? discountRule.minQty : discountRule.minUnits;
+                                totalDiscountAmount = Math.floor(effectiveQty / minUnits) * discountRule.discountValue;
                             }
-                        });
+                        }
                     } else if (hasCustomCutsList) {
                         totalDiscountAmount = 0;
                         customCutsList.forEach(cut => {

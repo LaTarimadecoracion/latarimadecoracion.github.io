@@ -2968,26 +2968,35 @@
             const container = document.getElementById('checkout-external-platforms-container');
             if (!container) return;
 
+            const isValidExternalUrl = (u) => {
+                if (!u || typeof u !== 'string') return false;
+                const clean = u.trim().toLowerCase();
+                return clean.startsWith('http://') || clean.startsWith('https://');
+            };
+
+            const prodObj = productContext?.product || offer;
+            const isCustomConfigurator = prodObj && (prodObj.isCajonProduct === true || prodObj.id === '95' || prodObj.isCustomCutting === true || prodObj.id === '69');
+
             let externalLinks = [];
 
-            if (isProductItem) {
+            if (isProductItem && !isCustomConfigurator) {
                 const grupo = productContext?.grupo || (offer.acabados_groups && offer.acabados_groups[0]) || {};
                 const medida = (productContext?.medida || '').trim();
-                let relevantVariants = (grupo.medidas_variants || []).filter(m => m.hidden !== true && m.link && m.link.trim());
+                let relevantVariants = (grupo.medidas_variants || []).filter(m => m.hidden !== true && isValidExternalUrl(m.link));
                 if (medida) {
                     const exact = relevantVariants.filter(m => (m.medida || '').trim() === medida);
                     if (exact.length > 0) relevantVariants = exact;
                 }
                 relevantVariants.forEach(v => {
-                    if (v.link && v.link.trim()) {
+                    if (isValidExternalUrl(v.link)) {
                         externalLinks.push({ link: v.link.trim(), label: v.linkLabel, legend: v.legend });
                     }
                 });
             }
 
-            if (externalLinks.length === 0) {
+            if (externalLinks.length === 0 && !isCustomConfigurator) {
                 const fallbackLink = (offer && (offer.link || offer.mercadolibre_link || offer.mlLink)) || (productContext?.product && (productContext.product.link || productContext.product.mercadolibre_link));
-                if (fallbackLink && String(fallbackLink).trim()) {
+                if (isValidExternalUrl(fallbackLink)) {
                     externalLinks.push({ link: String(fallbackLink).trim() });
                 }
             }

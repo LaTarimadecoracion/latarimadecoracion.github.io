@@ -271,7 +271,10 @@
             }
 
             container.style.display = 'block';
-            container.innerHTML = window.CajonesUI ? window.CajonesUI.getCajonesListTableTemplate(cajonesList, editingIndex) : '';
+            const activeVariant = grupo.medidas_variants ? grupo.medidas_variants[0] : null;
+            const totalPieces = cajonesList.reduce((acc, c) => acc + (c.qty || 1), 0);
+            const activeRule = getBestDiscountRule ? getBestDiscountRule(totalPieces, activeVariant) : null;
+            container.innerHTML = window.CajonesUI ? window.CajonesUI.getCajonesListTableTemplate(cajonesList, editingIndex, activeRule) : '';
 
             // Botón Vaciar Lista
             document.getElementById('btn-clear-cajones-list')?.addEventListener('click', () => {
@@ -407,7 +410,7 @@
             }
         }
 
-        // 7. Botón "+ Agregar a lista de cajones"
+        // 7. Botón "+ Agregar a lista de cajones" (con agrupación automática de cajones idénticos)
         document.getElementById('btn-add-cajon-to-list')?.addEventListener('click', () => {
             if (!currentCalculated) return;
             if (currentCalculated.isExceeded) {
@@ -415,17 +418,45 @@
                 return;
             }
 
-            if (editingIndex >= 0) {
-                cajonesList[editingIndex] = { ...currentCalculated };
+            const newItem = { ...currentCalculated };
+            const isSameCajon = (a, b) => (
+                (a.reglaId || '') === (b.reglaId || '') &&
+                (a.placaId || '') === (b.placaId || '') &&
+                Number(a.largo) === Number(b.largo) &&
+                Number(a.ancho) === Number(b.ancho) &&
+                Number(a.alto) === Number(b.alto)
+            );
+
+            if (editingIndex >= 0 && editingIndex < cajonesList.length) {
+                const duplicateIdx = cajonesList.findIndex((c, idx) => idx !== editingIndex && isSameCajon(c, newItem));
+                if (duplicateIdx !== -1) {
+                    const target = cajonesList[duplicateIdx];
+                    target.qty = (target.qty || 1) + newItem.qty;
+                    target.subtotal = target.unitPrice * target.qty;
+                    cajonesList.splice(editingIndex, 1);
+                } else {
+                    cajonesList[editingIndex] = newItem;
+                }
                 editingIndex = -1;
                 document.getElementById('btn-add-cajon-text').textContent = '+ Agregar a lista de cajones';
                 document.getElementById('btn-cancel-edit-cajon').style.display = 'none';
             } else {
-                cajonesList.push({ ...currentCalculated });
+                const existingIdx = cajonesList.findIndex(c => isSameCajon(c, newItem));
+                if (existingIdx !== -1) {
+                    const existing = cajonesList[existingIdx];
+                    existing.qty = (existing.qty || 1) + newItem.qty;
+                    existing.subtotal = existing.unitPrice * existing.qty;
+                } else {
+                    cajonesList.push(newItem);
+                }
             }
+
+            const qtyInput = document.getElementById('detail-cajon-item-qty');
+            if (qtyInput) qtyInput.value = '1';
 
             window._activeCajonesList = cajonesList;
             renderCajonesList();
+            calcPreview();
         });
 
         document.getElementById('btn-cancel-edit-cajon')?.addEventListener('click', () => {

@@ -364,8 +364,8 @@ window.cajonesConfig = {
         "redondeo_paso": 500
     },
     "logistica": {
-        "flex_max_suma_lados": 150,
-        "flex_max_peso_kg": 30,
+        "flex_max_suma_lados": 120,
+        "flex_max_peso_kg": 20,
         "flex_max_unidades_bulto": 1,
         "vehiculo_nombre": "Ford Ranger (al Ras del Techo)",
         "vehiculo_caja_largo": 145,

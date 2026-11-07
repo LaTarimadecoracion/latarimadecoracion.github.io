@@ -22,7 +22,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 22000,
+          "price": 25000,
           "cost_price": 18000,
           "legend": "",
           "showPrice": true,
@@ -55,6 +55,7 @@
   "history": [],
   "rubro": "carpinteria",
   "views": 17,
+  "price": 25000,
   "categories": [
     "camas-madera-pino"
   ]
