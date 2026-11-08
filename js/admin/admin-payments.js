@@ -28,6 +28,9 @@
             mode: 'sandbox', // 'sandbox' | 'production'
             publicKey: '',
             accessToken: '',
+            workerUrl: '',
+            surchargePercent: 0,
+            creditSurchargePercent: 0,
             maxInstallments: 12
         },
         credit: {
@@ -38,6 +41,22 @@
 
     function loadPaymentConfig() {
         if (window.sessionPaymentConfig) {
+            try {
+                const stored = localStorage.getItem('sessionPaymentConfig');
+                if (stored) {
+                    const parsed = JSON.parse(stored);
+                    if (window.sessionPaymentConfig.mercadopago && parsed.mercadopago) {
+                        if (window.sessionPaymentConfig.mercadopago.publicKey && !parsed.mercadopago.publicKey) {
+                            parsed.mercadopago.publicKey = window.sessionPaymentConfig.mercadopago.publicKey;
+                        }
+                        if (window.sessionPaymentConfig.mercadopago.hasLocalSecret) {
+                            parsed.mercadopago.hasLocalSecret = true;
+                        }
+                        localStorage.setItem('sessionPaymentConfig', JSON.stringify(parsed));
+                        window.sessionPaymentConfig = parsed;
+                    }
+                }
+            } catch (e) {}
             return;
         }
         const stored = localStorage.getItem('sessionPaymentConfig');
@@ -65,7 +84,7 @@
         const transferCecilia = config.transferCecilia || defaultPaymentConfig.transferCecilia;
         const mp = config.mercadopago || defaultPaymentConfig.mercadopago;
 
-        const mpStatusBadge = mp.accessToken
+        const mpStatusBadge = (mp.accessToken || mp.hasLocalSecret || mp.workerUrl)
             ? `<span style="background: #dcfce7; color: #15803d; border: 1px solid #86efac; padding: 3px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 800; display: inline-flex; align-items: center; gap: 4px;">
                 <span class="material-symbols-outlined" style="font-size: 16px;">check_circle</span> Configurado (${mp.mode === 'production' ? 'PROD' : 'TEST'})
                </span>`
@@ -128,6 +147,44 @@
                             </div>
                         </div>
 
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px;">
+                            <div>
+                                <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #0369a1; margin-bottom: 3px; text-transform: uppercase;">
+                                    Recargo Link / Débito (%):
+                                </label>
+                                <input type="number" step="0.5" min="0" max="50" id="admin-mp-surcharge" value="${mp.surchargePercent !== undefined ? mp.surchargePercent : 0}" placeholder="Ej: 6.5" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.85rem; font-weight: 800; color: #0f172a; outline: none;">
+                                <div style="font-size: 0.65rem; color: #64748b; margin-top: 2px;">0% = Mismo precio que transferencia</div>
+                            </div>
+                            <div>
+                                <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #b45309; margin-bottom: 3px; text-transform: uppercase;">
+                                    Recargo Base Tarjeta (%):
+                                </label>
+                                <input type="number" step="0.5" min="0" max="100" id="admin-mp-credit-surcharge" value="${mp.creditSurchargePercent !== undefined ? mp.creditSurchargePercent : (mp.surchargePercent || 0)}" placeholder="Ej: 8" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.85rem; font-weight: 800; color: #0f172a; outline: none;">
+                                <div style="font-size: 0.65rem; color: #64748b; margin-top: 2px;">Cuotas calculadas en checkout MP</div>
+                            </div>
+                            <div>
+                                <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
+                                    Máx. Cuotas Permitidas:
+                                </label>
+                                <select id="admin-mp-max-installments" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.65rem; font-size: 0.85rem; font-weight: 700; color: #0f172a; background: #fff; outline: none;">
+                                    <option value="1" ${Number(mp.maxInstallments) === 1 ? 'selected' : ''}>1 pago (Sin cuotas)</option>
+                                    <option value="3" ${Number(mp.maxInstallments) === 3 ? 'selected' : ''}>Hasta 3 cuotas</option>
+                                    <option value="6" ${Number(mp.maxInstallments) === 6 ? 'selected' : ''}>Hasta 6 cuotas</option>
+                                    <option value="12" ${(!mp.maxInstallments || Number(mp.maxInstallments) === 12) ? 'selected' : ''}>Hasta 12 cuotas</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
+                                URL de Pasarela Cloud / Worker (Para GitHub Pages):
+                            </label>
+                            <input type="text" id="admin-mp-worker-url" value="${mp.workerUrl || ''}" placeholder="Ej: https://pagos-latarima.tuusuario.workers.dev/crear-pago" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; font-family: monospace; color: #0f172a; outline: none;">
+                            <div style="font-size: 0.68rem; color: #64748b; margin-top: 2px;">
+                                En modo local usa tu servidor directo. En la web pública usa este Worker gratuito para proteger tu clave privada.
+                            </div>
+                        </div>
+
                         <div>
                             <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
                                 Public Key (Clave Pública MP):
@@ -137,11 +194,11 @@
 
                         <div>
                             <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                Access Token (Clave Privada de API):
+                                Access Token (Clave Privada de API - Solo Servidor Local):
                             </label>
-                            <input type="password" id="admin-mp-access-token" value="${mp.accessToken || ''}" placeholder="Ej: APP_USR-123456789..." style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; font-family: monospace; color: #0f172a; outline: none;">
+                            <input type="password" id="admin-mp-access-token" value="${mp.accessToken || (mp.hasLocalSecret ? '********' : '')}" placeholder="${mp.hasLocalSecret ? '✓ Guardado de forma segura en _dev/mp-secret.json' : 'Ej: APP_USR-123456789...'}" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; font-family: monospace; color: #0f172a; outline: none;">
                             <div style="font-size: 0.68rem; color: #64748b; margin-top: 2px;">
-                                Obtela en <a href="https://www.mercadopago.com.ar/developers/panel/credentials" target="_blank" rel="noopener noreferrer" style="color: #0284c7; font-weight: 700;">mercadopago.com.ar/developers</a> ➔ Sus Credenciales.
+                                Obtenela en <a href="https://www.mercadopago.com.ar/developers/panel/credentials" target="_blank" rel="noopener noreferrer" style="color: #0284c7; font-weight: 700;">mercadopago.com.ar/developers</a> ➔ Credenciales de Producción. (Se guarda cifrada localmente fuera de GitHub).
                             </div>
                         </div>
 
@@ -313,8 +370,8 @@
                                         <th onclick="window.togglePayColumnProducts('transferEnabled')" style="padding: 10px; width: 110px; text-align: center; cursor: pointer; background: #e2e8f0; border-radius: 6px 0 0 0;" title="Tocar aquí para alternar Transferencia (ON/OFF) en seleccionados o todos">
                                             🏦 Transferencia <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
                                         </th>
-                                        <th onclick="window.togglePayColumnProducts('linkEnabled')" style="padding: 10px; width: 110px; text-align: center; cursor: pointer; background: #e2e8f0;" title="Tocar aquí para alternar Link/Débito (ON/OFF) en seleccionados o todos">
-                                            🔗 Link / Débito <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
+                                        <th onclick="window.togglePayColumnProducts('linkEnabled')" style="padding: 10px; width: 110px; text-align: center; cursor: pointer; background: #e2e8f0;" title="Tocar aquí para alternar Mercado Pago (ON/OFF) en seleccionados o todos">
+                                            🤝 Mercado Pago <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
                                         </th>
                                         <th onclick="window.togglePayColumnProducts('creditEnabled')" style="padding: 10px; width: 110px; text-align: center; cursor: pointer; background: #e2e8f0; border-radius: 0 6px 0 0;" title="Tocar aquí para alternar Tarjeta (ON/OFF) en seleccionados o todos">
                                             💳 Tarjeta <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
@@ -386,8 +443,8 @@
                                         <th onclick="window.togglePayColumnOffers('transferEnabled')" style="padding: 10px; width: 110px; text-align: center; cursor: pointer; background: #fed7aa; border-radius: 6px 0 0 0;" title="Tocar aquí para alternar Transferencia (ON/OFF) en seleccionadas o todas">
                                             🏦 Transferencia <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
                                         </th>
-                                        <th onclick="window.togglePayColumnOffers('linkEnabled')" style="padding: 10px; width: 110px; text-align: center; cursor: pointer; background: #fed7aa;" title="Tocar aquí para alternar Link/Débito (ON/OFF) en seleccionadas o todas">
-                                            🔗 Link / Débito <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
+                                        <th onclick="window.togglePayColumnOffers('linkEnabled')" style="padding: 10px; width: 110px; text-align: center; cursor: pointer; background: #fed7aa;" title="Tocar aquí para alternar Mercado Pago (ON/OFF) en seleccionadas o todas">
+                                            🤝 Mercado Pago <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
                                         </th>
                                         <th onclick="window.togglePayColumnOffers('creditEnabled')" style="padding: 10px; width: 110px; text-align: center; cursor: pointer; background: #fed7aa; border-radius: 0 6px 0 0;" title="Tocar aquí para alternar Tarjeta (ON/OFF) en seleccionadas o todas">
                                             💳 Tarjeta <span class="material-symbols-outlined" style="font-size: 13px; vertical-align: middle;">swap_vert</span>
@@ -430,10 +487,26 @@
 
         const categories = window.sessionProducts || [];
         let allProducts = [];
+        const seenProdIds = new Set();
 
+        // Primero recorrer las categorías específicas (excluyendo las virtuales "-todos") para mostrar el nombre de su categoría real
+        categories.forEach(cat => {
+            if (String(cat.id || '').endsWith('-todos')) return;
+            (cat.products || []).forEach(prod => {
+                if (!seenProdIds.has(String(prod.id))) {
+                    seenProdIds.add(String(prod.id));
+                    allProducts.push({ ...prod, categoryName: cat.name });
+                }
+            });
+        });
+
+        // Luego recorrer cualquier categoría restante por si algún producto sólo estaba en "-todos"
         categories.forEach(cat => {
             (cat.products || []).forEach(prod => {
-                allProducts.push({ ...prod, categoryName: cat.name });
+                if (!seenProdIds.has(String(prod.id))) {
+                    seenProdIds.add(String(prod.id));
+                    allProducts.push({ ...prod, categoryName: cat.name });
+                }
             });
         });
 
@@ -456,6 +529,13 @@
             const isSelected = selectedPayProdIds.has(prod.id);
 
             const imgSrc = Array.isArray(prod.image) ? prod.image[0] : (prod.image || 'img/logo_provisional.png');
+            let displayPrice = parseFloat(prod.price) || 0;
+            if (displayPrice <= 0 && Array.isArray(prod.acabados_groups)) {
+                for (const g of prod.acabados_groups) {
+                    const vPrice = parseFloat(g?.medidas_variants?.[0]?.price) || 0;
+                    if (vPrice > 0) { displayPrice = vPrice; break; }
+                }
+            }
 
             return `
                 <tr style="border-bottom: 1px solid #e2e8f0; transition: background 0.15s; ${isSelected ? 'background: #f0f9ff;' : ''}" onmouseover="if(!${isSelected}) this.style.background='#f8fafc'" onmouseout="if(!${isSelected}) this.style.background='transparent'">
@@ -470,7 +550,7 @@
                         <div style="font-size: 0.68rem; color: #64748b;">${prod.categoryName || 'Catálogo'}</div>
                     </td>
                     <td style="padding: 8px; font-weight: 800; color: #059669; font-family: monospace;">
-                        ${formatCurr(prod.price)}
+                        ${formatCurr(displayPrice)}
                     </td>
                     <td style="padding: 8px; text-align: center;">
                         <input type="checkbox" ${isTrans ? 'checked' : ''} onchange="window.updateProductPaymentConfig('${prod.id}', 'transferEnabled', this.checked)" style="width: 18px; height: 18px; accent-color: #16a34a; cursor: pointer;">
@@ -547,9 +627,9 @@
         const chkAll = document.getElementById('chk-select-all-pay-prods');
         if (chkAll) {
             const categories = window.sessionProducts || [];
-            let totalCount = 0;
-            categories.forEach(cat => { totalCount += (cat.products || []).length; });
-            chkAll.checked = totalCount > 0 && selectedPayProdIds.size >= totalCount;
+            const uniqueIds = new Set();
+            categories.forEach(cat => { (cat.products || []).forEach(p => uniqueIds.add(String(p.id))); });
+            chkAll.checked = uniqueIds.size > 0 && selectedPayProdIds.size >= uniqueIds.size;
         }
     };
 
@@ -570,10 +650,16 @@
 
         const allActive = targetProds.every(prod => (prod.paymentConfig ? prod.paymentConfig[fieldKey] !== false : true));
         const newValue = !allActive;
+        const nowTs = Date.now();
 
         targetProds.forEach(prod => {
             if (!prod.paymentConfig) prod.paymentConfig = { transferEnabled: true, linkEnabled: true, creditEnabled: true };
             prod.paymentConfig[fieldKey] = newValue;
+            if (fieldKey === 'linkEnabled' || fieldKey === 'creditEnabled') {
+                prod.paymentConfig.linkEnabled = newValue;
+                prod.paymentConfig.creditEnabled = newValue;
+            }
+            prod.last_modified = nowTs;
         });
 
         window.sessionProducts = categories;
@@ -596,11 +682,13 @@
     window.bulkUpdatePayProductsAll = function(value) {
         const categories = window.sessionProducts || (typeof productsData !== 'undefined' ? productsData : []);
         const targetSet = selectedPayProdIds.size > 0 ? selectedPayProdIds : null;
+        const nowTs = Date.now();
 
         categories.forEach(cat => {
             (cat.products || []).forEach(prod => {
                 if (!targetSet || targetSet.has(prod.id)) {
                     prod.paymentConfig = { transferEnabled: value, linkEnabled: value, creditEnabled: value };
+                    prod.last_modified = nowTs;
                 }
             });
         });
@@ -624,11 +712,17 @@
     // UPDATE PAYMENT CONFIG PRODUCTO
     window.updateProductPaymentConfig = function(prodId, fieldKey, isChecked) {
         const categories = window.sessionProducts || (typeof productsData !== 'undefined' ? productsData : []);
+        const nowTs = Date.now();
         categories.forEach(cat => {
             (cat.products || []).forEach(prod => {
-                if (prod.id === prodId) {
+                if (String(prod.id) === String(prodId)) {
                     if (!prod.paymentConfig) prod.paymentConfig = { transferEnabled: true, linkEnabled: true, creditEnabled: true };
                     prod.paymentConfig[fieldKey] = isChecked;
+                    if (fieldKey === 'linkEnabled' || fieldKey === 'creditEnabled') {
+                        prod.paymentConfig.linkEnabled = isChecked;
+                        prod.paymentConfig.creditEnabled = isChecked;
+                    }
+                    prod.last_modified = nowTs;
                 }
             });
         });
@@ -645,6 +739,8 @@
                 });
             } catch(e) {}
         }
+        const query = document.getElementById('admin-pay-prod-search')?.value || '';
+        window.renderAdminPaymentProducts(query);
     };
 
     // RENDER TABLA OFERTAS
@@ -772,6 +868,10 @@
         targetOffers.forEach(o => {
             if (!o.paymentConfig) o.paymentConfig = { transferEnabled: true, linkEnabled: true, creditEnabled: true };
             o.paymentConfig[fieldKey] = newValue;
+            if (fieldKey === 'linkEnabled' || fieldKey === 'creditEnabled') {
+                o.paymentConfig.linkEnabled = newValue;
+                o.paymentConfig.creditEnabled = newValue;
+            }
         });
 
         window.sessionOffers = offers;
@@ -809,12 +909,43 @@
         window.renderAdminPaymentOffers(query);
     };
 
+    window.updateOfferPaymentConfig = function(offerId, fieldKey, isChecked) {
+        const offers = window.sessionOffers || (typeof offersData !== 'undefined' ? offersData : []);
+        const nowTs = Date.now();
+        offers.forEach(offer => {
+            if (String(offer.id) === String(offerId)) {
+                if (!offer.paymentConfig) offer.paymentConfig = { transferEnabled: true, linkEnabled: true, creditEnabled: true };
+                offer.paymentConfig[fieldKey] = isChecked;
+                if (fieldKey === 'linkEnabled' || fieldKey === 'creditEnabled') {
+                    offer.paymentConfig.linkEnabled = isChecked;
+                    offer.paymentConfig.creditEnabled = isChecked;
+                }
+                offer.last_modified = nowTs;
+            }
+        });
+        window.sessionOffers = offers;
+        localStorage.setItem('sessionOffers', JSON.stringify(offers));
+        try {
+            fetch('/api/save-offers', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(offers)
+            });
+        } catch(e) {}
+        const query = document.getElementById('admin-pay-offer-search')?.value || '';
+        window.renderAdminPaymentOffers(query);
+    };
+
     window.saveAdminPaymentConfig = async function() {
         const btn = document.getElementById('btn-save-payments-main');
         const mpActive = document.getElementById('admin-mp-active')?.checked || false;
         const mpMode = document.querySelector('input[name="admin-mp-mode"]:checked')?.value || 'sandbox';
         const mpPublicKey = document.getElementById('admin-mp-public-key')?.value.trim() || '';
         const mpAccessToken = document.getElementById('admin-mp-access-token')?.value.trim() || '';
+        const mpWorkerUrl = document.getElementById('admin-mp-worker-url')?.value.trim() || '';
+        const mpSurcharge = parseFloat(document.getElementById('admin-mp-surcharge')?.value) || 0;
+        const mpCreditSurcharge = parseFloat(document.getElementById('admin-mp-credit-surcharge')?.value) || 0;
+        const mpMaxInstallments = parseInt(document.getElementById('admin-mp-max-installments')?.value, 10) || 12;
 
         const transferActive = document.getElementById('admin-transfer-active')?.checked || false;
         const transferAlias = document.getElementById('admin-transfer-alias')?.value.trim() || '';
@@ -851,7 +982,11 @@
                 active: mpActive,
                 mode: mpMode,
                 publicKey: mpPublicKey,
-                accessToken: mpAccessToken
+                accessToken: mpAccessToken,
+                workerUrl: mpWorkerUrl,
+                surchargePercent: mpSurcharge,
+                creditSurchargePercent: mpCreditSurcharge,
+                maxInstallments: mpMaxInstallments
             }
         };
 
@@ -859,12 +994,19 @@
         localStorage.setItem('sessionPaymentConfig', JSON.stringify(newConfig));
 
         try {
-            // 1. Guardar Configuración de Pagos en disco (js/payment-config.js)
+            // 1. Guardar Configuración de Pagos en disco (js/data/payment-config.js)
             await fetch('/api/save-payment-config', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newConfig)
             });
+
+            if (newConfig.mercadopago && (newConfig.mercadopago.accessToken || window.sessionPaymentConfig?.mercadopago?.hasLocalSecret)) {
+                newConfig.mercadopago.hasLocalSecret = true;
+                newConfig.mercadopago.accessToken = '';
+            }
+            window.sessionPaymentConfig = newConfig;
+            localStorage.setItem('sessionPaymentConfig', JSON.stringify(newConfig));
 
             // 2. Guardar Productos en disco (js/products-data.js)
             if (window.sessionProducts) {

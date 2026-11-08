@@ -1115,15 +1115,140 @@ app.post('/api/save-payment-config', (req, res) => {
             return res.status(400).json({ success: false, message: 'El payload debe ser un objeto válido.' });
         }
 
-        const fileContent = '// js/payment-config.js\n// --- PAYMENT CONFIGURATION DATABASE ---\n// Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.\n\nwindow.sessionPaymentConfig = ' + JSON.stringify(paymentConfig, null, 4) + ';\n';
+        // Si enviaron un accessToken privado, lo guardamos en un archivo local privado (_dev/mp-secret.json)
+        // y lo limpiamos del js/data/payment-config.js público para que GitHub nunca bloquee el push.
+        const mpSecretPath = path.join(ROOT_DIR, '_dev', 'mp-secret.json');
+        let currentSecret = {};
+        if (fs.existsSync(mpSecretPath)) {
+            try { currentSecret = JSON.parse(fs.readFileSync(mpSecretPath, 'utf8')); } catch(e) {}
+        }
+
+        if (paymentConfig.mercadopago && paymentConfig.mercadopago.accessToken && paymentConfig.mercadopago.accessToken !== '********') {
+            currentSecret.accessToken = paymentConfig.mercadopago.accessToken.trim();
+            try { fs.writeFileSync(mpSecretPath, JSON.stringify(currentSecret, null, 2), 'utf8'); } catch (e) {}
+        }
+
+        // Copia limpia para el frontend público (sin accessToken en texto plano)
+        const publicConfig = JSON.parse(JSON.stringify(paymentConfig));
+        if (publicConfig.mercadopago) {
+            publicConfig.mercadopago.hasLocalSecret = !!(currentSecret.accessToken);
+            publicConfig.mercadopago.accessToken = '';
+        }
+
+        const fileContent = '// js/data/payment-config.js\n// --- PAYMENT CONFIGURATION DATABASE ---\n// Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.\n\nwindow.sessionPaymentConfig = ' + JSON.stringify(publicConfig, null, 4) + ';\n';
         const filePath = path.join(ROOT_DIR, 'js', 'data', 'payment-config.js');
+        const docsPath = path.join(ROOT_DIR, 'docs', 'js', 'data', 'payment-config.js');
         
         fs.writeFileSync(filePath, fileContent, 'utf8');
-        console.log('✅ js/payment-config.js actualizado correctamente.');
+        try {
+            const docsDataDir = path.join(ROOT_DIR, 'docs', 'js', 'data');
+            if (!fs.existsSync(docsDataDir)) fs.mkdirSync(docsDataDir, { recursive: true });
+            if (fs.existsSync(docsPath)) fs.unlinkSync(docsPath);
+            fs.writeFileSync(docsPath, fileContent, 'utf8');
+        } catch (e) {}
+
+        console.log('✅ js/data/payment-config.js actualizado correctamente.');
         res.json({ success: true, message: 'Configuración de pagos guardada exitosamente.' });
     } catch (error) {
         console.error('❌ Error guardando configuración de pagos:', error);
         res.status(500).json({ success: false, message: 'Error interno del servidor al guardar configuración de pagos.' });
+    }
+});
+
+// API Endpoint para crear Preferencia de Pago en Mercado Pago (Checkout Pro)
+app.post('/api/mercadopago/preference', async (req, res) => {
+    try {
+        const body = req.body || {};
+        const mpSecretPath = path.join(ROOT_DIR, '_dev', 'mp-secret.json');
+        let secretToken = body.accessToken || '';
+        if (!secretToken && fs.existsSync(mpSecretPath)) {
+            try {
+                const sec = JSON.parse(fs.readFileSync(mpSecretPath, 'utf8'));
+                secretToken = sec.accessToken || '';
+            } catch (e) {}
+        }
+
+        if (!secretToken) {
+            return res.status(400).json({
+                success: false,
+                message: 'Falta configurar el Access Token de Mercado Pago en el Panel de Administración ➔ Métodos de Pago.'
+            });
+        }
+
+        const title = String(body.title || 'Pedido La Tarima Carpintería').substring(0, 250);
+        const amount = Math.round(Number(body.amount) || 0);
+        if (amount <= 0) {
+            return res.status(400).json({ success: false, message: 'El monto a cobrar debe ser mayor a $0.' });
+        }
+
+        const maxInstallments = parseInt(body.maxInstallments, 10) || 12;
+        const originUrl = body.originUrl || 'http://localhost:7000';
+        const externalRef = body.externalReference || ('LT-' + Date.now());
+
+        const preferencePayload = {
+            items: [
+                {
+                    id: String(body.itemId || 'pedido-latarima'),
+                    title: title,
+                    description: String(body.description || title).substring(0, 250),
+                    quantity: 1,
+                    currency_id: 'ARS',
+                    unit_price: amount
+                }
+            ],
+            payer: {
+                name: body.payerName || '',
+                email: body.payerEmail || 'comprador@latarima.com.ar',
+                phone: {
+                    number: body.payerPhone || ''
+                }
+            },
+            payment_methods: {
+                installments: maxInstallments
+            },
+            back_urls: {
+                success: `${originUrl}/?mp_status=approved&ref=${encodeURIComponent(externalRef)}`,
+                failure: `${originUrl}/?mp_status=failure&ref=${encodeURIComponent(externalRef)}`,
+                pending: `${originUrl}/?mp_status=pending&ref=${encodeURIComponent(externalRef)}`
+            },
+            auto_return: 'approved',
+            external_reference: externalRef,
+            statement_descriptor: 'LA TARIMA'
+        };
+
+        const mpRes = await fetch('https://api.mercadopago.com/checkout/preferences', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${secretToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(preferencePayload)
+        });
+
+        const mpData = await mpRes.json();
+        if (!mpRes.ok || (!mpData.init_point && !mpData.sandbox_init_point)) {
+            console.error('❌ Error respuesta Mercado Pago:', mpData);
+            return res.status(mpRes.status || 500).json({
+                success: false,
+                message: mpData.message || 'Mercado Pago rechazó la creación del link. Verificá tu Access Token.',
+                details: mpData
+            });
+        }
+
+        const checkoutUrl = (body.mode === 'sandbox' && mpData.sandbox_init_point)
+            ? mpData.sandbox_init_point
+            : mpData.init_point;
+
+        return res.json({
+            success: true,
+            id: mpData.id,
+            init_point: checkoutUrl,
+            sandbox_init_point: mpData.sandbox_init_point,
+            external_reference: externalRef
+        });
+    } catch (error) {
+        console.error('❌ Error en /api/mercadopago/preference:', error);
+        return res.status(500).json({ success: false, message: error.message || 'Error conectando con Mercado Pago.' });
     }
 });
 
@@ -3223,6 +3348,14 @@ function generateSocialPreviewPages() {
 function cleanOrphanImages() {
     try {
         const usedImages = new Set();
+        const addUsedImage = (imgStr) => {
+            if (!imgStr || typeof imgStr !== 'string') return;
+            usedImages.add(path.normalize(imgStr));
+            if (imgStr.toLowerCase().endsWith('.webp') && !imgStr.toLowerCase().endsWith('_thumb.webp')) {
+                const thumbStr = imgStr.replace(/\.webp$/i, '_thumb.webp');
+                usedImages.add(path.normalize(thumbStr));
+            }
+        };
 
         // 1. Recopilar imágenes del catálogo (products-data.js)
         const productsDbPath = path.join(ROOT_DIR, 'js', 'data', 'products-data.js');
@@ -3232,17 +3365,17 @@ function cleanOrphanImages() {
             const categories = JSON.parse(jsonStr);
 
             categories.forEach(cat => {
-                if (cat.image) usedImages.add(path.normalize(cat.image));
+                if (cat.image) addUsedImage(cat.image);
                 if (cat.products && Array.isArray(cat.products)) {
                     cat.products.forEach(p => {
-                        if (typeof p.image === 'string') usedImages.add(path.normalize(p.image));
-                        else if (Array.isArray(p.image)) p.image.forEach(img => usedImages.add(path.normalize(img)));
+                        if (typeof p.image === 'string') addUsedImage(p.image);
+                        else if (Array.isArray(p.image)) p.image.forEach(img => addUsedImage(img));
                         
                         if (p.acabados_groups && Array.isArray(p.acabados_groups)) {
                             p.acabados_groups.forEach(g => {
-                                if (g.cover_image) usedImages.add(path.normalize(g.cover_image));
+                                if (g.cover_image) addUsedImage(g.cover_image);
                                 if (g.images_list && Array.isArray(g.images_list)) {
-                                    g.images_list.forEach(img => usedImages.add(path.normalize(img)));
+                                    g.images_list.forEach(img => addUsedImage(img));
                                 }
                             });
                         }
@@ -3263,13 +3396,13 @@ function cleanOrphanImages() {
                     } else if (entry.isFile() && entry.name.endsWith('.json')) {
                         try {
                             const p = JSON.parse(fs.readFileSync(full, 'utf8'));
-                            if (typeof p.image === 'string') usedImages.add(path.normalize(p.image));
-                            else if (Array.isArray(p.image)) p.image.forEach(img => usedImages.add(path.normalize(img)));
+                            if (typeof p.image === 'string') addUsedImage(p.image);
+                            else if (Array.isArray(p.image)) p.image.forEach(img => addUsedImage(img));
                             if (p.acabados_groups && Array.isArray(p.acabados_groups)) {
                                 p.acabados_groups.forEach(g => {
-                                    if (g.cover_image) usedImages.add(path.normalize(g.cover_image));
+                                    if (g.cover_image) addUsedImage(g.cover_image);
                                     if (g.images_list && Array.isArray(g.images_list)) {
-                                        g.images_list.forEach(img => usedImages.add(path.normalize(img)));
+                                        g.images_list.forEach(img => addUsedImage(img));
                                     }
                                 });
                             }
@@ -3287,7 +3420,8 @@ function cleanOrphanImages() {
             const jsonStr = content.replace(/^\s*const\s+offersData\s*=\s*/, '').replace(/;\s*$/, '').trim();
             const offers = JSON.parse(jsonStr);
             offers.forEach(o => {
-                if (o.image) usedImages.add(path.normalize(o.image));
+                if (o.image) addUsedImage(o.image);
+                if (o.customCoverImage) addUsedImage(o.customCoverImage);
             });
         }
 
@@ -3299,7 +3433,7 @@ function cleanOrphanImages() {
             if (matchNosotros) {
                 matchNosotros.forEach(m => {
                     const imgPath = m.replace(/"image":\s*"/, '').replace(/"$/, '');
-                    if (imgPath) usedImages.add(path.normalize(imgPath));
+                    if (imgPath) addUsedImage(imgPath);
                 });
             }
         }

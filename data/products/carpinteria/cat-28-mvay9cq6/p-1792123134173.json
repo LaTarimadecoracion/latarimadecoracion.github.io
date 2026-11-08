@@ -37,9 +37,14 @@
     }
   ],
   "rubro": "carpinteria",
-  "views": 4,
+  "views": 5,
   "categories": [
     "cat-28-mvay9cq6"
   ],
-  "subcategoria": "pizarras"
+  "subcategoria": "pizarras",
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  }
 }

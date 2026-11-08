@@ -46,7 +46,9 @@
   "paymentConfig": {
     "mode": "store",
     "showBuyButton": true,
-    "showCartButton": true
+    "showCartButton": true,
+    "linkEnabled": false,
+    "creditEnabled": false
   },
   "shippingConfig": {
     "mode": "both"

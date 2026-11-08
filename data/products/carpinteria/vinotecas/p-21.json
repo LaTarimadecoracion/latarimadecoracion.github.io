@@ -47,8 +47,8 @@
   },
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "quantityDiscounts": [],
   "last_modified": 1789442399047,
@@ -75,7 +75,7 @@
       "detail": "Costo: $25.000 ➔ $30.000"
     }
   ],
-  "views": 103,
+  "views": 110,
   "categories": [
     "carpinteria-todos",
     "Vinotecas"

@@ -55,8 +55,8 @@
   },
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": true,
-    "creditEnabled": true
+    "linkEnabled": false,
+    "creditEnabled": false
   },
   "quantityDiscounts": [],
   "last_modified": 1793480283124,

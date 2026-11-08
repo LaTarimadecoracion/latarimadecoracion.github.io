@@ -41,6 +41,11 @@
     }
   ],
   "views": 0,
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
   "categories": [
     "carpinteria-todos",
     "bazar-cocina"

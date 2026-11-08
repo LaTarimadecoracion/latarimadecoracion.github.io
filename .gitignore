@@ -24,3 +24,4 @@ minify-local.js
 # Distribuidores y catalogos externos de trabajo local
 Catalogo/
 catalogo/
+_dev/mp-secret.json

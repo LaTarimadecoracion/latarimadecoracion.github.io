@@ -2015,12 +2015,16 @@
             // Producto individual
             const prodId = offerInput?.id || productContext?.product?.id;
             let freshProds = window.sessionProducts;
-            if (!freshProds || freshProds.length === 0) {
-                try {
-                    const stored = localStorage.getItem('sessionProductsAutonomo') || localStorage.getItem('sessionProducts');
-                    if (stored) freshProds = JSON.parse(stored);
-                } catch(e) {}
-            }
+            try {
+                const stored = localStorage.getItem('sessionProductsAutonomo') || localStorage.getItem('sessionProducts');
+                if (stored) {
+                    const parsedStored = JSON.parse(stored);
+                    if (Array.isArray(parsedStored) && parsedStored.length > 0) {
+                        freshProds = parsedStored;
+                        window.sessionProducts = parsedStored;
+                    }
+                }
+            } catch(e) {}
             if (freshProds) {
                 for (const cat of freshProds) {
                     const found = (cat.products || []).find(p => String(p.id) === String(prodId));
@@ -2030,12 +2034,16 @@
         } else {
             // Oferta / Combo
             let freshOffers = window.sessionOffers;
-            if (!freshOffers || freshOffers.length === 0) {
-                try {
-                    const stored = localStorage.getItem('sessionOffersAutonomo') || localStorage.getItem('sessionOffers');
-                    if (stored) freshOffers = JSON.parse(stored);
-                } catch(e) {}
-            }
+            try {
+                const stored = localStorage.getItem('sessionOffersAutonomo') || localStorage.getItem('sessionOffers');
+                if (stored) {
+                    const parsedOffers = JSON.parse(stored);
+                    if (Array.isArray(parsedOffers) && parsedOffers.length > 0) {
+                        freshOffers = parsedOffers;
+                        window.sessionOffers = parsedOffers;
+                    }
+                }
+            } catch(e) {}
             freshItem = (freshOffers || []).find(o => String(o.id) === String(offerInput?.id)) || offerInput;
         }
 
@@ -2067,7 +2075,14 @@
         const formatCurr = (val) => new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 }).format(val);
         const formattedOfferPrice = formatCurr(totalOfferVal);
         
-        const payConf = window.sessionPaymentConfig || (localStorage.getItem('sessionPaymentConfig') ? JSON.parse(localStorage.getItem('sessionPaymentConfig')) : null) || {};
+        let payConf = window.sessionPaymentConfig || {};
+        try {
+            const storedPayConf = localStorage.getItem('sessionPaymentConfig');
+            if (storedPayConf) {
+                payConf = JSON.parse(storedPayConf);
+                window.sessionPaymentConfig = payConf;
+            }
+        } catch(e) {}
 
         // Helper para resolver el rubro de un producto/item
         const getItemRubro = (item) => {
@@ -2119,6 +2134,13 @@
         const bank = transferConf.bank || (isResaleOrMixed ? 'Mercado Pago' : 'Banco Santander');
         const titular = transferConf.titular || (isResaleOrMixed ? 'Cecilia Beatriz Cerón' : 'Yonatan Lucas Orellana');
         const cuit = transferConf.cuit || (isResaleOrMixed ? '27-28767339-1' : '20-35281538-2');
+
+        const mpConf = payConf.mercadopago || {};
+        const isMpGlobalActive = mpConf.active !== false;
+        const mpLinkSurchargePct = parseFloat(mpConf.surchargePercent) || 0;
+        const mpCreditSurchargePct = parseFloat(mpConf.creditSurchargePercent !== undefined ? mpConf.creditSurchargePercent : mpLinkSurchargePct) || 0;
+        const mpMaxInstallments = parseInt(mpConf.maxInstallments, 10) || 12;
+        window._checkoutSelectedPayMethod = 'transfer';
 
         const overlay = document.createElement('div');
         overlay.id = 'offer-payment-modal-overlay';
@@ -2278,12 +2300,16 @@
                         <!-- Desglose de Producto + Envío si aplica -->
                         <div id="pay-modal-breakdown-box" style="display: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; font-size: 0.78rem; flex-direction: column; gap: 4px;">
                             <div style="display: flex; justify-content: space-between; color: #475569;">
-                                <span>Subtotal Combo:</span>
+                                <span>Subtotal Productos:</span>
                                 <span style="font-weight: 700; color: #0f172a;" id="breakdown-prod-val">${formattedOfferPrice}</span>
                             </div>
                             <div style="display: flex; justify-content: space-between; color: #0284c7;" id="breakdown-ship-row">
                                 <span id="breakdown-ship-label">🚚 Envío:</span>
                                 <span style="font-weight: 700;" id="breakdown-ship-val"></span>
+                            </div>
+                            <div style="display: none; justify-content: space-between; color: #b45309;" id="breakdown-mp-surcharge-row">
+                                <span id="breakdown-mp-surcharge-label">💳 Recargo Mercado Pago:</span>
+                                <span style="font-weight: 700;" id="breakdown-mp-surcharge-val"></span>
                             </div>
                         </div>
 
@@ -2431,13 +2457,13 @@
                             </button>
 
                             <button type="button" class="pay-method-btn" data-pay-val="link" id="btn-pay-choice-link" style="background: #f8fafc; color: #334155; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.75rem 0.4rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; cursor: pointer; text-align: center; transition: all 0.2s;">
-                                <span class="material-symbols-outlined" style="font-size: 24px; color: #0284c7;">link</span>
-                                <div style="font-size: 0.78rem; font-weight: 800; line-height: 1.2;">Link / Débito</div>
+                                <span class="material-symbols-outlined" style="font-size: 24px; color: #009ee3;">handshake</span>
+                                <div style="font-size: 0.78rem; font-weight: 800; line-height: 1.2;">Mercado Pago</div>
                             </button>
 
                             <button type="button" class="pay-method-btn" data-pay-val="credit" id="btn-pay-choice-credit" style="background: #f8fafc; color: #334155; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.75rem 0.4rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; cursor: pointer; text-align: center; transition: all 0.2s;">
                                 <span class="material-symbols-outlined" style="font-size: 24px; color: #d97706;">credit_card</span>
-                                <div style="font-size: 0.78rem; font-weight: 800; line-height: 1.2;">Tarjeta Crédito</div>
+                                <div style="font-size: 0.78rem; font-weight: 800; line-height: 1.2;">Tarjeta</div>
                             </button>
                         </div>
 
@@ -2482,33 +2508,57 @@
                             </div>
                         </div>
 
-                        <!-- Panel 2: Link de Pago / Débito -->
+                        <!-- Panel 2: Link de Pago / Débito / Dinero en Cuenta -->
                         <div id="pay-panel-link" style="display: none; flex-direction: column; gap: 10px; width: 100%; box-sizing: border-box; background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 12px; padding: 1rem; text-align: center; margin-top: 10px;">
                             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
                                 <div style="font-size: 0.9rem; font-weight: 800; color: #0369a1; display: flex; align-items: center; gap: 6px;">
-                                    <span class="material-symbols-outlined">link</span> Link de Pago Directo (Mercado Pago / Débito)
+                                    <span class="material-symbols-outlined">handshake</span> Pago Online con Mercado Pago (Dinero en cuenta / Débito / Tarjetas)
                                 </div>
-                                <span style="font-size: 0.68rem; font-weight: 800; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; padding: 2px 8px; border-radius: 6px;">⚠️ NO DISPONIBLE AUTOMÁTICO</span>
+                                ${isMpGlobalActive
+                                    ? `<span style="font-size: 0.68rem; font-weight: 800; background: #dcfce7; color: #15803d; border: 1px solid #86efac; padding: 2px 8px; border-radius: 6px;">✓ COBRO ONLINE ACTIVO</span>`
+                                    : `<span style="font-size: 0.68rem; font-weight: 800; background: #fef3c7; color: #b45309; border: 1px solid #fde68a; padding: 2px 8px; border-radius: 6px;">💬 LINK POR WHATSAPP</span>`
+                                }
                             </div>
 
-                            <div style="font-size: 0.75rem; color: #0369a1; background: #ffffff; border: 1px solid #e0f2fe; padding: 6px 10px; border-radius: 8px; font-weight: 700; text-align: left;">
-                                💡 <strong>Costo adicional:</strong> Sujeto a comisión de plataforma Mercado Pago (+6% a 8% aprox. según acreditación).
+                            <div style="font-size: 0.76rem; color: #0369a1; background: #ffffff; border: 1px solid #e0f2fe; padding: 8px 12px; border-radius: 8px; font-weight: 700; text-align: left; line-height: 1.4;">
+                                ${mpLinkSurchargePct > 0
+                                    ? `💡 <strong>Comisión de plataforma:</strong> Adiciona <strong>+${mpLinkSurchargePct}%</strong> por acreditación online de Mercado Pago.`
+                                    : `✅ <strong>¡Sin recargo adicional!</strong> Abonás con dinero en cuenta de Mercado Pago o tarjeta de débito en 1 pago.`
+                                }
                             </div>
+
+                            ${isMpGlobalActive ? `
+                            <button type="button" id="btn-pay-mp-online-link" style="background: #009ee3; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.25rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(0, 158, 227, 0.3); transition: all 0.2s; width: 100%;">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">payments</span>
+                                <span>Pagar ahora con Mercado Pago</span>
+                            </button>
+                            ` : ''}
                         </div>
 
                         <!-- Panel 3: Tarjeta de Crédito (Cuotas) -->
                         <div id="pay-panel-credit" style="display: none; flex-direction: column; gap: 10px; width: 100%; box-sizing: border-box; background: #fffdf0; border: 1.5px solid #fde68a; border-radius: 12px; padding: 1rem; text-align: center; margin-top: 10px;">
                             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
                                 <div style="font-size: 0.9rem; font-weight: 800; color: #b45309; display: flex; align-items: center; gap: 6px;">
-                                    <span class="material-symbols-outlined">credit_card</span> Pago en Cuotas con Tarjeta de Crédito
+                                    <span class="material-symbols-outlined">credit_card</span> Pago con Tarjeta Débito / Crédito (Vía Mercado Pago)
                                 </div>
-                                <span style="font-size: 0.68rem; font-weight: 800; background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; padding: 2px 8px; border-radius: 6px;">⚠️ NO DISPONIBLE AUTOMÁTICO</span>
+                                ${isMpGlobalActive
+                                    ? `<span style="font-size: 0.68rem; font-weight: 800; background: #dcfce7; color: #15803d; border: 1px solid #86efac; padding: 2px 8px; border-radius: 6px;">✓ COBRO ONLINE ACTIVO</span>`
+                                    : `<span style="font-size: 0.68rem; font-weight: 800; background: #fef3c7; color: #b45309; border: 1px solid #fde68a; padding: 2px 8px; border-radius: 6px;">💬 LINK POR WHATSAPP</span>`
+                                }
                             </div>
 
-                            <div style="font-size: 0.75rem; color: #b45309; background: #ffffff; border: 1px solid #fef3c7; padding: 6px 10px; border-radius: 8px; font-weight: 700; text-align: left;">
-                                💡 <strong>Costo adicional:</strong> Aplica recargo de financiación en cuotas fijas según tu tarjeta y banco.
+                            <div style="font-size: 0.76rem; color: #b45309; background: #ffffff; border: 1px solid #fef3c7; padding: 8px 12px; border-radius: 8px; font-weight: 700; text-align: left; line-height: 1.4;">
+                                💡 ${mpCreditSurchargePct > 0 ? `<strong>Recargo base: +${mpCreditSurchargePct}%.</strong> ` : ''}Elegís la cantidad de cuotas (hasta ${mpMaxInstallments} cuotas) directamente en la pantalla segura de Mercado Pago según tu banco.
                             </div>
+
+                            ${isMpGlobalActive ? `
+                            <button type="button" id="btn-pay-mp-online-credit" style="background: #009ee3; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.25rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(0, 158, 227, 0.3); transition: all 0.2s; width: 100%;">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">credit_card</span>
+                                <span>Pagar con Tarjeta (vía Mercado Pago)</span>
+                            </button>
+                            ` : ''}
                         </div>
+                        <div id="mp-checkout-error-msg" style="display: none; margin-top: 8px; padding: 8px 12px; background: #fef2f2; border: 1px solid #fca5a5; color: #b91c1c; border-radius: 8px; font-size: 0.78rem; font-weight: 700;"></div>
                     </div>
                 </div>
 
@@ -2524,9 +2574,9 @@
                     </div>
 
                     <!-- 6. Aviso de Paso Final -->
-                    <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.82rem; color: #166534; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                        <span class="material-symbols-outlined" style="font-size: 22px; color: #15803d; flex-shrink: 0;">add_a_photo</span>
-                        <span><strong>Aviso de paso final:</strong> Al abrir WhatsApp, recordá adjuntar la foto o comprobante de pago.</span>
+                    <div id="checkout-step3-final-notice" style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.82rem; color: #166534; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <span class="material-symbols-outlined" id="checkout-step3-notice-icon" style="font-size: 22px; color: #15803d; flex-shrink: 0;">add_a_photo</span>
+                        <span id="checkout-step3-notice-text"><strong>Aviso de paso final:</strong> Al abrir WhatsApp, recordá adjuntar la foto o comprobante de pago.</span>
                     </div>
 
                     <!-- 7. Sellos de Confianza y Compra Segura -->
@@ -2823,8 +2873,9 @@
 
         const offerPayConf = offer.paymentConfig || {};
         const isTransferEnabled = offerPayConf.transferEnabled !== false;
-        const isLinkEnabled = offerPayConf.linkEnabled !== false;
-        const isCreditEnabled = offerPayConf.creditEnabled !== false;
+        const isMpOrCardEnabled = (offerPayConf.linkEnabled !== false) || (offerPayConf.creditEnabled !== false);
+        const isLinkEnabled = isMpOrCardEnabled;
+        const isCreditEnabled = isMpOrCardEnabled;
 
         payButtons.forEach(btn => {
             const val = btn.getAttribute('data-pay-val');
@@ -2847,9 +2898,24 @@
                 btn.style.borderColor = '#0f172a';
                 btn.style.boxShadow = '0 4px 10px rgba(15,23,42,0.15)';
 
+                window._checkoutSelectedPayMethod = val;
                 if (panelTransfer) panelTransfer.style.display = val === 'transfer' ? 'flex' : 'none';
                 if (panelLink) panelLink.style.display = val === 'link' ? 'flex' : 'none';
                 if (panelCredit) panelCredit.style.display = val === 'credit' ? 'flex' : 'none';
+
+                const noticeIcon = document.getElementById('checkout-step3-notice-icon');
+                const noticeText = document.getElementById('checkout-step3-notice-text');
+                if (noticeText) {
+                    if (val === 'transfer') {
+                        if (noticeIcon) noticeIcon.textContent = 'add_a_photo';
+                        noticeText.innerHTML = '<strong>Aviso de paso final:</strong> Al abrir WhatsApp, recordá adjuntar la foto o comprobante de pago.';
+                    } else {
+                        if (noticeIcon) noticeIcon.textContent = 'verified';
+                        noticeText.innerHTML = '<strong>Aviso de paso final:</strong> Si ya abonaste por Mercado Pago, adjuntá el comprobante o indicá tu número de operación en WhatsApp.';
+                    }
+                }
+
+                updateTotalDisplay();
             });
         });
 
@@ -3349,18 +3415,46 @@
             // Desglose de envío gestionado limpiamente en pay-modal-breakdown-box
         }
 
-        function updateTotalDisplay() {
+        function getCurrentFinalTotalInfo() {
             const isShipping = document.getElementById('pay-mode-shipping')?.checked;
             const isFacturaA = document.getElementById('chk-factura-a')?.checked;
             const shipCost = isShipping ? (window._checkoutSelectedShipCost || 0) : 0;
             const shipLabel = window._checkoutSelectedShipLabel || '';
+            const activePayVal = window._checkoutSelectedPayMethod || 'transfer';
+
+            let mpSurchargePct = 0;
+            if (activePayVal === 'link') mpSurchargePct = mpLinkSurchargePct;
+            else if (activePayVal === 'credit') mpSurchargePct = mpCreditSurchargePct;
 
             const baseWithShip = totalOfferVal + shipCost;
-            const ivaVal = baseWithShip * 0.21;
-            const iibbVal = baseWithShip * 0.035;
-            const totalFactA = baseWithShip * 1.245;
+            const mpSurchargeVal = mpSurchargePct > 0 ? Math.round(baseWithShip * (mpSurchargePct / 100)) : 0;
+            const subtotalWithMp = baseWithShip + mpSurchargeVal;
 
-            const finalTotal = isFacturaA ? totalFactA : baseWithShip;
+            const ivaVal = subtotalWithMp * 0.21;
+            const iibbVal = subtotalWithMp * 0.035;
+            const totalFactA = subtotalWithMp * 1.245;
+
+            const finalTotal = Math.round(isFacturaA ? totalFactA : subtotalWithMp);
+            return {
+                isShipping,
+                isFacturaA,
+                shipCost,
+                shipLabel,
+                activePayVal,
+                mpSurchargePct,
+                mpSurchargeVal,
+                baseWithShip,
+                subtotalWithMp,
+                ivaVal,
+                iibbVal,
+                totalFactA,
+                finalTotal
+            };
+        }
+
+        function updateTotalDisplay() {
+            const info = getCurrentFinalTotalInfo();
+            const { isShipping, isFacturaA, shipCost, shipLabel, mpSurchargePct, mpSurchargeVal, subtotalWithMp, ivaVal, iibbVal, totalFactA, finalTotal } = info;
 
             const priceDisplay = document.getElementById('pay-modal-display-price');
             if (priceDisplay) priceDisplay.textContent = formatCurr(finalTotal);
@@ -3370,18 +3464,37 @@
             const shipRow = document.getElementById('breakdown-ship-row');
             const shipLbl = document.getElementById('breakdown-ship-label');
             const shipVal = document.getElementById('breakdown-ship-val');
+            const mpRow = document.getElementById('breakdown-mp-surcharge-row');
+            const mpLbl = document.getElementById('breakdown-mp-surcharge-label');
+            const mpVal = document.getElementById('breakdown-mp-surcharge-val');
+
+            const hasShipBreakdown = !!(isShipping && (shipCost > 0 || shipLabel));
+            const hasMpBreakdown = mpSurchargeVal > 0;
 
             if (breakdownBox) {
-                if (isShipping && (shipCost > 0 || shipLabel)) {
+                if (hasShipBreakdown || hasMpBreakdown) {
                     breakdownBox.style.display = 'flex';
                     if (shipRow) {
-                        shipRow.style.display = 'flex';
-                        const isFreeShip = shipCost === 0 && shipLabel.toLowerCase().includes('gratis');
-                        if (shipLbl) shipLbl.textContent = '🚚 Envío (' + shipLabel + '):';
-                        if (shipVal) {
-                            shipVal.textContent = shipCost > 0 ? formatCurr(shipCost) : (isFreeShip ? '¡ENVÍO GRATIS! ($ 0)' : 'A cotizar');
-                            shipVal.style.color = isFreeShip ? '#15803d' : '';
-                            shipVal.style.fontWeight = isFreeShip ? '900' : '';
+                        if (hasShipBreakdown) {
+                            shipRow.style.display = 'flex';
+                            const isFreeShip = shipCost === 0 && shipLabel.toLowerCase().includes('gratis');
+                            if (shipLbl) shipLbl.textContent = '🚚 Envío (' + shipLabel + '):';
+                            if (shipVal) {
+                                shipVal.textContent = shipCost > 0 ? formatCurr(shipCost) : (isFreeShip ? '¡ENVÍO GRATIS! ($ 0)' : 'A cotizar');
+                                shipVal.style.color = isFreeShip ? '#15803d' : '';
+                                shipVal.style.fontWeight = isFreeShip ? '900' : '';
+                            }
+                        } else {
+                            shipRow.style.display = 'none';
+                        }
+                    }
+                    if (mpRow) {
+                        if (hasMpBreakdown) {
+                            mpRow.style.display = 'flex';
+                            if (mpLbl) mpLbl.textContent = `💳 Recargo Mercado Pago (+${mpSurchargePct}%):`;
+                            if (mpVal) mpVal.textContent = '+' + formatCurr(mpSurchargeVal);
+                        } else {
+                            mpRow.style.display = 'none';
                         }
                     }
                 } else {
@@ -3399,7 +3512,7 @@
                 const factSubRow = document.getElementById('factura-subtotal-row');
                 const factSubVal = document.getElementById('factura-subtotal-val');
 
-                if (factBase) factBase.textContent = formatCurr(totalOfferVal);
+                if (factBase) factBase.textContent = formatCurr(totalOfferVal + mpSurchargeVal);
 
                 if (isShipping && shipCost > 0) {
                     if (factShipRow) factShipRow.style.display = 'flex';
@@ -3407,7 +3520,7 @@
                     if (factShipVal) factShipVal.textContent = formatCurr(shipCost);
 
                     if (factSubRow) factSubRow.style.display = 'flex';
-                    if (factSubVal) factSubVal.textContent = formatCurr(baseWithShip);
+                    if (factSubVal) factSubVal.textContent = formatCurr(subtotalWithMp);
                 } else {
                     if (factShipRow) factShipRow.style.display = 'none';
                     if (factSubRow) factSubRow.style.display = 'none';
@@ -3578,6 +3691,78 @@
         document.getElementById('btn-copy-alias')?.addEventListener('click', () => handleCopyEffect('btn-copy-alias', 'copy-alias-lbl', 'copy-alias-icon', alias, 'Copiar'));
         document.getElementById('btn-copy-cbu')?.addEventListener('click', () => handleCopyEffect('btn-copy-cbu', 'copy-cbu-lbl', 'copy-cbu-icon', cbu, 'Copiar'));
 
+        // Evento Pago Online Automático con Mercado Pago (Checkout Pro)
+        const triggerMercadoPagoCheckout = async (btnEl, payModeType) => {
+            if (!validateStep2()) return;
+            const errBox = document.getElementById('mp-checkout-error-msg');
+            if (errBox) errBox.style.display = 'none';
+
+            const info = getCurrentFinalTotalInfo();
+            const finalAmount = info.finalTotal;
+            const clientName = document.getElementById('pay-client-name')?.value.trim() || 'Cliente La Tarima';
+            const clientPhone = document.getElementById('pay-client-phone')?.value.trim() || '';
+            const clientEmail = document.getElementById('pay-ship-email')?.value.trim() || document.getElementById('factura-email')?.value.trim() || 'comprador@latarima.com.ar';
+
+            const originalHtml = btnEl.innerHTML;
+            btnEl.disabled = true;
+            btnEl.style.opacity = '0.8';
+            btnEl.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px; animation: spin 1s linear infinite;">sync</span><span>Generando link seguro de Mercado Pago...</span>';
+
+            const payload = {
+                itemId: String(offer?.id || 'pedido-latarima'),
+                title: `${itemDisplayName}${packQty > 1 ? ` (x${packQty})` : ''}`,
+                description: info.isShipping && info.shipLabel ? `Incluye envío: ${info.shipLabel}` : 'Retiro en taller / Envío a coordinar',
+                amount: finalAmount,
+                maxInstallments: mpMaxInstallments,
+                payerName: clientName,
+                payerPhone: clientPhone,
+                payerEmail: clientEmail,
+                mode: mpConf.mode || 'production',
+                originUrl: window.location.origin + window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, ''),
+                externalReference: 'LT-' + Date.now()
+            };
+
+            try {
+                const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.startsWith('192.168.');
+                const endpoint = (!isLocalhost && mpConf.workerUrl) ? mpConf.workerUrl : '/api/mercadopago/preference';
+
+                const res = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+
+                if (!res.ok || !data.success || !data.init_point) {
+                    throw new Error(data.message || 'No se pudo generar el link de Mercado Pago.');
+                }
+
+                // Abrir Checkout Pro de Mercado Pago en nueva pestaña y avanzar al Paso 3 para que pueda avisar por WhatsApp
+                window.open(data.init_point, '_blank', 'noopener,noreferrer');
+                btnEl.disabled = false;
+                btnEl.style.opacity = '1';
+                btnEl.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px;">open_in_new</span><span>Checkout de Mercado Pago abierto (Reabrir)</span>';
+
+                currentStep = 3;
+                updateWizardView();
+            } catch (err) {
+                btnEl.disabled = false;
+                btnEl.style.opacity = '1';
+                btnEl.innerHTML = originalHtml;
+                if (errBox) {
+                    errBox.textContent = '⚠️ ' + (err.message || 'Falta configurar las credenciales de Mercado Pago en el Panel de Administración.');
+                    errBox.style.display = 'block';
+                }
+            }
+        };
+
+        document.getElementById('btn-pay-mp-online-link')?.addEventListener('click', function() {
+            triggerMercadoPagoCheckout(this, 'link');
+        });
+        document.getElementById('btn-pay-mp-online-credit')?.addEventListener('click', function() {
+            triggerMercadoPagoCheckout(this, 'credit');
+        });
+
         // Evento Enviar Comprobante por WhatsApp (Texto Plano Limpio sin Asteriscos)
         const waSubmitBtn = document.getElementById('btn-submit-receipt-wa');
         if (waSubmitBtn) {
@@ -3587,12 +3772,12 @@
                 const isShipping = radioShipping?.checked || false;
                 const userNotes = document.getElementById('pay-modal-notes')?.value.trim() || '';
                 
-                const shipCostVal = window._checkoutSelectedShipCost || 0;
-                let finalPriceVal = totalOfferVal + shipCostVal;
-                if (isFacturaA) {
-                    finalPriceVal = (totalOfferVal + shipCostVal) * 1.245;
-                }
+                const info = getCurrentFinalTotalInfo();
+                const finalPriceVal = info.finalTotal;
                 const finalPriceFormatted = formatCurr(finalPriceVal);
+                const payMethodLabel = info.activePayVal === 'link'
+                    ? 'Mercado Pago (Link / Débito / Dinero en cuenta)'
+                    : (info.activePayVal === 'credit' ? 'Mercado Pago (Tarjeta de Crédito)' : `Transferencia Bancaria (${bank})`);
 
                 let msgLines = [];
                 msgLines.push("Hola La Tarima. Adjunto el comprobante de pago de mi pedido.");
@@ -3642,7 +3827,8 @@
                 } else {
                     msgLines.push(`  • Combo: ${itemDisplayName} ${packQty > 1 ? `(Pack x${packQty})` : ''}`);
                 }
-                msgLines.push(`- Monto abonado: ${finalPriceFormatted}`);
+                msgLines.push(`- Medio de pago: ${payMethodLabel}`);
+                msgLines.push(`- Monto total: ${finalPriceFormatted}`);
                 const isFacturaC = document.getElementById('chk-factura-c')?.checked || false;
                 if (isFacturaA) {
                     msgLines.push("- Comprobante solicitado: Factura A (Responsable Inscripto)");

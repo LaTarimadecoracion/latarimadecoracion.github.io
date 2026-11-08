@@ -60,8 +60,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1794021964488,
@@ -113,7 +113,12 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                }
             },
             {
                 "id": "1794021585691",
@@ -155,7 +160,12 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 1
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                }
             },
             {
                 "id": "1793239693996",
@@ -198,7 +208,12 @@ const productsData = [
                     }
                 ],
                 "category": "camas-madera-pino",
-                "views": 6
+                "views": 7,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                }
             },
             {
                 "id": "52",
@@ -1864,7 +1879,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -2872,7 +2887,7 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 9,
+                "views": 11,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -3255,7 +3270,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4515,8 +4530,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [
                     {
@@ -5653,7 +5668,7 @@ const productsData = [
                 "last_modified": 1790380546917,
                 "primaryCatId": "Organizadores",
                 "history": [],
-                "views": 4,
+                "views": 5,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores"
@@ -6442,7 +6457,7 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 16,
+                "views": 17,
                 "stock": 0,
                 "history": [
                     {
@@ -8343,7 +8358,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637073874,
                 "primaryCatId": "Juguetes",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -8857,8 +8872,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1789442399047,
@@ -8885,7 +8900,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 103,
+                "views": 110,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -8981,7 +8996,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 12,
+                "views": 18,
                 "stock": 0,
                 "history": [
                     {
@@ -9495,7 +9510,7 @@ const productsData = [
                     "cortes-madera"
                 ],
                 "rubro": "carpinteria",
-                "views": 18
+                "views": 21
             },
             {
                 "id": "68",
@@ -9809,7 +9824,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 109
+                "views": 110
             },
             {
                 "id": "95",
@@ -9983,7 +9998,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "visible": true,
-                "views": 74
+                "views": 81
             },
             {
                 "id": "1792887338328",
@@ -10026,8 +10041,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1792896610293,
@@ -10080,8 +10095,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1792896622140,
@@ -10136,8 +10151,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1792896633811,
@@ -10206,8 +10221,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793479628428,
@@ -10269,8 +10284,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793479781268,
@@ -10336,8 +10351,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793480283124,
@@ -10408,8 +10423,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793480381864,
@@ -10480,8 +10495,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793480476135,
@@ -10625,8 +10640,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793586546740,
@@ -10700,8 +10715,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793494240983,
@@ -10771,8 +10786,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793500205826,
@@ -10853,8 +10868,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1789442399047,
@@ -10881,7 +10896,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 103,
+                "views": 110,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -10977,7 +10992,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 12,
+                "views": 18,
                 "stock": 0,
                 "history": [
                     {
@@ -11589,7 +11604,7 @@ const productsData = [
                 ],
                 "last_modified": 1786826453117,
                 "primaryCatId": "Percheros",
-                "views": 16,
+                "views": 17,
                 "stock": 0,
                 "history": [
                     {
@@ -13299,7 +13314,8 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 87
             },
             {
                 "id": "52",
@@ -15278,7 +15294,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "visible": true,
-                "views": 74
+                "views": 81
             },
             {
                 "id": "A1",
@@ -15975,7 +15991,9 @@ const productsData = [
                 "paymentConfig": {
                     "mode": "store",
                     "showBuyButton": true,
-                    "showCartButton": true
+                    "showCartButton": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "shippingConfig": {
                     "mode": "both"
@@ -16035,7 +16053,9 @@ const productsData = [
                 "paymentConfig": {
                     "mode": "store",
                     "showBuyButton": true,
-                    "showCartButton": true
+                    "showCartButton": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "shippingConfig": {
                     "mode": "both"
@@ -16079,8 +16099,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793481013332,
@@ -16298,8 +16318,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1794021964488,
@@ -16401,7 +16421,7 @@ const productsData = [
                 "last_modified": 1794021964488,
                 "primaryCatId": "Organizadores",
                 "history": [],
-                "views": 4,
+                "views": 5,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores"
@@ -16989,8 +17009,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1794021964488,
@@ -17274,7 +17294,7 @@ const productsData = [
                 ],
                 "last_modified": 1794021964488,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -17672,7 +17692,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 109
+                "views": 110
             },
             {
                 "id": "67",
@@ -17807,7 +17827,7 @@ const productsData = [
                     "cortes-madera"
                 ],
                 "rubro": "carpinteria",
-                "views": 18
+                "views": 21
             },
             {
                 "id": "68",
@@ -18100,7 +18120,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1787715147118,
                 "primaryCatId": "Estantes",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -19279,8 +19299,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1792896610293,
@@ -19333,8 +19353,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1792896622140,
@@ -19389,8 +19409,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1792896633811,
@@ -20679,8 +20699,13 @@ const productsData = [
                     }
                 ],
                 "category": "camas-madera-pino",
-                "views": 6,
-                "last_modified": 1793586887358
+                "views": 7,
+                "last_modified": 1793586887358,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                }
             },
             {
                 "id": "F2",
@@ -20844,7 +20869,7 @@ const productsData = [
                 "last_modified": 1793586887358,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 9,
+                "views": 11,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -21122,7 +21147,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586887358,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21421,7 +21446,7 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 9,
+                "views": 11,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -21656,8 +21681,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793485870299,
@@ -22370,7 +22395,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1793586859102,
                 "primaryCatId": "Estantes",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22574,7 +22599,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586859102,
                 "primaryCatId": "Juguetes",
-                "views": 0,
+                "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23789,8 +23814,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793500205826,
@@ -23934,8 +23959,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793586546740,
@@ -24135,8 +24160,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793586789934,
@@ -24260,8 +24285,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793586789934,
@@ -24333,8 +24358,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793586789934,
@@ -25076,7 +25101,9 @@ const productsData = [
                 "paymentConfig": {
                     "mode": "store",
                     "showBuyButton": true,
-                    "showCartButton": true
+                    "showCartButton": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "shippingConfig": {
                     "mode": "both"
@@ -25148,8 +25175,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1794017501407,
@@ -25222,8 +25249,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1794017570905,
@@ -25607,7 +25634,9 @@ const productsData = [
                 "paymentConfig": {
                     "mode": "store",
                     "showBuyButton": true,
-                    "showCartButton": true
+                    "showCartButton": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "shippingConfig": {
                     "mode": "both"
@@ -25672,7 +25701,12 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 0
+                "views": 0,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                }
             },
             {
                 "id": "1794021585691",
@@ -25714,7 +25748,12 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 1
+                "views": 1,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                }
             },
             {
                 "id": "42",
@@ -26274,8 +26313,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [
                     {
@@ -26992,7 +27031,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -27060,12 +27099,17 @@ const productsData = [
                     }
                 ],
                 "rubro": "carpinteria",
-                "views": 4,
+                "views": 5,
                 "categories": [
                     "carpinteria-todos",
                     "cat-28-mvay9cq6"
                 ],
-                "subcategoria": "pizarras"
+                "subcategoria": "pizarras",
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                }
             },
             {
                 "id": "1792154576619",
@@ -27115,8 +27159,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793479781268,
@@ -27175,8 +27219,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1792154651487,
@@ -27240,8 +27284,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": true,
-                    "creditEnabled": true
+                    "linkEnabled": false,
+                    "creditEnabled": false
                 },
                 "quantityDiscounts": [],
                 "last_modified": 1793479628428,
