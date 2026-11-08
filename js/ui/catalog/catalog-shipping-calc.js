@@ -84,8 +84,11 @@
         const qty = hasCustomCutsList ? customCutsList.reduce((acc, c) => acc + (c.qty || 1), 0) : (qtyValEl ? (parseInt(qtyValEl.textContent, 10) || 1) : 1);
         let validOptions = [];
 
-        // 1. Envío global gratis
-        if (shipConf.isFreeShipping || shipConf.isFree || product.shippingType === 'free') {
+        const isLocalLogisticaCoverage = !!(cpRes.logistica && cpRes.logistica.active !== false && cpRes.logistica.zoneKey !== 'resto_provincias' && cpRes.hasLocalMatch !== false);
+        const isLocalFleteCoverage = !!(cpRes.flete && cpRes.flete.active !== false && cpRes.flete.zoneKey !== 'flete_fuera_rango' && cpRes.hasLocalMatch !== false);
+
+        // 1. Envío global gratis (solo aplica dentro de la cobertura local AMBA)
+        if ((shipConf.isFreeShipping || shipConf.isFree || product.shippingType === 'free') && (isLocalLogisticaCoverage || isLocalFleteCoverage)) {
             validOptions.push({ label: 'Envío gratis a domicilio', cost: 0, icon: 'local_shipping' });
         }
 
@@ -231,13 +234,13 @@
         const cajonEnvioGratis = window.cajonesConfig?.envio_gratis_box;
         const isCajonFreeShipping = isCajonProduct && cajonEnvioGratis && cajonEnvioGratis.activo !== false && qty >= (parseInt(cajonEnvioGratis.minQty, 10) || 10);
 
-        if (!isFlexDisabled && !isFlexExcludedBySize && shipConf.logisticaEnabled !== false && cpRes.logistica && cpRes.logistica.active !== false) {
+        if (!isFlexDisabled && !isFlexExcludedBySize && shipConf.logisticaEnabled !== false && isLocalLogisticaCoverage) {
             const manualCost = parseFloat(shipConf.logisticaCost) || 0;
             const sysCost = cpRes.logistica.cost || 0;
             const baseCost = manualCost > 0 ? manualCost : sysCost;
             const freeMin = parseInt(shipConf.logisticaFreeMinUnits) || 0;
             const maxUnits = parseInt(shipConf.logisticaMaxUnits) || 0;
-            const isFreeByQty = (freeMin > 0 && qty >= freeMin) || isFlexFreeShipping || isCajonFreeShipping;
+            const isFreeByQty = baseCost > 0 && ((freeMin > 0 && qty >= freeMin) || isFlexFreeShipping || isCajonFreeShipping);
 
             const packages = (product.isCustomCutting || product.id === '69') ? flexPackagesCount : (maxUnits > 0 ? Math.ceil(qty / maxUnits) : 1);
             let cost = isFreeByQty ? 0 : (baseCost * packages);
@@ -253,7 +256,7 @@
         }
 
         // 3. Flete particular (Vehículo de reparto / Ranger)
-        if (shipConf.fleteEnabled !== false && cpRes.flete && cpRes.flete.active !== false) {
+        if (shipConf.fleteEnabled !== false && isLocalFleteCoverage) {
             const manualCost = parseFloat(shipConf.fleteCost) || 0;
             const sysCost = cpRes.flete.cost || 0;
             const baseCost = manualCost > 0 ? manualCost : sysCost;
@@ -344,7 +347,7 @@
                 viajesFlete = fleteMaxUnits > 0 ? Math.ceil(qty / fleteMaxUnits) : 1;
             }
 
-            const isFreeByQty = (freeMin > 0 && qty >= freeMin) || isFleteFreeShipping || isCajonFreeShipping;
+            const isFreeByQty = baseCost > 0 && ((freeMin > 0 && qty >= freeMin) || isFleteFreeShipping || isCajonFreeShipping);
             let cost = isFreeByQty ? 0 : (baseCost * viajesFlete);
             if (cost > 0 && fleteDiscountPct > 0) {
                 cost = Math.round(cost * (1 - fleteDiscountPct / 100));

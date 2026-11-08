@@ -3080,17 +3080,23 @@
 
             const options = [];
             const cartShipCtx = productContext?.cartShippingContext;
+            const isLocalLogisticaCoverage = !!(cpRes.logistica && cpRes.logistica.active !== false && cpRes.logistica.zoneKey !== 'resto_provincias' && cpRes.hasLocalMatch !== false);
+            const isLocalFleteCoverage = !!(cpRes.flete && cpRes.flete.active !== false && cpRes.flete.zoneKey !== 'flete_fuera_rango' && cpRes.hasLocalMatch !== false);
+            const hasAnyLocalCoverage = isLocalLogisticaCoverage || isLocalFleteCoverage;
 
             if (cartShipCtx && cartShipCtx.isCartSummary) {
                 // Sincronizar opciones con el cálculo exacto del Carrito (Multi-producto, bultos y deshabilitaciones)
                 if (cartShipCtx.logisticaAvailable && cpRes.logistica && cpRes.logistica.active !== false) {
-                    const cost = cartShipCtx.totalFlexCost || 0;
-                    const isFreeByQty = cartShipCtx.isFlexFreeByQty;
+                    const isFreeByQty = !!(isLocalLogisticaCoverage && cartShipCtx.isFlexFreeByQty);
                     const packages = cartShipCtx.totalLogisticaPackages || 1;
+                    const sysCost = cpRes.logistica.cost || 0;
+                    const cost = isFreeByQty ? 0 : (isLocalLogisticaCoverage ? (cartShipCtx.totalFlexCost !== null && cartShipCtx.totalFlexCost !== undefined ? cartShipCtx.totalFlexCost : (sysCost * packages)) : 0);
                     let zoneName = cpRes.logistica.zoneName || 'Zona';
                     let detailText = zoneName;
                     if (isFreeByQty) {
                         detailText += ` · 🎉 ¡Envío GRATIS por volumen de productos!`;
+                    } else if (!isLocalLogisticaCoverage) {
+                        detailText += ` · Despacho por Expreso / Transporte a convenir`;
                     } else if (packages > 1) {
                         detailText += ` · ${packages} bultos combinados del carrito`;
                     } else {
@@ -3099,8 +3105,8 @@
 
                     options.push({
                         key: 'logistica',
-                        label: isFreeByQty ? '📦 Logística Flex / Express (¡Envío GRATIS!)' : '📦 Logística Flex / Express',
-                        cleanLabel: 'Logística Flex / Express',
+                        label: isFreeByQty ? '📦 Logística Flex / Express (¡Envío GRATIS!)' : (isLocalLogisticaCoverage ? '📦 Logística Flex / Express' : '🚚 Transporte / Expreso al Interior'),
+                        cleanLabel: isLocalLogisticaCoverage ? 'Logística Flex / Express' : 'Transporte / Expreso al Interior',
                         detail: detailText,
                         cost,
                         packages,
@@ -3109,10 +3115,11 @@
                     });
                 }
 
-                if (cartShipCtx.fleteAvailable && cpRes.flete && cpRes.flete.active !== false) {
-                    const cost = cartShipCtx.totalFleteCost || 0;
-                    const isFreeByQty = cartShipCtx.isFleteFreeByQty;
+                if (cartShipCtx.fleteAvailable && isLocalFleteCoverage) {
+                    const isFreeByQty = !!(isLocalFleteCoverage && cartShipCtx.isFleteFreeByQty);
                     const packages = cartShipCtx.totalFletePackages || 1;
+                    const sysCost = cpRes.flete.cost || 0;
+                    const cost = isFreeByQty ? 0 : (cartShipCtx.totalFleteCost !== null && cartShipCtx.totalFleteCost !== undefined ? cartShipCtx.totalFleteCost : (sysCost * packages));
                     let zoneName = cpRes.flete.zoneName || 'Zona';
                     let detailText = zoneName;
                     if (isFreeByQty) {
@@ -3151,13 +3158,14 @@
                 if (!isVariantLogisticaDisabled && shipConf.logisticaEnabled && cpRes.logistica && cpRes.logistica.active !== false) {
                     const manualCost = parseFloat(shipConf.logisticaCost) || 0;
                     const sysCost = cpRes.logistica.cost || 0;
-                    const baseCost = manualCost > 0 ? manualCost : sysCost;
+                    const baseCost = isLocalLogisticaCoverage ? (manualCost > 0 ? manualCost : sysCost) : 0;
 
                     const qty = window._checkoutSelectedQty || productContext?.quantity || packQty || 1;
                     const freeMin = parseInt(shipConf.logisticaFreeMinUnits) || 0;
                     const maxUnits = parseInt(shipConf.logisticaMaxUnits) || 0;
 
-                    let isFreeByQty = (freeMin > 0 && qty >= freeMin);
+                    // El envío gratis de Logística Flex solo aplica dentro de CABA y GBA (cobertura local con tarifa > 0)
+                    let isFreeByQty = isLocalLogisticaCoverage && baseCost > 0 && (freeMin > 0 && qty >= freeMin);
                     let packages = maxUnits > 0 ? Math.ceil(qty / maxUnits) : 1;
                     let cost = isFreeByQty ? 0 : (baseCost * packages);
 
@@ -3165,14 +3173,16 @@
                     let detailText = zoneName;
                     if (isFreeByQty) {
                         detailText += ` · 🎉 ¡Envío GRATIS por compra de ${freeMin}+ uds!`;
-                    } else if (packages > 1) {
+                    } else if (!isLocalLogisticaCoverage) {
+                        detailText += ` · Despacho por Expreso / Vía Cargo / Correo a coordinar`;
+                    } else if (packages > 1 && baseCost > 0) {
                         detailText += ` · ${packages} bultos ($${baseCost.toLocaleString('es-AR')} c/u - Máx. ${maxUnits} ud/paquete)`;
                     }
 
                     options.push({
                         key: 'logistica',
-                        label: isFreeByQty ? '📦 Logística (¡Envío GRATIS por volumen!)' : '📦 Logística (Courier)',
-                        cleanLabel: 'Logística',
+                        label: isFreeByQty ? '📦 Logística Flex (¡Envío GRATIS por volumen!)' : (isLocalLogisticaCoverage ? '📦 Logística (Courier Flex)' : '🚚 Transporte / Expreso al Interior'),
+                        cleanLabel: isLocalLogisticaCoverage ? 'Logística' : 'Transporte / Expreso al Interior',
                         detail: detailText,
                         cost,
                         packages,
@@ -3181,8 +3191,8 @@
                     });
                 }
 
-                // Solo incluir Flete si está activo para el CP
-                if (shipConf.fleteEnabled && cpRes.flete && cpRes.flete.active !== false) {
+                // Solo incluir Flete Particular si está dentro de cobertura de Flete (CABA / GBA)
+                if (shipConf.fleteEnabled && isLocalFleteCoverage) {
                     const manualCost = parseFloat(shipConf.fleteCost) || 0;
                     const sysCost = cpRes.flete.cost || 0;
                     const baseCost = manualCost > 0 ? manualCost : sysCost;
@@ -3191,7 +3201,7 @@
                     const freeMin = parseInt(shipConf.fleteFreeMinUnits) || 0;
                     const maxUnits = parseInt(shipConf.fleteMaxUnits) || 0;
 
-                    let isFreeByQty = (freeMin > 0 && qty >= freeMin);
+                    let isFreeByQty = isLocalFleteCoverage && baseCost > 0 && (freeMin > 0 && qty >= freeMin);
                     let packages = maxUnits > 0 ? Math.ceil(qty / maxUnits) : 1;
                     let cost = isFreeByQty ? 0 : (baseCost * packages);
 
@@ -3199,7 +3209,7 @@
                     let detailText = zoneName;
                     if (isFreeByQty) {
                         detailText += ` · 🎉 ¡Flete GRATIS por compra de ${freeMin}+ uds!`;
-                    } else if (packages > 1) {
+                    } else if (packages > 1 && baseCost > 0) {
                         detailText += ` · ${packages} fletes ($${baseCost.toLocaleString('es-AR')} c/u - Máx. ${maxUnits} ud/flete)`;
                     }
 
@@ -3228,9 +3238,9 @@
                 + '<div style="font-size:0.85rem;font-weight:800;color:#0f172a;">' + cpRes.localidad + ', ' + cpRes.provincia + ' (CP ' + cpRes.cp + ')</div>'
                 + '</div>';
 
-            // Si cumple con la regla de Envío Gratis (por oferta/producto o por volumen/cantidad), mostrar directamente cartel verde llamativo
+            // Si cumple con la regla de Envío Gratis DENTRO de la zona de cobertura de Logística Flex o Flete Particular (CABA / GBA)
             const freeOpt = options.find(o => o.isFreeByQty);
-            const isOrderFreeShipping = !!(shipConf.isFreeShipping || shipConf.isFree || freeOpt);
+            const isOrderFreeShipping = hasAnyLocalCoverage && !!(shipConf.isFreeShipping || shipConf.isFree || freeOpt);
 
             if (isOrderFreeShipping) {
                 const freeSubtitle = freeOpt
@@ -3434,8 +3444,8 @@
                     if (cpInput && !cpInput.value && res.cp) {
                         cpInput.value = res.cp;
                     }
-                    if (ciudadInput && !ciudadInput.value) ciudadInput.value = res.localidad;
-                    if (provInput && !provInput.value) provInput.value = res.provincia;
+                    if (ciudadInput && res.localidad && (sourceInput === cpInput || !ciudadInput.value)) ciudadInput.value = res.localidad;
+                    if (provInput && res.provincia && (sourceInput === cpInput || !provInput.value)) provInput.value = res.provincia;
                     
                     // Sincronizar en localStorage de la app para que todas las vistas se actualicen automáticamente
                     try {
@@ -3443,9 +3453,12 @@
                         const saved = localStorage.getItem('userData');
                         if (saved) userData = JSON.parse(saved);
                         userData.zipCode = res.cp || query;
+                        if (res.localidad) userData.locality = res.localidad;
+                        if (res.provincia) userData.province = res.provincia;
                         localStorage.setItem('userData', JSON.stringify(userData));
                         window.dispatchEvent(new CustomEvent('latarima:cp-updated', { detail: { zipCode: res.cp || query } }));
                     } catch(e) {}
+                    saveUserDataToStorage();
                 }
                 renderShipOptions(res);
             }, 450);

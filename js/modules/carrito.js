@@ -762,13 +762,16 @@
                 let flexRate = hasValidCp ? (cpLookupRes?.logistica?.cost !== undefined ? cpLookupRes.logistica.cost : null) : null;
                 let fleteRate = hasValidCp ? (cpLookupRes?.flete?.cost !== undefined ? cpLookupRes.flete.cost : null) : null;
 
-                if (cpLookupRes) {
-                    if (cpLookupRes.logistica?.active === false || flexRate === null) logisticaAvailable = false;
-                    if (cpLookupRes.flete?.active === false || fleteRate === null) fleteAvailable = false;
+                if (cpLookupRes && hasValidCp) {
+                    if (cpLookupRes.logistica?.active === false || flexRate === null || flexRate <= 0 || cpLookupRes.logistica?.zoneKey === 'resto_provincias') logisticaAvailable = false;
+                    if (cpLookupRes.flete?.active === false || fleteRate === null || fleteRate <= 0 || cpLookupRes.flete?.zoneKey === 'flete_fuera_rango') fleteAvailable = false;
                 } else {
                     logisticaAvailable = false;
                     fleteAvailable = false;
                 }
+
+                isFlexFreeByQty = !!(hasValidCp && logisticaAvailable && allItemsFlexFree);
+                isFleteFreeByQty = !!(hasValidCp && fleteAvailable && allItemsFleteFree);
 
                 const totalFlexCost = isFlexFreeByQty ? 0 : ((hasValidCp && logisticaAvailable) ? flexRate * Math.max(1, totalLogisticaPackages) : null);
                 const totalFleteCost = isFleteFreeByQty ? 0 : ((hasValidCp && fleteAvailable) ? fleteRate * Math.max(1, totalFletePackages) : null);
@@ -1402,8 +1405,8 @@
                     }
                 });
 
-                const isFlexFreeByQty = allItemsFlexFree;
-                const isFleteFreeByQty = allItemsFleteFree;
+                const isFlexFreeByQty = !!(hasValidCp && flexRate > 0 && allItemsFlexFree);
+                const isFleteFreeByQty = !!(hasValidCp && fleteRate > 0 && allItemsFleteFree);
 
                 if (hasValidCp && shipMode === 'flex') {
                     shipCost = isFlexFreeByQty ? 0 : (flexRate * Math.max(1, totalLogisticaPackages));
@@ -1559,16 +1562,19 @@
                     let flexRate = hasValidCp ? (cpLookupRes?.logistica?.cost !== undefined ? cpLookupRes.logistica.cost : null) : null;
                     let fleteRate = hasValidCp ? (cpLookupRes?.flete?.cost !== undefined ? cpLookupRes.flete.cost : null) : null;
 
-                    if (cpLookupRes) {
-                        if (cpLookupRes.logistica?.active === false || flexRate === null) calcLogisticaAvailable = false;
-                        if (cpLookupRes.flete?.active === false || fleteRate === null) calcFleteAvailable = false;
+                    if (cpLookupRes && hasValidCp) {
+                        if (cpLookupRes.logistica?.active === false || flexRate === null || flexRate <= 0 || cpLookupRes.logistica?.zoneKey === 'resto_provincias') calcLogisticaAvailable = false;
+                        if (cpLookupRes.flete?.active === false || fleteRate === null || fleteRate <= 0 || cpLookupRes.flete?.zoneKey === 'flete_fuera_rango') calcFleteAvailable = false;
                     } else {
                         calcLogisticaAvailable = false;
                         calcFleteAvailable = false;
                     }
 
-                    const calcTotalFlexCost = calcAllItemsFlexFree ? 0 : ((hasValidCp && calcLogisticaAvailable) ? flexRate * Math.max(1, calcTotalLogisticaPackages) : null);
-                    const calcTotalFleteCost = calcAllItemsFleteFree ? 0 : ((hasValidCp && calcFleteAvailable) ? fleteRate * Math.max(1, calcTotalFletePackages) : null);
+                    const isCalcFlexFree = !!(hasValidCp && calcLogisticaAvailable && calcAllItemsFlexFree);
+                    const isCalcFleteFree = !!(hasValidCp && calcFleteAvailable && calcAllItemsFleteFree);
+
+                    const calcTotalFlexCost = isCalcFlexFree ? 0 : ((hasValidCp && calcLogisticaAvailable) ? flexRate * Math.max(1, calcTotalLogisticaPackages) : null);
+                    const calcTotalFleteCost = isCalcFleteFree ? 0 : ((hasValidCp && calcFleteAvailable) ? fleteRate * Math.max(1, calcTotalFletePackages) : null);
 
                     const cartShippingContext = {
                         isCartSummary: true,
@@ -1580,8 +1586,8 @@
                         fleteAvailable: calcFleteAvailable,
                         totalFlexCost: calcTotalFlexCost,
                         totalFleteCost: calcTotalFleteCost,
-                        isFlexFreeByQty: calcAllItemsFlexFree,
-                        isFleteFreeByQty: calcAllItemsFleteFree
+                        isFlexFreeByQty: isCalcFlexFree,
+                        isFleteFreeByQty: isCalcFleteFree
                     };
 
                     if (window.showProductPaymentModal) {
