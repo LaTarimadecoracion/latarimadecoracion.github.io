@@ -842,7 +842,9 @@
             }
         }
 
-        function loadAndRenderOrder() {
+        const CLOUDFLARE_WORKER_URL = 'https://super-shadow-4ad9.latarimadecoracion.workers.dev';
+
+        async function loadAndRenderOrder() {
             const mainContainer = document.getElementById('main-content');
             const orderId = getOrderIdFromUrl();
             if (!orderId) {
@@ -851,7 +853,42 @@
             }
             
             const orders = (typeof ordersData !== 'undefined') ? ordersData : [];
-            const order = orders.find(o => String(o.id) === String(orderId));
+            let order = orders.find(o => String(o.id) === String(orderId));
+
+            // Si no está en el archivo estático local, consultamos en Cloudflare KV en vivo
+            if (!order) {
+                try {
+                    const cfRes = await fetch(`${CLOUDFLARE_WORKER_URL}/pedidos?id=${encodeURIComponent(orderId)}`);
+                    if (cfRes.ok) {
+                        const cfData = await cfRes.json();
+                        if (cfData && cfData.success && cfData.order) {
+                            const co = cfData.order;
+                            order = {
+                                id: String(co.id),
+                                clientName: co.clientName || 'Cliente',
+                                clientPhone: co.clientPhone || '',
+                                clientEmail: co.clientEmail || '',
+                                productName: co.title || (co.cartItems && co.cartItems[0] ? co.cartItems[0].title : 'Pedido Web'),
+                                totalAmount: Number(co.amount) || 0,
+                                paidAmount: co.paymentStatus === 'approved' ? (Number(co.amount) || 0) : 0,
+                                paidStatus: co.paymentStatus === 'approved' ? 'total' : 'pendiente',
+                                status: (co.status === 'pago_confirmado' || co.paymentStatus === 'approved') ? 'pendiente' : (co.status || 'pendiente'),
+                                creationDate: co.createdAt ? new Date(co.createdAt).toISOString() : new Date().toISOString(),
+                                startDate: co.createdAt ? new Date(co.createdAt).toISOString() : new Date().toISOString(),
+                                prepDaysMin: 10,
+                                prepDaysMax: 15,
+                                extraDays: 0,
+                                deliveryMethod: 'envio',
+                                isCloudOrder: true,
+                                paymentMethod: co.paymentMethod || 'mercadopago',
+                                cartItems: co.cartItems || []
+                            };
+                        }
+                    }
+                } catch (e) {
+                    console.warn('Error consultando pedido en Cloudflare KV:', e);
+                }
+            }
 
             if (!order) {
                 renderNotFoundState(mainContainer, orderId);

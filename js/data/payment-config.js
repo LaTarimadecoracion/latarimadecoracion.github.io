@@ -1,4 +1,4 @@
-// js/payment-config.js
+// js/data/payment-config.js
 // --- PAYMENT CONFIGURATION DATABASE ---
 // Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.
 
@@ -24,10 +24,10 @@ window.sessionPaymentConfig = {
         "mode": "production",
         "publicKey": "APP_USR-be803e20-9c32-45f1-8354-8691ea7fa550",
         "accessToken": "",
-        "hasLocalSecret": true,
-        "workerUrl": "",
+        "workerUrl": "https://super-shadow-4ad9.latarimadecoracion.workers.dev",
         "surchargePercent": 10,
-        "creditSurchargePercent": 15,
-        "maxInstallments": 12
+        "creditSurchargePercent": 10,
+        "maxInstallments": 12,
+        "hasLocalSecret": true
     }
 };

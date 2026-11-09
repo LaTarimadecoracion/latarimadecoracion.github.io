@@ -1182,7 +1182,9 @@ app.post('/api/mercadopago/preference', async (req, res) => {
         }
 
         const maxInstallments = parseInt(body.maxInstallments, 10) || 12;
-        const originUrl = body.originUrl || 'http://localhost:7000';
+        const rawOriginUrl = body.originUrl || 'https://latarimadecoracion.github.io';
+        const isPublicHttpsOrigin = /^https:\/\//i.test(rawOriginUrl) && !/localhost|127\.0\.0\.1|192\.168\./i.test(rawOriginUrl);
+        const safeBackOrigin = isPublicHttpsOrigin ? rawOriginUrl : 'https://latarimadecoracion.github.io';
         const externalRef = body.externalReference || ('LT-' + Date.now());
 
         const preferencePayload = {
@@ -1207,9 +1209,9 @@ app.post('/api/mercadopago/preference', async (req, res) => {
                 installments: maxInstallments
             },
             back_urls: {
-                success: `${originUrl}/?mp_status=approved&ref=${encodeURIComponent(externalRef)}`,
-                failure: `${originUrl}/?mp_status=failure&ref=${encodeURIComponent(externalRef)}`,
-                pending: `${originUrl}/?mp_status=pending&ref=${encodeURIComponent(externalRef)}`
+                success: `${safeBackOrigin}/?mp_status=approved&ref=${encodeURIComponent(externalRef)}`,
+                failure: `${safeBackOrigin}/?mp_status=failure&ref=${encodeURIComponent(externalRef)}`,
+                pending: `${safeBackOrigin}/?mp_status=pending&ref=${encodeURIComponent(externalRef)}`
             },
             auto_return: 'approved',
             external_reference: externalRef,

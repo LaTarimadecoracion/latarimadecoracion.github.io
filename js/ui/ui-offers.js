@@ -2509,7 +2509,7 @@
                         </div>
 
                         <!-- Panel 2: Link de Pago / Débito / Dinero en Cuenta -->
-                        <div id="pay-panel-link" style="display: none; flex-direction: column; gap: 10px; width: 100%; box-sizing: border-box; background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 12px; padding: 1rem; text-align: center; margin-top: 10px;">
+                        <div id="pay-panel-link" style="display: none; flex-direction: column; gap: 10px; width: 100%; box-sizing: border-box; background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 12px; padding: 1rem; text-align: center; margin-top: 10px; width: 100% !important; box-sizing: border-box !important;">
                             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
                                 <div style="font-size: 0.9rem; font-weight: 800; color: #0369a1; display: flex; align-items: center; gap: 6px;">
                                     <span class="material-symbols-outlined">handshake</span> Pago Online con Mercado Pago (Dinero en cuenta / Débito / Tarjetas)
@@ -2521,14 +2521,11 @@
                             </div>
 
                             <div style="font-size: 0.76rem; color: #0369a1; background: #ffffff; border: 1px solid #e0f2fe; padding: 8px 12px; border-radius: 8px; font-weight: 700; text-align: left; line-height: 1.4;">
-                                ${mpLinkSurchargePct > 0
-                                    ? `💡 <strong>Comisión de plataforma:</strong> Adiciona <strong>+${mpLinkSurchargePct}%</strong> por acreditación online de Mercado Pago.`
-                                    : `✅ <strong>¡Sin recargo adicional!</strong> Abonás con dinero en cuenta de Mercado Pago o tarjeta de débito en 1 pago.`
-                                }
+                                🔒 Abonás de forma rápida y 100% segura con tu cuenta de Mercado Pago, dinero disponible o débito.
                             </div>
 
                             ${isMpGlobalActive ? `
-                            <button type="button" id="btn-pay-mp-online-link" style="background: #009ee3; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.25rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(0, 158, 227, 0.3); transition: all 0.2s; width: 100%;">
+                            <button type="button" id="btn-pay-mp-online-link" style="background: #009ee3; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.25rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(0, 158, 227, 0.3); transition: all 0.2s; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important;">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">payments</span>
                                 <span>Pagar ahora con Mercado Pago</span>
                             </button>
@@ -2536,7 +2533,7 @@
                         </div>
 
                         <!-- Panel 3: Tarjeta de Crédito (Cuotas) -->
-                        <div id="pay-panel-credit" style="display: none; flex-direction: column; gap: 10px; width: 100%; box-sizing: border-box; background: #fffdf0; border: 1.5px solid #fde68a; border-radius: 12px; padding: 1rem; text-align: center; margin-top: 10px;">
+                        <div id="pay-panel-credit" style="display: none; flex-direction: column; gap: 10px; width: 100%; box-sizing: border-box; background: #fffdf0; border: 1.5px solid #fde68a; border-radius: 12px; padding: 1rem; text-align: center; margin-top: 10px; width: 100% !important; box-sizing: border-box !important;">
                             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
                                 <div style="font-size: 0.9rem; font-weight: 800; color: #b45309; display: flex; align-items: center; gap: 6px;">
                                     <span class="material-symbols-outlined">credit_card</span> Pago con Tarjeta Débito / Crédito (Vía Mercado Pago)
@@ -2548,11 +2545,11 @@
                             </div>
 
                             <div style="font-size: 0.76rem; color: #b45309; background: #ffffff; border: 1px solid #fef3c7; padding: 8px 12px; border-radius: 8px; font-weight: 700; text-align: left; line-height: 1.4;">
-                                💡 ${mpCreditSurchargePct > 0 ? `<strong>Recargo base: +${mpCreditSurchargePct}%.</strong> ` : ''}Elegís la cantidad de cuotas (hasta ${mpMaxInstallments} cuotas) directamente en la pantalla segura de Mercado Pago según tu banco.
+                                💳 Podés pagar en hasta ${mpMaxInstallments} cuotas con cualquier tarjeta de crédito o débito en la pantalla segura.
                             </div>
 
                             ${isMpGlobalActive ? `
-                            <button type="button" id="btn-pay-mp-online-credit" style="background: #009ee3; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.25rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(0, 158, 227, 0.3); transition: all 0.2s; width: 100%;">
+                            <button type="button" id="btn-pay-mp-online-credit" style="background: #009ee3; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.25rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(0, 158, 227, 0.3); transition: all 0.2s; width: 100% !important; max-width: 100% !important; box-sizing: border-box !important;">
                                 <span class="material-symbols-outlined" style="font-size: 20px;">credit_card</span>
                                 <span>Pagar con Tarjeta (vía Mercado Pago)</span>
                             </button>
@@ -3718,7 +3715,7 @@
                 payerPhone: clientPhone,
                 payerEmail: clientEmail,
                 mode: mpConf.mode || 'production',
-                originUrl: window.location.origin + window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, ''),
+                originUrl: (/^https:\/\//i.test(window.location.origin) && !/localhost|127\.0\.0\.1|192\.168\./i.test(window.location.origin)) ? (window.location.origin + window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, '')) : 'https://latarimadecoracion.github.io',
                 externalReference: 'LT-' + Date.now()
             };
 

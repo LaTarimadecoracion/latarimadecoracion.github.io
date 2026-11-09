@@ -8900,7 +8900,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 110,
+                "views": 117,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -8996,7 +8996,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 18,
+                "views": 20,
                 "stock": 0,
                 "history": [
                     {
@@ -10896,7 +10896,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 110,
+                "views": 117,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -10992,7 +10992,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 18,
+                "views": 20,
                 "stock": 0,
                 "history": [
                     {
@@ -13315,7 +13315,7 @@ const productsData = [
                 "primaryCatId": "Barandas",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 87
+                "views": 88
             },
             {
                 "id": "52",

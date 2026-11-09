@@ -2174,20 +2174,61 @@
             }
         }
         
+        const CLOUDFLARE_WORKER_URL = 'https://super-shadow-4ad9.latarimadecoracion.workers.dev';
+
         async function loadOrders() {
             try {
                 const res = await fetch('/api/orders');
                 if (res.ok) {
                     allOrders = await res.json();
                 } else if (typeof ordersData !== 'undefined') {
-                    allOrders = ordersData;
+                    allOrders = [...ordersData];
                 }
             } catch (e) {
                 console.warn('API no disponible. Cargando pedidos desde la base local (ordersData).', e);
                 if (typeof ordersData !== 'undefined') {
-                    allOrders = ordersData;
+                    allOrders = [...ordersData];
                 }
             }
+
+            // Consultar pedidos en Cloudflare KV en vivo (para ver pedidos online hechos sin la PC prendida)
+            try {
+                const cloudRes = await fetch(CLOUDFLARE_WORKER_URL + '/admin/pedidos');
+                if (cloudRes.ok) {
+                    const cloudData = await cloudRes.json();
+                    if (cloudData && Array.isArray(cloudData.orders)) {
+                        cloudData.orders.forEach(co => {
+                            // Mapear pedido KV de Mercado Pago al formato estándar del panel
+                            const exists = allOrders.some(o => String(o.id) === String(co.id));
+                            if (!exists) {
+                                const mapped = {
+                                    id: String(co.id),
+                                    clientName: co.clientName || 'Cliente Online',
+                                    clientPhone: co.clientPhone || '',
+                                    clientEmail: co.clientEmail || '',
+                                    productName: co.title || (co.cartItems && co.cartItems[0] ? co.cartItems[0].title : 'Pedido Web'),
+                                    totalAmount: Number(co.amount) || 0,
+                                    paidAmount: co.paymentStatus === 'approved' ? (Number(co.amount) || 0) : 0,
+                                    paidStatus: co.paymentStatus === 'approved' ? 'total' : 'pendiente',
+                                    status: (co.status === 'pago_confirmado' || co.paymentStatus === 'approved') ? 'pendiente' : (co.status || 'pendiente'),
+                                    creationDate: co.createdAt ? new Date(co.createdAt).toISOString() : new Date().toISOString(),
+                                    startDate: co.createdAt ? new Date(co.createdAt).toISOString() : new Date().toISOString(),
+                                    prepDaysMin: 10,
+                                    prepDaysMax: 15,
+                                    extraDays: 0,
+                                    isCloudOrder: true,
+                                    paymentMethod: co.paymentMethod || 'mercadopago',
+                                    cartItems: co.cartItems || []
+                                };
+                                allOrders.unshift(mapped);
+                            }
+                        });
+                    }
+                }
+            } catch (cloudErr) {
+                console.warn('No se pudo sincronizar pedidos con Cloudflare Workers:', cloudErr);
+            }
+
             filterAndRenderTable();
         }
         
@@ -2949,6 +2990,17 @@
                 }
             } catch (err) {
                 console.warn('Guardado en servidor falló o estamos en modo estático. Guardando en localStorage.', err);
+            }
+
+            // Sincronizar cambio de estado en Cloudflare KV en vivo
+            try {
+                await fetch(CLOUDFLARE_WORKER_URL + '/admin/pedidos/status', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ orderId: id, newStatus: newStatus })
+                });
+            } catch (cfErr) {
+                console.warn('No se pudo sincronizar status en Cloudflare:', cfErr);
             }
 
             try {
