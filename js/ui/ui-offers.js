@@ -2142,6 +2142,20 @@
         const mpMaxInstallments = parseInt(mpConf.maxInstallments, 10) || 12;
         window._checkoutSelectedPayMethod = 'transfer';
 
+        // Determinar imagen del producto / combo para la orden
+        let resolvedItemImage = '';
+        if (productContext?.grupo?.cover_image) {
+            resolvedItemImage = productContext.grupo.cover_image;
+        } else if (productContext?.grupo?.images_list && productContext.grupo.images_list[0]) {
+            resolvedItemImage = productContext.grupo.images_list[0];
+        } else if (offer?.customCoverImage) {
+            resolvedItemImage = offer.customCoverImage;
+        } else if (offer?.image) {
+            resolvedItemImage = Array.isArray(offer.image) ? offer.image[0] : offer.image;
+        } else if (offer?.product_items && offer.product_items[0]?.image) {
+            resolvedItemImage = offer.product_items[0].image;
+        }
+
         const overlay = document.createElement('div');
         overlay.id = 'offer-payment-modal-overlay';
         overlay.style.cssText = 'position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 0; opacity: 0; transition: opacity 0.25s ease-out; box-sizing: border-box; width: 100vw; height: 100vh; height: 100dvh;';
@@ -2607,9 +2621,9 @@
                     <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
                 </button>
 
-                <button type="button" id="btn-submit-receipt-wa" style="display: none; background: #25d366; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.4rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; flex-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(37,211,102,0.3); transition: all 0.2s;">
+                <button type="button" id="btn-submit-receipt-wa" style="display: none; background: #25d366; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.4rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(37,211,102,0.3); transition: all 0.2s;">
                     <span class="material-symbols-outlined" style="font-size: 20px;">chat</span>
-                    <span>Enviar por WhatsApp</span>
+                    <span>Confirmar Pedido por WhatsApp</span>
                 </button>
             </div>
         `;
@@ -3705,8 +3719,24 @@
             btnEl.style.opacity = '0.8';
             btnEl.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px; animation: spin 1s linear infinite;">sync</span><span>Generando link seguro de Mercado Pago...</span>';
 
+            // Código corto canónico Base36 si es producto de catálogo
+            let productShortCode = '';
+            try {
+                if (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function' && offer?.id) {
+                    const gName = productContext?.grupo?.acabado_name || '';
+                    const mName = productContext?.medida || '';
+                    const oName = productContext?.opcion || '';
+                    productShortCode = window.TarimaShortener.encodeShortCode(offer.id, gName, mName, oName, true) || '';
+                }
+            } catch(e) {}
+
             const payload = {
                 itemId: String(offer?.id || 'pedido-latarima'),
+                shortCode: productShortCode,
+                productId: String(offer?.id || ''),
+                image: resolvedItemImage || '',
+                selectedFinish: productContext?.grupo?.acabado_name || '',
+                selectedMeasure: productContext?.medida || '',
                 title: `${itemDisplayName}${packQty > 1 ? ` (x${packQty})` : ''}`,
                 description: info.isShipping && info.shipLabel ? `Incluye envío: ${info.shipLabel}` : 'Retiro en taller / Envío a coordinar',
                 amount: finalAmount,
@@ -3763,7 +3793,7 @@
         // Evento Enviar Comprobante por WhatsApp (Texto Plano Limpio sin Asteriscos)
         const waSubmitBtn = document.getElementById('btn-submit-receipt-wa');
         if (waSubmitBtn) {
-            waSubmitBtn.onclick = async (e) => {
+            waSubmitBtn.onclick = (e) => {
                 e.preventDefault();
                 const isFacturaA = chkFacturaA?.checked || false;
                 const isShipping = radioShipping?.checked || false;
@@ -3780,51 +3810,34 @@
                 const clientPhone = document.getElementById('pay-client-phone')?.value.trim();
                 const clientEmail = document.getElementById('pay-ship-email')?.value.trim() || document.getElementById('factura-email')?.value.trim() || '';
 
-                if (waSubmitBtn) {
-                    waSubmitBtn.disabled = true;
-                    waSubmitBtn.style.opacity = '0.85';
-                    waSubmitBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px; animation: spin 1s linear infinite;">sync</span><span>Registrando orden y abriendo WhatsApp...</span>';
-                }
+                const trackingOrderId = 'LT-' + Date.now().toString().slice(-6);
 
-                let trackingOrderId = 'LT-' + Date.now().toString().slice(-6);
-
-                const workerBaseUrl = (mpConf && mpConf.workerUrl) ? mpConf.workerUrl : 'https://super-shadow-4ad9.latarimadecoracion.workers.dev';
+                // Código corto canónico Base36 si es producto de catálogo
+                let productShortCode = '';
                 try {
-                    const transPayload = {
-                        title: `${itemDisplayName}${packQty > 1 ? ` (x${packQty})` : ''}`,
-                        amount: finalPriceVal,
-                        payerName: clientName || 'Cliente La Tarima',
-                        payerPhone: clientPhone || '',
-                        payerEmail: clientEmail,
-                        shippingAddress: isShipping ? (document.getElementById('pay-ship-dir')?.value.trim() || '') : '',
-                        shippingMethod: isShipping ? 'envio' : 'retira',
-                        shippingCost: window._checkoutSelectedShipCost || 0,
-                        shippingLabel: window._checkoutSelectedShipLabel || '',
-                        transferAccount: transferAccountDesc || '',
-                        userNotes: userNotes,
-                        externalReference: trackingOrderId
-                    };
-                    const cfRes = await fetch(`${workerBaseUrl}/pedidos/transferencia`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(transPayload)
-                    });
-                    if (cfRes.ok) {
-                        const cfData = await cfRes.json();
-                        if (cfData && cfData.id) {
-                            trackingOrderId = cfData.id;
-                        }
+                    if (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function' && offer?.id) {
+                        const gName = productContext?.grupo?.acabado_name || '';
+                        const mName = productContext?.medida || '';
+                        const oName = productContext?.opcion || '';
+                        productShortCode = window.TarimaShortener.encodeShortCode(offer.id, gName, mName, oName, true) || '';
                     }
-                } catch (netErr) {
-                    console.warn('No se pudo registrar pedido en la nube de forma síncrona:', netErr);
-                }
+                } catch(e) {}
+
+                // Generar URL pública de seguimiento del pedido
+                let trackingPageUrl = '';
+                try {
+                    const origin = (/^https:\/\//i.test(window.location.origin) && !/localhost|127\.0\.0\.1|192\.168\./i.test(window.location.origin))
+                        ? (window.location.origin + window.location.pathname.replace(/\/index\.html$/, '').replace(/\/$/, ''))
+                        : 'https://latarimadecoracion.github.io';
+                    trackingPageUrl = `${origin}/pedidos/index.html?id=${encodeURIComponent(trackingOrderId)}`;
+                } catch(e) {}
 
                 let msgLines = [];
                 msgLines.push(`Hola La Tarima. Adjunto el comprobante de pago de mi pedido #${trackingOrderId}.`);
-                msgLines.push("");
-                msgLines.push("Detalle de compra:");
+                msgLines.push('');
+                msgLines.push('Detalle de compra:');
                 if (productContext && productContext.medida && productContext.medida.includes('\n')) {
-                    msgLines.push("- Productos del Carrito:");
+                    msgLines.push('- Productos del Carrito:');
                     const cartParts = productContext.medida.split('\n');
                     cartParts.forEach(part => {
                         if (part.startsWith('   ')) {
@@ -3846,7 +3859,7 @@
                         msgLines.push(`   ${singleDetails.join(' - ')}`);
                     }
 
-                    // Punto 67: Enlace directo con foto / vista previa en WhatsApp
+                    // Enlace directo con foto / ficha del producto en WhatsApp
                     try {
                         let itemProdUrl = '';
                         if (window.TarimaShortener && typeof window.TarimaShortener.encodeShortCode === 'function') {
@@ -3871,9 +3884,9 @@
                 msgLines.push(`- Monto total: ${finalPriceFormatted}`);
                 const isFacturaC = document.getElementById('chk-factura-c')?.checked || false;
                 if (isFacturaA) {
-                    msgLines.push("- Comprobante solicitado: Factura A (Responsable Inscripto)");
+                    msgLines.push('- Comprobante solicitado: Factura A (Responsable Inscripto)');
                 } else if (isFacturaC) {
-                    msgLines.push("- Comprobante solicitado: Factura C");
+                    msgLines.push('- Comprobante solicitado: Factura C');
                 }
 
                 if (isFacturaA || isFacturaC) {
@@ -3883,7 +3896,7 @@
                     const cuitEmp = document.getElementById('factura-cuit')?.value.trim() || 'No especificado';
                     const condIva = document.getElementById('factura-condicion-iva')?.value || 'Consumidor Final';
                     
-                    msgLines.push("");
+                    msgLines.push('');
                     const emailFiscal = document.getElementById('factura-email')?.value.trim() || 'No especificado';
 
                     msgLines.push(`Datos de facturación (${isFacturaA ? 'Factura A' : 'Factura C'}):`);
@@ -3895,8 +3908,8 @@
                     msgLines.push(`- Correo Facturación: ${emailFiscal}`);
                 }
 
-                msgLines.push("");
-                msgLines.push("Datos de entrega:");
+                msgLines.push('');
+                msgLines.push('Datos de entrega:');
                 if (isShipping) {
                     const dir = document.getElementById('pay-ship-dir')?.value.trim() || 'No especificada';
                     const cp = document.getElementById('pay-ship-cp')?.value.trim() || 'No especificado';
@@ -3908,7 +3921,7 @@
                     const shipCostStr = window._checkoutSelectedShipCost > 0
                         ? formatCurr(window._checkoutSelectedShipCost)
                         : (isFreeShipSelected ? '¡ENVÍO GRATIS! ($ 0)' : 'A cotizar');
-                    msgLines.push("- Método: Envío a domicilio / flete");
+                    msgLines.push('- Método: Envío a domicilio / flete');
                     msgLines.push(`- Envío: ${window._checkoutSelectedShipLabel || 'A confirmar'} — ${shipCostStr}`);
                     msgLines.push(`- Dirección: ${dir}`);
                     msgLines.push(`- CP: ${cp}`);
@@ -3916,41 +3929,71 @@
                     msgLines.push(`- Provincia: ${prov}`);
                     if (email) msgLines.push(`- Correo: ${email}`);
                 } else {
-                    msgLines.push("- Método: Retiro por taller / local (Hurlingham)");
+                    msgLines.push('- Método: Retiro por taller / local (Hurlingham)');
                 }
 
                 if (clientName || clientPhone) {
-                    msgLines.push("");
-                    msgLines.push("Datos de contacto:");
+                    msgLines.push('');
+                    msgLines.push('Datos de contacto:');
                     if (clientName) msgLines.push(`- Nombre: ${clientName}`);
                     if (clientPhone) msgLines.push(`- Teléfono: ${clientPhone}`);
                 }
 
                 if (userNotes) {
-                    msgLines.push("");
-                    msgLines.push("Aclaraciones:");
+                    msgLines.push('');
+                    msgLines.push('Aclaraciones:');
                     msgLines.push(`- ${userNotes}`);
                 }
 
-                // Generar URL pública de seguimiento del pedido
-                let trackingPageUrl = "";
-                try {
-                    const origin = (/^https:\/\//i.test(window.location.origin) && !/localhost|127\.0\.0\.1|192\.168\./i.test(window.location.origin))
-                        ? (window.location.origin + window.location.pathname.replace(/\/index\.html$/, "").replace(/\/$/, ""))
-                        : "https://latarimadecoracion.github.io";
-                    trackingPageUrl = `${origin}/pedidos/index.html?id=${encodeURIComponent(trackingOrderId)}`;
-                } catch(e) {}
-
                 if (trackingPageUrl) {
-                    msgLines.push("");
-                    msgLines.push("Link de seguimiento de mi pedido:");
+                    msgLines.push('');
+                    msgLines.push('Link de seguimiento de mi pedido:');
                     msgLines.push(trackingPageUrl);
                 }
 
-                const waText = msgLines.join("\n");
+                const waText = msgLines.join('\n');
+                const waUrl = `https://wa.me/${phone}?text=${encodeURIComponent(waText)}`;
 
-                // Mostrar pantalla de confirmación interactiva con el código y link al comprador
-                const modalContent = document.querySelector("#offer-payment-modal .modal-content") || document.querySelector("#offer-payment-modal > div");
+                // 1. Abrir DIRECTO y sincrónico WhatsApp en el mismo click del usuario (cero bloqueo de popups)
+                try {
+                    window.open(waUrl, '_blank');
+                } catch(e) {
+                    window.location.href = waUrl;
+                }
+
+                // 2. Enviar pedido al Cloudflare KV en paralelo
+                const workerBaseUrl = (mpConf && mpConf.workerUrl) ? mpConf.workerUrl : 'https://super-shadow-4ad9.latarimadecoracion.workers.dev';
+                const transPayload = {
+                    title: `${itemDisplayName}${packQty > 1 ? ` (x${packQty})` : ''}`,
+                    amount: finalPriceVal,
+                    shortCode: productShortCode,
+                    productId: String(offer?.id || ''),
+                    image: resolvedItemImage || '',
+                    selectedFinish: productContext?.grupo?.acabado_name || '',
+                    selectedMeasure: productContext?.medida || '',
+                    payerName: clientName || 'Cliente La Tarima',
+                    payerPhone: clientPhone || '',
+                    payerEmail: clientEmail,
+                    shippingAddress: isShipping ? (document.getElementById('pay-ship-dir')?.value.trim() || '') : '',
+                    shippingMethod: isShipping ? 'envio' : 'retira',
+                    shippingCost: window._checkoutSelectedShipCost || 0,
+                    shippingLabel: window._checkoutSelectedShipLabel || '',
+                    transferAccount: transferAccountDesc || '',
+                    userNotes: userNotes,
+                    externalReference: trackingOrderId
+                };
+
+                fetch(`${workerBaseUrl}/pedidos/transferencia`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(transPayload),
+                    keepalive: true
+                }).catch(netErr => {
+                    console.warn('Error registrando pedido en la nube:', netErr);
+                });
+
+                // 3. Mostrar pantalla de confirmación interactiva en la web
+                const modalContent = document.querySelector('#offer-payment-modal .modal-content') || document.querySelector('#offer-payment-modal > div');
                 if (modalContent) {
                     modalContent.innerHTML = `
                         <div style="padding: 2.25rem 1.5rem; text-align: center; font-family: inherit;">
@@ -3958,11 +4001,21 @@
                                 <span class="material-symbols-outlined" style="font-size: 42px;">check_circle</span>
                             </div>
                             <h2 style="font-size: 1.45rem; font-weight: 800; color: #0f172a; margin: 0 0 0.4rem 0;">¡Pedido Registrado con Éxito!</h2>
-                            <p style="font-size: 0.92rem; color: #64748b; margin: 0 0 1.25rem 0;">Tu código de seguimiento oficial es:</p>
+                            <p style="font-size: 0.92rem; color: #64748b; margin: 0 0 1rem 0;">Tu código de seguimiento oficial es:</p>
                             
-                            <div style="background: #f8fafc; border: 2px dashed #A0715B; border-radius: 14px; padding: 1.15rem; margin-bottom: 1.5rem; display: inline-block; width: 100%; box-sizing: border-box;">
-                                <div style="font-size: 1.55rem; font-weight: 900; letter-spacing: 1.5px; color: #A0715B; font-family: monospace;">#${trackingOrderId}</div>
-                                <div style="font-size: 0.8rem; color: #78716c; margin-top: 5px;">Podés seguir en tiempo real el estado y fabricación de tu compra</div>
+                            <div style="background: #f8fafc; border: 2px dashed #A0715B; border-radius: 14px; padding: 1.25rem 1rem; margin-bottom: 1.35rem; display: inline-block; width: 100%; box-sizing: border-box;">
+                                <div style="display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap;">
+                                    <div style="font-size: 1.65rem; font-weight: 900; letter-spacing: 1.5px; color: #A0715B; font-family: monospace;">#${trackingOrderId}</div>
+                                    <button type="button" id="btn-copy-order-code" style="background: #0f172a; color: #ffffff; border: none; border-radius: 8px; padding: 6px 12px; font-weight: 700; font-size: 0.8rem; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 2px 6px rgba(15,23,42,0.15); transition: all 0.2s;" title="Copiar código al portapapeles">
+                                        <span class="material-symbols-outlined" id="copy-order-icon" style="font-size: 15px;">content_copy</span>
+                                        <span id="copy-order-lbl">Copiar código</span>
+                                    </button>
+                                </div>
+
+                                <div style="font-size: 0.82rem; color: #475569; margin-top: 12px; line-height: 1.45; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 9px 12px; text-align: left; display: flex; align-items: flex-start; gap: 8px;">
+                                    <span class="material-symbols-outlined" style="font-size: 18px; color: #0284c7; flex-shrink: 0; margin-top: 1px;">info</span>
+                                    <span><strong>Guardá este código:</strong> Con él podés buscar y consultar el estado y fabricación de tu pedido en cualquier momento desde nuestra web en la sección de seguimiento.</span>
+                                </div>
                             </div>
 
                             <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px; margin: 0 auto;">
@@ -3970,9 +4023,9 @@
                                     <span class="material-symbols-outlined" style="font-size: 22px;">visibility</span>
                                     <span>Ver Seguimiento en Vivo</span>
                                 </a>
-                                <a href="https://wa.me/${phone}?text=${encodeURIComponent(waText)}" target="_blank" style="background: #25d366; color: #ffffff; text-decoration: none; border-radius: 12px; padding: 0.9rem 1.25rem; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);">
-                                    <span class="material-symbols-outlined" style="font-size: 22px;">chat</span>
-                                    <span>Reabrir WhatsApp</span>
+                                <a href="${waUrl}" target="_blank" style="background: #f0fdf4; color: #16a34a; border: 1.5px solid #86efac; text-decoration: none; border-radius: 12px; padding: 0.75rem 1.25rem; font-weight: 700; font-size: 0.88rem; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                                    <span class="material-symbols-outlined" style="font-size: 20px;">chat</span>
+                                    <span>WhatsApp ya abierto (Tocar aquí si necesitás reabrir)</span>
                                 </a>
                                 <button type="button" onclick="closeModal();" style="background: none; border: none; color: #64748b; font-size: 0.88rem; font-weight: 600; cursor: pointer; padding: 0.5rem; margin-top: 4px;">
                                     Cerrar y seguir navegando
@@ -3980,12 +4033,39 @@
                             </div>
                         </div>
                     `;
-                }
 
-                // Abrir automáticamente WhatsApp en nueva pestaña
-                setTimeout(() => {
-                    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waText)}`, '_blank');
-                }, 350);
+                    // Evento para copiar código al portapapeles con micro-interacción verde
+                    const copyBtn = document.getElementById('btn-copy-order-code');
+                    if (copyBtn) {
+                        copyBtn.onclick = () => {
+                            const textToCopy = trackingOrderId;
+                            if (navigator.clipboard && navigator.clipboard.writeText) {
+                                navigator.clipboard.writeText(textToCopy);
+                            } else {
+                                const tempInput = document.createElement('input');
+                                tempInput.value = textToCopy;
+                                document.body.appendChild(tempInput);
+                                tempInput.select();
+                                try { document.execCommand('copy'); } catch(e) {}
+                                document.body.removeChild(tempInput);
+                            }
+                            const lbl = document.getElementById('copy-order-lbl');
+                            const icon = document.getElementById('copy-order-icon');
+                            copyBtn.style.background = '#059669';
+                            copyBtn.style.transform = 'scale(1.05)';
+                            if (lbl) lbl.textContent = '¡Código Copiado!';
+                            if (icon) icon.textContent = 'check_circle';
+                            setTimeout(() => {
+                                copyBtn.style.transform = 'scale(1)';
+                            }, 150);
+                            setTimeout(() => {
+                                copyBtn.style.background = '#0f172a';
+                                if (lbl) lbl.textContent = 'Copiar código';
+                                if (icon) icon.textContent = 'content_copy';
+                            }, 2000);
+                        };
+                    }
+                }
             };
         }
     }

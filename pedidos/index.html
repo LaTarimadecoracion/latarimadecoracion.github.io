@@ -731,6 +731,8 @@
     </footer>
 
     <!-- Carga de Bases de Datos Centrales -->
+    <script src="../js/data/products-data.js?v=26"></script>
+    <script src="../js/modules/shortener.js?v=26"></script>
     <script src="../js/data/orders-data.js?v=26"></script>
     <script src="../js/data/orders-config.js?v=26"></script>
     <script src="../js/data/site-config.js?v=26"></script>
@@ -863,8 +865,60 @@
                         const cfData = await cfRes.json();
                         if (cfData && cfData.success && cfData.order) {
                             const co = cfData.order;
+
+                            // Búsqueda inteligente del producto en el catálogo por ID, Código Corto o Título
+                            let resolvedImg = co.image || (co.cartItems && co.cartItems[0] ? co.cartItems[0].image : '') || '';
+                            let resolvedFinish = co.selectedFinish || (co.cartItems && co.cartItems[0] ? co.cartItems[0].finish : '') || '';
+                            let resolvedMeasure = co.selectedMeasure || (co.cartItems && co.cartItems[0] ? co.cartItems[0].measure : '') || '';
+
+                            if (typeof window.productsData !== 'undefined' && Array.isArray(window.productsData)) {
+                                let foundProd = null;
+                                // 1. Buscar por productId directo
+                                if (co.productId) {
+                                    for (const cat of window.productsData) {
+                                        const p = (cat.products || []).find(item => String(item.id) === String(co.productId));
+                                        if (p) { foundProd = p; break; }
+                                    }
+                                }
+                                // 2. Buscar por shortCode
+                                if (!foundProd && co.shortCode && window.TarimaShortener && typeof window.TarimaShortener.decodeShortCode === 'function') {
+                                    try {
+                                        const decoded = window.TarimaShortener.decodeShortCode(co.shortCode);
+                                        if (decoded && decoded.product) {
+                                            foundProd = decoded.product;
+                                            if (!resolvedFinish && decoded.preselectedAcabado) resolvedFinish = decoded.preselectedAcabado;
+                                            if (!resolvedMeasure && decoded.preselectedMedida) resolvedMeasure = decoded.preselectedMedida;
+                                        }
+                                    } catch(e) {}
+                                }
+                                // 3. Buscar por coincidencia de título si todavía no se encontró
+                                if (!foundProd && co.title) {
+                                    for (const cat of window.productsData) {
+                                        const p = (cat.products || []).find(item => co.title.toLowerCase().includes((item.title || '').toLowerCase()));
+                                        if (p) { foundProd = p; break; }
+                                    }
+                                }
+                                // Si encontramos el producto en el catálogo y faltaba la imagen
+                                if (foundProd && (!resolvedImg || resolvedImg.includes('logo'))) {
+                                    if (resolvedFinish && foundProd.acabados_groups && Array.isArray(foundProd.acabados_groups)) {
+                                        const grp = foundProd.acabados_groups.find(g => (g.acabado_name || '').toLowerCase() === resolvedFinish.toLowerCase());
+                                        if (grp && grp.cover_image) resolvedImg = grp.cover_image;
+                                        else if (grp && grp.images_list && grp.images_list[0]) resolvedImg = grp.images_list[0];
+                                    }
+                                    if (!resolvedImg) {
+                                        if (foundProd.acabados_groups && foundProd.acabados_groups[0]?.cover_image) {
+                                            resolvedImg = foundProd.acabados_groups[0].cover_image;
+                                        } else if (foundProd.image) {
+                                            resolvedImg = Array.isArray(foundProd.image) ? foundProd.image[0] : foundProd.image;
+                                        }
+                                    }
+                                }
+                            }
+
                             order = {
                                 id: String(co.id),
+                                productId: co.productId || '',
+                                shortCode: co.shortCode || '',
                                 clientName: co.clientName || 'Cliente',
                                 clientPhone: co.clientPhone || '',
                                 clientEmail: co.clientEmail || '',
@@ -873,6 +927,9 @@
                                 paidAmount: co.paymentStatus === 'approved' ? (Number(co.amount) || 0) : 0,
                                 paidStatus: co.paymentStatus === 'approved' ? 'total' : 'pendiente',
                                 status: (co.status === 'pago_confirmado' || co.paymentStatus === 'approved') ? 'pendiente' : (co.status || 'pendiente'),
+                                image: resolvedImg,
+                                selectedFinish: resolvedFinish,
+                                selectedMeasure: resolvedMeasure,
                                 creationDate: co.createdAt ? new Date(co.createdAt).toISOString() : new Date().toISOString(),
                                 startDate: co.createdAt ? new Date(co.createdAt).toISOString() : new Date().toISOString(),
                                 prepDaysMin: 10,
@@ -1050,7 +1107,7 @@
                     
                     <div class="order-body">
                         <div class="product-section">
-                            <img src="../${order.image || 'img/logo.webp'}" alt="${escapeHtml(order.productName)}" class="product-image" onerror="this.src='../img/logo.webp'">
+                            <img src="${order.image ? (order.image.startsWith('http') || order.image.startsWith('data:') ? order.image : (order.image.startsWith('../') ? order.image : '../' + order.image)) : '../img/logo.webp'}" alt="${escapeHtml(order.productName)}" class="product-image" onerror="this.src='../img/logo.webp'">
                             <div class="product-info">
                                 <h2>${escapeHtml(order.productName)}</h2>
                                 <div style="margin-bottom: 8px;">

@@ -1823,6 +1823,7 @@
 
     <!-- Importar Base de Datos del Catálogo y Pedidos -->
     <script src="../js/data/products-data.js?v=5"></script>
+    <script src="../js/modules/shortener.js?v=5"></script>
     <script src="../js/data/orders-data.js?v=5"></script>
     
     <!-- Lógica de Negocio del Panel de Pedidos -->
@@ -2198,11 +2199,55 @@
                     const cloudData = await cloudRes.json();
                     if (cloudData && Array.isArray(cloudData.orders)) {
                         cloudData.orders.forEach(co => {
-                            // Mapear pedido KV de Mercado Pago al formato estándar del panel
+                            // Mapear pedido KV al formato estándar del panel con autodescubrimiento por ID / ShortCode
                             const exists = allOrders.some(o => String(o.id) === String(co.id));
                             if (!exists) {
+                                let resolvedImg = co.image || (co.cartItems && co.cartItems[0] ? co.cartItems[0].image : '') || '';
+                                let resolvedFinish = co.selectedFinish || (co.cartItems && co.cartItems[0] ? co.cartItems[0].finish : '') || '';
+                                let resolvedMeasure = co.selectedMeasure || (co.cartItems && co.cartItems[0] ? co.cartItems[0].measure : '') || '';
+
+                                const prodsList = (typeof catalogProducts !== 'undefined' && catalogProducts.length > 0)
+                                    ? catalogProducts
+                                    : ((typeof productsData !== 'undefined') ? productsData.flatMap(c => c.products || []) : []);
+
+                                if (prodsList.length > 0) {
+                                    let foundProd = null;
+                                    if (co.productId) {
+                                        foundProd = prodsList.find(p => String(p.id) === String(co.productId));
+                                    }
+                                    if (!foundProd && co.shortCode && window.TarimaShortener && typeof window.TarimaShortener.decodeShortCode === 'function') {
+                                        try {
+                                            const decoded = window.TarimaShortener.decodeShortCode(co.shortCode);
+                                            if (decoded && decoded.product) {
+                                                foundProd = decoded.product;
+                                                if (!resolvedFinish && decoded.preselectedAcabado) resolvedFinish = decoded.preselectedAcabado;
+                                                if (!resolvedMeasure && decoded.preselectedMedida) resolvedMeasure = decoded.preselectedMedida;
+                                            }
+                                        } catch(e) {}
+                                    }
+                                    if (!foundProd && co.title) {
+                                        foundProd = prodsList.find(p => co.title.toLowerCase().includes((p.title || '').toLowerCase()));
+                                    }
+                                    if (foundProd && (!resolvedImg || resolvedImg.includes('logo'))) {
+                                        if (resolvedFinish && foundProd.acabados_groups && Array.isArray(foundProd.acabados_groups)) {
+                                            const grp = foundProd.acabados_groups.find(g => (g.acabado_name || '').toLowerCase() === resolvedFinish.toLowerCase());
+                                            if (grp && grp.cover_image) resolvedImg = grp.cover_image;
+                                            else if (grp && grp.images_list && grp.images_list[0]) resolvedImg = grp.images_list[0];
+                                        }
+                                        if (!resolvedImg) {
+                                            if (foundProd.acabados_groups && foundProd.acabados_groups[0]?.cover_image) {
+                                                resolvedImg = foundProd.acabados_groups[0].cover_image;
+                                            } else if (foundProd.image) {
+                                                resolvedImg = Array.isArray(foundProd.image) ? foundProd.image[0] : foundProd.image;
+                                            }
+                                        }
+                                    }
+                                }
+
                                 const mapped = {
                                     id: String(co.id),
+                                    productId: co.productId || '',
+                                    shortCode: co.shortCode || '',
                                     clientName: co.clientName || 'Cliente Online',
                                     clientPhone: co.clientPhone || '',
                                     clientEmail: co.clientEmail || '',
@@ -2215,6 +2260,9 @@
                                     address: co.shippingAddress || '',
                                     description: co.userNotes ? ('Notas: ' + co.userNotes) : '',
                                     transferAccount: co.transferAccount || '',
+                                    image: resolvedImg,
+                                    selectedFinish: resolvedFinish,
+                                    selectedMeasure: resolvedMeasure,
                                     creationDate: co.createdAt ? new Date(co.createdAt).toISOString() : new Date().toISOString(),
                                     startDate: co.createdAt ? new Date(co.createdAt).toISOString() : new Date().toISOString(),
                                     prepDaysMin: 10,
@@ -2366,7 +2414,7 @@
                     if (order.status === 'entregado') statusLabel = 'Entregado';
                     
                     // Imagen del producto
-                    const imgSrc = order.image ? (order.image.startsWith('data:') ? order.image : '../' + order.image) : '../img/logo_provisional.png';
+                    const imgSrc = order.image ? (order.image.startsWith('http') || order.image.startsWith('data:') ? order.image : (order.image.startsWith('../') ? order.image : '../' + order.image)) : '../img/logo_provisional.png';
 
                     let basePath = '/';
                     if (window.location.pathname.includes('/latarimadecoracion.github.io/')) {

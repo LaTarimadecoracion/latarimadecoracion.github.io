@@ -4499,7 +4499,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12000,
+                                "price": 13000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -4548,7 +4548,8 @@ const productsData = [
                     "carpinteria-todos",
                     "bazar-cocina"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 13000
             },
             {
                 "id": "E1",
@@ -8900,7 +8901,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 117,
+                "views": 135,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -10896,7 +10897,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 117,
+                "views": 135,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -13315,7 +13316,7 @@ const productsData = [
                 "primaryCatId": "Barandas",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 88
+                "views": 89
             },
             {
                 "id": "52",
@@ -26282,7 +26283,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12000,
+                                "price": 13000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -26331,7 +26332,8 @@ const productsData = [
                     "carpinteria-todos",
                     "bazar-cocina"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 13000
             },
             {
                 "id": "G1",
