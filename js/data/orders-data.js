@@ -8,9 +8,13 @@ const ordersData = [
         "totalAmount": 1500,
         "paidAmount": 0,
         "paidStatus": "pendiente",
-        "status": "pendiente",
+        "status": "entregado",
+        "deliveryMethod": "retira",
+        "address": "",
+        "description": "",
+        "transferAccount": "",
         "creationDate": "2026-11-09T00:23:48.136Z",
-        "startDate": "2026-11-09T03:00:00.000Z",
+        "startDate": "2026-11-09T00:23:48.136Z",
         "prepDaysMin": 10,
         "prepDaysMax": 15,
         "extraDays": 0,
@@ -23,8 +27,7 @@ const ordersData = [
                 "id": "p-1",
                 "qty": 1
             }
-        ],
-        "estimatedReadyDate": "2026-12-01T02:59:00.000Z"
+        ]
     },
     {
         "id": "LT-BARANDA-01",
@@ -35,9 +38,13 @@ const ordersData = [
         "totalAmount": 45000,
         "paidAmount": 0,
         "paidStatus": "pendiente",
-        "status": "pendiente",
+        "status": "entregado",
+        "deliveryMethod": "retira",
+        "address": "",
+        "description": "",
+        "transferAccount": "",
         "creationDate": "2026-11-09T01:55:18.237Z",
-        "startDate": "2026-11-09T03:00:00.000Z",
+        "startDate": "2026-11-09T01:55:18.237Z",
         "prepDaysMin": 10,
         "prepDaysMax": 15,
         "extraDays": 0,
@@ -53,7 +60,38 @@ const ordersData = [
                 "encastre": "3 cm",
                 "title": "Baranda Infantil de Cama"
             }
-        ],
+        ]
+    },
+    {
+        "id": "LT-857521",
+        "clientName": "Jonatan",
+        "clientPhone": "ENC_MzI3NzAwNzYxMTA=",
+        "address": "",
+        "locality": "",
+        "zipCode": "",
+        "estimatedWeight": 1,
+        "productType": "custom",
+        "productId": "",
+        "productName": "Vinoteca - 5 Vinos (Acabado: Tintado · Medida: 5 Vinos)",
+        "selectedFinish": "",
+        "selectedMeasure": "",
+        "description": "",
+        "observations": "",
+        "deliveryMethod": "retira",
+        "dispatchInfo": null,
+        "prepDaysMin": 10,
+        "prepDaysMax": 15,
+        "prepDays": 15,
+        "extraDays": 0,
+        "paidStatus": "total",
+        "paidAmount": 60000,
+        "totalAmount": 60000,
+        "taxNotice": true,
+        "status": "",
+        "creationDate": "2026-11-09T04:00:58.300Z",
+        "completedDate": "",
+        "image": "",
+        "startDate": "2026-11-09T03:00:00.000Z",
         "estimatedReadyDate": "2026-12-01T02:59:00.000Z"
     }
 ];

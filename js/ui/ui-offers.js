@@ -3763,7 +3763,7 @@
         // Evento Enviar Comprobante por WhatsApp (Texto Plano Limpio sin Asteriscos)
         const waSubmitBtn = document.getElementById('btn-submit-receipt-wa');
         if (waSubmitBtn) {
-            waSubmitBtn.onclick = (e) => {
+            waSubmitBtn.onclick = async (e) => {
                 e.preventDefault();
                 const isFacturaA = chkFacturaA?.checked || false;
                 const isShipping = radioShipping?.checked || false;
@@ -3776,8 +3776,51 @@
                     ? 'Mercado Pago (Link / Débito / Dinero en cuenta)'
                     : (info.activePayVal === 'credit' ? 'Mercado Pago (Tarjeta de Crédito)' : `Transferencia Bancaria (${bank})`);
 
+                const clientName = document.getElementById('pay-client-name')?.value.trim();
+                const clientPhone = document.getElementById('pay-client-phone')?.value.trim();
+                const clientEmail = document.getElementById('pay-ship-email')?.value.trim() || document.getElementById('factura-email')?.value.trim() || '';
+
+                if (waSubmitBtn) {
+                    waSubmitBtn.disabled = true;
+                    waSubmitBtn.style.opacity = '0.85';
+                    waSubmitBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px; animation: spin 1s linear infinite;">sync</span><span>Registrando orden y abriendo WhatsApp...</span>';
+                }
+
+                let trackingOrderId = 'LT-' + Date.now().toString().slice(-6);
+
+                const workerBaseUrl = (mpConf && mpConf.workerUrl) ? mpConf.workerUrl : 'https://super-shadow-4ad9.latarimadecoracion.workers.dev';
+                try {
+                    const transPayload = {
+                        title: `${itemDisplayName}${packQty > 1 ? ` (x${packQty})` : ''}`,
+                        amount: finalPriceVal,
+                        payerName: clientName || 'Cliente La Tarima',
+                        payerPhone: clientPhone || '',
+                        payerEmail: clientEmail,
+                        shippingAddress: isShipping ? (document.getElementById('pay-ship-dir')?.value.trim() || '') : '',
+                        shippingMethod: isShipping ? 'envio' : 'retira',
+                        shippingCost: window._checkoutSelectedShipCost || 0,
+                        shippingLabel: window._checkoutSelectedShipLabel || '',
+                        transferAccount: transferAccountDesc || '',
+                        userNotes: userNotes,
+                        externalReference: trackingOrderId
+                    };
+                    const cfRes = await fetch(`${workerBaseUrl}/pedidos/transferencia`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(transPayload)
+                    });
+                    if (cfRes.ok) {
+                        const cfData = await cfRes.json();
+                        if (cfData && cfData.id) {
+                            trackingOrderId = cfData.id;
+                        }
+                    }
+                } catch (netErr) {
+                    console.warn('No se pudo registrar pedido en la nube de forma síncrona:', netErr);
+                }
+
                 let msgLines = [];
-                msgLines.push("Hola La Tarima. Adjunto el comprobante de pago de mi pedido.");
+                msgLines.push(`Hola La Tarima. Adjunto el comprobante de pago de mi pedido #${trackingOrderId}.`);
                 msgLines.push("");
                 msgLines.push("Detalle de compra:");
                 if (productContext && productContext.medida && productContext.medida.includes('\n')) {
@@ -3876,8 +3919,6 @@
                     msgLines.push("- Método: Retiro por taller / local (Hurlingham)");
                 }
 
-                const clientName = document.getElementById('pay-client-name')?.value.trim();
-                const clientPhone = document.getElementById('pay-client-phone')?.value.trim();
                 if (clientName || clientPhone) {
                     msgLines.push("");
                     msgLines.push("Datos de contacto:");
@@ -3891,16 +3932,59 @@
                     msgLines.push(`- ${userNotes}`);
                 }
 
-                const waText = msgLines.join("\n");
-                // Punto 72: Feedback visual al abrir WhatsApp
-                if (waSubmitBtn) {
-                    waSubmitBtn.disabled = true;
-                    waSubmitBtn.style.opacity = '0.85';
-                    waSubmitBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px; animation: spin 1s linear infinite;">sync</span><span>Abriendo WhatsApp...</span>';
+                // Generar URL pública de seguimiento del pedido
+                let trackingPageUrl = "";
+                try {
+                    const origin = (/^https:\/\//i.test(window.location.origin) && !/localhost|127\.0\.0\.1|192\.168\./i.test(window.location.origin))
+                        ? (window.location.origin + window.location.pathname.replace(/\/index\.html$/, "").replace(/\/$/, ""))
+                        : "https://latarimadecoracion.github.io";
+                    trackingPageUrl = `${origin}/pedidos/index.html?id=${encodeURIComponent(trackingOrderId)}`;
+                } catch(e) {}
+
+                if (trackingPageUrl) {
+                    msgLines.push("");
+                    msgLines.push("Link de seguimiento de mi pedido:");
+                    msgLines.push(trackingPageUrl);
                 }
+
+                const waText = msgLines.join("\n");
+
+                // Mostrar pantalla de confirmación interactiva con el código y link al comprador
+                const modalContent = document.querySelector("#offer-payment-modal .modal-content") || document.querySelector("#offer-payment-modal > div");
+                if (modalContent) {
+                    modalContent.innerHTML = `
+                        <div style="padding: 2.25rem 1.5rem; text-align: center; font-family: inherit;">
+                            <div style="width: 72px; height: 72px; background: #dcfce7; color: #16a34a; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 1rem; box-shadow: 0 4px 16px rgba(22, 163, 74, 0.25);">
+                                <span class="material-symbols-outlined" style="font-size: 42px;">check_circle</span>
+                            </div>
+                            <h2 style="font-size: 1.45rem; font-weight: 800; color: #0f172a; margin: 0 0 0.4rem 0;">¡Pedido Registrado con Éxito!</h2>
+                            <p style="font-size: 0.92rem; color: #64748b; margin: 0 0 1.25rem 0;">Tu código de seguimiento oficial es:</p>
+                            
+                            <div style="background: #f8fafc; border: 2px dashed #A0715B; border-radius: 14px; padding: 1.15rem; margin-bottom: 1.5rem; display: inline-block; width: 100%; box-sizing: border-box;">
+                                <div style="font-size: 1.55rem; font-weight: 900; letter-spacing: 1.5px; color: #A0715B; font-family: monospace;">#${trackingOrderId}</div>
+                                <div style="font-size: 0.8rem; color: #78716c; margin-top: 5px;">Podés seguir en tiempo real el estado y fabricación de tu compra</div>
+                            </div>
+
+                            <div style="display: flex; flex-direction: column; gap: 12px; max-width: 400px; margin: 0 auto;">
+                                <a href="${trackingPageUrl}" target="_blank" style="background: #A0715B; color: #ffffff; text-decoration: none; border-radius: 12px; padding: 0.9rem 1.25rem; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(160, 113, 91, 0.3);">
+                                    <span class="material-symbols-outlined" style="font-size: 22px;">visibility</span>
+                                    <span>Ver Seguimiento en Vivo</span>
+                                </a>
+                                <a href="https://wa.me/${phone}?text=${encodeURIComponent(waText)}" target="_blank" style="background: #25d366; color: #ffffff; text-decoration: none; border-radius: 12px; padding: 0.9rem 1.25rem; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(37, 211, 102, 0.25);">
+                                    <span class="material-symbols-outlined" style="font-size: 22px;">chat</span>
+                                    <span>Reabrir WhatsApp</span>
+                                </a>
+                                <button type="button" onclick="closeModal();" style="background: none; border: none; color: #64748b; font-size: 0.88rem; font-weight: 600; cursor: pointer; padding: 0.5rem; margin-top: 4px;">
+                                    Cerrar y seguir navegando
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Abrir automáticamente WhatsApp en nueva pestaña
                 setTimeout(() => {
                     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(waText)}`, '_blank');
-                    closeModal();
                 }, 350);
             };
         }

@@ -169,6 +169,54 @@ export default {
       }
 
       // -------------------------------------------------------------
+      // 4c. POST /pedidos/transferencia — Registrar pedido por Transferencia Bancaria
+      // -------------------------------------------------------------
+      if (request.method === 'POST' && (path === '/pedidos/transferencia' || path === '/api/pedidos/transferencia')) {
+        const body = await request.json();
+        const amount = Math.round(Number(body.amount) || 0);
+        const title = String(body.title || 'Pedido por Transferencia - La Tarima').substring(0, 250);
+        const externalRef = body.externalReference || ('LT-' + Date.now().toString().slice(-6));
+
+        const orderRecord = {
+          id: externalRef,
+          title: title,
+          amount: amount,
+          clientName: body.payerName || body.clientName || 'Cliente',
+          clientPhone: body.payerPhone || body.clientPhone || '',
+          clientEmail: body.payerEmail || body.clientEmail || '',
+          shippingAddress: body.shippingAddress || '',
+          shippingMethod: body.shippingMethod || 'retira',
+          shippingCost: Number(body.shippingCost) || 0,
+          shippingLabel: body.shippingLabel || '',
+          status: 'pendiente_de_confirmacion',
+          paymentStatus: 'pendiente',
+          paymentMethod: 'transferencia',
+          transferAccount: body.transferAccount || 'general',
+          userNotes: body.userNotes || '',
+          cartItems: body.cartItems || [],
+          createdAt: Date.now(),
+          updatedAt: Date.now()
+        };
+
+        if (env.ORDERS_KV) {
+          try {
+            await env.ORDERS_KV.put('order:' + externalRef, JSON.stringify(orderRecord));
+          } catch (kvErr) {
+            console.error('Error guardando pedido de transferencia en KV:', kvErr);
+          }
+        }
+
+        return new Response(JSON.stringify({
+          success: true,
+          id: externalRef,
+          order: orderRecord
+        }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      // -------------------------------------------------------------
       // 5. POST /webhook — Webhook de Mercado Pago (IPN)
       // -------------------------------------------------------------
       if (request.method === 'POST' && (path === '/webhook' || path === '/api/mercadopago/webhook')) {
