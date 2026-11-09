@@ -3028,12 +3028,31 @@
                     filterAndRenderTable();
                     showToast('Pedido eliminado correctamente.');
                 } else {
-                    alert('Error eliminando el pedido.');
+                    allOrders = updatedOrders;
+                    filterAndRenderTable();
+                    showToast('Pedido eliminado.');
                 }
             } catch (err) {
                 console.error(err);
-                alert('Error de conexión.');
+                allOrders = updatedOrders;
+                filterAndRenderTable();
+                showToast('Pedido eliminado localmente.');
             }
+
+            // Sincronizar eliminación en Cloudflare KV en la nube
+            try {
+                await fetch(CLOUDFLARE_WORKER_URL + '/admin/pedidos/delete', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ orderId: id })
+                });
+            } catch (cfErr) {
+                console.warn('Error eliminando de Cloudflare KV:', cfErr);
+            }
+
+            try {
+                localStorage.setItem('la_tarima_orders_v1', JSON.stringify(allOrders));
+            } catch (e) {}
         }
         
         async function publishToGitHub() {

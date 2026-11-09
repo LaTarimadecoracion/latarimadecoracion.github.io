@@ -146,6 +146,29 @@ export default {
       }
 
       // -------------------------------------------------------------
+      // 4b. POST /admin/pedidos/delete — Eliminar pedido de KV (Admin)
+      // -------------------------------------------------------------
+      if (request.method === 'POST' && path === '/admin/pedidos/delete') {
+        const body = await request.json();
+        const { orderId } = body;
+        if (!orderId) {
+          return new Response(JSON.stringify({ success: false, message: 'Falta orderId' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        if (env.ORDERS_KV) {
+          await env.ORDERS_KV.delete('order:' + orderId);
+        }
+
+        return new Response(JSON.stringify({ success: true, deleted: orderId }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      // -------------------------------------------------------------
       // 5. POST /webhook — Webhook de Mercado Pago (IPN)
       // -------------------------------------------------------------
       if (request.method === 'POST' && (path === '/webhook' || path === '/api/mercadopago/webhook')) {
