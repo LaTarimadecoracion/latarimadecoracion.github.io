@@ -1828,6 +1828,7 @@
     <script src="../js/data/products-data.js?v=5"></script>
     <script src="../js/modules/shortener.js?v=5"></script>
     <script src="../js/data/orders-data.js?v=5"></script>
+    <script src="../js/data/orders-config.js?v=5"></script>
     
     <!-- Lógica de Negocio del Panel de Pedidos -->
     <script>
@@ -2179,17 +2180,24 @@
         }
         
         const CLOUDFLARE_WORKER_URL = 'https://super-shadow-4ad9.latarimadecoracion.workers.dev';
+        const isLocalEnvironment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 
         async function loadOrders() {
-            try {
-                const res = await fetch('/api/orders');
-                if (res.ok) {
-                    allOrders = await res.json();
-                } else if (typeof ordersData !== 'undefined') {
-                    allOrders = [...ordersData];
+            if (isLocalEnvironment) {
+                try {
+                    const res = await fetch('/api/orders');
+                    if (res.ok) {
+                        allOrders = await res.json();
+                    } else if (typeof ordersData !== 'undefined') {
+                        allOrders = [...ordersData];
+                    }
+                } catch (e) {
+                    if (typeof ordersData !== 'undefined') {
+                        allOrders = [...ordersData];
+                    }
                 }
-            } catch (e) {
-                console.warn('API no disponible. Cargando pedidos desde la base local (ordersData).', e);
+            } else {
+                // En hosting estático (GitHub Pages), cargar desde ordersData
                 if (typeof ordersData !== 'undefined') {
                     allOrders = [...ordersData];
                 }
@@ -3135,13 +3143,16 @@
         let currentConditionsList = [];
 
         async function loadOrdersConfig() {
-            try {
-                const res = await fetch('/api/orders-config');
-                if (res.ok) {
-                    currentOrdersConfig = await res.json();
-                }
-            } catch(e) {
-                console.error('Error cargando orders-config:', e);
+            if (isLocalEnvironment) {
+                try {
+                    const res = await fetch('/api/orders-config');
+                    if (res.ok) {
+                        currentOrdersConfig = await res.json();
+                    }
+                } catch(e) {}
+            }
+            if (!currentOrdersConfig && typeof ordersConfig !== 'undefined') {
+                currentOrdersConfig = ordersConfig;
             }
             if (!currentOrdersConfig) {
                 currentOrdersConfig = {

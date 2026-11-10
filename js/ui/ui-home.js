@@ -135,17 +135,17 @@
     window.loadProductViews = async function() {
         let globalViews = {};
         
-        // 1. Intentar cargar del servidor con timeout ultrarrápido para no congelar la app
-        try {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 200);
-            const res = await fetch('/api/views', { signal: controller.signal });
-            clearTimeout(timeoutId);
-            if (res.ok) {
-                globalViews = await res.json();
-            }
-        } catch (e) {
-            // Silenciar errores de timeout o hosting estático
+        const isLocalEnvironment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        if (isLocalEnvironment) {
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 200);
+                const res = await fetch('/api/views', { signal: controller.signal });
+                clearTimeout(timeoutId);
+                if (res.ok) {
+                    globalViews = await res.json();
+                }
+            } catch (e) {}
         }
         
         // 2. Intentar cargar de LocalStorage como respaldo
