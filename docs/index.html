@@ -44,7 +44,7 @@
     
     <link rel="stylesheet" href="css/style.css?v=55">
     <link rel="stylesheet" href="css/mobile.css?v=1" media="(max-width: 899.98px)">
-    <link rel="stylesheet" href="css/desktop.css?v=1" media="(min-width: 900px)">
+    <link rel="stylesheet" href="css/desktop.css?v=2" media="(min-width: 900px)">
     
     
 
@@ -174,37 +174,94 @@
     <header class="main-header-bar" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; gap: 8px; background: var(--bg-color); position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); width: 100%; box-sizing: border-box;">
         
         
-        <div style="display: flex; align-items: center; gap: 4px; flex-shrink: 0;">
-            <button id="btn-back" class="back-nav-btn" style="display: none; padding: 4px; margin: 0; position: relative; left: auto; top: auto; transform: none;">
-                <span class="material-symbols-outlined">arrow_back</span>
-            </button>
-            <h1 id="dynamic-main-title" class="brand-title" style="margin: 0; font-size: 0.95rem; line-height: 1.1; font-weight: 900; letter-spacing: -0.5px; text-align: center;">LA<br>TARIMA</h1>
-            <p id="dynamic-subtitle" class="brand-subtitle" style="display: none;">Diseño en madera para tu hogar</p>
+        <div class="header-top-row" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 8px; width: 100%;">
+            
+            <div class="header-brand-left" style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+                <button id="btn-back" class="back-nav-btn" style="display: none; padding: 4px; margin: 0; position: relative; left: auto; top: auto; transform: none;">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <h1 id="dynamic-main-title" class="brand-title" onclick="if(window.innerWidth >= 900 && window.navigateToView) window.navigateToView('view-home');" style="margin: 0; font-size: 0.95rem; line-height: 1.1; font-weight: 900; letter-spacing: -0.5px; text-align: center;">LA<br>TARIMA</h1>
+                <p id="dynamic-subtitle" class="brand-subtitle" style="display: none;">Diseño en madera para tu hogar</p>
+            </div>
+
+            
+            <div class="search-bar-container" style="flex: 1; margin: 0; padding: 0.4rem 0.6rem; min-width: 0; position: relative;">
+                <span class="material-symbols-outlined search-icon" style="font-size: 18px;">search</span>
+                <input type="text" id="search-input" placeholder="Buscar muebles, medidas..." class="search-input" autocomplete="off" onfocus="const activeView = document.querySelector('.view.active'); if(activeView && activeView.id !== 'view-catalogo' && activeView.id !== 'view-calculator' && activeView.id !== 'view-mayorista' && window.navigateToView) window.navigateToView('view-search'); if(window.showRecentSearchesDropdown) window.showRecentSearchesDropdown();" style="font-size: 0.9rem; padding: 0;">
+                <button id="btn-clear-search" type="button" style="display: none; background: none; border: none; padding: 0; margin: 0 4px; cursor: pointer; color: #94a3b8; align-items: center; justify-content: center;" title="Limpiar búsqueda">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+                </button>
+                
+                <div id="search-recent-dropdown" class="search-recent-dropdown" style="display: none;"></div>
+            </div>
+
+            
+            <div class="header-actions" style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+                
+                <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-catalogo');" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" title="Catálogo A-Z">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">list_alt</span>
+                </a>
+                
+                <button id="nav-notif-btn-header" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" onclick="if(window.navigateToView) window.navigateToView('view-notifications');" title="Avisos">
+                    <span class="material-symbols-outlined" style="font-size: 18px; color: #FFB300;">notifications</span>
+                    <span class="badge" id="header-nav-badge" style="position: absolute; top: -1px; right: -1px; width: 9px; height: 9px; background: #ff3b30; border-radius: 50%; display: none; border: 1.5px solid var(--surface-color); box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></span>
+                </button>
+            </div>
+
+            
+            <div class="desktop-header-right-info desktop-only">
+                <a href="https://wa.me/5491167007723" target="_blank" rel="noopener" class="desktop-factory-pill" title="Consultar directo por WhatsApp">
+                    <span class="material-symbols-outlined" style="font-size: 16px; color: #16a34a;">chat</span>
+                    <span>Directo de Fábrica</span>
+                </a>
+            </div>
         </div>
 
         
-        <div class="search-bar-container" style="flex: 1; margin: 0; padding: 0.4rem 0.6rem; min-width: 0; position: relative;">
-            <span class="material-symbols-outlined search-icon" style="font-size: 18px;">search</span>
-            <input type="text" id="search-input" placeholder="Buscar muebles, medidas..." class="search-input" autocomplete="off" onfocus="const activeView = document.querySelector('.view.active'); if(activeView && activeView.id !== 'view-catalogo' && activeView.id !== 'view-calculator' && activeView.id !== 'view-mayorista' && window.navigateToView) window.navigateToView('view-search'); if(window.showRecentSearchesDropdown) window.showRecentSearchesDropdown();" style="font-size: 0.9rem; padding: 0;">
-            <button id="btn-clear-search" type="button" style="display: none; background: none; border: none; padding: 0; margin: 0 4px; cursor: pointer; color: #94a3b8; display: none; align-items: center; justify-content: center;" title="Limpiar búsqueda">
-                <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
-            </button>
+        <nav class="desktop-subnav-row desktop-only" id="desktop-subnav-row" aria-label="Navegación de escritorio">
             
-            <div id="search-recent-dropdown" class="search-recent-dropdown" style="display: none;"></div>
-        </div>
+            <button type="button" id="desktop-location-btn" class="desktop-location-btn" title="Cambiar código postal para envíos">
+                <span class="material-symbols-outlined desktop-loc-icon">location_on</span>
+                <div class="desktop-loc-text">
+                    <span class="desktop-loc-label">Enviar a</span>
+                    <span class="desktop-loc-value" id="desktop-location-value">CP 1686 (Hurlingham)</span>
+                </div>
+            </button>
 
-        
-        <div class="header-actions" style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
             
-            <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-catalogo');" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" title="Catálogo A-Z">
-                <span class="material-symbols-outlined" style="font-size: 18px;">list_alt</span>
-            </a>
+            <div class="desktop-subnav-links" id="desktop-subnav-links">
+                <div class="desktop-cat-menu-wrapper" id="desktop-cat-menu-wrapper">
+                    <a href="#" class="desktop-nav-link desktop-cat-trigger" data-target="view-categories" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-categories');">
+                        <span>Categorías</span>
+                        <span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
+                    </a>
+                    
+                    <div class="desktop-categories-dropdown" id="desktop-categories-dropdown"></div>
+                </div>
+                <a href="#" class="desktop-nav-link active" data-target="view-home" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-home');">Inicio</a>
+                <a href="#" class="desktop-nav-link" data-target="view-catalogo" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-catalogo');">Catálogo A-Z</a>
+                <a href="#" class="desktop-nav-link" data-target="view-offers" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-offers');">Ofertas</a>
+                <a href="#" class="desktop-nav-link" data-target="view-videos" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-videos');">Videos</a>
+                <a href="#" class="desktop-nav-link" data-target="view-about" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-about');">Nosotros</a>
+            </div>
+
             
-            <button id="nav-notif-btn-header" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" onclick="if(window.navigateToView) window.navigateToView('view-notifications');" title="Avisos">
-                <span class="material-symbols-outlined" style="font-size: 18px; color: #FFB300;">notifications</span>
-                <span class="badge" id="header-nav-badge" style="position: absolute; top: -1px; right: -1px; width: 9px; height: 9px; background: #ff3b30; border-radius: 50%; display: none; border: 1.5px solid var(--surface-color); box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></span>
-            </button>
-        </div>
+            <div class="desktop-subnav-account">
+                <div id="desktop-account-area" class="desktop-account-area">
+                    <a href="#" class="desktop-account-link" onclick="event.preventDefault(); if(window.DesktopHeader) window.DesktopHeader.triggerClientLogin();">Creá tu cuenta</a>
+                    <a href="#" class="desktop-account-link desktop-account-login" onclick="event.preventDefault(); if(window.DesktopHeader) window.DesktopHeader.triggerClientLogin();">Ingresá</a>
+                </div>
+                <a href="#" class="desktop-account-link" onclick="event.preventDefault(); if(window.openTrackingSheet) window.openTrackingSheet(); else if(window.navigateToView) window.navigateToView('view-pedidos');">Mis compras</a>
+                <button type="button" class="desktop-icon-btn" onclick="if(window.navigateToView) window.navigateToView('view-notifications');" title="Notificaciones y Avisos">
+                    <span class="material-symbols-outlined">notifications</span>
+                    <span class="desktop-icon-badge" id="desktop-notif-badge" style="display: none;"></span>
+                </button>
+                <button type="button" class="desktop-icon-btn desktop-cart-btn" onclick="if(window.navigateToView) window.navigateToView('view-profile');" title="Mi Carrito y Favoritos">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span class="desktop-cart-badge" id="desktop-cart-badge" style="display: none;">0</span>
+                </button>
+            </div>
+        </nav>
         
     </header>
     <main id="app-container">
@@ -767,7 +824,8 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js" defer></script>
     <script src="js/admin/admin-auth.js?v=3" defer></script>
-    <script src="js/ui/ui-navigation.js?v=5" defer></script>
+    <script src="js/ui/ui-navigation.js?v=6" defer></script>
+    <script src="js/ui/desktop-header.js?v=1" defer></script>
     <script src="js/ui/ui-offers.js?v=20" defer></script>
     <script src="js/ui/catalog/catalog-utils.js?v=4" defer></script>
     <script src="js/ui/ui-search-feed.js?v=1" defer></script>

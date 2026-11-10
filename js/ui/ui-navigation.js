@@ -21,6 +21,7 @@
         } catch (e) {
             console.error('[UI Module] Error actualizando badge de favoritos:', e);
         }
+        if (window.DesktopHeader && typeof window.DesktopHeader.syncCartBadge === 'function') { window.DesktopHeader.syncCartBadge(); }
     };
 
 
@@ -251,7 +252,8 @@
                     appContainer.style.setProperty('padding-bottom', '0px', 'important');
                 } else {
                     appContainer.style.setProperty('overflow-y', 'auto', 'important');
-                    appContainer.style.setProperty('padding-bottom', '95px', 'important');
+                    const bottomPad = (window.innerWidth >= 900) ? '2rem' : '95px';
+                    appContainer.style.setProperty('padding-bottom', bottomPad, 'important');
                 }
             }
             
@@ -405,6 +407,7 @@
         if (matchingNavItem) {
             matchingNavItem.classList.add('active');
         }
+        if (window.DesktopHeader && typeof window.DesktopHeader.syncActive === 'function') { window.DesktopHeader.syncActive(viewId); }
 
         updateHeader(viewId, context);
 

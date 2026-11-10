@@ -7,6 +7,7 @@
 (function () {
     const STORAGE_USERS_KEY = 'latarima_admin_users';
     const STORAGE_SESSION_KEY = 'latarima_admin_session';
+    const STORAGE_CLIENT_SESSION_KEY = 'latarima_client_session';
     const WORKER_URL = 'https://super-shadow-4ad9.latarimadecoracion.workers.dev';
 
     // Configuración oficial de Firebase del proyecto "La Tarima"
@@ -305,6 +306,10 @@
             try { await auth.signOut(); } catch (e) {}
         }
         clearSession();
+        try { localStorage.removeItem(STORAGE_CLIENT_SESSION_KEY); } catch (e) {}
+        if (window.DesktopHeader && typeof window.DesktopHeader.renderAccount === 'function') {
+            window.DesktopHeader.renderAccount();
+        }
         if (typeof window.navigateToView === 'function') {
             window.navigateToView('view-home');
         } else if (window.location.pathname.includes('/pedidos/admin.html')) {
@@ -593,7 +598,7 @@
         });
     }
 
-    function registerClientUser(email, nombre = 'Cliente', telefono = '') {
+    function registerClientUser(email, nombre = 'Cliente', telefono = '', picture = '') {
         const cleanEmail = (email || '').trim().toLowerCase();
         if (!cleanEmail) return null;
         const users = getStoredUsers();
@@ -604,6 +609,7 @@
                 nombre: nombre,
                 email: cleanEmail,
                 telefono: telefono,
+                picture: picture,
                 role: 'cliente',
                 clientTier: 'regular',
                 status: 'activo',
@@ -614,17 +620,111 @@
             };
             users.push(existing);
             saveStoredUsers(users);
+        } else {
+            let changed = false;
+            if (nombre && (!existing.nombre || existing.nombre === 'Cliente')) { existing.nombre = nombre; changed = true; }
+            if (picture && existing.picture !== picture) { existing.picture = picture; changed = true; }
+            if (changed) saveStoredUsers(users);
         }
         return existing;
+    }
+
+    function getPublicUser() {
+        const adminUser = getCurrentUser();
+        if (adminUser) return adminUser;
+        try {
+            const raw = localStorage.getItem(STORAGE_CLIENT_SESSION_KEY);
+            if (!raw) return null;
+            const parsed = JSON.parse(raw);
+            if (parsed && parsed.expiresAt && Date.now() < parsed.expiresAt && parsed.user) {
+                return parsed.user;
+            }
+            localStorage.removeItem(STORAGE_CLIENT_SESSION_KEY);
+        } catch (e) {}
+        return null;
+    }
+
+    async function loginPublicStoreWithGoogle() {
+        const auth = getFirebaseAuth();
+        if (!auth) {
+            throw new Error('Firebase Auth aún no se cargó. Verificá tu conexión.');
+        }
+        const provider = new firebase.auth.GoogleAuthProvider();
+        provider.setCustomParameters({ prompt: 'select_account' });
+
+        await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+        const result = await auth.signInWithPopup(provider);
+        const fbUser = result.user;
+        if (!fbUser || !fbUser.email) {
+            throw new Error('No se recibió un correo electrónico válido.');
+        }
+
+        const cleanEmail = fbUser.email.trim().toLowerCase();
+        const users = getStoredUsers();
+        let userRecord = users.find(u => (u.email || '').trim().toLowerCase() === cleanEmail);
+
+        if (!userRecord) {
+            userRecord = registerClientUser(cleanEmail, fbUser.displayName || 'Cliente', '', fbUser.photoURL || '');
+        } else {
+            if (userRecord.status === 'suspendido') {
+                await auth.signOut().catch(() => {});
+                throw new Error('Esta cuenta se encuentra suspendida.');
+            }
+            if (fbUser.photoURL && userRecord.picture !== fbUser.photoURL) {
+                userRecord.picture = fbUser.photoURL;
+                saveStoredUsers(users);
+            }
+        }
+
+        // Si es SuperAdmin o Colaborador, también creamos la sesión admin automática
+        if (userRecord.role === 'superadmin' || userRecord.role === 'colaborador') {
+            setSession(userRecord, true);
+        } else {
+            clearSession();
+        }
+
+        const publicSession = {
+            user: {
+                id: userRecord.id,
+                nombre: userRecord.nombre || fbUser.displayName || 'Usuario',
+                email: cleanEmail,
+                role: userRecord.role || 'cliente',
+                clientTier: userRecord.clientTier || 'regular',
+                picture: userRecord.picture || fbUser.photoURL || '',
+                provider: 'google'
+            },
+            expiresAt: Date.now() + (30 * 24 * 3600 * 1000)
+        };
+        localStorage.setItem(STORAGE_CLIENT_SESSION_KEY, JSON.stringify(publicSession));
+
+        if (window.DesktopHeader && typeof window.DesktopHeader.renderAccount === 'function') {
+            window.DesktopHeader.renderAccount();
+        }
+        return publicSession.user;
+    }
+
+    async function logoutPublic() {
+        const auth = getFirebaseAuth();
+        if (auth) {
+            try { await auth.signOut(); } catch (e) {}
+        }
+        clearSession();
+        try { localStorage.removeItem(STORAGE_CLIENT_SESSION_KEY); } catch (e) {}
+        if (window.DesktopHeader && typeof window.DesktopHeader.renderAccount === 'function') {
+            window.DesktopHeader.renderAccount();
+        }
     }
 
     // Exportar API Global
     window.AdminAuth = {
         isAuthenticated,
         getCurrentUser,
+        getPublicUser,
         getSession,
         loginWithGooglePopup,
+        loginPublicStoreWithGoogle,
         logout,
+        logoutPublic,
         showLoginModal,
         renderHeaderUserBadge,
         getUsers: getStoredUsers,
