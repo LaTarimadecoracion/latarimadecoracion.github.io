@@ -20,7 +20,7 @@
         measurementId: "G-01SZKBEKR7"
     };
 
-    // Administradores y cuentas autorizadas por defecto
+    // Administradores y cuentas autorizadas por defecto (Equipo + Clientes)
     const DEFAULT_ADMIN_USERS = [
         {
             id: 'usr_superadmin_01',
@@ -31,6 +31,8 @@
             status: 'activo',
             telefono: '+54 9 11 6700-7723',
             clientTier: 'mayorista',
+            totalOrders: 0,
+            totalSpent: 0,
             createdAt: '2026-01-01T00:00:00Z'
         },
         {
@@ -42,6 +44,8 @@
             status: 'activo',
             telefono: '+54 9 11 6700-7723',
             clientTier: 'mayorista',
+            totalOrders: 12,
+            totalSpent: 450000,
             createdAt: '2026-01-01T00:00:00Z'
         },
         {
@@ -51,9 +55,37 @@
             role: 'colaborador',
             provider: 'google',
             status: 'activo',
-            telefono: '+54 9 11 6700-7723',
+            telefono: '+54 9 11 8765-4321',
             clientTier: 'regular',
+            totalOrders: 0,
+            totalSpent: 0,
             createdAt: '2026-01-01T00:00:00Z'
+        },
+        {
+            id: 'usr_cli_01',
+            nombre: 'Distribuidora Maderas del Norte',
+            email: 'ventas@maderasnorte.com',
+            role: 'cliente',
+            provider: 'google',
+            status: 'activo',
+            telefono: '+54 9 11 5555-9999',
+            clientTier: 'mayorista',
+            totalOrders: 8,
+            totalSpent: 1250000,
+            createdAt: '2026-02-10T11:20:00Z'
+        },
+        {
+            id: 'usr_cli_02',
+            nombre: 'Carolina Gómez',
+            email: 'caro.gomez@gmail.com',
+            role: 'cliente',
+            provider: 'google',
+            status: 'activo',
+            telefono: '+54 9 11 4444-3333',
+            clientTier: 'frecuente',
+            totalOrders: 3,
+            totalSpent: 185000,
+            createdAt: '2026-03-22T18:45:00Z'
         }
     ];
 
@@ -206,7 +238,7 @@
         if (!user) {
             return {
                 success: false,
-                message: `La cuenta de Google "${cleanEmail}" no está en la lista de administradores autorizados. El acceso fue denegado.`
+                message: `La cuenta de Google "${cleanEmail}" no está en el equipo administrativo. Si sos cliente, podés iniciar sesión desde la tienda.`
             };
         }
 
@@ -215,7 +247,10 @@
         }
 
         if (user.role !== 'superadmin' && user.role !== 'colaborador') {
-            return { success: false, message: 'Tu cuenta no posee permisos operativos (SuperAdmin o Colaborador).' };
+            return {
+                success: false,
+                message: `La cuenta "${cleanEmail}" está registrada como Cliente. No posee permisos de acceso al Panel de Control.`
+            };
         }
 
         // Actualizar foto y nombre verificados
@@ -558,6 +593,31 @@
         });
     }
 
+    function registerClientUser(email, nombre = 'Cliente', telefono = '') {
+        const cleanEmail = (email || '').trim().toLowerCase();
+        if (!cleanEmail) return null;
+        const users = getStoredUsers();
+        let existing = users.find(u => (u.email || '').toLowerCase() === cleanEmail);
+        if (!existing) {
+            existing = {
+                id: 'usr_cli_' + Date.now(),
+                nombre: nombre,
+                email: cleanEmail,
+                telefono: telefono,
+                role: 'cliente',
+                clientTier: 'regular',
+                status: 'activo',
+                provider: 'google',
+                totalOrders: 0,
+                totalSpent: 0,
+                createdAt: new Date().toISOString()
+            };
+            users.push(existing);
+            saveStoredUsers(users);
+        }
+        return existing;
+    }
+
     // Exportar API Global
     window.AdminAuth = {
         isAuthenticated,
@@ -569,6 +629,7 @@
         renderHeaderUserBadge,
         getUsers: getStoredUsers,
         saveUsers: saveStoredUsers,
+        registerClientUser,
         syncUsersFromCloud,
         firebaseConfig: FIREBASE_CONFIG
     };
