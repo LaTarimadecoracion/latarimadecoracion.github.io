@@ -1,0 +1,13 @@
+/* =============================================================================
+   css/mobile.css — Reglas EXCLUSIVAS para Celular y Tablet vertical (< 900px)
+   Cargado con media="(max-width: 899.98px)" en index.html.
+   Cualquier cambio aquí NO afecta en absoluto al modo PC / Escritorio.
+   ============================================================================= */
+
+/* Ocultar elementos exclusivos de PC en pantallas móviles */
+.desktop-only {
+    display: none !important;
+}
+
+/* Espacio reservado para personalizaciones exclusivas del diseño móvil
+   (ej: Menú hamburguesa ☰ estilo Mercado Libre móvil, drawer deslizable, etc.) */

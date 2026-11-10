@@ -1,0 +1,14 @@
+/* =============================================================================
+   css/desktop.css — Reglas EXCLUSIVAS para PC y Escritorio (>= 900px)
+   Cargado con media="(min-width: 900px)" en index.html.
+   Cualquier cambio aquí NO afecta en absoluto al modo Celular / Móvil.
+   ============================================================================= */
+
+/* Ocultar elementos exclusivos de móvil en pantallas de escritorio */
+.mobile-only {
+    display: none !important;
+}
+
+/* Espacio reservado para el diseño exclusivo de Escritorio / PC
+   (ej: Header horizontal de 2 filas estilo Mercado Libre Desktop,
+    dropdown de perfil en cabecera, grillas amplias, etc.) */
