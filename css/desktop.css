@@ -58,6 +58,15 @@
     gap: 8px !important;
 }
 
+/* En PC no se usa flecha de volver atrás y el logo LA TARIMA se mantiene siempre visible */
+.header-brand-left #btn-back {
+    display: none !important;
+}
+
+.header-brand-left #dynamic-main-title {
+    display: block !important;
+}
+
 .header-brand-left .brand-title {
     cursor: pointer;
     font-size: 1.08rem !important;
