@@ -169,6 +169,31 @@ export default {
       }
 
       // -------------------------------------------------------------
+      // 4b2. GET & POST /admin/users — Gestión de Usuarios del Admin en KV
+      // -------------------------------------------------------------
+      if (path === '/admin/users') {
+        if (request.method === 'GET') {
+          if (!env.ORDERS_KV) {
+            return new Response(JSON.stringify({ success: false, message: 'KV no configurado' }), { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+          }
+          const rawUsers = await env.ORDERS_KV.get('admin:users');
+          const users = rawUsers ? JSON.parse(rawUsers) : [];
+          return new Response(JSON.stringify({ success: true, users }), { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+        }
+        if (request.method === 'POST') {
+          if (!env.ORDERS_KV) {
+            return new Response(JSON.stringify({ success: false, message: 'KV no configurado' }), { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+          }
+          const body = await request.json();
+          if (Array.isArray(body.users)) {
+            await env.ORDERS_KV.put('admin:users', JSON.stringify(body.users));
+            return new Response(JSON.stringify({ success: true, count: body.users.length }), { status: 200, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+          }
+          return new Response(JSON.stringify({ success: false, message: 'Falta array de usuarios' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+        }
+      }
+
+      // -------------------------------------------------------------
       // 4c. POST /pedidos/transferencia — Registrar pedido por Transferencia Bancaria
       // -------------------------------------------------------------
       if (request.method === 'POST' && (path === '/pedidos/transferencia' || path === '/api/pedidos/transferencia')) {

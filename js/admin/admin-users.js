@@ -57,6 +57,9 @@
     ];
 
     function getUsers() {
+        if (window.AdminAuth && typeof window.AdminAuth.getUsers === 'function') {
+            return window.AdminAuth.getUsers();
+        }
         try {
             const stored = localStorage.getItem("latarima_admin_users");
             if (stored) return JSON.parse(stored);
@@ -68,6 +71,9 @@
     }
 
     function saveUsers(users) {
+        if (window.AdminAuth && typeof window.AdminAuth.saveUsers === 'function') {
+            return window.AdminAuth.saveUsers(users);
+        }
         try {
             localStorage.setItem("latarima_admin_users", JSON.stringify(users));
         } catch (e) {
@@ -102,7 +108,7 @@
                             Gestión de Usuarios, Roles (RBAC) y Permisos Granulares
                         </h3>
                         <p style="margin: 4px 0 0 0; font-size: 0.8rem; color: var(--admin-text-muted);">
-                            Administrá los 5 niveles de usuario, asigná roles operativos (SuperAdmin / Colaborador) y configurá la matriz de permisos para cada módulo.
+                            Administrá las cuentas de Google autorizadas para ingresar al Panel de Control y sus roles de acceso (SuperAdmin / Colaborador).
                         </p>
                     </div>
                     <button type="button" id="btn-admin-add-user" class="btn-primary">
@@ -170,7 +176,7 @@
                     <table class="admin-table">
                         <thead>
                             <tr>
-                                <th>Usuario / Email</th>
+                                <th>Usuario / Cuenta de Google</th>
                                 <th>Teléfono WhatsApp</th>
                                 <th style="text-align: center;">Rol del Sistema</th>
                                 <th style="text-align: center;">Nivel de Cliente</th>
@@ -187,7 +193,10 @@
                                     <tr>
                                         <td>
                                             <div style="font-weight: 700; color: var(--admin-text-main); font-size: 0.9rem;">${u.nombre}</div>
-                                            <div style="font-size: 0.76rem; color: var(--admin-text-muted);">${u.email}</div>
+                                            <div style="font-size: 0.76rem; color: #475569; display: flex; align-items: center; gap: 4px; margin-top: 2px;">
+                                                <svg width="12" height="12" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+                                                <span>${u.email}</span>
+                                            </div>
                                         </td>
                                         <td style="font-size: 0.85rem; font-weight: 600;">${u.telefono || '-'}</td>
                                         <td style="text-align: center;">
@@ -333,8 +342,9 @@
                             <input type="text" id="user-edit-nombre" class="premium-input" required>
                         </div>
                         <div class="form-group">
-                            <label for="user-edit-email">Correo Electrónico (Email)</label>
-                            <input type="email" id="user-edit-email" class="premium-input" required>
+                            <label for="user-edit-email">Cuenta de Google Autorizada (Email)</label>
+                            <input type="email" id="user-edit-email" class="premium-input" placeholder="ejemplo@gmail.com" required>
+                            <small style="color: #64748b; font-size: 0.72rem; display: block; margin-top: 3px;">Esta cuenta de Google será la habilitada para iniciar sesión en el Panel.</small>
                         </div>
                         <div class="form-group">
                             <label for="user-edit-telefono">Teléfono WhatsApp</label>
@@ -365,6 +375,7 @@
                                 <option value="suspendido">Suspendido</option>
                             </select>
                         </div>
+                        
                         <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 0.5rem;">
                             <button type="button" onclick="document.getElementById('admin-user-modal').style.display='none'" class="btn-outline">Cancelar</button>
                             <button type="submit" class="btn-primary">Guardar Cambios</button>
@@ -381,7 +392,8 @@
             document.getElementById("user-edit-nombre").value = "";
             document.getElementById("user-edit-email").value = "";
             document.getElementById("user-edit-telefono").value = "";
-            document.getElementById("user-edit-role").value = "cliente";
+            document.getElementById("user-edit-password").value = "";
+            document.getElementById("user-edit-role").value = "colaborador";
             document.getElementById("user-edit-tier").value = "regular";
             document.getElementById("user-edit-status").value = "activo";
             document.getElementById("admin-user-modal").style.display = "flex";
@@ -400,6 +412,7 @@
                 document.getElementById("user-edit-role").value = u.role || "cliente";
                 document.getElementById("user-edit-tier").value = u.clientTier || "regular";
                 document.getElementById("user-edit-status").value = u.status || "activo";
+                document.getElementById("user-edit-password").value = u.password || "";
                 document.getElementById("admin-user-modal").style.display = "flex";
             });
         });
@@ -424,12 +437,23 @@
             const role = document.getElementById("user-edit-role").value;
             const clientTier = document.getElementById("user-edit-tier").value;
             const status = document.getElementById("user-edit-status").value;
+            const passInput = document.getElementById("user-edit-password")?.value.trim() || '';
 
             let users = getUsers();
             if (id) {
                 const idx = users.findIndex(x => x.id === id);
                 if (idx !== -1) {
-                    users[idx] = { ...users[idx], nombre, email, telefono, role, clientTier, status };
+                    const existingUser = users[idx];
+                    users[idx] = {
+                        ...existingUser,
+                        nombre,
+                        email,
+                        telefono,
+                        role,
+                        clientTier,
+                        status,
+                        password: passInput ? passInput : (existingUser.password || 'admin')
+                    };
                 }
             } else {
                 users.push({
@@ -440,6 +464,7 @@
                     role,
                     clientTier,
                     status,
+                    password: passInput || 'admin',
                     createdAt: new Date().toISOString(),
                     totalOrders: 0,
                     totalSpent: 0

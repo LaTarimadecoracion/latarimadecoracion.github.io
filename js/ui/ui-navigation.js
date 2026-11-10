@@ -96,11 +96,29 @@
 
 
     function navigateToView(viewId, context = null, isBack = false) {
-        if (viewId === 'view-admin' && typeof window.loadAdminPartialsOnDemand === 'function') {
-            window.loadAdminPartialsOnDemand();
-        }
         const currentActiveView = Array.from(window.views).find(v => v.classList.contains('active'));
         const currentActiveViewId = currentActiveView ? currentActiveView.id : null;
+
+        // Protección de seguridad RBAC para el Panel Admin
+        if (viewId === 'view-admin') {
+            if (window.AdminAuth && typeof window.AdminAuth.isAuthenticated === 'function') {
+                if (!window.AdminAuth.isAuthenticated()) {
+                    window.AdminAuth.showLoginModal(
+                        (user) => {
+                            navigateToView('view-admin', context, isBack);
+                        },
+                        () => {
+                            const fallbackView = (currentActiveViewId && currentActiveViewId !== 'view-admin') ? currentActiveViewId : 'view-home';
+                            navigateToView(fallbackView);
+                        }
+                    );
+                    return;
+                }
+            }
+            if (typeof window.loadAdminPartialsOnDemand === 'function') {
+                window.loadAdminPartialsOnDemand();
+            }
+        }
 
         // Interceptar navegación hacia atrás para recargar el producto o categoría correspondiente si ha cambiado
         if (isBack) {
@@ -356,9 +374,15 @@
                 if (window.loadAdminPartialsOnDemand) {
                     window.loadAdminPartialsOnDemand().then(() => {
                         if (window.renderAdminUX) window.renderAdminUX();
+                        if (window.AdminAuth && typeof window.AdminAuth.renderHeaderUserBadge === 'function') {
+                            window.AdminAuth.renderHeaderUserBadge();
+                        }
                     });
                 } else if (window.renderAdminUX) {
                     window.renderAdminUX();
+                    if (window.AdminAuth && typeof window.AdminAuth.renderHeaderUserBadge === 'function') {
+                        window.AdminAuth.renderHeaderUserBadge();
+                    }
                 }
             }
         }
