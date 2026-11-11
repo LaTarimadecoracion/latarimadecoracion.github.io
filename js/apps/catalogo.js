@@ -518,6 +518,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             row.appendChild(actionsCol);
+
+            // En Modo Tarjetas, hacer clic en cualquier parte libre de la tarjeta abre la publicación
+            row.addEventListener('click', (e) => {
+                if (!catalogListContainer || !catalogListContainer.classList.contains('view-cards')) return;
+                if (e.target.closest('button, a, select, .catalog-select-wrapper, .catalog-info-tooltip-wrapper, .catalog-actions-col')) return;
+                handleProductClick(e);
+            });
+
             catalogListContainer.appendChild(row);
         });
 

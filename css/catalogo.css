@@ -713,7 +713,7 @@ body.standalone-catalog .catalog-toolbar {
 .catalog-list.view-cards .catalog-row {
     flex-direction: column !important;
     align-items: stretch !important;
-    justify-content: space-between !important;
+    justify-content: flex-start !important;
     padding: 0 !important;
     gap: 0 !important;
     overflow: hidden !important;
@@ -722,6 +722,7 @@ body.standalone-catalog .catalog-toolbar {
     border: 1px solid rgba(15, 23, 42, 0.08) !important;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06) !important;
     height: 100%;
+    cursor: pointer;
     box-sizing: border-box;
 }
 
@@ -761,39 +762,31 @@ body.standalone-catalog .catalog-toolbar {
 .catalog-list.view-cards .catalog-thumb-cart-btn {
     top: 10px;
     right: 10px;
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
 }
 
 .catalog-list.view-cards .catalog-text-col,
 .catalog-list.view-cards .catalog-row > div:not(.catalog-thumb-container):not(.catalog-actions-col) {
-    padding: 0.85rem 0.9rem 0.55rem 0.9rem !important;
-    gap: 0.2rem;
+    padding: 0.85rem 0.95rem 0.95rem 0.95rem !important;
+    gap: 0.25rem;
     box-sizing: border-box;
+    justify-content: space-between !important;
 }
 
 .catalog-list.view-cards .catalog-variant-col {
     width: 100% !important;
     margin-top: auto;
+    padding-top: 0.25rem;
 }
 
 .catalog-list.view-cards .catalog-select-wrapper {
     max-width: 100% !important;
 }
 
+/* En Modo Tarjetas el usuario agrega directo al carrito desde la foto o entra a la publicación */
 .catalog-list.view-cards .catalog-actions-col {
-    width: 100% !important;
-    flex-direction: row !important;
-    gap: 6px !important;
-    min-width: 0;
-    padding: 0 0.9rem 0.9rem 0.9rem !important;
-    margin-top: auto;
-    box-sizing: border-box;
-}
-
-.catalog-list.view-cards .catalog-btn {
-    flex: 1;
-    height: 34px;
+    display: none !important;
 }
 
 @media (max-width: 768px) {
@@ -826,10 +819,7 @@ body.standalone-catalog .catalog-toolbar {
     }
     .catalog-list.view-cards .catalog-text-col,
     .catalog-list.view-cards .catalog-row > div:not(.catalog-thumb-container):not(.catalog-actions-col) {
-        padding: 0.65rem 0.7rem 0.45rem 0.7rem !important;
-    }
-    .catalog-list.view-cards .catalog-actions-col {
-        padding: 0 0.7rem 0.7rem 0.7rem !important;
+        padding: 0.7rem 0.75rem 0.8rem 0.75rem !important;
     }
 }
 
