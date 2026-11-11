@@ -529,3 +529,61 @@
     justify-content: center;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
 }
+
+/* =============================================================================
+   4. ANCHO UNIFICADO EN MODO PC (Igual al Inicio: 1320px + gutter 1.5rem)
+   ============================================================================= */
+.view:not(#view-admin),
+.view:not(#view-admin) > .view-content {
+    width: 100% !important;
+    max-width: var(--container-max, 1320px) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box !important;
+}
+
+.view:not(#view-home):not(#view-admin):not(#view-calculator):not(#view-mayorista):not(#view-stock):not(#view-musica):not(#view-ayudin):not(#view-pedidos):not(#view-pedidos-admin):not(#view-editor) > .view-content,
+#view-product-detail.detail-view,
+#view-offer-detail {
+    padding-left: var(--gutter, 1.5rem) !important;
+    padding-right: var(--gutter, 1.5rem) !important;
+}
+
+#view-catalogo .catalog-container,
+#catalog-view-root .catalog-container {
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+#view-catalogo .catalog-toolbar,
+#view-catalogo .catalog-list {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+#view-categories #categories-menu-container,
+#view-my-orders #my-orders-view-content > div,
+#view-user-profile #user-profile-view-content > div {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+}
+
+#view-user-profile #user-profile-view-content > div {
+    padding: 1.5rem 1.75rem !important;
+}
+
+#view-user-profile #user-profile-view-content > div > div[style*="max-width: 650px"] {
+    max-width: 100% !important;
+}
+
+#view-my-orders .home-section,
+#view-profile .home-section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}

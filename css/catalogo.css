@@ -526,7 +526,7 @@ body.standalone-catalog .bg-glow-2 { bottom: -150px; left: -150px; }
    ============================================================================= */
 @media (min-width: 900px) {
     .catalog-container {
-        max-width: 1240px !important;
+        max-width: var(--container-max, 1320px) !important;
     }
 }
 
