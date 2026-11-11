@@ -112,14 +112,21 @@
         return card;
     }
 
-    function initHomeInfiniteCatalog(homeContentEl) {
+    function initHomeInfiniteCatalog(homeContentEl, options = {}) {
         const targetContainer = homeContentEl || document.querySelector('#view-home .home-content');
         if (!targetContainer) return;
+        const suffix = options.idSuffix ? ('-' + options.idSuffix) : '';
+        const sectionDomId = 'home-infinite-catalog-section' + suffix;
 
-        cleanupObservers();
+        if (targetContainer._catalogObserver) {
+            try { targetContainer._catalogObserver.disconnect(); } catch (e) {}
+            targetContainer._catalogObserver = null;
+        } else if (!options.allowOutsideHome) {
+            cleanupObservers();
+        }
 
         // Remover instancia previa si existiera
-        const existing = targetContainer.querySelector('#home-infinite-catalog-section');
+        const existing = targetContainer.querySelector('#' + sectionDomId);
         if (existing) existing.remove();
 
         const totalAllProducts = collectCatalogProducts('all');
@@ -133,7 +140,7 @@
 
         // Crear sección contenedora modular
         const sectionEl = document.createElement('section');
-        sectionEl.id = 'home-infinite-catalog-section';
+        sectionEl.id = sectionDomId;
         sectionEl.className = 'home-section full-width home-infinite-catalog-section';
 
         // Obtener rubros visibles si hay más de 1
@@ -292,10 +299,10 @@
         }
 
         function setupRowByRowObserver() {
-            if (activeObserver) activeObserver.disconnect();
+            if (targetContainer._catalogObserver) targetContainer._catalogObserver.disconnect();
             const appContainer = document.getElementById('app-container');
 
-            activeObserver = new IntersectionObserver((entries) => {
+            const obs = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && isOpened && currentIndex < currentItems.length) {
                         appendNextRows(1); // Carga exactamente 1 fila adicional a medida que sigue bajando
@@ -307,15 +314,18 @@
                 threshold: 0.01
             });
 
+            targetContainer._catalogObserver = obs;
+            if (!options.allowOutsideHome) activeObserver = obs;
+
             if (sentinelEl) {
-                activeObserver.observe(sentinelEl);
+                obs.observe(sentinelEl);
             }
         }
 
         function openCatalog() {
             if (isOpened) return;
-            const homeView = document.getElementById('view-home');
-            if (!homeView || !homeView.classList.contains('active')) return;
+            const parentView = targetContainer.closest('.view') || document.getElementById('view-home');
+            if (!options.allowOutsideHome && (!parentView || !parentView.classList.contains('active'))) return;
 
             isOpened = true;
             if (triggerBox) triggerBox.style.display = 'none';
