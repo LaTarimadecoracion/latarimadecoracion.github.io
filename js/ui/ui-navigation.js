@@ -100,6 +100,11 @@
         const currentActiveView = Array.from(window.views).find(v => v.classList.contains('active'));
         const currentActiveViewId = currentActiveView ? currentActiveView.id : null;
 
+        // En Modo PC (>= 900px), unificar Buscador (?view=buscar) y Catálogo (?view=catalogo)
+        if (viewId === 'view-search' && window.innerWidth >= 900) {
+            viewId = 'view-catalogo';
+        }
+
         // Protección de seguridad RBAC para el Panel Admin
         if (viewId === 'view-admin') {
             if (window.AdminAuth && typeof window.AdminAuth.isAuthenticated === 'function') {

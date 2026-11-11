@@ -703,9 +703,17 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', checkInfiniteScroll, { passive: true });
     document.addEventListener('scroll', checkInfiniteScroll, { passive: true });
 
+    function syncParentSearchQuery() {
+        try {
+            const pSearch = window.parent && window.parent.document && window.parent.document.getElementById('search-input');
+            currentSearchQuery = (pSearch && pSearch.value) ? pSearch.value.trim() : '';
+        } catch (e) {}
+    }
+
     // Exponer función de refresco para el parent
     window.refreshCatalog = function() {
         loadProducts();
+        syncParentSearchQuery();
         applyAllFiltersAndSort();
     };
 
@@ -727,5 +735,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar
     setViewMode(currentViewMode);
     loadProducts();
+    syncParentSearchQuery();
     applyAllFiltersAndSort();
 });
