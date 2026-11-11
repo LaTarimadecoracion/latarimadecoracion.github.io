@@ -42,7 +42,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block" />
     </noscript>
     <!-- CSS Base + Capas aisladas por dispositivo (Móvil vs Escritorio) -->
-    <link rel="stylesheet" href="css/style.css?v=57">
+    <link rel="stylesheet" href="css/style.css?v=58">
     <link rel="stylesheet" href="css/mobile.css?v=1" media="(max-width: 899.98px)">
     <link rel="stylesheet" href="css/desktop.css?v=4" media="(min-width: 900px)">
     
@@ -541,8 +541,8 @@
                     <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Aprovechá nuestros paquetes de productos y descuentos por tiempo limitado.</p>
                 </div>
 
-                <!-- Banner Compacto & Fino: Estado de Cobertura / Cargar Datos -->
-                <div id="offers-cp-bar" class="offers-cp-bar">
+                <!-- Tarjeta Modular "invitar a cargar CP" (visible solo si no hay CP registrado) -->
+                <div id="offers-cp-bar" class="offers-cp-bar invitar-cargar-cp-card" data-component="invitar-cargar-cp" style="display: none;">
                     <div class="offers-cp-info-group">
                         <div id="offers-cp-icon-badge" class="offers-cp-icon-badge">
                             <span class="material-symbols-outlined" style="font-size: 16px;">distance</span>
@@ -554,7 +554,7 @@
 
                     <button id="btn-open-user-profile-modal" type="button" class="offers-cp-action-btn">
                         <span class="material-symbols-outlined" style="font-size: 15px; color: #ffffff;">tune</span>
-                        <span id="btn-profile-label">⚡ Cargar Datos</span>
+                        <span id="btn-profile-label">⚡ Cargar CP</span>
                     </button>
                 </div>
 
@@ -828,8 +828,8 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js" defer></script>
     <script src="js/admin/admin-auth.js?v=6" defer></script>
     <script src="js/ui/ui-navigation.js?v=8" defer></script>
-    <script src="js/ui/desktop-header.js?v=5" defer></script>
-    <script src="js/ui/ui-offers.js?v=22" defer></script>
+    <script src="js/ui/desktop-header.js?v=6" defer></script>
+    <script src="js/ui/ui-offers.js?v=23" defer></script>
     <script src="js/ui/catalog/catalog-utils.js?v=4" defer></script>
     <script src="js/ui/ui-search-feed.js?v=2" defer></script>
     <script src="js/modules/home-infinite-catalog.js?v=2" defer></script>

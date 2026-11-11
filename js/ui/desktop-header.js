@@ -525,6 +525,7 @@
         syncCartBadge,
         syncNotifBadge,
         renderLocation,
+        openLocationModal,
         renderCategoriesDropdown,
         renderAccount,
         triggerClientLogin,

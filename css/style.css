@@ -6804,7 +6804,8 @@ a .material-symbols-outlined {
 }
 
 /* ── BARRA DE COBERTURA / CP EN OFERTAS Y PRODUCTOS (COMPACTA Y ADAPTABLE) ── */
-.offers-cp-bar {
+.offers-cp-bar,
+.invitar-cargar-cp-card {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     border: 1.5px solid #22c55e;
     border-radius: 12px;
@@ -6880,7 +6881,8 @@ a .material-symbols-outlined {
 }
 
 @media (max-width: 599px) {
-    .offers-cp-bar {
+    .offers-cp-bar,
+.invitar-cargar-cp-card {
         padding: 0.75rem 0.85rem;
         flex-direction: row;
         flex-wrap: wrap;

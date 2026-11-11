@@ -36,21 +36,24 @@
             });
         }
 
-        window.addEventListener('latarima:cp-updated', (e) => {
-            const updatedCp = (e && e.detail && typeof e.detail.zipCode === 'string')
-                ? e.detail.zipCode
-                : window.getGlobalUserZipCode();
-            window.offersValidatedCP = updatedCp || '';
-            if (updatedCp) {
-                localStorage.setItem('user_offers_cp', updatedCp);
-            } else {
-                localStorage.removeItem('user_offers_cp');
-            }
-            const cpInput = document.getElementById('offers-cp-input');
-            if (cpInput) cpInput.value = updatedCp || '';
-            updateOffersCPStatusDisplay();
-            window.renderOffersFrontend();
-        });
+        if (!window._offersCpUpdatedListenerBound) {
+            window._offersCpUpdatedListenerBound = true;
+            window.addEventListener('latarima:cp-updated', (e) => {
+                const updatedCp = (e && e.detail && typeof e.detail.zipCode === 'string')
+                    ? e.detail.zipCode
+                    : window.getGlobalUserZipCode();
+                window.offersValidatedCP = updatedCp || '';
+                if (updatedCp) {
+                    localStorage.setItem('user_offers_cp', updatedCp);
+                } else {
+                    localStorage.removeItem('user_offers_cp');
+                }
+                const cpInput = document.getElementById('offers-cp-input');
+                if (cpInput) cpInput.value = updatedCp || '';
+                updateOffersCPStatusDisplay();
+                window.renderOffersFrontend();
+            });
+        }
     };
 
     window.openUserProfileModal = async function(...args) {
@@ -63,176 +66,107 @@
     };
     window.openUserProfileModal._isStub = true;
 
-    function setupOffersCPValidator() {
-        const btnOpenModal = document.getElementById('btn-open-user-profile-modal');
-        if (btnOpenModal) {
-            btnOpenModal.onclick = () => {
-                if (window.openUserProfileModal) window.openUserProfileModal();
-            };
+    // ── Tarjeta Modular: "invitar a cargar CP" ──
+    // Se muestra ÚNICAMENTE cuando no hay código postal registrado en el rastreador de CP.
+    // Si ya existe un CP guardado, se oculta por completo.
+    function hasRegisteredCP() {
+        return Boolean((window.getGlobalUserZipCode() || '').trim());
+    }
+
+    function openCPSelectorModal() {
+        if (window.DesktopHeader && typeof window.DesktopHeader.openLocationModal === 'function') {
+            window.DesktopHeader.openLocationModal();
+            return;
         }
+        if (typeof window.openUserProfileModal === 'function') {
+            window.openUserProfileModal();
+        }
+    }
+
+    function syncInvitarCargarCPBar(barEl, options = {}) {
+        if (!barEl) return;
 
         window.offersValidatedCP = window.getGlobalUserZipCode();
-        updateOffersCPStatusDisplay();
+        if (hasRegisteredCP()) {
+            barEl.style.display = 'none';
+            return;
+        }
+
+        const statusText = options.statusTextEl || barEl.querySelector('.offers-cp-status-text');
+        const iconBadge = options.iconBadgeEl || barEl.querySelector('.offers-cp-icon-badge');
+        const actionBtn = options.actionBtnEl || barEl.querySelector('.offers-cp-action-btn');
+        const btnLabel = options.btnLabelEl || (actionBtn ? actionBtn.querySelector('span:last-child') : null);
+
+        barEl.style.display = 'flex';
+        barEl.style.background = 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)';
+        barEl.style.borderColor = '#22c55e';
+
+        if (statusText) {
+            statusText.innerHTML = options.noCpText || '📍 Ingresá tu CP para activar envíos y beneficios por zona';
+            statusText.style.color = '#ffffff';
+        }
+        if (btnLabel) {
+            btnLabel.textContent = options.buttonText || '⚡ Cargar CP';
+        }
+        if (iconBadge) {
+            iconBadge.style.background = 'linear-gradient(135deg, #22c55e 0%, #15803d 100%)';
+            iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">distance</span>';
+        }
+        if (actionBtn) {
+            actionBtn.onclick = openCPSelectorModal;
+        }
+    }
+
+    function setupOffersCPValidator() {
+        const cpBar = document.getElementById('offers-cp-bar');
+        syncInvitarCargarCPBar(cpBar, {
+            statusTextEl: document.getElementById('offers-cp-status-text'),
+            iconBadgeEl: document.getElementById('offers-cp-icon-badge'),
+            actionBtnEl: document.getElementById('btn-open-user-profile-modal'),
+            btnLabelEl: document.getElementById('btn-profile-label')
+        });
     }
 
     function updateOffersCPStatusDisplay() {
-        const statusText = document.getElementById('offers-cp-status-text');
-        const titleText = document.getElementById('offers-cp-title');
-        const iconBadge = document.getElementById('offers-cp-icon-badge');
-        const btnProfileLabel = document.getElementById('btn-profile-label');
-        const cpBar = document.getElementById('offers-cp-bar');
-
-        if (!cpBar) return;
-
-        const isComplete = window.UserDataManager && typeof window.UserDataManager.hasCompleteProfile === 'function'
-            ? window.UserDataManager.hasCompleteProfile()
-            : false;
-
-        if (isComplete) {
-            cpBar.style.display = 'none';
-            return;
-        }
-
-        cpBar.style.display = 'flex';
-        window.offersValidatedCP = window.getGlobalUserZipCode();
-
-        if (!window.offersValidatedCP) {
-            if (statusText) {
-                statusText.innerHTML = '📍 Ingresá tu CP para activar envíos y beneficios';
-                statusText.style.color = '#ffffff';
-            }
-            if (btnProfileLabel) btnProfileLabel.textContent = '⚡ Cargar Datos';
-            if (cpBar) {
-                cpBar.style.background = 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)';
-                cpBar.style.borderColor = '#22c55e';
-            }
-            if (iconBadge) {
-                iconBadge.style.background = 'linear-gradient(135deg, #22c55e 0%, #15803d 100%)';
-                iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">distance</span>';
-            }
-            return;
-        }
-
-        if (btnProfileLabel) btnProfileLabel.textContent = `CP ${window.offersValidatedCP}`;
-
-        if (typeof window.lookupPostalCode === 'function') {
-            const res = window.lookupPostalCode(window.offersValidatedCP);
-            if (res && res.hasLocalMatch !== false) {
-                statusText.innerHTML = `🎉 <strong>¡Envío Gratis para ${res.localidad}!</strong> (CP ${res.cp})`;
-                statusText.style.color = '#14532d';
-                if (cpBar) {
-                    cpBar.style.background = 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)';
-                    cpBar.style.borderColor = '#86efac';
-                }
-                if (iconBadge) {
-                    iconBadge.style.background = '#16a34a';
-                    iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">verified</span>';
-                }
-            } else {
-                statusText.innerHTML = `📦 <strong>Envíos al Interior (CP ${window.offersValidatedCP})</strong> vía Mercado Libre / Transporte.`;
-                statusText.style.color = '#78350f';
-                if (cpBar) {
-                    cpBar.style.background = 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)';
-                    cpBar.style.borderColor = '#fde047';
-                }
-                if (iconBadge) {
-                    iconBadge.style.background = '#d97706';
-                    iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">inventory_2</span>';
-                }
-            }
-        } else {
-            statusText.innerHTML = `CP ingresado: <strong>${window.offersValidatedCP}</strong>`;
-        }
+        setupOffersCPValidator();
     }
     window.updateOffersCPStatusDisplay = updateOffersCPStatusDisplay;
 
-    function renderUniversalCPBar(containerId, options = {}) {
+    function renderInvitarCargarCP(containerId, options = {}) {
         const targetContainer = typeof containerId === 'string' ? document.getElementById(containerId) : containerId;
         if (!targetContainer) return;
 
-        const isComplete = window.UserDataManager && typeof window.UserDataManager.hasCompleteProfile === 'function'
-            ? window.UserDataManager.hasCompleteProfile()
-            : false;
-
-        const barId = options.barId || `cp-bar-${Math.random().toString(36).substr(2, 6)}`;
+        const barId = options.barId || `invitar-cargar-cp-${Math.random().toString(36).substr(2, 6)}`;
         const statusTextId = `${barId}-status-text`;
         const iconBadgeId = `${barId}-icon-badge`;
         const btnLabelId = `${barId}-btn-label`;
 
         targetContainer.innerHTML = `
-            <div id="${barId}" class="offers-cp-bar" style="margin-bottom: ${options.marginBottom || '1rem'};">
+            <div id="${barId}" class="offers-cp-bar invitar-cargar-cp-card" data-component="invitar-cargar-cp" style="display: none; margin-bottom: ${options.marginBottom || '1rem'};">
                 <div class="offers-cp-info-group">
                     <div id="${iconBadgeId}" class="offers-cp-icon-badge">
                         <span class="material-symbols-outlined" style="font-size: 16px;">distance</span>
                     </div>
                     <div id="${statusTextId}" class="offers-cp-status-text">
-                        📍 Ingresá tu CP para verificar envíos y bonificaciones
+                        ${options.noCpText || '📍 Ingresá tu CP para activar envíos y beneficios por zona'}
                     </div>
                 </div>
                 <button type="button" class="offers-cp-action-btn" id="${barId}-btn-action">
                     <span class="material-symbols-outlined" style="font-size: 16px; color: #ffffff;">tune</span>
-                    <span id="${btnLabelId}">⚡ Cargar Datos</span>
+                    <span id="${btnLabelId}">${options.buttonText || '⚡ Cargar CP'}</span>
                 </button>
             </div>
         `;
 
-        const actionBtn = document.getElementById(`${barId}-btn-action`);
-        if (actionBtn) {
-            actionBtn.onclick = () => {
-                if (window.openUserProfileModal) window.openUserProfileModal();
-            };
-        }
-
         const updateInstance = () => {
-            const cpBar = document.getElementById(barId);
-            const statusText = document.getElementById(statusTextId);
-            const iconBadge = document.getElementById(iconBadgeId);
-            const btnProfileLabel = document.getElementById(btnLabelId);
-            if (!cpBar) return;
-
-            const currentCp = window.getGlobalUserZipCode();
-
-            if (!currentCp) {
-                if (statusText) {
-                    statusText.innerHTML = options.noCpText || '📍 Ingresá tu CP para calcular envíos y bonificaciones';
-                    statusText.style.color = '#ffffff';
-                }
-                if (btnProfileLabel) btnProfileLabel.textContent = '⚡ Cargar Datos';
-                cpBar.style.background = 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)';
-                cpBar.style.borderColor = '#22c55e';
-                if (iconBadge) {
-                    iconBadge.style.background = 'linear-gradient(135deg, #22c55e 0%, #15803d 100%)';
-                    iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">distance</span>';
-                }
-                return;
-            }
-
-            if (btnProfileLabel) btnProfileLabel.textContent = `CP ${currentCp}`;
-
-            if (typeof window.lookupPostalCode === 'function') {
-                const res = window.lookupPostalCode(currentCp);
-                if (res && res.hasLocalMatch !== false) {
-                    statusText.innerHTML = `🎉 <strong>¡Cobertura directa para ${res.localidad}!</strong> (CP ${res.cp})`;
-                    statusText.style.color = '#14532d';
-                    cpBar.style.background = 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)';
-                    cpBar.style.borderColor = '#86efac';
-                    if (iconBadge) {
-                        iconBadge.style.background = '#16a34a';
-                        iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">verified</span>';
-                    }
-                } else {
-                    statusText.innerHTML = `📦 <strong>Zona Interior (CP ${currentCp})</strong> - Expreso / Transporte a coordinar.`;
-                    statusText.style.color = '#78350f';
-                    cpBar.style.background = 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)';
-                    cpBar.style.borderColor = '#fde047';
-                    if (iconBadge) {
-                        iconBadge.style.background = '#d97706';
-                        iconBadge.innerHTML = '<span class="material-symbols-outlined" style="font-size: 16px;">inventory_2</span>';
-                    }
-                }
-            } else {
-                statusText.innerHTML = `CP ingresado: <strong>${currentCp}</strong>`;
-            }
+            syncInvitarCargarCPBar(document.getElementById(barId), {
+                statusTextEl: document.getElementById(statusTextId),
+                iconBadgeEl: document.getElementById(iconBadgeId),
+                actionBtnEl: document.getElementById(`${barId}-btn-action`),
+                btnLabelEl: document.getElementById(btnLabelId),
+                noCpText: options.noCpText,
+                buttonText: options.buttonText
+            });
         };
 
         updateInstance();
@@ -247,7 +181,14 @@
         window.addEventListener('latarima:cp-updated', targetContainer._cpUpdatedHandler);
     }
 
-    window.renderUniversalCPBar = renderUniversalCPBar;
+    window.InvitarCargarCP = {
+        hasRegisteredCP,
+        syncBar: syncInvitarCargarCPBar,
+        render: renderInvitarCargarCP,
+        openSelector: openCPSelectorModal
+    };
+    window.renderInvitarCargarCP = renderInvitarCargarCP;
+    window.renderUniversalCPBar = renderInvitarCargarCP;
 
     function startOffersCountdownTimer() {
         if (timerInterval) clearInterval(timerInterval);
