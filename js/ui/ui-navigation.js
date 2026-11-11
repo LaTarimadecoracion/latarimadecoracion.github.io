@@ -100,9 +100,14 @@
         const currentActiveView = Array.from(window.views).find(v => v.classList.contains('active'));
         const currentActiveViewId = currentActiveView ? currentActiveView.id : null;
 
-        // En Modo PC (>= 900px), unificar Buscador (?view=buscar) y Catálogo (?view=catalogo)
-        if (viewId === 'view-search' && window.innerWidth >= 900) {
-            viewId = 'view-catalogo';
+        // En Modo PC (>= 900px), unificar Buscador (?view=buscar), Categorías (?cat=...) -> Catálogo
+        // y Pedidos (?view=pedidos) -> Mis Compras inline
+        if (window.innerWidth >= 900) {
+            if (viewId === 'view-search' || viewId === 'view-category-feed') {
+                viewId = 'view-catalogo';
+            } else if (viewId === 'view-pedidos') {
+                viewId = 'view-my-orders';
+            }
         }
 
         // Protección de seguridad RBAC para el Panel Admin
@@ -173,6 +178,12 @@
                 if (currentCategoryId && targetCategoryId && currentCategoryId !== targetCategoryId) {
                     isDifferentContent = true;
                 }
+            } else if (viewId === 'view-catalogo') {
+                const currentCat = document.getElementById('view-catalogo')?.dataset.categoryId || '';
+                const targetCat = context?.categoryId || '';
+                if (currentCat !== targetCat) {
+                    isDifferentContent = true;
+                }
             }
         }
 
@@ -189,6 +200,10 @@
                 previousContext = {
                     name: window.dynamicTitle.textContent,
                     categoryId: document.getElementById('view-category-feed')?.dataset.categoryId
+                };
+            } else if (currentActiveViewId === 'view-catalogo') {
+                previousContext = {
+                    categoryId: document.getElementById('view-catalogo')?.dataset.categoryId || null
                 };
             }
             window.navigationHistory.push({ viewId: currentActiveViewId, context: previousContext });
@@ -210,6 +225,9 @@
             }
             if (viewId === 'view-category-feed' && context && context.categoryId) {
                 targetView.dataset.categoryId = context.categoryId;
+            }
+            if (viewId === 'view-catalogo') {
+                targetView.dataset.categoryId = (context && context.categoryId) ? String(context.categoryId) : '';
             }
             
             // Actualizar título de la pestaña del navegador (document.title)
@@ -253,7 +271,7 @@
             if (appContainer) {
                 appContainer.scrollTop = 0;
                 // Desactivar scroll y padding inferior del parent si estamos en el iframe
-                if (viewId === 'view-catalogo' || viewId === 'view-calculator' || viewId === 'view-mayorista' || viewId === 'view-stock' || viewId === 'view-musica' || viewId === 'view-ayudin' || viewId === 'view-pedidos' || viewId === 'view-pedidos-admin' || viewId === 'view-editor') {
+                if (viewId === 'view-calculator' || viewId === 'view-mayorista' || viewId === 'view-stock' || viewId === 'view-musica' || viewId === 'view-ayudin' || viewId === 'view-pedidos' || viewId === 'view-pedidos-admin' || viewId === 'view-editor') {
                     appContainer.style.setProperty('overflow-y', 'hidden', 'important');
                     appContainer.style.setProperty('padding-bottom', '0px', 'important');
                 } else {
@@ -280,7 +298,13 @@
 
             if (viewId === 'view-offers') {
                 if (window.ensurePostalLookupLoaded) window.ensurePostalLookupLoaded();
-                if (window.renderOffersFrontend) window.renderOffersFrontend();
+                if (window.ensureCortesModulesLoaded) {
+                    window.ensureCortesModulesLoaded().then(() => {
+                        if (window.renderOffersFrontend) window.renderOffersFrontend();
+                    });
+                } else if (window.renderOffersFrontend) {
+                    window.renderOffersFrontend();
+                }
             } else if (viewId === 'view-home') {
                 if (window.renderHome) window.renderHome();
             } else if (viewId === 'view-categories') {
@@ -294,13 +318,22 @@
                     window.renderVideosView();
                 }
             } else if (viewId === 'view-catalogo') {
-                const iframe = document.querySelector('#view-catalogo iframe');
-                if (iframe && iframe.contentWindow && !iframeJustInitialized) {
-                    if (typeof iframe.contentWindow.refreshCatalog === 'function') {
-                        iframe.contentWindow.refreshCatalog();
-                    } else {
-                        iframe.contentWindow.location.reload();
+                const targetCat = (context && context.categoryId) ? String(context.categoryId) : 'all';
+                const searchEl = document.getElementById('search-input');
+                const currentQuery = (searchEl && searchEl.value) ? searchEl.value.trim() : '';
+                const syncCatalog = () => {
+                    if (window.CatalogNative && typeof window.CatalogNative.refresh === 'function') {
+                        window.CatalogNative.refresh({
+                            categoryId: targetCat,
+                            query: currentQuery,
+                            skipUrlUpdate: true
+                        });
                     }
+                };
+                if (typeof window.ensureCatalogModuleLoaded === 'function') {
+                    window.ensureCatalogModuleLoaded().then(syncCatalog);
+                } else {
+                    syncCatalog();
                 }
             } else if (viewId === 'view-mayorista') {
                 const iframe = document.querySelector('#view-mayorista iframe');
@@ -364,7 +397,17 @@
             } else if (viewId === 'view-rentals') {
                 renderRentals();
             } else if (viewId === 'view-my-orders') {
-                if (window.MyOrders && typeof window.MyOrders.render === 'function') window.MyOrders.render();
+                const ordId = (context && context.orderId) || new URLSearchParams(window.location.search).get('id') || '';
+                const orderOpts = ordId ? { orderId: ordId } : {};
+                if (window.MyOrders && typeof window.MyOrders.render === 'function') {
+                    window.MyOrders.render(orderOpts);
+                } else if (typeof window.ensureMyOrdersLoaded === 'function') {
+                    window.ensureMyOrdersLoaded().then(() => {
+                        if (window.MyOrders && typeof window.MyOrders.render === 'function') {
+                            window.MyOrders.render(orderOpts);
+                        }
+                    });
+                }
             } else if (viewId === 'view-profile') {
                 if (window.ensurePostalLookupLoaded) window.ensurePostalLookupLoaded();
                 if (typeof window.renderPerfilCarritoView === 'function') {
@@ -422,17 +465,19 @@
         // Actualizar URL en el historial (si no es navegación hacia atrás o disparada por popstate/detalles)
         const isProductOrCategoryView = viewId === 'view-product-detail' || viewId === 'view-offer-detail';
         
-        if (viewId === 'view-category-feed') {
-            const catId = context?.categoryId || document.getElementById('view-category-feed')?.dataset.categoryId;
-            if (catId) {
-                const urlParams = new URLSearchParams(window.location.search);
-                if (urlParams.get('cat') !== catId) {
-                    const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + `?cat=${encodeURIComponent(catId)}`;
-                    if (isBack) {
-                        window.history.replaceState({ viewId: 'view-category-feed', categoryId: catId }, document.title, cleanUrl);
-                    } else {
-                        window.history.pushState({ viewId: 'view-category-feed', categoryId: catId }, document.title, cleanUrl);
-                    }
+        const activeCatForUrl = (viewId === 'view-category-feed')
+            ? (context?.categoryId || document.getElementById('view-category-feed')?.dataset.categoryId)
+            : (viewId === 'view-catalogo' && context && context.categoryId && context.categoryId !== 'all' ? context.categoryId : null);
+
+        if (activeCatForUrl) {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('cat') !== activeCatForUrl) {
+                const cleanUrl = window.location.pathname.replace(/\/index\.html$/, '/') + `?cat=${encodeURIComponent(activeCatForUrl)}`;
+                const statePayload = { viewId, categoryId: activeCatForUrl };
+                if (isBack) {
+                    window.history.replaceState(statePayload, document.title, cleanUrl);
+                } else {
+                    window.history.pushState(statePayload, document.title, cleanUrl);
                 }
             }
         } else if (!isProductOrCategoryView) {
@@ -466,7 +511,7 @@
             let query = '';
             if (prettyNames[viewId]) {
                 query = '?view=' + prettyNames[viewId];
-                if (viewId === 'view-pedidos' && context && context.orderId) {
+                if ((viewId === 'view-pedidos' || viewId === 'view-my-orders') && context && context.orderId) {
                     query += '&id=' + encodeURIComponent(context.orderId);
                 } else if (viewId === 'view-admin') {
                     const currentTab = window.currentAdminTab || new URLSearchParams(window.location.search).get('tab') || 'dashboard';

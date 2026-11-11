@@ -1,5 +1,5 @@
 const fs = require('fs');
-let code = fs.readFileSync('js/products-data.js', 'utf8');
+let code = fs.readFileSync('js/data/products-data.js', 'utf8');
 code = code.replace(/const productsData\s*=/, 'global.productsData =');
 eval(code);
 

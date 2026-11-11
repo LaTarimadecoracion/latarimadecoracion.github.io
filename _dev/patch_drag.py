@@ -1,4 +1,4 @@
-paths = ['js/ui/ui-core.js', 'js/ui-core.js']
+paths = ['js/ui/ui-core.js']
 old_str = "carousel.style.removeProperty('scroll-snap-type');"
 new_str = "if (carousel.classList.contains('product-detail-carousel')) { carousel.style.removeProperty('scroll-snap-type'); }"
 

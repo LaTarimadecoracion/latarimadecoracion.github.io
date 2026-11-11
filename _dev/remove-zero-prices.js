@@ -1,8 +1,8 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-// 1. Eliminar la propiedad "price": 0 o dejarla sin valor en js/products-data.js
-const productsDataPath = path.join(__dirname, '..', 'js', 'products-data.js');
+// 1. Eliminar la propiedad "price": 0 o dejarla sin valor en js/data/products-data.js
+const productsDataPath = path.join(__dirname, '..', 'js', 'data', 'products-data.js');
 let content = fs.readFileSync(productsDataPath, 'utf8');
 
 // Quitar la línea "price": 0, por completo
@@ -10,8 +10,8 @@ const updatedContent = content.replace(/\s*"price":\s*0,?\r?\n/g, '\n');
 
 fs.writeFileSync(productsDataPath, updatedContent, 'utf8');
 
-// También actualizar en docs/js/products-data.js si existe
-const docsProductsDataPath = path.join(__dirname, '..', 'docs', 'js', 'products-data.js');
+// También actualizar en docs/js/data/products-data.js si existe
+const docsProductsDataPath = path.join(__dirname, '..', 'docs', 'js', 'data', 'products-data.js');
 if (fs.existsSync(docsProductsDataPath)) {
     fs.writeFileSync(docsProductsDataPath, updatedContent, 'utf8');
 }

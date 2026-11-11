@@ -24,9 +24,7 @@ const jsContent = `const productsData = ${JSON.stringify(allProducts, null, 2)};
 
 // Guardar en todas las ubicaciones donde la web lee productos
 const targets = [
-  'js/products-data.js',
   'js/data/products-data.js',
-  'docs/js/products-data.js',
   'docs/js/data/products-data.js'
 ];
 

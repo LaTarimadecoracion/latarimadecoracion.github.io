@@ -42,6 +42,8 @@
     }
 
     const WORKER_URL = 'https://super-shadow-4ad9.latarimadecoracion.workers.dev';
+    const GEO_META_KEY = 'latarima_geo_meta';
+    let cpListenerAttached = false;
 
     function saveDetectedLocation(cp, localidad = '', provincia = '', isAuto = false) {
         try {
@@ -57,23 +59,33 @@
                 }
             }
 
-            if (cleanCp || finalCity) {
-                const existingRaw = localStorage.getItem('sessionShippingFullData');
-                const existingData = existingRaw ? JSON.parse(existingRaw) : {};
-                localStorage.setItem('sessionShippingFullData', JSON.stringify({
-                    ...existingData,
-                    cp: cleanCp || existingData.cp || '',
-                    localidad: finalCity || existingData.localidad || '',
-                    provincia: finalProv || existingData.provincia || '',
-                    geoSource: isAuto ? 'auto' : 'manual'
-                }));
-            }
+            if (cleanCp || finalCity || finalProv) {
+                if (window.UserDataManager && typeof window.UserDataManager.get === 'function' && typeof window.UserDataManager.save === 'function') {
+                    const existing = window.UserDataManager.get() || {};
+                    window.UserDataManager.save({
+                        zipCode: cleanCp || existing.zipCode || '',
+                        locality: finalCity || existing.locality || '',
+                        province: finalProv || existing.province || ''
+                    });
+                } else {
+                    const uRaw = localStorage.getItem('userData');
+                    const existing = uRaw ? JSON.parse(uRaw) : {};
+                    const updated = {
+                        ...existing,
+                        zipCode: cleanCp || existing.zipCode || '',
+                        locality: finalCity || existing.locality || '',
+                        province: finalProv || existing.province || ''
+                    };
+                    localStorage.setItem('userData', JSON.stringify(updated));
+                    if (updated.zipCode) {
+                        localStorage.setItem('user_offers_cp', updated.zipCode);
+                    }
+                }
 
-            if (cleanCp) {
-                const uRaw = localStorage.getItem('userData');
-                const uObj = uRaw ? JSON.parse(uRaw) : {};
-                uObj.zipCode = cleanCp;
-                localStorage.setItem('userData', JSON.stringify(uObj));
+                localStorage.setItem(GEO_META_KEY, JSON.stringify({
+                    geoSource: isAuto ? 'auto' : 'manual',
+                    ipCity: finalCity || ''
+                }));
             }
         } catch (err) {}
         renderLocation();
@@ -83,19 +95,37 @@
         const locValEl = document.getElementById('desktop-location-value');
         if (!locValEl) return;
         try {
-            const raw = localStorage.getItem('sessionShippingFullData');
-            if (raw) {
-                const data = JSON.parse(raw);
-                if (data && (data.cp || data.localidad)) {
-                    if (data.cp && data.localidad) {
-                        locValEl.textContent = `CP ${data.cp} (${data.localidad})`;
-                    } else if (data.cp) {
-                        locValEl.textContent = `CP ${data.cp}`;
-                    } else {
-                        locValEl.textContent = data.localidad;
+            let data = {};
+            if (window.UserDataManager && typeof window.UserDataManager.get === 'function') {
+                data = window.UserDataManager.get() || {};
+            } else {
+                const raw = localStorage.getItem('userData');
+                data = raw ? JSON.parse(raw) : {};
+            }
+            const zip = (data.zipCode || '').trim();
+            let locality = (data.locality || '').trim();
+
+            if (!zip && !locality) {
+                try {
+                    const metaRaw = localStorage.getItem(GEO_META_KEY);
+                    if (metaRaw) {
+                        const meta = JSON.parse(metaRaw);
+                        if (meta && meta.ipCity) locality = String(meta.ipCity).trim();
                     }
-                    return;
-                }
+                } catch (e) {}
+            }
+
+            if (zip && locality) {
+                locValEl.textContent = `CP ${zip} (${locality})`;
+                return;
+            }
+            if (zip) {
+                locValEl.textContent = `CP ${zip}`;
+                return;
+            }
+            if (locality) {
+                locValEl.textContent = locality;
+                return;
             }
         } catch (e) {}
         locValEl.textContent = 'Detectando...';
@@ -156,15 +186,14 @@
     }
 
     async function autoDetectLocation() {
-        // Si ya tenemos ubicación guardada con CP o localidad, no molestamos al usuario
+        // Si ya tenemos ubicación guardada con CP, no molestamos al usuario
         try {
-            const raw = localStorage.getItem('sessionShippingFullData');
-            if (raw) {
-                const parsed = JSON.parse(raw);
-                if (parsed && parsed.cp) {
-                    renderLocation();
-                    return;
-                }
+            const existingZip = (window.UserDataManager && typeof window.UserDataManager.get === 'function')
+                ? (window.UserDataManager.get().zipCode || '').trim()
+                : (JSON.parse(localStorage.getItem('userData') || '{}').zipCode || '').trim();
+            if (existingZip) {
+                renderLocation();
+                return;
             }
         } catch (e) {}
 
@@ -230,10 +259,14 @@
 
         let currentCp = '';
         try {
-            const raw = localStorage.getItem('sessionShippingFullData');
-            if (raw) {
-                const parsed = JSON.parse(raw);
-                if (parsed && parsed.cp) currentCp = parsed.cp;
+            if (window.UserDataManager && typeof window.UserDataManager.getZipCode === 'function') {
+                currentCp = window.UserDataManager.getZipCode();
+            } else {
+                const raw = localStorage.getItem('userData');
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (parsed && parsed.zipCode) currentCp = String(parsed.zipCode).trim();
+                }
             }
         } catch (e) {}
 
@@ -464,6 +497,11 @@
 
         if (window.innerWidth >= 900) {
             autoDetectLocation();
+        }
+
+        if (!cpListenerAttached) {
+            cpListenerAttached = true;
+            window.addEventListener('latarima:cp-updated', renderLocation);
         }
 
         document.getElementById('desktop-location-btn')?.addEventListener('click', openLocationModal);

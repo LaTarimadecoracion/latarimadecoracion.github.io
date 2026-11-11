@@ -27,27 +27,30 @@
     };
 
     let cartItems = [];
+    let _syncingCartCp = false;
+    let _cpListenerRegistered = false;
 
     // 2. Persistencia Aislada
     function loadUserData() {
         try {
             const data = localStorage.getItem('userData');
-            if (data) {
-                const parsed = JSON.parse(data);
-                userData = {
-                    name: parsed.name || '',
-                    dni: parsed.dni || '',
-                    phone: parsed.phone || '',
-                    tel: parsed.tel || '',
-                    email: parsed.email || '',
-                    address: parsed.address || '',
-                    locality: parsed.locality || '',
-                    province: parsed.province || '',
-                    zipCode: parsed.zipCode || '',
-                    avatarId: parsed.avatarId || 'av-1',
-                    photo: parsed.photo || ''
-                };
-            }
+            const parsed = data ? JSON.parse(data) : {};
+            const managed = (window.UserDataManager && typeof window.UserDataManager.get === 'function')
+                ? window.UserDataManager.get()
+                : {};
+            userData = {
+                name: managed.name || parsed.name || '',
+                dni: parsed.dni || '',
+                phone: managed.phone || parsed.phone || '',
+                tel: parsed.tel || '',
+                email: managed.email || parsed.email || '',
+                address: managed.address || parsed.address || '',
+                locality: managed.locality || parsed.locality || '',
+                province: managed.province || parsed.province || '',
+                zipCode: managed.zipCode || parsed.zipCode || '',
+                avatarId: parsed.avatarId || 'av-1',
+                photo: parsed.photo || ''
+            };
         } catch (e) {
             console.error('[Carrito Module] Error cargando userData:', e);
         }
@@ -1302,6 +1305,22 @@
                             userData.province = provVal;
                             userData.email = emailVal;
                             saveUserData();
+
+                            if (window.UserDataManager && typeof window.UserDataManager.save === 'function') {
+                                _syncingCartCp = true;
+                                try {
+                                    window.UserDataManager.save({
+                                        name: nameVal,
+                                        address: addrVal,
+                                        zipCode: cpVal,
+                                        locality: locVal,
+                                        province: provVal,
+                                        email: emailVal
+                                    });
+                                } finally {
+                                    _syncingCartCp = false;
+                                }
+                            }
                             
                             formOverlay.style.display = 'none';
                             renderPerfilCarritoView();
@@ -2065,6 +2084,31 @@
                             console.error('[Carrito Module] Error in navigated view override:', err);
                         }
                     };
+                }
+
+                if (!_cpListenerRegistered) {
+                    _cpListenerRegistered = true;
+                    window.addEventListener('latarima:cp-updated', () => {
+                        if (_syncingCartCp) return;
+                        if (window.UserDataManager && typeof window.UserDataManager.get === 'function') {
+                            const latest = window.UserDataManager.get();
+                            if (latest && typeof latest === 'object') {
+                                userData.name = latest.name || '';
+                                userData.phone = latest.phone || '';
+                                userData.email = latest.email || '';
+                                userData.address = latest.address || '';
+                                userData.locality = latest.locality || '';
+                                userData.province = latest.province || '';
+                                userData.zipCode = latest.zipCode || '';
+                            }
+                        } else {
+                            loadUserData();
+                        }
+                        const viewProfile = document.getElementById('view-profile');
+                        if (viewProfile && viewProfile.classList.contains('active')) {
+                            renderPerfilCarritoView();
+                        }
+                    });
                 }
 
                 // Dibujar si ya estamos cargados en la pestaña de perfil

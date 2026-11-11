@@ -87,10 +87,10 @@
         </div>
     </div>
     <!-- Generación dinámica del engranaje sierra del Splash Screen -->
-    <script src="js/splash.js"></script>
+    <script src="js/ui/splash.js"></script>
 
     <!-- Cargador dinámico de fragmentos HTML (Partials) -->
-    <script src="js/partials-loader.js?v=4"></script>
+    <script src="js/modules/partials-loader.js?v=5"></script>
 
     <!-- Banner de Modo Vacaciones -->
     <div id="vacation-top-banner" class="vacation-top-banner" style="display: none;">
@@ -598,10 +598,10 @@
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
 
-        <!-- View 6: Catálogo Iframe -->
-        <section id="view-catalogo" class="view" style="height: 100%;">
-            <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
-                <iframe data-src="apps/catalogo.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Catálogo A-Z"></iframe>
+        <!-- View 6: Catálogo Unificado (Carga modular nativa bajo demanda) -->
+        <section id="view-catalogo" class="view">
+            <div class="view-content" style="padding: 0;">
+                <div id="catalog-view-root"></div>
             </div>
         </section>
 
@@ -769,7 +769,7 @@
                     <form onsubmit="if (window.handleNativeTrackingSearch) window.handleNativeTrackingSearch(event)" style="display: flex; flex-direction: column; gap: 1rem; max-width: 360px; margin: 0 auto;">
                         <div style="position: relative;">
                             <span class="material-symbols-outlined" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #64748b;">tag</span>
-                            <input type="text" id="native-order-id-input" placeholder="Número de Orden" autocomplete="off" required pattern="[0-9]+" title="Solo números de orden válidos" style="width: 100%; box-sizing: border-box; padding: 0.8rem 1rem 0.8rem 45px; border: 1.5px solid #e2e8f0; border-radius: 12px; font-size: 1rem; text-align: center; letter-spacing: 1px; font-weight: 600; background: #f8fafc; transition: all 0.2s;">
+                            <input type="text" id="native-order-id-input" placeholder="Número de Orden o #LT-..." autocomplete="off" required title="Ingresá tu número de orden o código #LT-..." style="width: 100%; box-sizing: border-box; padding: 0.8rem 1rem 0.8rem 45px; border: 1.5px solid #e2e8f0; border-radius: 12px; font-size: 1rem; text-align: center; letter-spacing: 1px; font-weight: 600; background: #f8fafc; transition: all 0.2s;">
                         </div>
                         
                         <button type="submit" class="btn-primary" style="width: auto; min-width: 180px; max-width: 220px; margin: 0.25rem auto 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 50px; background: var(--primary-color, #A0715B); color: white; border: none; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(160, 113, 91, 0.2);">
@@ -806,21 +806,14 @@
         </div>
     </div>
 
-    <!-- Script de control del Bottom Sheet de seguimiento -->
-    <script src="js/tracking-sheet.js" defer></script>
-
-    <!-- Scripts Core Cliente (Admin y Widgets pesados se cargan 100% bajo demanda en partials-loader.js) -->
-    <script src="js/data/orders-config.js?v=26" defer></script>
-    <script src="js/data/orders-data.js?v=26" defer></script>
+    <!-- Scripts Core Cliente (Admin, Widgets, Checkout, Seguimiento y Catálogo se cargan bajo demanda en partials-loader.js) -->
     <script src="js/ui/confetti-arg.js?v=2" defer></script>
     <script src="js/ui/header-deco-arg.js?v=4" defer></script>
     <script src="js/data/products-data.js?v=6" defer></script>
     <script src="js/data/rentals-data.js?v=5" defer></script>
     <script src="js/data/offers-data.js?v=1" defer></script>
     <script src="js/data/shipping-config.js?v=1" defer></script>
-    <script src="js/data/cortes-config.js?v=1" defer></script>
-    <script src="js/data/cajones-config.js?v=2" defer></script>
-    <script src="js/data/data.js?v=10" defer></script>
+    <script src="js/data/data.js?v=11" defer></script>
     <script src="js/modules/shortener.js?v=11" defer></script>
     <script src="js/ui/ui-dom.js?v=2" defer></script>
     <script src="js/ui/ui-utils.js?v=1" defer></script>
@@ -829,22 +822,21 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js" defer></script>
     <script src="js/admin/admin-auth.js?v=4" defer></script>
-    <script src="js/ui/ui-navigation.js?v=6" defer></script>
-    <script src="js/ui/desktop-header.js?v=3" defer></script>
-    <script src="js/ui/my-orders.js?v=2" defer></script>
-    <script src="js/ui/ui-offers.js?v=20" defer></script>
+    <script src="js/ui/ui-navigation.js?v=7" defer></script>
+    <script src="js/ui/desktop-header.js?v=4" defer></script>
+    <script src="js/ui/ui-offers.js?v=21" defer></script>
     <script src="js/ui/catalog/catalog-utils.js?v=4" defer></script>
-    <script src="js/ui/ui-search-feed.js?v=1" defer></script>
+    <script src="js/ui/ui-search-feed.js?v=2" defer></script>
     <script src="js/modules/home-infinite-catalog.js?v=1" defer></script>
     <script src="js/ui/ui-home.js?v=6" defer></script>
-    <script src="js/ui/catalog/catalog-shipping-calc.js?v=3" defer></script>
+    <script src="js/ui/catalog/catalog-shipping-calc.js?v=4" defer></script>
     <script src="js/ui/catalog/catalog-actions.js?v=5" defer></script>
     <script src="js/ui/catalog/catalog-gallery.js?v=1" defer></script>
-    <script src="js/ui/ui-catalog.js?v=24" defer></script>
+    <script src="js/ui/ui-catalog.js?v=25" defer></script>
     <script src="js/ui/ui-rentals.js?v=2" defer></script>
     <script src="js/ui/ui-blocks.js?v=1" defer></script>
-    <script src="js/modules/carrito.js?v=11" defer></script>
-    <script src="js/modules/main.js?v=5" defer></script>
+    <script src="js/modules/carrito.js?v=12" defer></script>
+    <script src="js/modules/main.js?v=6" defer></script>
     <script src="js/modules/categorias.js?v=3" defer></script>
     <script src="js/ui/pwa-banner.js?v=2" defer></script>
     <script>
@@ -979,7 +971,7 @@
         }
     </script>
     <!-- Lógica de arrastre del botón flotante (FAB) de Seguimiento -->
-    <script src="js/fab-draggable.js" defer></script>
+    <script src="js/ui/fab-draggable.js" defer></script>
 </body>
 </html>
 

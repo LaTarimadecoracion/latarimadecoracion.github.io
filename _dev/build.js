@@ -73,6 +73,29 @@ async function build() {
     };
 
     // 1. Copiar carpetas estáticas que no requieren minificación y limpiar huérfanos en docs/img
+    const removeOrphans = (srcD, destD) => {
+        if (!fs.existsSync(destD)) return;
+        const items = fs.readdirSync(destD, { withFileTypes: true });
+        for (const item of items) {
+            const srcP = path.join(srcD, item.name);
+            const destP = path.join(destD, item.name);
+            if (item.isDirectory()) {
+                if (!fs.existsSync(srcP)) {
+                    fs.removeSync(destP);
+                } else {
+                    removeOrphans(srcP, destP);
+                    // Eliminar carpeta si quedó vacía
+                    if (fs.readdirSync(destP).length === 0) {
+                        fs.removeSync(destP);
+                    }
+                }
+            } else {
+                if (!fs.existsSync(srcP)) {
+                    fs.removeSync(destP);
+                }
+            }
+        }
+    };
     const foldersToCopy = ['data', 'img', 'GASTOS', 'p', 'audio', 'Musica', 'asist', 'pedidos', 'apps', 'partials'];
     for (const folder of foldersToCopy) {
         const folderSrc = path.join(srcDir, folder);
@@ -81,29 +104,6 @@ async function build() {
             console.log(`📂 Sincronizando carpeta ${folder}...`);
             if (folder === 'img') {
                 // Borrar archivos en docs/img que ya no existen en img/
-                const removeOrphans = (srcD, destD) => {
-                    if (!fs.existsSync(destD)) return;
-                    const items = fs.readdirSync(destD, { withFileTypes: true });
-                    for (const item of items) {
-                        const srcP = path.join(srcD, item.name);
-                        const destP = path.join(destD, item.name);
-                        if (item.isDirectory()) {
-                            if (!fs.existsSync(srcP)) {
-                                fs.removeSync(destP);
-                            } else {
-                                removeOrphans(srcP, destP);
-                                // Eliminar carpeta si quedó vacía
-                                if (fs.readdirSync(destP).length === 0) {
-                                    fs.removeSync(destP);
-                                }
-                            }
-                        } else {
-                            if (!fs.existsSync(srcP)) {
-                                fs.removeSync(destP);
-                            }
-                        }
-                    }
-                };
                 removeOrphans(folderSrc, folderDest);
             }
             smartCopySync(folderSrc, folderDest);
@@ -195,6 +195,8 @@ async function build() {
     };
 
     if (fs.existsSync(jsSrcDir)) {
+        // Limpiar archivos/carpetas huérfanas en docs/js que ya no existen en js/
+        removeOrphans(jsSrcDir, jsDistDir);
         await processJsDirectory(jsSrcDir, jsDistDir);
     }
 

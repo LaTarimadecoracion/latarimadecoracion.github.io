@@ -53,9 +53,9 @@ async function run() {
     console.log('• Relleno anti-deformación: #F5F2EE (Warm Lino de la web)\n');
 
     // 1. Cargar base de datos actual
-    const databasePath = path.join(__dirname, 'js', 'products-data.js');
+    const databasePath = path.join(__dirname, '..', 'js', 'data', 'products-data.js');
     if (!fs.existsSync(databasePath)) {
-        console.error('❌ No se encontró js/products-data.js');
+        console.error('❌ No se encontró js/data/products-data.js');
         return;
     }
 
@@ -65,7 +65,7 @@ async function run() {
     try {
         categories = JSON.parse(jsonString);
     } catch (e) {
-        console.error('❌ Error parseando js/products-data.js. Asegúrate de que no tenga errores sintácticos.');
+        console.error('❌ Error parseando js/data/products-data.js. Asegúrate de que no tenga errores sintácticos.');
         return;
     }
 

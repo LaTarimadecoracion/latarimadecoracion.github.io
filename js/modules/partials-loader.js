@@ -142,6 +142,71 @@ window.ensureAssistantLoaded = function() {
     return _assistantModulePromise;
 };
 
+let _userProfileModalPromise = null;
+window.ensureUserProfileModalLoaded = function() {
+    if (typeof window.openUserProfileModal === 'function' && !window.openUserProfileModal._isStub) {
+        return Promise.resolve();
+    }
+    if (_userProfileModalPromise) return _userProfileModalPromise;
+    _userProfileModalPromise = loadScriptOnDemand('js/ui/user-profile-modal.js?v=1');
+    return _userProfileModalPromise;
+};
+
+let _checkoutModalPromise = null;
+window.ensureCheckoutModalLoaded = function() {
+    if (typeof window.showOfferPaymentModal === 'function' && !window.showOfferPaymentModal._isStub) {
+        return Promise.resolve();
+    }
+    if (_checkoutModalPromise) return _checkoutModalPromise;
+    _checkoutModalPromise = (async () => {
+        if (typeof window.ensurePostalLookupLoaded === 'function') {
+            await window.ensurePostalLookupLoaded();
+        }
+        await loadScriptOnDemand('js/ui/checkout-modal.js?v=1');
+    })();
+    return _checkoutModalPromise;
+};
+
+let _myOrdersModulePromise = null;
+window.ensureMyOrdersLoaded = function() {
+    if (window.MyOrders) return Promise.resolve();
+    if (_myOrdersModulePromise) return _myOrdersModulePromise;
+    _myOrdersModulePromise = (async () => {
+        if (typeof window.ensurePostalLookupLoaded === 'function') {
+            await window.ensurePostalLookupLoaded();
+        }
+        await loadScriptOnDemand('js/ui/my-orders.js?v=3');
+    })();
+    return _myOrdersModulePromise;
+};
+
+let _trackingModulePromise = null;
+window.ensureTrackingLoaded = function() {
+    if (typeof window.openTrackingSheet === 'function' && typeof window.handleNativeTrackingSearch === 'function') {
+        return Promise.resolve();
+    }
+    if (_trackingModulePromise) return _trackingModulePromise;
+    _trackingModulePromise = (async () => {
+        await Promise.all([
+            loadScriptOnDemand('js/data/orders-config.js?v=26'),
+            loadScriptOnDemand('js/data/orders-data.js?v=26')
+        ]);
+        await loadScriptOnDemand('js/modules/tracking-sheet.js?v=2');
+    })();
+    return _trackingModulePromise;
+};
+
+let _catalogModulePromise = null;
+window.ensureCatalogModuleLoaded = function() {
+    if (window.CatalogNative) return Promise.resolve();
+    if (_catalogModulePromise) return _catalogModulePromise;
+    _catalogModulePromise = Promise.all([
+        loadStyleOnDemand('css/catalogo.css?v=10'),
+        loadScriptOnDemand('js/modules/catalog-view.js?v=1')
+    ]);
+    return _catalogModulePromise;
+};
+
 // --- PANEL DE ADMINISTRACIÓN 100% BAJO DEMANDA ---
 
 window.adminPartialsLoaded = false;
@@ -239,7 +304,7 @@ window.loadAdminPartialsOnDemand = function() {
             'js/admin/cajones/cajones-discounts.js?v=1',
             'js/admin/cajones/cajones-simulator.js?v=1',
             'js/admin/admin-cajones.js?v=3',
-            'js/admin/admin-payments.js?v=2',
+            'js/admin/admin-payments.js?v=5',
             'js/admin/admin-pages.js?v=4',
             'js/admin/admin-quotes.js?v=1',
             'js/admin/admin-users.js?v=1'
@@ -280,6 +345,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.ensureVideosModuleLoaded().then(() => {
             if (typeof window.renderVideosView === 'function') window.renderVideosView();
         });
+    } else if (view === 'catalogo' || view === 'buscar' || params.get('cat') || params.get('category')) {
+        if (window.innerWidth >= 900 || view === 'catalogo') {
+            window.ensureCatalogModuleLoaded();
+        }
+    } else if (view === 'mis-compras' || view === 'pedidos' || params.get('id') || params.get('order')) {
+        window.ensureMyOrdersLoaded();
     }
 
     // 2. Cargar modales globales livianos del cliente

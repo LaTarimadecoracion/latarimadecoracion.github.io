@@ -602,6 +602,10 @@
 
         const activeView = document.querySelector('.view.active');
         if (activeView && activeView.id === 'view-catalogo') {
+            if (window.CatalogNative && typeof window.CatalogNative.filter === 'function') {
+                window.CatalogNative.filter(rawQuery);
+                return;
+            }
             const iframe = document.querySelector('#view-catalogo iframe');
             if (iframe && iframe.contentWindow && iframe.contentWindow.filterCatalogAZ) {
                 iframe.contentWindow.filterCatalogAZ(query);
@@ -883,6 +887,9 @@
     const categoryFeedEmpty = document.getElementById('category-feed-empty');
 
     function navigateToCategoryFeed(categoryId, isBack = false) {
+        if (window.innerWidth >= 900 && typeof window.navigateToView === 'function') {
+            return window.navigateToView('view-catalogo', { categoryId }, isBack);
+        }
         
 
         const urlParams = new URLSearchParams(window.location.search);
@@ -1244,4 +1251,105 @@
 
     window.getIndexedProducts = getIndexedProducts;
     window.navigateToSearch = navigateToSearch;
+
+    window.searchCatalogScore = function(items, rawQuery) {
+        const list = Array.isArray(items) ? items : [];
+        const queryTerms = getCleanSearchTerms(rawQuery || '');
+        if (queryTerms.length === 0) {
+            if ((rawQuery || '').trim() !== '') return [];
+            return list.map(item => ({ item, tier: 0, score: 0, matchedCount: 0 }));
+        }
+
+        const evalTerm = (item, term) => {
+            const titleWords = tokenizeWords(item.nombre || item.baseTitle || item.title || '');
+            const catWords = tokenizeWords((item.cat && item.cat.name) || item.categoryName || '');
+            const acabadoWords = tokenizeWords((item.acabado || '') + ' ' + (item.acabadosSearch || ''));
+            const subWords = tokenizeWords((item.product && item.product.subtitle) || item.subtitle || '');
+
+            const titleExact = matchTermInWords(term, titleWords, false);
+            if (titleExact > 0) return { tier: 1, score: titleExact + 200 };
+
+            if (/\d/.test(term) && Array.isArray(item.medidas)) {
+                const normTermNoSpaces = term.replace(/[\s\-\_cmx]/g, '');
+                const hasMedida = item.medidas.some(medida => {
+                    const normMedida = normalizeForSearch(medida);
+                    if (normMedida.includes(term)) return true;
+                    const normMedidaClean = normMedida.replace(/[\s\-\_cmx]/g, '');
+                    return normTermNoSpaces.length >= 2 && normMedidaClean.includes(normTermNoSpaces);
+                });
+                if (hasMedida) return { tier: 1, score: 250 };
+            }
+
+            const acabExact = matchTermInWords(term, acabadoWords, false);
+            if (acabExact > 0) return { tier: 1, score: acabExact + 180 };
+
+            const catExact = matchTermInWords(term, catWords, false);
+            if (catExact > 0) return { tier: 2, score: catExact + 100 };
+
+            const subExact = matchTermInWords(term, subWords, false);
+            if (subExact > 0) return { tier: 2, score: subExact + 90 };
+
+            const titleFuzzy = matchTermInWords(term, titleWords, true);
+            if (titleFuzzy > 0) return { tier: 3, score: titleFuzzy + 50 };
+            const acabFuzzy = matchTermInWords(term, acabadoWords, true);
+            if (acabFuzzy > 0) return { tier: 3, score: acabFuzzy + 45 };
+            const catFuzzy = matchTermInWords(term, catWords, true);
+            if (catFuzzy > 0) return { tier: 3, score: catFuzzy + 40 };
+
+            const tagWords = [];
+            if (Array.isArray(item.tags)) {
+                item.tags.forEach(t => tagWords.push(...tokenizeWords(t)));
+            }
+            const tagMatch = matchTermInWords(term, tagWords, false);
+            if (tagMatch > 0) return { tier: 4, score: tagMatch };
+
+            const descText = (item.product && item.product.description) || item.description || '';
+            const descWords = tokenizeWords(descText).filter(w => w.length >= 4);
+            const descMatch = matchTermInWords(term, descWords, false);
+            if (descMatch >= 95) return { tier: 5, score: 30 };
+
+            return null;
+        };
+
+        let scoredItems = [];
+        list.forEach(item => {
+            const termEvals = queryTerms.map(t => evalTerm(item, t));
+            if (termEvals.every(Boolean)) {
+                const worstTier = Math.max(...termEvals.map(e => e.tier));
+                const totalScore = termEvals.reduce((acc, e) => acc + e.score, 0);
+                scoredItems.push({ item, tier: worstTier, score: totalScore, matchedCount: queryTerms.length });
+            }
+        });
+
+        const hasStrongAnd = scoredItems.some(s => s.tier <= 3);
+        if (!hasStrongAnd && queryTerms.length > 1) {
+            const orScored = [];
+            list.forEach(item => {
+                const termEvals = queryTerms.map(t => evalTerm(item, t)).filter(Boolean);
+                if (termEvals.length > 0) {
+                    const bestTier = Math.min(...termEvals.map(e => e.tier));
+                    const totalScore = termEvals.reduce((acc, e) => acc + e.score, 0);
+                    if (bestTier <= 2 || scoredItems.length === 0) {
+                        orScored.push({ item, tier: bestTier, score: totalScore, matchedCount: termEvals.length });
+                    }
+                }
+            });
+            if (orScored.length > 0) scoredItems = orScored;
+        }
+
+        if (scoredItems.length === 0) return [];
+
+        const bestTierFound = Math.min(...scoredItems.map(s => s.tier));
+        const filteredScored = scoredItems.filter(s => s.tier <= bestTierFound);
+        filteredScored.sort((a, b) => {
+            if (b.matchedCount !== a.matchedCount) return b.matchedCount - a.matchedCount;
+            if (a.tier !== b.tier) return a.tier - b.tier;
+            if (b.score !== a.score) return b.score - a.score;
+            const nameA = (a.item.nombre || a.item.title || '').toLowerCase();
+            const nameB = (b.item.nombre || b.item.title || '').toLowerCase();
+            return nameA.localeCompare(nameB, 'es', { sensitivity: 'base' });
+        });
+
+        return filteredScored;
+    };
 })();

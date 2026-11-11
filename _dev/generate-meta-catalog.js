@@ -1,8 +1,8 @@
 const fs = require('fs-extra');
 const path = require('path');
 
-// 1. Cargar productos desde js/products-data.js
-const productsDataPath = path.join(__dirname, '..', 'js', 'products-data.js');
+// 1. Cargar productos desde js/data/products-data.js
+const productsDataPath = path.join(__dirname, '..', 'js', 'data', 'products-data.js');
 let productsDataContent = fs.readFileSync(productsDataPath, 'utf8');
 
 // Extraer el array JS

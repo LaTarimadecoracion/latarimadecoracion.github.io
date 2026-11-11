@@ -32,10 +32,14 @@
 
         let userZip = '';
         try {
-            const savedData = localStorage.getItem('userData');
-            if (savedData) {
-                const parsed = JSON.parse(savedData);
-                userZip = (parsed.zipCode || '').trim();
+            if (window.UserDataManager && typeof window.UserDataManager.getZipCode === 'function') {
+                userZip = window.UserDataManager.getZipCode();
+            } else {
+                const savedData = localStorage.getItem('userData');
+                if (savedData) {
+                    const parsed = JSON.parse(savedData);
+                    userZip = (parsed.zipCode || '').trim();
+                }
             }
         } catch(e) {}
 

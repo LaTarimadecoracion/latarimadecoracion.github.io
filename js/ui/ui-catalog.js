@@ -17,13 +17,13 @@
                 window.dispatchEvent(new CustomEvent('latarima:cp-updated'));
             });
         }
-        if ((product.isCajonProduct === true || product.id === '95') && typeof window.initCajonesWidget !== 'function' && window.ensureCajonesModulesLoaded) {
+        if ((product.isCajonProduct === true || product.id === '95' || product.primaryCatId === 'cajones-crossfit') && typeof window.initCajonesWidget !== 'function' && window.ensureCajonesModulesLoaded) {
             window.ensureCajonesModulesLoaded().then(() => {
                 showProductDetail(product, categoryName, preselectedAcabado, preselectedMedida, preselectedOpcion, isBack);
             });
             return;
         }
-        if ((product.isCustomCutting === true || product.id === '69') && typeof window.initCortesWidget !== 'function' && window.ensureCortesModulesLoaded) {
+        if ((product.isCustomCutting === true || product.id === '69' || product.id === '67' || product.id === '68' || product.primaryCatId === 'cortes-madera') && typeof window.initCortesWidget !== 'function' && window.ensureCortesModulesLoaded) {
             window.ensureCortesModulesLoaded().then(() => {
                 showProductDetail(product, categoryName, preselectedAcabado, preselectedMedida, preselectedOpcion, isBack);
             });

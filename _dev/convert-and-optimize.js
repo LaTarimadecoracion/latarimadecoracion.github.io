@@ -58,7 +58,7 @@ async function run() {
     console.log('🚀 Iniciando Optimización y Conversión Masiva a WebP...');
     
     // 1. Cargar base de datos actual
-    const currentJsPath = path.join(__dirname, 'js', 'products-data.js');
+    const currentJsPath = path.join(__dirname, '..', 'js', 'data', 'products-data.js');
     const currentContent = fs.readFileSync(currentJsPath, 'utf8');
     const jsonString = currentContent.replace('const productsData = ', '').trim().replace(/;$/, '');
     let categories = JSON.parse(jsonString);
@@ -102,14 +102,14 @@ async function run() {
         }
     }
 
-    // 3. Escribir resultados de vuelta a js/products-data.js
+    // 3. Escribir resultados de vuelta a js/data/products-data.js
     const outputContent = 'const productsData = ' + JSON.stringify(categories, null, 4) + ';\n';
     fs.writeFileSync(currentJsPath, outputContent, 'utf8');
     
     console.log('\n=========================================================');
     console.log('🎉 ¡OPTIMIZACIÓN Y CONVERSIÓN A WEBP COMPLETADA!');
     console.log('=========================================================');
-    console.log(`• Archivo js/products-data.js actualizado con rutas locales.`);
+    console.log(`• Archivo js/data/products-data.js actualizado con rutas locales.`);
     console.log(`• Total de imágenes procesadas y convertidas: ${totalImagesProcessed}`);
     console.log(`• Todas las imágenes residen ahora dentro de e:/Web/WEB MINI/La Tarima 2.0/img/migrados/`);
     console.log(`• ¡YA PUEDES ELIMINAR LA CARPETA "La Tarima" DE LA WEB VIEJA CON TOTAL SEGURIDAD!`);

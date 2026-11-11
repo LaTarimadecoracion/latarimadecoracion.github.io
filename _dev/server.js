@@ -237,12 +237,9 @@ app.get(['/', '/index.html'], (req, res, next) => {
 
 // Disable caching specifically for configuration JS files to allow dynamic changes on localhost
 app.get([
-    '/js/site-config.js', 
-    '/js/payment-config.js',
+    '/js/data/site-config.js',
     '/js/data/payment-config.js',
-    '/js/cajones-config.js',
     '/js/data/cajones-config.js',
-    '/js/cortes-config.js',
     '/js/data/cortes-config.js'
 ], (req, res, next) => {
     res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
@@ -576,11 +573,9 @@ app.post('/api/save-products', (req, res) => {
 
         const fileContent = 'const productsData = ' + JSON.stringify(productsArray, null, 4) + ';\n';
         const filePath = path.join(ROOT_DIR, 'js', 'data', 'products-data.js');
-        const legacyPath = path.join(ROOT_DIR, 'js', 'products-data.js');
         
         fs.writeFileSync(filePath, fileContent, 'utf8');
-        try { fs.writeFileSync(legacyPath, fileContent, 'utf8'); } catch (e) {}
-        console.log('✅ js/data/products-data.js y js/products-data.js actualizados correctamente.');
+        console.log('✅ js/data/products-data.js actualizado correctamente.');
 
         // Sincronizar automáticamente data/products/ y data/catalog-index.json
         try {
@@ -1029,13 +1024,11 @@ app.post('/api/save-site-config', (req, res) => {
             return res.status(400).json({ success: false, message: 'El payload debe ser un objeto válido.' });
         }
 
-        const fileContent = '// js/site-config.js\n// --- SITE CONFIGURATION DATABASE ---\n// Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.\n\nwindow.siteConfig = ' + JSON.stringify(siteConfig, null, 4) + ';\n';
+        const fileContent = '// js/data/site-config.js\n// --- SITE CONFIGURATION DATABASE ---\n// Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.\n\nwindow.siteConfig = ' + JSON.stringify(siteConfig, null, 4) + ';\n';
         const filePath = path.join(ROOT_DIR, 'js', 'data', 'site-config.js');
-        const legacyPath = path.join(ROOT_DIR, 'js', 'site-config.js');
         
         fs.writeFileSync(filePath, fileContent, 'utf8');
-        try { fs.writeFileSync(legacyPath, fileContent, 'utf8'); } catch (e) {}
-        console.log('✅ js/data/site-config.js y js/site-config.js actualizados correctamente.');
+        console.log('✅ js/data/site-config.js actualizado correctamente.');
         res.json({ success: true, message: 'Configuración de sitio guardada exitosamente.' });
     } catch (error) {
         console.error('❌ Error guardando configuración de sitio:', error);
@@ -1054,14 +1047,14 @@ app.post('/api/save-cortes-config', (req, res) => {
 
         const fileContent = '// js/data/cortes-config.js\n// --- CORTES DE MADERA CONFIGURATION DATABASE ---\n// Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.\n\nwindow.cortesConfig = ' + JSON.stringify(cortesConfig, null, 4) + ';\n';
         const filePath = path.join(ROOT_DIR, 'js', 'data', 'cortes-config.js');
-        const legacyPath = path.join(ROOT_DIR, 'js', 'cortes-config.js');
-        const docsPath = path.join(ROOT_DIR, 'docs', 'js', 'cortes-config.js');
+        const docsPath = path.join(ROOT_DIR, 'docs', 'js', 'data', 'cortes-config.js');
         
         fs.writeFileSync(filePath, fileContent, 'utf8');
-        try { fs.writeFileSync(legacyPath, fileContent, 'utf8'); } catch (e) {}
         try { 
-            const docsDir = path.join(ROOT_DIR, 'docs', 'js');
-            if (fs.existsSync(docsDir)) {
+            const docsJsDir = path.join(ROOT_DIR, 'docs', 'js');
+            if (fs.existsSync(docsJsDir)) {
+                const docsDataDir = path.join(docsJsDir, 'data');
+                if (!fs.existsSync(docsDataDir)) fs.mkdirSync(docsDataDir, { recursive: true });
                 fs.writeFileSync(docsPath, fileContent, 'utf8');
             }
         } catch (e) {}
@@ -1085,17 +1078,13 @@ app.post('/api/save-cajones-config', (req, res) => {
 
         const fileContent = '// js/data/cajones-config.js\n// --- CAJONES CROSSFIT & PLIOMÉTRICOS CONFIGURATION DATABASE ---\n// Overwritten automatically by the Node server. DO NOT EDIT MANUALLY.\n\nwindow.cajonesConfig = ' + JSON.stringify(cajonesConfig, null, 4) + ';\n';
         const filePath = path.join(ROOT_DIR, 'js', 'data', 'cajones-config.js');
-        const legacyPath = path.join(ROOT_DIR, 'js', 'cajones-config.js');
         const docsPath = path.join(ROOT_DIR, 'docs', 'js', 'data', 'cajones-config.js');
-        const docsLegacyPath = path.join(ROOT_DIR, 'docs', 'js', 'cajones-config.js');
         
         fs.writeFileSync(filePath, fileContent, 'utf8');
-        try { fs.writeFileSync(legacyPath, fileContent, 'utf8'); } catch (e) {}
         try { 
             const docsDataDir = path.join(ROOT_DIR, 'docs', 'js', 'data');
             if (!fs.existsSync(docsDataDir)) fs.mkdirSync(docsDataDir, { recursive: true });
             fs.writeFileSync(docsPath, fileContent, 'utf8');
-            fs.writeFileSync(docsLegacyPath, fileContent, 'utf8');
         } catch (e) {}
 
         console.log('✅ js/data/cajones-config.js guardado exitosamente.');

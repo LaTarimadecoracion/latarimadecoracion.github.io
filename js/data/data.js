@@ -881,7 +881,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Disparar evento global para sincronizar interfaz en tiempo real
                 window.dispatchEvent(new CustomEvent('latarima:cp-updated', { 
-                    detail: { zipCode: updated.zipCode, userData: updated } 
+                    detail: {
+                        zipCode: updated.zipCode,
+                        locality: updated.locality || '',
+                        province: updated.province || '',
+                        userData: updated
+                    } 
                 }));
             } catch(e) {
                 console.error('[UserDataManager] Error guardando datos locales:', e);
@@ -919,6 +924,38 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('[UserDataManager] Error limpiando datos locales:', e);
             }
             return this.get();
+        }
+    };
+})();
+
+// --- GLOBAL LOCAL ORDERS HELPERS (disponibles sin depender de my-orders.js) ---
+(function() {
+    const LOCAL_ORDERS_KEY = 'latarima_my_orders';
+
+    window.getMyLocalOrders = function() {
+        try {
+            const raw = localStorage.getItem(LOCAL_ORDERS_KEY);
+            if (!raw) return [];
+            const list = JSON.parse(raw);
+            return Array.isArray(list) ? list : [];
+        } catch (e) {
+            return [];
+        }
+    };
+
+    window.saveMyLocalOrder = function(order) {
+        if (!order || !order.id) return;
+        try {
+            const list = window.getMyLocalOrders();
+            const idx = list.findIndex(o => String(o.id) === String(order.id));
+            if (idx !== -1) {
+                list[idx] = { ...list[idx], ...order };
+            } else {
+                list.unshift(order);
+            }
+            localStorage.setItem(LOCAL_ORDERS_KEY, JSON.stringify(list.slice(0, 50)));
+        } catch (e) {
+            console.warn('[MyOrders] Error guardando pedido local:', e);
         }
     };
 })();

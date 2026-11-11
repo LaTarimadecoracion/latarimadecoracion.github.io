@@ -671,7 +671,7 @@ document.addEventListener('pointerdown', (e) => {
     window.addEventListener('wheel', (e) => {
         const activeView = document.querySelector('.view.active');
         if (activeView) {
-            if (activeView.id === 'view-mayorista' || activeView.id === 'view-catalogo' || activeView.id === 'view-ayudin' || activeView.id === 'view-calculator' || activeView.id === 'view-musica') {
+            if (activeView.id === 'view-mayorista' || activeView.id === 'view-ayudin' || activeView.id === 'view-calculator' || activeView.id === 'view-musica') {
                 const iframe = activeView.querySelector('iframe');
                 if (iframe && iframe.contentWindow) {
                     iframe.contentWindow.scrollBy(0, e.deltaY);
@@ -695,7 +695,7 @@ document.addEventListener('pointerdown', (e) => {
 
     window.addEventListener('touchmove', (e) => {
         const activeView = document.querySelector('.view.active');
-        if (activeView && (activeView.id === 'view-mayorista' || activeView.id === 'view-catalogo' || activeView.id === 'view-ayudin' || activeView.id === 'view-calculator' || activeView.id === 'view-musica')) {
+        if (activeView && (activeView.id === 'view-mayorista' || activeView.id === 'view-ayudin' || activeView.id === 'view-calculator' || activeView.id === 'view-musica')) {
             const iframe = activeView.querySelector('iframe');
             if (iframe && iframe.contentWindow) {
                 const touchY = e.touches[0].clientY;

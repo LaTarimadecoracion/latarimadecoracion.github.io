@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="../css/style.css?v=25">
     <link rel="stylesheet" href="../css/catalogo.css?v=9">
 </head>
-<body>
+<body class="standalone-catalog">
 
     <!-- Auras de fondo premium -->
     <div class="bg-glow bg-glow-1"></div>
@@ -91,11 +91,21 @@
     </div>
 
     <!-- Scripts de datos y configuración global -->
-    <script src="../js/site-config.js?v=4"></script>
-    <script src="../js/products-data.js?v=4"></script>
-    <script src="../js/data.js?v=4"></script>
+    <script src="../js/data/site-config.js?v=4"></script>
+    <script>
+        (function() {
+            var hasParentProducts = false;
+            try {
+                hasParentProducts = !!(window.parent && window.parent !== window && window.parent.sessionProducts && window.parent.sessionProducts.length > 0);
+            } catch (e) {}
+            if (!hasParentProducts) {
+                document.write('<script src="../js/data/products-data.js?v=4"><\/script><script src="../js/data/data.js?v=4"><\/script>');
+            }
+        })();
+    </script>
+
     <!-- Script de lógica específica de catálogo -->
-    <script src="../js/catalogo.js?v=6"></script>
+    <script src="../js/apps/catalogo.js?v=6"></script>
 
 </body>
 </html>

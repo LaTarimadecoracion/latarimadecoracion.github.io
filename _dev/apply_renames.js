@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-let code = fs.readFileSync('js/products-data.js', 'utf8');
+let code = fs.readFileSync('js/data/products-data.js', 'utf8');
 code = code.replace(/const productsData\s*=/, 'global.productsData =');
 eval(code);
 
@@ -62,5 +62,5 @@ console.log(`Cajones de Madera tiene ${catCajones.products.length} productos.`);
 
 // Guardar
 const newContent = 'const productsData = ' + JSON.stringify(data, null, 4) + ';\n';
-fs.writeFileSync('js/products-data.js', newContent, 'utf8');
+fs.writeFileSync('js/data/products-data.js', newContent, 'utf8');
 console.log('--- ACTUALIZADO CON ÉXITO ---');

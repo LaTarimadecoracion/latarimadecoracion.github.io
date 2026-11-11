@@ -730,9 +730,29 @@
         </div>
     </footer>
 
-    <!-- Carga de Bases de Datos Centrales -->
-    <script src="../js/data/products-data.js?v=26"></script>
-    <script src="../js/modules/shortener.js?v=26"></script>
+    <!-- Carga de Bases de Datos Centrales (evita descargar products-data.js 1.3 MB dentro de iframe si parent ya lo cargó) -->
+    <script>
+        (function () {
+            var hasParentCatalog = false;
+            var hasParentShortener = false;
+            try {
+                if (window.parent && window.parent !== window && (window.parent.sessionProducts || window.parent.productsData)) {
+                    hasParentCatalog = true;
+                    window.productsData = window.parent.sessionProducts || window.parent.productsData;
+                    if (window.parent.TarimaShortener) {
+                        hasParentShortener = true;
+                        window.TarimaShortener = window.parent.TarimaShortener;
+                    }
+                }
+            } catch (e) {}
+            if (!hasParentCatalog) {
+                document.write('<script src="../js/data/products-data.js?v=26"><\/script>');
+            }
+            if (!hasParentShortener) {
+                document.write('<script src="../js/modules/shortener.js?v=26"><\/script>');
+            }
+        })();
+    </script>
     <script src="../js/data/orders-data.js?v=26"></script>
     <script src="../js/data/orders-config.js?v=26"></script>
     <script src="../js/data/site-config.js?v=26"></script>
@@ -871,19 +891,32 @@
                             let resolvedFinish = co.selectedFinish || (co.cartItems && co.cartItems[0] ? co.cartItems[0].finish : '') || '';
                             let resolvedMeasure = co.selectedMeasure || (co.cartItems && co.cartItems[0] ? co.cartItems[0].measure : '') || '';
 
-                            if (typeof window.productsData !== 'undefined' && Array.isArray(window.productsData)) {
+                            let catalogData = (typeof window.productsData !== 'undefined' && Array.isArray(window.productsData)) ? window.productsData : null;
+                            let shortenerApi = window.TarimaShortener || null;
+                            try {
+                                if (!catalogData && window.parent && window.parent !== window) {
+                                    catalogData = window.parent.sessionProducts || window.parent.productsData || null;
+                                    if (catalogData) window.productsData = catalogData;
+                                }
+                                if (!shortenerApi && window.parent && window.parent !== window && window.parent.TarimaShortener) {
+                                    shortenerApi = window.parent.TarimaShortener;
+                                    window.TarimaShortener = shortenerApi;
+                                }
+                            } catch (e) {}
+
+                            if (Array.isArray(catalogData)) {
                                 let foundProd = null;
                                 // 1. Buscar por productId directo
                                 if (co.productId) {
-                                    for (const cat of window.productsData) {
+                                    for (const cat of catalogData) {
                                         const p = (cat.products || []).find(item => String(item.id) === String(co.productId));
                                         if (p) { foundProd = p; break; }
                                     }
                                 }
                                 // 2. Buscar por shortCode
-                                if (!foundProd && co.shortCode && window.TarimaShortener && typeof window.TarimaShortener.decodeShortCode === 'function') {
+                                if (!foundProd && co.shortCode && shortenerApi && typeof shortenerApi.decodeShortCode === 'function') {
                                     try {
-                                        const decoded = window.TarimaShortener.decodeShortCode(co.shortCode);
+                                        const decoded = shortenerApi.decodeShortCode(co.shortCode);
                                         if (decoded && decoded.product) {
                                             foundProd = decoded.product;
                                             if (!resolvedFinish && decoded.preselectedAcabado) resolvedFinish = decoded.preselectedAcabado;
@@ -893,7 +926,7 @@
                                 }
                                 // 3. Buscar por coincidencia de título si todavía no se encontró
                                 if (!foundProd && co.title) {
-                                    for (const cat of window.productsData) {
+                                    for (const cat of catalogData) {
                                         const p = (cat.products || []).find(item => co.title.toLowerCase().includes((item.title || '').toLowerCase()));
                                         if (p) { foundProd = p; break; }
                                     }

@@ -1,1 +1,0 @@
-window.sessionPaymentConfig={transfer:{active:!0,alias:"VENUS.PULMON.METRO",cbu:"0720048988000002273736",bank:"Banco Santander",titular:"Yonatan Lucas Orellana",cuit:"20-35281538-2"},mercadopago:{active:!1,mode:"sandbox",publicKey:"",accessToken:""}};

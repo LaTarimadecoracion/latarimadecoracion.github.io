@@ -7,8 +7,12 @@
 (function () {
     const LOCAL_ORDERS_KEY = 'latarima_my_orders';
     const WORKER_URL = 'https://super-shadow-4ad9.latarimadecoracion.workers.dev';
+    const externalGetLocalOrders = (typeof window.getMyLocalOrders === 'function') ? window.getMyLocalOrders : null;
+    const externalSaveMyLocalOrder = (typeof window.saveMyLocalOrder === 'function') ? window.saveMyLocalOrder : null;
+    let pendingInlineOrderId = null;
+    let inlineTrackingSeq = 0;
 
-    function getLocalOrders() {
+    function getLocalOrdersFallback() {
         try {
             const raw = localStorage.getItem(LOCAL_ORDERS_KEY);
             if (!raw) return [];
@@ -19,10 +23,10 @@
         }
     }
 
-    function saveMyLocalOrder(order) {
+    function saveMyLocalOrderFallback(order) {
         if (!order || !order.id) return;
         try {
-            const list = getLocalOrders();
+            const list = getLocalOrdersFallback();
             const idx = list.findIndex(o => String(o.id) === String(order.id));
             if (idx !== -1) {
                 list[idx] = { ...list[idx], ...order };
@@ -33,6 +37,34 @@
         } catch (e) {
             console.warn('[MyOrders] Error guardando pedido local:', e);
         }
+    }
+
+    function getLocalOrders() {
+        if (externalGetLocalOrders) {
+            try {
+                const res = externalGetLocalOrders();
+                if (Array.isArray(res)) return res;
+            } catch (e) {}
+        }
+        return getLocalOrdersFallback();
+    }
+
+    function saveMyLocalOrder(order) {
+        if (externalSaveMyLocalOrder) {
+            try {
+                return externalSaveMyLocalOrder(order);
+            } catch (e) {}
+        }
+        return saveMyLocalOrderFallback(order);
+    }
+
+    function escapeHtml(str) {
+        return String(str ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
     }
 
     function formatPrice(val) {
@@ -157,7 +189,341 @@
         return { user, orders: merged };
     }
 
+    function normalizeOrderCandidates(orderId) {
+        const clean = String(orderId || '').trim().replace(/^#/, '');
+        if (!clean) return [];
+        const upper = clean.toUpperCase();
+        const candidates = [];
+        if (/^LT-/i.test(clean)) {
+            candidates.push(upper);
+            if (clean !== upper) candidates.push(clean);
+            const stripped = upper.slice(3);
+            if (stripped) candidates.push(stripped);
+        } else {
+            candidates.push(clean);
+            if (upper !== clean) candidates.push(upper);
+            if (/^[0-9]+$/.test(clean)) {
+                candidates.push('LT-' + clean);
+            }
+        }
+        return Array.from(new Set(candidates));
+    }
+
+    function getTrackingProgress(order) {
+        const cfg = (typeof ordersConfig !== 'undefined' && ordersConfig) ? ordersConfig : {};
+        const milestones = cfg.milestones || {};
+        const st = String(order?.status || 'pendiente').toLowerCase();
+        const isEnvio = (order?.deliveryMethod === 'envio' || order?.shippingMethod === 'envio');
+
+        if (st.includes('cancelado')) {
+            return {
+                isCancelled: true,
+                stepIndex: -1,
+                percent: 0,
+                steps: [],
+                currentTitle: 'Pedido Cancelado',
+                currentDesc: 'Este pedido fue cancelado. Si tenés dudas, escribinos por WhatsApp.'
+            };
+        }
+
+        let stepIndex = 0;
+        if (st.includes('entregado') || st.includes('completado')) {
+            stepIndex = 3;
+        } else if (st.includes('listo')) {
+            stepIndex = 2;
+        } else if (st.includes('proceso') || st.includes('produccion') || st.includes('carpinteria') || st.includes('armado') || st.includes('fabricacion') || st.includes('taller')) {
+            stepIndex = 1;
+        } else {
+            stepIndex = 0;
+        }
+
+        const steps = [
+            { label: 'Pendiente', icon: 'schedule' },
+            { label: 'En producción', icon: 'carpenter' },
+            { label: 'Listo', icon: 'inventory_2' },
+            { label: 'Entregado', icon: 'check_circle' }
+        ];
+
+        const readyDesc = milestones.readyDesc || '¡Tu pedido ya está listo!';
+        const deliveryDesc = isEnvio
+            ? (milestones.envioDesc || 'Tu pedido se encuentra en proceso de despacho o en camino.')
+            : (milestones.retiraDesc || 'Ya podés coordinar el retiro por nuestro taller.');
+
+        const stepDescriptions = [
+            'Tu orden está registrada y en cola de confirmación / preparación.',
+            'Nuestro equipo está fabricando tu pedido en el taller.',
+            `${readyDesc} ${deliveryDesc}`,
+            isEnvio ? 'Pedido despachado y entregado al cliente.' : 'Pedido retirado y entregado. ¡Gracias por tu compra!'
+        ];
+
+        return {
+            isCancelled: false,
+            stepIndex,
+            percent: ((stepIndex + 1) / steps.length) * 100,
+            steps,
+            currentTitle: steps[stepIndex].label,
+            currentDesc: stepDescriptions[stepIndex]
+        };
+    }
+
+    async function findOrderForTracking(orderId) {
+        const candidates = normalizeOrderCandidates(orderId);
+        if (candidates.length === 0) return null;
+
+        // 1. Buscar primero en ordersData local
+        if (typeof ordersData !== 'undefined' && Array.isArray(ordersData)) {
+            for (const cand of candidates) {
+                const match = ordersData.find(o => String(o.id).toUpperCase() === cand.toUpperCase());
+                if (match) return match;
+            }
+        }
+
+        // 2. Consultar Cloudflare KV en vivo
+        for (const cand of candidates) {
+            try {
+                const res = await fetch(`${WORKER_URL}/pedidos?id=${encodeURIComponent(cand)}`);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.success && data.order) {
+                        return data.order;
+                    }
+                }
+            } catch (e) {}
+        }
+
+        // 3. Fallback a pedidos guardados localmente en este dispositivo
+        const localOrders = getLocalOrders();
+        for (const cand of candidates) {
+            const match = localOrders.find(o => String(o.id).toUpperCase() === cand.toUpperCase());
+            if (match) return match;
+        }
+
+        return null;
+    }
+
+    async function renderInlineTracking(orderId) {
+        const panel = document.getElementById('myorders-inline-tracking-panel');
+        if (!panel) return;
+
+        const cleanId = String(orderId || '').trim().replace(/^#/, '');
+        if (!cleanId) return;
+
+        const reqSeq = ++inlineTrackingSeq;
+        panel.style.display = 'block';
+        panel.innerHTML = `
+            <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 1.75rem; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);">
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem;">
+                    <div style="display: flex; align-items: center; gap: 10px; color: #0f172a; font-weight: 800;">
+                        <span class="material-symbols-outlined" style="animation: spin 1s linear infinite; color: var(--primary-color, #A0715B);">sync</span>
+                        <span>Consultando seguimiento de orden #${escapeHtml(cleanId)}...</span>
+                    </div>
+                    <button type="button" id="btn-close-inline-tracking" style="background: #f1f5f9; color: #475569; border: none; border-radius: 50px; padding: 6px 14px; font-size: 0.82rem; font-weight: 700; cursor: pointer;">Cerrar seguimiento</button>
+                </div>
+            </div>
+        `;
+        panel.querySelector('#btn-close-inline-tracking')?.addEventListener('click', () => {
+            panel.style.display = 'none';
+            panel.innerHTML = '';
+        });
+
+        const order = await findOrderForTracking(cleanId);
+        if (reqSeq !== inlineTrackingSeq) return;
+
+        if (!order) {
+            const helpWa = encodeURIComponent(`¡Hola La Tarima! Busqué mi orden #${cleanId} en la web y no apareció. ¿Me ayudan a revisarla?`);
+            panel.innerHTML = `
+                <div style="background: #ffffff; border: 1.5px solid #fecaca; border-radius: 18px; padding: 1.5rem 1.75rem; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);">
+                    <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+                        <div style="display: flex; align-items: flex-start; gap: 12px;">
+                            <div style="width: 44px; height: 44px; border-radius: 12px; background: #fee2e2; color: #b91c1c; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <span class="material-symbols-outlined" style="font-size: 24px;">search_off</span>
+                            </div>
+                            <div>
+                                <h3 style="margin: 0 0 4px 0; font-size: 1.05rem; font-weight: 800; color: #0f172a;">No encontramos la orden #${escapeHtml(cleanId)}</h3>
+                                <p style="margin: 0; font-size: 0.86rem; color: #64748b; line-height: 1.5;">
+                                    Verificá que el número o código (ej. <strong>500102800</strong> o <strong>LT-...</strong>) sea correcto. Si el problema persiste, consultanos directo por WhatsApp.
+                                </p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                            <a href="https://wa.me/5491167007723?text=${helpWa}" target="_blank" rel="noopener" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; border-radius: 10px; padding: 0.55rem 0.95rem; font-weight: 700; font-size: 0.84rem; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                                <span class="material-symbols-outlined" style="font-size: 17px;">chat</span>
+                                <span>Consultar por WhatsApp</span>
+                            </a>
+                            <button type="button" id="btn-close-inline-tracking" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.55rem 0.95rem; font-weight: 700; font-size: 0.84rem; cursor: pointer;">
+                                Cerrar seguimiento
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            panel.querySelector('#btn-close-inline-tracking')?.addEventListener('click', () => {
+                panel.style.display = 'none';
+                panel.innerHTML = '';
+            });
+            return;
+        }
+
+        const st = getStatusMeta(order.status);
+        const progress = getTrackingProgress(order);
+        const displayId = order.id || cleanId;
+        const dateStr = formatDate(order.createdAt || order.creationDate || order.startDate);
+        const productTitle = order.productName || order.title || (Array.isArray(order.cartItems) && order.cartItems[0]?.title) || 'Pedido La Tarima';
+        const imgSrc = order.image || (Array.isArray(order.cartItems) && order.cartItems[0]?.image) || 'img/logo_provisional.png';
+        const finish = order.selectedFinish || (Array.isArray(order.cartItems) && order.cartItems[0]?.finish) || '';
+        const measure = order.selectedMeasure || (Array.isArray(order.cartItems) && order.cartItems[0]?.measure) || '';
+        const detailLine = [finish, measure].filter(Boolean).join(' • ');
+        const totalAmount = (order.totalAmount !== undefined) ? order.totalAmount : order.amount;
+        const deliveryMethod = String(order.deliveryMethod || order.shippingMethod || 'retira').toLowerCase();
+        const isEnvio = deliveryMethod === 'envio';
+        const cfg = (typeof ordersConfig !== 'undefined' && ordersConfig) ? ordersConfig : {};
+        const milestones = cfg.milestones || {};
+        const deliveryLabel = isEnvio
+            ? (order.shippingLabel || milestones.envioTitle || 'Envío a domicilio')
+            : (milestones.retiraTitle || 'Retiro por taller (Hurlingham)');
+
+        let dispatchHtml = '';
+        if (isEnvio && order.dispatchInfo) {
+            const info = order.dispatchInfo;
+            const courierLabel = info.courierName || info.courier || 'Transporte asignado';
+            const trackingCode = info.trackingNumber ? String(info.trackingNumber).trim() : '';
+            const trackingUrl = info.trackingUrl || info.url || '';
+            dispatchHtml = `
+                <div style="margin-top: 0.75rem; padding: 0.75rem 0.9rem; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+                    <div style="font-size: 0.83rem; color: #1e40af; font-weight: 600;">
+                        <strong>${escapeHtml(courierLabel)}</strong>${trackingCode ? ` • Guía: <code style="background:#fff;padding:2px 6px;border-radius:6px;border:1px solid #bfdbfe;font-weight:800;">${escapeHtml(trackingCode)}</code>` : ''}
+                    </div>
+                    ${trackingUrl ? `<a href="${escapeHtml(trackingUrl)}" target="_blank" rel="noopener" style="background: #2563eb; color: #fff; text-decoration: none; padding: 5px 12px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">Seguir envío <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></a>` : ''}
+                </div>
+            `;
+        }
+
+        let itemsHtml = '';
+        if (Array.isArray(order.cartItems) && order.cartItems.length > 0) {
+            itemsHtml = `
+                <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed #e2e8f0;">
+                    <div style="font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 6px;">Detalle de ítems</div>
+                    <ul style="margin: 0; padding-left: 1.1rem; font-size: 0.83rem; color: #334155; display: grid; gap: 4px;">
+                        ${order.cartItems.map(it => {
+                            const qty = Number(it.quantity || it.qty || 1);
+                            const meta = [it.finish || it.selectedFinish, it.measure || it.selectedMeasure].filter(Boolean).join(' • ');
+                            return `<li><strong>${qty}x</strong> ${escapeHtml(it.title || it.name || 'Producto')}${meta ? ` <span style="color:#64748b;">(${escapeHtml(meta)})</span>` : ''}</li>`;
+                        }).join('')}
+                    </ul>
+                </div>
+            `;
+        }
+
+        const progressHtml = progress.isCancelled
+            ? `
+                <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px; padding: 0.9rem 1rem; margin: 1rem 0; display: flex; align-items: center; gap: 10px; color: #b91c1c;">
+                    <span class="material-symbols-outlined" style="font-size: 22px;">cancel</span>
+                    <div style="font-size: 0.86rem;">
+                        <strong>${escapeHtml(progress.currentTitle)}:</strong> ${escapeHtml(progress.currentDesc)}
+                    </div>
+                </div>
+            `
+            : `
+                <div style="margin: 1rem 0 1.1rem; padding: 1rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 0.65rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.84rem; font-weight: 800; color: #0f172a;">Paso actual: ${escapeHtml(progress.currentTitle)}</span>
+                        <span style="font-size: 0.78rem; color: #475569;">${escapeHtml(progress.currentDesc)}</span>
+                    </div>
+                    <div style="height: 8px; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin-bottom: 0.85rem;">
+                        <div style="height: 100%; width: ${progress.percent}%; background: var(--primary-color, #A0715B); border-radius: 999px; transition: width 0.3s ease;"></div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+                        ${progress.steps.map((step, idx) => {
+                            const done = idx <= progress.stepIndex;
+                            const isCurrent = idx === progress.stepIndex;
+                            return `
+                                <div style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 10px; background: ${isCurrent ? '#fff' : 'transparent'}; border: 1px solid ${isCurrent ? 'rgba(160,113,91,0.35)' : 'transparent'}; opacity: ${done ? '1' : '0.5'};">
+                                    <span class="material-symbols-outlined" style="font-size: 18px; color: ${done ? 'var(--primary-color, #A0715B)' : '#94a3b8'};">${step.icon}</span>
+                                    <span style="font-size: 0.78rem; font-weight: ${isCurrent ? '800' : '600'}; color: ${done ? '#0f172a' : '#64748b'};">${escapeHtml(step.label)}</span>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+
+        const waMsg = encodeURIComponent(`¡Hola La Tarima! Consulto por el seguimiento de mi pedido #${displayId} (${productTitle}).`);
+
+        panel.innerHTML = `
+            <section aria-label="Seguimiento de pedido" style="background: #ffffff; border: 1.5px solid rgba(160, 113, 91, 0.35); border-radius: 20px; overflow: hidden; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);">
+                <div style="background: linear-gradient(135deg, #faf8f5 0%, #f8fafc 100%); padding: 0.95rem 1.35rem; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+                        <span style="display: inline-flex; align-items: center; gap: 6px; font-weight: 900; font-size: 0.98rem; color: #0f172a;">
+                            <span class="material-symbols-outlined" style="color: var(--primary-color, #A0715B); font-size: 21px;">local_shipping</span>
+                            Seguimiento Orden #${escapeHtml(displayId)}
+                        </span>
+                        <span style="color: #cbd5e1;">|</span>
+                        <span style="font-size: 0.83rem; color: #475569; font-weight: 600;">${escapeHtml(dateStr)}</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <span style="display: inline-flex; align-items: center; gap: 5px; font-size: 0.78rem; font-weight: 800; color: ${st.color}; background: ${st.bg}; padding: 4px 12px; border-radius: 50px;">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">${st.icon}</span>
+                            <span>${escapeHtml(st.label)}</span>
+                        </span>
+                        <button type="button" id="btn-close-inline-tracking" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; border-radius: 50px; padding: 5px 13px; font-size: 0.8rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">close</span>
+                            <span>Cerrar seguimiento</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div style="padding: 1.25rem 1.35rem;">
+                    ${progressHtml}
+
+                    <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
+                        <div style="display: flex; align-items: flex-start; gap: 1rem; flex: 1; min-width: 260px;">
+                            <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(productTitle)}" onerror="this.src='img/logo_provisional.png'" style="width: 82px; height: 82px; border-radius: 14px; object-fit: cover; border: 1px solid #e2e8f0; background: #faf9f6; flex-shrink: 0;">
+                            <div style="min-width: 0; flex: 1;">
+                                <h3 style="margin: 0 0 4px 0; font-size: 1.08rem; font-weight: 800; color: #0f172a;">${escapeHtml(productTitle)}</h3>
+                                ${detailLine ? `<div style="font-size: 0.84rem; color: #475569; margin-bottom: 4px;">${escapeHtml(detailLine)}</div>` : ''}
+                                ${order.description ? `<p style="margin: 0 0 6px 0; font-size: 0.83rem; color: #64748b; line-height: 1.45;">${escapeHtml(order.description)}</p>` : ''}
+                                <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.83rem; color: #334155; margin-top: 6px;">
+                                    ${totalAmount !== undefined ? `<span style="font-weight: 800; color: #0f172a; font-size: 0.96rem;">${formatPrice(totalAmount)}</span><span style="color: #cbd5e1;">•</span>` : ''}
+                                    <span style="display: inline-flex; align-items: center; gap: 4px; font-weight: 600;">
+                                        <span class="material-symbols-outlined" style="font-size: 16px; color: var(--primary-color, #A0715B);">${isEnvio ? 'local_shipping' : 'storefront'}</span>
+                                        ${escapeHtml(deliveryLabel)}
+                                    </span>
+                                </div>
+                                ${itemsHtml}
+                                ${dispatchHtml}
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                            <a href="https://wa.me/5491167007723?text=${waMsg}" target="_blank" rel="noopener" style="background: #16a34a; color: #ffffff; border: none; border-radius: 10px; padding: 0.65rem 1.15rem; font-weight: 700; font-size: 0.86rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.22);">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">chat</span>
+                                <span>Consultar por WhatsApp</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        `;
+
+        panel.querySelector('#btn-close-inline-tracking')?.addEventListener('click', () => {
+            panel.style.display = 'none';
+            panel.innerHTML = '';
+        });
+    }
+
     function openTrackingForOrder(orderId) {
+        if (!orderId) return;
+        if (window.innerWidth >= 900) {
+            const viewEl = document.getElementById('view-my-orders');
+            const panel = document.getElementById('myorders-inline-tracking-panel');
+            if ((viewEl && !viewEl.classList.contains('active')) || !panel) {
+                render({ orderId });
+                return;
+            }
+            renderInlineTracking(orderId);
+            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            return;
+        }
         if (typeof window.showOrderInIframe === 'function') {
             window.showOrderInIframe(orderId);
         } else {
@@ -260,7 +626,17 @@
         }
     }
 
-    async function render() {
+    async function render(options = {}) {
+        const viewEl = document.getElementById('view-my-orders');
+        if (options && options.orderId && viewEl && !viewEl.classList.contains('active') && typeof window.navigateToView === 'function') {
+            pendingInlineOrderId = options.orderId;
+            window.navigateToView('view-my-orders');
+            return;
+        }
+
+        const targetOrderId = (options && options.orderId) || pendingInlineOrderId;
+        pendingInlineOrderId = null;
+
         const container = document.getElementById('my-orders-view-content');
         if (!container) return;
 
@@ -390,12 +766,14 @@
 
                     <form id="form-myorders-lookup" style="display: flex; gap: 6px; align-items: center; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 50px; padding: 4px 6px 4px 14px; box-shadow: 0 2px 6px rgba(0,0,0,0.04);">
                         <span class="material-symbols-outlined" style="font-size: 18px; color: #64748b;">search</span>
-                        <input type="text" id="input-myorders-lookup" placeholder="Buscar orden #LT-..." style="border: none; outline: none; font-size: 0.85rem; width: 170px; background: transparent;">
+                        <input type="text" id="input-myorders-lookup" placeholder="Orden o código #LT-..." style="border: none; outline: none; font-size: 0.85rem; width: 185px; background: transparent;">
                         <button type="submit" style="background: #0f172a; color: #ffffff; border: none; border-radius: 50px; padding: 6px 14px; font-size: 0.8rem; font-weight: 700; cursor: pointer;">Rastrear</button>
                     </form>
                 </div>
 
                 ${loginInvitationHtml}
+
+                <div id="myorders-inline-tracking-panel" style="display: none; margin-bottom: 1.5rem;"></div>
 
                 <div id="my-orders-list-wrapper">
                     ${ordersHtml}
@@ -425,10 +803,10 @@
 
         document.getElementById('form-myorders-lookup')?.addEventListener('submit', (e) => {
             e.preventDefault();
-            let val = (document.getElementById('input-myorders-lookup')?.value || '').trim().toUpperCase();
+            let val = (document.getElementById('input-myorders-lookup')?.value || '').trim().replace(/^#/, '');
             if (!val) return;
-            if (!val.startsWith('LT-') && /^[0-9]+$/.test(val)) {
-                val = 'LT-' + val;
+            if (/^lt-/i.test(val)) {
+                val = 'LT-' + val.slice(3).toUpperCase();
             }
             openTrackingForOrder(val);
         });
@@ -439,11 +817,21 @@
                 if (id) openTrackingForOrder(id);
             });
         });
+
+        if (targetOrderId) {
+            openTrackingForOrder(targetOrderId);
+        }
     }
 
-    window.saveMyLocalOrder = saveMyLocalOrder;
+    if (typeof window.saveMyLocalOrder !== 'function') {
+        window.saveMyLocalOrder = saveMyLocalOrder;
+    }
+    if (typeof window.getMyLocalOrders !== 'function') {
+        window.getMyLocalOrders = getLocalOrders;
+    }
     window.MyOrders = {
         render,
+        trackOrder: openTrackingForOrder,
         saveLocalOrder: saveMyLocalOrder,
         getLocalOrders
     };

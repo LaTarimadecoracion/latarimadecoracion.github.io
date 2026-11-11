@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const productsDataPath = path.join(__dirname, '..', 'js', 'products-data.js');
+const productsDataPath = path.join(__dirname, '..', 'js', 'data', 'products-data.js');
 let productsContent = fs.readFileSync(productsDataPath, 'utf8');
 
 let productsArray = [];
@@ -64,4 +64,4 @@ productsArray.forEach((category) => {
 const updatedContent = `const productsData = ${JSON.stringify(productsArray, null, 4)};\n`;
 fs.writeFileSync(productsDataPath, updatedContent, 'utf8');
 
-console.log(`✅ ¡Migración de DNI/ID completada! Se actualizaron ${modifiedCount} productos en js/products-data.js.`);
+console.log(`✅ ¡Migración de DNI/ID completada! Se actualizaron ${modifiedCount} productos en js/data/products-data.js.`);

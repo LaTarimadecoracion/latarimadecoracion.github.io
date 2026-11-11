@@ -71,7 +71,13 @@ window.addEventListener('load', function() {
         fab.classList.remove('dragging');
 
         if (!didMove) {
-            if (window.openTrackingSheet) window.openTrackingSheet();
+            if (window.openTrackingSheet) {
+                window.openTrackingSheet();
+            } else if (window.ensureTrackingLoaded) {
+                window.ensureTrackingLoaded().then(() => {
+                    if (window.openTrackingSheet) window.openTrackingSheet();
+                });
+            }
             return;
         }
 
