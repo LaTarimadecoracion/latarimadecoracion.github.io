@@ -536,7 +536,7 @@ button, .btn-primary, .btn-outline {
 }
 
 /* Todos los hijos directos del header van encima del canvas decorativo */
-.main-header-bar > *:not(#lt-header-deco):not(#lt-garland) {
+.main-header-bar > *:where(:not(#lt-header-deco):not(#lt-garland)) {
     position: relative;
     z-index: 2;
 }
