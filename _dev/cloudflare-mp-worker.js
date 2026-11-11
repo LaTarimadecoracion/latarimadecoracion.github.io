@@ -73,6 +73,43 @@ export default {
       }
 
       // -------------------------------------------------------------
+      // 2b. GET /mis-pedidos?email=... — Listado de pedidos de un cliente
+      // -------------------------------------------------------------
+      if (request.method === 'GET' && path === '/mis-pedidos') {
+        const email = (url.searchParams.get('email') || '').trim().toLowerCase();
+        if (!email) {
+          return new Response(JSON.stringify({ success: false, message: 'Falta parámetro ?email=' }), {
+            status: 400,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+        if (!env.ORDERS_KV) {
+          return new Response(JSON.stringify({ success: true, orders: [] }), {
+            status: 200,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+        const list = await env.ORDERS_KV.list({ prefix: 'order:' });
+        const clientOrders = [];
+        for (const key of list.keys) {
+          const itemRaw = await env.ORDERS_KV.get(key.name);
+          if (itemRaw) {
+            try {
+              const ord = JSON.parse(itemRaw);
+              if (ord && ord.clientEmail && ord.clientEmail.trim().toLowerCase() === email) {
+                clientOrders.push(ord);
+              }
+            } catch (e) {}
+          }
+        }
+        clientOrders.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+        return new Response(JSON.stringify({ success: true, orders: clientOrders }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      // -------------------------------------------------------------
       // 3. GET /admin/pedidos — Listado de pedidos para el Admin
       // -------------------------------------------------------------
       if (request.method === 'GET' && path === '/admin/pedidos') {

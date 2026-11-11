@@ -336,8 +336,13 @@
     transition: color 0.15s;
 }
 
-.desktop-account-link:hover {
+.desktop-account-link:hover,
+.desktop-account-link.active {
     color: var(--primary-color, #A0715B);
+}
+
+.desktop-account-link.active {
+    font-weight: 700;
 }
 
 .desktop-account-login {

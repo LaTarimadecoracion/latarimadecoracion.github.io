@@ -6,7 +6,7 @@
 
 (function () {
     function syncActive(viewId) {
-        const links = document.querySelectorAll('.desktop-nav-link[data-target]');
+        const links = document.querySelectorAll('.desktop-nav-link[data-target], .desktop-account-link[data-target]');
         links.forEach(link => {
             if (link.getAttribute('data-target') === viewId) {
                 link.classList.add('active');
@@ -230,8 +230,8 @@
                         <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-profile');">
                             <span class="material-symbols-outlined">shopping_cart</span> Mi Carrito y Datos
                         </a>
-                        <a href="#" onclick="event.preventDefault(); if(window.openTrackingSheet) window.openTrackingSheet(); else if(window.navigateToView) window.navigateToView('view-pedidos');">
-                            <span class="material-symbols-outlined">local_shipping</span> Mis Compras / Pedidos
+                        <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-my-orders');">
+                            <span class="material-symbols-outlined">shopping_bag</span> Mis Compras / Pedidos
                         </a>
                         ${isStaff ? `
                             <a href="#" class="desktop-admin-shortcut" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-admin');">
@@ -255,6 +255,10 @@
         try {
             const user = await window.AdminAuth.loginPublicStoreWithGoogle();
             renderAccount();
+            const myOrdersEl = document.getElementById('view-my-orders');
+            if (myOrdersEl && myOrdersEl.classList.contains('active') && window.MyOrders) {
+                window.MyOrders.render();
+            }
             if (window.showToast) {
                 window.showToast(`¡Bienvenido/a, ${user.nombre}!`);
             }
@@ -270,6 +274,10 @@
             await window.AdminAuth.logoutPublic();
         }
         renderAccount();
+        const myOrdersEl = document.getElementById('view-my-orders');
+        if (myOrdersEl && myOrdersEl.classList.contains('active') && window.MyOrders) {
+            window.MyOrders.render();
+        }
     }
 
     function init() {

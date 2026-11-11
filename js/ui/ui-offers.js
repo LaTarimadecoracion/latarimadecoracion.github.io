@@ -3623,6 +3623,15 @@
                 if (data.ciudad && document.getElementById('pay-ship-ciudad')) document.getElementById('pay-ship-ciudad').value = data.ciudad;
                 if (data.provincia && document.getElementById('pay-ship-provincia')) document.getElementById('pay-ship-provincia').value = data.provincia;
                 if (data.email && document.getElementById('pay-ship-email')) document.getElementById('pay-ship-email').value = data.email;
+                try {
+                    const loggedUser = window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function' ? window.AdminAuth.getPublicUser() : null;
+                    if (loggedUser) {
+                        const nameEl = document.getElementById('pay-client-name');
+                        const mailEl = document.getElementById('pay-ship-email');
+                        if (nameEl && !nameEl.value && loggedUser.nombre) nameEl.value = loggedUser.nombre;
+                        if (mailEl && !mailEl.value && loggedUser.email) mailEl.value = loggedUser.email;
+                    }
+                } catch(e) {}
                 if (data.razonSocial && document.getElementById('factura-razon-social')) document.getElementById('factura-razon-social').value = data.razonSocial;
                 if (data.cuit && document.getElementById('factura-cuit')) document.getElementById('factura-cuit').value = data.cuit;
                 if (data.dirFiscal && document.getElementById('factura-direccion-fiscal')) document.getElementById('factura-direccion-fiscal').value = data.dirFiscal;
@@ -3712,7 +3721,8 @@
             const finalAmount = info.finalTotal;
             const clientName = document.getElementById('pay-client-name')?.value.trim() || 'Cliente La Tarima';
             const clientPhone = document.getElementById('pay-client-phone')?.value.trim() || '';
-            const clientEmail = document.getElementById('pay-ship-email')?.value.trim() || document.getElementById('factura-email')?.value.trim() || 'comprador@latarima.com.ar';
+            const loggedMpEmail = window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function' ? (window.AdminAuth.getPublicUser()?.email || '') : '';
+            const clientEmail = document.getElementById('pay-ship-email')?.value.trim() || document.getElementById('factura-email')?.value.trim() || loggedMpEmail || 'comprador@latarima.com.ar';
 
             const originalHtml = btnEl.innerHTML;
             btnEl.disabled = true;
@@ -3764,6 +3774,23 @@
                     throw new Error(data.message || 'No se pudo generar el link de Mercado Pago.');
                 }
 
+                if (typeof window.saveMyLocalOrder === 'function') {
+                    window.saveMyLocalOrder({
+                        id: payload.externalReference,
+                        title: payload.title,
+                        amount: payload.amount,
+                        image: payload.image,
+                        selectedFinish: payload.selectedFinish,
+                        selectedMeasure: payload.selectedMeasure,
+                        clientName: payload.payerName,
+                        clientEmail: payload.payerEmail,
+                        shippingMethod: info.isShipping ? 'envio' : 'retira',
+                        shippingLabel: info.shipLabel || '',
+                        paymentMethod: 'mercadopago',
+                        status: 'pendiente',
+                        createdAt: Date.now()
+                    });
+                }
                 // Abrir Checkout Pro de Mercado Pago en nueva pestaña y avanzar al Paso 3 para que pueda avisar por WhatsApp
                 window.open(data.init_point, '_blank', 'noopener,noreferrer');
                 btnEl.disabled = false;
@@ -3808,7 +3835,8 @@
 
                 const clientName = document.getElementById('pay-client-name')?.value.trim();
                 const clientPhone = document.getElementById('pay-client-phone')?.value.trim();
-                const clientEmail = document.getElementById('pay-ship-email')?.value.trim() || document.getElementById('factura-email')?.value.trim() || '';
+                const loggedWaEmail = window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function' ? (window.AdminAuth.getPublicUser()?.email || '') : '';
+                const clientEmail = document.getElementById('pay-ship-email')?.value.trim() || document.getElementById('factura-email')?.value.trim() || loggedWaEmail || '';
 
                 const trackingOrderId = 'LT-' + Date.now().toString().slice(-6);
 
@@ -3983,6 +4011,16 @@
                     externalReference: trackingOrderId
                 };
 
+                if (typeof window.saveMyLocalOrder === 'function') {
+                    window.saveMyLocalOrder({
+                        ...transPayload,
+                        id: trackingOrderId,
+                        clientEmail: clientEmail,
+                        paymentMethod: 'transferencia',
+                        status: 'pendiente_de_confirmacion',
+                        createdAt: Date.now()
+                    });
+                }
                 fetch(`${workerBaseUrl}/pedidos/transferencia`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },

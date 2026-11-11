@@ -251,7 +251,7 @@
                     <a href="#" class="desktop-account-link" onclick="event.preventDefault(); if(window.DesktopHeader) window.DesktopHeader.triggerClientLogin();">Creá tu cuenta</a>
                     <a href="#" class="desktop-account-link desktop-account-login" onclick="event.preventDefault(); if(window.DesktopHeader) window.DesktopHeader.triggerClientLogin();">Ingresá</a>
                 </div>
-                <a href="#" class="desktop-account-link" onclick="event.preventDefault(); if(window.openTrackingSheet) window.openTrackingSheet(); else if(window.navigateToView) window.navigateToView('view-pedidos');">Mis compras</a>
+                <a href="#" class="desktop-account-link" data-target="view-my-orders" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-my-orders');">Mis compras</a>
                 <button type="button" class="desktop-icon-btn" onclick="if(window.navigateToView) window.navigateToView('view-notifications');" title="Notificaciones y Avisos">
                     <span class="material-symbols-outlined">notifications</span>
                     <span class="desktop-icon-badge" id="desktop-notif-badge" style="display: none;"></span>
@@ -468,6 +468,11 @@
         <section id="view-profile" class="view">
             <div class="view-content"></div>
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        <!-- View: Mis Compras (Historial de Pedidos del Cliente) -->
+        <section id="view-my-orders" class="view">
+            <div class="view-content" id="my-orders-view-content"></div>
         </section>
 
         <!-- View 3: Buscar -->
@@ -826,6 +831,7 @@
     <script src="js/admin/admin-auth.js?v=3" defer></script>
     <script src="js/ui/ui-navigation.js?v=6" defer></script>
     <script src="js/ui/desktop-header.js?v=1" defer></script>
+    <script src="js/ui/my-orders.js?v=1" defer></script>
     <script src="js/ui/ui-offers.js?v=20" defer></script>
     <script src="js/ui/catalog/catalog-utils.js?v=4" defer></script>
     <script src="js/ui/ui-search-feed.js?v=1" defer></script>
