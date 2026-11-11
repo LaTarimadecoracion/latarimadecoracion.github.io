@@ -776,19 +776,14 @@
             let cartListHTML = '';
             if (cartItems.length === 0) {
                 cartListHTML = `
-                    <div class="cart-empty-motivator" style="padding: 2.5rem 1.5rem; text-align: center; border-radius: 20px; background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 4px 16px rgba(0,0,0,0.04); margin-top:1.5rem;">
-                        <div style="width: 80px; height: 80px; background: #eff6ff; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;">
-                            <span class="material-symbols-outlined" style="font-size: 42px; color:#3483fa;">shopping_bag</span>
+                    <div class="cart-empty-motivator" style="padding: 2rem 1.5rem; text-align: center; border-radius: 20px; background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 4px 16px rgba(0,0,0,0.04); margin-top: 0.5rem;">
+                        <div style="width: 72px; height: 72px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                            <span class="material-symbols-outlined" style="font-size: 36px; color: var(--primary-color, #A0715B);">shopping_cart</span>
                         </div>
-                        <h3 style="font-size: 1.25rem; font-weight: 800; color: #0f172a; margin:0 0 0.5rem 0;">¡Tu carrito está vacío!</h3>
-                        <p style="font-size: 0.9rem; color: #64748b; margin:0 0 1.5rem 0; line-height:1.5;">Explorá nuestros productos de madera maciza y sumalos a tu pedido.</p>
-                        
-                        <div style="display:flex; flex-direction:column; gap:0.75rem; max-width: 280px; margin: 0 auto;">
-                            <button type="button" class="cart-btn-buy" onclick="if(window.navigateToView) window.navigateToView('view-catalogo')" style="border-radius: 50px;">
-                                <span class="material-symbols-outlined" style="font-size: 1.2rem;">category</span>
-                                Explorar Catálogo
-                            </button>
-                        </div>
+                        <h3 style="font-size: 1.2rem; font-weight: 800; color: #0f172a; margin: 0 0 0.45rem 0;">No hay nada en tu carrito</h3>
+                        <p style="font-size: 0.88rem; color: #64748b; margin: 0; line-height: 1.5;">
+                            Todavía no agregaste productos. Mirá los más buscados o desplegá el catálogo completo acá abajo.
+                        </p>
                     </div>
                 `;
             } else {
@@ -1262,7 +1257,16 @@
                     </div>
                     ${cartListHTML}
                 </div>
+
+                ${cartItems.length === 0 ? '<div id="cart-empty-discovery-host"></div>' : ''}
             `;
+
+            if (cartItems.length === 0 && typeof window.renderProductDiscoverySections === 'function') {
+                const discoveryHost = document.getElementById('cart-empty-discovery-host');
+                if (discoveryHost) {
+                    window.renderProductDiscoverySections(discoveryHost, { idSuffix: 'cart' });
+                }
+            }
 
             // --- Accesos a secciones separadas (Mi Perfil / Mis Compras / Sync Google) ---
             document.getElementById('btn-go-user-profile-from-cart')?.addEventListener('click', () => {
