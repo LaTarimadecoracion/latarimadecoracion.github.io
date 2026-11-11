@@ -578,21 +578,59 @@
         }
     }
 
-    // Inicializar listener de Firebase Auth para persistencia automática
+    // Inicializar listener de Firebase Auth para persistencia automática (Equipo y Clientes)
     function initAuthListener() {
         const auth = getFirebaseAuth();
         if (!auth) return;
 
+        // Procesar resultado si volvió de un redirect
+        auth.getRedirectResult().catch(() => {});
+
         auth.onAuthStateChanged((fbUser) => {
             if (fbUser && fbUser.email) {
-                const session = getSession();
-                if (!session) {
-                    const check = verifyAuthorizedUser(fbUser.email, fbUser.displayName, fbUser.photoURL, true);
-                    if (check.success) {
+                const cleanEmail = fbUser.email.trim().toLowerCase();
+                const users = getStoredUsers();
+                let userRecord = users.find(u => (u.email || '').trim().toLowerCase() === cleanEmail);
+
+                // Si es usuario nuevo en la tienda pública, se registra como cliente por defecto
+                if (!userRecord && !window.location.pathname.includes('/pedidos/admin.html')) {
+                    userRecord = registerClientUser(cleanEmail, fbUser.displayName || 'Cliente', '', fbUser.photoURL || '');
+                }
+
+                if (userRecord && userRecord.status !== 'suspendido') {
+                    const isStaff = userRecord.role === 'superadmin' || userRecord.role === 'colaborador';
+
+                    if (isStaff && !getSession()) {
+                        verifyAuthorizedUser(fbUser.email, fbUser.displayName, fbUser.photoURL, true);
                         renderHeaderUserBadge();
-                    } else {
-                        auth.signOut().catch(() => {});
                     }
+
+                    // Mantener sesión pública de tienda sincronizada
+                    const publicSession = {
+                        user: {
+                            id: userRecord.id,
+                            nombre: userRecord.nombre || fbUser.displayName || 'Usuario',
+                            email: cleanEmail,
+                            role: userRecord.role || 'cliente',
+                            clientTier: userRecord.clientTier || 'regular',
+                            picture: userRecord.picture || fbUser.photoURL || '',
+                            provider: 'google'
+                        },
+                        expiresAt: Date.now() + (30 * 24 * 3600 * 1000)
+                    };
+                    try {
+                        localStorage.setItem(STORAGE_CLIENT_SESSION_KEY, JSON.stringify(publicSession));
+                    } catch (e) {}
+
+                    if (window.DesktopHeader && typeof window.DesktopHeader.renderAccount === 'function') {
+                        window.DesktopHeader.renderAccount();
+                    }
+                    const myOrdersEl = document.getElementById('view-my-orders');
+                    if (myOrdersEl && myOrdersEl.classList.contains('active') && window.MyOrders) {
+                        window.MyOrders.render();
+                    }
+                } else if (window.location.pathname.includes('/pedidos/admin.html')) {
+                    auth.signOut().catch(() => {});
                 }
             }
         });
@@ -653,7 +691,16 @@
         provider.setCustomParameters({ prompt: 'select_account' });
 
         await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-        const result = await auth.signInWithPopup(provider);
+        let result;
+        try {
+            result = await auth.signInWithPopup(provider);
+        } catch (popErr) {
+            if (popErr && (popErr.code === 'auth/popup-blocked' || popErr.code === 'auth/operation-not-supported-in-this-environment')) {
+                await auth.signInWithRedirect(provider);
+                return null;
+            }
+            throw popErr;
+        }
         const fbUser = result.user;
         if (!fbUser || !fbUser.email) {
             throw new Error('No se recibió un correo electrónico válido.');
