@@ -581,8 +581,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- CONTROLES DE VISTA (LISTA / TARJETAS), ORDENAMIENTO Y RANGO DE PRECIOS ---
     let currentSearchQuery = '';
     let currentSortMode = localStorage.getItem('latarima_catalog_sort_mode') || 'az';
-    let currentMinPrice = null;
-    let currentMaxPrice = null;
     let currentViewMode = localStorage.getItem('latarima_catalog_view_mode') || (window.innerWidth >= 900 ? 'cards' : 'list');
 
     function getProductPriceRange(product) {
@@ -647,16 +645,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // 2. Filtro por rango de precios
-        if (currentMinPrice !== null || currentMaxPrice !== null) {
-            results = results.filter(p => {
-                const range = getProductPriceRange(p);
-                if (range.min === null) return false;
-                if (currentMinPrice !== null && range.max < currentMinPrice) return false;
-                if (currentMaxPrice !== null && range.min > currentMaxPrice) return false;
-                return true;
-            });
-        }
 
         // 3. Ordenamiento (A-Z, Z-A, Menor precio, Mayor precio)
         if (currentSortMode === 'za') {
@@ -687,10 +675,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const countEl = document.getElementById('catalog-results-count');
         if (countEl) {
             countEl.textContent = `${results.length} ${results.length === 1 ? 'producto' : 'productos'}`;
-        }
-        const clearBtn = document.getElementById('btn-clear-catalog-filters');
-        if (clearBtn) {
-            clearBtn.style.display = (currentMinPrice !== null || currentMaxPrice !== null) ? 'inline-flex' : 'none';
         }
 
         renderCatalogList(results);
@@ -739,25 +723,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const minInput = document.getElementById('catalog-price-min');
-    const maxInput = document.getElementById('catalog-price-max');
-    const updatePriceInputs = () => {
-        const minVal = minInput && minInput.value.trim() !== '' ? parseFloat(minInput.value) : NaN;
-        const maxVal = maxInput && maxInput.value.trim() !== '' ? parseFloat(maxInput.value) : NaN;
-        currentMinPrice = (!isNaN(minVal) && minVal >= 0) ? minVal : null;
-        currentMaxPrice = (!isNaN(maxVal) && maxVal >= 0) ? maxVal : null;
-        applyAllFiltersAndSort();
-    };
-    minInput?.addEventListener('input', updatePriceInputs);
-    maxInput?.addEventListener('input', updatePriceInputs);
-
-    document.getElementById('btn-clear-catalog-filters')?.addEventListener('click', () => {
-        if (minInput) minInput.value = '';
-        if (maxInput) maxInput.value = '';
-        currentMinPrice = null;
-        currentMaxPrice = null;
-        applyAllFiltersAndSort();
-    });
 
     // Inicializar
     setViewMode(currentViewMode);
