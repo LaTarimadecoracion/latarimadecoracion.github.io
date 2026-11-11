@@ -1037,46 +1037,34 @@
                 }
             } catch(e) {}
 
-            // Estructura de cabecera de perfil centrado + engranaje en esquina superior derecha
-            const fullUserData = window.UserDataManager ? window.UserDataManager.get() : {};
-            const userAvatar = fullUserData.avatar || 'face';
-            const userNameDisplay = (fullUserData.name || '').trim() || 'Cliente La Tarima';
-            const userSubDisplay = (fullUserData.locality || '').trim() 
-                ? `📍 ${fullUserData.locality}${(fullUserData.province || '').trim() ? ', ' + fullUserData.province : ''}`
-                : ((fullUserData.phone || '').trim() ? `📞 ${fullUserData.phone}` : 'Configurá tus datos');
-
-            let avatarHTML = '';
-            if (userAvatar && userAvatar.startsWith('data:image')) {
-                avatarHTML = `<div class="profile-avatar-circle" style="background-image: url('${userAvatar}'); background-size: cover; background-position: center; border: 2px solid #16a34a;"></div>`;
-            } else {
-                avatarHTML = `
-                    <div class="profile-avatar-circle" style="background: #f0fdf4; color: #16a34a; border: 2px solid #86efac; display: flex; align-items: center; justify-content: center;">
-                        <span class="material-symbols-outlined" style="font-size: 26px;">${userAvatar || 'face'}</span>
+            // Cabecera limpia exclusiva de Carrito (separada de Mi Perfil)
+            const cartHeaderStripHTML = `
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="width: 40px; height: 40px; border-radius: 12px; background: rgba(160, 113, 91, 0.12); color: var(--primary-color, #A0715B); display: flex; align-items: center; justify-content: center;">
+                            <span class="material-symbols-outlined" style="font-size: 22px;">shopping_cart</span>
+                        </div>
+                        <div>
+                            <h2 style="margin: 0; font-size: 1.25rem; font-weight: 900; color: #0f172a;">Mi Carrito</h2>
+                            <p style="margin: 0; font-size: 0.78rem; color: #64748b;">Calculá envíos y finalizá tu compra</p>
+                        </div>
                     </div>
-                `;
-            }
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <button type="button" id="btn-go-user-profile-from-cart" style="background: #f8fafc; border: 1px solid #cbd5e1; color: #0f172a; border-radius: 999px; padding: 0.42rem 0.9rem; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">account_circle</span>
+                            <span>Mi Perfil</span>
+                        </button>
+                        <button type="button" id="btn-go-my-orders-from-cart" style="background: #f8fafc; border: 1px solid #cbd5e1; color: #0f172a; border-radius: 999px; padding: 0.42rem 0.9rem; font-size: 0.78rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 5px;">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">shopping_bag</span>
+                            <span>Mis Compras</span>
+                        </button>
+                    </div>
+                </div>
+            `;
 
             viewContainer.innerHTML = `
                 ${wholesaleBannerHTML}
-                <!-- Cabecera de Perfil Compacta (Avatar y datos a la izq, config a la derecha) -->
-                <div class="profile-card-header" id="btn-open-user-profile-from-cart" style="cursor: pointer; transition: transform 0.15s ease;">
-                    <div class="profile-header-left">
-                        <!-- Avatar Compacto -->
-                        ${avatarHTML}
-                        <!-- Datos del Perfil -->
-                        <div class="profile-info">
-                            <h3 style="display: flex; align-items: center; gap: 6px;">
-                                ${userNameDisplay}
-                                <span class="material-symbols-outlined" style="font-size: 16px; color: #16a34a;">verified</span>
-                            </h3>
-                            <p>${userSubDisplay}</p>
-                        </div>
-                    </div>
-                    <!-- Botón de Engranaje para Editar Perfil (Abre Modal Completo) -->
-                    <button type="button" class="profile-settings-btn" id="btn-toggle-profile-settings" title="Editar Perfil" style="background: #f0fdf4; border: 1px solid #bbf7d0; color: #15803d;">
-                        <span class="material-symbols-outlined" style="font-size: 20px;">edit_note</span>
-                    </button>
-                </div>
+                ${cartHeaderStripHTML}
 
                 <!-- Sección de Favoritos (Carrito Integrado) -->
                 <div class="cart-section" style="margin-top: 1rem;">
@@ -1096,15 +1084,13 @@
                 </div>
             `;
 
-            // --- Registrar Eventos del Perfil ---
-            const openProfileBtn = document.getElementById('btn-open-user-profile-from-cart');
-            if (openProfileBtn) {
-                openProfileBtn.addEventListener('click', () => {
-                    if (typeof window.openUserProfileModal === 'function') {
-                        window.openUserProfileModal();
-                    }
-                });
-            }
+            // --- Accesos a secciones separadas (Mi Perfil / Mis Compras) ---
+            document.getElementById('btn-go-user-profile-from-cart')?.addEventListener('click', () => {
+                if (window.navigateToView) window.navigateToView('view-user-profile');
+            });
+            document.getElementById('btn-go-my-orders-from-cart')?.addEventListener('click', () => {
+                if (window.navigateToView) window.navigateToView('view-my-orders');
+            });
 
             // --- Registrar Eventos del Carrito ---
             

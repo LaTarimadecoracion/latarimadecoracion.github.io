@@ -148,7 +148,7 @@ window.ensureUserProfileModalLoaded = function() {
         return Promise.resolve();
     }
     if (_userProfileModalPromise) return _userProfileModalPromise;
-    _userProfileModalPromise = loadScriptOnDemand('js/ui/user-profile-modal.js?v=1');
+    _userProfileModalPromise = loadScriptOnDemand('js/ui/user-profile-modal.js?v=2');
     return _userProfileModalPromise;
 };
 
@@ -162,7 +162,7 @@ window.ensureCheckoutModalLoaded = function() {
         if (typeof window.ensurePostalLookupLoaded === 'function') {
             await window.ensurePostalLookupLoaded();
         }
-        await loadScriptOnDemand('js/ui/checkout-modal.js?v=1');
+        await loadScriptOnDemand('js/ui/checkout-modal.js?v=2');
     })();
     return _checkoutModalPromise;
 };
@@ -349,6 +349,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (window.innerWidth >= 900 || view === 'catalogo') {
             window.ensureCatalogModuleLoaded();
         }
+    } else if (view === 'perfil' || view === 'mi-perfil') {
+        window.ensureUserProfileModalLoaded();
     } else if (view === 'mis-compras' || view === 'pedidos' || params.get('id') || params.get('order')) {
         window.ensureMyOrdersLoaded();
     }

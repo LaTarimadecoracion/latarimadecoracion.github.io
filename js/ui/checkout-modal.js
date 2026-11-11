@@ -161,6 +161,22 @@
 
         const card = document.createElement('div');
         card.style.cssText = 'position: relative; width: 100vw; height: 100vh; height: 100dvh; max-width: 100vw; max-height: 100vh; max-height: 100dvh; border-radius: 0; padding: 1rem 1.25rem; background: #ffffff; box-shadow: none; border: none; font-family: var(--font-main); box-sizing: border-box; display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; transform: scale(0.98); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); margin: 0; overflow: hidden;';
+
+        const publicUserCheckout = (window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function')
+            ? window.AdminAuth.getPublicUser()
+            : null;
+
+        const googleAutofillBannerHTML = !publicUserCheckout ? `
+            <div id="checkout-google-autofill-bar" style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 12px; padding: 0.65rem 0.9rem; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; width: 100%; box-sizing: border-box;">
+                <div style="font-size: 0.78rem; font-weight: 700; color: #334155; line-height: 1.35; flex: 1; min-width: 180px;">
+                    ¿Ya tenés cuenta? Ingresá con Google en 1 clic para autocompletar tus datos
+                </div>
+                <button type="button" id="btn-checkout-google-autofill" style="background: #ffffff; border: 1.5px solid #cbd5e1; color: #0f172a; border-radius: 9px; padding: 0.45rem 0.85rem; font-size: 0.78rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; flex-shrink: 0; box-shadow: 0 1px 3px rgba(0,0,0,0.06); transition: all 0.2s;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z"/><path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z"/></svg>
+                    <span>Usar Google</span>
+                </button>
+            </div>
+        ` : '';
         
         card.innerHTML = `
             <!-- Botón X cerrado bien arriba a la derecha -->
@@ -191,6 +207,7 @@
                 
                 <!-- ==================== PASO 1: ENTREGA Y CONTACTO ==================== -->
                 <div id="checkout-step-1-content" style="display: flex; flex-direction: column; gap: 1rem;">
+                    ${googleAutofillBannerHTML}
                     
                     <!-- 1. Datos de Contacto del Cliente -->
                     <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 0.85rem 1rem; width: 100%; box-sizing: border-box;">
@@ -1704,6 +1721,83 @@
         document.getElementById('pay-mode-shipping')?.addEventListener('change', saveUserDataToStorage);
 
         restoreUserDataFromStorage();
+
+        // Barra opcional de autocompletado en 1 clic con Google (solo si no está logueado)
+        const checkoutGoogleBtn = document.getElementById('btn-checkout-google-autofill');
+        const checkoutGoogleBar = document.getElementById('checkout-google-autofill-bar');
+        if (checkoutGoogleBtn && checkoutGoogleBar) {
+            const defaultGoogleBtnHTML = checkoutGoogleBtn.innerHTML;
+            checkoutGoogleBtn.addEventListener('click', async () => {
+                if (!window.AdminAuth || typeof window.AdminAuth.loginPublicStoreWithGoogle !== 'function') {
+                    return;
+                }
+                checkoutGoogleBtn.disabled = true;
+                checkoutGoogleBtn.style.opacity = '0.7';
+                checkoutGoogleBtn.style.cursor = 'wait';
+                checkoutGoogleBtn.textContent = 'Conectando...';
+
+                try {
+                    const user = await window.AdminAuth.loginPublicStoreWithGoogle();
+                    if (!user) return;
+                    if (window.AdminAuth && typeof window.AdminAuth.syncClientProfileFromCloud === 'function') {
+                        await window.AdminAuth.syncClientProfileFromCloud();
+                    }
+
+                    const uData = (window.UserDataManager && typeof window.UserDataManager.get === 'function')
+                        ? window.UserDataManager.get()
+                        : {};
+
+                    const setVal = (id, val) => {
+                        const el = document.getElementById(id);
+                        if (el && val) el.value = val;
+                    };
+
+                    setVal('pay-client-name', uData.name || user.nombre || '');
+                    setVal('pay-client-phone', uData.phone || '');
+                    setVal('pay-ship-dir', uData.address || '');
+                    setVal('pay-ship-cp', uData.zipCode || '');
+                    setVal('pay-ship-ciudad', uData.locality || '');
+                    setVal('pay-ship-provincia', uData.province || '');
+                    setVal('pay-ship-email', uData.email || user.email || '');
+                    setVal('factura-razon-social', uData.razonSocial || '');
+                    setVal('factura-cuit', uData.cuit || '');
+                    setVal('factura-direccion-fiscal', uData.dirFiscal || '');
+
+                    const cleanCp = (document.getElementById('pay-ship-cp')?.value || '').trim();
+                    const isShippingSelected = document.getElementById('pay-mode-shipping')?.checked;
+                    if (isShippingSelected) {
+                        const shipMenu = document.getElementById('pay-shipping-expand-menu');
+                        if (shipMenu) shipMenu.style.display = 'flex';
+                        if (cleanCp.length >= 3) {
+                            const res = window.lookupPostalCode ? window.lookupPostalCode(cleanCp) : null;
+                            if (res) {
+                                if (ciudadInput && res.localidad && !ciudadInput.value) ciudadInput.value = res.localidad;
+                                if (provInput && res.provincia && !provInput.value) provInput.value = res.provincia;
+                            }
+                            renderShipOptions(res);
+                            updateShipLine();
+                            updateTotalDisplay();
+                        }
+                    }
+
+                    saveUserDataToStorage();
+                    if (typeof window.renderPerfilCarritoView === 'function') {
+                        window.renderPerfilCarritoView();
+                    }
+
+                    checkoutGoogleBar.style.background = '#f0fdf4';
+                    checkoutGoogleBar.style.borderColor = '#86efac';
+                    checkoutGoogleBar.style.color = '#15803d';
+                    checkoutGoogleBar.innerHTML = `<div style="font-size: 0.8rem; font-weight: 800; color: #15803d;">✅ Datos cargados desde tu cuenta Google</div>`;
+                } catch (err) {
+                    checkoutGoogleBtn.disabled = false;
+                    checkoutGoogleBtn.style.opacity = '1';
+                    checkoutGoogleBtn.style.cursor = 'pointer';
+                    checkoutGoogleBtn.innerHTML = defaultGoogleBtnHTML;
+                }
+            });
+        }
+
         updateWizardView();
 
         // Eventos de botones "Copiar" con Micro-Interacción Verde Esmeralda (Opción 4)

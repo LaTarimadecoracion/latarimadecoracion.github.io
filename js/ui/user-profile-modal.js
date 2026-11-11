@@ -2,24 +2,32 @@
 // --- USER PROFILE MODAL (LAZY-LOADED) ---
 
 (function() {
-    window.openUserProfileModal = function() {
+    const GOOGLE_SVG = `<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0;"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z"/><path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z"/></svg>`;
+
+    const esc = (val) => String(val == null ? '' : val)
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+
+    function mountUserProfileUI(card, options = {}) {
+        const isModal = options.isModal !== false;
+        const onClose = typeof options.onClose === 'function' ? options.onClose : () => {};
+        const onReopen = typeof options.onReopen === 'function' ? options.onReopen : () => {};
+
+        const publicUser = (window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function')
+            ? window.AdminAuth.getPublicUser()
+            : null;
+
         const currentData = (window.UserDataManager && typeof window.UserDataManager.get === 'function')
             ? window.UserDataManager.get()
             : {};
 
-        const overlay = document.createElement('div');
-        overlay.id = 'user-profile-modal-overlay';
-        overlay.style.cssText = 'position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 0; opacity: 0; transition: opacity 0.25s ease-out; box-sizing: border-box; width: 100vw; height: 100vh; height: 100dvh;';
+        const headerHTML = `
+            ${isModal ? '<button type="button" id="btn-close-user-profile" title="Cerrar" style="position: fixed; top: 0.85rem; right: 0.85rem; width: 30px; height: 30px; background: none; border: none; font-size: 26px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #94a3b8; z-index: 100000; padding: 0; transition: color 0.2s;" onmouseenter="this.style.color=\'#0f172a\'" onmouseleave="this.style.color=\'#94a3b8\'">&times;</button>' : ''}
 
-        const card = document.createElement('div');
-        card.style.cssText = 'position: relative; width: 100vw; height: 100vh; height: 100dvh; max-width: 100vw; max-height: 100vh; max-height: 100dvh; border-radius: 0; padding: 1rem 1.25rem; background: #ffffff; box-shadow: none; border: none; font-family: var(--font-main); box-sizing: border-box; display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; transform: scale(0.98); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); margin: 0; overflow: hidden;';
-
-        card.innerHTML = `
-            <!-- Botón X cerrado arriba a la derecha -->
-            <button type="button" id="btn-close-user-profile" title="Cerrar" style="position: fixed; top: 0.85rem; right: 0.85rem; width: 30px; height: 30px; background: none; border: none; font-size: 26px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #94a3b8; z-index: 100000; padding: 0; transition: color 0.2s;" onmouseenter="this.style.color='#0f172a'" onmouseleave="this.style.color='#94a3b8'">&times;</button>
-
-            <!-- Header Modal con Estilo Checkout COMPRAR YA -->
-            <div style="width: 100%; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.75rem; padding-right: 2rem; flex-shrink: 0; box-sizing: border-box;">
+            <!-- Header con Estilo LA TARIMA -->
+            <div style="width: 100%; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.75rem; padding-right: ${isModal ? '2rem' : '0'}; flex-shrink: 0; box-sizing: border-box;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem;">
                     <div style="display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1;">
                         <span class="material-symbols-outlined" style="color: #0f172a; font-size: 22px; background: #f1f5f9; padding: 6px; border-radius: 10px; flex-shrink: 0;">account_circle</span>
@@ -31,10 +39,136 @@
                 </div>
                 <div style="height: 4px; background: linear-gradient(90deg, #16a34a, #22c55e); border-radius: 4px; margin-top: 8px;"></div>
             </div>
+        `;
+
+        // CASO A: Usuario NO autenticado -> Pantalla limpia de acceso con Google
+        if (!publicUser) {
+            const hasDesktopHeader = Boolean(window.DesktopHeader);
+            card.innerHTML = `
+                ${headerHTML}
+
+                <div style="flex: 1; overflow-y: auto; padding: 1.5rem 0; box-sizing: border-box; width: 100%; max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 1.25rem;">
+                    <div style="width: 72px; height: 72px; border-radius: 50%; background: #f0fdf4; border: 2px solid #bbf7d0; color: #16a34a; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(22, 163, 74, 0.12);">
+                        <span class="material-symbols-outlined" style="font-size: 36px;">verified_user</span>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <h2 style="margin: 0; font-size: 1.35rem; font-weight: 900; color: #0f172a; line-height: 1.25;">
+                            Iniciá sesión gratis para gestionar tu Perfil de Entrega
+                        </h2>
+                        <p style="margin: 0; font-size: 0.9rem; color: #475569; line-height: 1.5;">
+                            Tus datos (dirección, WhatsApp y facturación) quedan guardados de forma segura en tu cuenta entre PC y celular para comprar en 1 clic.
+                        </p>
+                    </div>
+
+                    <button type="button" id="btn-profile-google-login" style="width: 100%; max-width: 340px; background: #ffffff; color: #0f172a; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 0.9rem 1.25rem; font-size: 0.95rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08); transition: all 0.2s; font-family: inherit;" onmouseenter="if(!this.disabled){this.style.borderColor='#0f172a';this.style.transform='translateY(-1px)';}" onmouseleave="this.style.borderColor='#cbd5e1';this.style.transform='translateY(0)';">
+                        ${GOOGLE_SVG}
+                        <span>Continuar con Google</span>
+                    </button>
+
+                    <div id="prof-google-auth-error" style="display: none; width: 100%; max-width: 380px; background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; border-radius: 10px; padding: 0.65rem 0.9rem; font-size: 0.8rem; font-weight: 700;"></div>
+
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.78rem; color: #64748b; line-height: 1.45; max-width: 440px;">
+                        💡 <em>Si solo querés calcular costos de envío, podés ingresar tu Código Postal directamente en la barra superior o en el producto sin registrarte.</em>
+                    </div>
+
+                    ${(isModal && hasDesktopHeader) ? `
+                        <button type="button" id="btn-close-user-profile-secondary" style="background: transparent; border: 1px solid #e2e8f0; color: #64748b; border-radius: 10px; padding: 0.55rem 1.15rem; font-size: 0.82rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s;" onmouseenter="this.style.color='#0f172a';this.style.borderColor='#94a3b8';" onmouseleave="this.style.color='#64748b';this.style.borderColor='#e2e8f0';">
+                            Cerrar y seguir navegando
+                        </button>
+                    ` : ''}
+                </div>
+            `;
+
+            const closeBtn = card.querySelector('#btn-close-user-profile');
+            if (closeBtn) closeBtn.onclick = onClose;
+            const secCloseBtn = card.querySelector('#btn-close-user-profile-secondary');
+            if (secCloseBtn) secCloseBtn.onclick = onClose;
+
+            const googleLoginBtn = card.querySelector('#btn-profile-google-login');
+            const authErrorEl = card.querySelector('#prof-google-auth-error');
+            if (googleLoginBtn) {
+                const defaultBtnHTML = googleLoginBtn.innerHTML;
+                googleLoginBtn.onclick = async () => {
+                    if (!window.AdminAuth || typeof window.AdminAuth.loginPublicStoreWithGoogle !== 'function') {
+                        if (authErrorEl) {
+                            authErrorEl.textContent = 'El servicio de acceso con Google aún está cargando. Intentá nuevamente en un segundo.';
+                            authErrorEl.style.display = 'block';
+                        }
+                        return;
+                    }
+                    if (authErrorEl) authErrorEl.style.display = 'none';
+                    googleLoginBtn.disabled = true;
+                    googleLoginBtn.style.opacity = '0.7';
+                    googleLoginBtn.style.cursor = 'wait';
+                    googleLoginBtn.innerHTML = `<span class="material-symbols-outlined" style="font-size:18px;">hourglass_top</span><span>Conectando con Google...</span>`;
+
+                    try {
+                        const loggedUser = await window.AdminAuth.loginPublicStoreWithGoogle();
+                        if (!loggedUser) {
+                            return;
+                        }
+                        if (window.AdminAuth && typeof window.AdminAuth.syncClientProfileFromCloud === 'function') {
+                            await window.AdminAuth.syncClientProfileFromCloud();
+                        }
+                        if (typeof window.renderPerfilCarritoView === 'function') {
+                            window.renderPerfilCarritoView();
+                        }
+                        onReopen();
+                    } catch (err) {
+                        googleLoginBtn.disabled = false;
+                        googleLoginBtn.style.opacity = '1';
+                        googleLoginBtn.style.cursor = 'pointer';
+                        googleLoginBtn.innerHTML = defaultBtnHTML;
+                        if (err && err.code !== 'auth/popup-closed-by-user' && authErrorEl) {
+                            authErrorEl.textContent = err.message || 'No se pudo iniciar sesión con Google. Intentá nuevamente.';
+                            authErrorEl.style.display = 'block';
+                        }
+                    }
+                };
+            }
+            return;
+        }
+
+        // CASO B: Usuario SÍ autenticado con Google
+        const rawAvatar = (currentData.avatar || '').trim();
+        const hasCustomAvatar = Boolean(rawAvatar && rawAvatar !== '👤' && rawAvatar !== 'face');
+        const initialAvatar = hasCustomAvatar
+            ? rawAvatar
+            : (publicUser.picture || 'face');
+
+        const isImageAvatar = (val) => Boolean(val && (val.startsWith('data:image') || val.startsWith('http')));
+        const googleInitial = ((publicUser.nombre || publicUser.email || 'U').trim().charAt(0) || 'U').toUpperCase();
+        const googleCardAvatarHTML = publicUser.picture
+            ? `<img src="${esc(publicUser.picture)}" referrerpolicy="no-referrer" alt="${esc(publicUser.nombre || 'Google')}" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 1.5px solid #86efac; flex-shrink: 0;">`
+            : `<div style="width: 42px; height: 42px; border-radius: 50%; background: #16a34a; color: #ffffff; font-weight: 900; font-size: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">${esc(googleInitial)}</div>`;
+
+        const prefilledName = currentData.name || publicUser.nombre || '';
+        const prefilledEmail = publicUser.email || currentData.email || '';
+
+        card.innerHTML = `
+            ${headerHTML}
 
             <!-- Contenido Principal Desplazable estilo COMPRAR YA -->
             <div style="flex: 1; overflow-y: auto; padding: 1rem 0; box-sizing: border-box; width: 100%; max-width: 650px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
-                
+
+                <!-- Tarjeta de Cuenta Google Conectada -->
+                <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 14px; padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1;">
+                        ${googleCardAvatarHTML}
+                        <div style="min-width: 0; flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                                <span style="font-size: 0.88rem; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${esc(publicUser.nombre || 'Usuario Google')}</span>
+                                <span style="background: #dcfce7; color: #15803d; border: 1px solid #86efac; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.3px;">Cuenta Google</span>
+                            </div>
+                            <div style="font-size: 0.75rem; color: #475569; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${esc(publicUser.email || '')}</div>
+                        </div>
+                    </div>
+                    <button type="button" id="btn-profile-google-logout" style="background: #ffffff; border: 1px solid #cbd5e1; color: #475569; border-radius: 8px; padding: 0.4rem 0.75rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit; flex-shrink: 0; transition: all 0.2s;" onmouseenter="this.style.borderColor='#ef4444';this.style.color='#dc2626';" onmouseleave="this.style.borderColor='#cbd5e1';this.style.color='#475569';">
+                        Cerrar sesión
+                    </button>
+                </div>
+
                 <!-- 0. Avatar / Foto de Perfil -->
                 <div style="position: relative; background: transparent; border: none; padding: 0.5rem 0 0 0; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 10px;">
                     <!-- Botón de Tacho de Basura para Limpiar Datos -->
@@ -44,9 +178,9 @@
 
                     <div style="position: relative;">
                         <div id="prof-avatar-preview" style="width: 76px; height: 76px; border-radius: 50%; background: #f0fdf4; border: 2.5px solid #16a34a; color: #16a34a; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.1); overflow: hidden; transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;">
-                            ${(currentData.avatar && currentData.avatar.startsWith('data:image')) 
-                                ? `<img src="${currentData.avatar}" style="width: 100%; height: 100%; object-fit: cover;">`
-                                : `<span class="material-symbols-outlined" style="font-size: 2.5rem;">${currentData.avatar || 'face'}</span>`}
+                            ${isImageAvatar(initialAvatar)
+                                ? `<img src="${esc(initialAvatar)}" referrerpolicy="no-referrer" style="width: 100%; height: 100%; object-fit: cover;">`
+                                : `<span class="material-symbols-outlined" style="font-size: 2.5rem;">${esc(initialAvatar || 'face')}</span>`}
                         </div>
                         <label for="prof-avatar-file-input" style="position: absolute; bottom: -2px; right: -2px; background: #0f172a; color: #ffffff; border-radius: 50%; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.3);" title="Subir foto personalizada">
                             <span class="material-symbols-outlined" style="font-size: 15px;">photo_camera</span>
@@ -57,6 +191,11 @@
                     <div style="text-align: center;">
                         <div style="font-size: 0.8rem; font-weight: 800; color: #0f172a;">Foto o Avatar de Perfil</div>
                         <div style="font-size: 0.72rem; color: #64748b;">Elegí un ícono o subí tu propia foto</div>
+                        ${publicUser.picture ? `
+                            <button type="button" id="btn-use-google-photo" style="margin-top: 6px; background: #f8fafc; border: 1px solid #cbd5e1; color: #0f172a; border-radius: 999px; padding: 0.28rem 0.75rem; font-size: 0.72rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s;" onmouseenter="this.style.borderColor='#16a34a';this.style.color='#15803d';" onmouseleave="this.style.borderColor='#cbd5e1';this.style.color='#0f172a';">
+                                Usar foto de Google
+                            </button>
+                        ` : ''}
                     </div>
 
                     <!-- Presets de 6 Íconos Vectoriales Limpios (Sin etiquetas de texto) -->
@@ -69,7 +208,7 @@
                             { icon: 'diversity_3', bg: '#fef3c7', color: '#d97706', border: '#fbbf24' },
                             { icon: 'palette', bg: '#f3e8ff', color: '#9333ea', border: '#c084fc' }
                         ].map(item => {
-                            const isSelected = currentData.avatar === item.icon;
+                            const isSelected = initialAvatar === item.icon;
                             return `
                             <button type="button" class="prof-avatar-preset-btn" data-icon="${item.icon}" data-bg="${item.bg}" data-color="${item.color}" data-border="${item.border}" style="background: ${item.bg}; border: 2.5px solid ${isSelected ? item.color : 'transparent'}; border-radius: 50%; width: 44px; height: 44px; min-width: 44px; min-height: 44px; aspect-ratio: 1 / 1; color: ${item.color}; cursor: pointer; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; display: flex; align-items: center; justify-content: center; box-shadow: ${isSelected ? `0 0 0 3px ${item.border}` : '0 3px 8px rgba(0,0,0,0.06)'}; padding: 0; outline: none;" onmouseenter="this.style.transform='scale(1.1)'" onmouseleave="this.style.transform='scale(1)'">
                                 <span class="material-symbols-outlined" style="font-size: 24px; line-height: 1;">${item.icon}</span>
@@ -89,19 +228,20 @@
                             <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
                                 Nombre y Apellido *
                             </label>
-                            <input type="text" id="prof-name" value="${currentData.name || ''}" placeholder="Ej: María González" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; font-family: inherit; outline: none;">
+                            <input type="text" id="prof-name" value="${esc(prefilledName)}" placeholder="Ej: María González" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; font-family: inherit; outline: none;">
                         </div>
                         <div>
                             <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
                                 Teléfono / WhatsApp *
                             </label>
-                            <input type="tel" id="prof-phone" value="${currentData.phone || ''}" placeholder="Ej: 11 1234 5678" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; font-family: inherit; outline: none;">
+                            <input type="tel" id="prof-phone" value="${esc(currentData.phone || '')}" placeholder="Ej: 11 1234 5678" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; font-family: inherit; outline: none;">
                         </div>
                         <div style="grid-column: 1 / -1; width: 100%;">
-                            <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                Correo Electrónico (Email):
+                            <label style="display: flex; align-items: center; justify-content: space-between; gap: 6px; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
+                                <span>Correo Electrónico (Email) *</span>
+                                <span style="font-size: 0.66rem; color: #16a34a; font-weight: 700; text-transform: none;">Email de tu cuenta Google</span>
                             </label>
-                            <input type="email" id="prof-email" value="${currentData.email || ''}" placeholder="Ej: cliente@gmail.com" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; font-family: inherit; outline: none;">
+                            <input type="email" id="prof-email" value="${esc(prefilledEmail)}" readonly style="width: 100%; box-sizing: border-box; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #475569; background: #f8fafc; font-family: inherit; outline: none; cursor: not-allowed;">
                         </div>
                     </div>
                 </div>
@@ -208,24 +348,29 @@
             </div>
         `;
 
-        overlay.appendChild(card);
-        document.body.appendChild(overlay);
-        // Punto 91: Lock scroll modal
-        if (typeof window.lockBodyScroll === 'function') window.lockBodyScroll();
+        const closeBtn = card.querySelector('#btn-close-user-profile');
+        if (closeBtn) closeBtn.onclick = onClose;
 
-        requestAnimationFrame(() => {
-            overlay.style.opacity = '1';
-            card.style.transform = 'scale(1)';
-        });
-
-        const closeModal = () => {
-            if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll();
-            overlay.style.opacity = '0';
-            card.style.transform = 'scale(0.98)';
-            setTimeout(() => overlay.remove(), 250);
-        };
-
-        card.querySelector('#btn-close-user-profile').onclick = closeModal;
+        const googleLogoutBtn = card.querySelector('#btn-profile-google-logout');
+        if (googleLogoutBtn) {
+            googleLogoutBtn.onclick = async () => {
+                googleLogoutBtn.disabled = true;
+                googleLogoutBtn.textContent = 'Cerrando...';
+                try {
+                    if (window.AdminAuth && typeof window.AdminAuth.logoutPublic === 'function') {
+                        await window.AdminAuth.logoutPublic();
+                    }
+                } catch (e) {}
+                if (typeof window.renderPerfilCarritoView === 'function') {
+                    window.renderPerfilCarritoView();
+                }
+                if (isModal) {
+                    onClose();
+                } else {
+                    onReopen();
+                }
+            };
+        }
 
         // Toggle desplegable de Factura A
         const facturaAToggle = card.querySelector('#prof-factura-a-toggle');
@@ -237,7 +382,7 @@
         }
 
         // Lógica de Selección y Carga de Avatar / Foto de Perfil
-        let selectedAvatar = currentData.avatar || 'face';
+        let selectedAvatar = initialAvatar;
         const avatarPreview = card.querySelector('#prof-avatar-preview');
         const fileInput = card.querySelector('#prof-avatar-file-input');
         const presetBtns = card.querySelectorAll('.prof-avatar-preset-btn');
@@ -249,15 +394,15 @@
             const iconColor = activeBtn ? activeBtn.dataset.color : '#16a34a';
             const iconBorder = activeBtn ? activeBtn.dataset.color : '#16a34a';
 
-            if (avatarVal && avatarVal.startsWith('data:image')) {
+            if (isImageAvatar(avatarVal)) {
                 avatarPreview.style.background = '#ffffff';
                 avatarPreview.style.borderColor = '#16a34a';
-                avatarPreview.innerHTML = `<img src="${avatarVal}" style="width: 100%; height: 100%; object-fit: cover;">`;
+                avatarPreview.innerHTML = `<img src="${esc(avatarVal)}" referrerpolicy="no-referrer" style="width: 100%; height: 100%; object-fit: cover;">`;
             } else {
                 avatarPreview.style.background = iconBg;
                 avatarPreview.style.color = iconColor;
                 avatarPreview.style.borderColor = iconBorder;
-                avatarPreview.innerHTML = `<span class="material-symbols-outlined" style="font-size: 2.6rem;">${avatarVal || 'face'}</span>`;
+                avatarPreview.innerHTML = `<span class="material-symbols-outlined" style="font-size: 2.6rem;">${esc(avatarVal || 'face')}</span>`;
             }
 
             presetBtns.forEach(btn => {
@@ -268,6 +413,13 @@
                 btn.style.boxShadow = isSelected ? `0 0 0 3px ${bGlow}` : '0 3px 8px rgba(0,0,0,0.06)';
             });
         };
+
+        const useGooglePhotoBtn = card.querySelector('#btn-use-google-photo');
+        if (useGooglePhotoBtn && publicUser.picture) {
+            useGooglePhotoBtn.onclick = () => {
+                updateAvatarUI(publicUser.picture);
+            };
+        }
 
         presetBtns.forEach(btn => {
             btn.onclick = () => {
@@ -297,8 +449,8 @@
                         window.UserDataManager.clear();
                     }
                     
-                    // Resetear inputs del modal
-                    ['#prof-name', '#prof-phone', '#prof-email', '#prof-address', '#prof-zip', '#prof-locality', '#prof-province', '#prof-delivery-notes', '#prof-razon-social', '#prof-cuit', '#prof-dir-fiscal'].forEach(id => {
+                    // Resetear inputs del modal (manteniendo el email readonly de la cuenta Google)
+                    ['#prof-name', '#prof-phone', '#prof-address', '#prof-zip', '#prof-locality', '#prof-province', '#prof-delivery-notes', '#prof-razon-social', '#prof-cuit', '#prof-dir-fiscal'].forEach(id => {
                         const input = card.querySelector(id);
                         if (input) {
                             input.value = '';
@@ -306,6 +458,10 @@
                             input.style.boxShadow = 'none';
                         }
                     });
+                    const emailEl = card.querySelector('#prof-email');
+                    if (emailEl) {
+                        emailEl.value = publicUser.email || '';
+                    }
 
                     // Desmarcar Factura A
                     if (facturaAToggle) facturaAToggle.checked = false;
@@ -316,7 +472,7 @@
                     if (errBanner) errBanner.style.display = 'none';
 
                     // Resetear avatar UI
-                    updateAvatarUI('face');
+                    updateAvatarUI(publicUser.picture || 'face');
 
                     // Actualizar vista del carrito si corresponde
                     if (typeof window.renderPerfilCarritoView === 'function') {
@@ -428,28 +584,99 @@
 
             if (errBanner) errBanner.style.display = 'none';
 
+            const profilePayload = {
+                avatar: selectedAvatar,
+                zipCode: zipVal,
+                name: nameVal,
+                phone: phoneVal,
+                email: emailVal,
+                address: addrVal,
+                locality: locVal,
+                province: provVal,
+                deliveryNotes: notesVal,
+                razonSocial: razonVal,
+                cuit: cuitVal,
+                dirFiscal: dirFiscalVal
+            };
+
+            let savedData = profilePayload;
             if (window.UserDataManager && typeof window.UserDataManager.save === 'function') {
-                window.UserDataManager.save({
-                    avatar: selectedAvatar,
-                    zipCode: zipVal,
-                    name: nameVal,
-                    phone: phoneVal,
-                    email: emailVal,
-                    address: addrVal,
-                    locality: locVal,
-                    province: provVal,
-                    deliveryNotes: notesVal,
-                    razonSocial: razonVal,
-                    cuit: cuitVal,
-                    dirFiscal: dirFiscalVal
-                });
+                savedData = window.UserDataManager.save(profilePayload) || profilePayload;
+            }
+
+            if (window.AdminAuth && typeof window.AdminAuth.saveClientProfileToCloud === 'function') {
+                window.AdminAuth.saveClientProfileToCloud(savedData);
             }
 
             if (typeof window.renderPerfilCarritoView === 'function') {
                 window.renderPerfilCarritoView();
             }
 
-            closeModal();
+            if (typeof window.showToast === 'function') {
+                window.showToast('Perfil guardado y sincronizado en tu cuenta');
+            }
+
+            if (isModal) {
+                onClose();
+            }
         };
+    }
+
+    window.openUserProfileModal = function() {
+        const existingOverlay = document.getElementById('user-profile-modal-overlay');
+        if (existingOverlay) {
+            if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll();
+            existingOverlay.remove();
+        }
+
+        const overlay = document.createElement('div');
+        overlay.id = 'user-profile-modal-overlay';
+        overlay.style.cssText = 'position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 0; opacity: 0; transition: opacity 0.25s ease-out; box-sizing: border-box; width: 100vw; height: 100vh; height: 100dvh;';
+
+        const card = document.createElement('div');
+        card.style.cssText = 'position: relative; width: 100vw; height: 100vh; height: 100dvh; max-width: 100vw; max-height: 100vh; max-height: 100dvh; border-radius: 0; padding: 1rem 1.25rem; background: #ffffff; box-shadow: none; border: none; font-family: var(--font-main); box-sizing: border-box; display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; transform: scale(0.98); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); margin: 0; overflow: hidden;';
+
+        const closeModal = () => {
+            if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll();
+            overlay.style.opacity = '0';
+            card.style.transform = 'scale(0.98)';
+            setTimeout(() => overlay.remove(), 250);
+        };
+
+        overlay.appendChild(card);
+        document.body.appendChild(overlay);
+        if (typeof window.lockBodyScroll === 'function') window.lockBodyScroll();
+
+        mountUserProfileUI(card, {
+            isModal: true,
+            onClose: closeModal,
+            onReopen: () => {
+                if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll();
+                overlay.remove();
+                window.openUserProfileModal();
+            }
+        });
+
+        requestAnimationFrame(() => {
+            overlay.style.opacity = '1';
+            card.style.transform = 'scale(1)';
+        });
+    };
+
+    window.renderUserProfileView = function() {
+        const container = document.getElementById('user-profile-view-content');
+        if (!container) return;
+
+        container.innerHTML = '';
+        const wrapper = document.createElement('div');
+        wrapper.style.cssText = 'max-width: 760px; margin: 1.25rem auto 2.5rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 1.35rem 1.5rem; box-shadow: 0 8px 28px rgba(15, 23, 42, 0.05); font-family: var(--font-main); display: flex; flex-direction: column; gap: 0.75rem; box-sizing: border-box;';
+
+        mountUserProfileUI(wrapper, {
+            isModal: false,
+            onClose: () => {},
+            onReopen: () => window.renderUserProfileView()
+        });
+
+        container.appendChild(wrapper);
     };
 })();

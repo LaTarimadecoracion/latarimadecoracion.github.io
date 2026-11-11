@@ -127,6 +127,70 @@ export default {
       }
 
       // -------------------------------------------------------------
+      // 2c. GET & POST /perfil-cliente — Perfil de Entrega sincronizado por email
+      // -------------------------------------------------------------
+      if (path === '/perfil-cliente') {
+        if (request.method === 'GET') {
+          const email = (url.searchParams.get('email') || '').trim().toLowerCase();
+          if (!email) {
+            return new Response(JSON.stringify({ success: false, message: 'Falta parámetro ?email=' }), {
+              status: 400,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+          }
+          if (!env.ORDERS_KV) {
+            return new Response(JSON.stringify({ success: true, profile: null }), {
+              status: 200,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+          }
+          const rawProfile = await env.ORDERS_KV.get('client_profile:' + email);
+          const profile = rawProfile ? JSON.parse(rawProfile) : null;
+          return new Response(JSON.stringify({ success: true, profile }), {
+            status: 200,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        if (request.method === 'POST') {
+          const body = await request.json();
+          const email = (body && body.email ? String(body.email) : '').trim().toLowerCase();
+          if (!email || !body.profile || typeof body.profile !== 'object') {
+            return new Response(JSON.stringify({ success: false, message: 'Faltan email o profile' }), {
+              status: 400,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+          }
+          if (!env.ORDERS_KV) {
+            return new Response(JSON.stringify({ success: false, message: 'KV no configurado' }), {
+              status: 500,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+          }
+          const cleanProfile = {
+            avatar: String(body.profile.avatar || '').slice(0, 150000),
+            name: String(body.profile.name || '').trim().slice(0, 120),
+            phone: String(body.profile.phone || '').trim().slice(0, 40),
+            email: email,
+            address: String(body.profile.address || '').trim().slice(0, 200),
+            zipCode: String(body.profile.zipCode || '').trim().slice(0, 10),
+            locality: String(body.profile.locality || '').trim().slice(0, 100),
+            province: String(body.profile.province || '').trim().slice(0, 100),
+            deliveryNotes: String(body.profile.deliveryNotes || '').trim().slice(0, 250),
+            razonSocial: String(body.profile.razonSocial || '').trim().slice(0, 150),
+            cuit: String(body.profile.cuit || '').trim().slice(0, 30),
+            dirFiscal: String(body.profile.dirFiscal || '').trim().slice(0, 200),
+            updatedAt: Date.now()
+          };
+          await env.ORDERS_KV.put('client_profile:' + email, JSON.stringify(cleanProfile));
+          return new Response(JSON.stringify({ success: true, profile: cleanProfile }), {
+            status: 200,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+      }
+
+      // -------------------------------------------------------------
       // 3. GET /admin/pedidos — Listado de pedidos para el Admin
       // -------------------------------------------------------------
       if (request.method === 'GET' && path === '/admin/pedidos') {

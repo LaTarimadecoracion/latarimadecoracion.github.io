@@ -632,6 +632,8 @@
                         localStorage.setItem(STORAGE_CLIENT_SESSION_KEY, JSON.stringify(publicSession));
                     } catch (e) {}
 
+                    syncClientProfileFromCloud(publicSession.user);
+
                     if (window.DesktopHeader && typeof window.DesktopHeader.renderAccount === 'function') {
                         window.DesktopHeader.renderAccount();
                     }
@@ -763,10 +765,118 @@
         };
         localStorage.setItem(STORAGE_CLIENT_SESSION_KEY, JSON.stringify(publicSession));
 
+        await syncClientProfileFromCloud(publicSession.user);
+
         if (window.DesktopHeader && typeof window.DesktopHeader.renderAccount === 'function') {
             window.DesktopHeader.renderAccount();
         }
         return publicSession.user;
+    }
+
+    async function syncClientProfileFromCloud(userObj = null) {
+        const user = userObj || getPublicUser();
+        if (!user || !user.email) return null;
+
+        const cleanEmail = user.email.trim().toLowerCase();
+        let cloudProfile = null;
+
+        try {
+            const res = await fetch(`${WORKER_URL}/perfil-cliente?email=${encodeURIComponent(cleanEmail)}`);
+            if (res.ok) {
+                const data = await res.json();
+                if (data && data.success && data.profile && typeof data.profile === 'object') {
+                    cloudProfile = data.profile;
+                }
+            }
+        } catch (e) {}
+
+        const current = (window.UserDataManager && typeof window.UserDataManager.get === 'function')
+            ? window.UserDataManager.get()
+            : {};
+
+        const currentEmail = (current.email || '').trim().toLowerCase();
+        const isFreshLogin = !currentEmail || currentEmail !== cleanEmail;
+        const isDifferentUser = Boolean(currentEmail && currentEmail !== cleanEmail);
+        const locationFields = new Set(['zipCode', 'locality', 'province']);
+        const syncFields = ['phone', 'address', 'zipCode', 'locality', 'province', 'deliveryNotes', 'razonSocial', 'cuit', 'dirFiscal', 'name'];
+        const merged = { email: cleanEmail };
+
+        if (cloudProfile) {
+            syncFields.forEach((field) => {
+                const cloudVal = (cloudProfile[field] !== undefined && cloudProfile[field] !== null) ? String(cloudProfile[field]).trim() : '';
+                const rawLocalVal = (current[field] !== undefined && current[field] !== null) ? String(current[field]).trim() : '';
+                const localVal = (isDifferentUser && !locationFields.has(field)) ? '' : rawLocalVal;
+                merged[field] = isFreshLogin ? (cloudVal || localVal) : (localVal || cloudVal);
+            });
+            if (!merged.name && user.nombre) {
+                merged.name = user.nombre;
+            }
+            const cloudAvatar = (cloudProfile.avatar || '').trim();
+            const rawLocalAvatar = isDifferentUser ? '' : (current.avatar || '').trim();
+            let resolvedAvatar = isFreshLogin ? (cloudAvatar || rawLocalAvatar) : (rawLocalAvatar || cloudAvatar);
+            if (!resolvedAvatar || resolvedAvatar === '👤' || resolvedAvatar === 'face') {
+                resolvedAvatar = user.picture || resolvedAvatar || '👤';
+            }
+            merged.avatar = resolvedAvatar;
+        } else {
+            if (isDifferentUser) {
+                syncFields.forEach((field) => {
+                    if (!locationFields.has(field)) {
+                        merged[field] = '';
+                    }
+                });
+            }
+            const localName = isDifferentUser ? '' : (current.name || '').trim();
+            if (!localName && user.nombre) {
+                merged.name = user.nombre;
+            }
+            const curAvatar = isDifferentUser ? '' : (current.avatar || '').trim();
+            if (!curAvatar || curAvatar === '👤' || curAvatar === 'face') {
+                if (user.picture) {
+                    merged.avatar = user.picture;
+                } else if (!curAvatar) {
+                    merged.avatar = '👤';
+                }
+            }
+        }
+
+        let savedProfile = merged;
+        if (window.UserDataManager && typeof window.UserDataManager.save === 'function') {
+            savedProfile = window.UserDataManager.save(merged) || merged;
+        }
+        if (typeof window.renderPerfilCarritoView === 'function') {
+            window.renderPerfilCarritoView();
+        }
+        const userProfEl = document.getElementById('view-user-profile');
+        if (userProfEl && userProfEl.classList.contains('active') && typeof window.renderUserProfileView === 'function') {
+            window.renderUserProfileView();
+        }
+        return savedProfile;
+    }
+
+    async function saveClientProfileToCloud(profileObj) {
+        const user = getPublicUser();
+        if (!user || !user.email) {
+            return { success: false, reason: 'not_authenticated' };
+        }
+        const cleanEmail = user.email.trim().toLowerCase();
+        try {
+            const res = await fetch(`${WORKER_URL}/perfil-cliente`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email: cleanEmail,
+                    profile: { ...(profileObj || {}), email: cleanEmail }
+                })
+            });
+            const data = await res.json().catch(() => null);
+            if (!res.ok) {
+                return data || { success: false, status: res.status };
+            }
+            return data || { success: true };
+        } catch (e) {
+            return { success: false, error: e.message || 'network_error' };
+        }
     }
 
     async function logoutPublic() {
@@ -776,8 +886,52 @@
         }
         clearSession();
         try { localStorage.removeItem(STORAGE_CLIENT_SESSION_KEY); } catch (e) {}
+
+        // Limpiar datos de checkout preservando solo ubicación de envío si existía
+        try {
+            const rawChk = localStorage.getItem('latarima_checkout_user_data');
+            if (rawChk) {
+                const parsedChk = JSON.parse(rawChk);
+                const preservedChk = {};
+                if (parsedChk && parsedChk.cp) preservedChk.cp = parsedChk.cp;
+                if (parsedChk && parsedChk.ciudad) preservedChk.ciudad = parsedChk.ciudad;
+                if (parsedChk && parsedChk.provincia) preservedChk.provincia = parsedChk.provincia;
+                if (Object.keys(preservedChk).length > 0) {
+                    localStorage.setItem('latarima_checkout_user_data', JSON.stringify(preservedChk));
+                } else {
+                    localStorage.removeItem('latarima_checkout_user_data');
+                }
+            }
+        } catch (e) {}
+
+        // Limpiar datos personales conservando zipCode, locality y province
+        if (window.UserDataManager && typeof window.UserDataManager.save === 'function') {
+            window.UserDataManager.save({
+                avatar: '👤',
+                name: '',
+                phone: '',
+                email: '',
+                address: '',
+                deliveryNotes: '',
+                razonSocial: '',
+                cuit: '',
+                dirFiscal: ''
+            });
+        }
+
         if (window.DesktopHeader && typeof window.DesktopHeader.renderAccount === 'function') {
             window.DesktopHeader.renderAccount();
+        }
+        if (typeof window.renderPerfilCarritoView === 'function') {
+            window.renderPerfilCarritoView();
+        }
+        const userProfEl = document.getElementById('view-user-profile');
+        if (userProfEl && userProfEl.classList.contains('active') && typeof window.renderUserProfileView === 'function') {
+            window.renderUserProfileView();
+        }
+        const myOrdersEl = document.getElementById('view-my-orders');
+        if (myOrdersEl && myOrdersEl.classList.contains('active') && window.MyOrders && typeof window.MyOrders.render === 'function') {
+            window.MyOrders.render();
         }
     }
 
@@ -797,6 +951,8 @@
         saveUsers: saveStoredUsers,
         registerClientUser,
         syncUsersFromCloud,
+        syncClientProfileFromCloud,
+        saveClientProfileToCloud,
         firebaseConfig: FIREBASE_CONFIG
     };
 
@@ -805,6 +961,9 @@
         initAuthListener();
         if (isAuthenticated()) {
             renderHeaderUserBadge();
+        }
+        if (getPublicUser()) {
+            syncClientProfileFromCloud();
         }
     });
 })();

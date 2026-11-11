@@ -435,8 +435,11 @@
                         </div>
                     </div>
                     <div class="desktop-user-dropdown-links">
+                        <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-user-profile');">
+                            <span class="material-symbols-outlined">account_circle</span> Mi Perfil
+                        </a>
                         <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-profile');">
-                            <span class="material-symbols-outlined">shopping_cart</span> Mi Carrito y Datos
+                            <span class="material-symbols-outlined">shopping_cart</span> Mi Carrito
                         </a>
                         <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-my-orders');">
                             <span class="material-symbols-outlined">shopping_bag</span> Mis Compras / Pedidos

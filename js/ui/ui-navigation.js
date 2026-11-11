@@ -236,6 +236,7 @@
             'view-categories': 'Categorías | LA TARIMA - Decoración',
             'view-category-feed': (context && context.name) ? `${context.name} | LA TARIMA - Decoración` : 'Categorías | LA TARIMA - Decoración',
             'view-profile': 'Tu Carrito | LA TARIMA - Decoración',
+            'view-user-profile': 'Mi Perfil | LA TARIMA - Decoración',
             'view-my-orders': 'Mis Compras | LA TARIMA - Decoración',
             'view-about': 'Sobre Nosotros | LA TARIMA - Decoración',
             'view-search': 'Buscar Productos | LA TARIMA - Decoración',
@@ -408,6 +409,14 @@
                         }
                     });
                 }
+            } else if (viewId === 'view-user-profile') {
+                if (window.renderUserProfileView && !window.renderUserProfileView._isStub) {
+                    window.renderUserProfileView();
+                } else if (typeof window.ensureUserProfileModalLoaded === 'function') {
+                    window.ensureUserProfileModalLoaded().then(() => {
+                        if (typeof window.renderUserProfileView === 'function') window.renderUserProfileView();
+                    });
+                }
             } else if (viewId === 'view-profile') {
                 if (window.ensurePostalLookupLoaded) window.ensurePostalLookupLoaded();
                 if (typeof window.renderPerfilCarritoView === 'function') {
@@ -485,7 +494,8 @@
                 'view-about': 'nosotros',
                 'view-search': 'buscar',
                 'view-notifications': 'avisos',
-                'view-profile': 'perfil',
+                'view-profile': 'carrito',
+                'view-user-profile': 'perfil',
                 'view-my-orders': 'mis-compras',
                 'view-rentals': 'alquileres',
                 'view-admin': 'admin',
