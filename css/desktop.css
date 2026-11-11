@@ -43,7 +43,10 @@
 }
 
 /* Fila Superior: Logo | Buscador Amplio | Info Directa de Fábrica */
+.main-header-bar > .header-top-row,
 .header-top-row {
+    position: relative;
+    z-index: 20;
     width: 100% !important;
     margin: 0 auto;
     display: grid !important;
@@ -126,7 +129,10 @@
 /* =============================================================================
    3. SUB-BARRA DE NAVEGACIÓN PC (Debajo del buscador)
    ============================================================================= */
+.main-header-bar > .desktop-subnav-row,
 .desktop-subnav-row {
+    position: relative;
+    z-index: 10;
     width: 100%;
     margin: 2px auto 0;
     display: grid;
