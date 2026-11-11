@@ -598,11 +598,21 @@
                 }
 
                 if (userRecord && userRecord.status !== 'suspendido') {
+                    // Sincronizar siempre la foto actualizada de Google
+                    if (fbUser.photoURL && userRecord.picture !== fbUser.photoURL) {
+                        userRecord.picture = fbUser.photoURL;
+                        saveStoredUsers(users);
+                    }
+
+                    const resolvedPicture = fbUser.photoURL || userRecord.picture || '';
                     const isStaff = userRecord.role === 'superadmin' || userRecord.role === 'colaborador';
 
-                    if (isStaff && !getSession()) {
-                        verifyAuthorizedUser(fbUser.email, fbUser.displayName, fbUser.photoURL, true);
-                        renderHeaderUserBadge();
+                    if (isStaff) {
+                        const existingSession = getSession();
+                        if (!existingSession || (resolvedPicture && existingSession.user.picture !== resolvedPicture)) {
+                            verifyAuthorizedUser(fbUser.email, fbUser.displayName, resolvedPicture, true);
+                            renderHeaderUserBadge();
+                        }
                     }
 
                     // Mantener sesión pública de tienda sincronizada
@@ -613,7 +623,7 @@
                             email: cleanEmail,
                             role: userRecord.role || 'cliente',
                             clientTier: userRecord.clientTier || 'regular',
-                            picture: userRecord.picture || fbUser.photoURL || '',
+                            picture: resolvedPicture,
                             provider: 'google'
                         },
                         expiresAt: Date.now() + (30 * 24 * 3600 * 1000)
@@ -668,18 +678,27 @@
     }
 
     function getPublicUser() {
-        const adminUser = getCurrentUser();
-        if (adminUser) return adminUser;
+        let clientUser = null;
         try {
             const raw = localStorage.getItem(STORAGE_CLIENT_SESSION_KEY);
-            if (!raw) return null;
-            const parsed = JSON.parse(raw);
-            if (parsed && parsed.expiresAt && Date.now() < parsed.expiresAt && parsed.user) {
-                return parsed.user;
+            if (raw) {
+                const parsed = JSON.parse(raw);
+                if (parsed && parsed.expiresAt && Date.now() < parsed.expiresAt && parsed.user) {
+                    clientUser = parsed.user;
+                } else {
+                    localStorage.removeItem(STORAGE_CLIENT_SESSION_KEY);
+                }
             }
-            localStorage.removeItem(STORAGE_CLIENT_SESSION_KEY);
         } catch (e) {}
-        return null;
+
+        const adminUser = getCurrentUser();
+        if (adminUser) {
+            if (!adminUser.picture && clientUser && clientUser.picture) {
+                adminUser.picture = clientUser.picture;
+            }
+            return adminUser;
+        }
+        return clientUser;
     }
 
     async function loginPublicStoreWithGoogle() {

@@ -204,8 +204,12 @@
         const initial = firstName.charAt(0).toUpperCase();
         const isStaff = user.role === 'superadmin' || user.role === 'colaborador';
         const avatarHtml = user.picture
-            ? `<img src="${user.picture}" alt="${firstName}" class="desktop-user-avatar-img">`
+            ? `<img src="${user.picture}" alt="${firstName}" class="desktop-user-avatar-img" referrerpolicy="no-referrer" onerror="this.outerHTML='<span class=\\'desktop-user-avatar-initial\\'>${initial}</span>'">`
             : `<span class="desktop-user-avatar-initial">${initial}</span>`;
+
+        const dropdownAvatarHtml = user.picture
+            ? `<img src="${user.picture}" alt="${firstName}" referrerpolicy="no-referrer" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1.5px solid #e2e8f0;" onerror="this.style.display='none'">`
+            : `<span style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary-color, #A0715B); color: #fff; font-weight: 800; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">${initial}</span>`;
 
         const roleBadgeText = user.role === 'superadmin'
             ? 'SuperAdmin'
@@ -219,12 +223,15 @@
                     <span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
                 </button>
                 <div class="desktop-user-dropdown">
-                    <div class="desktop-user-dropdown-header">
-                        <div style="font-weight: 800; font-size: 0.9rem; color: #0f172a;">${user.nombre}</div>
-                        <div style="font-size: 0.74rem; color: #64748b; margin-top: 2px;">${user.email}</div>
-                        <span style="display: inline-block; margin-top: 6px; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; padding: 2px 8px; border-radius: 50px; background: ${isStaff ? '#fee2e2' : '#dcfce7'}; color: ${isStaff ? '#dc2626' : '#16a34a'};">
-                            ${roleBadgeText}
-                        </span>
+                    <div class="desktop-user-dropdown-header" style="display: flex; align-items: center; gap: 10px;">
+                        ${dropdownAvatarHtml}
+                        <div style="min-width: 0;">
+                            <div style="font-weight: 800; font-size: 0.88rem; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${user.nombre}</div>
+                            <div style="font-size: 0.72rem; color: #64748b; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${user.email}</div>
+                            <span style="display: inline-block; margin-top: 5px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; padding: 2px 8px; border-radius: 50px; background: ${isStaff ? '#fee2e2' : '#dcfce7'}; color: ${isStaff ? '#dc2626' : '#16a34a'};">
+                                ${roleBadgeText}
+                            </span>
+                        </div>
                     </div>
                     <div class="desktop-user-dropdown-links">
                         <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-profile');">

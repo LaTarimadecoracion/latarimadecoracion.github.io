@@ -76,6 +76,11 @@
             : null;
         const userEmail = (user && user.email) ? user.email.trim().toLowerCase() : '';
 
+        // Privacidad estricta: si no hay usuario logueado, no mostramos ningún pedido
+        if (!user || !userEmail) {
+            return { user: null, orders: [] };
+        }
+
         const ordersMap = new Map();
         const addOrder = (ord) => {
             if (!ord || !ord.id) return;
@@ -83,15 +88,20 @@
             ordersMap.set(String(ord.id), { ...prev, ...ord });
         };
 
-        // 1. Pedidos locales guardados en este dispositivo
+        // 1. Pedidos locales guardados que pertenezcan exclusivamente al correo logueado
         const localList = getLocalOrders();
-        localList.forEach(addOrder);
+        localList.forEach(o => {
+            const oEmail = (o.clientEmail || '').trim().toLowerCase();
+            if (oEmail && oEmail === userEmail) {
+                addOrder(o);
+            }
+        });
 
-        // 2. Pedidos estáticos en ordersData que coincidan por email o por ID local
+        // 2. Pedidos estáticos en ordersData que coincidan con el correo logueado
         if (typeof ordersData !== 'undefined' && Array.isArray(ordersData)) {
             ordersData.forEach(o => {
                 const oEmail = (o.clientEmail || '').trim().toLowerCase();
-                if ((userEmail && oEmail === userEmail) || localList.some(l => String(l.id) === String(o.id))) {
+                if (oEmail && oEmail === userEmail) {
                     addOrder(o);
                 }
             });
