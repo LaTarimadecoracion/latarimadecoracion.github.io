@@ -230,6 +230,7 @@
 
             
             <div class="desktop-subnav-links" id="desktop-subnav-links">
+                <a href="#" class="desktop-nav-link active" data-target="view-home" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-home');">Inicio</a>
                 <div class="desktop-cat-menu-wrapper" id="desktop-cat-menu-wrapper">
                     <a href="#" class="desktop-nav-link desktop-cat-trigger" data-target="view-categories" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-categories');">
                         <span>Categorías</span>
@@ -238,8 +239,7 @@
                     
                     <div class="desktop-categories-dropdown" id="desktop-categories-dropdown"></div>
                 </div>
-                <a href="#" class="desktop-nav-link active" data-target="view-home" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-home');">Inicio</a>
-                <a href="#" class="desktop-nav-link" data-target="view-catalogo" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-catalogo');">Catálogo A-Z</a>
+                <a href="#" class="desktop-nav-link" data-target="view-catalogo" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-catalogo');">Catálogo</a>
                 <a href="#" class="desktop-nav-link" data-target="view-offers" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-offers');">Ofertas</a>
                 <a href="#" class="desktop-nav-link" data-target="view-videos" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-videos');">Videos</a>
                 <a href="#" class="desktop-nav-link" data-target="view-about" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-about');">Nosotros</a>

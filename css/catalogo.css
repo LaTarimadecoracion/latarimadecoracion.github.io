@@ -518,3 +518,263 @@ body {
         font-size: 0.95rem;
     }
 }
+
+
+/* =============================================================================
+   BARRA DE HERRAMIENTAS: VISTA (LISTA / TARJETAS), ORDEN Y RANGO DE PRECIOS
+   ============================================================================= */
+@media (min-width: 900px) {
+    .catalog-container {
+        max-width: 1240px !important;
+    }
+}
+
+.catalog-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    margin: 0.75rem 1rem 0.25rem 1rem;
+    padding: 0.65rem 0.9rem;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+}
+
+.catalog-results-count {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--text-main, #2D3748);
+}
+
+.catalog-toolbar-controls {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.catalog-price-filter {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 3px 8px;
+}
+
+.catalog-filter-label {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #64748b;
+    margin-right: 2px;
+}
+
+.catalog-price-input {
+    width: 78px;
+    border: none;
+    background: transparent;
+    font-family: var(--font-main, 'Outfit', sans-serif);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #0f172a;
+    outline: none;
+    padding: 3px 2px;
+}
+
+.catalog-price-input::-webkit-inner-spin-button,
+.catalog-price-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.catalog-price-sep {
+    color: #94a3b8;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.catalog-clear-btn {
+    background: #fee2e2;
+    color: #dc2626;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+}
+
+.catalog-clear-btn span {
+    font-size: 13px !important;
+}
+
+.catalog-sort-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 0 8px 0 8px;
+    height: 32px;
+}
+
+.catalog-sort-icon {
+    font-size: 16px !important;
+    color: #64748b;
+    margin-right: 4px;
+}
+
+.catalog-sort-select {
+    border: none;
+    background: transparent;
+    font-family: var(--font-main, 'Outfit', sans-serif);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #0f172a;
+    outline: none;
+    cursor: pointer;
+    padding-right: 4px;
+}
+
+.catalog-view-toggle {
+    display: inline-flex;
+    align-items: center;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 2px;
+    gap: 2px;
+}
+
+.catalog-view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-family: var(--font-main, 'Outfit', sans-serif);
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.18s ease;
+}
+
+.catalog-view-btn span.material-symbols-outlined {
+    font-size: 17px !important;
+}
+
+.catalog-view-btn.active {
+    background: #ffffff;
+    color: var(--primary-color, #A0715B);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* =============================================================================
+   MODO TARJETAS (.catalog-list.view-cards)
+   ============================================================================= */
+.catalog-list.view-cards {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)) !important;
+    gap: 1rem !important;
+}
+
+.catalog-list.view-cards .catalog-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: space-between !important;
+    padding: 0.85rem !important;
+    gap: 0.75rem !important;
+    border-radius: 16px !important;
+    background: #ffffff !important;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.catalog-list.view-cards .catalog-row:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.catalog-list.view-cards .catalog-thumb-container {
+    width: 100%;
+}
+
+.catalog-list.view-cards .catalog-thumb-link {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.catalog-list.view-cards .catalog-thumb {
+    width: 100% !important;
+    height: 185px !important;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.catalog-list.view-cards .catalog-thumb-cart-btn {
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+}
+
+.catalog-list.view-cards .catalog-variant-col {
+    width: 100% !important;
+    margin-top: auto;
+}
+
+.catalog-list.view-cards .catalog-select-wrapper {
+    max-width: 100% !important;
+}
+
+.catalog-list.view-cards .catalog-actions-col {
+    width: 100% !important;
+    flex-direction: row !important;
+    gap: 6px !important;
+    min-width: 0;
+}
+
+.catalog-list.view-cards .catalog-btn {
+    flex: 1;
+    height: 34px;
+}
+
+@media (max-width: 768px) {
+    .catalog-toolbar {
+        margin: 0.5rem 0.75rem 0.25rem 0.75rem;
+        padding: 0.6rem 0.75rem;
+    }
+    .catalog-toolbar-controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .catalog-price-input {
+        width: 62px;
+    }
+    .catalog-view-btn-label {
+        display: none;
+    }
+    .catalog-list.view-cards {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.65rem !important;
+    }
+    .catalog-list.view-cards .catalog-thumb {
+        height: 135px !important;
+    }
+    .catalog-list.view-cards .catalog-row {
+        padding: 0.65rem !important;
+    }
+}

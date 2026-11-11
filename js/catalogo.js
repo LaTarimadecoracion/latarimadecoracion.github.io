@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 activeCatalogRubro = r.id;
                 renderCatalogRubrosTabs();
                 loadProducts();
-                renderCatalogList(allProducts);
+                applyAllFiltersAndSort();
             });
             container.appendChild(btn);
         });
@@ -503,12 +503,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const selIdx = parseInt(e.target.value);
                     const selectedVar = shippingVariants[selIdx];
                     if (selectedVar) {
-                        if (selectedVar.link) {
-                            btnShipping.href = selectedVar.link;
-                            btnShipping.style.display = 'inline-flex';
-                        } else {
-                            btnShipping.style.display = 'none';
-                        }
+
                         btnWpp.href = getWhatsAppUrl(product.title, selectedVar.label);
                         const newPriceText = getFormattedPriceText(selectedVar);
                         if (newPriceText) {
@@ -540,10 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Función para refrescar el catálogo con la data actualizada
-    window.refreshCatalog = function() {
-        loadProducts();
-        renderCatalogList(allProducts);
-    };
+
 
     // 5. Filtrar por término de búsqueda con prioridad por niveles (Llamado desde el main window)
     const stemCatalogWord = (word) => {
@@ -586,54 +578,127 @@ document.addEventListener('DOMContentLoaded', () => {
         return 0;
     };
 
+    // --- CONTROLES DE VISTA (LISTA / TARJETAS), ORDENAMIENTO Y RANGO DE PRECIOS ---
+    let currentSearchQuery = '';
+    let currentSortMode = localStorage.getItem('latarima_catalog_sort_mode') || 'az';
+    let currentMinPrice = null;
+    let currentMaxPrice = null;
+    let currentViewMode = localStorage.getItem('latarima_catalog_view_mode') || (window.innerWidth >= 900 ? 'cards' : 'list');
+
+    function getProductPriceRange(product) {
+        const vars = getShippingVariants(product);
+        const validPrices = vars.filter(v => v.price && Number(v.price) > 0).map(v => Number(v.price));
+        if (validPrices.length > 0) {
+            const defVar = vars.find(v => v.isDefault && v.price && Number(v.price) > 0);
+            return {
+                min: Math.min(...validPrices),
+                max: Math.max(...validPrices),
+                sortPrice: defVar ? Number(defVar.price) : Math.min(...validPrices)
+            };
+        }
+        const basePrice = parseFloat(product.price);
+        if (!isNaN(basePrice) && basePrice > 0) {
+            return { min: basePrice, max: basePrice, sortPrice: basePrice };
+        }
+        return { min: null, max: null, sortPrice: null };
+    }
+
+    function setViewMode(mode) {
+        currentViewMode = (mode === 'cards') ? 'cards' : 'list';
+        try { localStorage.setItem('latarima_catalog_view_mode', currentViewMode); } catch (e) {}
+        if (catalogListContainer) {
+            catalogListContainer.classList.toggle('view-cards', currentViewMode === 'cards');
+        }
+        const btnList = document.getElementById('btn-view-list');
+        const btnCards = document.getElementById('btn-view-cards');
+        if (btnList) btnList.classList.toggle('active', currentViewMode === 'list');
+        if (btnCards) btnCards.classList.toggle('active', currentViewMode === 'cards');
+    }
+
+    function applyAllFiltersAndSort() {
+        let results = [...allProducts];
+
+        // 1. Filtro por búsqueda de texto
+        if (currentSearchQuery && currentSearchQuery.trim()) {
+            const terms = tokenizeCatalogWords(currentSearchQuery);
+            if (terms.length > 0) {
+                const scored = [];
+                results.forEach(p => {
+                    const titleWords = tokenizeCatalogWords((p.title || '') + ' ' + (p.acabado || ''));
+                    const catWords = tokenizeCatalogWords(p.categoryName || '');
+                    const descWords = tokenizeCatalogWords(p.description || '').filter(w => w.length >= 4);
+
+                    let worstTier = 0;
+                    let allMatched = true;
+                    for (const term of terms) {
+                        const tMatch = matchCatalogTerm(term, titleWords);
+                        if (tMatch > 0) { worstTier = Math.max(worstTier, 1); continue; }
+                        const cMatch = matchCatalogTerm(term, catWords);
+                        if (cMatch > 0) { worstTier = Math.max(worstTier, 2); continue; }
+                        const dMatch = matchCatalogTerm(term, descWords);
+                        if (dMatch >= 95) { worstTier = Math.max(worstTier, 3); continue; }
+                        allMatched = false;
+                        break;
+                    }
+                    if (allMatched) scored.push({ p, tier: worstTier });
+                });
+                const bestTier = scored.length > 0 ? Math.min(...scored.map(s => s.tier)) : 99;
+                results = scored.filter(s => s.tier <= bestTier).map(s => s.p);
+            }
+        }
+
+        // 2. Filtro por rango de precios
+        if (currentMinPrice !== null || currentMaxPrice !== null) {
+            results = results.filter(p => {
+                const range = getProductPriceRange(p);
+                if (range.min === null) return false;
+                if (currentMinPrice !== null && range.max < currentMinPrice) return false;
+                if (currentMaxPrice !== null && range.min > currentMaxPrice) return false;
+                return true;
+            });
+        }
+
+        // 3. Ordenamiento (A-Z, Z-A, Menor precio, Mayor precio)
+        if (currentSortMode === 'za') {
+            results.sort((a, b) => (b.title || '').localeCompare((a.title || ''), 'es', { sensitivity: 'base' }));
+        } else if (currentSortMode === 'price-asc') {
+            results.sort((a, b) => {
+                const pa = getProductPriceRange(a).sortPrice;
+                const pb = getProductPriceRange(b).sortPrice;
+                if (pa === null && pb === null) return (a.title || '').localeCompare((b.title || ''), 'es');
+                if (pa === null) return 1;
+                if (pb === null) return -1;
+                return pa - pb;
+            });
+        } else if (currentSortMode === 'price-desc') {
+            results.sort((a, b) => {
+                const pa = getProductPriceRange(a).sortPrice;
+                const pb = getProductPriceRange(b).sortPrice;
+                if (pa === null && pb === null) return (a.title || '').localeCompare((b.title || ''), 'es');
+                if (pa === null) return 1;
+                if (pb === null) return -1;
+                return pb - pa;
+            });
+        } else {
+            results.sort((a, b) => (a.title || '').localeCompare((b.title || ''), 'es', { sensitivity: 'base' }));
+        }
+
+        // Actualizar contador y botón limpiar
+        const countEl = document.getElementById('catalog-results-count');
+        if (countEl) {
+            countEl.textContent = `${results.length} ${results.length === 1 ? 'producto' : 'productos'}`;
+        }
+        const clearBtn = document.getElementById('btn-clear-catalog-filters');
+        if (clearBtn) {
+            clearBtn.style.display = (currentMinPrice !== null || currentMaxPrice !== null) ? 'inline-flex' : 'none';
+        }
+
+        renderCatalogList(results);
+    }
+
     window.filterCatalogAZ = function(query) {
-        if (!query || !query.trim()) {
-            renderCatalogList(allProducts);
-            return;
-        }
-        
-        const terms = tokenizeCatalogWords(query);
-        if (terms.length === 0) {
-            renderCatalogList(allProducts);
-            return;
-        }
-
-        const scored = [];
-        allProducts.forEach(p => {
-            const titleWords = tokenizeCatalogWords((p.title || '') + ' ' + (p.acabado || ''));
-            const catWords = tokenizeCatalogWords(p.categoryName || '');
-            const descWords = tokenizeCatalogWords(p.description || '').filter(w => w.length >= 4);
-
-            let worstTier = 0;
-            let allMatched = true;
-            for (const term of terms) {
-                const tMatch = matchCatalogTerm(term, titleWords);
-                if (tMatch > 0) {
-                    worstTier = Math.max(worstTier, 1);
-                    continue;
-                }
-                const cMatch = matchCatalogTerm(term, catWords);
-                if (cMatch > 0) {
-                    worstTier = Math.max(worstTier, 2);
-                    continue;
-                }
-                const dMatch = matchCatalogTerm(term, descWords);
-                if (dMatch >= 95) {
-                    worstTier = Math.max(worstTier, 3);
-                    continue;
-                }
-                allMatched = false;
-                break;
-            }
-            if (allMatched) {
-                scored.push({ p, tier: worstTier });
-            }
-        });
-
-        const bestTier = scored.length > 0 ? Math.min(...scored.map(s => s.tier)) : 99;
-        const filtered = scored.filter(s => s.tier <= bestTier).map(s => s.p);
-
-        renderCatalogList(filtered);
+        currentSearchQuery = query || '';
+        applyAllFiltersAndSort();
     };
 
     // 6. Configurar Scroll Infinito sobre el scroll de la propia ventana del iframe
@@ -657,10 +722,45 @@ document.addEventListener('DOMContentLoaded', () => {
     // Exponer función de refresco para el parent
     window.refreshCatalog = function() {
         loadProducts();
-        renderCatalogList(allProducts);
+        applyAllFiltersAndSort();
     };
 
+    // Vincular eventos de barra de herramientas
+    document.getElementById('btn-view-list')?.addEventListener('click', () => setViewMode('list'));
+    document.getElementById('btn-view-cards')?.addEventListener('click', () => setViewMode('cards'));
+
+    const sortSelect = document.getElementById('catalog-sort-select');
+    if (sortSelect) {
+        sortSelect.value = currentSortMode;
+        sortSelect.addEventListener('change', (e) => {
+            currentSortMode = e.target.value || 'az';
+            try { localStorage.setItem('latarima_catalog_sort_mode', currentSortMode); } catch (err) {}
+            applyAllFiltersAndSort();
+        });
+    }
+
+    const minInput = document.getElementById('catalog-price-min');
+    const maxInput = document.getElementById('catalog-price-max');
+    const updatePriceInputs = () => {
+        const minVal = minInput && minInput.value.trim() !== '' ? parseFloat(minInput.value) : NaN;
+        const maxVal = maxInput && maxInput.value.trim() !== '' ? parseFloat(maxInput.value) : NaN;
+        currentMinPrice = (!isNaN(minVal) && minVal >= 0) ? minVal : null;
+        currentMaxPrice = (!isNaN(maxVal) && maxVal >= 0) ? maxVal : null;
+        applyAllFiltersAndSort();
+    };
+    minInput?.addEventListener('input', updatePriceInputs);
+    maxInput?.addEventListener('input', updatePriceInputs);
+
+    document.getElementById('btn-clear-catalog-filters')?.addEventListener('click', () => {
+        if (minInput) minInput.value = '';
+        if (maxInput) maxInput.value = '';
+        currentMinPrice = null;
+        currentMaxPrice = null;
+        applyAllFiltersAndSort();
+    });
+
     // Inicializar
+    setViewMode(currentViewMode);
     loadProducts();
-    renderCatalogList(allProducts);
+    applyAllFiltersAndSort();
 });
