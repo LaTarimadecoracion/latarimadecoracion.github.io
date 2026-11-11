@@ -191,6 +191,74 @@ export default {
       }
 
       // -------------------------------------------------------------
+      // 2d. GET & POST /carrito-cliente — Carrito sincronizado por email
+      // -------------------------------------------------------------
+      if (path === '/carrito-cliente') {
+        if (request.method === 'GET') {
+          const email = (url.searchParams.get('email') || '').trim().toLowerCase();
+          if (!email) {
+            return new Response(JSON.stringify({ success: false, message: 'Falta parámetro ?email=' }), {
+              status: 400,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+          }
+          if (!env.ORDERS_KV) {
+            return new Response(JSON.stringify({ success: true, items: [], updatedAt: 0 }), {
+              status: 200,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+          }
+          const rawCart = await env.ORDERS_KV.get('client_cart:' + email);
+          const parsedCart = rawCart ? JSON.parse(rawCart) : null;
+          return new Response(JSON.stringify({
+            success: true,
+            items: (parsedCart && Array.isArray(parsedCart.items)) ? parsedCart.items : [],
+            updatedAt: (parsedCart && parsedCart.updatedAt) ? parsedCart.updatedAt : 0
+          }), {
+            status: 200,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        if (request.method === 'POST') {
+          const body = await request.json();
+          const email = (body && body.email ? String(body.email) : '').trim().toLowerCase();
+          if (!email || !Array.isArray(body.items)) {
+            return new Response(JSON.stringify({ success: false, message: 'Faltan email o items[]' }), {
+              status: 400,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+          }
+          if (!env.ORDERS_KV) {
+            return new Response(JSON.stringify({ success: false, message: 'KV no configurado' }), {
+              status: 500,
+              headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+            });
+          }
+          const cleanItems = body.items.slice(0, 80).map((it) => ({
+            id: String(it.id || '').slice(0, 80),
+            title: String(it.title || '').trim().slice(0, 180),
+            acabado: String(it.acabado || 'Único').trim().slice(0, 80),
+            medida: String(it.medida || '').trim().slice(0, 80),
+            opcion: String(it.opcion || '').trim().slice(0, 80),
+            opcionLabel: String(it.opcionLabel || '').trim().slice(0, 80),
+            image: String(it.image || '').slice(0, 300),
+            catName: String(it.catName || 'Catálogo').trim().slice(0, 100),
+            qty: Math.max(1, Math.min(50, parseInt(it.qty, 10) || 1)),
+            price: it.price !== undefined && it.price !== null && it.price !== '' ? Number(it.price) : null,
+            customCuts: Array.isArray(it.customCuts) ? it.customCuts.slice(0, 30) : undefined
+          })).filter((it) => it.id);
+
+          const updatedAt = Date.now();
+          await env.ORDERS_KV.put('client_cart:' + email, JSON.stringify({ items: cleanItems, updatedAt }));
+          return new Response(JSON.stringify({ success: true, items: cleanItems, updatedAt }), {
+            status: 200,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+      }
+
+      // -------------------------------------------------------------
       // 3. GET /admin/pedidos — Listado de pedidos para el Admin
       // -------------------------------------------------------------
       if (request.method === 'GET' && path === '/admin/pedidos') {

@@ -26,9 +26,13 @@
         photo: '' // Base64 de la foto de perfil
     };
 
+    const CART_WORKER_URL = 'https://super-shadow-4ad9.latarimadecoracion.workers.dev';
+    const CART_OWNER_KEY = 'latarima_cart_owner_email';
+    const CART_UPDATED_KEY = 'latarima_cart_updated_at';
     let cartItems = [];
     let _syncingCartCp = false;
     let _cpListenerRegistered = false;
+    let _cartSyncTimer = null;
 
     // 2. Persistencia Aislada
     function loadUserData() {
@@ -76,15 +80,161 @@
         }
     }
 
-    function saveCartItems() {
+    function getCartMatchKey(item) {
+        if (!item) return '';
+        const cutsKey = Array.isArray(item.customCuts) && item.customCuts.length > 0
+            ? JSON.stringify(item.customCuts)
+            : '';
+        return [
+            String(item.id || ''),
+            (item.acabado || '').trim().toLowerCase(),
+            (item.medida || '').trim().toLowerCase(),
+            (item.opcion || '').trim().toLowerCase(),
+            cutsKey
+        ].join('|');
+    }
+
+    function mergeCartArrays(localList, cloudList) {
+        const merged = [];
+        const map = new Map();
+        const addOrMerge = (item) => {
+            if (!item || !item.id) return;
+            const key = getCartMatchKey(item);
+            if (!map.has(key)) {
+                const clone = { ...item, qty: Math.max(1, parseInt(item.qty, 10) || 1) };
+                map.set(key, clone);
+                merged.push(clone);
+            } else {
+                const existing = map.get(key);
+                const newQty = Math.max(1, parseInt(item.qty, 10) || 1);
+                if (newQty > (existing.qty || 1)) existing.qty = newQty;
+                if (!existing.price && item.price) existing.price = item.price;
+                if (!existing.image && item.image) existing.image = item.image;
+            }
+        };
+        (Array.isArray(cloudList) ? cloudList : []).forEach(addOrMerge);
+        (Array.isArray(localList) ? localList : []).forEach(addOrMerge);
+        return merged.slice(0, 80);
+    }
+
+    function scheduleCloudCartSync(userEmail) {
+        if (!userEmail) return;
+        const cleanEmail = String(userEmail).trim().toLowerCase();
+        if (!cleanEmail) return;
+        if (_cartSyncTimer) clearTimeout(_cartSyncTimer);
+        _cartSyncTimer = setTimeout(async () => {
+            try {
+                localStorage.setItem(CART_OWNER_KEY, cleanEmail);
+                const res = await fetch(`${CART_WORKER_URL}/carrito-cliente`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: cleanEmail, items: cartItems })
+                });
+                if (res.ok) {
+                    const data = await res.json().catch(() => null);
+                    if (data && data.updatedAt) {
+                        localStorage.setItem(CART_UPDATED_KEY, String(data.updatedAt));
+                    }
+                }
+            } catch (e) {
+                console.warn('[Carrito Cloud] No se pudo sincronizar carrito:', e);
+            }
+        }, 500);
+    }
+
+    function saveCartItems(options = {}) {
         try {
             localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            if (!options.keepTimestamp) {
+                localStorage.setItem(CART_UPDATED_KEY, String(Date.now()));
+            }
             if (window.updateFavoritesBadge) {
                 window.updateFavoritesBadge();
+            }
+            if (!options.skipCloudPush) {
+                const publicUser = (window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function')
+                    ? window.AdminAuth.getPublicUser()
+                    : null;
+                if (publicUser && publicUser.email) {
+                    scheduleCloudCartSync(publicUser.email);
+                }
             }
         } catch (e) {
             console.error('[Carrito Module] Error guardando favoritos:', e);
         }
+    }
+
+    async function syncCartFromCloud(userObj = null) {
+        const user = userObj || ((window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function') ? window.AdminAuth.getPublicUser() : null);
+        if (!user || !user.email) return null;
+        const cleanEmail = user.email.trim().toLowerCase();
+
+        try {
+            loadCartItems();
+            const res = await fetch(`${CART_WORKER_URL}/carrito-cliente?email=${encodeURIComponent(cleanEmail)}`);
+            if (!res.ok) return null;
+            const data = await res.json();
+            if (!data || !data.success) return null;
+
+            const cloudItems = Array.isArray(data.items) ? data.items : [];
+            const cloudUpdated = Number(data.updatedAt) || 0;
+            const prevOwner = (localStorage.getItem(CART_OWNER_KEY) || '').trim().toLowerCase();
+            const localUpdated = Number(localStorage.getItem(CART_UPDATED_KEY) || 0);
+
+            let finalItems = cartItems;
+            let shouldPushBack = false;
+
+            if (prevOwner !== cleanEmail) {
+                // Login nuevo o cambio de cuenta: fusionar carrito invitado/local con la nube sin perder nada
+                finalItems = mergeCartArrays(cartItems, cloudItems);
+                shouldPushBack = finalItems.length > cloudItems.length || cartItems.length > 0;
+            } else if (cloudUpdated > localUpdated) {
+                // La misma cuenta actualizó el carrito en otro dispositivo más recientemente
+                finalItems = cloudItems;
+            } else if (localUpdated > cloudUpdated && cartItems.length > 0) {
+                // Modificado offline en este dispositivo más recientemente
+                finalItems = cartItems;
+                shouldPushBack = true;
+            } else if (cloudItems.length > 0 && cartItems.length === 0 && !localUpdated) {
+                finalItems = cloudItems;
+            }
+
+            cartItems = finalItems;
+            localStorage.setItem(CART_OWNER_KEY, cleanEmail);
+            if (cloudUpdated && !shouldPushBack) {
+                localStorage.setItem(CART_UPDATED_KEY, String(cloudUpdated));
+            }
+            saveCartItems({ skipCloudPush: !shouldPushBack, keepTimestamp: !shouldPushBack });
+
+            const viewProfile = document.getElementById('view-profile');
+            if (viewProfile && viewProfile.classList.contains('active')) {
+                renderPerfilCarritoView();
+            }
+            return cartItems;
+        } catch (e) {
+            console.warn('[Carrito Cloud] Error descargando carrito:', e);
+            return null;
+        }
+    }
+
+    function clearLocalSessionCart() {
+        try {
+            if (_cartSyncTimer) {
+                clearTimeout(_cartSyncTimer);
+                _cartSyncTimer = null;
+            }
+            cartItems = [];
+            localStorage.removeItem('cartItems');
+            localStorage.removeItem(CART_OWNER_KEY);
+            localStorage.removeItem(CART_UPDATED_KEY);
+            if (window.updateFavoritesBadge) {
+                window.updateFavoritesBadge();
+            }
+            const viewProfile = document.getElementById('view-profile');
+            if (viewProfile && viewProfile.classList.contains('active')) {
+                renderPerfilCarritoView();
+            }
+        } catch (e) {}
     }
 
     // Funciones Auxiliares
@@ -1037,7 +1187,33 @@
                 }
             } catch(e) {}
 
-            // Cabecera limpia exclusiva de Carrito (separada de Mi Perfil)
+            // Cabecera limpia exclusiva de Carrito (separada de Mi Perfil) + estado de sync en la nube
+            const cartPublicUser = (window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function')
+                ? window.AdminAuth.getPublicUser()
+                : null;
+
+            const cartCloudBadgeHTML = cartPublicUser
+                ? `<span style="display: inline-flex; align-items: center; gap: 4px; background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; border-radius: 999px; padding: 2px 9px; font-size: 0.7rem; font-weight: 800;">
+                        <span class="material-symbols-outlined" style="font-size: 14px;">cloud_done</span>
+                        <span>Guardado en tu cuenta</span>
+                   </span>`
+                : '';
+
+            const cartGuestSyncBannerHTML = !cartPublicUser
+                ? `<div style="background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%); border: 1px solid #bfdbfe; border-radius: 14px; padding: 0.75rem 1rem; margin-bottom: 0.95rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: 10px; min-width: 220px; flex: 1;">
+                            <span class="material-symbols-outlined" style="color: #2563eb; font-size: 22px; flex-shrink: 0;">cloud_sync</span>
+                            <div style="font-size: 0.8rem; color: #1e293b; line-height: 1.35;">
+                                <strong>No pierdas lo que buscás:</strong> iniciá sesión gratis con Google para guardar tu carrito entre PC y celular.
+                            </div>
+                        </div>
+                        <button type="button" id="btn-cart-google-sync" style="background: #ffffff; color: #0f172a; border: 1.5px solid #cbd5e1; border-radius: 999px; padding: 0.45rem 0.95rem; font-size: 0.78rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05); flex-shrink: 0;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z"/><path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z"/></svg>
+                            <span>Guardar con Google</span>
+                        </button>
+                   </div>`
+                : '';
+
             const cartHeaderStripHTML = `
                 <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 0.75rem;">
                     <div style="display: flex; align-items: center; gap: 10px;">
@@ -1045,7 +1221,10 @@
                             <span class="material-symbols-outlined" style="font-size: 22px;">shopping_cart</span>
                         </div>
                         <div>
-                            <h2 style="margin: 0; font-size: 1.25rem; font-weight: 900; color: #0f172a;">Mi Carrito</h2>
+                            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                <h2 style="margin: 0; font-size: 1.25rem; font-weight: 900; color: #0f172a;">Mi Carrito</h2>
+                                ${cartCloudBadgeHTML}
+                            </div>
                             <p style="margin: 0; font-size: 0.78rem; color: #64748b;">Calculá envíos y finalizá tu compra</p>
                         </div>
                     </div>
@@ -1065,6 +1244,7 @@
             viewContainer.innerHTML = `
                 ${wholesaleBannerHTML}
                 ${cartHeaderStripHTML}
+                ${cartGuestSyncBannerHTML}
 
                 <!-- Sección de Favoritos (Carrito Integrado) -->
                 <div class="cart-section" style="margin-top: 1rem;">
@@ -1084,10 +1264,25 @@
                 </div>
             `;
 
-            // --- Accesos a secciones separadas (Mi Perfil / Mis Compras) ---
+            // --- Accesos a secciones separadas (Mi Perfil / Mis Compras / Sync Google) ---
             document.getElementById('btn-go-user-profile-from-cart')?.addEventListener('click', () => {
                 if (window.navigateToView) window.navigateToView('view-user-profile');
             });
+            const btnCartSync = document.getElementById('btn-cart-google-sync');
+            if (btnCartSync) {
+                btnCartSync.addEventListener('click', async () => {
+                    if (!window.AdminAuth || typeof window.AdminAuth.loginPublicStoreWithGoogle !== 'function') return;
+                    btnCartSync.disabled = true;
+                    btnCartSync.style.opacity = '0.7';
+                    try {
+                        await window.AdminAuth.loginPublicStoreWithGoogle();
+                        renderPerfilCarritoView();
+                    } catch (err) {
+                        btnCartSync.disabled = false;
+                        btnCartSync.style.opacity = '1';
+                    }
+                });
+            }
             document.getElementById('btn-go-my-orders-from-cart')?.addEventListener('click', () => {
                 if (window.navigateToView) window.navigateToView('view-my-orders');
             });
@@ -2105,7 +2300,9 @@
             }
         },
         render: renderPerfilCarritoView,
-        toggle: toggleProductInCart
+        toggle: toggleProductInCart,
+        syncFromCloud: syncCartFromCloud,
+        clearLocalSessionCart: clearLocalSessionCart
     };
 
     // Inicializador global independiente

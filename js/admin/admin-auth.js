@@ -633,6 +633,9 @@
                     } catch (e) {}
 
                     syncClientProfileFromCloud(publicSession.user);
+                    if (window.CarritoModule && typeof window.CarritoModule.syncFromCloud === 'function') {
+                        window.CarritoModule.syncFromCloud(publicSession.user);
+                    }
 
                     if (window.DesktopHeader && typeof window.DesktopHeader.renderAccount === 'function') {
                         window.DesktopHeader.renderAccount();
@@ -766,6 +769,9 @@
         localStorage.setItem(STORAGE_CLIENT_SESSION_KEY, JSON.stringify(publicSession));
 
         await syncClientProfileFromCloud(publicSession.user);
+        if (window.CarritoModule && typeof window.CarritoModule.syncFromCloud === 'function') {
+            await window.CarritoModule.syncFromCloud(publicSession.user);
+        }
 
         if (window.DesktopHeader && typeof window.DesktopHeader.renderAccount === 'function') {
             window.DesktopHeader.renderAccount();
@@ -919,6 +925,9 @@
             });
         }
 
+        if (window.CarritoModule && typeof window.CarritoModule.clearLocalSessionCart === 'function') {
+            window.CarritoModule.clearLocalSessionCart();
+        }
         if (window.DesktopHeader && typeof window.DesktopHeader.renderAccount === 'function') {
             window.DesktopHeader.renderAccount();
         }
@@ -962,8 +971,12 @@
         if (isAuthenticated()) {
             renderHeaderUserBadge();
         }
-        if (getPublicUser()) {
-            syncClientProfileFromCloud();
+        const bootPublicUser = getPublicUser();
+        if (bootPublicUser) {
+            syncClientProfileFromCloud(bootPublicUser);
+            if (window.CarritoModule && typeof window.CarritoModule.syncFromCloud === 'function') {
+                window.CarritoModule.syncFromCloud(bootPublicUser);
+            }
         }
     });
 })();
