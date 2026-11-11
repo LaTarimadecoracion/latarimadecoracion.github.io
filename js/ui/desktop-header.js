@@ -336,55 +336,6 @@
         });
     }
 
-    function renderCategoriesDropdown() {
-        const dropdown = document.getElementById('desktop-categories-dropdown');
-        if (!dropdown) return;
-
-        const sourceData = (typeof sessionProducts !== 'undefined' && sessionProducts.length > 0)
-            ? sessionProducts
-            : (typeof productsData !== 'undefined' ? productsData : []);
-
-        if (!sourceData || sourceData.length === 0) {
-            dropdown.innerHTML = `<a href="#" class="desktop-cat-item desktop-cat-all" onclick="event.preventDefault(); window.navigateToView('view-categories');">Ver todas las categorías</a>`;
-            return;
-        }
-
-        const sorted = [...sourceData]
-            .filter(c => c && c.visible !== false && Array.isArray(c.products) && c.products.some(p => p.visible !== false))
-            .sort((a, b) => (a.name || '').localeCompare((b.name || ''), 'es', { sensitivity: 'base', numeric: true }));
-
-        const itemsHtml = sorted.slice(0, 14).map(cat => {
-            const count = cat.products.filter(p => p.visible !== false).length;
-            const safeId = String(cat.id || '').replace(/"/g, '&quot;');
-            return `
-                <a href="#" class="desktop-cat-item" data-cat-id="${safeId}">
-                    <span>${cat.name}</span>
-                    <span class="desktop-cat-count">${count}</span>
-                </a>
-            `;
-        }).join('');
-
-        dropdown.innerHTML = `
-            <div class="desktop-cat-grid">${itemsHtml}</div>
-            <div class="desktop-cat-footer">
-                <a href="#" class="desktop-cat-view-all" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-categories');">
-                    <span>Ver todas las categorías</span>
-                    <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
-                </a>
-            </div>
-        `;
-
-        dropdown.querySelectorAll('.desktop-cat-item[data-cat-id]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const catId = link.getAttribute('data-cat-id');
-                if (catId && window.navigateToCategoryFeed) {
-                    window.navigateToCategoryFeed(catId);
-                }
-            });
-        });
-    }
-
     function renderAccount() {
         const container = document.getElementById('desktop-account-area');
         if (!container) return;
@@ -493,7 +444,6 @@
 
     function init() {
         renderLocation();
-        renderCategoriesDropdown();
         renderAccount();
         syncCartBadge();
         syncNotifBadge();
@@ -515,9 +465,6 @@
             const obs = new MutationObserver(syncNotifBadge);
             obs.observe(mobileBadge, { attributes: true, attributeFilter: ['style'] });
         }
-
-        // Reintentar poblar categorías si productsData carga diferido
-        setTimeout(renderCategoriesDropdown, 900);
     }
 
     window.DesktopHeader = {
@@ -526,7 +473,6 @@
         syncNotifBadge,
         renderLocation,
         openLocationModal,
-        renderCategoriesDropdown,
         renderAccount,
         triggerClientLogin,
         logout

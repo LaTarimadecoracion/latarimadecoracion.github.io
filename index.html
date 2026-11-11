@@ -44,7 +44,7 @@
     <!-- CSS Base + Capas aisladas por dispositivo (Móvil vs Escritorio) -->
     <link rel="stylesheet" href="css/style.css?v=58">
     <link rel="stylesheet" href="css/mobile.css?v=1" media="(max-width: 899.98px)">
-    <link rel="stylesheet" href="css/desktop.css?v=4" media="(min-width: 900px)">
+    <link rel="stylesheet" href="css/desktop.css?v=5" media="(min-width: 900px)">
     
     
 
@@ -231,14 +231,7 @@
             <!-- 2. Secciones de la tienda (reemplazan barra inferior en PC) -->
             <div class="desktop-subnav-links" id="desktop-subnav-links">
                 <a href="#" class="desktop-nav-link active" data-target="view-home" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-home');">Inicio</a>
-                <div class="desktop-cat-menu-wrapper" id="desktop-cat-menu-wrapper">
-                    <a href="#" class="desktop-nav-link desktop-cat-trigger" data-target="view-categories" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-categories');">
-                        <span>Categorías</span>
-                        <span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
-                    </a>
-                    <!-- Menú desplegable de categorías al pasar el mouse -->
-                    <div class="desktop-categories-dropdown" id="desktop-categories-dropdown"></div>
-                </div>
+                <a href="#" class="desktop-nav-link" data-target="view-categories" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-categories');">Categorías</a>
                 <a href="#" class="desktop-nav-link" data-target="view-catalogo" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-catalogo');">Catálogo</a>
                 <a href="#" class="desktop-nav-link" data-target="view-offers" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-offers');">Ofertas</a>
                 <a href="#" class="desktop-nav-link" data-target="view-videos" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-videos');">Videos</a>
@@ -828,7 +821,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js" defer></script>
     <script src="js/admin/admin-auth.js?v=6" defer></script>
     <script src="js/ui/ui-navigation.js?v=8" defer></script>
-    <script src="js/ui/desktop-header.js?v=6" defer></script>
+    <script src="js/ui/desktop-header.js?v=7" defer></script>
     <script src="js/ui/ui-offers.js?v=23" defer></script>
     <script src="js/ui/catalog/catalog-utils.js?v=4" defer></script>
     <script src="js/ui/ui-search-feed.js?v=2" defer></script>
