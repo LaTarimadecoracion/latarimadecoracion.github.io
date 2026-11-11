@@ -436,7 +436,6 @@
                 activeSubcategory = null;
                 loadProducts();
                 renderCatalogRubrosTabs();
-                renderCategoriesBar();
                 updateCatalogUrl('all', { updateUrl: true });
                 applyAllFiltersAndSort();
             });
@@ -444,43 +443,11 @@
         });
     }
 
-    function renderCategoriesBar() {
-        const bar = document.getElementById('catalog-categories-bar');
-        if (!bar) return;
-
+    function ensureValidCategorySelection() {
         const visibleCategories = getVisibleCategoriesForRubro(activeCatalogRubro);
         if (activeCategoryId !== 'all' && !visibleCategories.some(c => c.id === activeCategoryId)) {
             activeCategoryId = 'all';
             activeSubcategory = null;
-        }
-
-        bar.innerHTML = '';
-
-        const btnAll = document.createElement('button');
-        btnAll.type = 'button';
-        btnAll.className = `catalog-cat-chip${activeCategoryId === 'all' ? ' active' : ''}`;
-        btnAll.dataset.categoryId = 'all';
-        btnAll.textContent = 'Todas';
-        btnAll.addEventListener('click', () => setCategory('all', { updateUrl: true }));
-        bar.appendChild(btnAll);
-
-        visibleCategories.forEach(cat => {
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.className = `catalog-cat-chip${activeCategoryId === cat.id ? ' active' : ''}`;
-            btn.dataset.categoryId = cat.id;
-            btn.textContent = cat.name;
-            btn.addEventListener('click', () => setCategory(cat.id, { updateUrl: true }));
-            bar.appendChild(btn);
-        });
-
-        if (typeof window.enableDragToScroll === 'function') {
-            window.enableDragToScroll(bar);
-        }
-
-        const activeChip = bar.querySelector('.catalog-cat-chip.active');
-        if (activeChip && typeof activeChip.scrollIntoView === 'function' && window.innerWidth < 900) {
-            activeChip.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
         }
     }
 
@@ -1053,7 +1020,6 @@
         const btnClearSearch = document.getElementById('btn-clear-search');
         if (searchInput) searchInput.value = '';
         if (btnClearSearch) btnClearSearch.style.display = 'none';
-        renderCategoriesBar();
         updateCatalogUrl('all', { updateUrl: true });
         applyAllFiltersAndSort();
     }
@@ -1071,7 +1037,6 @@
         rootEl.innerHTML = `
             <div class="catalog-container">
                 <div id="catalog-rubros-tabs-container" class="rubros-tabs-bar"></div>
-                <div id="catalog-categories-bar" class="catalog-categories-bar" role="tablist" aria-label="Categorías del catálogo"></div>
                 <div id="catalog-subcategories-bar" class="catalog-subcategories-bar" style="display: none;"></div>
                 <div class="catalog-toolbar" id="catalog-toolbar">
                     <div class="catalog-toolbar-left">
@@ -1155,7 +1120,7 @@
 
         loadProducts();
         renderCatalogRubrosTabs();
-        renderCategoriesBar();
+        ensureValidCategorySelection();
         updateCatalogUrl(activeCategoryId, options);
         applyAllFiltersAndSort();
     }
@@ -1180,7 +1145,7 @@
 
         loadProducts();
         renderCatalogRubrosTabs();
-        renderCategoriesBar();
+        ensureValidCategorySelection();
         applyAllFiltersAndSort();
     }
 
