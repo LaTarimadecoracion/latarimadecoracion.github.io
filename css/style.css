@@ -1314,11 +1314,11 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     }
 }
 
-/* lg: monitores amplios — 4 columnas */
-@media (min-width: 1200px) {
+/* lg: monitores amplios — máximo estricto 4 columnas */
+@media (min-width: 1024px) {
     .category-feed-list,
     .product-feed {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 22px;
     }
 }
@@ -6916,14 +6916,15 @@ a .material-symbols-outlined {
 
 @media (min-width: 600px) {
     .offers-grid-layout {
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 1.25rem;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.15rem;
     }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
     .offers-grid-layout {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1.25rem;
     }
 }
 

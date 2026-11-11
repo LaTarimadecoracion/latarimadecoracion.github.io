@@ -692,8 +692,22 @@ body.standalone-catalog .catalog-toolbar {
    ============================================================================= */
 .catalog-list.view-cards {
     display: grid !important;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)) !important;
-    gap: 1rem !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.75rem !important;
+}
+
+@media (min-width: 600px) {
+    .catalog-list.view-cards {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 1rem !important;
+    }
+}
+
+@media (min-width: 1024px) {
+    .catalog-list.view-cards {
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 1.25rem !important;
+    }
 }
 
 .catalog-list.view-cards .catalog-row {

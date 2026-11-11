@@ -201,7 +201,7 @@ window.ensureCatalogModuleLoaded = function() {
     if (window.CatalogNative) return Promise.resolve();
     if (_catalogModulePromise) return _catalogModulePromise;
     _catalogModulePromise = Promise.all([
-        loadStyleOnDemand('css/catalogo.css?v=12'),
+        loadStyleOnDemand('css/catalogo.css?v=13'),
         loadScriptOnDemand('js/modules/catalog-view.js?v=2')
     ]);
     return _catalogModulePromise;
