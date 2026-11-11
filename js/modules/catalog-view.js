@@ -711,6 +711,7 @@
 
         // 2. Columna de Textos (Título, Precio + Info, Selector de Variante)
         const textCol = document.createElement('div');
+        textCol.className = 'catalog-text-col';
         textCol.style.cssText = 'display:flex; flex-direction:column; flex:1; min-width:0; justify-content:center;';
 
         const titleRow = document.createElement('div');

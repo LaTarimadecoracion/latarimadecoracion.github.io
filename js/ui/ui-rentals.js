@@ -42,14 +42,15 @@
 
                 card.innerHTML = `
                     <div class="feed-card-photo-container">
-                        <div class="feed-card-img-wrapper" style="position:relative;">
-                            <img src="${coverImage}" class="feed-card-img lazy-img" alt="${rental.title}" loading="lazy" onload="this.classList.add('loaded')">
-                        </div>
+                        <img src="${coverImage}" class="feed-card-img lazy-img" alt="${rental.title}" loading="lazy" onload="this.classList.add('loaded')">
                         <span style="position: absolute; top: 12px; right: 12px; z-index: 5; background: #5E35B1; color: white; border: none; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; font-size: 0.68rem; padding: 0.25rem 0.65rem; border-radius: 50px; box-shadow: 0 2px 6px rgba(0,0,0,0.25);">Alquiler</span>
-                        <div class="feed-card-gradient"></div>
-                        <div class="feed-card-info">
-                            <span class="feed-card-cat">${priceLabel}</span>
-                            <h3 class="feed-card-title">${rental.title}</h3>
+                    </div>
+                    <div class="feed-card-info">
+                        <div class="feed-card-title-container">
+                            <h3 class="feed-card-title" title="${rental.title}">${rental.title}</h3>
+                        </div>
+                        <div class="feed-card-price-row">
+                            <span class="feed-card-price-current">${priceLabel}</span>
                         </div>
                     </div>
                 `;

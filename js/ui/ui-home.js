@@ -75,17 +75,16 @@
 
                     card.innerHTML = `
                         <div class="feed-card-photo-container">
-                            <div class="feed-card-img-wrapper" style="position:relative;">
-                                <img src="${productCover}" class="feed-card-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')">
-                            </div>
-                            <div class="feed-card-gradient"></div>
-                            <div class="feed-card-info">
-                                <span class="feed-card-cat" ${catId ? `data-category-id="${catId}"` : ''}>${catName}</span>
-                                <h3 class="feed-card-title">${product.title}</h3>
-                            </div>
+                            <img src="${productCover}" class="feed-card-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')">
                             <span class="feed-card-variants-badge" style="background: var(--primary-color, #c0510a); color: white; border: none; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; font-size: 0.72rem; padding: 0.3rem 0.75rem; border-radius: 50px; box-shadow: 0 2px 8px rgba(0,0,0,0.25);">
                                 ${badgeText}
                             </span>
+                        </div>
+                        <div class="feed-card-info">
+                            <span class="feed-card-cat" ${catId ? `data-category-id="${catId}"` : ''}>${catName}</span>
+                            <div class="feed-card-title-container">
+                                <h3 class="feed-card-title" title="${product.title}">${product.title}</h3>
+                            </div>
                         </div>
                     `;
                     card.addEventListener('click', () => {

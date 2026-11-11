@@ -700,40 +700,62 @@ body.standalone-catalog .catalog-toolbar {
     flex-direction: column !important;
     align-items: stretch !important;
     justify-content: space-between !important;
-    padding: 0.85rem !important;
-    gap: 0.75rem !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    overflow: hidden !important;
     border-radius: 16px !important;
     background: #ffffff !important;
+    border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06) !important;
     height: 100%;
     box-sizing: border-box;
 }
 
 .catalog-list.view-cards .catalog-row:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10) !important;
+    border-color: rgba(180, 132, 108, 0.30) !important;
 }
 
 .catalog-list.view-cards .catalog-thumb-container {
     width: 100%;
+    aspect-ratio: 3 / 2;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    line-height: 0;
+    background: #1a1a1a;
 }
 
 .catalog-list.view-cards .catalog-thumb-link {
     width: 100%;
-    border-radius: 12px;
+    height: 100%;
+    border-radius: 0 !important;
+    display: block;
+    overflow: hidden;
 }
 
 .catalog-list.view-cards .catalog-thumb {
     width: 100% !important;
-    height: 185px !important;
-    border-radius: 12px;
+    height: 100% !important;
+    border-radius: 0 !important;
+    border: none !important;
     object-fit: cover;
+    display: block;
 }
 
 .catalog-list.view-cards .catalog-thumb-cart-btn {
-    top: 8px;
-    right: 8px;
-    width: 30px;
-    height: 30px;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+}
+
+.catalog-list.view-cards .catalog-text-col,
+.catalog-list.view-cards .catalog-row > div:not(.catalog-thumb-container):not(.catalog-actions-col) {
+    padding: 0.85rem 0.9rem 0.55rem 0.9rem !important;
+    gap: 0.2rem;
+    box-sizing: border-box;
 }
 
 .catalog-list.view-cards .catalog-variant-col {
@@ -750,6 +772,9 @@ body.standalone-catalog .catalog-toolbar {
     flex-direction: row !important;
     gap: 6px !important;
     min-width: 0;
+    padding: 0 0.9rem 0.9rem 0.9rem !important;
+    margin-top: auto;
+    box-sizing: border-box;
 }
 
 .catalog-list.view-cards .catalog-btn {
@@ -782,11 +807,15 @@ body.standalone-catalog .catalog-toolbar {
         grid-template-columns: repeat(2, 1fr) !important;
         gap: 0.65rem !important;
     }
-    .catalog-list.view-cards .catalog-thumb {
-        height: 135px !important;
-    }
     .catalog-list.view-cards .catalog-row {
-        padding: 0.65rem !important;
+        padding: 0 !important;
+    }
+    .catalog-list.view-cards .catalog-text-col,
+    .catalog-list.view-cards .catalog-row > div:not(.catalog-thumb-container):not(.catalog-actions-col) {
+        padding: 0.65rem 0.7rem 0.45rem 0.7rem !important;
+    }
+    .catalog-list.view-cards .catalog-actions-col {
+        padding: 0 0.7rem 0.7rem 0.7rem !important;
     }
 }
 

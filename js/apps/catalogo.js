@@ -297,6 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // 2. Columna de Textos (Título, Precio + Icono Info, Selector de Variante)
             const textCol = document.createElement('div');
+            textCol.className = 'catalog-text-col';
             textCol.style.display = 'flex';
             textCol.style.flexDirection = 'column';
             textCol.style.flex = '1';

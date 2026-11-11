@@ -1031,9 +1031,9 @@
                     if (item.type === 'combo') {
                         const pCard = document.createElement('div');
                         pCard.className = 'category-card';
-                        pCard.style.cursor = 'pointer';
+                        pCard.style.cssText = 'cursor: pointer; border: 1px solid rgba(212, 175, 55, 0.35); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);';
                         pCard.innerHTML = `
-                            <div class="category-card-img-wrapper" style="position:relative; border: 2px solid #b38728; border-radius: 12px; overflow: hidden;">
+                            <div class="category-card-img-wrapper" style="position:relative;">
                                 <img src="${window.getThumbUrl ? window.getThumbUrl(item.image) : item.image}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${item.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
                                 <div style="position: absolute; top: 6px; left: 6px; background: linear-gradient(135deg, #b38728, #fcf6ba); color: #000; font-size: 0.65rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 2;">
                                     ${item.badge}
@@ -1162,10 +1162,10 @@
                                 card.innerHTML = `
                                     <div class="feed-card-photo-container">
                                         <img src="${productCover}" class="feed-card-img lazy-img" alt="${p.title}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
-                                        <div class="feed-card-info">
-                                            <div class="feed-card-title-container">
-                                                <h3 class="feed-card-title">${p.title}</h3>
-                                            </div>
+                                    </div>
+                                    <div class="feed-card-info">
+                                        <div class="feed-card-title-container">
+                                            <h3 class="feed-card-title">${p.title}</h3>
                                         </div>
                                     </div>
                                 `;

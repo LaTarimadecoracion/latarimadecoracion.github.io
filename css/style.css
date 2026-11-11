@@ -1327,20 +1327,21 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     margin: 0;
 }
 
-/* ── Feed Card - Nueva Tarjeta E-Commerce Premium La Tarima ── */
+/* ── Feed Card - Tarjeta E-Commerce Frameless (Foto Sin Marco estilo Ofertas) ── */
 .feed-card {
     width: 100%;
     margin: 0 0 14px 0;
+    padding: 0;
     display: inline-flex;
     flex-direction: column;
     break-inside: avoid;
-    border-radius: 6px;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     position: relative;
     background: #ffffff;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     transition: transform 0.22s cubic-bezier(0.34, 1.25, 0.64, 1), box-shadow 0.22s ease, border-color 0.2s ease;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
@@ -1350,8 +1351,8 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 
 .feed-card:hover {
     transform: translateY(-3px);
-    border-color: #cbd5e1;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.09), 0 3px 6px rgba(0,0,0,0.04);
+    border-color: rgba(180, 132, 108, 0.30);
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10);
 }
 
 .feed-card:active {
@@ -1359,7 +1360,7 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     box-shadow: 0 2px 10px rgba(0,0,0,0.06);
 }
 
-/* ── Foto del producto — Relación de aspecto 3:2 limpia y nítida ── */
+/* ── Foto del producto — Relación de aspecto 3:2 full-bleed sin marco ── */
 .feed-card-photo,
 .feed-card-photo-container {
     width: 100%;
@@ -1367,8 +1368,18 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     position: relative;
     display: block;
     overflow: hidden;
-    background-color: #F8FAFC;
-    border-bottom: 1px solid #F1F5F9;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    border-bottom: none;
+    background-color: #1a1a1a;
+}
+
+.feed-card-img-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: block;
 }
 
 .feed-card-img {
@@ -3139,7 +3150,9 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     position: relative;
     width: 100%;
     aspect-ratio: 9 / 16;
-    border-radius: 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     overflow: hidden;
     background: #000;
     cursor: pointer;
@@ -7027,12 +7040,14 @@ a .material-symbols-outlined {
 .category-tile {
     width: 100%;
     margin: 0;
+    padding: 0;
     display: block;
     position: relative;
-    border-radius: 6px;
+    border-radius: 16px;
+    border: 1px solid rgba(15, 23, 42, 0.08);
     overflow: hidden;
     cursor: pointer;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
     transition: transform 0.22s cubic-bezier(0.34, 1.25, 0.64, 1), box-shadow 0.22s ease;
     -webkit-tap-highlight-color: transparent;
     user-select: none;
@@ -7126,18 +7141,14 @@ a .material-symbols-outlined {
 }
 
 /* ==========================================================================
-   📐 REGLA MAESTRA: ESQUINAS MINIMALISTAS (4px) EN TODAS LAS MINIATURAS
+   📐 REGLA MAESTRA: TARJETAS ESTILO FOTO SIN MARCO (IGUAL QUE OFERTAS)
+   Contenedor externo con esquinas 16px y overflow:hidden; fotos 100% sin marco
    ========================================================================== */
 .category-card,
-.category-card-img-wrapper,
-.category-card-img,
 .feed-card,
-.feed-card-photo,
-.feed-card-photo-container,
-.feed-card-img,
 .category-tile,
-.category-tile-photo,
-.category-tile-img,
+.video-thumbnail-card,
+.offer-feed-card,
 .carousel-categories .category-card,
 .carousel-categories .feed-card,
 #home-new-designs-list .category-card,
@@ -7145,7 +7156,22 @@ a .material-symbols-outlined {
 #detail-related-product-list .category-card,
 #detail-related-product-list .feed-card,
 #detail-random-product-grid .feed-card {
-    border-radius: 4px !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+}
+
+.category-card-img-wrapper,
+.category-card-img,
+.feed-card-photo,
+.feed-card-photo-container,
+.feed-card-img-wrapper,
+.feed-card-img,
+.category-tile-photo,
+.category-tile-img,
+.offer-photo-wrapper,
+.offer-photo-wrapper img {
+    border-radius: 0 !important;
+    border: none !important;
 }
 
 

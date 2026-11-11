@@ -843,7 +843,7 @@
         if (isCarousel) {
             const card = document.createElement('div');
             card.className = 'category-card offer-carousel-card';
-            card.style.cssText = 'position: relative; cursor: pointer; border-radius: var(--radius-md); overflow: hidden;';
+            card.style.cssText = 'position: relative; cursor: pointer; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06); border: 1px solid rgba(212, 175, 55, 0.25);';
 
             card.innerHTML = `
                 <div class="category-card-img-wrapper" style="position: relative;">
