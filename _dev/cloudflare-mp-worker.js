@@ -39,6 +39,23 @@ export default {
       }
 
       // -------------------------------------------------------------
+      // 1b. GET /geo — Geolocalización automática por IP (Cloudflare cf)
+      // -------------------------------------------------------------
+      if (request.method === 'GET' && path === '/geo') {
+        const cf = request.cf || {};
+        return new Response(JSON.stringify({
+          success: true,
+          city: cf.city || '',
+          region: cf.region || '',
+          postalCode: cf.postalCode || '',
+          country: cf.country || ''
+        }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      // -------------------------------------------------------------
       // 2. GET /pedidos?id=LT-... — Consulta de estado de pedido (Cliente)
       // -------------------------------------------------------------
       if (request.method === 'GET' && path.startsWith('/pedidos')) {
