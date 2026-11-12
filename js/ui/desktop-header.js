@@ -350,16 +350,16 @@
         });
     }
 
-    function closeMainMenu() {
-        const wrapper = document.getElementById('desktop-menu-wrapper');
-        const btn = document.getElementById('desktop-menu-btn');
+    function closeUserMenu() {
+        const wrapper = document.getElementById('desktop-user-menu-wrapper');
+        const btn = document.getElementById('desktop-user-trigger');
         if (wrapper) wrapper.classList.remove('open');
         if (btn) btn.setAttribute('aria-expanded', 'false');
     }
 
-    function toggleMainMenu(forceState) {
-        const wrapper = document.getElementById('desktop-menu-wrapper');
-        const btn = document.getElementById('desktop-menu-btn');
+    function toggleUserMenu(forceState) {
+        const wrapper = document.getElementById('desktop-user-menu-wrapper');
+        const btn = document.getElementById('desktop-user-trigger');
         if (!wrapper) return;
         const shouldOpen = typeof forceState === 'boolean'
             ? forceState
@@ -369,102 +369,23 @@
     }
 
     function navigateFromMenu(viewId) {
-        closeMainMenu();
+        closeUserMenu();
+        if (document.activeElement && typeof document.activeElement.blur === 'function') {
+            document.activeElement.blur();
+        }
         if (window.navigateToView) {
             window.navigationHistory = [];
             window.navigateToView(viewId);
         }
     }
 
-    function renderMainMenu(user) {
-        const dropdown = document.getElementById('desktop-main-menu-dropdown');
-        if (!dropdown) return;
-
-        const isStaff = Boolean(user && (user.role === 'superadmin' || user.role === 'colaborador'));
-        let headerBlockHtml = '';
-
-        if (user) {
-            const firstName = (user.nombre || 'Usuario').split(' ')[0];
-            const initial = firstName.charAt(0).toUpperCase();
-            const dropdownAvatarHtml = user.picture
-                ? `<img src="${user.picture}" alt="${firstName}" referrerpolicy="no-referrer" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1.5px solid #e2e8f0;" onerror="this.style.display='none'">`
-                : `<span style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary-color, #A0715B); color: #fff; font-weight: 800; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">${initial}</span>`;
-            const roleBadgeText = user.role === 'superadmin'
-                ? 'SuperAdmin'
-                : (user.role === 'colaborador' ? 'Equipo Taller' : (user.clientTier === 'mayorista' ? 'Mayorista VIP' : 'Cliente'));
-
-            headerBlockHtml = `
-                <div class="desktop-user-dropdown-header" style="display: flex; align-items: center; gap: 10px;">
-                    ${dropdownAvatarHtml}
-                    <div style="min-width: 0;">
-                        <div style="font-weight: 800; font-size: 0.88rem; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${user.nombre}</div>
-                        <div style="font-size: 0.72rem; color: #64748b; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${user.email}</div>
-                        <span style="display: inline-block; margin-top: 5px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; padding: 2px 8px; border-radius: 50px; background: ${isStaff ? '#fee2e2' : '#dcfce7'}; color: ${isStaff ? '#dc2626' : '#16a34a'};">
-                            ${roleBadgeText}
-                        </span>
-                    </div>
-                </div>
-            `;
-        } else {
-            headerBlockHtml = `
-                <div class="desktop-user-dropdown-header" style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
-                    <div style="min-width: 0;">
-                        <div style="font-weight: 800; font-size: 0.86rem; color: #0f172a;">Tu cuenta</div>
-                        <div style="font-size: 0.72rem; color: #64748b;">Ingresá para sincronizar tus compras</div>
-                    </div>
-                    <button type="button" onclick="window.DesktopHeader.closeMainMenu(); window.DesktopHeader.triggerClientLogin();" style="background: var(--primary-color, #A0715B); color: #fff; border: none; border-radius: 50px; padding: 5px 12px; font-size: 0.74rem; font-weight: 700; cursor: pointer; flex-shrink: 0;">
-                        Ingresar
-                    </button>
-                </div>
-            `;
-        }
-
-        dropdown.innerHTML = `
-            ${headerBlockHtml}
-            <div class="desktop-user-dropdown-links">
-                <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-user-profile');">
-                    <span class="material-symbols-outlined">account_circle</span> Mi Perfil
-                </a>
-                <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-notifications');">
-                    <span class="material-symbols-outlined">notifications</span> Notificaciones
-                    <span class="desktop-menu-notif-dot" id="desktop-menu-notif-badge" style="display: none;"></span>
-                </a>
-                <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-my-orders');">
-                    <span class="material-symbols-outlined">shopping_bag</span> Mis compras / Pedidos
-                </a>
-                <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-profile');">
-                    <span class="material-symbols-outlined">shopping_cart</span> Mi Carrito
-                    <span class="desktop-menu-item-badge" id="desktop-menu-cart-badge" style="display: none;">0</span>
-                </a>
-                <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-profile');">
-                    <span class="material-symbols-outlined">favorite</span> Favoritos
-                </a>
-                ${isStaff ? `
-                    <a href="#" role="menuitem" class="desktop-admin-shortcut" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-admin');">
-                        <span class="material-symbols-outlined">shield_person</span> Panel de Administración
-                    </a>
-                ` : ''}
-                ${user ? `
-                    <a href="#" role="menuitem" class="desktop-logout-link" onclick="event.preventDefault(); window.DesktopHeader.closeMainMenu(); window.DesktopHeader.logout();">
-                        <span class="material-symbols-outlined">logout</span> Cerrar sesión
-                    </a>
-                ` : ''}
-            </div>
-        `;
-
-        syncCartBadge();
-        syncNotifBadge();
-    }
-
     function renderAccount() {
         const container = document.getElementById('desktop-account-area');
+        if (!container) return;
+
         const user = (window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function')
             ? window.AdminAuth.getPublicUser()
             : null;
-
-        renderMainMenu(user);
-
-        if (!container) return;
 
         if (!user) {
             container.innerHTML = `
@@ -476,17 +397,78 @@
 
         const firstName = (user.nombre || 'Usuario').split(' ')[0];
         const initial = firstName.charAt(0).toUpperCase();
+        const isStaff = user.role === 'superadmin' || user.role === 'colaborador';
         const avatarHtml = user.picture
             ? `<img src="${user.picture}" alt="${firstName}" class="desktop-user-avatar-img" referrerpolicy="no-referrer" onerror="this.outerHTML='<span class=\\'desktop-user-avatar-initial\\'>${initial}</span>'">`
             : `<span class="desktop-user-avatar-initial">${initial}</span>`;
 
-        // Solo etiqueta informativa del usuario (el menú ahora se abre desde las 3 rayitas)
+        const dropdownAvatarHtml = user.picture
+            ? `<img src="${user.picture}" alt="${firstName}" referrerpolicy="no-referrer" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1.5px solid #e2e8f0;" onerror="this.style.display='none'">`
+            : `<span style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary-color, #A0715B); color: #fff; font-weight: 800; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">${initial}</span>`;
+
+        const roleBadgeText = user.role === 'superadmin'
+            ? 'SuperAdmin'
+            : (user.role === 'colaborador' ? 'Equipo Taller' : (user.clientTier === 'mayorista' ? 'Mayorista VIP' : 'Cliente'));
+
         container.innerHTML = `
-            <span class="desktop-user-pill" id="desktop-user-pill">
-                ${avatarHtml}
-                <span class="desktop-user-greeting">Hola, <strong>${firstName}</strong></span>
-            </span>
+            <div class="desktop-user-menu-wrapper" id="desktop-user-menu-wrapper">
+                <button type="button" class="desktop-user-trigger" id="desktop-user-trigger" aria-haspopup="true" aria-expanded="false">
+                    ${avatarHtml}
+                    <span class="desktop-user-greeting">Hola, <strong>${firstName}</strong></span>
+                    <span class="material-symbols-outlined" style="font-size: 16px;">expand_more</span>
+                </button>
+                <div class="desktop-user-dropdown" id="desktop-user-dropdown" role="menu">
+                    <div class="desktop-user-dropdown-header" style="display: flex; align-items: center; gap: 10px;">
+                        ${dropdownAvatarHtml}
+                        <div style="min-width: 0;">
+                            <div style="font-weight: 800; font-size: 0.88rem; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${user.nombre}</div>
+                            <div style="font-size: 0.72rem; color: #64748b; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${user.email}</div>
+                            <span style="display: inline-block; margin-top: 5px; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; padding: 2px 8px; border-radius: 50px; background: ${isStaff ? '#fee2e2' : '#dcfce7'}; color: ${isStaff ? '#dc2626' : '#16a34a'};">
+                                ${roleBadgeText}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="desktop-user-dropdown-links">
+                        <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-user-profile');">
+                            <span class="material-symbols-outlined">account_circle</span> Mi Perfil
+                        </a>
+                        <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-notifications');">
+                            <span class="material-symbols-outlined">notifications</span> Notificaciones
+                            <span class="desktop-menu-notif-dot" id="desktop-menu-notif-badge" style="display: none;"></span>
+                        </a>
+                        <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-my-orders');">
+                            <span class="material-symbols-outlined">shopping_bag</span> Mis compras / Pedidos
+                        </a>
+                        <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-profile');">
+                            <span class="material-symbols-outlined">shopping_cart</span> Mi Carrito
+                            <span class="desktop-menu-item-badge" id="desktop-menu-cart-badge" style="display: none;">0</span>
+                        </a>
+                        <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-profile');">
+                            <span class="material-symbols-outlined">favorite</span> Favoritos
+                        </a>
+                        ${isStaff ? `
+                            <a href="#" role="menuitem" class="desktop-admin-shortcut" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-admin');">
+                                <span class="material-symbols-outlined">shield_person</span> Panel de Administración
+                            </a>
+                        ` : ''}
+                        <a href="#" role="menuitem" class="desktop-logout-link" onclick="event.preventDefault(); window.DesktopHeader.closeUserMenu(); window.DesktopHeader.logout();">
+                            <span class="material-symbols-outlined">logout</span> Cerrar sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
         `;
+
+        const triggerBtn = document.getElementById('desktop-user-trigger');
+        if (triggerBtn) {
+            triggerBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                toggleUserMenu();
+            });
+        }
+
+        syncCartBadge();
+        syncNotifBadge();
     }
 
     async function triggerClientLogin() {
@@ -539,24 +521,17 @@
 
         document.getElementById('desktop-location-btn')?.addEventListener('click', openLocationModal);
 
-        const menuWrapper = document.getElementById('desktop-menu-wrapper');
-        const menuBtn = document.getElementById('desktop-menu-btn');
-        if (menuBtn && menuWrapper) {
-            menuBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                toggleMainMenu();
-            });
-            document.addEventListener('click', (e) => {
-                if (menuWrapper.classList.contains('open') && !menuWrapper.contains(e.target)) {
-                    closeMainMenu();
-                }
-            });
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && menuWrapper.classList.contains('open')) {
-                    closeMainMenu();
-                }
-            });
-        }
+        document.addEventListener('click', (e) => {
+            const wrapper = document.getElementById('desktop-user-menu-wrapper');
+            if (wrapper && wrapper.classList.contains('open') && !wrapper.contains(e.target)) {
+                closeUserMenu();
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeUserMenu();
+            }
+        });
 
         // Observar cambios de clase/estilo en el badge de notificaciones móvil para replicarlo en Desktop
         const mobileBadge = document.getElementById('header-nav-badge');
@@ -573,8 +548,8 @@
         renderLocation,
         openLocationModal,
         renderAccount,
-        toggleMainMenu,
-        closeMainMenu,
+        toggleUserMenu,
+        closeUserMenu,
         navigateFromMenu,
         triggerClientLogin,
         logout

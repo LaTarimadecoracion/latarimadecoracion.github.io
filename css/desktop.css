@@ -265,8 +265,21 @@
     font-weight: 700;
 }
 
-/* Etiqueta informativa de Usuario Logueado (no abre menú) */
-.desktop-user-pill {
+/* Menú de Usuario Logueado */
+.desktop-user-menu-wrapper {
+    position: relative;
+}
+
+.desktop-user-menu-wrapper::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 10px;
+}
+
+.desktop-user-trigger {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -274,22 +287,16 @@
     border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 50px;
     padding: 2px 10px 2px 3px;
+    cursor: pointer;
     font-size: 0.82rem;
     color: var(--text-main, #2D3748);
-    cursor: default;
-    user-select: none;
+    transition: background 0.15s, border-color 0.15s;
 }
 
-/* Botón y Menú Desplegable (3 rayitas) */
-.desktop-menu-wrapper {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-}
-
-.desktop-menu-wrapper.open .desktop-menu-btn {
-    background: rgba(15, 23, 42, 0.08);
-    color: var(--primary-color, #A0715B);
+.desktop-user-trigger:hover,
+.desktop-user-menu-wrapper.open .desktop-user-trigger {
+    background: #ffffff;
+    border-color: rgba(15, 23, 42, 0.18);
 }
 
 .desktop-user-avatar-img {
@@ -314,7 +321,7 @@
 
 .desktop-user-dropdown {
     position: absolute;
-    top: calc(100% + 10px);
+    top: calc(100% + 8px);
     right: 0;
     width: 265px;
     background: #ffffff;
@@ -330,7 +337,9 @@
     transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
 }
 
-.desktop-menu-wrapper.open .desktop-user-dropdown {
+.desktop-user-menu-wrapper.open .desktop-user-dropdown,
+.desktop-user-menu-wrapper:hover .desktop-user-dropdown,
+.desktop-user-menu-wrapper:focus-within .desktop-user-dropdown {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
