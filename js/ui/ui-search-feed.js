@@ -314,11 +314,15 @@
             }
         }
         const logMin = parseInt(shipConf.logisticaFreeMinUnits) || parseInt(product.logisticaFreeMinUnits) || 0;
-        if (logMin > 0) {
+        if (logMin === 1) {
+            return { isFree: true, label: 'Envío Gratis', badgeText: 'Envío Gratis', type: 'direct' };
+        } else if (logMin > 1) {
             return { isFree: true, label: `Envío Gratis desde ${logMin} u.`, badgeText: `Envío Gratis +${logMin}u`, type: 'volume', minUnits: logMin };
         }
         const fleteMin = parseInt(shipConf.fleteFreeMinUnits) || parseInt(product.fleteFreeMinUnits) || 0;
-        if (fleteMin > 0) {
+        if (fleteMin === 1) {
+            return { isFree: true, label: 'Envío Gratis', badgeText: 'Envío Gratis', type: 'direct' };
+        } else if (fleteMin > 1) {
             return { isFree: true, label: `Envío Gratis desde ${fleteMin} u.`, badgeText: `Envío Gratis +${fleteMin}u`, type: 'volume', minUnits: fleteMin };
         }
 

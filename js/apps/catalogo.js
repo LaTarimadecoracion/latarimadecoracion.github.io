@@ -353,23 +353,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             priceRow.appendChild(priceTag);
 
-            // Icono informativo con tooltip
-            const tooltipWrapper = document.createElement('div');
-            tooltipWrapper.className = 'catalog-info-tooltip-wrapper';
-            tooltipWrapper.innerHTML = `
-                <span class="material-symbols-outlined catalog-info-icon">help_outline</span>
-                <div class="catalog-tooltip-box">
-                    <div style="font-weight:700; margin-bottom:4px; color:#F59E0B;">💡 Guía de Compra y Envíos</div>
-                    <div style="margin-bottom:3px;">💵 <b>Precio publicado:</b> Venta directa en efectivo / transferencia al retirar.</div>
-                    <div style="margin-bottom:3px;">🚚 <b>Botón Envío:</b> Mercado Libre (cuotas, tarjetas y envío directo).</div>
-                    <div>💬 <b>Botón Consultar:</b> Atención o dudas vía WhatsApp.</div>
-                </div>
-            `;
-            tooltipWrapper.addEventListener('click', (e) => {
-                e.stopPropagation();
-                tooltipWrapper.classList.toggle('active');
-            });
-            priceRow.appendChild(tooltipWrapper);
+            // Envío Gratis / Descuentos
+            const shipConf = product.shippingConfig || {};
+            const isFree = shipConf.isFreeShipping === true || product.isFreeShipping === true || parseInt(shipConf.logisticaFreeMinUnits) === 1 || parseInt(shipConf.fleteFreeMinUnits) === 1;
+            if (isFree) {
+                const shipTag = document.createElement('span');
+                shipTag.style.cssText = 'color:#059669; font-size:0.75rem; font-weight:800; display:inline-flex; align-items:center; gap:2px; margin-left:3px;';
+                shipTag.innerHTML = '<span class="material-symbols-outlined" style="font-size:14px; color:#10b981;">local_shipping</span><span>Envío Gratis</span>';
+                priceRow.appendChild(shipTag);
+            }
             textCol.appendChild(priceRow);
 
             // Variables de enlaces
