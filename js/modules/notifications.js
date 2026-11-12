@@ -943,7 +943,11 @@
         const payload = item.actionPayload || {};
         if (item.actionType === 'order') {
             if (window.navigateToView) {
-                window.navigateToView('view-my-orders', payload.orderId ? { orderId: payload.orderId } : {});
+                if (payload.orderId) {
+                    window.navigateToView('view-pedidos', { orderId: payload.orderId });
+                } else {
+                    window.navigateToView('view-my-orders');
+                }
             }
             return;
         }

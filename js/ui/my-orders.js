@@ -546,10 +546,10 @@
         const cleanId = String(orderId).trim().replace(/^#/, '');
         if (!cleanId) return;
         if (typeof window.navigateToView === 'function') {
-            window.navigateToView('view-my-orders', { orderId: cleanId });
+            window.navigateToView('view-pedidos', { orderId: cleanId });
             return;
         }
-        render({ orderId: cleanId });
+        window.open(`pedidos/index.html?id=${encodeURIComponent(cleanId)}`, '_blank');
     }
 
     function renderDiscoverySections(hostEl) {

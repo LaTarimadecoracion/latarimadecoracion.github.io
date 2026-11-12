@@ -106,7 +106,7 @@
             if (viewId === 'view-search' || viewId === 'view-category-feed') {
                 viewId = 'view-catalogo';
             } else if (viewId === 'view-pedidos') {
-                viewId = 'view-my-orders';
+                // Mantener view-pedidos (pedidos/index.html) también en PC con su detalle completo y T&C
             }
         }
 
