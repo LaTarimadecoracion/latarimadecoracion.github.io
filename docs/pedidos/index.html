@@ -1197,6 +1197,17 @@
                     <ul>
                         ${conditionsList.map(c => `<li><strong>${escapeHtml(c.title || '')}</strong> ${escapeHtml(c.text || '')}</li>`).join('')}
                     </ul>
+                    ${(order.status !== 'entregado' && order.status !== 'cancelado') ? `
+                    <div style="margin-top: 1.25rem; padding-top: 1rem; border-top: 1px dashed rgba(160, 113, 91, 0.25); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                        <span style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.45; max-width: 520px;">
+                            ¿Necesitás cancelar o modificar tu compra? Podés solicitarlo dentro de las <strong>48 hs de confirmado el pedido</strong> (dependiendo del producto), respetando las condiciones detalladas arriba.
+                        </span>
+                        <a href="https://wa.me/5491167007723?text=${encodeURIComponent('¡Hola La Tarima! Quiero solicitar la cancelación o modificación de mi pedido #' + order.id + ' (respetando los términos y el plazo de 48 hs).')}" target="_blank" rel="noopener" style="background: #fff7ed; color: #9a3412; border: 1px solid #fed7aa; text-decoration: none; padding: 8px 16px; border-radius: 50px; font-size: 0.83rem; font-weight: 700; display: inline-flex; align-items: center; gap: 6px; transition: background 0.2s;">
+                            <span class="material-symbols-outlined" style="font-size: 17px;">edit_note</span>
+                            Solicitar cancelación o modificación
+                        </a>
+                    </div>
+                    ` : ''}
                 </div>
             `;
 

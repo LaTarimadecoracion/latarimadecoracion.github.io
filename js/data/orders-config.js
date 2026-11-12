@@ -29,8 +29,8 @@ const ordersConfig = {
         },
         {
             "id": "5",
-            "title": "Cancelaciones:",
-            "text": "En pedidos personalizados, cuenta con un plazo de 48 hs desde la toma de la orden para cancelar la compra y solicitar el reembolso total del importe abonado."
+            "title": "Cancelaciones y Modificaciones:",
+            "text": "Una vez confirmado el pedido, tenés un plazo de 48 hs (dependiendo del producto) para solicitar la cancelación de la compra o modificarla, sujeto a evaluación del estado en taller."
         },
         {
             "id": "6",
