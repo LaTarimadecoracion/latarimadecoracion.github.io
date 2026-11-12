@@ -739,6 +739,51 @@
             tooltipWrapper.classList.toggle('active');
         });
         priceRow.appendChild(tooltipWrapper);
+
+        // Evaluar beneficios de Envío Gratis y Descuentos en fila de catálogo
+        const shipInfo = (typeof window.getProductFreeShippingInfo === 'function')
+            ? window.getProductFreeShippingInfo(product)
+            : null;
+        const discInfo = (typeof window.getProductDiscountInfo === 'function')
+            ? window.getProductDiscountInfo(product, initialAcabado)
+            : null;
+
+        if (discInfo && discInfo.oldPrice) {
+            const oldPriceEl = document.createElement('span');
+            oldPriceEl.style.cssText = 'font-size:0.8rem; font-weight:600; color:#94a3b8; text-decoration:line-through;';
+            oldPriceEl.textContent = currencyFormatter.format(discInfo.oldPrice);
+            priceRow.insertBefore(oldPriceEl, priceTag);
+        }
+
+        if (shipInfo) {
+            const freeShipBadge = document.createElement('span');
+            freeShipBadge.className = 'catalog-row-free-shipping-badge';
+            freeShipBadge.style.cssText = 'display:inline-flex; align-items:center; gap:3px; background:rgba(16,185,129,0.12); color:#047857; border:1px solid rgba(16,185,129,0.3); font-size:0.7rem; font-weight:800; padding:2px 7px; border-radius:50px;';
+            freeShipBadge.innerHTML = `<span class="material-symbols-outlined" style="font-size:13px;">local_shipping</span><span>${shipInfo.badgeText || shipInfo.label}</span>`;
+            priceRow.appendChild(freeShipBadge);
+        }
+
+        if (discInfo && discInfo.badgeText) {
+            const discBadge = document.createElement('span');
+            discBadge.className = 'catalog-row-discount-badge';
+            discBadge.style.cssText = 'display:inline-flex; align-items:center; gap:3px; background:rgba(239,68,68,0.12); color:#b91c1c; border:1px solid rgba(239,68,68,0.3); font-size:0.7rem; font-weight:800; padding:2px 7px; border-radius:50px;';
+            discBadge.innerHTML = `<span class="material-symbols-outlined" style="font-size:13px;">local_offer</span><span>${discInfo.badgeText}</span>`;
+            priceRow.appendChild(discBadge);
+        }
+
+        if (shipInfo || discInfo) {
+            const thumbBadge = document.createElement('div');
+            thumbBadge.style.cssText = 'position:absolute; top:4px; left:4px; z-index:2; display:flex; flex-direction:column; gap:2px; pointer-events:none;';
+            if (shipInfo) {
+                thumbBadge.innerHTML += `<span style="background:rgba(16,185,129,0.92); color:#ffffff; font-size:0.6rem; font-weight:800; padding:1px 5px; border-radius:50px; box-shadow:0 1px 4px rgba(0,0,0,0.15);">ENVÍO GRATIS</span>`;
+            }
+            if (discInfo) {
+                thumbBadge.innerHTML += `<span style="background:rgba(220,38,38,0.92); color:#ffffff; font-size:0.6rem; font-weight:800; padding:1px 5px; border-radius:50px; box-shadow:0 1px 4px rgba(0,0,0,0.15);">${discInfo.badgeText}</span>`;
+            }
+            thumbContainer.style.position = 'relative';
+            thumbContainer.appendChild(thumbBadge);
+        }
+
         textCol.appendChild(priceRow);
 
         const variantCol = document.createElement('div');
