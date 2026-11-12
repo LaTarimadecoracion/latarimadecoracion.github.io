@@ -241,7 +241,7 @@
             'view-about': 'Sobre Nosotros | LA TARIMA - Decoración',
             'view-search': 'Buscar Productos | LA TARIMA - Decoración',
             'view-videos': 'Videos | LA TARIMA - Decoración',
-            'view-notifications': 'Avisos | LA TARIMA - Decoración',
+            'view-notifications': 'Notificaciones | LA TARIMA - Decoración',
             'view-rentals': 'Alquileres | LA TARIMA - Decoración',
             'view-catalogo': 'Catálogo | LA TARIMA - Decoración',
             'view-offers': 'Ofertas & Combos | LA TARIMA - Decoración',
@@ -381,17 +381,9 @@
                     renderNosotrosBlocksCliente();
                 }
             } else if (viewId === 'view-notifications') {
-                // Marcar avisos como leídos
-                const badge = document.getElementById('header-nav-badge');
-                if (badge) badge.style.display = 'none';
-                const btn = document.getElementById('nav-notif-btn-header');
-                if (btn) btn.classList.remove('pulse-notif');
-                localStorage.setItem('lastReadAvisoTimestamp', Date.now().toString());
-
-                if (window.renderInfoBlocksCliente) {
-                    window.renderInfoBlocksCliente('avisos');
-                } else if (typeof renderAvisosCliente !== 'undefined') {
-                    renderAvisosCliente();
+                if (window.NotificationsCenter) {
+                    window.NotificationsCenter.renderFullView();
+                    window.NotificationsCenter.scanAll();
                 }
             } else if (viewId === 'view-search') {
                 if (window.runSearch) window.runSearch();

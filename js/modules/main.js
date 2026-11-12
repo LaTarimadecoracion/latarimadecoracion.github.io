@@ -53,28 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error("Error inicializando AvisosModule:", e);
     }
 
-    // --- Sistema de Notificaciones In-App (Avisos) ---
-    function checkUnreadAvisos() {
-        if (!window.sessionAvisos || window.sessionAvisos.length === 0) return;
-        
-        const lastRead = parseInt(localStorage.getItem('lastReadAvisoTimestamp') || '0', 10);
-        
-        const latestAviso = window.sessionAvisos.reduce((max, aviso) => {
-            const ts = (aviso && aviso.timestamp) || 0;
-            return ts > max ? ts : max;
-        }, 0);
-
-        if (latestAviso > lastRead) {
-            // Activar campanita con animación y badge pulsante
-            const badge = document.getElementById('header-nav-badge');
-            if (badge) badge.style.display = 'block';
-            
-            const btn = document.getElementById('nav-notif-btn-header');
-            if (btn) btn.classList.add('pulse-notif');
-        }
+    // --- Sistema de Notificaciones Reales ---
+    if (window.NotificationsCenter && typeof window.NotificationsCenter.scanAll === 'function') {
+        setTimeout(() => { window.NotificationsCenter.scanAll(); }, 400);
     }
-
-    setTimeout(checkUnreadAvisos, 800);
     // -------------------------------------------------
 
     const listInit = document.getElementById('admin-section-components-list');

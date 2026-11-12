@@ -46,12 +46,16 @@
     }
 
     function syncNotifBadge() {
+        if (window.NotificationsCenter && typeof window.NotificationsCenter.syncBadges === 'function') {
+            window.NotificationsCenter.syncBadges();
+            return;
+        }
         const mobileBadge = document.getElementById('header-nav-badge');
         const desktopBadge = document.getElementById('desktop-notif-badge');
         const menuNotifDot = document.getElementById('desktop-menu-notif-badge');
         if (!mobileBadge) return;
         const hasUnread = mobileBadge.style.display !== 'none';
-        if (desktopBadge) desktopBadge.style.display = hasUnread ? 'block' : 'none';
+        if (desktopBadge) desktopBadge.style.display = hasUnread ? 'inline-flex' : 'none';
         if (menuNotifDot) menuNotifDot.style.display = hasUnread ? 'block' : 'none';
     }
 
@@ -350,6 +354,31 @@
         });
     }
 
+    function closeNotifDropdown() {
+        const wrapper = document.getElementById('desktop-notif-wrapper');
+        const btn = document.getElementById('desktop-notif-btn');
+        if (wrapper) wrapper.classList.remove('open');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+
+    function toggleNotifDropdown(forceState) {
+        const wrapper = document.getElementById('desktop-notif-wrapper');
+        const btn = document.getElementById('desktop-notif-btn');
+        if (!wrapper) return;
+        const shouldOpen = typeof forceState === 'boolean'
+            ? forceState
+            : !wrapper.classList.contains('open');
+        if (shouldOpen) {
+            closeUserMenu();
+            if (window.NotificationsCenter) {
+                window.NotificationsCenter.renderDesktopDropdown();
+                window.NotificationsCenter.scanAll();
+            }
+        }
+        wrapper.classList.toggle('open', shouldOpen);
+        if (btn) btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+    }
+
     function closeUserMenu() {
         const wrapper = document.getElementById('desktop-user-menu-wrapper');
         const btn = document.getElementById('desktop-user-trigger');
@@ -364,6 +393,7 @@
         const shouldOpen = typeof forceState === 'boolean'
             ? forceState
             : !wrapper.classList.contains('open');
+        if (shouldOpen) closeNotifDropdown();
         wrapper.classList.toggle('open', shouldOpen);
         if (btn) btn.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
     }
@@ -479,6 +509,9 @@
         try {
             const user = await window.AdminAuth.loginPublicStoreWithGoogle();
             renderAccount();
+            if (window.NotificationsCenter && typeof window.NotificationsCenter.scanAll === 'function') {
+                window.NotificationsCenter.scanAll();
+            }
             const myOrdersEl = document.getElementById('view-my-orders');
             if (myOrdersEl && myOrdersEl.classList.contains('active') && window.MyOrders) {
                 window.MyOrders.render();
@@ -498,6 +531,9 @@
             await window.AdminAuth.logoutPublic();
         }
         renderAccount();
+        if (window.NotificationsCenter && typeof window.NotificationsCenter.scanAll === 'function') {
+            window.NotificationsCenter.scanAll();
+        }
         const myOrdersEl = document.getElementById('view-my-orders');
         if (myOrdersEl && myOrdersEl.classList.contains('active') && window.MyOrders) {
             window.MyOrders.render();
@@ -521,15 +557,25 @@
 
         document.getElementById('desktop-location-btn')?.addEventListener('click', openLocationModal);
 
+        document.getElementById('desktop-notif-btn')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleNotifDropdown();
+        });
+
         document.addEventListener('click', (e) => {
             const wrapper = document.getElementById('desktop-user-menu-wrapper');
             if (wrapper && wrapper.classList.contains('open') && !wrapper.contains(e.target)) {
                 closeUserMenu();
             }
+            const notifWrapper = document.getElementById('desktop-notif-wrapper');
+            if (notifWrapper && notifWrapper.classList.contains('open') && !notifWrapper.contains(e.target)) {
+                closeNotifDropdown();
+            }
         });
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeUserMenu();
+                closeNotifDropdown();
             }
         });
 

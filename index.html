@@ -44,7 +44,7 @@
     <!-- CSS Base + Capas aisladas por dispositivo (Móvil vs Escritorio) -->
     <link rel="stylesheet" href="css/style.css?v=59">
     <link rel="stylesheet" href="css/mobile.css?v=1" media="(max-width: 899.98px)">
-    <link rel="stylesheet" href="css/desktop.css?v=9" media="(min-width: 900px)">
+    <link rel="stylesheet" href="css/desktop.css?v=10" media="(min-width: 900px)">
     
     
 
@@ -245,10 +245,13 @@
                     <a href="#" class="desktop-account-link desktop-account-login" onclick="event.preventDefault(); if(window.DesktopHeader) window.DesktopHeader.triggerClientLogin();">Ingresá</a>
                 </div>
                 <a href="#" class="desktop-account-link" data-target="view-my-orders" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-my-orders');">Mis compras</a>
-                <button type="button" class="desktop-icon-btn desktop-notif-btn" id="desktop-notif-btn" onclick="if(window.navigateToView) window.navigateToView('view-notifications');" title="Notificaciones">
-                    <span class="material-symbols-outlined">notifications</span>
-                    <span class="desktop-icon-badge" id="desktop-notif-badge" style="display: none;"></span>
-                </button>
+                <div class="desktop-notif-wrapper" id="desktop-notif-wrapper">
+                    <button type="button" class="desktop-icon-btn desktop-notif-btn" id="desktop-notif-btn" aria-haspopup="true" aria-expanded="false" aria-label="Notificaciones" title="Notificaciones">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span class="desktop-icon-badge" id="desktop-notif-badge" style="display: none;"></span>
+                    </button>
+                    <div class="desktop-user-dropdown desktop-notif-dropdown" id="desktop-notif-dropdown" role="menu"></div>
+                </div>
                 <button type="button" class="desktop-icon-btn desktop-cart-btn" onclick="if(window.navigateToView) window.navigateToView('view-profile');" title="Mi Carrito y Favoritos">
                     <span class="material-symbols-outlined">shopping_cart</span>
                     <span class="desktop-cart-badge" id="desktop-cart-badge" style="display: none;">0</span>
@@ -661,15 +664,10 @@
 
         <!-- Modales de TikTok y Alquiler (Cargados dinámicamente desde partials/modal-media-rentals.html) -->
 
-        <!-- View 4: Notificaciones / Avisos -->
+        <!-- View 4: Notificaciones Reales -->
         <section id="view-notifications" class="view">
             <div class="view-content" style="padding: 1rem;">
-                
-                <!-- Contenedor dinámico de bloques de Avisos -->
-                <div id="avisos-blocks-container">
-                    <!-- Inyectado dinámicamente por JS -->
-                </div>
-
+                <div id="notifications-center-root"></div>
             </div>
             <div class="social-links-container" style="padding-bottom: 2rem;"></div>
         </section>
@@ -820,8 +818,9 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js" defer></script>
     <script src="js/admin/admin-auth.js?v=6" defer></script>
-    <script src="js/ui/ui-navigation.js?v=8" defer></script>
-    <script src="js/ui/desktop-header.js?v=9" defer></script>
+    <script src="js/ui/ui-navigation.js?v=9" defer></script>
+    <script src="js/modules/notifications.js?v=1" defer></script>
+    <script src="js/ui/desktop-header.js?v=10" defer></script>
     <script src="js/ui/ui-offers.js?v=23" defer></script>
     <script src="js/ui/catalog/catalog-utils.js?v=4" defer></script>
     <script src="js/ui/ui-search-feed.js?v=2" defer></script>
@@ -833,8 +832,8 @@
     <script src="js/ui/ui-catalog.js?v=26" defer></script>
     <script src="js/ui/ui-rentals.js?v=3" defer></script>
     <script src="js/ui/ui-blocks.js?v=1" defer></script>
-    <script src="js/modules/carrito.js?v=15" defer></script>
-    <script src="js/modules/main.js?v=7" defer></script>
+    <script src="js/modules/carrito.js?v=16" defer></script>
+    <script src="js/modules/main.js?v=8" defer></script>
     <script src="js/modules/categorias.js?v=3" defer></script>
     <script src="js/ui/pwa-banner.js?v=2" defer></script>
     <script>

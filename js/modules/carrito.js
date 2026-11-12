@@ -151,6 +151,10 @@
             if (window.updateFavoritesBadge) {
                 window.updateFavoritesBadge();
             }
+            if (window.DesktopHeader && typeof window.DesktopHeader.syncCartBadge === 'function') {
+                window.DesktopHeader.syncCartBadge();
+            }
+            window.dispatchEvent(new CustomEvent('latarima:cart-updated'));
             if (!options.skipCloudPush) {
                 const publicUser = (window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function')
                     ? window.AdminAuth.getPublicUser()
@@ -280,17 +284,23 @@
                 }
                 const productCover = Array.isArray(img) ? img[0] : (img || 'img/logo_provisional.png');
 
+                const resolvedBaselinePrice = Number(price) > 0
+                    ? Number(price)
+                    : ((window.NotificationsCenter && typeof window.NotificationsCenter.resolveProductPrice === 'function')
+                        ? window.NotificationsCenter.resolveProductPrice(product, acabado, medida, opcion)
+                        : 0);
                 cartItems.push({
                     id: product.id,
                     title: product.title,
-                    acabado: acabado || 'Único',
+                    acabado: acabado || '?nico',
                     medida: medida || '',
                     opcion: opcion || '',
                     opcionLabel: opcionLabel || '',
                     image: productCover,
                     catName: catName,
                     qty: parsedQty,
-                    price: price || null
+                    price: resolvedBaselinePrice > 0 ? resolvedBaselinePrice : null,
+                    addedAt: Date.now()
                 });
                 console.log(`[Carrito] Agregado a favoritos: ${product.title} (${acabado}) x${parsedQty}`);
                 const navCartIcon = document.getElementById('nav-cart-icon');

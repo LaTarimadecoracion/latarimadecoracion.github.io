@@ -445,13 +445,49 @@
 
 .desktop-icon-badge {
     position: absolute;
-    top: 3px;
-    right: 3px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
+    top: -1px;
+    right: -3px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 50px;
     background: #ef4444;
     border: 1.5px solid #ffffff;
+    color: #ffffff;
+    font-size: 0.64rem;
+    font-weight: 800;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* Centro de Notificaciones Desplegable en Campanita PC */
+.desktop-notif-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.desktop-notif-wrapper.open .desktop-notif-btn {
+    background: rgba(15, 23, 42, 0.08);
+    color: var(--primary-color, #A0715B);
+}
+
+.desktop-notif-dropdown {
+    width: 360px !important;
+    max-width: min(360px, 90vw);
+    top: calc(100% + 10px);
+}
+
+.desktop-notif-wrapper.open .desktop-notif-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.lt-notif-card:hover {
+    background: #f1f5f9 !important;
 }
 
 .desktop-cart-badge {
