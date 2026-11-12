@@ -2,35 +2,39 @@
     // Helper autónomo para evaluar Envío Gratis en productos del catálogo
     function evalCatalogFreeShipping(product) {
         if (!product) return null;
-        const shipConf = product.shippingConfig || {};
+        const baseProd = product.product || product;
+        const shipConf = product.shippingConfig || baseProd.shippingConfig || {};
 
-        if (shipConf.isFreeShipping === true || product.isFreeShipping === true || product.shippingType === 'free' || shipConf.isFree === true) {
+        if (shipConf.isFreeShipping === true || product.isFreeShipping === true || baseProd.isFreeShipping === true || product.shippingType === 'free' || baseProd.shippingType === 'free' || shipConf.isFree === true) {
             return { isFree: true, label: 'Envío Gratis', badgeText: 'Envío Gratis', type: 'direct' };
         }
-        if (Array.isArray(product.variants) && product.variants.some(v => v.shippingConfig?.isFreeShipping || v.isFreeShipping)) {
+        const variants = product.variants || baseProd.variants;
+        if (Array.isArray(variants) && variants.some(v => v.shippingConfig?.isFreeShipping || v.isFreeShipping)) {
             return { isFree: true, label: 'Envío Gratis', badgeText: 'Envío Gratis', type: 'direct' };
         }
-        if (Array.isArray(product.acabados_groups)) {
-            for (const g of product.acabados_groups) {
+        const acabados = product.acabados_groups || baseProd.acabados_groups;
+        if (Array.isArray(acabados)) {
+            for (const g of acabados) {
                 if (Array.isArray(g.medidas_variants) && g.medidas_variants.some(m => m.shippingConfig?.isFreeShipping || m.isFreeShipping)) {
                     return { isFree: true, label: 'Envío Gratis', badgeText: 'Envío Gratis', type: 'direct' };
                 }
             }
         }
-        const logMin = parseInt(shipConf.logisticaFreeMinUnits) || parseInt(product.logisticaFreeMinUnits) || 0;
+        const logMin = parseInt(shipConf.logisticaFreeMinUnits) || parseInt(product.logisticaFreeMinUnits) || parseInt(baseProd.logisticaFreeMinUnits) || 0;
         if (logMin === 1) {
             return { isFree: true, label: 'Envío Gratis', badgeText: 'Envío Gratis', type: 'direct' };
         } else if (logMin > 1) {
             return { isFree: true, label: `Envío Gratis desde ${logMin} u.`, badgeText: `Envío Gratis +${logMin}u`, type: 'volume', minUnits: logMin };
         }
-        const fleteMin = parseInt(shipConf.fleteFreeMinUnits) || parseInt(product.fleteFreeMinUnits) || 0;
+        const fleteMin = parseInt(shipConf.fleteFreeMinUnits) || parseInt(product.fleteFreeMinUnits) || parseInt(baseProd.fleteFreeMinUnits) || 0;
         if (fleteMin === 1) {
             return { isFree: true, label: 'Envío Gratis', badgeText: 'Envío Gratis', type: 'direct' };
         } else if (fleteMin > 1) {
             return { isFree: true, label: `Envío Gratis desde ${fleteMin} u.`, badgeText: `Envío Gratis +${fleteMin}u`, type: 'volume', minUnits: fleteMin };
         }
-        if (Array.isArray(product.quantityDiscounts)) {
-            const freeTier = product.quantityDiscounts.find(d => Number(d.shippingDiscountPercent) >= 100 && Number(d.minUnits) > 0);
+        const qDisc = product.quantityDiscounts || baseProd.quantityDiscounts;
+        if (Array.isArray(qDisc)) {
+            const freeTier = qDisc.find(d => Number(d.shippingDiscountPercent) >= 100 && Number(d.minUnits) > 0);
             if (freeTier) {
                 if (freeTier.minUnits <= 1) return { isFree: true, label: 'Envío Gratis', badgeText: 'Envío Gratis', type: 'direct' };
                 return { isFree: true, label: `Envío Gratis desde ${freeTier.minUnits} u.`, badgeText: `Envío Gratis +${freeTier.minUnits}u`, type: 'volume', minUnits: freeTier.minUnits };
@@ -42,7 +46,8 @@
     // Helper autónomo para evaluar Descuento / Precio tachado en catálogo
     function evalCatalogDiscount(product, acabadoName = '') {
         if (!product) return null;
-        const directPercent = Number(product.discountPercent || product.descuento || 0);
+        const baseProd = product.product || product;
+        const directPercent = Number(product.discountPercent || product.descuento || baseProd.discountPercent || baseProd.descuento || 0);
         if (directPercent > 0) {
             return { type: 'percent', percent: directPercent, label: `${directPercent}% OFF`, badgeText: `${directPercent}% OFF` };
         }
@@ -57,16 +62,18 @@
                 if (!isNaN(cp) && cp > p && cp > maxCompare) maxCompare = cp;
             }
         };
-        if (product.acabados_groups && Array.isArray(product.acabados_groups)) {
-            product.acabados_groups.forEach(g => {
+        const acabados = product.acabados_groups || baseProd.acabados_groups;
+        if (acabados && Array.isArray(acabados)) {
+            acabados.forEach(g => {
                 if (g && Array.isArray(g.medidas_variants)) g.medidas_variants.forEach(checkV);
             });
         }
-        if (product.medidas_variants && Array.isArray(product.medidas_variants)) {
-            product.medidas_variants.forEach(checkV);
+        const medidas = product.medidas_variants || baseProd.medidas_variants;
+        if (medidas && Array.isArray(medidas)) {
+            medidas.forEach(checkV);
         }
-        if (product.comparePrice && Number(product.comparePrice) > maxCompare) maxCompare = Number(product.comparePrice);
-        if (product.originalPrice && Number(product.originalPrice) > maxCompare) maxCompare = Number(product.originalPrice);
+        const cp = Number(product.comparePrice || baseProd.comparePrice || product.originalPrice || baseProd.originalPrice || 0);
+        if (cp > maxCompare) maxCompare = cp;
 
         if (maxCompare > minNormal && isFinite(minNormal)) {
             const pct = Math.round(((maxCompare - minNormal) / maxCompare) * 100);
@@ -79,8 +86,9 @@
                 badgeText: pct > 0 ? `${pct}% OFF` : 'OFERTA'
             };
         }
-        if (Array.isArray(product.quantityDiscounts) && product.quantityDiscounts.length > 0) {
-            const tiers = product.quantityDiscounts.filter(d => Number(d.discountPercent) > 0 && Number(d.minUnits) > 0);
+        const qDisc = product.quantityDiscounts || baseProd.quantityDiscounts;
+        if (Array.isArray(qDisc) && qDisc.length > 0) {
+            const tiers = qDisc.filter(d => Number(d.discountPercent) > 0 && Number(d.minUnits) > 0);
             if (tiers.length > 0) {
                 const first = tiers[0];
                 return {
@@ -483,6 +491,10 @@
                             image: cleanImagePath(p.image),
                             acabados_groups: p.acabados_groups || [],
                             medidas_variants: p.medidas_variants || [],
+                            shippingConfig: p.shippingConfig || null,
+                            isFreeShipping: p.isFreeShipping || false,
+                            quantityDiscounts: p.quantityDiscounts || null,
+                            discountPercent: p.discountPercent || 0,
                             tags: p.tags || [],
                             medidas: []
                         });
@@ -781,16 +793,16 @@
         if (shipInfo || discInfo) {
             const badgesCol = document.createElement('div');
             badgesCol.className = 'catalog-thumb-badges';
-            badgesCol.style.cssText = 'position:absolute; top:8px; left:8px; z-index:3; display:flex; flex-direction:column; gap:4px; align-items:flex-start; pointer-events:none;';
+            badgesCol.style.cssText = 'position:absolute; top:8px; left:8px; z-index:10; display:flex; flex-direction:column; gap:4px; align-items:flex-start; pointer-events:none; line-height:1.2;';
             if (shipInfo) {
                 const sBadge = document.createElement('span');
-                sBadge.style.cssText = 'background:rgba(16,185,129,0.95); color:#ffffff; font-size:0.65rem; font-weight:800; padding:2px 8px; border-radius:50px; display:inline-flex; align-items:center; gap:3px; box-shadow:0 2px 6px rgba(0,0,0,0.2); letter-spacing:0.3px; text-transform:uppercase;';
+                sBadge.className = 'badge-item badge-shipping'; sBadge.style.cssText = 'background:rgba(16,185,129,0.95); color:#ffffff; font-size:0.65rem; font-weight:800; padding:2.5px 8px; border-radius:50px; display:inline-flex; align-items:center; gap:3px; box-shadow:0 2px 6px rgba(0,0,0,0.25); letter-spacing:0.3px; text-transform:uppercase; line-height:normal;';
                 sBadge.innerHTML = `<span class="material-symbols-outlined" style="font-size:12px;">local_shipping</span><span>${shipInfo.badgeText}</span>`;
                 badgesCol.appendChild(sBadge);
             }
             if (discInfo) {
                 const dBadge = document.createElement('span');
-                dBadge.style.cssText = 'background:rgba(220,38,38,0.95); color:#ffffff; font-size:0.65rem; font-weight:800; padding:2px 8px; border-radius:50px; display:inline-flex; align-items:center; gap:3px; box-shadow:0 2px 6px rgba(0,0,0,0.2); letter-spacing:0.3px; text-transform:uppercase;';
+                dBadge.className = 'badge-item badge-discount'; dBadge.style.cssText = 'background:rgba(220,38,38,0.95); color:#ffffff; font-size:0.65rem; font-weight:800; padding:2.5px 8px; border-radius:50px; display:inline-flex; align-items:center; gap:3px; box-shadow:0 2px 6px rgba(0,0,0,0.25); letter-spacing:0.3px; text-transform:uppercase; line-height:normal;';
                 dBadge.innerHTML = `<span class="material-symbols-outlined" style="font-size:12px;">local_offer</span><span>${discInfo.badgeText}</span>`;
                 badgesCol.appendChild(dBadge);
             }

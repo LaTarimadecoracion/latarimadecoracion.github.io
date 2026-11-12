@@ -713,7 +713,13 @@ window.getNormalizedCatalogProducts = function(targetRubro = null) {
                                 optional_variant: product.optional_variant || null,
                                 tags: product.tags || [],
                                 acabadosSearch: allAcabadosNames,
-                                medidas: acabMedidas
+                                medidas: acabMedidas,
+                                shippingConfig: product.shippingConfig || null,
+                                isFreeShipping: product.isFreeShipping || false,
+                                quantityDiscounts: product.quantityDiscounts || null,
+                                discountPercent: product.discountPercent || 0,
+                                comparePrice: product.comparePrice || null,
+                                originalPrice: product.originalPrice || null
                             });
                             indexedAnyVariant = true;
                         }
@@ -748,7 +754,13 @@ window.getNormalizedCatalogProducts = function(targetRubro = null) {
                         optional_variant: product.optional_variant || null,
                         tags: product.tags || [],
                         acabadosSearch: '',
-                        medidas: allMedidas
+                        medidas: allMedidas,
+                        shippingConfig: product.shippingConfig || null,
+                        isFreeShipping: product.isFreeShipping || false,
+                        quantityDiscounts: product.quantityDiscounts || null,
+                        discountPercent: product.discountPercent || 0,
+                        comparePrice: product.comparePrice || null,
+                        originalPrice: product.originalPrice || null
                     });
                 }
             });

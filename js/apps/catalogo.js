@@ -293,6 +293,19 @@ document.addEventListener('DOMContentLoaded', () => {
             btnCartBadge.innerHTML = `<span class="material-symbols-outlined">${checkInCart() ? 'check_circle' : 'add_shopping_cart'}</span>`;
 
             thumbContainer.appendChild(btnCartBadge);
+            const bProd = product.product || product;
+            const sConf = product.shippingConfig || bProd.shippingConfig || {};
+            if (sConf.isFreeShipping === true || product.isFreeShipping === true || bProd.isFreeShipping === true || parseInt(sConf.logisticaFreeMinUnits) === 1 || parseInt(sConf.fleteFreeMinUnits) === 1) {
+                const bCol = document.createElement("div");
+                bCol.className = "catalog-thumb-badges";
+                bCol.style.cssText = "position:absolute; top:8px; left:8px; z-index:10; display:flex; flex-direction:column; gap:4px; align-items:flex-start; pointer-events:none; line-height:1.2;";
+                const bSpan = document.createElement("span");
+                bSpan.className = "badge-item badge-shipping";
+                bSpan.style.cssText = "background:rgba(16,185,129,0.95); color:#ffffff; font-size:0.65rem; font-weight:800; padding:2.5px 8px; border-radius:50px; display:inline-flex; align-items:center; gap:3px; box-shadow:0 2px 6px rgba(0,0,0,0.25); letter-spacing:0.3px; text-transform:uppercase; line-height:normal;";
+                bSpan.innerHTML = '<span class="material-symbols-outlined" style="font-size:12px;">local_shipping</span><span>Envío Gratis</span>';
+                bCol.appendChild(bSpan);
+                thumbContainer.appendChild(bCol);
+            }
             row.appendChild(thumbContainer);
 
             // 2. Columna de Textos (Título, Precio + Icono Info, Selector de Variante)
@@ -354,8 +367,9 @@ document.addEventListener('DOMContentLoaded', () => {
             priceRow.appendChild(priceTag);
 
             // Envío Gratis / Descuentos
-            const shipConf = product.shippingConfig || {};
-            const isFree = shipConf.isFreeShipping === true || product.isFreeShipping === true || parseInt(shipConf.logisticaFreeMinUnits) === 1 || parseInt(shipConf.fleteFreeMinUnits) === 1;
+            const baseProd = product.product || product;
+            const shipConf = product.shippingConfig || baseProd.shippingConfig || {};
+            const isFree = shipConf.isFreeShipping === true || product.isFreeShipping === true || baseProd.isFreeShipping === true || parseInt(shipConf.logisticaFreeMinUnits) === 1 || parseInt(shipConf.fleteFreeMinUnits) === 1;
             if (isFree) {
                 const shipTag = document.createElement('span');
                 shipTag.style.cssText = 'color:#059669; font-size:0.75rem; font-weight:800; display:inline-flex; align-items:center; gap:2px; margin-left:3px;';

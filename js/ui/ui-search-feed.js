@@ -275,13 +275,16 @@
     // Helper: Evaluar información de Envío Gratis del producto
     function getProductFreeShippingInfo(product) {
         if (!product) return null;
-        const shipConf = product.shippingConfig || {};
+        const baseProd = product.product || product;
+        const shipConf = product.shippingConfig || baseProd.shippingConfig || {};
 
         // 1. Envío gratis directo
         const isDirect = !!(
             shipConf.isFreeShipping === true ||
             product.isFreeShipping === true ||
+            baseProd.isFreeShipping === true ||
             product.shippingType === 'free' ||
+            baseProd.shippingType === 'free' ||
             shipConf.isFree === true
         );
         if (isDirect) {
@@ -301,8 +304,9 @@
         }
 
         // 2. Envío gratis por cantidad
-        if (Array.isArray(product.quantityDiscounts)) {
-            const freeTier = product.quantityDiscounts.find(d => Number(d.shippingDiscountPercent) >= 100 && Number(d.minUnits) > 0);
+        const qDiscounts = product.quantityDiscounts || baseProd.quantityDiscounts;
+        if (Array.isArray(qDiscounts)) {
+            const freeTier = qDiscounts.find(d => Number(d.shippingDiscountPercent) >= 100 && Number(d.minUnits) > 0);
             if (freeTier) {
                 return {
                     isFree: true,
@@ -313,13 +317,13 @@
                 };
             }
         }
-        const logMin = parseInt(shipConf.logisticaFreeMinUnits) || parseInt(product.logisticaFreeMinUnits) || 0;
+        const logMin = parseInt(shipConf.logisticaFreeMinUnits) || parseInt(product.logisticaFreeMinUnits) || parseInt(baseProd.logisticaFreeMinUnits) || 0;
         if (logMin === 1) {
             return { isFree: true, label: 'Envío Gratis', badgeText: 'Envío Gratis', type: 'direct' };
         } else if (logMin > 1) {
             return { isFree: true, label: `Envío Gratis desde ${logMin} u.`, badgeText: `Envío Gratis +${logMin}u`, type: 'volume', minUnits: logMin };
         }
-        const fleteMin = parseInt(shipConf.fleteFreeMinUnits) || parseInt(product.fleteFreeMinUnits) || 0;
+        const fleteMin = parseInt(shipConf.fleteFreeMinUnits) || parseInt(product.fleteFreeMinUnits) || parseInt(baseProd.fleteFreeMinUnits) || 0;
         if (fleteMin === 1) {
             return { isFree: true, label: 'Envío Gratis', badgeText: 'Envío Gratis', type: 'direct' };
         } else if (fleteMin > 1) {
@@ -332,9 +336,10 @@
     // Helper: Evaluar información de Descuento en el precio del producto
     function getProductDiscountInfo(product, specificAcabadoName = null) {
         if (!product) return null;
+        const baseProd = product.product || product;
 
         // 1. Descuento porcentual directo en el producto
-        const directPercent = Number(product.discountPercent || product.descuento || 0);
+        const directPercent = Number(product.discountPercent || product.descuento || baseProd.discountPercent || baseProd.descuento || 0);
         if (directPercent > 0) {
             return { type: 'percent', percent: directPercent, label: `${directPercent}% OFF`, badgeText: `${directPercent}% OFF` };
         }
