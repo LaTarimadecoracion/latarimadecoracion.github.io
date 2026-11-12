@@ -446,6 +446,7 @@
         }
 
         // 2. Envío Gratis se muestra debajo del precio en .feed-card-promo-line (no sobre la foto)
+        const freeShipInfo = getProductFreeShippingInfo(product);
 
         // 3. Badge de Descuento
         const discountInfo = getProductDiscountInfo(product, acabado);
