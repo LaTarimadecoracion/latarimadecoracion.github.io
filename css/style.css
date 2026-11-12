@@ -1400,6 +1400,42 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 }
 
 /* ── Iconos Flotantes sobre la Foto (Corazón, Carrito, Acabado) ── */
+.feed-card-floating-badges-col {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    max-width: calc(100% - 90px);
+    pointer-events: none;
+}
+
+.feed-card-floating-badges-col .feed-card-floating-badge {
+    position: static;
+    top: auto;
+    left: auto;
+    max-width: 100%;
+}
+
+.feed-card-floating-badge.badge-free-shipping {
+    background: rgba(16, 185, 129, 0.92);
+    color: #ffffff;
+    font-weight: 800;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.35);
+}
+
+.feed-card-floating-badge.badge-discount {
+    background: rgba(220, 38, 38, 0.92);
+    color: #ffffff;
+    font-weight: 800;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.35);
+}
+
 .feed-card-floating-badge {
     position: absolute;
     top: 10px;
@@ -1547,6 +1583,44 @@ body.theme-final-mundial .add-to-cart-btn:hover {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.feed-card-price-old {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #94a3b8;
+    text-decoration: line-through;
+    margin-right: 2px;
+}
+
+.feed-card-promo-line {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 3px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.2;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.feed-card-promo-free-shipping {
+    color: #059669;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-weight: 800;
+}
+
+.feed-card-promo-discount {
+    color: #b45309;
+    background: #fef3c7;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
 }
 
 .feed-card-price-current {

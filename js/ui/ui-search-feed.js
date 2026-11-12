@@ -213,16 +213,22 @@
         if (!product) return '<span class="feed-card-price-custom">Consultar precio</span>';
         
         let allPrices = [];
+        let allComparePrices = [];
         
+        const collectPrices = (m) => {
+            if (m && m.hidden !== true && m.showPrice !== false && m.price !== undefined && m.price !== '' && !isNaN(parseFloat(m.price))) {
+                const p = parseFloat(m.price);
+                allPrices.push(p);
+                const cp = parseFloat(m.comparePrice || m.originalPrice || m.precioAnterior || 0);
+                if (!isNaN(cp) && cp > p) allComparePrices.push(cp);
+            }
+        };
+
         // Si hay un acabado específico seleccionado
         if (specificAcabadoName && product.acabados_groups && Array.isArray(product.acabados_groups)) {
             const grp = product.acabados_groups.find(g => (g.acabado_name || '').trim().toLowerCase() === specificAcabadoName.trim().toLowerCase());
             if (grp && grp.medidas_variants) {
-                grp.medidas_variants.forEach(m => {
-                    if (m && m.hidden !== true && m.showPrice !== false && m.price !== undefined && m.price !== '' && !isNaN(parseFloat(m.price))) {
-                        allPrices.push(parseFloat(m.price));
-                    }
-                });
+                grp.medidas_variants.forEach(collectPrices);
             }
         }
         
@@ -231,20 +237,12 @@
             if (product.acabados_groups && Array.isArray(product.acabados_groups)) {
                 product.acabados_groups.forEach(g => {
                     if (g && g.hidden !== true && g.medidas_variants) {
-                        g.medidas_variants.forEach(m => {
-                            if (m && m.hidden !== true && m.showPrice !== false && m.price !== undefined && m.price !== '' && !isNaN(parseFloat(m.price))) {
-                                allPrices.push(parseFloat(m.price));
-                            }
-                        });
+                        g.medidas_variants.forEach(collectPrices);
                     }
                 });
             }
             if (product.medidas_variants && Array.isArray(product.medidas_variants)) {
-                product.medidas_variants.forEach(m => {
-                    if (m && m.hidden !== true && m.showPrice !== false && m.price !== undefined && m.price !== '' && !isNaN(parseFloat(m.price))) {
-                        allPrices.push(parseFloat(m.price));
-                    }
-                });
+                product.medidas_variants.forEach(collectPrices);
             }
         }
 
@@ -255,11 +253,139 @@
         const minPrice = Math.min(...allPrices);
         const maxPrice = Math.max(...allPrices);
 
-        if (minPrice === maxPrice) {
-            return `<span class="feed-card-price-current">${feedCurrencyFormatter.format(minPrice)}</span>`;
-        } else {
-            return `<span class="feed-card-price-prefix">Desde</span><span class="feed-card-price-current">${feedCurrencyFormatter.format(minPrice)}</span>`;
+        let oldPriceHtml = '';
+        if (allComparePrices.length > 0) {
+            const maxCompare = Math.max(...allComparePrices);
+            if (maxCompare > minPrice) {
+                oldPriceHtml = `<span class="feed-card-price-old">${feedCurrencyFormatter.format(maxCompare)}</span>`;
+            }
+        } else if (product.comparePrice && Number(product.comparePrice) > minPrice) {
+            oldPriceHtml = `<span class="feed-card-price-old">${feedCurrencyFormatter.format(Number(product.comparePrice))}</span>`;
+        } else if (product.originalPrice && Number(product.originalPrice) > minPrice) {
+            oldPriceHtml = `<span class="feed-card-price-old">${feedCurrencyFormatter.format(Number(product.originalPrice))}</span>`;
         }
+
+        if (minPrice === maxPrice) {
+            return `${oldPriceHtml}<span class="feed-card-price-current">${feedCurrencyFormatter.format(minPrice)}</span>`;
+        } else {
+            return `${oldPriceHtml}<span class="feed-card-price-prefix">Desde</span><span class="feed-card-price-current">${feedCurrencyFormatter.format(minPrice)}</span>`;
+        }
+    }
+
+    // Helper: Evaluar información de Envío Gratis del producto
+    function getProductFreeShippingInfo(product) {
+        if (!product) return null;
+        const shipConf = product.shippingConfig || {};
+
+        // 1. Envío gratis directo
+        const isDirect = !!(
+            shipConf.isFreeShipping === true ||
+            product.isFreeShipping === true ||
+            product.shippingType === 'free' ||
+            shipConf.isFree === true
+        );
+        if (isDirect) {
+            return { isFree: true, label: 'Envío Gratis', badgeText: 'Envío Gratis', type: 'direct' };
+        }
+
+        // Variantes con envío gratis directo
+        if (Array.isArray(product.variants) && product.variants.some(v => v.shippingConfig?.isFreeShipping || v.isFreeShipping)) {
+            return { isFree: true, label: 'Envío Gratis', badgeText: 'Envío Gratis', type: 'direct' };
+        }
+        if (Array.isArray(product.acabados_groups)) {
+            for (const g of product.acabados_groups) {
+                if (Array.isArray(g.medidas_variants) && g.medidas_variants.some(m => m.shippingConfig?.isFreeShipping || m.isFreeShipping)) {
+                    return { isFree: true, label: 'Envío Gratis', badgeText: 'Envío Gratis', type: 'direct' };
+                }
+            }
+        }
+
+        // 2. Envío gratis por cantidad
+        if (Array.isArray(product.quantityDiscounts)) {
+            const freeTier = product.quantityDiscounts.find(d => Number(d.shippingDiscountPercent) >= 100 && Number(d.minUnits) > 0);
+            if (freeTier) {
+                return {
+                    isFree: true,
+                    label: `Envío Gratis desde ${freeTier.minUnits} u.`,
+                    badgeText: `Envío Gratis +${freeTier.minUnits}u`,
+                    type: 'volume',
+                    minUnits: freeTier.minUnits
+                };
+            }
+        }
+        const logMin = parseInt(shipConf.logisticaFreeMinUnits) || parseInt(product.logisticaFreeMinUnits) || 0;
+        if (logMin > 0) {
+            return { isFree: true, label: `Envío Gratis desde ${logMin} u.`, badgeText: `Envío Gratis +${logMin}u`, type: 'volume', minUnits: logMin };
+        }
+        const fleteMin = parseInt(shipConf.fleteFreeMinUnits) || parseInt(product.fleteFreeMinUnits) || 0;
+        if (fleteMin > 0) {
+            return { isFree: true, label: `Envío Gratis desde ${fleteMin} u.`, badgeText: `Envío Gratis +${fleteMin}u`, type: 'volume', minUnits: fleteMin };
+        }
+
+        return null;
+    }
+
+    // Helper: Evaluar información de Descuento en el precio del producto
+    function getProductDiscountInfo(product, specificAcabadoName = null) {
+        if (!product) return null;
+
+        // 1. Descuento porcentual directo en el producto
+        const directPercent = Number(product.discountPercent || product.descuento || 0);
+        if (directPercent > 0) {
+            return { type: 'percent', percent: directPercent, label: `${directPercent}% OFF`, badgeText: `${directPercent}% OFF` };
+        }
+
+        // 2. Comparación de precio tachado
+        let maxCompare = 0;
+        let minNormal = Infinity;
+        const checkVariant = (m) => {
+            if (!m || m.hidden === true || m.showPrice === false) return;
+            const p = parseFloat(m.price);
+            const cp = parseFloat(m.comparePrice || m.originalPrice || m.precioAnterior || 0);
+            if (!isNaN(p) && p > 0) {
+                if (p < minNormal) minNormal = p;
+                if (!isNaN(cp) && cp > p && cp > maxCompare) maxCompare = cp;
+            }
+        };
+        if (product.acabados_groups && Array.isArray(product.acabados_groups)) {
+            product.acabados_groups.forEach(g => {
+                if (g && Array.isArray(g.medidas_variants)) g.medidas_variants.forEach(checkVariant);
+            });
+        }
+        if (product.medidas_variants && Array.isArray(product.medidas_variants)) {
+            product.medidas_variants.forEach(checkVariant);
+        }
+        if (product.comparePrice && Number(product.comparePrice) > maxCompare) maxCompare = Number(product.comparePrice);
+        if (product.originalPrice && Number(product.originalPrice) > maxCompare) maxCompare = Number(product.originalPrice);
+
+        if (maxCompare > minNormal && isFinite(minNormal)) {
+            const pct = Math.round(((maxCompare - minNormal) / maxCompare) * 100);
+            return {
+                type: 'compare',
+                oldPrice: maxCompare,
+                currentPrice: minNormal,
+                percent: pct > 0 ? pct : null,
+                label: pct > 0 ? `${pct}% OFF` : 'OFERTA',
+                badgeText: pct > 0 ? `${pct}% OFF` : 'OFERTA'
+            };
+        }
+
+        // 3. Descuentos por volumen / cantidad
+        if (Array.isArray(product.quantityDiscounts) && product.quantityDiscounts.length > 0) {
+            const tiers = product.quantityDiscounts.filter(d => Number(d.discountPercent) > 0 && Number(d.minUnits) > 0);
+            if (tiers.length > 0) {
+                const firstTier = tiers[0];
+                return {
+                    type: 'volume',
+                    percent: firstTier.discountPercent,
+                    minUnits: firstTier.minUnits,
+                    label: `${firstTier.discountPercent}% OFF desde ${firstTier.minUnits} u.`,
+                    badgeText: `${firstTier.discountPercent}% OFF x cant.`
+                };
+            }
+        }
+
+        return null;
     }
 
     // Helper para verificar si un producto o variante está en el carrito
@@ -295,27 +421,49 @@
         const rawCoverImg = imageOverride || (Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png'));
         const coverImg = window.getThumbUrl ? window.getThumbUrl(rawCoverImg) : rawCoverImg;
 
-        // Badge flotante superior izquierdo
+        // Badges flotantes superiores izquierdos (Acabados, Envío Gratis, Descuento)
         const variantsCount = (product.acabados_groups && product.acabados_groups.length) || 0;
-        let badgeHtml = '';
+        const badgesList = [];
+
+        // 1. Badge de acabados (Limpio, sin icono confuso de paleta / signo de interrogación)
         if (variantsCount > 1) {
-            badgeHtml = `<div class="feed-card-floating-badge" title="${variantsCount} acabados disponibles">
-                <span class="material-symbols-outlined" style="font-size: 14px; color: #f59e0b;">palette</span>
+            badgesList.push(`<div class="feed-card-floating-badge" title="${variantsCount} acabados disponibles">
                 <span>${variantsCount} acabados</span>
-            </div>`;
+            </div>`);
         } else if (acabado && acabado.toLowerCase() !== 'único' && acabado.toLowerCase() !== 'unico' && acabado.toLowerCase() !== 'estándar') {
-            badgeHtml = `<div class="feed-card-floating-badge" title="Acabado: ${acabado}">
-                <span class="material-symbols-outlined" style="font-size: 14px; color: #f59e0b;">palette</span>
+            badgesList.push(`<div class="feed-card-floating-badge" title="Acabado: ${acabado}">
                 <span>${acabado}</span>
-            </div>`;
+            </div>`);
         }
+
+        // 2. Badge de Envío Gratis
+        const freeShipInfo = getProductFreeShippingInfo(product);
+        if (freeShipInfo) {
+            badgesList.push(`<div class="feed-card-floating-badge badge-free-shipping" title="${freeShipInfo.label}">
+                <span class="material-symbols-outlined" style="font-size: 13px;">local_shipping</span>
+                <span>${freeShipInfo.badgeText}</span>
+            </div>`);
+        }
+
+        // 3. Badge de Descuento
+        const discountInfo = getProductDiscountInfo(product, acabado);
+        if (discountInfo) {
+            badgesList.push(`<div class="feed-card-floating-badge badge-discount" title="${discountInfo.label}">
+                <span class="material-symbols-outlined" style="font-size: 13px;">local_offer</span>
+                <span>${discountInfo.badgeText}</span>
+            </div>`);
+        }
+
+        const badgesHtml = badgesList.length > 0
+            ? `<div class="feed-card-floating-badges-col">${badgesList.join('')}</div>`
+            : '';
 
         const safeTitle = (product.title || '').replace(/"/g, '&quot;');
 
         card.innerHTML = `
             <div class="feed-card-photo-container">
                 <img src="${coverImg}" class="feed-card-img lazy-img" alt="${safeTitle}" loading="lazy" onload="this.classList.add('loaded')" onerror="this.classList.add('loaded'); if(window.__imgFallback) window.__imgFallback(this); else { this.onerror=null; this.src='img/logo_provisional.png'; }">
-                ${badgeHtml}
+                ${badgesHtml}
                 <!-- Botones Flotantes: 1. Corazón, 2. Carrito, 3. Compartir -->
                 <div class="feed-card-actions-float">
                     <button type="button" class="feed-action-btn btn-feed-fav ${isFav ? 'is-fav' : ''}" title="${isFav ? 'Guardado en favoritos' : 'Guardar en favoritos'}">
@@ -336,6 +484,21 @@
                 <div class="feed-card-price-row">
                     ${priceHtml}
                 </div>
+                ${(freeShipInfo || discountInfo) ? `
+                <div class="feed-card-promo-line">
+                    ${freeShipInfo ? `
+                        <span class="feed-card-promo-free-shipping" title="${freeShipInfo.label}">
+                            <span class="material-symbols-outlined" style="font-size: 13px;">local_shipping</span>
+                            <span>${freeShipInfo.label}</span>
+                        </span>
+                    ` : ''}
+                    ${(!freeShipInfo && discountInfo) ? `
+                        <span class="feed-card-promo-discount" title="${discountInfo.label}">
+                            ${discountInfo.label}
+                        </span>
+                    ` : ''}
+                </div>
+                ` : ''}
             </div>
         `;
 
@@ -768,7 +931,6 @@
             // 1. Badge flotante de variante / color (Icono 3)
             const acabadoBadge = acabado 
                 ? `<div class="feed-card-floating-badge" title="Acabado: ${acabado}">
-                    <span class="material-symbols-outlined" style="font-size: 14px; color: #f59e0b;">palette</span>
                     <span>${acabado}</span>
                    </div>`
                 : '';
@@ -996,10 +1158,9 @@
                 const variantsCount = (product.acabados_groups && product.acabados_groups.length) || 0;
                 const variantsBadge = variantsCount > 1 
                     ? `<div class="feed-card-floating-badge" title="${variantsCount} acabados disponibles">
-                        <span class="material-symbols-outlined" style="font-size: 14px; color: #f59e0b;">palette</span>
                         <span>${variantsCount} acabados</span>
                        </div>`
-                    : (defaultAcabado && defaultAcabado.toLowerCase() !== 'único' ? `<div class="feed-card-floating-badge"><span class="material-symbols-outlined" style="font-size: 14px; color: #f59e0b;">palette</span><span>${defaultAcabado}</span></div>` : '');
+                    : (defaultAcabado && defaultAcabado.toLowerCase() !== 'único' ? `<div class="feed-card-floating-badge"><span>${defaultAcabado}</span></div>` : '');
 
                 card.innerHTML = `
                     <div class="feed-card-photo-container">
