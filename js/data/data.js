@@ -483,6 +483,9 @@ window.vacationConfig = window.siteConfig.vacationConfig || {
     message: "Estamos de vacaciones, pero seguimos tomando pedidos."
 };
 
+// 4e. Configuración de Notificaciones
+window.notificationsConfig = window.siteConfig.notificationsConfig || null;
+
 // 5. Motor de Sincronización en Red con Servidor Local (Físico en Disco)
 window.syncSiteConfigWithServer = async function() {
     try {
@@ -496,7 +499,8 @@ window.syncSiteConfigWithServer = async function() {
             socialLinks: window.socialLinks,
             mayoristaConfig: window.mayoristaConfig,
             vacationConfig: window.vacationConfig,
-            rubros: window.rubros
+            rubros: window.rubros,
+            notificationsConfig: window.notificationsConfig
         };
 
         // Guardar en localStorage como respaldo local

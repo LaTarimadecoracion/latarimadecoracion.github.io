@@ -1,0 +1,213 @@
+<div id="admin-notifications-view" class="admin-section-view" style="display: none;">
+    <!-- CABECERA DE SECCIÓN -->
+    <div class="admin-page-header" style="margin-bottom: 1.25rem; flex-wrap: wrap; gap: 12px;">
+        <div>
+            <h3 class="admin-header-title" style="display: flex; align-items: center; gap: 8px;">
+                <span class="material-symbols-outlined" style="color: var(--admin-accent); font-size: 26px;">notifications_active</span>
+                <span>Centro de Notificaciones</span>
+            </h3>
+            <p class="admin-header-desc" style="margin: 4px 0 0 0; color: var(--admin-text-muted); font-size: 0.85rem;">
+                Controlá qué alertas automáticas ve la gente, personalizá los mensajes cortos y creá notificaciones asociadas a productos, ofertas o secciones.
+            </p>
+        </div>
+        <div class="admin-header-actions" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <button type="button" id="admin-notif-sync-preview-btn" class="btn-outline" style="padding: 0.55rem 1rem; font-size: 0.84rem; display: inline-flex; align-items: center; gap: 6px;">
+                <span class="material-symbols-outlined" style="font-size: 18px;">notifications_paused</span>
+                <span>Actualizar campanita</span>
+            </button>
+            <button type="button" id="admin-notif-save-btn" class="btn-primary" style="padding: 0.65rem 1.5rem; font-size: 0.88rem; display: inline-flex; align-items: center; gap: 6px;">
+                <span class="material-symbols-outlined" style="font-size: 18px;">save</span>
+                <span>Guardar Configuración</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="admin-notif-status-banner" style="display: none; margin-bottom: 1rem; padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.84rem; font-weight: 700;"></div>
+
+    <!-- PESTAÑAS DEL MÓDULO -->
+    <div style="display: flex; gap: 8px; border-bottom: 2px solid var(--admin-border-color); margin-bottom: 1.5rem; overflow-x: auto; padding-bottom: 2px;">
+        <button type="button" class="notif-admin-tab active" data-notif-tab="rules" style="background: none; border: none; border-bottom: 3px solid var(--admin-accent); padding: 8px 16px; font-weight: 800; font-size: 0.88rem; color: var(--admin-text-main); cursor: pointer; display: flex; align-items: center; gap: 6px;">
+            <span class="material-symbols-outlined" style="font-size: 20px;">tune</span>
+            <span>Reglas Automáticas</span>
+            <span id="admin-notif-rules-count" style="font-size: 0.72rem; background: rgba(160,113,91,0.14); color: var(--admin-accent); padding: 2px 7px; border-radius: 999px; font-weight: 800;">0/0</span>
+        </button>
+        <button type="button" class="notif-admin-tab" data-notif-tab="custom" style="background: none; border: none; border-bottom: 3px solid transparent; padding: 8px 16px; font-weight: 700; font-size: 0.88rem; color: var(--admin-text-muted); cursor: pointer; display: flex; align-items: center; gap: 6px;">
+            <span class="material-symbols-outlined" style="font-size: 20px;">campaign</span>
+            <span>Notificaciones Personalizadas</span>
+            <span id="admin-notif-custom-count" style="font-size: 0.72rem; background: #e2e8f0; color: #334155; padding: 2px 7px; border-radius: 999px; font-weight: 800;">0</span>
+        </button>
+    </div>
+
+    <!-- PANEL 1: REGLAS AUTOMÁTICAS -->
+    <div id="admin-notif-panel-rules" class="admin-notif-panel" style="display: block;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.9rem 1.1rem; margin-bottom: 1.25rem;">
+            <div style="font-size: 0.82rem; color: #475569;">
+                <strong style="color: #0f172a;">Tip de conversión:</strong> mantené títulos bien cortos para generar curiosidad y que el cliente haga clic para ver el detalle.
+            </div>
+            <button type="button" id="admin-notif-reset-rules-btn" class="btn-outline" style="padding: 0.4rem 0.85rem; font-size: 0.78rem;">
+                <span class="material-symbols-outlined" style="font-size: 16px;">restart_alt</span>
+                <span>Restaurar textos sugeridos</span>
+            </button>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.25rem;">
+            <!-- GRUPO: PEDIDOS -->
+            <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.2rem;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.9rem; padding-bottom: 0.65rem; border-bottom: 1px solid #f1f5f9;">
+                    <h4 style="margin: 0; font-size: 0.96rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 7px;">
+                        <span class="material-symbols-outlined" style="color: #2563eb; font-size: 20px;">receipt_long</span>
+                        <span>Alertas de Pedidos</span>
+                    </h4>
+                    <span style="font-size: 0.72rem; color: #64748b; font-weight: 700;">Asociado a: Mis Compras</span>
+                </div>
+                <div id="admin-notif-rules-orders" style="display: flex; flex-direction: column; gap: 10px;"></div>
+            </div>
+
+            <!-- GRUPO: FAVORITOS & CATÁLOGO -->
+            <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.2rem;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.9rem; padding-bottom: 0.65rem; border-bottom: 1px solid #f1f5f9;">
+                    <h4 style="margin: 0; font-size: 0.96rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 7px;">
+                        <span class="material-symbols-outlined" style="color: #ea580c; font-size: 20px;">local_offer</span>
+                        <span>Favoritos, Ofertas &amp; Lanzamientos</span>
+                    </h4>
+                    <span style="font-size: 0.72rem; color: #64748b; font-weight: 700;">Asociado a: Producto / Ofertas</span>
+                </div>
+                <div id="admin-notif-rules-catalog" style="display: flex; flex-direction: column; gap: 10px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANEL 2: NOTIFICACIONES PERSONALIZADAS -->
+    <div id="admin-notif-panel-custom" class="admin-notif-panel" style="display: none;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.25rem; align-items: start;">
+            <!-- FORMULARIO CREAR / EDITAR -->
+            <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.25rem;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 0.65rem; border-bottom: 1px solid #f1f5f9;">
+                    <h4 id="admin-notif-form-heading" style="margin: 0; font-size: 0.98rem; font-weight: 800; color: #0f172a;">
+                        Nueva Notificación
+                    </h4>
+                    <span id="admin-notif-editing-badge" style="display: none; font-size: 0.72rem; font-weight: 800; background: #fff7ed; color: #c2410c; padding: 3px 8px; border-radius: 999px;">Editando</span>
+                </div>
+
+                <input type="hidden" id="notif-custom-id" value="">
+
+                <div style="display: grid; gap: 0.85rem;">
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                            <label for="notif-custom-title" style="font-size: 0.78rem; font-weight: 800; color: #334155;">Título corto (genera curiosidad):</label>
+                            <span id="notif-custom-title-count" style="font-size: 0.72rem; color: #64748b;">0/42</span>
+                        </div>
+                        <input type="text" id="notif-custom-title" maxlength="42" class="premium-input" placeholder="Ej: ¡Últimas horas de promo!" style="width: 100%; padding: 0.55rem 0.75rem; font-size: 0.88rem; box-sizing: border-box;">
+                    </div>
+
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                            <label for="notif-custom-body" style="font-size: 0.78rem; font-weight: 800; color: #334155;">Subtítulo / Gancho corto:</label>
+                            <span id="notif-custom-body-count" style="font-size: 0.72rem; color: #64748b;">0/65</span>
+                        </div>
+                        <input type="text" id="notif-custom-body" maxlength="65" class="premium-input" placeholder="Ej: Tocá para descubrirlo antes que vuele" style="width: 100%; padding: 0.55rem 0.75rem; font-size: 0.86rem; box-sizing: border-box;">
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                        <div>
+                            <label for="notif-custom-style" style="display: block; font-size: 0.78rem; font-weight: 800; color: #334155; margin-bottom: 4px;">Estilo visual:</label>
+                            <select id="notif-custom-style" class="premium-select" style="width: 100%; padding: 0.52rem 0.7rem; font-size: 0.84rem;">
+                                <option value="promo">🔥 Promo / Oferta (Naranja)</option>
+                                <option value="new">✨ Nuevo Ingreso (Turquesa)</option>
+                                <option value="price">📉 Rebaja / Cuotas (Violeta)</option>
+                                <option value="alert">⚡ Aviso Urgente (Rojo)</option>
+                                <option value="brand">🪵 Marca La Tarima (Madera)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="notif-custom-badge" style="display: block; font-size: 0.78rem; font-weight: 800; color: #334155; margin-bottom: 4px;">Etiqueta (badge):</label>
+                            <input type="text" id="notif-custom-badge" maxlength="16" class="premium-input" placeholder="Ej: Nuevo, Hoy, 20% OFF" style="width: 100%; padding: 0.52rem 0.7rem; font-size: 0.84rem; box-sizing: border-box;">
+                        </div>
+                    </div>
+
+                    <!-- ASOCIACIÓN -->
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.85rem;">
+                        <label for="notif-custom-assoc-type" style="display: block; font-size: 0.78rem; font-weight: 800; color: #0f172a; margin-bottom: 6px;">
+                            ¿A qué está asociada al hacer clic?
+                        </label>
+                        <select id="notif-custom-assoc-type" class="premium-select" style="width: 100%; padding: 0.52rem 0.7rem; font-size: 0.84rem; margin-bottom: 0.65rem;">
+                            <option value="none">Solo informativa (sin redirección)</option>
+                            <option value="product">Producto específico del catálogo</option>
+                            <option value="offer">Oferta / Combo específico</option>
+                            <option value="view">Sección de la tienda</option>
+                            <option value="url">Enlace externo (WhatsApp, Instagram, etc.)</option>
+                        </select>
+
+                        <!-- Sub-selector Producto -->
+                        <div id="notif-assoc-product-box" style="display: none;">
+                            <input type="text" id="notif-assoc-product-filter" class="premium-input" placeholder="Filtrar producto por nombre..." style="width: 100%; padding: 0.45rem 0.7rem; font-size: 0.8rem; margin-bottom: 6px; box-sizing: border-box;">
+                            <select id="notif-assoc-product-select" class="premium-select" style="width: 100%; padding: 0.5rem 0.7rem; font-size: 0.82rem;"></select>
+                        </div>
+
+                        <!-- Sub-selector Oferta -->
+                        <div id="notif-assoc-offer-box" style="display: none;">
+                            <select id="notif-assoc-offer-select" class="premium-select" style="width: 100%; padding: 0.5rem 0.7rem; font-size: 0.82rem;"></select>
+                        </div>
+
+                        <!-- Sub-selector Vista -->
+                        <div id="notif-assoc-view-box" style="display: none;">
+                            <select id="notif-assoc-view-select" class="premium-select" style="width: 100%; padding: 0.5rem 0.7rem; font-size: 0.82rem;">
+                                <option value="view-home">Inicio</option>
+                                <option value="view-catalogo">Catálogo Completo</option>
+                                <option value="view-offers">Ofertas &amp; Combos</option>
+                                <option value="view-categories">Categorías</option>
+                                <option value="view-cortes">Cortes de Madera a Medida</option>
+                                <option value="view-my-orders">Mis Compras / Pedidos</option>
+                                <option value="view-profile">Mi Carrito &amp; Favoritos</option>
+                                <option value="view-nosotros">Nosotros &amp; Taller</option>
+                            </select>
+                        </div>
+
+                        <!-- Sub-selector URL -->
+                        <div id="notif-assoc-url-box" style="display: none;">
+                            <input type="url" id="notif-assoc-url-input" class="premium-input" placeholder="https://wa.me/5491167007723 o https://..." style="width: 100%; padding: 0.5rem 0.7rem; font-size: 0.82rem; box-sizing: border-box;">
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr auto; gap: 0.75rem; align-items: end;">
+                        <div>
+                            <label for="notif-custom-expires" style="display: block; font-size: 0.78rem; font-weight: 800; color: #334155; margin-bottom: 4px;">Vencimiento automático (opcional):</label>
+                            <input type="date" id="notif-custom-expires" class="premium-input" style="width: 100%; padding: 0.48rem 0.7rem; font-size: 0.84rem; box-sizing: border-box;">
+                        </div>
+                        <label style="display: inline-flex; align-items: center; gap: 7px; padding: 0.52rem 0.85rem; border: 1px solid #cbd5e1; border-radius: 10px; font-size: 0.82rem; font-weight: 800; color: #0f172a; cursor: pointer; background: #fff;">
+                            <input type="checkbox" id="notif-custom-active" checked style="width: 16px; height: 16px; accent-color: var(--admin-accent);">
+                            <span>Activa</span>
+                        </label>
+                    </div>
+
+                    <!-- VISTA PREVIA EN VIVO -->
+                    <div style="background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 12px; padding: 0.85rem;">
+                        <div style="font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.4px; color: #64748b; margin-bottom: 6px;">
+                            Vista previa en campanita
+                        </div>
+                        <div id="admin-notif-live-preview" style="background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden;"></div>
+                    </div>
+
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <button type="button" id="admin-notif-custom-submit-btn" class="btn-primary" style="flex: 1; justify-content: center; padding: 0.6rem 1rem;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">add_alert</span>
+                            <span id="admin-notif-custom-submit-label">Agregar Notificación</span>
+                        </button>
+                        <button type="button" id="admin-notif-custom-cancel-btn" class="btn-outline" style="display: none; padding: 0.6rem 1rem;">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LISTADO DE NOTIFICACIONES CREADAS -->
+            <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.25rem;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 0.65rem; border-bottom: 1px solid #f1f5f9;">
+                    <h4 style="margin: 0; font-size: 0.98rem; font-weight: 800; color: #0f172a;">Notificaciones Creadas</h4>
+                    <span style="font-size: 0.74rem; color: #64748b;">Recordá tocar "Guardar Configuración" para publicar</span>
+                </div>
+                <div id="admin-notif-custom-list" style="display: flex; flex-direction: column; gap: 10px;"></div>
+            </div>
+        </div>
+    </div>
+</div>

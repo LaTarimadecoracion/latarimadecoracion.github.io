@@ -11,8 +11,218 @@
     const WORKER_URL = 'https://super-shadow-4ad9.latarimadecoracion.workers.dev';
     const STORAGE_PREFIX = 'latarima_notif_state_v2:';
     const LOCAL_ORDERS_KEY = 'latarima_my_orders';
+    const CONFIG_OVERRIDE_KEY = 'latarima_notifications_config_override';
     const MAX_NOTIFICATIONS = 40;
     const RECENT_AVISO_MAX_AGE_MS = 14 * 24 * 60 * 60 * 1000;
+
+    const RULE_DEFINITIONS = [
+        {
+            key: 'orderConfirmed',
+            group: 'orders',
+            label: 'Pedido confirmado / pago aprobado',
+            defaultTitle: '¡Pedido confirmado!',
+            defaultCta: 'Ver detalle',
+            targetHint: 'Abre Mis Compras con el detalle del pedido',
+            icon: 'check_circle',
+            accent: '#16a34a',
+            bg: '#f0fdf4',
+            badge: 'Confirmado'
+        },
+        {
+            key: 'orderPaymentPending',
+            group: 'orders',
+            label: 'Falta completar el pago',
+            defaultTitle: 'Falta completar el pago',
+            defaultCta: 'Tocá para verlo',
+            targetHint: 'Abre Mis Compras / estado de pago',
+            icon: 'payments',
+            accent: '#d97706',
+            bg: '#fffbeb',
+            badge: 'Pendiente'
+        },
+        {
+            key: 'orderPaymentRejected',
+            group: 'orders',
+            label: 'Pago rechazado / revisar pago',
+            defaultTitle: 'Revisá el pago de tu pedido',
+            defaultCta: 'Tocá para resolverlo',
+            targetHint: 'Abre Mis Compras para revisar el pago',
+            icon: 'error',
+            accent: '#dc2626',
+            bg: '#fef2f2',
+            badge: 'Pago'
+        },
+        {
+            key: 'orderInProgress',
+            group: 'orders',
+            label: 'Pedido en taller / producción',
+            defaultTitle: '¡Tu pedido está en marcha!',
+            defaultCta: 'Seguí el avance',
+            targetHint: 'Abre el seguimiento del pedido',
+            icon: 'carpenter',
+            accent: '#2563eb',
+            bg: '#eff6ff',
+            badge: 'En taller'
+        },
+        {
+            key: 'orderReady',
+            group: 'orders',
+            label: 'Pedido listo para retirar o enviar',
+            defaultTitle: '¡Tu pedido está listo!',
+            defaultCta: 'Mirá cómo retirarlo',
+            targetHint: 'Abre el seguimiento del pedido',
+            icon: 'inventory_2',
+            accent: '#0284c7',
+            bg: '#f0f9ff',
+            badge: 'Listo'
+        },
+        {
+            key: 'orderDelivered',
+            group: 'orders',
+            label: 'Pedido entregado / completado',
+            defaultTitle: '¡Pedido entregado!',
+            defaultCta: 'Ver compra',
+            targetHint: 'Abre el historial de la compra',
+            icon: 'verified',
+            accent: '#15803d',
+            bg: '#dcfce7',
+            badge: 'Entregado'
+        },
+        {
+            key: 'orderCancelled',
+            group: 'orders',
+            label: 'Pedido cancelado',
+            defaultTitle: 'Pedido cancelado',
+            defaultCta: 'Ver detalle',
+            targetHint: 'Abre el detalle de la orden',
+            icon: 'cancel',
+            accent: '#dc2626',
+            bg: '#fef2f2',
+            badge: 'Cancelado'
+        },
+        {
+            key: 'favPriceDrop',
+            group: 'catalog',
+            label: 'Tu favorito bajó de precio',
+            defaultTitle: '¡Tu favorito bajó de precio!',
+            defaultCta: 'Mirá el nuevo valor',
+            targetHint: 'Abre el producto guardado en favoritos',
+            icon: 'trending_down',
+            accent: '#7c3aed',
+            bg: '#f5f3ff',
+            badge: 'Bajó'
+        },
+        {
+            key: 'favOffer',
+            group: 'catalog',
+            label: 'Tu favorito está de oferta',
+            defaultTitle: '¡Tu favorito está de oferta!',
+            defaultCta: 'Aprovechalo ahora',
+            targetHint: 'Abre la sección Ofertas',
+            icon: 'local_offer',
+            accent: '#ea580c',
+            bg: '#fff7ed',
+            badge: 'Oferta'
+        },
+        {
+            key: 'newProduct',
+            group: 'catalog',
+            label: 'Nuevo producto ingresado',
+            defaultTitle: '¡Llegó algo nuevo!',
+            defaultCta: 'Descubrilo',
+            targetHint: 'Abre la ficha del nuevo producto',
+            icon: 'new_releases',
+            accent: '#0f766e',
+            bg: '#f0fdfa',
+            badge: 'Nuevo'
+        },
+        {
+            key: 'newOffer',
+            group: 'catalog',
+            label: 'Nueva oferta activa',
+            defaultTitle: '¡Nueva oferta activa!',
+            defaultCta: 'Mirala antes que termine',
+            targetHint: 'Abre la sección Ofertas',
+            icon: 'local_offer',
+            accent: '#ea580c',
+            bg: '#fff7ed',
+            badge: 'Oferta'
+        }
+    ];
+
+    function getRuleDefinitions() {
+        return RULE_DEFINITIONS.map(def => ({ ...def }));
+    }
+
+    function getDefaultConfig() {
+        const rules = {};
+        RULE_DEFINITIONS.forEach(def => {
+            rules[def.key] = {
+                enabled: true,
+                title: def.defaultTitle,
+                cta: def.defaultCta
+            };
+        });
+        return {
+            rules,
+            customNotifications: []
+        };
+    }
+
+    function getNotificationsConfig() {
+        const def = getDefaultConfig();
+        let src = (window.notificationsConfig && typeof window.notificationsConfig === 'object')
+            ? window.notificationsConfig
+            : (window.siteConfig && window.siteConfig.notificationsConfig && typeof window.siteConfig.notificationsConfig === 'object'
+                ? window.siteConfig.notificationsConfig
+                : null);
+
+        // Respaldo local opcional para vistas previas sin servidor local activo
+        try {
+            const rawOverride = localStorage.getItem(CONFIG_OVERRIDE_KEY);
+            if (rawOverride) {
+                const parsed = JSON.parse(rawOverride);
+                if (parsed && typeof parsed === 'object') src = parsed;
+            }
+        } catch (e) {}
+
+        const mergedRules = { ...def.rules };
+        if (src && src.rules && typeof src.rules === 'object') {
+            RULE_DEFINITIONS.forEach(d => {
+                const rawRule = src.rules[d.key];
+                if (rawRule && typeof rawRule === 'object') {
+                    mergedRules[d.key] = {
+                        enabled: rawRule.enabled !== false,
+                        title: String(rawRule.title || d.defaultTitle).trim() || d.defaultTitle,
+                        cta: String(rawRule.cta || d.defaultCta).trim() || d.defaultCta
+                    };
+                }
+            });
+        }
+
+        const customList = (src && Array.isArray(src.customNotifications))
+            ? src.customNotifications.filter(c => c && typeof c === 'object')
+            : [];
+
+        return {
+            rules: mergedRules,
+            customNotifications: customList
+        };
+    }
+
+    function isRuleEnabled(cfg, ruleKey) {
+        if (!ruleKey || !cfg || !cfg.rules) return true;
+        const rule = cfg.rules[ruleKey];
+        return rule ? rule.enabled !== false : true;
+    }
+
+    function getRuleCopy(cfg, ruleKey, fallbackTitle, fallbackCta) {
+        const rule = cfg && cfg.rules && cfg.rules[ruleKey];
+        return {
+            title: (rule && rule.title) ? rule.title : fallbackTitle,
+            cta: (rule && rule.cta) ? rule.cta : fallbackCta
+        };
+    }
 
     function shortLabel(text, max = 36) {
         const clean = String(text || '').trim();
@@ -194,6 +404,7 @@
         {
             match: (st, pay) => st.includes('cancelad') || st.includes('rechazad') || pay === 'cancelled' || pay === 'refunded',
             key: 'cancelled',
+            ruleKey: 'orderCancelled',
             title: 'Pedido cancelado',
             cta: 'Ver detalle',
             icon: 'cancel',
@@ -204,6 +415,7 @@
         {
             match: (_st, pay) => pay === 'rejected',
             key: 'payment_rejected',
+            ruleKey: 'orderPaymentRejected',
             title: 'Revisá el pago de tu pedido',
             cta: 'Tocá para resolverlo',
             icon: 'error',
@@ -214,6 +426,7 @@
         {
             match: (st, pay) => st.includes('entregad') || st.includes('completad') || pay === 'delivered',
             key: 'delivered',
+            ruleKey: 'orderDelivered',
             title: '¡Pedido entregado!',
             cta: 'Ver compra',
             icon: 'verified',
@@ -224,6 +437,7 @@
         {
             match: (st) => st.includes('listo'),
             key: 'ready',
+            ruleKey: 'orderReady',
             title: '¡Tu pedido está listo!',
             cta: 'Mirá cómo retirarlo',
             icon: 'inventory_2',
@@ -234,6 +448,7 @@
         {
             match: (st) => st.includes('proceso') || st.includes('produccion') || st.includes('carpinteria') || st.includes('armado'),
             key: 'in_progress',
+            ruleKey: 'orderInProgress',
             title: '¡Tu pedido está en marcha!',
             cta: 'Seguí el avance',
             icon: 'carpenter',
@@ -244,6 +459,7 @@
         {
             match: (st, pay) => st === 'pago_confirmado' || st.includes('confirmado') || st.includes('aprobado') || pay === 'approved',
             key: 'confirmed',
+            ruleKey: 'orderConfirmed',
             title: '¡Pedido confirmado!',
             cta: 'Ver detalle',
             icon: 'check_circle',
@@ -254,6 +470,7 @@
         {
             match: (st, pay) => st.includes('pendiente') || st.includes('falta') || pay === 'pending' || pay === 'in_process',
             key: 'payment_pending',
+            ruleKey: 'orderPaymentPending',
             title: 'Falta completar el pago',
             cta: 'Tocá para verlo',
             icon: 'payments',
@@ -269,6 +486,7 @@
         const found = ORDER_STATUS_META.find(rule => rule.match(st, pay));
         return found || {
             key: 'updated',
+            ruleKey: 'orderConfirmed',
             title: 'Novedad en tu pedido',
             cta: 'Tocá para verlo',
             icon: 'receipt_long',
@@ -319,7 +537,7 @@
         return Array.from(ordersMap.values());
     }
 
-    async function scanOrders(state) {
+    async function scanOrders(state, cfg) {
         const orders = await fetchOrdersForNotifications();
         let changed = false;
 
@@ -335,30 +553,39 @@
             const shortRef = ord.shortCode || ordId;
 
             if (prevSnapshot !== snapshot) {
-                const added = upsertNotification(state, {
-                    id: `ord_${ordId}_${snapshot}`,
-                    type: 'order',
-                    title: meta.title,
-                    body: `#${shortRef} · ${meta.cta}`,
-                    timestamp: Number(ord.updatedAt || ord.createdAt) || Date.now(),
-                    image: ord.image || '',
-                    icon: meta.icon,
-                    accent: meta.accent,
-                    bg: meta.bg,
-                    badgeText: meta.badge,
-                    actionType: 'order',
-                    actionPayload: { orderId: ordId }
-                });
-                if (added) changed = true;
+                if (isRuleEnabled(cfg, meta.ruleKey)) {
+                    const copy = getRuleCopy(cfg, meta.ruleKey, meta.title, meta.cta);
+                    const added = upsertNotification(state, {
+                        id: `ord_${ordId}_${snapshot}`,
+                        type: 'order',
+                        ruleKey: meta.ruleKey,
+                        title: copy.title,
+                        body: `#${shortRef} · ${copy.cta}`,
+                        timestamp: Number(ord.updatedAt || ord.createdAt) || Date.now(),
+                        image: ord.image || '',
+                        icon: meta.icon,
+                        accent: meta.accent,
+                        bg: meta.bg,
+                        badgeText: meta.badge,
+                        actionType: 'order',
+                        actionPayload: { orderId: ordId }
+                    });
+                    if (added) changed = true;
+                }
                 state.orderSnapshots[ordId] = snapshot;
+                changed = true;
             }
         });
 
         return changed;
     }
 
-    function scanFavorites(state) {
+    function scanFavorites(state, cfg) {
         let changed = false;
+        const allowDrop = isRuleEnabled(cfg, 'favPriceDrop');
+        const allowFavOffer = isRuleEnabled(cfg, 'favOffer');
+        if (!allowDrop && !allowFavOffer) return false;
+
         let cartList = [];
         try {
             const raw = localStorage.getItem('cartItems');
@@ -376,16 +603,18 @@
 
             // 1. Tu favorito bajó de precio
             const savedPrice = Number(item.price) || 0;
-            if (product && savedPrice > 0) {
+            if (allowDrop && product && savedPrice > 0) {
                 const livePrice = resolveProductPrice(product, item.acabado, item.medida, item.opcion);
                 if (livePrice > 0 && livePrice < savedPrice) {
                     const dropPct = Math.round(((savedPrice - livePrice) / savedPrice) * 100);
                     const cover = Array.isArray(product.image) ? product.image[0] : (product.image || item.image || '');
+                    const copy = getRuleCopy(cfg, 'favPriceDrop', '¡Tu favorito bajó de precio!', 'Mirá el nuevo valor');
                     const added = upsertNotification(state, {
                         id: `fav_drop_${item.id}_${livePrice}`,
                         type: 'price_drop',
-                        title: '¡Tu favorito bajó de precio!',
-                        body: `${shortLabel(product.title || item.title)} · Mirá el nuevo valor`,
+                        ruleKey: 'favPriceDrop',
+                        title: copy.title,
+                        body: `${shortLabel(product.title || item.title)} · ${copy.cta}`,
                         timestamp: Date.now(),
                         image: cover,
                         icon: 'trending_down',
@@ -406,39 +635,46 @@
             }
 
             // 2. Tu favorito está de oferta
-            const itemIdNorm = String(item.id).trim().toLowerCase();
-            activeOffers.forEach(offer => {
-                const offerItems = Array.isArray(offer.product_items) ? offer.product_items : [];
-                const isInOffer = offerItems.some(pi => {
-                    const pid = String(pi.productId || pi.id || '').trim().toLowerCase();
-                    return pid && pid === itemIdNorm;
-                });
-                if (isInOffer) {
-                    const cover = offer.customCoverImage || item.image || (offerItems[0] && offerItems[0].image) || '';
-                    const added = upsertNotification(state, {
-                        id: `fav_offer_${offer.id}_${item.id}`,
-                        type: 'favorite_offer',
-                        title: '¡Tu favorito está de oferta!',
-                        body: `${shortLabel(item.title)} · Aprovechalo ahora`,
-                        timestamp: Number(offer.created_at) || Date.now(),
-                        image: cover,
-                        icon: 'local_offer',
-                        accent: '#ea580c',
-                        bg: '#fff7ed',
-                        badgeText: offer.discountPercent ? `${offer.discountPercent}% OFF` : 'Oferta',
-                        actionType: 'offers',
-                        actionPayload: { offerId: offer.id }
+            if (allowFavOffer) {
+                const itemIdNorm = String(item.id).trim().toLowerCase();
+                activeOffers.forEach(offer => {
+                    const offerItems = Array.isArray(offer.product_items) ? offer.product_items : [];
+                    const isInOffer = offerItems.some(pi => {
+                        const pid = String(pi.productId || pi.id || '').trim().toLowerCase();
+                        return pid && pid === itemIdNorm;
                     });
-                    if (added) changed = true;
-                }
-            });
+                    if (isInOffer) {
+                        const cover = offer.customCoverImage || item.image || (offerItems[0] && offerItems[0].image) || '';
+                        const copy = getRuleCopy(cfg, 'favOffer', '¡Tu favorito está de oferta!', 'Aprovechalo ahora');
+                        const added = upsertNotification(state, {
+                            id: `fav_offer_${offer.id}_${item.id}`,
+                            type: 'favorite_offer',
+                            ruleKey: 'favOffer',
+                            title: copy.title,
+                            body: `${shortLabel(item.title)} · ${copy.cta}`,
+                            timestamp: Number(offer.created_at) || Date.now(),
+                            image: cover,
+                            icon: 'local_offer',
+                            accent: '#ea580c',
+                            bg: '#fff7ed',
+                            badgeText: offer.discountPercent ? `${offer.discountPercent}% OFF` : 'Oferta',
+                            actionType: 'offers',
+                            actionPayload: { offerId: offer.id }
+                        });
+                        if (added) changed = true;
+                    }
+                });
+            }
         });
 
         return changed;
     }
 
-    function scanCatalogUpdates(state) {
+    function scanCatalogUpdates(state, cfg) {
         let changed = false;
+        const allowNewProduct = isRuleEnabled(cfg, 'newProduct');
+        const allowNewOffer = isRuleEnabled(cfg, 'newOffer');
+
         const catalogSource = (window.sessionProducts && window.sessionProducts.length > 0)
             ? window.sessionProducts
             : (typeof productsData !== 'undefined' && Array.isArray(productsData) ? productsData : []);
@@ -463,34 +699,40 @@
             const seenSet = new Set(state.seenProductIds.map(String));
             currentProductIds.forEach(pid => {
                 if (!seenSet.has(pid)) {
-                    const entry = productMap.get(pid);
-                    if (entry && entry.product) {
-                        const cover = Array.isArray(entry.product.image) ? entry.product.image[0] : (entry.product.image || '');
-                        const added = upsertNotification(state, {
-                            id: `new_prod_${pid}`,
-                            type: 'new_product',
-                            title: '¡Llegó algo nuevo!',
-                            body: `${shortLabel(entry.product.title)} · Descubrilo`,
-                            timestamp: Date.now(),
-                            image: cover,
-                            icon: 'new_releases',
-                            accent: '#0f766e',
-                            bg: '#f0fdfa',
-                            badgeText: 'Nuevo',
-                            actionType: 'product',
-                            actionPayload: { productId: pid, catName: entry.catName }
-                        });
-                        if (added) changed = true;
+                    if (allowNewProduct) {
+                        const entry = productMap.get(pid);
+                        if (entry && entry.product) {
+                            const cover = Array.isArray(entry.product.image) ? entry.product.image[0] : (entry.product.image || '');
+                            const copy = getRuleCopy(cfg, 'newProduct', '¡Llegó algo nuevo!', 'Descubrilo');
+                            const added = upsertNotification(state, {
+                                id: `new_prod_${pid}`,
+                                type: 'new_product',
+                                ruleKey: 'newProduct',
+                                title: copy.title,
+                                body: `${shortLabel(entry.product.title)} · ${copy.cta}`,
+                                timestamp: Date.now(),
+                                image: cover,
+                                icon: 'new_releases',
+                                accent: '#0f766e',
+                                bg: '#f0fdfa',
+                                badgeText: 'Nuevo',
+                                actionType: 'product',
+                                actionPayload: { productId: pid, catName: entry.catName }
+                            });
+                            if (added) changed = true;
+                        }
                     }
                     seenSet.add(pid);
+                    changed = true;
                 }
             });
             state.seenProductIds = Array.from(seenSet);
         }
 
         // Incorporar lanzamientos recientes publicados explícitamente vía sessionAvisos (últimos 14 días)
-        if (Array.isArray(window.sessionAvisos)) {
+        if (allowNewProduct && Array.isArray(window.sessionAvisos)) {
             const minTs = Date.now() - RECENT_AVISO_MAX_AGE_MS;
+            const copy = getRuleCopy(cfg, 'newProduct', '¡Llegó algo nuevo!', 'Descubrilo');
             window.sessionAvisos.forEach(aviso => {
                 if (!aviso || aviso.type !== 'product' || !aviso.timestamp || aviso.timestamp < minTs) return;
                 const cleanTitle = String(aviso.title || '').replace(/^¡?Nuevo (Ingreso|Alquiler):\s*/i, '').trim() || 'Nuevo lanzamiento';
@@ -503,8 +745,9 @@
                 const added = upsertNotification(state, {
                     id: `aviso_prod_${aviso.id || prodId || cleanTitle}`,
                     type: 'new_product',
-                    title: '¡Llegó algo nuevo!',
-                    body: `${shortLabel(cleanTitle)} · Descubrilo`,
+                    ruleKey: 'newProduct',
+                    title: copy.title,
+                    body: `${shortLabel(cleanTitle)} · ${copy.cta}`,
                     timestamp: Number(aviso.timestamp) || Date.now(),
                     image: cover,
                     icon: 'new_releases',
@@ -531,26 +774,129 @@
             activeOffers.forEach(offer => {
                 const oid = String(offer.id);
                 if (!seenOffersSet.has(oid)) {
-                    const added = upsertNotification(state, {
-                        id: `new_offer_${oid}`,
-                        type: 'new_offer',
-                        title: '¡Nueva oferta activa!',
-                        body: `${shortLabel(offer.title)} · Mirala antes que termine`,
-                        timestamp: Number(offer.created_at) || Date.now(),
-                        image: offer.customCoverImage || '',
-                        icon: 'local_offer',
-                        accent: '#ea580c',
-                        bg: '#fff7ed',
-                        badgeText: offer.discountPercent ? `${offer.discountPercent}% OFF` : 'Oferta',
-                        actionType: 'offers',
-                        actionPayload: { offerId: oid }
-                    });
-                    if (added) changed = true;
+                    if (allowNewOffer) {
+                        const copy = getRuleCopy(cfg, 'newOffer', '¡Nueva oferta activa!', 'Mirala antes que termine');
+                        const added = upsertNotification(state, {
+                            id: `new_offer_${oid}`,
+                            type: 'new_offer',
+                            ruleKey: 'newOffer',
+                            title: copy.title,
+                            body: `${shortLabel(offer.title)} · ${copy.cta}`,
+                            timestamp: Number(offer.created_at) || Date.now(),
+                            image: offer.customCoverImage || '',
+                            icon: 'local_offer',
+                            accent: '#ea580c',
+                            bg: '#fff7ed',
+                            badgeText: offer.discountPercent ? `${offer.discountPercent}% OFF` : 'Oferta',
+                            actionType: 'offers',
+                            actionPayload: { offerId: oid }
+                        });
+                        if (added) changed = true;
+                    }
                     seenOffersSet.add(oid);
+                    changed = true;
                 }
             });
             state.seenOfferIds = Array.from(seenOffersSet);
         }
+
+        return changed;
+    }
+
+    function resolveCustomAssociation(item) {
+        const type = item.associationType || 'none';
+        const val = String(item.associationValue || '').trim();
+        let cover = String(item.image || '').trim();
+
+        if (type === 'product' && val) {
+            const matched = findCatalogProduct(val);
+            if (matched && matched.product && !cover) {
+                cover = Array.isArray(matched.product.image) ? matched.product.image[0] : (matched.product.image || '');
+            }
+            return {
+                actionType: 'product',
+                actionPayload: { productId: val, catName: (matched && matched.catName) || '' },
+                image: cover
+            };
+        }
+        if (type === 'offer' && val) {
+            if (!cover) {
+                const offer = getActiveOffersList().find(o => String(o.id) === val);
+                if (offer) cover = offer.customCoverImage || (offer.product_items && offer.product_items[0] && offer.product_items[0].image) || '';
+            }
+            return { actionType: 'offers', actionPayload: { offerId: val }, image: cover };
+        }
+        if (type === 'view' && val) {
+            return { actionType: 'view', actionPayload: { viewId: val }, image: cover };
+        }
+        if (type === 'url' && val) {
+            return { actionType: 'url', actionPayload: { url: val }, image: cover };
+        }
+        return { actionType: 'none', actionPayload: {}, image: cover };
+    }
+
+    function isCustomNotificationExpired(item) {
+        if (!item || !item.expiresAt) return false;
+        const ts = new Date(`${item.expiresAt}T23:59:59`).getTime();
+        return !isNaN(ts) && ts < Date.now();
+    }
+
+    function scanCustomNotifications(state, cfg) {
+        let changed = false;
+        const list = Array.isArray(cfg.customNotifications) ? cfg.customNotifications : [];
+        const activeIds = new Set();
+
+        list.forEach(item => {
+            if (!item || !item.id || item.active === false || isCustomNotificationExpired(item)) return;
+            const notifId = `custom_${item.id}`;
+            activeIds.add(notifId);
+            const resolved = resolveCustomAssociation(item);
+            const stamp = Number(item.updatedAt || item.createdAt) || Date.now();
+            const existingIdx = state.notifications.findIndex(n => n.id === notifId);
+            const nextPayload = {
+                id: notifId,
+                type: 'custom',
+                ruleKey: 'custom',
+                title: shortLabel(item.title || 'Aviso importante', 42),
+                body: shortLabel(item.body || '', 65),
+                timestamp: Number(item.createdAt) || stamp,
+                customVersion: stamp,
+                image: resolved.image || '',
+                icon: item.icon || 'campaign',
+                accent: item.accent || '#A0715B',
+                bg: item.bg || '#fdf8f6',
+                badgeText: item.badgeText || '',
+                actionType: resolved.actionType,
+                actionPayload: resolved.actionPayload
+            };
+
+            if (existingIdx === -1) {
+                state.notifications.unshift({ ...nextPayload, read: false });
+                changed = true;
+            } else {
+                const prev = state.notifications[existingIdx];
+                if (prev.customVersion !== stamp || prev.title !== nextPayload.title || prev.body !== nextPayload.body || prev.actionType !== nextPayload.actionType) {
+                    state.notifications[existingIdx] = {
+                        ...nextPayload,
+                        read: prev.customVersion === stamp ? Boolean(prev.read) : false
+                    };
+                    changed = true;
+                }
+            }
+        });
+
+        // Quitar personalizadas pausadas, vencidas o eliminadas desde Admin, y reglas desactivadas
+        const beforeLen = state.notifications.length;
+        state.notifications = state.notifications.filter(n => {
+            if (n.type === 'custom' || String(n.id).startsWith('custom_')) {
+                return activeIds.has(n.id);
+            }
+            if (n.ruleKey && n.ruleKey !== 'custom') {
+                return isRuleEnabled(cfg, n.ruleKey);
+            }
+            return true;
+        });
+        if (state.notifications.length !== beforeLen) changed = true;
 
         return changed;
     }
@@ -612,10 +958,25 @@
         }
         if (item.actionType === 'offers') {
             if (window.navigateToView) window.navigateToView('view-offers');
+            if (payload.offerId) {
+                setTimeout(() => {
+                    const card = document.querySelector(`[data-offer-id="${payload.offerId}"]`);
+                    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 250);
+            }
             return;
         }
         if (item.actionType === 'view' && payload.viewId && window.navigateToView) {
             window.navigateToView(payload.viewId);
+            return;
+        }
+        if (item.actionType === 'url' && payload.url) {
+            const targetUrl = String(payload.url).trim();
+            if (/^(https?:\/\/|mailto:|tel:)/i.test(targetUrl)) {
+                window.open(targetUrl, '_blank', 'noopener,noreferrer');
+            } else if (targetUrl.startsWith('?') && window.location) {
+                window.location.search = targetUrl;
+            }
         }
     }
 
@@ -793,10 +1154,12 @@
         isScanning = true;
         try {
             const state = loadState();
-            const c1 = await scanOrders(state);
-            const c2 = scanFavorites(state);
-            const c3 = scanCatalogUpdates(state);
-            if (c1 || c2 || c3) {
+            const cfg = getNotificationsConfig();
+            const c1 = await scanOrders(state, cfg);
+            const c2 = scanFavorites(state, cfg);
+            const c3 = scanCatalogUpdates(state, cfg);
+            const c4 = scanCustomNotifications(state, cfg);
+            if (c1 || c2 || c3 || c4) {
                 saveState(state);
             }
             syncBadges(state);
@@ -834,7 +1197,11 @@
         renderFullView,
         markAllAsRead,
         clearReadNotifications,
-        resolveProductPrice
+        resolveProductPrice,
+        getRuleDefinitions,
+        getDefaultConfig,
+        getNotificationsConfig,
+        CONFIG_OVERRIDE_KEY
     };
 
     document.addEventListener('DOMContentLoaded', init);

@@ -250,6 +250,7 @@ window.loadAdminPartialsOnDemand = function() {
             'partials/admin/view-ml-importer.html',
             'partials/admin/view-tnube.html',
             'partials/admin/view-pages.html',
+            'partials/admin/view-notifications.html',
             'partials/admin/view-settings.html',
             'partials/admin/view-orders.html',
             'partials/admin/view-quotes.html',
@@ -307,7 +308,8 @@ window.loadAdminPartialsOnDemand = function() {
             'js/admin/admin-payments.js?v=5',
             'js/admin/admin-pages.js?v=4',
             'js/admin/admin-quotes.js?v=1',
-            'js/admin/admin-users.js?v=1'
+            'js/admin/admin-users.js?v=1',
+            'js/admin/admin-notifications.js?v=1'
         ];
 
         await loadScriptsSequential(adminScripts);

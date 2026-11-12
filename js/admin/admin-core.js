@@ -73,7 +73,7 @@ function initAdminUX20() {
     // Leer la pestaña activa inicial desde la URL (?tab=...) o HASH (#tab)
     const urlParams = new URLSearchParams(window.location.search);
     const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
-    const validTabs = ['dashboard', 'settings', 'catalog', 'ml-importer', 'tnube', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
+    const validTabs = ['dashboard', 'settings', 'catalog', 'ml-importer', 'tnube', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'pages', 'notifications', 'orders', 'quotes', 'users', 'maintenance'];
     if (tabFromUrl && validTabs.includes(tabFromUrl)) {
         currentAdminTab = tabFromUrl;
     }
@@ -162,6 +162,7 @@ function initAdminUX20() {
     if (typeof window.initRentalsAdmin === 'function') window.initRentalsAdmin();
     if (typeof window.initMayoristaAdmin === 'function') window.initMayoristaAdmin();
     if (typeof window.initVacationAdmin === 'function') window.initVacationAdmin();
+    if (typeof window.initNotificationsAdmin === 'function') window.initNotificationsAdmin();
 }
 
     async function renderAdminDashboard() {
@@ -371,13 +372,13 @@ function renderAdminUX() {
     // Asegurar lectura de URL en cada renderizado
     const urlParams = new URLSearchParams(window.location.search);
     const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
-    const validTabs = ['dashboard', 'settings', 'catalog', 'ml-importer', 'tnube', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'stock', 'pc-stock', 'pages', 'orders', 'quotes', 'users', 'maintenance'];
+    const validTabs = ['dashboard', 'settings', 'catalog', 'ml-importer', 'tnube', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'stock', 'pc-stock', 'pages', 'notifications', 'orders', 'quotes', 'users', 'maintenance'];
     if (tabFromUrl && validTabs.includes(tabFromUrl)) {
         currentAdminTab = tabFromUrl;
     }
 
     // Control visual de la barra de navegación del panel (V2)
-        const tabs = ['orders', 'quotes', 'catalog', 'ml-importer', 'tnube', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'pages', 'settings', 'users'];
+        const tabs = ['orders', 'quotes', 'catalog', 'ml-importer', 'tnube', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'pages', 'notifications', 'settings', 'users'];
         tabs.forEach(tab => {
             const btn = document.getElementById(`tab-btn-${tab}`);
             if (btn) {
@@ -403,6 +404,7 @@ function renderAdminUX() {
             cajones: { title: 'Cajones CrossFit & Pliométricos', icon: 'sports_gymnastics' },
             payments: { title: 'Métodos & Pasarelas de Pago', icon: 'payments' },
             pages: { title: 'Diseño de Páginas', icon: 'view_quilt' },
+            notifications: { title: 'Centro de Notificaciones', icon: 'notifications_active' },
             orders: { title: 'Gestión de Pedidos', icon: 'description' },
             quotes: { title: 'Generador de Presupuestos', icon: 'request_quote' },
             users: { title: 'Usuarios & Permisos', icon: 'group' }
@@ -427,6 +429,7 @@ function renderAdminUX() {
             cajones: 'admin-cajones-view',
             payments: 'admin-payments-view',
             pages: 'admin-pages-view',
+            notifications: 'admin-notifications-view',
             orders: 'admin-orders-view',
             quotes: 'admin-quotes-view',
             users: 'admin-users-view',
@@ -489,6 +492,10 @@ function renderAdminUX() {
             }
         } else if (currentAdminTab === 'tnube' && window.AdminTnubeModule) {
             window.AdminTnubeModule.init();
+        } else if (currentAdminTab === 'notifications') {
+            if (typeof window.renderNotificationsAdminTab === 'function') {
+                window.renderNotificationsAdminTab();
+            }
         }
 
         if (currentAdminTab === 'catalog') {
