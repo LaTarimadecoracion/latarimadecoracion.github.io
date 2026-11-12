@@ -1883,61 +1883,8 @@ function countBusinessDays(startDate, endDate) {
 }
 
 function cleanExpiredOrders(orders) {
-    const today = new Date();
-    const activeOrders = [];
-    const expiredIds = [];
-    
-    orders.forEach(order => {
-        let isExpired = false;
-        
-        // Regla 1: 60 días de corrido desde que fue tomado (creationDate)
-        if (order.creationDate) {
-            const created = new Date(order.creationDate);
-            const diffTime = today.getTime() - created.getTime();
-            const diffDays = diffTime / (1000 * 60 * 60 * 24);
-            if (diffDays > 60) {
-                isExpired = true;
-            }
-        }
-        
-        // Regla 2: 30 días hábiles posteriores a su finalización (listo/entregado)
-        if (!isExpired && (order.status === 'listo' || order.status === 'entregado') && order.completedDate) {
-            const completed = new Date(order.completedDate);
-            const businessDaysSinceCompletion = countBusinessDays(completed, today) - 1;
-            if (businessDaysSinceCompletion > 30) {
-                isExpired = true;
-            }
-        }
-        
-        if (isExpired) {
-            expiredIds.push(order.id);
-            // Delete client HTML page
-            const clientPagePath = path.join(ROOT_DIR, 'pedidos', `${order.id}.html`);
-            if (fs.existsSync(clientPagePath)) {
-                try {
-                    fs.unlinkSync(clientPagePath);
-                    console.log(`🧹 Borrado archivo de pedido expirado: pedidos/${order.id}.html`);
-                } catch (err) {
-                    console.error(`❌ Error borrando archivo de pedido expirado ${order.id}:`, err);
-                }
-            }
-            
-            // Delete image folder if exists
-            const imageFolder = path.join(ROOT_DIR, 'img', 'pedidos', order.id);
-            if (fs.existsSync(imageFolder)) {
-                try {
-                    fse.removeSync(imageFolder);
-                    console.log(`🧹 Borrada carpeta de imágenes del pedido expirado: img/pedidos/${order.id}`);
-                } catch (err) {
-                    console.error(`❌ Error borrando carpeta de imágenes ${order.id}:`, err);
-                }
-            }
-        } else {
-            activeOrders.push(order);
-        }
-    });
-    
-    return { activeOrders, expiredIds };
+    // Regla desactivada: los pedidos confirmados ya no se eliminan automáticamente para conservar el historial de compras de los clientes.
+    return { activeOrders: Array.isArray(orders) ? orders : [], expiredIds: [] };
 }
 
 function getSocialLinks() {
