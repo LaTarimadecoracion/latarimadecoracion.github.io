@@ -44,7 +44,7 @@
     <!-- CSS Base + Capas aisladas por dispositivo (Móvil vs Escritorio) -->
     <link rel="stylesheet" href="css/style.css?v=59">
     <link rel="stylesheet" href="css/mobile.css?v=1" media="(max-width: 899.98px)">
-    <link rel="stylesheet" href="css/desktop.css?v=10" media="(min-width: 900px)">
+    <link rel="stylesheet" href="css/desktop.css?v=11" media="(min-width: 900px)">
     
     
 
@@ -208,12 +208,12 @@
                 </button>
             </div>
 
-            <!-- Derecha PC: Espacio equilibrado / Info directa de fábrica -->
+            <!-- Derecha PC: Cuenta, nombre y foto de perfil -->
             <div class="desktop-header-right-info desktop-only">
-                <a href="https://wa.me/5491167007723" target="_blank" rel="noopener" class="desktop-factory-pill" title="Consultar directo por WhatsApp">
-                    <span class="material-symbols-outlined" style="font-size: 16px; color: #16a34a;">chat</span>
-                    <span>Directo de Fábrica</span>
-                </a>
+                <div id="desktop-account-area" class="desktop-account-area">
+                    <a href="#" class="desktop-account-link" onclick="event.preventDefault(); if(window.DesktopHeader) window.DesktopHeader.triggerClientLogin();">Creá tu cuenta</a>
+                    <a href="#" class="desktop-account-link desktop-account-login" onclick="event.preventDefault(); if(window.DesktopHeader) window.DesktopHeader.triggerClientLogin();">Ingresá</a>
+                </div>
             </div>
         </div>
 
@@ -238,12 +238,8 @@
                 <a href="#" class="desktop-nav-link" data-target="view-about" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-about');">Nosotros</a>
             </div>
 
-            <!-- 3. Cuenta, Mis Compras, Notificaciones y Carrito -->
+            <!-- 3. Mis Compras, Notificaciones y Carrito -->
             <div class="desktop-subnav-account">
-                <div id="desktop-account-area" class="desktop-account-area">
-                    <a href="#" class="desktop-account-link" onclick="event.preventDefault(); if(window.DesktopHeader) window.DesktopHeader.triggerClientLogin();">Creá tu cuenta</a>
-                    <a href="#" class="desktop-account-link desktop-account-login" onclick="event.preventDefault(); if(window.DesktopHeader) window.DesktopHeader.triggerClientLogin();">Ingresá</a>
-                </div>
                 <a href="#" class="desktop-account-link" data-target="view-my-orders" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-my-orders');">Mis compras</a>
                 <div class="desktop-notif-wrapper" id="desktop-notif-wrapper">
                     <button type="button" class="desktop-icon-btn desktop-notif-btn" id="desktop-notif-btn" aria-haspopup="true" aria-expanded="false" aria-label="Notificaciones" title="Notificaciones">
