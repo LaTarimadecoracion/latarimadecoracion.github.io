@@ -3115,6 +3115,34 @@
 
             try {
                 localStorage.setItem('la_tarima_orders_v1', JSON.stringify(allOrders));
+                const targetUpper = String(id || '').trim().toUpperCase();
+                const rawMyOrders = localStorage.getItem('latarima_my_orders');
+                if (rawMyOrders) {
+                    const parsedMy = JSON.parse(rawMyOrders);
+                    if (Array.isArray(parsedMy)) {
+                        const filteredMy = parsedMy.filter(o => String(o && o.id || '').trim().toUpperCase() !== targetUpper);
+                        localStorage.setItem('latarima_my_orders', JSON.stringify(filteredMy));
+                    }
+                }
+                for (let i = 0; i < localStorage.length; i++) {
+                    const k = localStorage.key(i);
+                    if (k && k.startsWith('latarima_notif_state_v2:')) {
+                        const rawNotif = localStorage.getItem(k);
+                        if (rawNotif) {
+                            const nState = JSON.parse(rawNotif);
+                            if (nState && Array.isArray(nState.notifications)) {
+                                nState.notifications = nState.notifications.filter(n => !String(n && n.id || '').toUpperCase().startsWith(`ORD_${targetUpper}_`));
+                                localStorage.setItem(k, JSON.stringify(nState));
+                            }
+                        }
+                    }
+                }
+                if (window.parent && window.parent.MyOrders && typeof window.parent.MyOrders.removeLocalOrder === 'function') {
+                    window.parent.MyOrders.removeLocalOrder(id);
+                }
+                if (window.parent && window.parent.NotificationsCenter && typeof window.parent.NotificationsCenter.syncBadges === 'function') {
+                    window.parent.NotificationsCenter.syncBadges();
+                }
             } catch (e) {}
         }
         

@@ -58,6 +58,18 @@
         return saveMyLocalOrderFallback(order);
     }
 
+    function removeLocalOrder(orderId) {
+        if (!orderId) return;
+        const target = String(orderId).trim().toUpperCase();
+        try {
+            const list = getLocalOrdersFallback();
+            const next = list.filter(o => String(o && o.id || '').trim().toUpperCase() !== target);
+            if (next.length !== list.length) {
+                localStorage.setItem(LOCAL_ORDERS_KEY, JSON.stringify(next));
+            }
+        } catch (e) {}
+    }
+
     function escapeHtml(str) {
         return String(str ?? '')
             .replace(/&/g, '&amp;')
@@ -170,8 +182,13 @@
             }
         }
 
-        // 4. Refrescar estado puntual de pedidos locales guardados
-        const idsToRefresh = Array.from(ordersMap.keys()).slice(0, 6);
+        // 4. Refrescar estado puntual y purgar pedidos eliminados desde Admin/Cloudflare
+        const staticIds = new Set(
+            (typeof ordersData !== 'undefined' && Array.isArray(ordersData))
+                ? ordersData.map(o => String(o && o.id || '').trim().toUpperCase()).filter(Boolean)
+                : []
+        );
+        const idsToRefresh = Array.from(ordersMap.keys()).slice(0, 20);
         await Promise.all(idsToRefresh.map(async (id) => {
             try {
                 const res = await fetch(`${WORKER_URL}/pedidos?id=${encodeURIComponent(id)}`);
@@ -179,7 +196,13 @@
                     const data = await res.json();
                     if (data && data.success && data.order) {
                         addOrder(data.order);
+                    } else if (data && data.success === false && !staticIds.has(String(id).toUpperCase())) {
+                        ordersMap.delete(String(id));
+                        removeLocalOrder(id);
                     }
+                } else if (res.status === 404 && !staticIds.has(String(id).toUpperCase())) {
+                    ordersMap.delete(String(id));
+                    removeLocalOrder(id);
                 }
             } catch (e) {}
         }));
@@ -771,6 +794,7 @@
         render,
         trackOrder: openTrackingForOrder,
         saveLocalOrder: saveMyLocalOrder,
-        getLocalOrders
+        getLocalOrders,
+        removeLocalOrder
     };
 })();
