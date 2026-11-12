@@ -789,23 +789,16 @@
         const shipInfo = evalCatalogFreeShipping(product);
         const discInfo = evalCatalogDiscount(product, initialAcabado);
 
-        // Badges flotantes sobre la foto del producto (Esquina superior izquierda)
-        if (shipInfo || discInfo) {
+        // Badges flotantes sobre la foto del producto (Solo descuento si aplica)
+        if (discInfo) {
             const badgesCol = document.createElement('div');
             badgesCol.className = 'catalog-thumb-badges';
             badgesCol.style.cssText = 'position:absolute; top:8px; left:8px; z-index:10; display:flex; flex-direction:column; gap:4px; align-items:flex-start; pointer-events:none; line-height:1.2;';
-            if (shipInfo) {
-                const sBadge = document.createElement('span');
-                sBadge.className = 'badge-item badge-shipping'; sBadge.style.cssText = 'background:rgba(16,185,129,0.95); color:#ffffff; font-size:0.65rem; font-weight:800; padding:2.5px 8px; border-radius:50px; display:inline-flex; align-items:center; gap:3px; box-shadow:0 2px 6px rgba(0,0,0,0.25); letter-spacing:0.3px; text-transform:uppercase; line-height:normal;';
-                sBadge.innerHTML = `<span class="material-symbols-outlined" style="font-size:12px;">local_shipping</span><span>${shipInfo.badgeText}</span>`;
-                badgesCol.appendChild(sBadge);
-            }
-            if (discInfo) {
-                const dBadge = document.createElement('span');
-                dBadge.className = 'badge-item badge-discount'; dBadge.style.cssText = 'background:rgba(220,38,38,0.95); color:#ffffff; font-size:0.65rem; font-weight:800; padding:2.5px 8px; border-radius:50px; display:inline-flex; align-items:center; gap:3px; box-shadow:0 2px 6px rgba(0,0,0,0.25); letter-spacing:0.3px; text-transform:uppercase; line-height:normal;';
-                dBadge.innerHTML = `<span class="material-symbols-outlined" style="font-size:12px;">local_offer</span><span>${discInfo.badgeText}</span>`;
-                badgesCol.appendChild(dBadge);
-            }
+            const dBadge = document.createElement('span');
+            dBadge.className = 'badge-item badge-discount';
+            dBadge.style.cssText = 'background:rgba(220,38,38,0.95); color:#ffffff; font-size:0.65rem; font-weight:800; padding:2.5px 8px; border-radius:50px; display:inline-flex; align-items:center; gap:3px; box-shadow:0 2px 6px rgba(0,0,0,0.25); letter-spacing:0.3px; text-transform:uppercase; line-height:normal;';
+            dBadge.innerHTML = `<span class="material-symbols-outlined" style="font-size:12px;">local_offer</span><span>${discInfo.badgeText}</span>`;
+            badgesCol.appendChild(dBadge);
             thumbContainer.appendChild(badgesCol);
         }
 
@@ -866,13 +859,8 @@
         }
         priceRow.appendChild(priceTag);
 
-        // Envío Gratis en la fila de precio (SIN icono de pregunta ?)
-        if (shipInfo) {
-            const shipTag = document.createElement('span');
-            shipTag.style.cssText = 'color:#059669; font-size:0.75rem; font-weight:800; display:inline-flex; align-items:center; gap:2px; margin-left:3px;';
-            shipTag.innerHTML = `<span class="material-symbols-outlined" style="font-size:14px; color:#10b981;">local_shipping</span><span>${shipInfo.label}</span>`;
-            priceRow.appendChild(shipTag);
-        } else if (discInfo && discInfo.label) {
+        // Si hay descuento, etiqueta de promo en la misma fila del precio
+        if (discInfo && discInfo.label) {
             const discTag = document.createElement('span');
             discTag.style.cssText = 'color:#b45309; background:#fef3c7; font-size:0.7rem; font-weight:700; padding:1px 6px; border-radius:4px; margin-left:3px;';
             discTag.textContent = discInfo.label;
@@ -880,6 +868,15 @@
         }
 
         textCol.appendChild(priceRow);
+
+        // Envío Gratis DEBAJO del precio en su propia línea (sin interrumpir ni amontonar el precio/descuentos)
+        if (shipInfo) {
+            const shipRow = document.createElement('div');
+            shipRow.className = 'catalog-shipping-row';
+            shipRow.style.cssText = 'display:flex; align-items:center; gap:4px; margin:0 0 5px 0; line-height:1.2;';
+            shipRow.innerHTML = `<span class="material-symbols-outlined" style="font-size:14px; color:#10b981;">local_shipping</span><span style="color:#059669; font-size:0.75rem; font-weight:800; letter-spacing:0.2px;">${shipInfo.label}</span>`;
+            textCol.appendChild(shipRow);
+        }
 
         const variantCol = document.createElement('div');
         variantCol.className = 'catalog-variant-col';

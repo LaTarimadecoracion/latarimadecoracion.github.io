@@ -445,14 +445,7 @@
             </div>`);
         }
 
-        // 2. Badge de Envío Gratis
-        const freeShipInfo = getProductFreeShippingInfo(product);
-        if (freeShipInfo) {
-            badgesList.push(`<div class="feed-card-floating-badge badge-free-shipping" title="${freeShipInfo.label}">
-                <span class="material-symbols-outlined" style="font-size: 13px;">local_shipping</span>
-                <span>${freeShipInfo.badgeText}</span>
-            </div>`);
-        }
+        // 2. Envío Gratis se muestra debajo del precio en .feed-card-promo-line (no sobre la foto)
 
         // 3. Badge de Descuento
         const discountInfo = getProductDiscountInfo(product, acabado);
