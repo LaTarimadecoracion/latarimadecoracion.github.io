@@ -164,57 +164,14 @@
                             <div style="font-size: 0.75rem; color: #475569; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${esc(publicUser.email || '')}</div>
                         </div>
                     </div>
-                    <button type="button" id="btn-profile-google-logout" style="background: #ffffff; border: 1px solid #cbd5e1; color: #475569; border-radius: 8px; padding: 0.4rem 0.75rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit; flex-shrink: 0; transition: all 0.2s;" onmouseenter="this.style.borderColor='#ef4444';this.style.color='#dc2626';" onmouseleave="this.style.borderColor='#cbd5e1';this.style.color='#475569';">
-                        Cerrar sesión
-                    </button>
-                </div>
-
-                <!-- 0. Avatar / Foto de Perfil -->
-                <div style="position: relative; background: transparent; border: none; padding: 0.5rem 0 0 0; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 10px;">
-                    <!-- Botón de Tacho de Basura para Limpiar Datos -->
-                    <button type="button" id="btn-clear-user-profile" style="position: absolute; top: 10px; right: 10px; background: transparent; border: none; color: #dc2626; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; box-shadow: none; padding: 0;" title="Borrar y limpiar todos mis datos">
-                        <span class="material-symbols-outlined" style="font-size: 20px; opacity: 0.8;">delete</span>
-                    </button>
-
-                    <div style="position: relative;">
-                        <div id="prof-avatar-preview" style="width: 76px; height: 76px; border-radius: 50%; background: #f0fdf4; border: 2.5px solid #16a34a; color: #16a34a; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.1); overflow: hidden; transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;">
-                            ${isImageAvatar(initialAvatar)
-                                ? `<img src="${esc(initialAvatar)}" referrerpolicy="no-referrer" style="width: 100%; height: 100%; object-fit: cover;">`
-                                : `<span class="material-symbols-outlined" style="font-size: 2.5rem;">${esc(initialAvatar || 'face')}</span>`}
-                        </div>
-                        <label for="prof-avatar-file-input" style="position: absolute; bottom: -2px; right: -2px; background: #0f172a; color: #ffffff; border-radius: 50%; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.3);" title="Subir foto personalizada">
-                            <span class="material-symbols-outlined" style="font-size: 15px;">photo_camera</span>
-                        </label>
-                        <input type="file" id="prof-avatar-file-input" accept="image/*" style="display: none;">
-                    </div>
-
-                    <div style="text-align: center;">
-                        <div style="font-size: 0.8rem; font-weight: 800; color: #0f172a;">Foto o Avatar de Perfil</div>
-                        <div style="font-size: 0.72rem; color: #64748b;">Elegí un ícono o subí tu propia foto</div>
-                        ${publicUser.picture ? `
-                            <button type="button" id="btn-use-google-photo" style="margin-top: 6px; background: #f8fafc; border: 1px solid #cbd5e1; color: #0f172a; border-radius: 999px; padding: 0.28rem 0.75rem; font-size: 0.72rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s;" onmouseenter="this.style.borderColor='#16a34a';this.style.color='#15803d';" onmouseleave="this.style.borderColor='#cbd5e1';this.style.color='#0f172a';">
-                                Usar foto de Google
-                            </button>
-                        ` : ''}
-                    </div>
-
-                    <!-- Presets de 6 Íconos Vectoriales Limpios (Sin etiquetas de texto) -->
-                    <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 6px;">
-                        ${[
-                            { icon: 'face', bg: '#e0f2fe', color: '#0284c7', border: '#38bdf8' },
-                            { icon: 'face_6', bg: '#dbeafe', color: '#2563eb', border: '#60a5fa' },
-                            { icon: 'face_3', bg: '#fce7f3', color: '#db2777', border: '#f472b6' },
-                            { icon: 'face_4', bg: '#fae8ff', color: '#c026d3', border: '#e879f9' },
-                            { icon: 'diversity_3', bg: '#fef3c7', color: '#d97706', border: '#fbbf24' },
-                            { icon: 'palette', bg: '#f3e8ff', color: '#9333ea', border: '#c084fc' }
-                        ].map(item => {
-                            const isSelected = initialAvatar === item.icon;
-                            return `
-                            <button type="button" class="prof-avatar-preset-btn" data-icon="${item.icon}" data-bg="${item.bg}" data-color="${item.color}" data-border="${item.border}" style="background: ${item.bg}; border: 2.5px solid ${isSelected ? item.color : 'transparent'}; border-radius: 50%; width: 44px; height: 44px; min-width: 44px; min-height: 44px; aspect-ratio: 1 / 1; color: ${item.color}; cursor: pointer; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; display: flex; align-items: center; justify-content: center; box-shadow: ${isSelected ? `0 0 0 3px ${item.border}` : '0 3px 8px rgba(0,0,0,0.06)'}; padding: 0; outline: none;" onmouseenter="this.style.transform='scale(1.1)'" onmouseleave="this.style.transform='scale(1)'">
-                                <span class="material-symbols-outlined" style="font-size: 24px; line-height: 1;">${item.icon}</span>
-                            </button>
-                            `;
-                        }).join('')}
+                    <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+                        <button type="button" id="btn-clear-user-profile" style="background: #ffffff; border: 1px solid #fecaca; color: #dc2626; border-radius: 8px; padding: 0.4rem 0.65rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 3px; transition: all 0.2s;" title="Limpiar formulario" onmouseenter="this.style.background='#fef2f2';" onmouseleave="this.style.background='#ffffff';">
+                            <span class="material-symbols-outlined" style="font-size: 15px;">delete</span>
+                            <span>Limpiar</span>
+                        </button>
+                        <button type="button" id="btn-profile-google-logout" style="background: #ffffff; border: 1px solid #cbd5e1; color: #475569; border-radius: 8px; padding: 0.4rem 0.75rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s;" onmouseenter="this.style.borderColor='#ef4444';this.style.color='#dc2626';" onmouseleave="this.style.borderColor='#cbd5e1';this.style.color='#475569';">
+                            Cerrar sesión
+                        </button>
                     </div>
                 </div>
 
@@ -381,64 +338,8 @@
             });
         }
 
-        // Lógica de Selección y Carga de Avatar / Foto de Perfil
-        let selectedAvatar = initialAvatar;
-        const avatarPreview = card.querySelector('#prof-avatar-preview');
-        const fileInput = card.querySelector('#prof-avatar-file-input');
-        const presetBtns = card.querySelectorAll('.prof-avatar-preset-btn');
-
-        const updateAvatarUI = (avatarVal) => {
-            selectedAvatar = avatarVal;
-            const activeBtn = Array.from(presetBtns).find(btn => btn.dataset.icon === avatarVal);
-            const iconBg = activeBtn ? activeBtn.dataset.bg : '#f0fdf4';
-            const iconColor = activeBtn ? activeBtn.dataset.color : '#16a34a';
-            const iconBorder = activeBtn ? activeBtn.dataset.color : '#16a34a';
-
-            if (isImageAvatar(avatarVal)) {
-                avatarPreview.style.background = '#ffffff';
-                avatarPreview.style.borderColor = '#16a34a';
-                avatarPreview.innerHTML = `<img src="${esc(avatarVal)}" referrerpolicy="no-referrer" style="width: 100%; height: 100%; object-fit: cover;">`;
-            } else {
-                avatarPreview.style.background = iconBg;
-                avatarPreview.style.color = iconColor;
-                avatarPreview.style.borderColor = iconBorder;
-                avatarPreview.innerHTML = `<span class="material-symbols-outlined" style="font-size: 2.6rem;">${esc(avatarVal || 'face')}</span>`;
-            }
-
-            presetBtns.forEach(btn => {
-                const isSelected = btn.dataset.icon === avatarVal;
-                const bColor = btn.dataset.color || '#16a34a';
-                const bGlow = btn.dataset.border || 'rgba(22, 163, 74, 0.35)';
-                btn.style.borderColor = isSelected ? bColor : 'transparent';
-                btn.style.boxShadow = isSelected ? `0 0 0 3px ${bGlow}` : '0 3px 8px rgba(0,0,0,0.06)';
-            });
-        };
-
-        const useGooglePhotoBtn = card.querySelector('#btn-use-google-photo');
-        if (useGooglePhotoBtn && publicUser.picture) {
-            useGooglePhotoBtn.onclick = () => {
-                updateAvatarUI(publicUser.picture);
-            };
-        }
-
-        presetBtns.forEach(btn => {
-            btn.onclick = () => {
-                updateAvatarUI(btn.dataset.icon);
-            };
-        });
-
-        if (fileInput) {
-            fileInput.onchange = (e) => {
-                const file = e.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = (evt) => {
-                        updateAvatarUI(evt.target.result);
-                    };
-                    reader.readAsDataURL(file);
-                }
-            };
-        }
+        // Avatar del perfil (hereda automáticamente la foto de la cuenta Google conectada)
+        let selectedAvatar = publicUser.picture || currentData.avatar || initialAvatar || 'face';
 
         // Evento de Limpieza Total de Datos (Tacho de Basura)
         const clearBtn = card.querySelector('#btn-clear-user-profile');

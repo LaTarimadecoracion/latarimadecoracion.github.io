@@ -148,7 +148,7 @@ window.ensureUserProfileModalLoaded = function() {
         return Promise.resolve();
     }
     if (_userProfileModalPromise) return _userProfileModalPromise;
-    _userProfileModalPromise = loadScriptOnDemand('js/ui/user-profile-modal.js?v=2');
+    _userProfileModalPromise = loadScriptOnDemand('js/ui/user-profile-modal.js?v=3');
     return _userProfileModalPromise;
 };
 
