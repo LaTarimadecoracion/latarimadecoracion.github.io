@@ -298,6 +298,21 @@
             if (match) return match;
         }
 
+        // 4. Fallback en servidor local de desarrollo (/api/orders)
+        if (window.location && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+            try {
+                const resLocal = await fetch('/api/orders');
+                if (resLocal.ok) {
+                    const dataLocal = await resLocal.json();
+                    const list = Array.isArray(dataLocal) ? dataLocal : (Array.isArray(dataLocal?.orders) ? dataLocal.orders : []);
+                    for (const cand of candidates) {
+                        const match = list.find(o => String(o.id).toUpperCase() === cand.toUpperCase());
+                        if (match) return match;
+                    }
+                }
+            } catch (e) {}
+        }
+
         return null;
     }
 
@@ -551,13 +566,20 @@
             return;
         }
 
-        const targetOrderId = (options && options.orderId) || pendingInlineOrderId;
+        const urlParams = (typeof window !== 'undefined' && window.location)
+            ? new URLSearchParams(window.location.search)
+            : null;
+        const urlOrderId = urlParams ? (urlParams.get('id') || urlParams.get('order') || '') : '';
+        const targetOrderId = (options && options.orderId !== undefined)
+            ? options.orderId
+            : (pendingInlineOrderId || urlOrderId || '');
         pendingInlineOrderId = null;
 
         if (targetOrderId) {
             await renderTrackingScreen(targetOrderId);
             return;
         }
+        ++inlineTrackingSeq;
 
         const container = document.getElementById('my-orders-view-content');
         if (!container) return;

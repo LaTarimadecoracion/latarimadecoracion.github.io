@@ -175,7 +175,7 @@ window.ensureMyOrdersLoaded = function() {
         if (typeof window.ensurePostalLookupLoaded === 'function') {
             await window.ensurePostalLookupLoaded();
         }
-        await loadScriptOnDemand('js/ui/my-orders.js?v=4');
+        await loadScriptOnDemand('js/ui/my-orders.js?v=5');
     })();
     return _myOrdersModulePromise;
 };
