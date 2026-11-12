@@ -9,10 +9,16 @@
     'use strict';
 
     const WORKER_URL = 'https://super-shadow-4ad9.latarimadecoracion.workers.dev';
-    const STORAGE_PREFIX = 'latarima_notif_state_v1:';
+    const STORAGE_PREFIX = 'latarima_notif_state_v2:';
     const LOCAL_ORDERS_KEY = 'latarima_my_orders';
     const MAX_NOTIFICATIONS = 40;
     const RECENT_AVISO_MAX_AGE_MS = 14 * 24 * 60 * 60 * 1000;
+
+    function shortLabel(text, max = 36) {
+        const clean = String(text || '').trim();
+        if (clean.length <= max) return clean;
+        return clean.slice(0, max - 1).trimEnd() + '…';
+    }
 
     let isScanning = false;
     let listenersBound = false;
@@ -189,6 +195,7 @@
             match: (st, pay) => st.includes('cancelad') || st.includes('rechazad') || pay === 'cancelled' || pay === 'refunded',
             key: 'cancelled',
             title: 'Pedido cancelado',
+            cta: 'Ver detalle',
             icon: 'cancel',
             accent: '#dc2626',
             bg: '#fef2f2',
@@ -197,16 +204,18 @@
         {
             match: (_st, pay) => pay === 'rejected',
             key: 'payment_rejected',
-            title: 'Pago rechazado — Revisá tu pedido',
+            title: 'Revisá el pago de tu pedido',
+            cta: 'Tocá para resolverlo',
             icon: 'error',
             accent: '#dc2626',
             bg: '#fef2f2',
-            badge: 'Pago rechazado'
+            badge: 'Pago'
         },
         {
             match: (st, pay) => st.includes('entregad') || st.includes('completad') || pay === 'delivered',
             key: 'delivered',
-            title: 'Pedido entregado',
+            title: '¡Pedido entregado!',
+            cta: 'Ver compra',
             icon: 'verified',
             accent: '#15803d',
             bg: '#dcfce7',
@@ -215,7 +224,8 @@
         {
             match: (st) => st.includes('listo'),
             key: 'ready',
-            title: 'Pedido listo para retirar o despachar',
+            title: '¡Tu pedido está listo!',
+            cta: 'Mirá cómo retirarlo',
             icon: 'inventory_2',
             accent: '#0284c7',
             bg: '#f0f9ff',
@@ -224,7 +234,8 @@
         {
             match: (st) => st.includes('proceso') || st.includes('produccion') || st.includes('carpinteria') || st.includes('armado'),
             key: 'in_progress',
-            title: 'Pedido confirmado en fabricación',
+            title: '¡Tu pedido está en marcha!',
+            cta: 'Seguí el avance',
             icon: 'carpenter',
             accent: '#2563eb',
             bg: '#eff6ff',
@@ -233,7 +244,8 @@
         {
             match: (st, pay) => st === 'pago_confirmado' || st.includes('confirmado') || st.includes('aprobado') || pay === 'approved',
             key: 'confirmed',
-            title: 'Pedido confirmado',
+            title: '¡Pedido confirmado!',
+            cta: 'Ver detalle',
             icon: 'check_circle',
             accent: '#16a34a',
             bg: '#f0fdf4',
@@ -243,10 +255,11 @@
             match: (st, pay) => st.includes('pendiente') || st.includes('falta') || pay === 'pending' || pay === 'in_process',
             key: 'payment_pending',
             title: 'Falta completar el pago',
+            cta: 'Tocá para verlo',
             icon: 'payments',
             accent: '#d97706',
             bg: '#fffbeb',
-            badge: 'Pago pendiente'
+            badge: 'Pendiente'
         }
     ];
 
@@ -256,7 +269,8 @@
         const found = ORDER_STATUS_META.find(rule => rule.match(st, pay));
         return found || {
             key: 'updated',
-            title: 'Actualización de tu pedido',
+            title: 'Novedad en tu pedido',
+            cta: 'Tocá para verlo',
             icon: 'receipt_long',
             accent: '#475569',
             bg: '#f1f5f9',
@@ -319,18 +333,13 @@
 
             const meta = classifyOrder(ord);
             const shortRef = ord.shortCode || ordId;
-            const itemTitle = ord.title || (Array.isArray(ord.cartItems) && ord.cartItems[0] ? ord.cartItems[0].title : 'Tu compra');
 
             if (prevSnapshot !== snapshot) {
-                const bodyText = meta.key === 'payment_pending'
-                    ? `Pedido #${shortRef} (${itemTitle}): está aguardando acreditación o comprobante de pago.`
-                    : `Pedido #${shortRef} (${itemTitle})${ord.amount ? ` · ${formatMoney(ord.amount)}` : ''}.`;
-
                 const added = upsertNotification(state, {
                     id: `ord_${ordId}_${snapshot}`,
                     type: 'order',
                     title: meta.title,
-                    body: bodyText,
+                    body: `#${shortRef} · ${meta.cta}`,
                     timestamp: Number(ord.updatedAt || ord.createdAt) || Date.now(),
                     image: ord.image || '',
                     icon: meta.icon,
@@ -376,7 +385,7 @@
                         id: `fav_drop_${item.id}_${livePrice}`,
                         type: 'price_drop',
                         title: '¡Tu favorito bajó de precio!',
-                        body: `${product.title || item.title}: ahora ${formatMoney(livePrice)} (antes ${formatMoney(savedPrice)}${dropPct > 0 ? ` · -${dropPct}%` : ''}).`,
+                        body: `${shortLabel(product.title || item.title)} · Mirá el nuevo valor`,
                         timestamp: Date.now(),
                         image: cover,
                         icon: 'trending_down',
@@ -405,14 +414,12 @@
                     return pid && pid === itemIdNorm;
                 });
                 if (isInOffer) {
-                    const discLabel = offer.discountPercent ? ` (${offer.discountPercent}% OFF)` : '';
-                    const offerPriceLabel = offer.offerPrice ? ` por ${formatMoney(offer.offerPrice)}` : '';
                     const cover = offer.customCoverImage || item.image || (offerItems[0] && offerItems[0].image) || '';
                     const added = upsertNotification(state, {
                         id: `fav_offer_${offer.id}_${item.id}`,
                         type: 'favorite_offer',
                         title: '¡Tu favorito está de oferta!',
-                        body: `${item.title} participa en "${offer.title}"${discLabel}${offerPriceLabel}.`,
+                        body: `${shortLabel(item.title)} · Aprovechalo ahora`,
                         timestamp: Number(offer.created_at) || Date.now(),
                         image: cover,
                         icon: 'local_offer',
@@ -462,8 +469,8 @@
                         const added = upsertNotification(state, {
                             id: `new_prod_${pid}`,
                             type: 'new_product',
-                            title: '¡Nuevo producto en La Tarima!',
-                            body: `Recién ingresado: ${entry.product.title}${entry.catName ? ` (${entry.catName})` : ''}.`,
+                            title: '¡Llegó algo nuevo!',
+                            body: `${shortLabel(entry.product.title)} · Descubrilo`,
                             timestamp: Date.now(),
                             image: cover,
                             icon: 'new_releases',
@@ -496,8 +503,8 @@
                 const added = upsertNotification(state, {
                     id: `aviso_prod_${aviso.id || prodId || cleanTitle}`,
                     type: 'new_product',
-                    title: '¡Nuevo producto disponible!',
-                    body: cleanTitle,
+                    title: '¡Llegó algo nuevo!',
+                    body: `${shortLabel(cleanTitle)} · Descubrilo`,
                     timestamp: Number(aviso.timestamp) || Date.now(),
                     image: cover,
                     icon: 'new_releases',
@@ -524,18 +531,17 @@
             activeOffers.forEach(offer => {
                 const oid = String(offer.id);
                 if (!seenOffersSet.has(oid)) {
-                    const discLabel = offer.discountPercent ? ` (${offer.discountPercent}% OFF)` : '';
                     const added = upsertNotification(state, {
                         id: `new_offer_${oid}`,
                         type: 'new_offer',
-                        title: '¡Nueva oferta disponible!',
-                        body: `${offer.title}${discLabel}.`,
+                        title: '¡Nueva oferta activa!',
+                        body: `${shortLabel(offer.title)} · Mirala antes que termine`,
                         timestamp: Number(offer.created_at) || Date.now(),
                         image: offer.customCoverImage || '',
                         icon: 'local_offer',
                         accent: '#ea580c',
                         bg: '#fff7ed',
-                        badgeText: 'Oferta',
+                        badgeText: offer.discountPercent ? `${offer.discountPercent}% OFF` : 'Oferta',
                         actionType: 'offers',
                         actionPayload: { offerId: oid }
                     });
