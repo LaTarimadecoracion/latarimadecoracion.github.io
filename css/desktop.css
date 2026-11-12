@@ -265,21 +265,8 @@
     font-weight: 700;
 }
 
-/* Menú de Usuario Logueado */
-.desktop-user-menu-wrapper {
-    position: relative;
-}
-
-.desktop-user-menu-wrapper::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 100%;
-    height: 10px;
-}
-
-.desktop-user-trigger {
+/* Etiqueta informativa de Usuario Logueado (no abre menú) */
+.desktop-user-pill {
     display: inline-flex;
     align-items: center;
     gap: 6px;
@@ -287,15 +274,22 @@
     border: 1px solid rgba(15, 23, 42, 0.08);
     border-radius: 50px;
     padding: 2px 10px 2px 3px;
-    cursor: pointer;
     font-size: 0.82rem;
     color: var(--text-main, #2D3748);
-    transition: background 0.15s, border-color 0.15s;
+    cursor: default;
+    user-select: none;
 }
 
-.desktop-user-trigger:hover {
-    background: #ffffff;
-    border-color: rgba(15, 23, 42, 0.18);
+/* Botón y Menú Desplegable (3 rayitas) */
+.desktop-menu-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.desktop-menu-wrapper.open .desktop-menu-btn {
+    background: rgba(15, 23, 42, 0.08);
+    color: var(--primary-color, #A0715B);
 }
 
 .desktop-user-avatar-img {
@@ -320,9 +314,9 @@
 
 .desktop-user-dropdown {
     position: absolute;
-    top: calc(100% + 8px);
+    top: calc(100% + 10px);
     right: 0;
-    width: 250px;
+    width: 265px;
     background: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 14px;
@@ -336,12 +330,34 @@
     transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
 }
 
-.desktop-user-menu-wrapper:hover .desktop-user-dropdown,
-.desktop-user-menu-wrapper:focus-within .desktop-user-dropdown {
+.desktop-menu-wrapper.open .desktop-user-dropdown {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     transform: translateY(0);
+}
+
+.desktop-menu-item-badge {
+    margin-left: auto;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 50px;
+    background: var(--primary-color, #A0715B);
+    color: #ffffff;
+    font-size: 0.68rem;
+    font-weight: 800;
+    align-items: center;
+    justify-content: center;
+}
+
+.desktop-menu-notif-dot {
+    margin-left: auto;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ef4444;
+    flex-shrink: 0;
 }
 
 .desktop-user-dropdown-header {

@@ -44,7 +44,7 @@
     <!-- CSS Base + Capas aisladas por dispositivo (Móvil vs Escritorio) -->
     <link rel="stylesheet" href="css/style.css?v=59">
     <link rel="stylesheet" href="css/mobile.css?v=1" media="(max-width: 899.98px)">
-    <link rel="stylesheet" href="css/desktop.css?v=7" media="(min-width: 900px)">
+    <link rel="stylesheet" href="css/desktop.css?v=8" media="(min-width: 900px)">
     
     
 
@@ -238,17 +238,20 @@
                 <a href="#" class="desktop-nav-link" data-target="view-about" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-about');">Nosotros</a>
             </div>
 
-            <!-- 3. Cuenta, Mis Compras, Notificaciones y Carrito -->
+            <!-- 3. Cuenta, Mis Compras, Menú Principal y Carrito -->
             <div class="desktop-subnav-account">
                 <div id="desktop-account-area" class="desktop-account-area">
                     <a href="#" class="desktop-account-link" onclick="event.preventDefault(); if(window.DesktopHeader) window.DesktopHeader.triggerClientLogin();">Creá tu cuenta</a>
                     <a href="#" class="desktop-account-link desktop-account-login" onclick="event.preventDefault(); if(window.DesktopHeader) window.DesktopHeader.triggerClientLogin();">Ingresá</a>
                 </div>
                 <a href="#" class="desktop-account-link" data-target="view-my-orders" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-my-orders');">Mis compras</a>
-                <button type="button" class="desktop-icon-btn" onclick="if(window.navigateToView) window.navigateToView('view-notifications');" title="Notificaciones y Avisos">
-                    <span class="material-symbols-outlined">notifications</span>
-                    <span class="desktop-icon-badge" id="desktop-notif-badge" style="display: none;"></span>
-                </button>
+                <div class="desktop-menu-wrapper" id="desktop-menu-wrapper">
+                    <button type="button" class="desktop-icon-btn desktop-menu-btn" id="desktop-menu-btn" aria-haspopup="true" aria-expanded="false" aria-label="Menú de usuario y secciones" title="Menú">
+                        <span class="material-symbols-outlined">menu</span>
+                        <span class="desktop-icon-badge" id="desktop-notif-badge" style="display: none;"></span>
+                    </button>
+                    <div class="desktop-user-dropdown" id="desktop-main-menu-dropdown" role="menu"></div>
+                </div>
                 <button type="button" class="desktop-icon-btn desktop-cart-btn" onclick="if(window.navigateToView) window.navigateToView('view-profile');" title="Mi Carrito y Favoritos">
                     <span class="material-symbols-outlined">shopping_cart</span>
                     <span class="desktop-cart-badge" id="desktop-cart-badge" style="display: none;">0</span>
@@ -821,7 +824,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js" defer></script>
     <script src="js/admin/admin-auth.js?v=6" defer></script>
     <script src="js/ui/ui-navigation.js?v=8" defer></script>
-    <script src="js/ui/desktop-header.js?v=7" defer></script>
+    <script src="js/ui/desktop-header.js?v=8" defer></script>
     <script src="js/ui/ui-offers.js?v=23" defer></script>
     <script src="js/ui/catalog/catalog-utils.js?v=4" defer></script>
     <script src="js/ui/ui-search-feed.js?v=2" defer></script>
