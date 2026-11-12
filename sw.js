@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tarima-cache-v59-1794349316861';
+const CACHE_NAME = 'tarima-cache-v60-1794520000000';
 // Solo pre-cacheamos el esqueleto mínimo en la instalación para NO competir
 // con el ancho de banda del usuario cuando entra por primera vez a la web.
 const STATIC_ASSETS = [

@@ -235,16 +235,13 @@ app.get(['/', '/index.html'], (req, res, next) => {
     next();
 });
 
-// Disable caching specifically for configuration JS files to allow dynamic changes on localhost
-app.get([
-    '/js/data/site-config.js',
-    '/js/data/payment-config.js',
-    '/js/data/cajones-config.js',
-    '/js/data/cortes-config.js'
-], (req, res, next) => {
-    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
-    res.setHeader('Pragma', 'no-cache');
-    res.setHeader('Expires', '0');
+// Disable caching specifically for development assets so changes reflect immediately
+app.use((req, res, next) => {
+    if (req.path.startsWith('/js/') || req.path.startsWith('/css/') || req.path === '/sw.js' || req.path === '/' || req.path === '/index.html') {
+        res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+    }
     next();
 });
 
