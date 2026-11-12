@@ -301,66 +301,76 @@
         return null;
     }
 
-    async function renderInlineTracking(orderId) {
-        const panel = document.getElementById('myorders-inline-tracking-panel');
-        if (!panel) return;
+    function goBackToOrdersList() {
+        if (typeof window.navigateToView === 'function') {
+            window.navigateToView('view-my-orders');
+        } else {
+            render({});
+        }
+    }
+
+    async function renderTrackingScreen(orderId) {
+        const container = document.getElementById('my-orders-view-content');
+        if (!container) return;
 
         const cleanId = String(orderId || '').trim().replace(/^#/, '');
-        if (!cleanId) return;
+        if (!cleanId) {
+            render({});
+            return;
+        }
 
         const reqSeq = ++inlineTrackingSeq;
-        panel.style.display = 'block';
-        panel.innerHTML = `
-            <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 18px; padding: 1.75rem; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);">
-                <div style="display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1rem;">
-                    <div style="display: flex; align-items: center; gap: 10px; color: #0f172a; font-weight: 800;">
-                        <span class="material-symbols-outlined" style="animation: spin 1s linear infinite; color: var(--primary-color, #A0715B);">sync</span>
-                        <span>Consultando seguimiento de orden #${escapeHtml(cleanId)}...</span>
-                    </div>
-                    <button type="button" id="btn-close-inline-tracking" style="background: #f1f5f9; color: #475569; border: none; border-radius: 50px; padding: 6px 14px; font-size: 0.82rem; font-weight: 700; cursor: pointer;">Cerrar seguimiento</button>
+        container.innerHTML = `
+            <div style="max-width: 920px; margin: 0 auto; padding: 1.5rem 1rem 3rem;">
+                <div style="margin-bottom: 1.25rem;">
+                    <button type="button" id="btn-back-to-myorders" style="background: #ffffff; color: #0f172a; border: 1.5px solid #e2e8f0; border-radius: 50px; padding: 0.5rem 1.05rem; font-size: 0.85rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(15,23,42,0.04);">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                        <span>Volver a Mis Compras</span>
+                    </button>
+                </div>
+                <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 20px; padding: 2.5rem 1.5rem; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05); display: flex; align-items: center; justify-content: center; gap: 10px; color: #0f172a; font-weight: 700;">
+                    <span class="material-symbols-outlined" style="animation: spin 1s linear infinite; color: var(--primary-color, #A0715B);">sync</span>
+                    <span>Consultando seguimiento de orden #${escapeHtml(cleanId)}...</span>
                 </div>
             </div>
         `;
-        panel.querySelector('#btn-close-inline-tracking')?.addEventListener('click', () => {
-            panel.style.display = 'none';
-            panel.innerHTML = '';
-        });
+        container.querySelector('#btn-back-to-myorders')?.addEventListener('click', goBackToOrdersList);
 
         const order = await findOrderForTracking(cleanId);
         if (reqSeq !== inlineTrackingSeq) return;
 
         if (!order) {
             const helpWa = encodeURIComponent(`¡Hola La Tarima! Busqué mi orden #${cleanId} en la web y no apareció. ¿Me ayudan a revisarla?`);
-            panel.innerHTML = `
-                <div style="background: #ffffff; border: 1.5px solid #fecaca; border-radius: 18px; padding: 1.5rem 1.75rem; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);">
-                    <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
-                        <div style="display: flex; align-items: flex-start; gap: 12px;">
-                            <div style="width: 44px; height: 44px; border-radius: 12px; background: #fee2e2; color: #b91c1c; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <span class="material-symbols-outlined" style="font-size: 24px;">search_off</span>
-                            </div>
-                            <div>
-                                <h3 style="margin: 0 0 4px 0; font-size: 1.05rem; font-weight: 800; color: #0f172a;">No encontramos la orden #${escapeHtml(cleanId)}</h3>
-                                <p style="margin: 0; font-size: 0.86rem; color: #64748b; line-height: 1.5;">
-                                    Verificá que el número o código (ej. <strong>500102800</strong> o <strong>LT-...</strong>) sea correcto. Si el problema persiste, consultanos directo por WhatsApp.
-                                </p>
-                            </div>
+            container.innerHTML = `
+                <div style="max-width: 920px; margin: 0 auto; padding: 1.5rem 1rem 3rem;">
+                    <div style="margin-bottom: 1.25rem;">
+                        <button type="button" id="btn-back-to-myorders" style="background: #ffffff; color: #0f172a; border: 1.5px solid #e2e8f0; border-radius: 50px; padding: 0.5rem 1.05rem; font-size: 0.85rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                            <span>Volver a Mis Compras</span>
+                        </button>
+                    </div>
+                    <div style="background: #ffffff; border: 1.5px solid #fecaca; border-radius: 20px; padding: 2rem; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05); text-align: center;">
+                        <div style="width: 54px; height: 54px; border-radius: 16px; background: #fee2e2; color: #b91c1c; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 0.9rem;">
+                            <span class="material-symbols-outlined" style="font-size: 28px;">search_off</span>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                            <a href="https://wa.me/5491167007723?text=${helpWa}" target="_blank" rel="noopener" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; border-radius: 10px; padding: 0.55rem 0.95rem; font-weight: 700; font-size: 0.84rem; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
-                                <span class="material-symbols-outlined" style="font-size: 17px;">chat</span>
+                        <h3 style="margin: 0 0 6px 0; font-size: 1.15rem; font-weight: 800; color: #0f172a;">No encontramos la orden #${escapeHtml(cleanId)}</h3>
+                        <p style="margin: 0 auto 1.35rem; max-width: 460px; font-size: 0.88rem; color: #64748b; line-height: 1.5;">
+                            Verificá que el número o código (ej. <strong>500102800</strong> o <strong>LT-...</strong>) sea correcto. Si el problema persiste, consultanos directo por WhatsApp.
+                        </p>
+                        <div style="display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center;">
+                            <a href="https://wa.me/5491167007723?text=${helpWa}" target="_blank" rel="noopener" style="background: #16a34a; color: #ffffff; border-radius: 50px; padding: 0.65rem 1.2rem; font-weight: 700; font-size: 0.86rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                                <span class="material-symbols-outlined" style="font-size: 18px;">chat</span>
                                 <span>Consultar por WhatsApp</span>
                             </a>
-                            <button type="button" id="btn-close-inline-tracking" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.55rem 0.95rem; font-weight: 700; font-size: 0.84rem; cursor: pointer;">
-                                Cerrar seguimiento
+                            <button type="button" id="btn-back-to-myorders-2" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; border-radius: 50px; padding: 0.65rem 1.2rem; font-weight: 700; font-size: 0.86rem; cursor: pointer;">
+                                Volver a Mis Compras
                             </button>
                         </div>
                     </div>
                 </div>
             `;
-            panel.querySelector('#btn-close-inline-tracking')?.addEventListener('click', () => {
-                panel.style.display = 'none';
-                panel.innerHTML = '';
-            });
+            container.querySelector('#btn-back-to-myorders')?.addEventListener('click', goBackToOrdersList);
+            container.querySelector('#btn-back-to-myorders-2')?.addEventListener('click', goBackToOrdersList);
             return;
         }
 
@@ -389,11 +399,11 @@
             const trackingCode = info.trackingNumber ? String(info.trackingNumber).trim() : '';
             const trackingUrl = info.trackingUrl || info.url || '';
             dispatchHtml = `
-                <div style="margin-top: 0.75rem; padding: 0.75rem 0.9rem; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
-                    <div style="font-size: 0.83rem; color: #1e40af; font-weight: 600;">
-                        <strong>${escapeHtml(courierLabel)}</strong>${trackingCode ? ` • Guía: <code style="background:#fff;padding:2px 6px;border-radius:6px;border:1px solid #bfdbfe;font-weight:800;">${escapeHtml(trackingCode)}</code>` : ''}
+                <div style="margin-top: 1rem; padding: 0.9rem 1rem; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 14px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                    <div style="font-size: 0.86rem; color: #1e40af; font-weight: 600;">
+                        <strong>${escapeHtml(courierLabel)}</strong>${trackingCode ? ` • Guía: <code style="background:#fff;padding:2px 7px;border-radius:6px;border:1px solid #bfdbfe;font-weight:800;">${escapeHtml(trackingCode)}</code>` : ''}
                     </div>
-                    ${trackingUrl ? `<a href="${escapeHtml(trackingUrl)}" target="_blank" rel="noopener" style="background: #2563eb; color: #fff; text-decoration: none; padding: 5px 12px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">Seguir envío <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></a>` : ''}
+                    ${trackingUrl ? `<a href="${escapeHtml(trackingUrl)}" target="_blank" rel="noopener" style="background: #2563eb; color: #fff; text-decoration: none; padding: 6px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;">Seguir envío <span class="material-symbols-outlined" style="font-size: 14px;">open_in_new</span></a>` : ''}
                 </div>
             `;
         }
@@ -401,9 +411,9 @@
         let itemsHtml = '';
         if (Array.isArray(order.cartItems) && order.cartItems.length > 0) {
             itemsHtml = `
-                <div style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed #e2e8f0;">
-                    <div style="font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 6px;">Detalle de ítems</div>
-                    <ul style="margin: 0; padding-left: 1.1rem; font-size: 0.83rem; color: #334155; display: grid; gap: 4px;">
+                <div style="margin-top: 1rem; padding-top: 0.9rem; border-top: 1px dashed #e2e8f0;">
+                    <div style="font-size: 0.76rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #64748b; margin-bottom: 8px;">Detalle de ítems</div>
+                    <ul style="margin: 0; padding-left: 1.15rem; font-size: 0.86rem; color: #334155; display: grid; gap: 5px;">
                         ${order.cartItems.map(it => {
                             const qty = Number(it.quantity || it.qty || 1);
                             const meta = [it.finish || it.selectedFinish, it.measure || it.selectedMeasure].filter(Boolean).join(' • ');
@@ -416,30 +426,30 @@
 
         const progressHtml = progress.isCancelled
             ? `
-                <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 12px; padding: 0.9rem 1rem; margin: 1rem 0; display: flex; align-items: center; gap: 10px; color: #b91c1c;">
-                    <span class="material-symbols-outlined" style="font-size: 22px;">cancel</span>
-                    <div style="font-size: 0.86rem;">
+                <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 14px; padding: 1rem 1.15rem; display: flex; align-items: center; gap: 12px; color: #b91c1c;">
+                    <span class="material-symbols-outlined" style="font-size: 24px;">cancel</span>
+                    <div style="font-size: 0.88rem; line-height: 1.45;">
                         <strong>${escapeHtml(progress.currentTitle)}:</strong> ${escapeHtml(progress.currentDesc)}
                     </div>
                 </div>
             `
             : `
-                <div style="margin: 1rem 0 1.1rem; padding: 1rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px;">
-                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 0.65rem; flex-wrap: wrap;">
-                        <span style="font-size: 0.84rem; font-weight: 800; color: #0f172a;">Paso actual: ${escapeHtml(progress.currentTitle)}</span>
-                        <span style="font-size: 0.78rem; color: #475569;">${escapeHtml(progress.currentDesc)}</span>
+                <div style="padding: 1.15rem 1.25rem; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 0.75rem; flex-wrap: wrap;">
+                        <span style="font-size: 0.9rem; font-weight: 800; color: #0f172a;">Paso actual: ${escapeHtml(progress.currentTitle)}</span>
+                        <span style="font-size: 0.82rem; color: #475569;">${escapeHtml(progress.currentDesc)}</span>
                     </div>
-                    <div style="height: 8px; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin-bottom: 0.85rem;">
+                    <div style="height: 9px; background: #e2e8f0; border-radius: 999px; overflow: hidden; margin-bottom: 1rem;">
                         <div style="height: 100%; width: ${progress.percent}%; background: var(--primary-color, #A0715B); border-radius: 999px; transition: width 0.3s ease;"></div>
                     </div>
-                    <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(145px, 1fr)); gap: 10px;">
                         ${progress.steps.map((step, idx) => {
                             const done = idx <= progress.stepIndex;
                             const isCurrent = idx === progress.stepIndex;
                             return `
-                                <div style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 10px; background: ${isCurrent ? '#fff' : 'transparent'}; border: 1px solid ${isCurrent ? 'rgba(160,113,91,0.35)' : 'transparent'}; opacity: ${done ? '1' : '0.5'};">
-                                    <span class="material-symbols-outlined" style="font-size: 18px; color: ${done ? 'var(--primary-color, #A0715B)' : '#94a3b8'};">${step.icon}</span>
-                                    <span style="font-size: 0.78rem; font-weight: ${isCurrent ? '800' : '600'}; color: ${done ? '#0f172a' : '#64748b'};">${escapeHtml(step.label)}</span>
+                                <div style="display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 11px; background: ${isCurrent ? '#ffffff' : 'transparent'}; border: 1px solid ${isCurrent ? 'rgba(160,113,91,0.35)' : 'transparent'}; opacity: ${done ? '1' : '0.5'}; box-shadow: ${isCurrent ? '0 2px 8px rgba(15,23,42,0.05)' : 'none'};">
+                                    <span class="material-symbols-outlined" style="font-size: 19px; color: ${done ? 'var(--primary-color, #A0715B)' : '#94a3b8'};">${step.icon}</span>
+                                    <span style="font-size: 0.8rem; font-weight: ${isCurrent ? '800' : '600'}; color: ${done ? '#0f172a' : '#64748b'};">${escapeHtml(step.label)}</span>
                                 </div>
                             `;
                         }).join('')}
@@ -449,43 +459,50 @@
 
         const waMsg = encodeURIComponent(`¡Hola La Tarima! Consulto por el seguimiento de mi pedido #${displayId} (${productTitle}).`);
 
-        panel.innerHTML = `
-            <section aria-label="Seguimiento de pedido" style="background: #ffffff; border: 1.5px solid rgba(160, 113, 91, 0.35); border-radius: 20px; overflow: hidden; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);">
-                <div style="background: linear-gradient(135deg, #faf8f5 0%, #f8fafc 100%); padding: 0.95rem 1.35rem; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
-                    <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-                        <span style="display: inline-flex; align-items: center; gap: 6px; font-weight: 900; font-size: 0.98rem; color: #0f172a;">
-                            <span class="material-symbols-outlined" style="color: var(--primary-color, #A0715B); font-size: 21px;">local_shipping</span>
-                            Seguimiento Orden #${escapeHtml(displayId)}
-                        </span>
-                        <span style="color: #cbd5e1;">|</span>
-                        <span style="font-size: 0.83rem; color: #475569; font-weight: 600;">${escapeHtml(dateStr)}</span>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                        <span style="display: inline-flex; align-items: center; gap: 5px; font-size: 0.78rem; font-weight: 800; color: ${st.color}; background: ${st.bg}; padding: 4px 12px; border-radius: 50px;">
-                            <span class="material-symbols-outlined" style="font-size: 16px;">${st.icon}</span>
-                            <span>${escapeHtml(st.label)}</span>
-                        </span>
-                        <button type="button" id="btn-close-inline-tracking" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; border-radius: 50px; padding: 5px 13px; font-size: 0.8rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
-                            <span class="material-symbols-outlined" style="font-size: 16px;">close</span>
-                            <span>Cerrar seguimiento</span>
-                        </button>
-                    </div>
+        container.innerHTML = `
+            <div style="max-width: 920px; margin: 0 auto; padding: 1.25rem 1rem 3rem;">
+                <!-- Barra superior de navegación de vuelta -->
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 1.25rem;">
+                    <button type="button" id="btn-back-to-myorders" style="background: #ffffff; color: #0f172a; border: 1.5px solid #e2e8f0; border-radius: 50px; padding: 0.5rem 1.1rem; font-size: 0.86rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(15,23,42,0.04);">
+                        <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+                        <span>Volver a Mis Compras</span>
+                    </button>
+                    <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.82rem; font-weight: 800; color: ${st.color}; background: ${st.bg}; padding: 6px 14px; border-radius: 50px;">
+                        <span class="material-symbols-outlined" style="font-size: 17px;">${st.icon}</span>
+                        <span>${escapeHtml(st.label)}</span>
+                    </span>
                 </div>
 
-                <div style="padding: 1.25rem 1.35rem;">
-                    ${progressHtml}
+                <!-- Tarjeta dedicada de seguimiento -->
+                <section aria-label="Seguimiento de pedido" style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 22px; overflow: hidden; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);">
+                    <div style="background: linear-gradient(135deg, #faf8f5 0%, #f8fafc 100%); padding: 1.25rem 1.5rem; border-bottom: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                        <div>
+                            <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; color: var(--primary-color, #A0715B); margin-bottom: 3px;">
+                                Seguimiento en tiempo real
+                            </div>
+                            <h2 style="margin: 0; font-size: 1.3rem; font-weight: 900; color: #0f172a;">
+                                Orden #${escapeHtml(displayId)}
+                            </h2>
+                        </div>
+                        <div style="font-size: 0.84rem; color: #475569; font-weight: 600;">
+                            Fecha del pedido: <strong style="color: #0f172a;">${escapeHtml(dateStr)}</strong>
+                        </div>
+                    </div>
 
-                    <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
-                        <div style="display: flex; align-items: flex-start; gap: 1rem; flex: 1; min-width: 260px;">
-                            <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(productTitle)}" onerror="this.src='img/logo_provisional.png'" style="width: 82px; height: 82px; border-radius: 14px; object-fit: cover; border: 1px solid #e2e8f0; background: #faf9f6; flex-shrink: 0;">
-                            <div style="min-width: 0; flex: 1;">
-                                <h3 style="margin: 0 0 4px 0; font-size: 1.08rem; font-weight: 800; color: #0f172a;">${escapeHtml(productTitle)}</h3>
-                                ${detailLine ? `<div style="font-size: 0.84rem; color: #475569; margin-bottom: 4px;">${escapeHtml(detailLine)}</div>` : ''}
-                                ${order.description ? `<p style="margin: 0 0 6px 0; font-size: 0.83rem; color: #64748b; line-height: 1.45;">${escapeHtml(order.description)}</p>` : ''}
-                                <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 0.83rem; color: #334155; margin-top: 6px;">
-                                    ${totalAmount !== undefined ? `<span style="font-weight: 800; color: #0f172a; font-size: 0.96rem;">${formatPrice(totalAmount)}</span><span style="color: #cbd5e1;">•</span>` : ''}
-                                    <span style="display: inline-flex; align-items: center; gap: 4px; font-weight: 600;">
-                                        <span class="material-symbols-outlined" style="font-size: 16px; color: var(--primary-color, #A0715B);">${isEnvio ? 'local_shipping' : 'storefront'}</span>
+                    <div style="padding: 1.5rem; display: grid; gap: 1.35rem;">
+                        ${progressHtml}
+
+                        <div style="display: flex; align-items: flex-start; gap: 1.15rem; flex-wrap: wrap; padding: 1.15rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px;">
+                            <img src="${escapeHtml(imgSrc)}" alt="${escapeHtml(productTitle)}" onerror="this.src='img/logo_provisional.png'" style="width: 96px; height: 96px; border-radius: 14px; object-fit: cover; border: 1px solid #e2e8f0; background: #faf9f6; flex-shrink: 0;">
+                            <div style="min-width: 220px; flex: 1;">
+                                <h3 style="margin: 0 0 4px 0; font-size: 1.12rem; font-weight: 800; color: #0f172a;">${escapeHtml(productTitle)}</h3>
+                                ${detailLine ? `<div style="font-size: 0.86rem; color: #475569; margin-bottom: 5px;">${escapeHtml(detailLine)}</div>` : ''}
+                                ${order.description ? `<p style="margin: 0 0 8px 0; font-size: 0.85rem; color: #64748b; line-height: 1.45;">${escapeHtml(order.description)}</p>` : ''}
+                                <div style="display: flex; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.86rem; color: #334155; margin-top: 8px;">
+                                    ${totalAmount !== undefined ? `<span style="font-weight: 900; color: #0f172a; font-size: 1.05rem;">${formatPrice(totalAmount)}</span><span style="color: #cbd5e1;">•</span>` : ''}
+                                    ${order.paymentMethod ? `<span style="font-weight: 600;">${escapeHtml(order.paymentMethod)}</span><span style="color: #cbd5e1;">•</span>` : ''}
+                                    <span style="display: inline-flex; align-items: center; gap: 5px; font-weight: 600;">
+                                        <span class="material-symbols-outlined" style="font-size: 17px; color: var(--primary-color, #A0715B);">${isEnvio ? 'local_shipping' : 'storefront'}</span>
                                         ${escapeHtml(deliveryLabel)}
                                     </span>
                                 </div>
@@ -494,41 +511,30 @@
                             </div>
                         </div>
 
-                        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                            <a href="https://wa.me/5491167007723?text=${waMsg}" target="_blank" rel="noopener" style="background: #16a34a; color: #ffffff; border: none; border-radius: 10px; padding: 0.65rem 1.15rem; font-weight: 700; font-size: 0.86rem; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.22);">
-                                <span class="material-symbols-outlined" style="font-size: 18px;">chat</span>
+                        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 0.25rem;">
+                            <span style="font-size: 0.82rem; color: #64748b;">¿Tenés alguna duda o querés coordinar el retiro/envío?</span>
+                            <a href="https://wa.me/5491167007723?text=${waMsg}" target="_blank" rel="noopener" style="background: #16a34a; color: #ffffff; border: none; border-radius: 50px; padding: 0.7rem 1.35rem; font-weight: 700; font-size: 0.88rem; text-decoration: none; display: inline-flex; align-items: center; gap: 7px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.22);">
+                                <span class="material-symbols-outlined" style="font-size: 19px;">chat</span>
                                 <span>Consultar por WhatsApp</span>
                             </a>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
         `;
 
-        panel.querySelector('#btn-close-inline-tracking')?.addEventListener('click', () => {
-            panel.style.display = 'none';
-            panel.innerHTML = '';
-        });
+        container.querySelector('#btn-back-to-myorders')?.addEventListener('click', goBackToOrdersList);
     }
 
     function openTrackingForOrder(orderId) {
         if (!orderId) return;
-        if (window.innerWidth >= 900) {
-            const viewEl = document.getElementById('view-my-orders');
-            const panel = document.getElementById('myorders-inline-tracking-panel');
-            if ((viewEl && !viewEl.classList.contains('active')) || !panel) {
-                render({ orderId });
-                return;
-            }
-            renderInlineTracking(orderId);
-            panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const cleanId = String(orderId).trim().replace(/^#/, '');
+        if (!cleanId) return;
+        if (typeof window.navigateToView === 'function') {
+            window.navigateToView('view-my-orders', { orderId: cleanId });
             return;
         }
-        if (typeof window.showOrderInIframe === 'function') {
-            window.showOrderInIframe(orderId);
-        } else {
-            window.open(`pedidos/index.html?id=${encodeURIComponent(orderId)}`, '_blank');
-        }
+        render({ orderId: cleanId });
     }
 
     function renderDiscoverySections(hostEl) {
@@ -547,6 +553,11 @@
 
         const targetOrderId = (options && options.orderId) || pendingInlineOrderId;
         pendingInlineOrderId = null;
+
+        if (targetOrderId) {
+            await renderTrackingScreen(targetOrderId);
+            return;
+        }
 
         const container = document.getElementById('my-orders-view-content');
         if (!container) return;
@@ -684,8 +695,6 @@
 
                 ${loginInvitationHtml}
 
-                <div id="myorders-inline-tracking-panel" style="display: none; margin-bottom: 1.5rem;"></div>
-
                 <div id="my-orders-list-wrapper">
                     ${ordersHtml}
                 </div>
@@ -728,10 +737,6 @@
                 if (id) openTrackingForOrder(id);
             });
         });
-
-        if (targetOrderId) {
-            openTrackingForOrder(targetOrderId);
-        }
     }
 
     if (typeof window.saveMyLocalOrder !== 'function') {
