@@ -406,99 +406,145 @@
             key: 'cancelled',
             ruleKey: 'orderCancelled',
             title: 'Pedido cancelado',
+            sellerTitle: 'Compra cancelada por cliente',
             cta: 'Ver detalle',
+            sellerCta: 'Ver orden',
             icon: 'cancel',
             accent: '#dc2626',
             bg: '#fef2f2',
-            badge: 'Cancelado'
+            badge: 'Cancelado',
+            sellerBadge: 'Cancelada'
         },
         {
             match: (_st, pay) => pay === 'rejected',
             key: 'payment_rejected',
             ruleKey: 'orderPaymentRejected',
             title: 'Revisá el pago de tu pedido',
+            sellerTitle: 'Pago de compra rechazado',
             cta: 'Tocá para resolverlo',
+            sellerCta: 'Revisar orden',
             icon: 'error',
             accent: '#dc2626',
             bg: '#fef2f2',
-            badge: 'Pago'
+            badge: 'Pago',
+            sellerBadge: 'Pago rechazado'
         },
         {
             match: (st, pay) => st.includes('entregad') || st.includes('completad') || pay === 'delivered',
             key: 'delivered',
             ruleKey: 'orderDelivered',
             title: '¡Pedido entregado!',
+            sellerTitle: '¡Venta entregada con éxito!',
             cta: 'Ver compra',
+            sellerCta: 'Ver venta',
             icon: 'verified',
             accent: '#15803d',
             bg: '#dcfce7',
-            badge: 'Entregado'
+            badge: 'Entregado',
+            sellerBadge: 'Entregada'
         },
         {
             match: (st) => st.includes('listo'),
             key: 'ready',
             ruleKey: 'orderReady',
             title: '¡Tu pedido está listo!',
+            sellerTitle: '¡Pedido de cliente listo para entregar!',
             cta: 'Mirá cómo retirarlo',
+            sellerCta: 'Coordinar despacho',
             icon: 'inventory_2',
             accent: '#0284c7',
             bg: '#f0f9ff',
-            badge: 'Listo'
+            badge: 'Listo',
+            sellerBadge: 'Por entregar'
         },
         {
             match: (st) => st.includes('proceso') || st.includes('produccion') || st.includes('carpinteria') || st.includes('armado'),
             key: 'in_progress',
             ruleKey: 'orderInProgress',
             title: '¡Tu pedido está en marcha!',
+            sellerTitle: 'Pedido de cliente en fabricación',
             cta: 'Seguí el avance',
+            sellerCta: 'Ver en taller',
             icon: 'carpenter',
             accent: '#2563eb',
             bg: '#eff6ff',
-            badge: 'En taller'
+            badge: 'En taller',
+            sellerBadge: 'En taller'
         },
         {
             match: (st, pay) => st === 'pago_confirmado' || st.includes('confirmado') || st.includes('aprobado') || pay === 'approved',
             key: 'confirmed',
             ruleKey: 'orderConfirmed',
             title: '¡Pedido confirmado!',
+            sellerTitle: '¡Hicieron una compra!',
             cta: 'Ver detalle',
+            sellerCta: 'Ver venta',
             icon: 'check_circle',
             accent: '#16a34a',
             bg: '#f0fdf4',
-            badge: 'Confirmado'
+            badge: 'Confirmado',
+            sellerBadge: 'Nueva venta'
         },
         {
             match: (st, pay) => st.includes('pendiente') || st.includes('falta') || pay === 'pending' || pay === 'in_process',
             key: 'payment_pending',
             ruleKey: 'orderPaymentPending',
             title: 'Falta completar el pago',
+            sellerTitle: '¡Hicieron una compra!',
             cta: 'Tocá para verlo',
+            sellerCta: 'Pago pendiente',
             icon: 'payments',
             accent: '#d97706',
             bg: '#fffbeb',
-            badge: 'Pendiente'
+            badge: 'Pendiente',
+            sellerBadge: 'Pago pendiente'
         }
     ];
 
-    function classifyOrder(order) {
+    function isSellerPerspectiveForOrder(order, currentUser, isAdmin) {
+        if (!order) return false;
+        if (order.isGuestOrder || order.isGuest) return true;
+        if (isAdmin) return true;
+        if (currentUser && currentUser.email) {
+            const ordEmail = String(order.clientEmail || order.payerEmail || '').trim().toLowerCase();
+            const myEmail = String(currentUser.email).trim().toLowerCase();
+            if (ordEmail && ordEmail !== myEmail) return true;
+        }
+        return false;
+    }
+
+    function classifyOrder(order, isSeller = false) {
         const st = String(order.status || '').trim().toLowerCase();
         const pay = String(order.paymentStatus || '').trim().toLowerCase();
         const found = ORDER_STATUS_META.find(rule => rule.match(st, pay));
-        return found || {
+        if (found) {
+            return {
+                key: found.key,
+                ruleKey: found.ruleKey,
+                title: isSeller ? (found.sellerTitle || '¡Hicieron una compra!') : found.title,
+                cta: isSeller ? (found.sellerCta || 'Ver venta') : found.cta,
+                icon: isSeller ? (found.icon === 'check_circle' ? 'shopping_bag' : found.icon) : found.icon,
+                accent: found.accent,
+                bg: found.bg,
+                badge: isSeller ? (found.sellerBadge || 'Venta') : found.badge
+            };
+        }
+        return {
             key: 'updated',
             ruleKey: 'orderConfirmed',
-            title: 'Novedad en tu pedido',
-            cta: 'Tocá para verlo',
-            icon: 'receipt_long',
-            accent: '#475569',
-            bg: '#f1f5f9',
-            badge: order.status || 'Pedido'
+            title: isSeller ? '¡Hicieron una compra!' : 'Novedad en tu pedido',
+            cta: isSeller ? 'Ver venta' : 'Tocá para verlo',
+            icon: isSeller ? 'shopping_bag' : 'receipt_long',
+            accent: isSeller ? '#16a34a' : '#475569',
+            bg: isSeller ? '#f0fdf4' : '#f1f5f9',
+            badge: isSeller ? 'Nueva venta' : (order.status || 'Pedido')
         };
     }
 
     async function fetchOrdersForNotifications() {
         const user = getCurrentUser();
         const userEmail = user && user.email ? String(user.email).trim().toLowerCase() : '';
+        const isAdmin = !!(window.AdminAuth && typeof window.AdminAuth.isAuthenticated === 'function' && window.AdminAuth.isAuthenticated());
         const ordersMap = new Map();
 
         const mergeOrder = (ord) => {
@@ -513,16 +559,27 @@
             const list = rawLocal ? JSON.parse(rawLocal) : [];
             if (Array.isArray(list)) {
                 list.forEach(o => {
-                    const oEmail = (o.clientEmail || '').trim().toLowerCase();
-                    if (!userEmail || !oEmail || oEmail === userEmail) {
+                    const oEmail = (o.clientEmail || o.payerEmail || '').trim().toLowerCase();
+                    if (isAdmin || !userEmail || !oEmail || oEmail === userEmail) {
                         mergeOrder(o);
                     }
                 });
             }
         } catch (e) {}
 
-        // 2. Worker remoto en vivo si hay usuario autenticado
-        if (userEmail) {
+        // 2. Si el usuario logueado es Administrador / Dueño, traer todas las ventas del Worker central
+        if (isAdmin) {
+            try {
+                const resAdmin = await fetch(`${WORKER_URL}/admin/pedidos`);
+                if (resAdmin.ok) {
+                    const dataAdmin = await resAdmin.json();
+                    if (dataAdmin && Array.isArray(dataAdmin.orders)) {
+                        dataAdmin.orders.forEach(mergeOrder);
+                    }
+                }
+            } catch (e) {}
+        } else if (userEmail) {
+            // 3. Worker remoto en vivo si hay cliente regular autenticado
             try {
                 const res = await fetch(`${WORKER_URL}/mis-pedidos?email=${encodeURIComponent(userEmail)}`);
                 if (res.ok) {
@@ -538,8 +595,35 @@
     }
 
     async function scanOrders(state, cfg) {
+        const user = getCurrentUser();
+        const isAdmin = !!(window.AdminAuth && typeof window.AdminAuth.isAuthenticated === 'function' && window.AdminAuth.isAuthenticated());
         const orders = await fetchOrdersForNotifications();
         let changed = false;
+
+        // Auto-migración en caliente: si ya existían notificaciones guardadas en el navegador
+        // que tenían el texto de comprador ("¡Pedido confirmado!" o "tu pedido") y pertenecen
+        // a una venta para el admin, actualizarlas a "¡Hicieron una compra!"
+        if (Array.isArray(state.notifications)) {
+            state.notifications.forEach(n => {
+                if (n && n.type === 'order' && n.actionPayload && n.actionPayload.orderId) {
+                    const matchedOrd = orders.find(o => String(o.id) === String(n.actionPayload.orderId));
+                    if (matchedOrd && isSellerPerspectiveForOrder(matchedOrd, user, isAdmin)) {
+                        if (n.title === '¡Pedido confirmado!' || n.title.includes('tu pedido') || n.title.includes('Tu pedido')) {
+                            const meta = classifyOrder(matchedOrd, true);
+                            n.title = meta.title;
+                            const clientLabel = matchedOrd.clientName || matchedOrd.payerName || 'Cliente';
+                            const amountLabel = matchedOrd.amount ? ` (${formatMoney(matchedOrd.amount)})` : '';
+                            n.body = `#${matchedOrd.shortCode || matchedOrd.id} · ${clientLabel}${amountLabel}`;
+                            n.badgeText = meta.badge;
+                            n.icon = meta.icon;
+                            n.accent = meta.accent;
+                            n.bg = meta.bg;
+                            changed = true;
+                        }
+                    }
+                }
+            });
+        }
 
         orders.forEach(ord => {
             const ordId = String(ord.id);
@@ -549,18 +633,26 @@
             const snapshot = `${st}|${pay}|${notesLen}`;
             const prevSnapshot = state.orderSnapshots[ordId];
 
-            const meta = classifyOrder(ord);
+            const isSeller = isSellerPerspectiveForOrder(ord, user, isAdmin);
+            const meta = classifyOrder(ord, isSeller);
             const shortRef = ord.shortCode || ordId;
 
             if (prevSnapshot !== snapshot) {
                 if (isRuleEnabled(cfg, meta.ruleKey)) {
                     const copy = getRuleCopy(cfg, meta.ruleKey, meta.title, meta.cta);
+                    const finalTitle = isSeller ? meta.title : copy.title;
+                    const clientLabel = ord.clientName || ord.payerName || 'Cliente';
+                    const amountLabel = ord.amount ? ` (${formatMoney(ord.amount)})` : '';
+                    const bodyText = isSeller
+                        ? `#${shortRef} · ${clientLabel}${amountLabel}`
+                        : `#${shortRef} · ${copy.cta}`;
+
                     const added = upsertNotification(state, {
                         id: `ord_${ordId}_${snapshot}`,
                         type: 'order',
                         ruleKey: meta.ruleKey,
-                        title: copy.title,
-                        body: `#${shortRef} · ${copy.cta}`,
+                        title: finalTitle,
+                        body: bodyText,
                         timestamp: Number(ord.updatedAt || ord.createdAt) || Date.now(),
                         image: ord.image || '',
                         icon: meta.icon,

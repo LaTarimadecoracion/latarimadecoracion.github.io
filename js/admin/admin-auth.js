@@ -682,20 +682,23 @@
         return existing;
     }
 
-    function getPublicUser() {
-        let clientUser = null;
+    function getClientUser() {
         try {
             const raw = localStorage.getItem(STORAGE_CLIENT_SESSION_KEY);
             if (raw) {
                 const parsed = JSON.parse(raw);
                 if (parsed && parsed.expiresAt && Date.now() < parsed.expiresAt && parsed.user) {
-                    clientUser = parsed.user;
+                    return parsed.user;
                 } else {
                     localStorage.removeItem(STORAGE_CLIENT_SESSION_KEY);
                 }
             }
         } catch (e) {}
+        return null;
+    }
 
+    function getPublicUser() {
+        const clientUser = getClientUser();
         const adminUser = getCurrentUser();
         if (adminUser) {
             if (!adminUser.picture && clientUser && clientUser.picture) {
@@ -949,6 +952,7 @@
         isAuthenticated,
         getCurrentUser,
         getPublicUser,
+        getClientUser,
         getSession,
         loginWithGooglePopup,
         loginPublicStoreWithGoogle,

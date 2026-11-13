@@ -162,8 +162,8 @@
         const card = document.createElement('div');
         card.style.cssText = 'position: relative; width: 100vw; height: 100vh; height: 100dvh; max-width: 100vw; max-height: 100vh; max-height: 100dvh; border-radius: 0; padding: 1rem 1.25rem; background: #ffffff; box-shadow: none; border: none; font-family: var(--font-main); box-sizing: border-box; display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; transform: scale(0.98); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); margin: 0; overflow: hidden;';
 
-        const publicUserCheckout = (window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function')
-            ? window.AdminAuth.getPublicUser()
+        const publicUserCheckout = (window.AdminAuth && typeof window.AdminAuth.getClientUser === 'function')
+            ? window.AdminAuth.getClientUser()
             : null;
 
         const googleAutofillBannerHTML = !publicUserCheckout ? `
@@ -1672,12 +1672,12 @@
                 if (merged.provincia && document.getElementById('pay-ship-provincia')) document.getElementById('pay-ship-provincia').value = merged.provincia;
                 if (merged.email && document.getElementById('pay-ship-email')) document.getElementById('pay-ship-email').value = merged.email;
                 try {
-                    const loggedUser = window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function' ? window.AdminAuth.getPublicUser() : null;
-                    if (loggedUser) {
+                    const loggedClient = window.AdminAuth && typeof window.AdminAuth.getClientUser === 'function' ? window.AdminAuth.getClientUser() : null;
+                    if (loggedClient) {
                         const nameEl = document.getElementById('pay-client-name');
                         const mailEl = document.getElementById('pay-ship-email');
-                        if (nameEl && !nameEl.value && loggedUser.nombre) nameEl.value = loggedUser.nombre;
-                        if (mailEl && !mailEl.value && loggedUser.email) mailEl.value = loggedUser.email;
+                        if (nameEl && !nameEl.value && loggedClient.nombre) nameEl.value = loggedClient.nombre;
+                        if (mailEl && !mailEl.value && loggedClient.email) mailEl.value = loggedClient.email;
                     }
                 } catch(e) {}
                 if (merged.razonSocial && document.getElementById('factura-razon-social')) document.getElementById('factura-razon-social').value = merged.razonSocial;
@@ -1861,10 +1861,12 @@
 
             const info = getCurrentFinalTotalInfo();
             const finalAmount = info.finalTotal;
-            const clientName = document.getElementById('pay-client-name')?.value.trim() || 'Cliente La Tarima';
+            const clientUser = (window.AdminAuth && typeof window.AdminAuth.getClientUser === 'function') ? window.AdminAuth.getClientUser() : null;
+            const isGuest = !clientUser;
+            const clientName = document.getElementById('pay-client-name')?.value.trim() || (isGuest ? 'Cliente' : (clientUser?.nombre || 'Cliente La Tarima'));
             const clientPhone = document.getElementById('pay-client-phone')?.value.trim() || '';
-            const loggedMpEmail = window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function' ? (window.AdminAuth.getPublicUser()?.email || '') : '';
-            const clientEmail = document.getElementById('pay-ship-email')?.value.trim() || document.getElementById('factura-email')?.value.trim() || loggedMpEmail || 'comprador@latarima.com.ar';
+            const loggedMpEmail = clientUser?.email || '';
+            const clientEmail = document.getElementById('pay-ship-email')?.value.trim() || document.getElementById('factura-email')?.value.trim() || loggedMpEmail || (isGuest ? '' : 'comprador@latarima.com.ar');
 
             const originalHtml = btnEl.innerHTML;
             btnEl.disabled = true;
@@ -1926,6 +1928,7 @@
                         selectedMeasure: payload.selectedMeasure,
                         clientName: payload.payerName,
                         clientEmail: payload.payerEmail,
+                        isGuestOrder: isGuest,
                         shippingMethod: info.isShipping ? 'envio' : 'retira',
                         shippingLabel: info.shipLabel || '',
                         paymentMethod: 'mercadopago',
@@ -1975,9 +1978,11 @@
                     ? 'Mercado Pago (Link / Débito / Dinero en cuenta)'
                     : (info.activePayVal === 'credit' ? 'Mercado Pago (Tarjeta de Crédito)' : `Transferencia Bancaria (${bank})`);
 
-                const clientName = document.getElementById('pay-client-name')?.value.trim();
+                const clientUser = (window.AdminAuth && typeof window.AdminAuth.getClientUser === 'function') ? window.AdminAuth.getClientUser() : null;
+                const isGuest = !clientUser;
+                const clientName = document.getElementById('pay-client-name')?.value.trim() || (isGuest ? 'Cliente' : (clientUser?.nombre || 'Cliente La Tarima'));
                 const clientPhone = document.getElementById('pay-client-phone')?.value.trim();
-                const loggedWaEmail = window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function' ? (window.AdminAuth.getPublicUser()?.email || '') : '';
+                const loggedWaEmail = clientUser?.email || '';
                 const clientEmail = document.getElementById('pay-ship-email')?.value.trim() || document.getElementById('factura-email')?.value.trim() || loggedWaEmail || '';
 
                 const trackingOrderId = 'LT-' + Date.now().toString().slice(-6);
@@ -2157,7 +2162,9 @@
                     window.saveMyLocalOrder({
                         ...transPayload,
                         id: trackingOrderId,
+                        clientName: clientName,
                         clientEmail: clientEmail,
+                        isGuestOrder: isGuest,
                         paymentMethod: 'transferencia',
                         status: 'pendiente_de_confirmacion',
                         createdAt: Date.now()
