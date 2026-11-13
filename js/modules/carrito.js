@@ -1290,7 +1290,7 @@
 
             // --- Accesos a secciones separadas (Mi Perfil / Mis Compras / Sync Google) ---
             document.getElementById('btn-go-user-profile-from-cart')?.addEventListener('click', () => {
-                if (window.navigateToView) window.navigateToView('view-user-profile');
+                if (window.UserProfileDrawer && typeof window.UserProfileDrawer.open === 'function') { window.UserProfileDrawer.open(); } else if (typeof window.openUserProfileModal === 'function') { window.openUserProfileModal(); } else if (typeof window.ensureUserProfileModalLoaded === 'function') { window.ensureUserProfileModalLoaded().then(() => { if (window.UserProfileDrawer) window.UserProfileDrawer.open(); else if (typeof window.openUserProfileModal === 'function') window.openUserProfileModal(); }); } else if (window.navigateToView) { window.navigateToView('view-user-profile'); }
             });
             const btnCartSync = document.getElementById('btn-cart-google-sync');
             if (btnCartSync) {

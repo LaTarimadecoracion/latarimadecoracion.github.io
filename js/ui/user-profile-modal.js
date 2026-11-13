@@ -1,7 +1,127 @@
 // js/ui/user-profile-modal.js
-// --- USER PROFILE MODAL (LAZY-LOADED) ---
+// --- USER PROFILE DRAWER LATERAL (LAZY-LOADED) ---
+// Abre un panel lateral deslizante (Side Drawer) para gestionar el perfil de usuario,
+// datos de envío y facturación con sincronización automática en la nube vía Google Auth.
 
 (function() {
+    'use strict';
+
+    let isProfileDrawerOpen = false;
+
+    function injectProfileDrawerStyles() {
+        if (document.getElementById('user-profile-drawer-styles')) return;
+        const style = document.createElement('style');
+        style.id = 'user-profile-drawer-styles';
+        style.textContent = `
+            #user-profile-drawer-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(15, 23, 42, 0.5);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                z-index: 999998;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+            }
+            #user-profile-drawer-overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            #user-profile-drawer {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                max-width: 480px;
+                background: #ffffff;
+                z-index: 999999;
+                box-shadow: -10px 0 35px rgba(0, 0, 0, 0.22);
+                transform: translateX(100%);
+                transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+                display: flex;
+                flex-direction: column;
+                box-sizing: border-box;
+                font-family: inherit;
+                overflow: hidden;
+            }
+            #user-profile-drawer.active {
+                transform: translateX(0);
+            }
+
+            .user-profile-drawer-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1rem 1.25rem;
+                border-bottom: 1px solid #f1f5f9;
+                background: #ffffff;
+                flex-shrink: 0;
+            }
+            .user-profile-drawer-title-wrap {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                min-width: 0;
+            }
+            .user-profile-drawer-icon {
+                color: #0f172a;
+                font-size: 24px;
+                background: #f1f5f9;
+                padding: 7px;
+                border-radius: 10px;
+                flex-shrink: 0;
+            }
+            .user-profile-drawer-badge {
+                font-size: 0.65rem;
+                font-weight: 800;
+                color: #94a3b8;
+                letter-spacing: 0.8px;
+                text-transform: uppercase;
+            }
+            .user-profile-drawer-title {
+                font-size: 1.15rem;
+                font-weight: 800;
+                color: #0f172a;
+                margin: 0;
+                line-height: 1.2;
+            }
+            .user-profile-drawer-close-btn {
+                background: #f8fafc;
+                border: 1px solid #e2e8f0;
+                color: #64748b;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: all 0.2s;
+                padding: 0;
+                font-size: 18px;
+                line-height: 1;
+            }
+            .user-profile-drawer-close-btn:hover {
+                background: #f1f5f9;
+                color: #0f172a;
+                transform: rotate(90deg);
+            }
+
+            @media (max-width: 640px) {
+                #user-profile-drawer {
+                    max-width: 100%;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
     const GOOGLE_SVG = `<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0;"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z"/><path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z"/></svg>`;
 
     const esc = (val) => String(val == null ? '' : val)
@@ -23,11 +143,22 @@
             ? window.UserDataManager.get()
             : {};
 
-        const headerHTML = `
-            ${isModal ? '<button type="button" id="btn-close-user-profile" title="Cerrar" style="position: fixed; top: 0.85rem; right: 0.85rem; width: 30px; height: 30px; background: none; border: none; font-size: 26px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #94a3b8; z-index: 100000; padding: 0; transition: color 0.2s;" onmouseenter="this.style.color=\'#0f172a\'" onmouseleave="this.style.color=\'#94a3b8\'">&times;</button>' : ''}
-
-            <!-- Header con Estilo LA TARIMA -->
-            <div style="width: 100%; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.75rem; padding-right: ${isModal ? '2rem' : '0'}; flex-shrink: 0; box-sizing: border-box;">
+        const headerHTML = isModal ? `
+            <div class="user-profile-drawer-header">
+                <div class="user-profile-drawer-title-wrap">
+                    <span class="material-symbols-outlined user-profile-drawer-icon">account_circle</span>
+                    <div style="min-width: 0;">
+                        <div class="user-profile-drawer-badge">La Tarima · Mi Cuenta</div>
+                        <h3 class="user-profile-drawer-title">Mi Perfil de Entrega</h3>
+                    </div>
+                </div>
+                <button type="button" id="btn-close-user-profile" class="user-profile-drawer-close-btn" title="Cerrar perfil">
+                    ✕
+                </button>
+            </div>
+            <div style="height: 3px; background: linear-gradient(90deg, #16a34a, #22c55e); flex-shrink: 0;"></div>
+        ` : `
+            <div style="width: 100%; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.75rem; flex-shrink: 0; box-sizing: border-box;">
                 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem;">
                     <div style="display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1;">
                         <span class="material-symbols-outlined" style="color: #0f172a; font-size: 22px; background: #f1f5f9; padding: 6px; border-radius: 10px; flex-shrink: 0;">account_circle</span>
@@ -47,7 +178,7 @@
             card.innerHTML = `
                 ${headerHTML}
 
-                <div style="flex: 1; overflow-y: auto; padding: 1.5rem 0; box-sizing: border-box; width: 100%; max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 1.25rem;">
+                <div style="flex: 1; overflow-y: auto; padding: ${isModal ? '1.5rem 1.25rem' : '1.5rem 0'}; box-sizing: border-box; width: 100%; max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 1.25rem; -webkit-overflow-scrolling: touch;">
                     <div style="width: 72px; height: 72px; border-radius: 50%; background: #f0fdf4; border: 2px solid #bbf7d0; color: #16a34a; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(22, 163, 74, 0.12);">
                         <span class="material-symbols-outlined" style="font-size: 36px;">verified_user</span>
                     </div>
@@ -149,8 +280,8 @@
         card.innerHTML = `
             ${headerHTML}
 
-            <!-- Contenido Principal Desplazable estilo COMPRAR YA -->
-            <div style="flex: 1; overflow-y: auto; padding: 1rem 0; box-sizing: border-box; width: 100%; max-width: 650px; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem;">
+            <!-- Contenido Principal Desplazable -->
+            <div style="flex: 1; overflow-y: auto; padding: ${isModal ? '1rem 1.25rem' : '1rem 0'}; box-sizing: border-box; width: 100%; max-width: ${isModal ? '100%' : '650px'}; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; -webkit-overflow-scrolling: touch;">
 
                 <!-- Tarjeta de Cuenta Google Conectada -->
                 <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 14px; padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
@@ -317,13 +448,13 @@
                 </div>
             </div>
 
-            <!-- Footer con Botones estilo Checkout -->
-            <div style="width: 100%; border-top: 1px solid #f1f5f9; padding-top: 0.75rem; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; max-width: 650px; margin: 0 auto;">
+            <!-- Footer con Botones estilo Checkout / Drawer -->
+            <div style="width: 100%; border-top: 1px solid #f1f5f9; padding: ${isModal ? '0.85rem 1.25rem' : '0.75rem 0'}; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; max-width: ${isModal ? '100%' : '650px'}; margin: 0 auto; box-sizing: border-box; background: #ffffff;">
                 <div id="prof-validation-error" style="display: none; background: #fef2f2; border: 1.5px solid #fca5a5; color: #991b1b; padding: 0.65rem 0.9rem; border-radius: 10px; font-size: 0.78rem; font-weight: 700; text-align: center;">
                     ⚠️ Por favor completá todos los campos obligatorios de Contacto y Ubicación antes de guardar.
                 </div>
                 <div style="display: flex; justify-content: flex-end; align-items: center; gap: 10px; width: 100%;">
-                    <button type="button" id="btn-save-user-profile" style="background: #16a34a; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.6rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3); transition: all 0.2s;">
+                    <button type="button" id="btn-save-user-profile" style="width: ${isModal ? '100%' : 'auto'}; background: #16a34a; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.6rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3); transition: all 0.2s;">
                         <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
                         <span>Guardar Mi Perfil</span>
                     </button>
@@ -516,44 +647,90 @@
     }
 
     window.openUserProfileModal = function() {
-        const existingOverlay = document.getElementById('user-profile-modal-overlay');
-        if (existingOverlay) {
-            if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll();
-            existingOverlay.remove();
-        }
+        injectProfileDrawerStyles();
+
+        // Limpiar overlays o drawers previos si existieran
+        const existingDrawer = document.getElementById('user-profile-drawer');
+        const existingOverlay = document.getElementById('user-profile-drawer-overlay');
+        const oldModalOverlay = document.getElementById('user-profile-modal-overlay');
+        if (existingDrawer) existingDrawer.remove();
+        if (existingOverlay) existingOverlay.remove();
+        if (oldModalOverlay) oldModalOverlay.remove();
 
         const overlay = document.createElement('div');
-        overlay.id = 'user-profile-modal-overlay';
-        overlay.style.cssText = 'position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 0; opacity: 0; transition: opacity 0.25s ease-out; box-sizing: border-box; width: 100vw; height: 100vh; height: 100dvh;';
+        overlay.id = 'user-profile-drawer-overlay';
 
-        const card = document.createElement('div');
-        card.style.cssText = 'position: relative; width: 100vw; height: 100vh; height: 100dvh; max-width: 100vw; max-height: 100vh; max-height: 100dvh; border-radius: 0; padding: 1rem 1.25rem; background: #ffffff; box-shadow: none; border: none; font-family: var(--font-main); box-sizing: border-box; display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; transform: scale(0.98); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); margin: 0; overflow: hidden;';
+        const drawer = document.createElement('aside');
+        drawer.id = 'user-profile-drawer';
+        drawer.setAttribute('role', 'dialog');
+        drawer.setAttribute('aria-modal', 'true');
+        drawer.setAttribute('aria-label', 'Mi Perfil de Entrega');
 
-        const closeModal = () => {
+        let isClosing = false;
+        const closeDrawer = () => {
+            if (isClosing) return;
+            isClosing = true;
+            isProfileDrawerOpen = false;
+            overlay.classList.remove('active');
+            drawer.classList.remove('active');
             if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll();
-            overlay.style.opacity = '0';
-            card.style.transform = 'scale(0.98)';
-            setTimeout(() => overlay.remove(), 250);
+            setTimeout(() => {
+                overlay.remove();
+                drawer.remove();
+            }, 320);
         };
 
-        overlay.appendChild(card);
-        document.body.appendChild(overlay);
-        if (typeof window.lockBodyScroll === 'function') window.lockBodyScroll();
+        overlay.addEventListener('click', closeDrawer);
 
-        mountUserProfileUI(card, {
+        mountUserProfileUI(drawer, {
             isModal: true,
-            onClose: closeModal,
+            onClose: closeDrawer,
             onReopen: () => {
                 if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll();
                 overlay.remove();
+                drawer.remove();
                 window.openUserProfileModal();
             }
         });
 
+        document.body.appendChild(overlay);
+        document.body.appendChild(drawer);
+
+        if (typeof window.lockBodyScroll === 'function') window.lockBodyScroll();
+
+        const onEscKey = (e) => {
+            if (e.key === 'Escape' && isProfileDrawerOpen) {
+                window.removeEventListener('keydown', onEscKey);
+                closeDrawer();
+            }
+        };
+        window.addEventListener('keydown', onEscKey);
+
         requestAnimationFrame(() => {
-            overlay.style.opacity = '1';
-            card.style.transform = 'scale(1)';
+            isProfileDrawerOpen = true;
+            overlay.classList.add('active');
+            drawer.classList.add('active');
         });
+    };
+
+    window.closeUserProfileModal = function() {
+        const overlay = document.getElementById('user-profile-drawer-overlay');
+        const drawer = document.getElementById('user-profile-drawer');
+        if (overlay) overlay.classList.remove('active');
+        if (drawer) drawer.classList.remove('active');
+        if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll();
+        setTimeout(() => {
+            if (overlay) overlay.remove();
+            if (drawer) drawer.remove();
+        }, 320);
+    };
+
+    window.openUserProfileDrawer = window.openUserProfileModal;
+    window.closeUserProfileDrawer = window.closeUserProfileModal;
+    window.UserProfileDrawer = {
+        open: window.openUserProfileModal,
+        close: window.closeUserProfileModal,
+        isOpen: () => isProfileDrawerOpen
     };
 
     window.renderUserProfileView = function() {

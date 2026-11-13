@@ -459,7 +459,7 @@
                         </div>
                     </div>
                     <div class="desktop-user-dropdown-links">
-                        <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-user-profile');">
+                        <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.closeUserMenu(); if(window.UserProfileDrawer){window.UserProfileDrawer.open();}else if(window.openUserProfileModal){window.openUserProfileModal();}else if(window.ensureUserProfileModalLoaded){window.ensureUserProfileModalLoaded().then(()=>{if(window.UserProfileDrawer)window.UserProfileDrawer.open();else if(window.openUserProfileModal)window.openUserProfileModal();});}else{window.DesktopHeader.navigateFromMenu('view-user-profile');}">
                             <span class="material-symbols-outlined">account_circle</span> Mi Perfil
                         </a>
                         <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-notifications');">
