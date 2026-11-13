@@ -322,7 +322,7 @@
                                 <!-- Tooltip Popover Flotante -->
                                 <div id="pay-info-tooltip-popover" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #0f172a; color: #ffffff; padding: 0.75rem 0.9rem; border-radius: 12px; font-size: 0.75rem; width: 250px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 100; line-height: 1.4; text-align: left;">
                                     <div style="font-weight: 800; margin-bottom: 4px; color: #38bdf8;">ℹ️ Precio Transferencia Directa</div>
-                                    Monto de contado/transferencia directa consumidor final sin IVA adicional ni comisiones intermedias.
+                                    Monto con 10% de ahorro directo por transferencia bancaria directa (Consumidor Final).
                                 </div>
                             </div>
                         </div>
@@ -336,6 +336,10 @@
                             <div style="display: flex; justify-content: space-between; color: #0284c7;" id="breakdown-ship-row">
                                 <span id="breakdown-ship-label">🚚 Envío:</span>
                                 <span style="font-weight: 700;" id="breakdown-ship-val"></span>
+                            </div>
+                            <div style="display: none; justify-content: space-between; color: #15803d;" id="breakdown-transfer-discount-row">
+                                <span id="breakdown-transfer-discount-label">🎉 Descuento Transferencia (-10%):</span>
+                                <span style="font-weight: 700;" id="breakdown-transfer-discount-val"></span>
                             </div>
                             <div style="display: none; justify-content: space-between; color: #b45309;" id="breakdown-mp-surcharge-row">
                                 <span id="breakdown-mp-surcharge-label">💳 Recargo Mercado Pago:</span>
@@ -479,21 +483,24 @@
                             💳 4. Elegí tu Medio de Pago Preferido:
                         </div>
 
-                        <!-- 3 Botones ultra limpios (Icono + Título) -->
+                        <!-- 3 Botones ultra limpios (Icono + Título + Badges de Beneficio) -->
                         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 8px;" id="pay-methods-grid-container">
-                            <button type="button" class="pay-method-btn" data-pay-val="transfer" id="btn-pay-choice-transfer" style="background: #f8fafc; color: #334155; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.75rem 0.4rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; cursor: pointer; text-align: center; transition: all 0.2s;">
-                                <span class="material-symbols-outlined" style="font-size: 24px; color: #16a34a;">account_balance</span>
+                            <button type="button" class="pay-method-btn" data-pay-val="transfer" id="btn-pay-choice-transfer" style="background: #f8fafc; color: #334155; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.65rem 0.35rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                                <span class="material-symbols-outlined" style="font-size: 22px; color: #16a34a;">account_balance</span>
                                 <div style="font-size: 0.78rem; font-weight: 800; line-height: 1.2;">Transferencia</div>
+                                <span style="font-size: 0.65rem; font-weight: 800; color: #15803d; background: #dcfce7; padding: 2px 6px; border-radius: 4px; border: 1px solid #86efac;">10% OFF</span>
                             </button>
 
-                            <button type="button" class="pay-method-btn" data-pay-val="link" id="btn-pay-choice-link" style="background: #f8fafc; color: #334155; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.75rem 0.4rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; cursor: pointer; text-align: center; transition: all 0.2s;">
-                                <span class="material-symbols-outlined" style="font-size: 24px; color: #009ee3;">handshake</span>
+                            <button type="button" class="pay-method-btn" data-pay-val="link" id="btn-pay-choice-link" style="background: #f8fafc; color: #334155; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.65rem 0.35rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                                <span class="material-symbols-outlined" style="font-size: 22px; color: #009ee3;">handshake</span>
                                 <div style="font-size: 0.78rem; font-weight: 800; line-height: 1.2;">Mercado Pago</div>
+                                <span style="font-size: 0.65rem; font-weight: 700; color: #0284c7; background: #e0f2fe; padding: 2px 6px; border-radius: 4px; border: 1px solid #bae6fd;">Precio Lista</span>
                             </button>
 
-                            <button type="button" class="pay-method-btn" data-pay-val="credit" id="btn-pay-choice-credit" style="background: #f8fafc; color: #334155; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.75rem 0.4rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; cursor: pointer; text-align: center; transition: all 0.2s;">
-                                <span class="material-symbols-outlined" style="font-size: 24px; color: #d97706;">credit_card</span>
+                            <button type="button" class="pay-method-btn" data-pay-val="credit" id="btn-pay-choice-credit" style="background: #f8fafc; color: #334155; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.65rem 0.35rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; text-align: center; transition: all 0.2s;">
+                                <span class="material-symbols-outlined" style="font-size: 22px; color: #d97706;">credit_card</span>
                                 <div style="font-size: 0.78rem; font-weight: 800; line-height: 1.2;">Tarjeta</div>
+                                <span style="font-size: 0.65rem; font-weight: 700; color: #b45309; background: #fef3c7; padding: 2px 6px; border-radius: 4px; border: 1px solid #fde68a;">En Cuotas</span>
                             </button>
                         </div>
 
@@ -504,7 +511,7 @@
                                     <span class="material-symbols-outlined" style="font-size: 18px; color: #16a34a;">verified</span>
                                     <span>Pago por Transferencia Bancaria Directa (${transferAccountDesc})</span>
                                 </div>
-                                <span style="font-weight: 800; color: #15803d; background: #ffffff; padding: 2px 8px; border-radius: 6px; font-size: 0.7rem; border: 1px solid #86efac;">Sin Recargo (0% Costo Adicional)</span>
+                                <span style="font-weight: 800; color: #15803d; background: #ffffff; padding: 2px 8px; border-radius: 6px; font-size: 0.7rem; border: 1px solid #86efac;">🎁 10% DE DESCUENTO APLICADO</span>
                             </div>
 
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; width: 100%; box-sizing: border-box; margin-top: 4px;">
@@ -542,7 +549,7 @@
                         <div id="pay-panel-link" style="display: none; flex-direction: column; gap: 10px; width: 100%; box-sizing: border-box; background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 12px; padding: 1rem; text-align: center; margin-top: 10px; width: 100% !important; box-sizing: border-box !important;">
                             <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
                                 <div style="font-size: 0.9rem; font-weight: 800; color: #0369a1; display: flex; align-items: center; gap: 6px;">
-                                    <span class="material-symbols-outlined">handshake</span> Pago Online con Mercado Pago (Dinero en cuenta / Débito / Tarjetas)
+                                    <span class="material-symbols-outlined">handshake</span> Pago Online con Mercado Pago (Precio de Lista)
                                 </div>
                                 ${isMpGlobalActive
                                     ? `<span style="font-size: 0.68rem; font-weight: 800; background: #dcfce7; color: #15803d; border: 1px solid #86efac; padding: 2px 8px; border-radius: 6px;">✓ COBRO ONLINE ACTIVO</span>`
@@ -1457,29 +1464,35 @@
             const shipLabel = window._checkoutSelectedShipLabel || '';
             const activePayVal = window._checkoutSelectedPayMethod || 'transfer';
 
+            const transferDiscountPct = parseFloat(transferConf.discountPercent !== undefined ? transferConf.discountPercent : 10) || 0;
             let mpSurchargePct = 0;
             if (activePayVal === 'link') mpSurchargePct = mpLinkSurchargePct;
             else if (activePayVal === 'credit') mpSurchargePct = mpCreditSurchargePct;
 
             const baseWithShip = totalOfferVal + shipCost;
+            const transferDiscountVal = (activePayVal === 'transfer' && transferDiscountPct > 0)
+                ? Math.round((baseWithShip * (transferDiscountPct / 100)) / 100) * 100
+                : 0;
             const mpSurchargeVal = mpSurchargePct > 0 ? Math.round(baseWithShip * (mpSurchargePct / 100)) : 0;
-            const subtotalWithMp = baseWithShip + mpSurchargeVal;
+            const subtotalWithPayMethod = baseWithShip - transferDiscountVal + mpSurchargeVal;
 
-            const ivaVal = subtotalWithMp * 0.21;
-            const iibbVal = subtotalWithMp * 0.035;
-            const totalFactA = subtotalWithMp * 1.245;
+            const ivaVal = subtotalWithPayMethod * 0.21;
+            const iibbVal = subtotalWithPayMethod * 0.035;
+            const totalFactA = subtotalWithPayMethod * 1.245;
 
-            const finalTotal = Math.round(isFacturaA ? totalFactA : subtotalWithMp);
+            const finalTotal = Math.round(isFacturaA ? totalFactA : subtotalWithPayMethod);
             return {
                 isShipping,
                 isFacturaA,
                 shipCost,
                 shipLabel,
                 activePayVal,
+                transferDiscountPct,
+                transferDiscountVal,
                 mpSurchargePct,
                 mpSurchargeVal,
                 baseWithShip,
-                subtotalWithMp,
+                subtotalWithPayMethod,
                 ivaVal,
                 iibbVal,
                 totalFactA,
@@ -1489,7 +1502,7 @@
 
         function updateTotalDisplay() {
             const info = getCurrentFinalTotalInfo();
-            const { isShipping, isFacturaA, shipCost, shipLabel, mpSurchargePct, mpSurchargeVal, subtotalWithMp, ivaVal, iibbVal, totalFactA, finalTotal } = info;
+            const { isShipping, isFacturaA, shipCost, shipLabel, transferDiscountPct, transferDiscountVal, mpSurchargePct, mpSurchargeVal, subtotalWithPayMethod, ivaVal, iibbVal, totalFactA, finalTotal } = info;
 
             const priceDisplay = document.getElementById('pay-modal-display-price');
             if (priceDisplay) priceDisplay.textContent = formatCurr(finalTotal);
@@ -1499,15 +1512,19 @@
             const shipRow = document.getElementById('breakdown-ship-row');
             const shipLbl = document.getElementById('breakdown-ship-label');
             const shipVal = document.getElementById('breakdown-ship-val');
+            const transferRow = document.getElementById('breakdown-transfer-discount-row');
+            const transferLbl = document.getElementById('breakdown-transfer-discount-label');
+            const transferVal = document.getElementById('breakdown-transfer-discount-val');
             const mpRow = document.getElementById('breakdown-mp-surcharge-row');
             const mpLbl = document.getElementById('breakdown-mp-surcharge-label');
             const mpVal = document.getElementById('breakdown-mp-surcharge-val');
 
             const hasShipBreakdown = !!(isShipping && (shipCost > 0 || shipLabel));
+            const hasTransferDiscountBreakdown = transferDiscountVal > 0;
             const hasMpBreakdown = mpSurchargeVal > 0;
 
             if (breakdownBox) {
-                if (hasShipBreakdown || hasMpBreakdown) {
+                if (hasShipBreakdown || hasTransferDiscountBreakdown || hasMpBreakdown) {
                     breakdownBox.style.display = 'flex';
                     if (shipRow) {
                         if (hasShipBreakdown) {
@@ -1521,6 +1538,15 @@
                             }
                         } else {
                             shipRow.style.display = 'none';
+                        }
+                    }
+                    if (transferRow) {
+                        if (hasTransferDiscountBreakdown) {
+                            transferRow.style.display = 'flex';
+                            if (transferLbl) transferLbl.textContent = `🎉 Descuento Transferencia (-${transferDiscountPct}%):`;
+                            if (transferVal) transferVal.textContent = '-' + formatCurr(transferDiscountVal);
+                        } else {
+                            transferRow.style.display = 'none';
                         }
                     }
                     if (mpRow) {
@@ -1547,7 +1573,7 @@
                 const factSubRow = document.getElementById('factura-subtotal-row');
                 const factSubVal = document.getElementById('factura-subtotal-val');
 
-                if (factBase) factBase.textContent = formatCurr(totalOfferVal + mpSurchargeVal);
+                if (factBase) factBase.textContent = formatCurr(totalOfferVal - transferDiscountVal + mpSurchargeVal);
 
                 if (isShipping && shipCost > 0) {
                     if (factShipRow) factShipRow.style.display = 'flex';
@@ -1555,7 +1581,7 @@
                     if (factShipVal) factShipVal.textContent = formatCurr(shipCost);
 
                     if (factSubRow) factSubRow.style.display = 'flex';
-                    if (factSubVal) factSubVal.textContent = formatCurr(subtotalWithMp);
+                    if (factSubVal) factSubVal.textContent = formatCurr(subtotalWithPayMethod);
                 } else {
                     if (factShipRow) factShipRow.style.display = 'none';
                     if (factSubRow) factSubRow.style.display = 'none';
@@ -2054,6 +2080,9 @@
                     } catch(e) {}
                 } else {
                     msgLines.push(`  • Combo: ${itemDisplayName} ${packQty > 1 ? `(Pack x${packQty})` : ''}`);
+                }
+                if (info.transferDiscountVal > 0) {
+                    msgLines.push(`- Descuento Transferencia Directa (${info.transferDiscountPct}% OFF): -${formatCurr(info.transferDiscountVal)}`);
                 }
                 msgLines.push(`- Medio de pago: ${payMethodLabel}`);
                 msgLines.push(`- Monto total: ${finalPriceFormatted}`);

@@ -21,7 +21,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 80000,
+          "price": 88000,
           "cost_price": 27000,
           "legend": "",
           "showPrice": true
@@ -112,5 +112,5 @@
     "Vinotecas"
   ],
   "rubro": "carpinteria",
-  "price": 80000
+  "price": 88000
 }

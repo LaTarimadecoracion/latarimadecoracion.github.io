@@ -17,7 +17,7 @@
           "default": true,
           "volumeDiscounts": [],
           "cost_price": 25000,
-          "price": 120000,
+          "price": 132000,
           "stock": 0,
           "showPrice": true,
           "weight": 2.5
@@ -28,7 +28,7 @@
           "default": false,
           "volumeDiscounts": [],
           "cost_price": 25000,
-          "price": 100000,
+          "price": 110000,
           "stock": 0,
           "showPrice": true,
           "weight": 2.5
@@ -39,7 +39,7 @@
           "default": false,
           "volumeDiscounts": [],
           "cost_price": 25000,
-          "price": 80000,
+          "price": 88000,
           "stock": 0,
           "showPrice": true,
           "weight": 2.5

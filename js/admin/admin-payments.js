@@ -219,6 +219,21 @@
 
                     <div style="display: flex; flex-direction: column; gap: 14px;">
                         
+                        <!-- BENEFICIO: DESCUENTO POR TRANSFERENCIA DIRECTA -->
+                        <div style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 12px; padding: 0.85rem 1rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                            <div>
+                                <div style="font-size: 0.82rem; font-weight: 800; color: #166534; display: flex; align-items: center; gap: 6px;">
+                                    <span class="material-symbols-outlined" style="font-size: 18px; color: #16a34a;">percent</span>
+                                    <span>Descuento por Transferencia Bancaria Directa</span>
+                                </div>
+                                <div style="font-size: 0.7rem; color: #15803d; margin-top: 2px;">Incentiva a transferir directamente para ahorrar comisiones de pasarelas.</div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <input type="number" step="0.5" min="0" max="50" id="admin-transfer-discount" value="${transfer.discountPercent !== undefined ? transfer.discountPercent : 10}" placeholder="Ej: 10" style="width: 75px; box-sizing: border-box; border: 1.5px solid #86efac; border-radius: 8px; padding: 0.4rem 0.5rem; font-size: 0.9rem; font-weight: 800; color: #166534; text-align: center; background: #ffffff; outline: none;">
+                                <span style="font-weight: 800; color: #166534; font-size: 0.85rem;">% OFF</span>
+                            </div>
+                        </div>
+
                         <!-- CUENTA 1: CARPINTERÍA (TALLER / YONATAN) -->
                         <div style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 1rem;">
                             <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
@@ -961,6 +976,8 @@
         const transferCeciliaTitular = document.getElementById('admin-transfer-cecilia-titular')?.value.trim() || '';
         const transferCeciliaCuit = document.getElementById('admin-transfer-cecilia-cuit')?.value.trim() || '';
 
+        const transferDiscount = parseFloat(document.getElementById('admin-transfer-discount')?.value) || 10;
+
         const newConfig = {
             transfer: {
                 active: transferActive,
@@ -968,7 +985,8 @@
                 cbu: transferCbu,
                 bank: transferBank,
                 titular: transferTitular,
-                cuit: transferCuit
+                cuit: transferCuit,
+                discountPercent: transferDiscount
             },
             transferCecilia: {
                 active: transferCeciliaActive,
@@ -976,7 +994,8 @@
                 cbu: transferCeciliaCbu,
                 bank: transferCeciliaBank,
                 titular: transferCeciliaTitular,
-                cuit: transferCeciliaCuit
+                cuit: transferCeciliaCuit,
+                discountPercent: transferDiscount
             },
             mercadopago: {
                 active: mpActive,

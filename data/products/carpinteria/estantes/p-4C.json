@@ -19,7 +19,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 4500,
+          "price": 5000,
           "cost_price": 500,
           "legend": "",
           "showPrice": true
@@ -32,7 +32,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 8000,
+          "price": 8800,
           "cost_price": 5500,
           "legend": "",
           "showPrice": true
@@ -55,7 +55,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 4500,
+          "price": 5000,
           "cost_price": 4500,
           "legend": "",
           "showPrice": true
@@ -68,7 +68,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 8500,
+          "price": 9400,
           "cost_price": 8500,
           "legend": "",
           "showPrice": true
@@ -81,7 +81,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 17000,
+          "price": 18700,
           "cost_price": 17000,
           "legend": "",
           "showPrice": true
