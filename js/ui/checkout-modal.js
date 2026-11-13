@@ -341,22 +341,35 @@
                         </div>
 
                         <!-- Desglose de Producto + Envío si aplica -->
-                        <div id="pay-modal-breakdown-box" style="display: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 8px 12px; font-size: 0.78rem; flex-direction: column; gap: 4px;">
+                        <div id="pay-modal-breakdown-box" style="display: flex; background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 12px; padding: 10px 14px; font-size: 0.8rem; flex-direction: column; gap: 5px; margin-top: 6px;">
                             <div style="display: flex; justify-content: space-between; color: #475569;">
-                                <span>Subtotal Productos:</span>
+                                <span>Subtotal de Lista:</span>
                                 <span style="font-weight: 700; color: #0f172a;" id="breakdown-prod-val">${formattedOfferPrice}</span>
                             </div>
-                            <div style="display: flex; justify-content: space-between; color: #0284c7;" id="breakdown-ship-row">
+                            <div style="display: none; justify-content: space-between; color: #0284c7;" id="breakdown-ship-row">
                                 <span id="breakdown-ship-label">🚚 Envío:</span>
                                 <span style="font-weight: 700;" id="breakdown-ship-val"></span>
                             </div>
-                            <div style="display: none; justify-content: space-between; color: #15803d;" id="breakdown-transfer-discount-row">
+                            <div style="display: flex; justify-content: space-between; color: #15803d;" id="breakdown-transfer-discount-row">
                                 <span id="breakdown-transfer-discount-label">🎉 Descuento Transferencia (-10%):</span>
                                 <span style="font-weight: 700;" id="breakdown-transfer-discount-val"></span>
                             </div>
-                            <div style="display: none; justify-content: space-between; color: #b45309;" id="breakdown-mp-surcharge-row">
-                                <span id="breakdown-mp-surcharge-label">💳 Recargo Mercado Pago:</span>
-                                <span style="font-weight: 700;" id="breakdown-mp-surcharge-val"></span>
+                            <div style="display: none; justify-content: space-between; color: #0284c7;" id="breakdown-mp-surcharge-row">
+                                <span id="breakdown-mp-surcharge-label">💳 Modalidad:</span>
+                                <span style="font-weight: 700;" id="breakdown-mp-surcharge-val">Precio de Lista Oficial (0% adicional)</span>
+                            </div>
+                            <!-- Cartel de Ahorro Destacado -->
+                            <div id="breakdown-savings-banner" style="background: #f0fdf4; border: 1px solid #86efac; border-radius: 8px; padding: 7px 10px; font-size: 0.78rem; font-weight: 800; color: #15803d; display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-top: 4px;">
+                                <span style="display: flex; align-items: center; gap: 5px;">
+                                    <span class="material-symbols-outlined" style="font-size: 18px; color: #16a34a;">savings</span>
+                                    <span>¡Ahorrás en esta compra!</span>
+                                </span>
+                                <span style="font-size: 0.85rem;" id="breakdown-savings-amount"></span>
+                            </div>
+                            <!-- Cartel Informativo al pagar con Mercado Pago / Tarjeta -->
+                            <div id="breakdown-mp-hint-banner" style="display: none; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 7px 10px; font-size: 0.75rem; color: #0369a1; justify-content: space-between; align-items: center; gap: 6px; margin-top: 4px;">
+                                <span>💡 Pagando por Transferencia Directa tenés 10% OFF</span>
+                                <span style="font-weight: 800; color: #16a34a; white-space: nowrap;" id="breakdown-mp-hint-amount"></span>
                             </div>
                         </div>
 
@@ -1477,17 +1490,19 @@
             const shipLabel = window._checkoutSelectedShipLabel || '';
             const activePayVal = window._checkoutSelectedPayMethod || 'transfer';
 
-            const transferDiscountPct = parseFloat(transferConf.discountPercent !== undefined ? transferConf.discountPercent : 10) || 0;
-            let mpSurchargePct = 0;
-            if (activePayVal === 'link') mpSurchargePct = mpLinkSurchargePct;
-            else if (activePayVal === 'credit') mpSurchargePct = mpCreditSurchargePct;
+            // Descuento Transferencia Directa (asegurar siempre 10% salvo configuración explícita > 0)
+            let transferDiscountPct = parseFloat(transferConf?.discountPercent);
+            if (isNaN(transferDiscountPct) || transferDiscountPct <= 0) {
+                transferDiscountPct = 10;
+            }
 
             const baseWithShip = totalOfferVal + shipCost;
-            const transferDiscountVal = (activePayVal === 'transfer' && transferDiscountPct > 0)
-                ? Math.round((baseWithShip * (transferDiscountPct / 100)) / 100) * 100
-                : 0;
-            const mpSurchargeVal = mpSurchargePct > 0 ? Math.round(baseWithShip * (mpSurchargePct / 100)) : 0;
-            const subtotalWithPayMethod = baseWithShip - transferDiscountVal + mpSurchargeVal;
+            // Cálculo del ahorro que se obtiene por pagar vía transferencia
+            const potentialTransferSavings = Math.round((baseWithShip * (transferDiscountPct / 100)) / 100) * 100;
+            const transferDiscountVal = (activePayVal === 'transfer') ? potentialTransferSavings : 0;
+
+            const mpSurchargeVal = 0; // Mercado Pago y Tarjeta siempre toman Precio de Lista (0% adicional)
+            const subtotalWithPayMethod = baseWithShip - transferDiscountVal;
 
             const ivaVal = subtotalWithPayMethod * 0.21;
             const iibbVal = subtotalWithPayMethod * 0.035;
@@ -1502,8 +1517,9 @@
                 activePayVal,
                 transferDiscountPct,
                 transferDiscountVal,
-                mpSurchargePct,
-                mpSurchargeVal,
+                potentialTransferSavings,
+                mpSurchargePct: 0,
+                mpSurchargeVal: 0,
                 baseWithShip,
                 subtotalWithPayMethod,
                 ivaVal,
@@ -1515,7 +1531,7 @@
 
         function updateTotalDisplay() {
             const info = getCurrentFinalTotalInfo();
-            const { isShipping, isFacturaA, shipCost, shipLabel, transferDiscountPct, transferDiscountVal, mpSurchargePct, mpSurchargeVal, subtotalWithPayMethod, ivaVal, iibbVal, totalFactA, finalTotal } = info;
+            const { isShipping, isFacturaA, shipCost, shipLabel, transferDiscountPct, transferDiscountVal, potentialTransferSavings, subtotalWithPayMethod, ivaVal, iibbVal, totalFactA, finalTotal, activePayVal } = info;
 
             const priceDisplay = document.getElementById('pay-modal-display-price');
             if (priceDisplay) priceDisplay.textContent = formatCurr(finalTotal);
@@ -1531,52 +1547,72 @@
             const mpRow = document.getElementById('breakdown-mp-surcharge-row');
             const mpLbl = document.getElementById('breakdown-mp-surcharge-label');
             const mpVal = document.getElementById('breakdown-mp-surcharge-val');
+            const savingsBanner = document.getElementById('breakdown-savings-banner');
+            const savingsAmount = document.getElementById('breakdown-savings-amount');
+            const mpHintBanner = document.getElementById('breakdown-mp-hint-banner');
+            const mpHintAmount = document.getElementById('breakdown-mp-hint-amount');
 
             const hasShipBreakdown = !!(isShipping && (shipCost > 0 || shipLabel));
-            const hasTransferDiscountBreakdown = transferDiscountVal > 0;
-            const isMpActive = (activePayVal === 'link' || activePayVal === 'credit');
+            const isTransfer = (activePayVal === 'transfer');
+            const isMpOrCard = (activePayVal === 'link' || activePayVal === 'credit');
 
             if (breakdownBox) {
-                if (hasShipBreakdown || hasTransferDiscountBreakdown || isMpActive) {
-                    breakdownBox.style.display = 'flex';
-                    if (shipRow) {
-                        if (hasShipBreakdown) {
-                            shipRow.style.display = 'flex';
-                            const isFreeShip = shipCost === 0 && shipLabel.toLowerCase().includes('gratis');
-                            if (shipLbl) shipLbl.textContent = '🚚 Envío (' + shipLabel + '):';
-                            if (shipVal) {
-                                shipVal.textContent = shipCost > 0 ? formatCurr(shipCost) : (isFreeShip ? '¡ENVÍO GRATIS! ($ 0)' : 'A cotizar');
-                                shipVal.style.color = isFreeShip ? '#15803d' : '';
-                                shipVal.style.fontWeight = isFreeShip ? '900' : '';
-                            }
-                        } else {
-                            shipRow.style.display = 'none';
+                breakdownBox.style.display = 'flex';
+                if (shipRow) {
+                    if (hasShipBreakdown) {
+                        shipRow.style.display = 'flex';
+                        const isFreeShip = shipCost === 0 && shipLabel.toLowerCase().includes('gratis');
+                        if (shipLbl) shipLbl.textContent = '🚚 Envío (' + shipLabel + '):';
+                        if (shipVal) {
+                            shipVal.textContent = shipCost > 0 ? formatCurr(shipCost) : (isFreeShip ? '¡ENVÍO GRATIS! ($ 0)' : 'A cotizar');
+                            shipVal.style.color = isFreeShip ? '#15803d' : '';
+                            shipVal.style.fontWeight = isFreeShip ? '900' : '';
                         }
+                    } else {
+                        shipRow.style.display = 'none';
                     }
-                    if (transferRow) {
-                        if (hasTransferDiscountBreakdown) {
-                            transferRow.style.display = 'flex';
-                            if (transferLbl) transferLbl.textContent = `🎉 Descuento Transferencia (-${transferDiscountPct}%):`;
-                            if (transferVal) transferVal.textContent = '-' + formatCurr(transferDiscountVal);
-                        } else {
-                            transferRow.style.display = 'none';
+                }
+
+                if (transferRow) {
+                    if (isTransfer && transferDiscountVal > 0) {
+                        transferRow.style.display = 'flex';
+                        if (transferLbl) transferLbl.textContent = `🎉 Descuento Transferencia (-${transferDiscountPct}%):`;
+                        if (transferVal) transferVal.textContent = '-' + formatCurr(transferDiscountVal);
+                    } else {
+                        transferRow.style.display = 'none';
+                    }
+                }
+
+                if (savingsBanner) {
+                    if (isTransfer && transferDiscountVal > 0) {
+                        savingsBanner.style.display = 'flex';
+                        if (savingsAmount) savingsAmount.textContent = `Ahorrás -${formatCurr(transferDiscountVal)}`;
+                    } else {
+                        savingsBanner.style.display = 'none';
+                    }
+                }
+
+                if (mpRow) {
+                    if (isMpOrCard) {
+                        mpRow.style.display = 'flex';
+                        if (mpLbl) mpLbl.textContent = '💳 Modalidad:';
+                        if (mpVal) {
+                            mpVal.textContent = 'Precio de Lista Oficial (0% adicional)';
+                            mpVal.style.color = '#0284c7';
+                            mpVal.style.fontWeight = '700';
                         }
+                    } else {
+                        mpRow.style.display = 'none';
                     }
-                    if (mpRow) {
-                        if (isMpActive) {
-                            mpRow.style.display = 'flex';
-                            if (mpLbl) mpLbl.textContent = '💳 Modalidad:';
-                            if (mpVal) {
-                                mpVal.textContent = 'Precio de Lista (0% adicional)';
-                                mpVal.style.color = '#0284c7';
-                                mpVal.style.fontWeight = '700';
-                            }
-                        } else {
-                            mpRow.style.display = 'none';
-                        }
+                }
+
+                if (mpHintBanner) {
+                    if (isMpOrCard && potentialTransferSavings > 0) {
+                        mpHintBanner.style.display = 'flex';
+                        if (mpHintAmount) mpHintAmount.textContent = `Ahorrás -${formatCurr(potentialTransferSavings)}`;
+                    } else {
+                        mpHintBanner.style.display = 'none';
                     }
-                } else {
-                    breakdownBox.style.display = 'none';
                 }
             }
 
