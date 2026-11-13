@@ -33,7 +33,7 @@
                 background: rgba(15, 23, 42, 0.5);
                 backdrop-filter: blur(4px);
                 -webkit-backdrop-filter: blur(4px);
-                z-index: 99998;
+                z-index: 999998;
                 opacity: 0;
                 visibility: hidden;
                 transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
@@ -51,7 +51,7 @@
                 width: 100%;
                 max-width: 440px;
                 background: #ffffff;
-                z-index: 99999;
+                z-index: 999999;
                 box-shadow: -10px 0 35px rgba(0, 0, 0, 0.22);
                 transform: translateX(100%);
                 transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
