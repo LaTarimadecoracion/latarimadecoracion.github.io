@@ -1214,17 +1214,21 @@
                    </span>`
                 : '';
 
+            const localOrdersCount = (typeof window.getMyLocalOrders === 'function') ? window.getMyLocalOrders().length : 0;
             const cartGuestSyncBannerHTML = !cartPublicUser
-                ? `<div style="background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%); border: 1px solid #bfdbfe; border-radius: 14px; padding: 0.75rem 1rem; margin-bottom: 0.95rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
+                ? `<div style="background: ${localOrdersCount > 0 ? 'linear-gradient(135deg, #f0fdf4 0%, #eff6ff 100%)' : 'linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%)'}; border: 1.5px solid ${localOrdersCount > 0 ? '#86efac' : '#bfdbfe'}; border-radius: 14px; padding: 0.75rem 1rem; margin-bottom: 0.95rem; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
                         <div style="display: flex; align-items: center; gap: 10px; min-width: 220px; flex: 1;">
-                            <span class="material-symbols-outlined" style="color: #2563eb; font-size: 22px; flex-shrink: 0;">cloud_sync</span>
+                            <span class="material-symbols-outlined" style="color: ${localOrdersCount > 0 ? '#16a34a' : '#2563eb'}; font-size: 22px; flex-shrink: 0;">${localOrdersCount > 0 ? 'local_shipping' : 'cloud_sync'}</span>
                             <div style="font-size: 0.8rem; color: #1e293b; line-height: 1.35;">
-                                <strong>No pierdas lo que buscás:</strong> iniciá sesión gratis con Google para guardar tu carrito entre PC y celular.
+                                ${localOrdersCount > 0
+                                    ? `<strong>Tenés ${localOrdersCount} ${localOrdersCount === 1 ? 'pedido guardado' : 'pedidos guardados'} en este celular:</strong> vinculá tu cuenta de Google en 1 clic para seguir su fabricación y entrega en vivo.`
+                                    : `<strong>No pierdas lo que buscás:</strong> iniciá sesión gratis con Google para guardar tu carrito entre PC y celular.`
+                                }
                             </div>
                         </div>
                         <button type="button" id="btn-cart-google-sync" style="background: #ffffff; color: #0f172a; border: 1.5px solid #cbd5e1; border-radius: 999px; padding: 0.45rem 0.95rem; font-size: 0.78rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05); flex-shrink: 0;">
                             <svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/><path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z"/><path fill="#FBBC05" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z"/><path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z"/></svg>
-                            <span>Guardar con Google</span>
+                            <span>${localOrdersCount > 0 ? 'Vincular con Google' : 'Guardar con Google'}</span>
                         </button>
                    </div>`
                 : '';

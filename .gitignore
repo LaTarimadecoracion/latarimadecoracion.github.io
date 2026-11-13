@@ -25,3 +25,5 @@ minify-local.js
 Catalogo/
 catalogo/
 _dev/mp-secret.json
+js/products-data.js
+docs/js/products-data.js

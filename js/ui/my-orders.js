@@ -120,9 +120,40 @@
             : null;
         const userEmail = (user && user.email) ? user.email.trim().toLowerCase() : '';
 
-        // Privacidad estricta: si no hay usuario logueado, no mostramos ningún pedido
+        // Si no hay usuario logueado con Google, mostramos los pedidos guardados en este celular / dispositivo
         if (!user || !userEmail) {
-            return { user: null, orders: [] };
+            const localList = getLocalOrders();
+            const idsToRefresh = localList.map(o => o.id).filter(Boolean).slice(0, 10);
+            await Promise.all(idsToRefresh.map(async (id) => {
+                try {
+                    const res = await fetch(`${WORKER_URL}/pedidos?id=${encodeURIComponent(id)}`);
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data && data.success && data.order) {
+                            const idx = localList.findIndex(o => String(o.id) === String(id));
+                            if (idx !== -1) localList[idx] = { ...localList[idx], ...data.order };
+                        }
+                    }
+                } catch(e) {}
+            }));
+            localList.sort((a, b) => (Number(b.createdAt) || 0) - (Number(a.createdAt) || 0));
+            return { user: null, orders: localList };
+        }
+
+        // Si el usuario acaba de iniciar sesión, vinculamos automáticamente los pedidos de invitado de este dispositivo
+        const rawLocal = getLocalOrders();
+        let changedLocal = false;
+        rawLocal.forEach(o => {
+            if (!o.clientEmail || o.isGuestOrder) {
+                o.clientEmail = userEmail;
+                o.isGuestOrder = false;
+                changedLocal = true;
+            }
+        });
+        if (changedLocal) {
+            try {
+                localStorage.setItem(LOCAL_ORDERS_KEY, JSON.stringify(rawLocal));
+            } catch(e) {}
         }
 
         const ordersMap = new Map();
@@ -132,7 +163,7 @@
             ordersMap.set(String(ord.id), { ...prev, ...ord });
         };
 
-        // 1. Pedidos locales guardados que pertenezcan exclusivamente al correo logueado
+        // 1. Pedidos locales guardados que pertenezcan al correo logueado
         const localList = getLocalOrders();
         localList.forEach(o => {
             const oEmail = (o.clientEmail || '').trim().toLowerCase();
@@ -618,32 +649,38 @@
 
         const { user, orders } = await fetchOrdersForCurrentUser();
 
-        const loginInvitationHtml = !user ? `
-            <div style="background: linear-gradient(135deg, #ffffff 0%, #fffbeb 100%); border: 1.5px solid #fde68a; border-radius: 20px; padding: 2rem 1.75rem; margin-bottom: 1.5rem; box-shadow: 0 8px 28px rgba(217, 119, 6, 0.08); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem;">
+        let loginInvitationHtml = '';
+        if (!user) {
+            const hasLocalOrders = orders.length > 0;
+            loginInvitationHtml = `
+            <div style="background: ${hasLocalOrders ? 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fffbeb 100%)'}; border: 1.5px solid ${hasLocalOrders ? '#86efac' : '#fde68a'}; border-radius: 20px; padding: ${hasLocalOrders ? '1.35rem 1.5rem' : '2rem 1.75rem'}; margin-bottom: 1.5rem; box-shadow: 0 8px 28px rgba(15, 23, 42, 0.05); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
                 <div style="display: flex; align-items: flex-start; gap: 1.15rem; flex: 1; min-width: 260px;">
-                    <div style="width: 56px; height: 56px; border-radius: 16px; background: #fef3c7; color: #d97706; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                        <span class="material-symbols-outlined" style="font-size: 32px;">person_add</span>
+                    <div style="width: 54px; height: 54px; border-radius: 16px; background: ${hasLocalOrders ? '#dcfce7' : '#fef3c7'}; color: ${hasLocalOrders ? '#16a34a' : '#d97706'}; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <span class="material-symbols-outlined" style="font-size: 30px;">${hasLocalOrders ? 'phonelink_setup' : 'person_add'}</span>
                     </div>
                     <div>
-                        <span style="display: inline-block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.7px; color: #b45309; background: #fef3c7; padding: 2px 10px; border-radius: 50px; margin-bottom: 6px;">100% Gratis con Google</span>
-                        <h3 style="margin: 0 0 6px 0; font-size: 1.25rem; font-weight: 900; color: #0f172a;">¡Registrate gratis para ver todas tus compras!</h3>
+                        <span style="display: inline-block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.7px; color: ${hasLocalOrders ? '#15803d' : '#b45309'}; background: ${hasLocalOrders ? '#dcfce7' : '#fef3c7'}; padding: 2px 10px; border-radius: 50px; margin-bottom: 6px;">
+                            ${hasLocalOrders ? '📱 Pedidos guardados en este celular' : '100% Gratis con Google'}
+                        </span>
+                        <h3 style="margin: 0 0 4px 0; font-size: 1.22rem; font-weight: 900; color: #0f172a;">
+                            ${hasLocalOrders ? '¿Querés vincular tus pedidos para no perderlos nunca?' : '¡Registrate gratis para ver todas tus compras!'}
+                        </h3>
                         <p style="margin: 0; font-size: 0.88rem; color: #475569; line-height: 1.5;">
-                            Con tu cuenta podés seguir la fabricación de tus muebles en vivo, ver tus comprobantes desde cualquier dispositivo y agilizar tus próximos envíos.
+                            ${hasLocalOrders 
+                                ? 'Hiciste tu compra como invitado. Si iniciás sesión con Google en 1 clic, tus pedidos se sincronizan en la nube para consultarlos desde cualquier PC o celular y no perder tus comprobantes.' 
+                                : 'Con tu cuenta podés seguir la fabricación de tus muebles en vivo, ver tus comprobantes desde cualquier dispositivo y agilizar tus próximos envíos.'}
                         </p>
                     </div>
                 </div>
                 <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
-                    <button type="button" class="btn-myorders-auth-trigger" style="background: var(--primary-color, #A0715B); color: #ffffff; border: none; border-radius: 50px; padding: 0.75rem 1.45rem; font-weight: 800; font-size: 0.9rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px rgba(160, 113, 91, 0.3);">
-                        <span class="material-symbols-outlined" style="font-size: 19px;">how_to_reg</span>
-                        <span>Crear cuenta gratis</span>
-                    </button>
-                    <button type="button" class="btn-myorders-auth-trigger" style="background: #ffffff; color: #0f172a; border: 1.5px solid #cbd5e1; border-radius: 50px; padding: 0.75rem 1.25rem; font-weight: 700; font-size: 0.88rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
-                        <svg width="16" height="16" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
-                        <span>Ingresar</span>
+                    <button type="button" class="btn-myorders-auth-trigger" style="background: ${hasLocalOrders ? '#16a34a' : 'var(--primary-color, #A0715B)'}; color: #ffffff; border: none; border-radius: 50px; padding: 0.8rem 1.45rem; font-weight: 800; font-size: 0.9rem; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 14px ${hasLocalOrders ? 'rgba(22, 163, 74, 0.28)' : 'rgba(160, 113, 91, 0.3)'};">
+                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style="flex-shrink:0;"><path fill="#ffffff" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17Z"/><path fill="#ffffff" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.11-6.72-4.96H1.29v3.14C3.26 21.3 7.31 24 12 24Z"/><path fill="#ffffff" d="M5.28 14.24c-.24-.72-.38-1.49-.38-2.24s.14-1.52.38-2.24V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.99-3.14Z"/><path fill="#ffffff" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.99 3.14c.95-2.85 3.6-4.96 6.72-4.96Z"/></svg>
+                        <span>${hasLocalOrders ? 'Vincular pedidos con Google' : 'Ingresar con Google'}</span>
                     </button>
                 </div>
             </div>
-        ` : '';
+            `;
+        }
 
         let ordersHtml = '';
         if (orders.length > 0) {
@@ -703,15 +740,17 @@
                     </article>
                 `;
             }).join('');
-        } else if (user) {
+        } else {
             ordersHtml = `
                 <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 2.25rem 1.5rem; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.03); margin-bottom: 1rem;">
                     <div style="width: 60px; height: 60px; border-radius: 50%; background: #f1f5f9; color: #64748b; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 0.85rem;">
-                        <span class="material-symbols-outlined" style="font-size: 30px;">shopping_bag</span>
+                        <span class="material-symbols-outlined" style="font-size: 30px;">receipt_long</span>
                     </div>
-                    <h3 style="margin: 0 0 6px 0; font-size: 1.12rem; font-weight: 800; color: #0f172a;">Todavía no tenés compras registradas con ${user.email}</h3>
+                    <h3 style="margin: 0 0 6px 0; font-size: 1.12rem; font-weight: 800; color: #0f172a;">
+                        ${user ? `Todavía no tenés compras registradas con ${user.email}` : 'No tenés compras guardadas en este dispositivo'}
+                    </h3>
                     <p style="margin: 0; font-size: 0.86rem; color: #64748b; max-width: 460px; margin-left: auto; margin-right: auto; line-height: 1.5;">
-                        Cuando hagas un pedido verás acá el estado en vivo. Si ya compraste antes y tenés un código <strong>#LT-...</strong>, podés buscarlo arriba.
+                        ${user ? 'Cuando hagas un pedido verás acá el estado en vivo. Si ya compraste antes con otro código o como invitado, podés buscarlo arriba.' : 'Si compraste como invitado o desde otro dispositivo, podés ingresar tu código <strong>#LT-...</strong> en el buscador de arriba.'}
                     </p>
                 </div>
             `;
