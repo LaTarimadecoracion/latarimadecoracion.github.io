@@ -21,7 +21,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 33000,
+          "price": 34700,
           "cost_price": "",
           "legend": "",
           "showPrice": true,
@@ -60,5 +60,5 @@
     "Juguetes"
   ],
   "rubro": "carpinteria",
-  "price": 33000
+  "price": 34700
 }
