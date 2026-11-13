@@ -264,20 +264,22 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(15, 23, 42, 0.08);
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(15, 23, 42, 0.12);
     border-radius: 50px;
-    padding: 2px 10px 2px 3px;
+    padding: 3px 10px 3px 4px;
     cursor: pointer;
     font-size: 0.82rem;
     color: var(--text-main, #2D3748);
-    transition: background 0.15s, border-color 0.15s;
+    transition: all 0.2s ease;
 }
 
 .desktop-user-trigger:hover,
 .desktop-user-menu-wrapper.open .desktop-user-trigger {
     background: #ffffff;
-    border-color: rgba(15, 23, 42, 0.18);
+    border-color: rgba(15, 23, 42, 0.25);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
 }
 
 .desktop-user-avatar-img {
@@ -318,9 +320,7 @@
     transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
 }
 
-.desktop-user-menu-wrapper.open .desktop-user-dropdown,
-.desktop-user-menu-wrapper:hover .desktop-user-dropdown,
-.desktop-user-menu-wrapper:focus-within .desktop-user-dropdown {
+.desktop-user-menu-wrapper.open .desktop-user-dropdown {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;

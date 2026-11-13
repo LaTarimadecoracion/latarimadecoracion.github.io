@@ -149,7 +149,7 @@
                     <span class="material-symbols-outlined user-profile-drawer-icon">account_circle</span>
                     <div style="min-width: 0;">
                         <div class="user-profile-drawer-badge">La Tarima · Mi Cuenta</div>
-                        <h3 class="user-profile-drawer-title">Mi Perfil de Entrega</h3>
+                        <h3 class="user-profile-drawer-title">${publicUser ? 'Mi Cuenta y Perfil' : 'Mi Perfil de Entrega'}</h3>
                     </div>
                 </div>
                 <button type="button" id="btn-close-user-profile" class="user-profile-drawer-close-btn" title="Cerrar perfil">
@@ -277,6 +277,25 @@
         const prefilledName = currentData.name || publicUser.nombre || '';
         const prefilledEmail = publicUser.email || currentData.email || '';
 
+        const ordersList = (typeof window.getMyLocalOrders === 'function') ? window.getMyLocalOrders() : [];
+        const ordersCount = ordersList.length;
+        const ordersCountText = ordersCount > 0 ? `${ordersCount} ${ordersCount === 1 ? 'pedido' : 'pedidos'}` : 'Ver compras';
+
+        let cartCount = 0;
+        try {
+            const rawCart = localStorage.getItem('cartItems');
+            if (rawCart) {
+                const parsed = JSON.parse(rawCart);
+                cartCount = Array.isArray(parsed) ? parsed.length : 0;
+            }
+        } catch (e) {}
+        const cartCountText = cartCount > 0 ? `${cartCount} ${cartCount === 1 ? 'producto' : 'productos'}` : 'Ver carrito';
+
+        const isStaff = publicUser.role === 'superadmin' || publicUser.role === 'colaborador';
+        const roleBadgeText = publicUser.role === 'superadmin'
+            ? 'SuperAdmin'
+            : (publicUser.role === 'colaborador' ? 'Equipo Taller' : (publicUser.clientTier === 'mayorista' ? 'Mayorista VIP' : 'Cliente Verificado'));
+
         card.innerHTML = `
             ${headerHTML}
 
@@ -290,7 +309,7 @@
                         <div style="min-width: 0; flex: 1;">
                             <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
                                 <span style="font-size: 0.88rem; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${esc(publicUser.nombre || 'Usuario Google')}</span>
-                                <span style="background: #dcfce7; color: #15803d; border: 1px solid #86efac; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.3px;">Cuenta Google</span>
+                                <span style="background: ${isStaff ? '#fee2e2' : '#dcfce7'}; color: ${isStaff ? '#dc2626' : '#15803d'}; border: 1px solid ${isStaff ? '#fecaca' : '#86efac'}; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.3px;">${roleBadgeText}</span>
                             </div>
                             <div style="font-size: 0.75rem; color: #475569; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${esc(publicUser.email || '')}</div>
                         </div>
@@ -303,6 +322,59 @@
                         <button type="button" id="btn-profile-google-logout" style="background: #ffffff; border: 1px solid #cbd5e1; color: #475569; border-radius: 8px; padding: 0.4rem 0.75rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s;" onmouseenter="this.style.borderColor='#ef4444';this.style.color='#dc2626';" onmouseleave="this.style.borderColor='#cbd5e1';this.style.color='#475569';">
                             Cerrar sesión
                         </button>
+                    </div>
+                </div>
+
+                <!-- Accesos Rápidos de la Cuenta (Hub Ordenado) -->
+                <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 0.85rem; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px;">
+                    <div style="font-size: 0.7rem; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.6px; display: flex; align-items: center; justify-content: space-between;">
+                        <span>Accesos Rápidos</span>
+                        <span style="font-size: 0.65rem; color: #16a34a; font-weight: 700;">● Sesión activa</span>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                        <button type="button" id="btn-drawer-my-orders" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.65rem 0.75rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left; transition: all 0.2s;" onmouseenter="this.style.borderColor='#3b82f6';this.style.background='#eff6ff';" onmouseleave="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';">
+                            <span class="material-symbols-outlined" style="font-size: 20px; color: #2563eb; background: #dbeafe; padding: 6px; border-radius: 8px; flex-shrink: 0;">shopping_bag</span>
+                            <div style="min-width: 0; flex: 1;">
+                                <div style="font-size: 0.78rem; font-weight: 800; color: #0f172a; line-height: 1.2;">Mis Compras</div>
+                                <div style="font-size: 0.68rem; color: #64748b; margin-top: 2px;">${ordersCountText}</div>
+                            </div>
+                        </button>
+
+                        <button type="button" id="btn-drawer-cart" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.65rem 0.75rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left; transition: all 0.2s;" onmouseenter="this.style.borderColor='#16a34a';this.style.background='#f0fdf4';" onmouseleave="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';">
+                            <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a; background: #dcfce7; padding: 6px; border-radius: 8px; flex-shrink: 0;">shopping_cart</span>
+                            <div style="min-width: 0; flex: 1;">
+                                <div style="font-size: 0.78rem; font-weight: 800; color: #0f172a; line-height: 1.2;">Mi Carrito</div>
+                                <div style="font-size: 0.68rem; color: #64748b; margin-top: 2px;">${cartCountText}</div>
+                            </div>
+                        </button>
+
+                        <button type="button" id="btn-drawer-notif" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.65rem 0.75rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left; transition: all 0.2s;" onmouseenter="this.style.borderColor='#f59e0b';this.style.background='#fffbeb';" onmouseleave="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';">
+                            <span class="material-symbols-outlined" style="font-size: 20px; color: #d97706; background: #fef3c7; padding: 6px; border-radius: 8px; flex-shrink: 0;">notifications</span>
+                            <div style="min-width: 0; flex: 1;">
+                                <div style="font-size: 0.78rem; font-weight: 800; color: #0f172a; line-height: 1.2;">Avisos</div>
+                                <div style="font-size: 0.68rem; color: #64748b; margin-top: 2px;">Notificaciones</div>
+                            </div>
+                        </button>
+
+                        <button type="button" id="btn-drawer-favs" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.65rem 0.75rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left; transition: all 0.2s;" onmouseenter="this.style.borderColor='#ec4899';this.style.background='#fdf2f8';" onmouseleave="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';">
+                            <span class="material-symbols-outlined" style="font-size: 20px; color: #db2777; background: #fce7f3; padding: 6px; border-radius: 8px; flex-shrink: 0;">favorite</span>
+                            <div style="min-width: 0; flex: 1;">
+                                <div style="font-size: 0.78rem; font-weight: 800; color: #0f172a; line-height: 1.2;">Favoritos</div>
+                                <div style="font-size: 0.68rem; color: #64748b; margin-top: 2px;">Guardados</div>
+                            </div>
+                        </button>
+
+                        ${isStaff ? `
+                        <button type="button" id="btn-drawer-admin" style="grid-column: 1 / -1; background: #fff1f2; border: 1px solid #fecdd3; border-radius: 10px; padding: 0.65rem 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left; transition: all 0.2s;" onmouseenter="this.style.borderColor='#f43f5e';this.style.background='#ffe4e6';" onmouseleave="this.style.borderColor='#fecdd3';this.style.background='#fff1f2';">
+                            <span class="material-symbols-outlined" style="font-size: 20px; color: #e11d48; background: #ffffff; padding: 6px; border-radius: 8px; flex-shrink: 0;">shield_person</span>
+                            <div style="min-width: 0; flex: 1;">
+                                <div style="font-size: 0.8rem; font-weight: 800; color: #9f1239; line-height: 1.2;">Panel de Administración</div>
+                                <div style="font-size: 0.68rem; color: #e11d48; margin-top: 2px;">Taller, pedidos y métricas</div>
+                            </div>
+                            <span class="material-symbols-outlined" style="font-size: 18px; color: #e11d48;">chevron_right</span>
+                        </button>
+                        ` : ''}
                     </div>
                 </div>
 
@@ -464,6 +536,38 @@
 
         const closeBtn = card.querySelector('#btn-close-user-profile');
         if (closeBtn) closeBtn.onclick = onClose;
+
+        // Accesos rápidos desde el Drawer de la cuenta
+        card.querySelector('#btn-drawer-my-orders')?.addEventListener('click', () => {
+            onClose();
+            if (window.navigateToView) window.navigateToView('view-my-orders');
+        });
+
+        card.querySelector('#btn-drawer-cart')?.addEventListener('click', () => {
+            onClose();
+            setTimeout(() => {
+                if (window.CartDrawer && typeof window.CartDrawer.open === 'function') {
+                    window.CartDrawer.open();
+                } else if (window.navigateToView) {
+                    window.navigateToView('view-profile');
+                }
+            }, 180);
+        });
+
+        card.querySelector('#btn-drawer-notif')?.addEventListener('click', () => {
+            onClose();
+            if (window.navigateToView) window.navigateToView('view-notifications');
+        });
+
+        card.querySelector('#btn-drawer-favs')?.addEventListener('click', () => {
+            onClose();
+            if (window.navigateToView) window.navigateToView('view-profile');
+        });
+
+        card.querySelector('#btn-drawer-admin')?.addEventListener('click', () => {
+            onClose();
+            if (window.navigateToView) window.navigateToView('view-admin');
+        });
 
         const googleLogoutBtn = card.querySelector('#btn-profile-google-logout');
         if (googleLogoutBtn) {
