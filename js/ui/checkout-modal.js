@@ -1658,6 +1658,9 @@
                     razonSocial: data.razonSocial || uData.razonSocial || '',
                     cuit: data.cuit || uData.cuit || '',
                     dirFiscal: data.dirFiscal || uData.dirFiscal || '',
+                    provinciaFiscal: data.provinciaFiscal || uData.provinciaFiscal || '',
+                    condIva: data.condIva || uData.condIva || '',
+                    emailFiscal: data.emailFiscal || uData.emailFiscal || '',
                     deliveryMode: data.deliveryMode || ''
                 };
 
@@ -1680,6 +1683,20 @@
                 if (merged.razonSocial && document.getElementById('factura-razon-social')) document.getElementById('factura-razon-social').value = merged.razonSocial;
                 if (merged.cuit && document.getElementById('factura-cuit')) document.getElementById('factura-cuit').value = merged.cuit;
                 if (merged.dirFiscal && document.getElementById('factura-direccion-fiscal')) document.getElementById('factura-direccion-fiscal').value = merged.dirFiscal;
+                if (merged.provinciaFiscal && document.getElementById('factura-provincia')) document.getElementById('factura-provincia').value = merged.provinciaFiscal;
+                if (merged.condIva && document.getElementById('factura-condicion-iva')) document.getElementById('factura-condicion-iva').value = merged.condIva;
+                if (merged.emailFiscal && document.getElementById('factura-email')) document.getElementById('factura-email').value = merged.emailFiscal;
+                if (merged.cuit || merged.razonSocial) {
+                    if (merged.condIva === 'Responsable Inscripto' && document.getElementById('chk-factura-a')) {
+                        document.getElementById('chk-factura-a').checked = true;
+                        const menu = document.getElementById('factura-expand-menu');
+                        if (menu) menu.style.display = 'flex';
+                    } else if (document.getElementById('chk-factura-c')) {
+                        document.getElementById('chk-factura-c').checked = true;
+                        const menu = document.getElementById('factura-expand-menu');
+                        if (menu) menu.style.display = 'flex';
+                    }
+                }
 
                 if (merged.deliveryMode === 'pickup') {
                     const rPickup = document.getElementById('pay-mode-pickup');
@@ -1762,6 +1779,9 @@
                     setVal('factura-razon-social', uData.razonSocial || '');
                     setVal('factura-cuit', uData.cuit || '');
                     setVal('factura-direccion-fiscal', uData.dirFiscal || '');
+                    setVal('factura-provincia', uData.provinciaFiscal || '');
+                    setVal('factura-condicion-iva', uData.condIva || '');
+                    setVal('factura-email', uData.emailFiscal || '');
 
                     const cleanCp = (document.getElementById('pay-ship-cp')?.value || '').trim();
                     const isShippingSelected = document.getElementById('pay-mode-shipping')?.checked;

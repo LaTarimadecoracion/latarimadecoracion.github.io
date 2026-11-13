@@ -855,7 +855,7 @@ document.addEventListener('DOMContentLoaded', () => {
 (function() {
     window.UserDataManager = {
         get: function() {
-            let data = { avatar: '👤', name: '', phone: '', email: '', zipCode: '', address: '', locality: '', province: '', deliveryNotes: '', razonSocial: '', cuit: '', dirFiscal: '' };
+            let data = { avatar: '👤', name: '', phone: '', email: '', zipCode: '', address: '', locality: '', province: '', deliveryNotes: '', razonSocial: '', cuit: '', dirFiscal: '', provinciaFiscal: '', condIva: '', emailFiscal: '' };
             
             // 1. Base primaria en userData
             try {

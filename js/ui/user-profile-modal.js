@@ -257,38 +257,64 @@
                             📄 3. Datos de Facturación / Factura A (Opcional):
                         </div>
                         <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.78rem; font-weight: 700; color: #0f172a;">
-                            <input type="checkbox" id="prof-factura-a-toggle" ${currentData.cuit ? 'checked' : ''} style="accent-color: #0f172a; cursor: pointer;">
+                            <input type="checkbox" id="prof-factura-a-toggle" ${(currentData.cuit || currentData.razonSocial) ? 'checked' : ''} style="accent-color: #0f172a; cursor: pointer;">
                             <span>Datos para Factura</span>
                         </label>
                     </div>
 
-                    <div id="prof-factura-a-menu" style="display: ${currentData.cuit ? 'flex' : 'none'}; flex-direction: column; gap: 10px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #cbd5e1;">
+                    <div id="prof-factura-a-menu" style="display: ${(currentData.cuit || currentData.razonSocial) ? 'flex' : 'none'}; flex-direction: column; gap: 10px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #cbd5e1;">
 
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
                             <div>
                                 <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    Razón Social / Empresa
+                                    1. Razón Social / Persona / Entidad
                                 </label>
-                                <input type="text" id="prof-razon-social" value="${currentData.razonSocial || ''}" placeholder="Ej: La Tarima SRL" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                <input type="text" id="prof-razon-social" value="${esc(currentData.razonSocial || '')}" placeholder="Ej: La Tarima SRL o Tu Nombre" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
                             </div>
 
                             <div>
                                 <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    CUIT
+                                    2. CUIT / CUIL / DNI
                                 </label>
-                                <input type="text" id="prof-cuit" value="${currentData.cuit || ''}" placeholder="Ej: 30-12345678-9" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                <input type="text" id="prof-cuit" value="${esc(currentData.cuit || '')}" placeholder="Ej: 30-12345678-9" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
                             </div>
 
                             <div style="grid-column: 1 / -1; width: 100%;">
                                 <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    Dirección Fiscal
+                                    3. Domicilio / Dirección Fiscal
                                 </label>
-                                <input type="text" id="prof-dir-fiscal" value="${currentData.dirFiscal || currentData.fiscalAddress || ''}" placeholder="Av. Rivadavia 1234, Ciudad/Localidad, Provincia" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                <input type="text" id="prof-dir-fiscal" value="${esc(currentData.dirFiscal || currentData.fiscalAddress || '')}" placeholder="Av. Rivadavia 1234, Ciudad/Localidad, Provincia" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                            </div>
+
+                            <div>
+                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
+                                    4. Provincia / Jurisdicción Fiscal
+                                </label>
+                                <input type="text" id="prof-provincia-fiscal" value="${esc(currentData.provinciaFiscal || '')}" placeholder="Ej: Buenos Aires / CABA" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                            </div>
+
+                            <div>
+                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
+                                    5. Condición frente al IVA
+                                </label>
+                                <select id="prof-condicion-iva" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none; background: #ffffff; cursor: pointer;">
+                                    <option value="Consumidor Final" ${(currentData.condIva === 'Consumidor Final' || !currentData.condIva) ? 'selected' : ''}>Consumidor Final</option>
+                                    <option value="Responsable Inscripto" ${currentData.condIva === 'Responsable Inscripto' ? 'selected' : ''}>IVA Responsable Inscripto (Factura A)</option>
+                                    <option value="Responsable Monotributo" ${currentData.condIva === 'Responsable Monotributo' ? 'selected' : ''}>Responsable Monotributo</option>
+                                    <option value="IVA Exento" ${currentData.condIva === 'IVA Exento' ? 'selected' : ''}>IVA Exento / No Gravado</option>
+                                    <option value="Sujeto No Categorizado" ${currentData.condIva === 'Sujeto No Categorizado' ? 'selected' : ''}>Sujeto No Categorizado</option>
+                                </select>
+                            </div>
+
+                            <div style="grid-column: 1 / -1; width: 100%;">
+                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
+                                    6. Correo para Envío de Factura (Opcional)
+                                </label>
+                                <input type="email" id="prof-email-fiscal" value="${esc(currentData.emailFiscal || '')}" placeholder="Ej: facturacion@empresa.com (si dejás vacío se usa tu email principal)" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <!-- Footer con Botones estilo Checkout -->
@@ -351,7 +377,7 @@
                     }
                     
                     // Resetear inputs del modal (manteniendo el email readonly de la cuenta Google)
-                    ['#prof-name', '#prof-phone', '#prof-address', '#prof-zip', '#prof-locality', '#prof-province', '#prof-delivery-notes', '#prof-razon-social', '#prof-cuit', '#prof-dir-fiscal'].forEach(id => {
+                    ['#prof-name', '#prof-phone', '#prof-address', '#prof-zip', '#prof-locality', '#prof-province', '#prof-delivery-notes', '#prof-razon-social', '#prof-cuit', '#prof-dir-fiscal', '#prof-provincia-fiscal', '#prof-email-fiscal'].forEach(id => {
                         const input = card.querySelector(id);
                         if (input) {
                             input.value = '';
@@ -441,49 +467,12 @@
             const notesVal = (card.querySelector('#prof-delivery-notes').value || '').trim();
 
             const isFacturaA = card.querySelector('#prof-factura-a-toggle')?.checked || false;
-            const razonVal = isFacturaA ? (card.querySelector('#prof-razon-social').value || '').trim() : '';
-            const cuitVal = isFacturaA ? (card.querySelector('#prof-cuit').value || '').trim() : '';
-            const dirFiscalVal = isFacturaA ? (card.querySelector('#prof-dir-fiscal').value || '').trim() : '';
-
-            const errBanner = card.querySelector('#prof-validation-error');
-            const requiredFields = [
-                { id: '#prof-name', val: nameVal },
-                { id: '#prof-phone', val: phoneVal },
-                { id: '#prof-email', val: emailVal },
-                { id: '#prof-address', val: addrVal },
-                { id: '#prof-zip', val: zipVal },
-                { id: '#prof-locality', val: locVal },
-                { id: '#prof-province', val: provVal }
-            ];
-
-            let firstInvalidEl = null;
-            let hasErrors = false;
-
-            requiredFields.forEach(f => {
-                const el = card.querySelector(f.id);
-                if (el) {
-                    if (!f.val) {
-                        hasErrors = true;
-                        el.style.borderColor = '#dc2626';
-                        el.style.boxShadow = '0 0 0 3px rgba(220, 38, 38, 0.15)';
-                        if (!firstInvalidEl) firstInvalidEl = el;
-                    } else {
-                        el.style.borderColor = '#cbd5e1';
-                        el.style.boxShadow = 'none';
-                    }
-                }
-            });
-
-            if (hasErrors) {
-                if (errBanner) errBanner.style.display = 'block';
-                if (firstInvalidEl) {
-                    firstInvalidEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    firstInvalidEl.focus();
-                }
-                return;
-            }
-
-            if (errBanner) errBanner.style.display = 'none';
+            const razonVal = isFacturaA ? (card.querySelector('#prof-razon-social')?.value || '').trim() : '';
+            const cuitVal = isFacturaA ? (card.querySelector('#prof-cuit')?.value || '').trim() : '';
+            const dirFiscalVal = isFacturaA ? (card.querySelector('#prof-dir-fiscal')?.value || '').trim() : '';
+            const provFiscalVal = isFacturaA ? (card.querySelector('#prof-provincia-fiscal')?.value || '').trim() : '';
+            const condIvaVal = isFacturaA ? (card.querySelector('#prof-condicion-iva')?.value || 'Consumidor Final') : '';
+            const emailFiscalVal = isFacturaA ? (card.querySelector('#prof-email-fiscal')?.value || '').trim() : '';
 
             const profilePayload = {
                 avatar: selectedAvatar,
@@ -497,7 +486,10 @@
                 deliveryNotes: notesVal,
                 razonSocial: razonVal,
                 cuit: cuitVal,
-                dirFiscal: dirFiscalVal
+                dirFiscal: dirFiscalVal,
+                provinciaFiscal: provFiscalVal,
+                condIva: condIvaVal,
+                emailFiscal: emailFiscalVal
             };
 
             let savedData = profilePayload;

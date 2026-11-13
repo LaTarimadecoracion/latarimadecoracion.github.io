@@ -804,7 +804,7 @@
         const isFreshLogin = !currentEmail || currentEmail !== cleanEmail;
         const isDifferentUser = Boolean(currentEmail && currentEmail !== cleanEmail);
         const locationFields = new Set(['zipCode', 'locality', 'province']);
-        const syncFields = ['phone', 'address', 'zipCode', 'locality', 'province', 'deliveryNotes', 'razonSocial', 'cuit', 'dirFiscal', 'name'];
+        const syncFields = ['phone', 'address', 'zipCode', 'locality', 'province', 'deliveryNotes', 'razonSocial', 'cuit', 'dirFiscal', 'provinciaFiscal', 'condIva', 'emailFiscal', 'name'];
         const merged = { email: cleanEmail };
 
         if (cloudProfile) {
