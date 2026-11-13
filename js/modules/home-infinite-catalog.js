@@ -18,8 +18,10 @@
 
     function getColumnsPerRow() {
         const w = window.innerWidth;
-        if (w >= 1200) return 4;
-        if (w >= 900) return 3;
+        if (w >= 1700) return 6;
+        if (w >= 1440) return 5;
+        if (w >= 1024) return 4;
+        if (w >= 768) return 3;
         return 2;
     }
 
@@ -237,15 +239,18 @@
             });
         }
 
-        // Cargar N filas de productos (por defecto 1 fila = 2 en celu, 3 en tablet/PC, 4 en monitor grande)
-        function appendNextRows(rowsCount = 1) {
-            if (!gridEl || currentIndex >= currentItems.length) {
-                if (loaderEl) loaderEl.style.display = 'none';
+        let isAppending = false;
+
+        // Cargar N filas de productos (por defecto 2 filas = 8 a 12 ítems en PC, 4 en celular)
+        function appendNextRows(rowsCount = 2) {
+            if (!gridEl || currentIndex >= currentItems.length || isAppending) {
+                if (loaderEl && currentIndex >= currentItems.length) loaderEl.style.display = 'none';
                 return;
             }
 
+            isAppending = true;
             const cols = getColumnsPerRow();
-            const itemsToLoad = cols * rowsCount;
+            const itemsToLoad = Math.max(cols * rowsCount, 6);
             const slice = currentItems.slice(currentIndex, currentIndex + itemsToLoad);
             currentIndex += slice.length;
 
@@ -262,12 +267,12 @@
                     card = createFallbackCard(product, catName || '');
                     card.classList.add('home-catalog-row-item');
                 }
-                // Animación suave de entrada por fila
-                card.style.animationDelay = `${(idx % cols) * 45}ms`;
+                card.style.animationDelay = `${(idx % cols) * 30}ms`;
                 fragment.appendChild(card);
             });
 
             gridEl.appendChild(fragment);
+            isAppending = false;
 
             if (currentIndex >= currentItems.length) {
                 if (loaderEl) {
@@ -277,6 +282,19 @@
                 if (loaderEl) {
                     loaderEl.style.display = 'flex';
                 }
+                // Si el usuario scrolleó rápido y el centinela aún quedó dentro de la pantalla,
+                // continuar cargando de inmediato sin exigir subir y bajar
+                requestAnimationFrame(checkSentinelInView);
+            }
+        }
+
+        function checkSentinelInView() {
+            if (!isOpened || isAppending || currentIndex >= currentItems.length || !sentinelEl) return;
+            const rect = sentinelEl.getBoundingClientRect();
+            const vh = window.innerHeight || document.documentElement.clientHeight || 800;
+            // Si el centinela está a menos de 650px de la pantalla visible, cargar el próximo bloque
+            if (rect.top <= vh + 650) {
+                appendNextRows(2);
             }
         }
 
@@ -294,8 +312,9 @@
                     <span>Cargando más productos...</span>
                 `;
             }
-            // Al abrir, cargamos las primeras 2 filas para que ya tenga contenido visible inmediato y el resto cargue fila a fila al bajar
-            appendNextRows(2);
+            // Al abrir, cargamos las primeras 3 filas para llenar la pantalla holgadamente en PC
+            appendNextRows(3);
+            requestAnimationFrame(checkSentinelInView);
         }
 
         function setupRowByRowObserver() {
@@ -305,12 +324,13 @@
             const obs = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting && isOpened && currentIndex < currentItems.length) {
-                        appendNextRows(1); // Carga exactamente 1 fila adicional a medida que sigue bajando
+                        appendNextRows(2);
+                        checkSentinelInView();
                     }
                 });
             }, {
                 root: appContainer || null,
-                rootMargin: '180px 0px',
+                rootMargin: '650px 0px',
                 threshold: 0.01
             });
 
@@ -320,6 +340,20 @@
             if (sentinelEl) {
                 obs.observe(sentinelEl);
             }
+
+            // Respaldo activo para scroll ultrarrápido con rueda de mouse o barra de desplazamiento
+            let scrollTicking = false;
+            const handleFastScroll = () => {
+                if (scrollTicking || !isOpened || currentIndex >= currentItems.length) return;
+                scrollTicking = true;
+                requestAnimationFrame(() => {
+                    scrollTicking = false;
+                    checkSentinelInView();
+                });
+            };
+
+            window.addEventListener('scroll', handleFastScroll, { passive: true });
+            if (appContainer) appContainer.addEventListener('scroll', handleFastScroll, { passive: true });
         }
 
         function openCatalog() {
