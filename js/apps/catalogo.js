@@ -357,6 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
             textCol.appendChild(priceRow);
 
             // Envío Gratis DEBAJO del precio en su propia línea
+            const isFree = !!(product?.envio_gratis || product?.shippingConfig?.isFreeShipping || product?.isFreeShipping || product?.shippingType === 'free');
             if (isFree) {
                 const shipRow = document.createElement('div');
                 shipRow.className = 'catalog-shipping-row';

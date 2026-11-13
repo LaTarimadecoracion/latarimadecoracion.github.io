@@ -2214,7 +2214,7 @@
                                     <span class="material-symbols-outlined" style="font-size: 20px;">chat</span>
                                     <span>WhatsApp ya abierto (Tocar aquí si necesitás reabrir)</span>
                                 </a>
-                                <button type="button" onclick="closeModal();" style="background: none; border: none; color: #64748b; font-size: 0.88rem; font-weight: 600; cursor: pointer; padding: 0.5rem; margin-top: 4px;">
+                                <button type="button" id="btn-checkout-success-close" style="background: none; border: none; color: #64748b; font-size: 0.88rem; font-weight: 600; cursor: pointer; padding: 0.5rem; margin-top: 4px;">
                                     Cerrar y seguir navegando
                                 </button>
                             </div>
@@ -2222,6 +2222,8 @@
                     `;
 
                     // Evento para copiar código al portapapeles con micro-interacción verde
+                    document.getElementById('btn-checkout-success-close')?.addEventListener('click', closeModal);
+                    if (window.DesktopHeader && typeof window.DesktopHeader.syncCartBadge === 'function') window.DesktopHeader.syncCartBadge();
                     const copyBtn = document.getElementById('btn-copy-order-code');
                     if (copyBtn) {
                         copyBtn.onclick = () => {

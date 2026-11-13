@@ -905,8 +905,8 @@
                     }
                 });
 
-                isFlexFreeByQty = allItemsFlexFree;
-                isFleteFreeByQty = allItemsFleteFree;
+                let isFlexFreeByQty = allItemsFlexFree;
+                let isFleteFreeByQty = allItemsFleteFree;
 
                 // Cotizar envío según CP guardado
                 const userZip = (userData.zipCode || '').trim();

@@ -399,7 +399,7 @@
                     if (errBanner) errBanner.style.display = 'none';
 
                     // Resetear avatar UI
-                    updateAvatarUI(publicUser.picture || 'face');
+                    selectedAvatar = publicUser?.picture || 'face';
 
                     // Actualizar vista del carrito si corresponde
                     if (typeof window.renderPerfilCarritoView === 'function') {

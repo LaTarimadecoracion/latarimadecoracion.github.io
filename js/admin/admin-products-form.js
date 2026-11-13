@@ -1632,8 +1632,7 @@ window.addEventListener('message', (event) => {
                 if (!editingProductId) {
                     if (sessionRentals.some(r => r.id === product.id)) {
                         alert(`Ya existe un alquiler con el ID "${product.id}". Cambiá el ID e intentá de nuevo.`);
-                        btnGenerateJson.disabled = false;
-                        btnGenerateJson.textContent = 'Guardar Producto en Servidor';
+                        resetSaveButtons();
                         return;
                     }
                 }
@@ -1719,8 +1718,7 @@ window.addEventListener('message', (event) => {
                 if (productModal) productModal.style.display = 'none';
                 renderAdminRentals();
 
-                btnGenerateJson.disabled    = false;
-                btnGenerateJson.textContent = 'Guardar Producto en Servidor';
+                resetSaveButtons();
                 return;
             }
 

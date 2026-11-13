@@ -682,6 +682,34 @@
         if (totalCostEl) totalCostEl.innerHTML = `$${Number(totalCostSpent).toLocaleString('es-AR')} <span style="font-size: 0.75rem; color: var(--admin-text-muted); font-weight: 500;">(de $${Number(totalCostNeeded).toLocaleString('es-AR')})</span>`;
     };
 
+    window.toggleAdminStockPendingItemCheck = function(id) {
+        if (window.adminStockPendingList && window.adminStockPendingList[id]) {
+            window.adminStockPendingList[id].checked = !window.adminStockPendingList[id].checked;
+            window.renderAdminStockPendingList();
+        }
+    };
+
+    window.updateAdminStockPendingItemQty = function(id, val) {
+        if (window.adminStockPendingList && window.adminStockPendingList[id]) {
+            window.adminStockPendingList[id].qtyNeeded = Math.max(1, parseInt(val) || 1);
+            window.renderAdminStockPendingList();
+        }
+    };
+
+    window.updateAdminStockPendingItemAcquired = function(id, val) {
+        if (window.adminStockPendingList && window.adminStockPendingList[id]) {
+            window.adminStockPendingList[id].qtyAcquired = Math.max(0, parseInt(val) || 0);
+            window.renderAdminStockPendingList();
+        }
+    };
+
+    window.removeFromAdminStockPendingList = function(id) {
+        if (window.adminStockPendingList && window.adminStockPendingList[id]) {
+            delete window.adminStockPendingList[id];
+            window.renderAdminStockPendingList();
+        }
+    };
+
     window.toggleAdminStockPurchasesHistoryCollapse = function() {
         const wrapper = document.getElementById('admin-stock-purchases-history-content-wrapper');
         const icon = document.getElementById('admin-stock-purchases-history-collapse-icon');

@@ -357,17 +357,31 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.ensureMyOrdersLoaded();
     }
 
-    // 2. Cargar modales globales livianos del cliente
-    await Promise.all([
-        loadPartial('partials/modal-globals.html', 'body'),
-        loadPartial('partials/view-offer-detail.html', '#view-offer-detail', 'innerHTML'),
-        loadPartial('partials/modal-offer-detail.html', 'body'),
-        loadPartial('partials/modal-media-rentals.html', 'body')
-    ]);
+    // Ofertas detalladas y rentals bajo demanda
+    let _offerModalsPromise = null;
+    window.ensureOfferModalsLoaded = function() {
+        if (_offerModalsPromise) return _offerModalsPromise;
+        _offerModalsPromise = Promise.all([
+            loadPartial('partials/view-offer-detail.html', '#view-offer-detail', 'innerHTML'),
+            loadPartial('partials/modal-offer-detail.html', 'body')
+        ]);
+        return _offerModalsPromise;
+    };
 
-    // 3. Post-carga diferida inteligente (cuando la Home ya está 100% pintada e interactiva)
+    let _rentalsMediaPromise = null;
+    window.ensureRentalsMediaLoaded = function() {
+        if (_rentalsMediaPromise) return _rentalsMediaPromise;
+        _rentalsMediaPromise = loadPartial('partials/modal-media-rentals.html', 'body');
+        return _rentalsMediaPromise;
+    };
+
+    // 2. Cargar modales globales indispensables de interacción inmediata
+    await loadPartial('partials/modal-globals.html', 'body');
+
+    // 3. Post-carga diferida en reposo (cuando la Home ya está 100% pintada sin competir con imágenes)
     setTimeout(() => {
+        window.ensureOfferModalsLoaded();
         window.ensurePostalLookupLoaded();
         window.ensureAssistantLoaded();
-    }, 1800);
+    }, 1500);
 });

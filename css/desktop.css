@@ -545,3 +545,59 @@
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
+
+/* ==========================================================================
+   ESCALABILIDAD MARKETPLACE EN PANTALLAS ANCHAS (1200px, 1440px, 1920px Full HD)
+   ========================================================================== */
+
+/* Grillas auto-fill dinámicas estilo Mercado Libre / Amazon */
+.product-feed,
+.category-feed-list,
+#catalog-cards-grid,
+.catalog-cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)) !important;
+    gap: 20px !important;
+}
+
+/* Monitores de 1440px (Laptops 2K / Monitores estándar) */
+@media (min-width: 1440px) {
+    :root {
+        --container-max: 1460px;
+    }
+    .product-feed,
+    .category-feed-list,
+    #catalog-cards-grid,
+    .catalog-cards-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        gap: 24px !important;
+    }
+}
+
+/* Monitores de 1700px+ (Full HD / 1080p / 4K) */
+@media (min-width: 1700px) {
+    :root {
+        --container-max: 1640px;
+    }
+    .product-feed,
+    .category-feed-list,
+    #catalog-cards-grid,
+    .catalog-cards-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+        gap: 24px !important;
+    }
+}
+
+/* Elevación interactiva suave en hover para cards en PC */
+.feed-card,
+.catalog-row.view-cards,
+.vertical-product-card {
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease !important;
+}
+
+.feed-card:hover,
+.catalog-row.view-cards:hover,
+.vertical-product-card:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10) !important;
+}

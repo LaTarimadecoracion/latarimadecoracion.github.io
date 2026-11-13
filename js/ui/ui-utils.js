@@ -1,4 +1,9 @@
 
+    // Helper centralizado para detección de Modo PC (Desktop >= 900px)
+    window.isDesktop = function() {
+        return window.matchMedia ? window.matchMedia('(min-width: 900px)').matches : (window.innerWidth >= 900);
+    };
+
     // Sistema global de Miniaturas (_thumb.webp) para carga ultrarrápida de vistas previas
     window.getThumbUrl = function(url) {
         if (!url || typeof url !== 'string') return url || 'img/logo_provisional.png';
