@@ -36,6 +36,22 @@ function escapeHtml(text) {
         .replace(/'/g, '&#039;');
 }
 
+function safeWriteFileSync(filePath, content) {
+    for (let attempt = 0; attempt < 3; attempt++) {
+        try {
+            fs.writeFileSync(filePath, content, 'utf8');
+            return;
+        } catch (err) {
+            if (attempt === 2) {
+                console.warn(`[SEO Warning] File busy, skipping transient lock: ${filePath}`);
+            } else {
+                const start = Date.now();
+                while (Date.now() - start < 50) {} // 50ms pause
+            }
+        }
+    }
+}
+
 function generateSeoHtml(product, shortCode, categoryName = '') {
     let imageUrl = '';
     if (Array.isArray(product.image) && product.image.length > 0) {
@@ -206,9 +222,9 @@ function run() {
             
             // Generar HTML para el ID corto limpio
             const htmlClean = generateSeoHtml(product, shortCodeClean, catName);
-            fs.writeFileSync(path.join(rootPDir, `${shortCodeClean}.html`), htmlClean, 'utf8');
+            safeWriteFileSync(path.join(rootPDir, `${shortCodeClean}.html`), htmlClean, 'utf8');
             if (fs.existsSync(DOCS_DIR)) {
-                fs.writeFileSync(path.join(docsPDir, `${shortCodeClean}.html`), htmlClean, 'utf8');
+                safeWriteFileSync(path.join(docsPDir, `${shortCodeClean}.html`), htmlClean, 'utf8');
             }
             count++;
 
@@ -224,9 +240,9 @@ function run() {
             // Si el ID del producto difiere del formato con punto (ej: 5.2 vs 52), generar ambos
             if (shortCodeWithDot !== shortCodeClean) {
                 const htmlWithDot = generateSeoHtml(product, shortCodeWithDot, catName);
-                fs.writeFileSync(path.join(rootPDir, `${shortCodeWithDot}.html`), htmlWithDot, 'utf8');
+                safeWriteFileSync(path.join(rootPDir, `${shortCodeWithDot}.html`), htmlWithDot, 'utf8');
                 if (fs.existsSync(DOCS_DIR)) {
-                    fs.writeFileSync(path.join(docsPDir, `${shortCodeWithDot}.html`), htmlWithDot, 'utf8');
+                    safeWriteFileSync(path.join(docsPDir, `${shortCodeWithDot}.html`), htmlWithDot, 'utf8');
                 }
                 count++;
 
@@ -281,9 +297,9 @@ function run() {
                     if (vCode && !addedShortCodes.has(vCode)) {
                         addedShortCodes.add(vCode);
                         const htmlVar = generateSeoHtml(prod, vCode, catName);
-                        fs.writeFileSync(path.join(rootPDir, `${vCode}.html`), htmlVar, 'utf8');
+                        safeWriteFileSync(path.join(rootPDir, `${vCode}.html`), htmlVar, 'utf8');
                         if (fs.existsSync(DOCS_DIR)) {
-                            fs.writeFileSync(path.join(docsPDir, `${vCode}.html`), htmlVar, 'utf8');
+                            safeWriteFileSync(path.join(docsPDir, `${vCode}.html`), htmlVar, 'utf8');
                         }
                         count++;
                         sitemapUrls.push({
@@ -318,9 +334,9 @@ function run() {
         const found = flatProdsMap.get(targetId);
         if (found) {
             const htmlLegacy = generateSeoHtml(found.product, legacyCode, found.catName);
-            fs.writeFileSync(path.join(rootPDir, `${legacyCode}.html`), htmlLegacy, 'utf8');
+            safeWriteFileSync(path.join(rootPDir, `${legacyCode}.html`), htmlLegacy, 'utf8');
             if (fs.existsSync(DOCS_DIR)) {
-                fs.writeFileSync(path.join(docsPDir, `${legacyCode}.html`), htmlLegacy, 'utf8');
+                safeWriteFileSync(path.join(docsPDir, `${legacyCode}.html`), htmlLegacy, 'utf8');
             }
             count++;
         }
@@ -338,9 +354,9 @@ ${sitemapUrls.map(u => `  <url>
 </urlset>
 `;
 
-    fs.writeFileSync(path.join(ROOT_DIR, 'sitemap.xml'), sitemapXml, 'utf8');
+    safeWriteFileSync(path.join(ROOT_DIR, 'sitemap.xml'), sitemapXml, 'utf8');
     if (fs.existsSync(DOCS_DIR)) {
-        fs.writeFileSync(path.join(DOCS_DIR, 'sitemap.xml'), sitemapXml, 'utf8');
+        safeWriteFileSync(path.join(DOCS_DIR, 'sitemap.xml'), sitemapXml, 'utf8');
     }
 
     console.log(`✅ ¡Proceso completado con éxito!`);

@@ -469,8 +469,7 @@
                         <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-my-orders');">
                             <span class="material-symbols-outlined">shopping_bag</span> Mis compras / Pedidos
                         </a>
-                        <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-profile');">
-                            <span class="material-symbols-outlined">shopping_cart</span> Mi Carrito
+                        <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.closeUserMenu(); if(window.CartDrawer) window.CartDrawer.open(); else window.DesktopHeader.navigateFromMenu('view-profile');">
                             <span class="desktop-menu-item-badge" id="desktop-menu-cart-badge" style="display: none;">0</span>
                         </a>
                         <a href="#" role="menuitem" onclick="event.preventDefault(); window.DesktopHeader.navigateFromMenu('view-profile');">

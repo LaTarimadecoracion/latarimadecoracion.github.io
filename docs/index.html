@@ -248,7 +248,7 @@
                     </button>
                     <div class="desktop-user-dropdown desktop-notif-dropdown" id="desktop-notif-dropdown" role="menu"></div>
                 </div>
-                <button type="button" class="desktop-icon-btn desktop-cart-btn" onclick="if(window.navigateToView) window.navigateToView('view-profile');" title="Mi Carrito y Favoritos">
+                <button type="button" class="desktop-icon-btn desktop-cart-btn" onclick="if(window.CartDrawer) window.CartDrawer.open(); else if(window.navigateToView) window.navigateToView('view-profile');" title="Mi Carrito y Favoritos">
                     <span class="material-symbols-outlined">shopping_cart</span>
                     <span class="desktop-cart-badge" id="desktop-cart-badge" style="display: none;">0</span>
                 </button>
@@ -828,6 +828,7 @@
     <script src="js/ui/ui-catalog.js?v=26" defer></script>
     <script src="js/ui/ui-rentals.js?v=3" defer></script>
     <script src="js/ui/ui-blocks.js?v=1" defer></script>
+    <script src="js/ui/cart-drawer.js?v=1" defer></script>
     <script src="js/modules/carrito.js?v=16" defer></script>
     <script src="js/modules/main.js?v=8" defer></script>
     <script src="js/modules/categorias.js?v=3" defer></script>

@@ -751,6 +751,7 @@
 
         // LÓGICA DE CONTROL DE PASOS (WIZARD 1 -> 2 -> 3)
         let currentStep = 1;
+        let isExpressActive = false;
 
         const titleElem = document.getElementById('checkout-step-title');
         const step1Content = document.getElementById('checkout-step-1-content');
@@ -789,18 +790,35 @@
                 if (btnNext) btnNext.style.display = 'flex';
                 if (btnWa) btnWa.style.display = 'none';
             } else if (currentStep === 2) {
-                if (titleElem) titleElem.textContent = '2. Monto y Medio de Pago';
+                if (titleElem) titleElem.textContent = isExpressActive ? '⚡ Compra Express (2 Clics)' : '2. Monto y Medio de Pago';
                 if (step2Content) step2Content.style.display = 'flex';
                 if (stepInd1) stepInd1.style.background = '#059669';
                 if (stepInd2) stepInd2.style.background = '#0f172a';
 
                 if (btnPrev) {
                     btnPrev.style.visibility = 'visible';
-                    btnPrev.querySelector('span:not(.material-symbols-outlined)').textContent = 'Volver atrás';
-                    btnPrev.querySelector('.material-symbols-outlined').textContent = 'arrow_back';
+                    btnPrev.querySelector('span:not(.material-symbols-outlined)').textContent = isExpressActive ? 'Modificar datos' : 'Volver atrás';
+                    btnPrev.querySelector('.material-symbols-outlined').textContent = isExpressActive ? 'edit' : 'arrow_back';
                 }
-                if (btnNext) btnNext.style.display = 'flex';
-                if (btnWa) btnWa.style.display = 'none';
+
+                if (isExpressActive) {
+                    const isTransfer = (window._checkoutSelectedPayMethod === 'transfer');
+                    if (isTransfer) {
+                        if (btnNext) btnNext.style.display = 'none';
+                        if (btnWa) {
+                            btnWa.style.display = 'flex';
+                            const waSpan = btnWa.querySelector('span:not(.material-symbols-outlined)');
+                            if (waSpan) waSpan.textContent = '⚡ Confirmar Pedido por WhatsApp';
+                        }
+                    } else {
+                        // En Mercado Pago o Tarjeta, el cobro se dispara desde su propio botón dentro del panel
+                        if (btnNext) btnNext.style.display = 'none';
+                        if (btnWa) btnWa.style.display = 'none';
+                    }
+                } else {
+                    if (btnNext) btnNext.style.display = 'flex';
+                    if (btnWa) btnWa.style.display = 'none';
+                }
             } else if (currentStep === 3) {
                 if (titleElem) titleElem.textContent = '3. Aclaraciones y Finalizar';
                 if (step3Content) step3Content.style.display = 'flex';
@@ -814,7 +832,11 @@
                     btnPrev.querySelector('.material-symbols-outlined').textContent = 'arrow_back';
                 }
                 if (btnNext) btnNext.style.display = 'none';
-                if (btnWa) btnWa.style.display = 'flex';
+                if (btnWa) {
+                    btnWa.style.display = 'flex';
+                    const waSpan = btnWa.querySelector('span:not(.material-symbols-outlined)');
+                    if (waSpan) waSpan.textContent = 'Confirmar Pedido por WhatsApp';
+                }
             }
         };
 
@@ -984,6 +1006,9 @@
                 }
 
                 updateTotalDisplay();
+                if (isExpressActive && currentStep === 2) {
+                    updateWizardView();
+                }
             });
         });
 
@@ -1407,6 +1432,9 @@
                 window._checkoutSelectedShipLabel = freeCleanLabel;
                 updateShipLine();
                 updateTotalDisplay();
+                if (isExpressActive && currentStep === 2) {
+                    updateWizardView();
+                }
                 return;
             }
 
@@ -1418,6 +1446,9 @@
                 window._checkoutSelectedShipLabel = 'A convenir';
                 updateShipLine();
                 updateTotalDisplay();
+                if (isExpressActive && currentStep === 2) {
+                    updateWizardView();
+                }
                 return;
             }
 
@@ -1455,6 +1486,9 @@
                 window._checkoutSelectedShipLabel = options[defaultOptIdx].cleanLabel;
                 updateShipLine();
                 updateTotalDisplay();
+                if (isExpressActive && currentStep === 2) {
+                    updateWizardView();
+                }
             }
 
             // Evento cambio de radio
@@ -1469,6 +1503,9 @@
                     lbl.style.background = '#f0f9ff';
                     updateShipLine();
                     updateTotalDisplay();
+                if (isExpressActive && currentStep === 2) {
+                    updateWizardView();
+                }
                 });
                 // Highlight initial
                 if (radio.checked) {
@@ -1786,6 +1823,9 @@
                     window._checkoutSelectedShipLabel = '';
                     updateShipLine();
                     updateTotalDisplay();
+                if (isExpressActive && currentStep === 2) {
+                    updateWizardView();
+                }
                 } else if (merged.deliveryMode === 'shipping' || (merged.cp && merged.cp.length >= 3)) {
                     const rShip = document.getElementById('pay-mode-shipping');
                     if (rShip) rShip.checked = true;
@@ -1796,9 +1836,84 @@
                         renderShipOptions(res);
                         updateShipLine();
                         updateTotalDisplay();
+                        if (isExpressActive && currentStep === 2) {
+                            updateWizardView();
+                        }
                     }
                 }
+
+                // Activar Modo Express en 2 Clics si ya cuenta con datos de contacto y entrega guardados
+                const clientName = (merged.name || '').trim();
+                const clientPhone = (merged.phone || '').trim();
+                const hasValidContact = clientName.length >= 2 && clientPhone.length >= 6;
+                const hasValidDelivery = (merged.deliveryMode === 'pickup') || (merged.deliveryMode === 'shipping' && (merged.dir || '').trim().length >= 3 && (merged.cp || '').trim().length >= 3);
+
+                if (hasValidContact && hasValidDelivery) {
+                    isExpressActive = true;
+                    currentStep = 2;
+                    renderExpressBanner(merged);
+                    updateWizardView();
+                }
             } catch (e) {}
+        }
+
+        function renderExpressBanner(merged) {
+            const step2 = document.getElementById('checkout-step-2-content');
+            if (!step2) return;
+            let banner = document.getElementById('checkout-express-banner');
+            if (!banner) {
+                banner = document.createElement('div');
+                banner.id = 'checkout-express-banner';
+                banner.style.cssText = 'background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border: 1.5px solid #86efac; border-radius: 12px; padding: 10px 14px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; box-shadow: 0 2px 8px rgba(21,128,61,0.06);';
+                step2.prepend(banner);
+            }
+            const isPickup = merged.deliveryMode === 'pickup';
+            const deliveryText = isPickup
+                ? 'Retiro en taller (San Fernando)'
+                : `Envío a ${merged.dir || ''} (CP ${merged.cp || ''})`;
+
+            banner.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px; min-width: 220px; flex: 1;">
+                    <span class="material-symbols-outlined" style="color: #16a34a; font-size: 26px; flex-shrink: 0;">bolt</span>
+                    <div>
+                        <div style="font-weight: 900; font-size: 0.82rem; color: #15803d; letter-spacing: 0.3px; display: flex; align-items: center; gap: 4px;">
+                            <span>COMPRA RÁPIDA EN 2 CLICS</span>
+                            <span style="background: #16a34a; color: white; font-size: 0.65rem; padding: 1px 6px; border-radius: 10px; font-weight: 800;">EXPRESS</span>
+                        </div>
+                        <div style="font-size: 0.74rem; color: #334155; margin-top: 2px;">
+                            Cliente: <strong>${merged.name}</strong> (${merged.phone}) · <em>${deliveryText}</em>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" id="btn-express-edit-step1" style="background: #ffffff; border: 1.5px solid #86efac; border-radius: 8px; padding: 5px 12px; font-size: 0.74rem; font-weight: 800; color: #166534; cursor: pointer; display: flex; align-items: center; gap: 4px; transition: all 0.2s; white-space: nowrap;">
+                    <span class="material-symbols-outlined" style="font-size: 15px;">edit</span>
+                    <span>Modificar datos</span>
+                </button>
+            `;
+
+            document.getElementById('btn-express-edit-step1')?.addEventListener('click', () => {
+                isExpressActive = false;
+                currentStep = 1;
+                updateWizardView();
+            });
+
+            // Enlace opcional a notas de paso 3
+            let step3Link = document.getElementById('express-step3-optional-link');
+            if (!step3Link) {
+                step3Link = document.createElement('div');
+                step3Link.id = 'express-step3-optional-link';
+                step3Link.style.cssText = 'text-align: center; margin-top: 8px;';
+                step3Link.innerHTML = `
+                    <button type="button" style="background: none; border: none; font-size: 0.76rem; color: #0284c7; font-weight: 700; cursor: pointer; text-decoration: underline; padding: 4px 8px;">
+                        ✏️ ¿Querés agregar una aclaración especial a tu pedido? (Paso 3 opcional)
+                    </button>
+                `;
+                step2.appendChild(step3Link);
+                step3Link.querySelector('button')?.addEventListener('click', () => {
+                    currentStep = 3;
+                    updateWizardView();
+                });
+            }
         }
 
         const fieldsToAutoSave = [
@@ -1876,6 +1991,9 @@
                             renderShipOptions(res);
                             updateShipLine();
                             updateTotalDisplay();
+                if (isExpressActive && currentStep === 2) {
+                    updateWizardView();
+                }
                         }
                     }
 
@@ -2046,6 +2164,18 @@
         if (waSubmitBtn) {
             waSubmitBtn.onclick = (e) => {
                 e.preventDefault();
+
+                if (!validateStep1()) {
+                    currentStep = 1;
+                    updateWizardView();
+                    return;
+                }
+                if (!validateStep2()) {
+                    currentStep = 2;
+                    updateWizardView();
+                    return;
+                }
+
                 const isFacturaA = chkFacturaA?.checked || false;
                 const isShipping = radioShipping?.checked || false;
                 const userNotes = document.getElementById('pay-modal-notes')?.value.trim() || '';
