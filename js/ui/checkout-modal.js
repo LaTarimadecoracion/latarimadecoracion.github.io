@@ -79,6 +79,18 @@
             const storedPayConf = localStorage.getItem('sessionPaymentConfig');
             if (storedPayConf) {
                 payConf = JSON.parse(storedPayConf);
+                // Sanear valores residuales de recargos antiguos (Mercado Pago siempre es Precio de Lista 0% recargo)
+                if (payConf.mercadopago && (payConf.mercadopago.surchargePercent === 10 || payConf.mercadopago.surchargePercent === '10' || payConf.mercadopago.surchargePercent === undefined)) {
+                    payConf.mercadopago.surchargePercent = 0;
+                    payConf.mercadopago.creditSurchargePercent = 0;
+                }
+                if (payConf.transfer && !payConf.transfer.discountPercent) {
+                    payConf.transfer.discountPercent = 10;
+                }
+                if (payConf.transferCecilia && !payConf.transferCecilia.discountPercent) {
+                    payConf.transferCecilia.discountPercent = 10;
+                }
+                localStorage.setItem('sessionPaymentConfig', JSON.stringify(payConf));
                 window.sessionPaymentConfig = payConf;
             }
         } catch(e) {}
@@ -136,8 +148,9 @@
 
         const mpConf = payConf.mercadopago || {};
         const isMpGlobalActive = mpConf.active !== false;
-        const mpLinkSurchargePct = parseFloat(mpConf.surchargePercent) || 0;
-        const mpCreditSurchargePct = parseFloat(mpConf.creditSurchargePercent !== undefined ? mpConf.creditSurchargePercent : mpLinkSurchargePct) || 0;
+        // Mercado Pago y Tarjetas son siempre Precio de Lista de la web (0% recargo adicional)
+        const mpLinkSurchargePct = 0;
+        const mpCreditSurchargePct = 0;
         const mpMaxInstallments = parseInt(mpConf.maxInstallments, 10) || 12;
         window._checkoutSelectedPayMethod = 'transfer';
 
@@ -1521,10 +1534,10 @@
 
             const hasShipBreakdown = !!(isShipping && (shipCost > 0 || shipLabel));
             const hasTransferDiscountBreakdown = transferDiscountVal > 0;
-            const hasMpBreakdown = mpSurchargeVal > 0;
+            const isMpActive = (activePayVal === 'link' || activePayVal === 'credit');
 
             if (breakdownBox) {
-                if (hasShipBreakdown || hasTransferDiscountBreakdown || hasMpBreakdown) {
+                if (hasShipBreakdown || hasTransferDiscountBreakdown || isMpActive) {
                     breakdownBox.style.display = 'flex';
                     if (shipRow) {
                         if (hasShipBreakdown) {
@@ -1550,10 +1563,14 @@
                         }
                     }
                     if (mpRow) {
-                        if (hasMpBreakdown) {
+                        if (isMpActive) {
                             mpRow.style.display = 'flex';
-                            if (mpLbl) mpLbl.textContent = `💳 Recargo Mercado Pago (+${mpSurchargePct}%):`;
-                            if (mpVal) mpVal.textContent = '+' + formatCurr(mpSurchargeVal);
+                            if (mpLbl) mpLbl.textContent = '💳 Modalidad:';
+                            if (mpVal) {
+                                mpVal.textContent = 'Precio de Lista (0% adicional)';
+                                mpVal.style.color = '#0284c7';
+                                mpVal.style.fontWeight = '700';
+                            }
                         } else {
                             mpRow.style.display = 'none';
                         }
