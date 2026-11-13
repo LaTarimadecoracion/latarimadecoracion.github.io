@@ -620,19 +620,25 @@
                         </div>
                         <div id="mp-checkout-error-msg" style="display: none; margin-top: 8px; padding: 8px 12px; background: #fef2f2; border: 1px solid #fca5a5; color: #b91c1c; border-radius: 8px; font-size: 0.78rem; font-weight: 700;"></div>
                     </div>
+
+                    <!-- 5. Aclaraciones del Pedido (Tildable / Contraíble para ahorrar espacio) -->
+                    <div id="checkout-notes-toggle-box" style="margin-top: 4px; background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 0.75rem 1rem; width: 100%; box-sizing: border-box; transition: all 0.2s;">
+                        <label for="chk-toggle-order-notes" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; cursor: pointer; user-select: none; margin: 0;">
+                            <span style="font-size: 0.78rem; font-weight: 800; color: #475569; display: flex; align-items: center; gap: 6px; text-transform: uppercase; letter-spacing: 0.3px;">
+                                <span class="material-symbols-outlined" style="font-size: 18px; color: #0284c7;">edit_note</span>
+                                ¿Querés agregar una aclaración a tu pedido? (Opcional)
+                            </span>
+                            <input type="checkbox" id="chk-toggle-order-notes" style="width: 18px; height: 18px; accent-color: #0f172a; cursor: pointer; margin: 0;">
+                        </label>
+                        <div id="checkout-notes-expandable-wrap" style="display: none; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #cbd5e1;">
+                            <textarea id="pay-modal-notes" rows="3" placeholder="Ej: Transfirió mi pareja Juan Pérez, o aclaro horario de retiro / notas..." style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.82rem; color: #0f172a; font-family: inherit; resize: none; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#0284c7'" onblur="this.style.borderColor='#cbd5e1'"></textarea>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- ==================== PASO 3: ACLARACIONES Y ENVÍO ==================== -->
                 <div id="checkout-step-3-content" style="display: none; flex-direction: column; gap: 1rem;">
                     
-                    <!-- 5. Aclaraciones del Pedido (Opcional) -->
-                    <div style="width: 100%; box-sizing: border-box;">
-                        <label for="pay-modal-notes" style="display: block; font-size: 0.75rem; font-weight: 800; color: #475569; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.4px;">
-                            ✏️ 5. Aclaraciones del pedido (Opcional):
-                        </label>
-                        <textarea id="pay-modal-notes" rows="4" placeholder="Ej: Transfirió mi pareja Juan Pérez, o aclaro horario de retiro..." style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.75rem 0.85rem; font-size: 0.85rem; color: #0f172a; font-family: inherit; resize: none; outline: none; transition: border-color 0.2s;" onfocus="this.style.borderColor='#0284c7'" onblur="this.style.borderColor='#cbd5e1'"></textarea>
-                    </div>
-
                     <!-- 6. Aviso de Paso Final -->
                     <div id="checkout-step3-final-notice" style="background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.82rem; color: #166534; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px;">
                         <span class="material-symbols-outlined" id="checkout-step3-notice-icon" style="font-size: 22px; color: #15803d; flex-shrink: 0;">add_a_photo</span>
@@ -662,7 +668,7 @@
             <div style="width: 100%; border-top: 1px solid #f1f5f9; padding-top: 0.75rem; flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; gap: 10px; max-width: 650px; margin: 0 auto;">
                 <button type="button" id="btn-checkout-prev" style="background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; border-radius: 12px; padding: 0.8rem 1.2rem; font-weight: 800; font-size: 0.88rem; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s;">
                     <span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
-                    <span>Volver atrás</span>
+                    <span>Volver</span>
                 </button>
 
                 <button type="button" id="btn-checkout-next" style="background: #0f172a; color: #ffffff; border: none; border-radius: 12px; padding: 0.8rem 1.5rem; font-weight: 800; font-size: 0.9rem; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(15,23,42,0.18); transition: all 0.2s;">
@@ -672,7 +678,7 @@
 
                 <button type="button" id="btn-submit-receipt-wa" style="display: none; background: #25d366; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.4rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(37,211,102,0.3); transition: all 0.2s;">
                     <span class="material-symbols-outlined" style="font-size: 20px;">chat</span>
-                    <span>Confirmar Pedido por WhatsApp</span>
+                    <span>Confirmar</span>
                 </button>
             </div>
         `;
@@ -784,7 +790,7 @@
 
                 if (btnPrev) {
                     btnPrev.style.visibility = 'visible';
-                    btnPrev.querySelector('span:not(.material-symbols-outlined)').textContent = 'Volver atrás';
+                    btnPrev.querySelector('span:not(.material-symbols-outlined)').textContent = 'Volver';
                     btnPrev.querySelector('.material-symbols-outlined').textContent = 'arrow_back';
                 }
                 if (btnNext) btnNext.style.display = 'flex';
@@ -797,26 +803,21 @@
 
                 if (btnPrev) {
                     btnPrev.style.visibility = 'visible';
-                    btnPrev.querySelector('span:not(.material-symbols-outlined)').textContent = isExpressActive ? 'Modificar datos' : 'Volver atrás';
-                    btnPrev.querySelector('.material-symbols-outlined').textContent = isExpressActive ? 'edit' : 'arrow_back';
+                    btnPrev.querySelector('span:not(.material-symbols-outlined)').textContent = 'Volver';
+                    btnPrev.querySelector('.material-symbols-outlined').textContent = 'arrow_back';
                 }
 
-                if (isExpressActive) {
-                    const isTransfer = (window._checkoutSelectedPayMethod === 'transfer');
-                    if (isTransfer) {
-                        if (btnNext) btnNext.style.display = 'none';
-                        if (btnWa) {
-                            btnWa.style.display = 'flex';
-                            const waSpan = btnWa.querySelector('span:not(.material-symbols-outlined)');
-                            if (waSpan) waSpan.textContent = '⚡ Confirmar Pedido por WhatsApp';
-                        }
-                    } else {
-                        // En Mercado Pago o Tarjeta, el cobro se dispara desde su propio botón dentro del panel
-                        if (btnNext) btnNext.style.display = 'none';
-                        if (btnWa) btnWa.style.display = 'none';
+                const isTransfer = (window._checkoutSelectedPayMethod === 'transfer');
+                if (isTransfer) {
+                    if (btnNext) btnNext.style.display = 'none';
+                    if (btnWa) {
+                        btnWa.style.display = 'flex';
+                        const waSpan = btnWa.querySelector('span:not(.material-symbols-outlined)');
+                        if (waSpan) waSpan.textContent = 'Confirmar';
                     }
                 } else {
-                    if (btnNext) btnNext.style.display = 'flex';
+                    // En Mercado Pago o Tarjeta, el cobro se dispara desde su propio botón dentro del panel
+                    if (btnNext) btnNext.style.display = 'none';
                     if (btnWa) btnWa.style.display = 'none';
                 }
             } else if (currentStep === 3) {
@@ -828,14 +829,14 @@
 
                 if (btnPrev) {
                     btnPrev.style.visibility = 'visible';
-                    btnPrev.querySelector('span:not(.material-symbols-outlined)').textContent = 'Volver atrás';
+                    btnPrev.querySelector('span:not(.material-symbols-outlined)').textContent = 'Volver';
                     btnPrev.querySelector('.material-symbols-outlined').textContent = 'arrow_back';
                 }
                 if (btnNext) btnNext.style.display = 'none';
                 if (btnWa) {
                     btnWa.style.display = 'flex';
                     const waSpan = btnWa.querySelector('span:not(.material-symbols-outlined)');
-                    if (waSpan) waSpan.textContent = 'Confirmar Pedido por WhatsApp';
+                    if (waSpan) waSpan.textContent = 'Confirmar';
                 }
             }
         };
@@ -1006,7 +1007,7 @@
                 }
 
                 updateTotalDisplay();
-                if (isExpressActive && currentStep === 2) {
+                if (currentStep === 2) {
                     updateWizardView();
                 }
             });
@@ -1432,7 +1433,7 @@
                 window._checkoutSelectedShipLabel = freeCleanLabel;
                 updateShipLine();
                 updateTotalDisplay();
-                if (isExpressActive && currentStep === 2) {
+                if (currentStep === 2) {
                     updateWizardView();
                 }
                 return;
@@ -1446,7 +1447,7 @@
                 window._checkoutSelectedShipLabel = 'A convenir';
                 updateShipLine();
                 updateTotalDisplay();
-                if (isExpressActive && currentStep === 2) {
+                if (currentStep === 2) {
                     updateWizardView();
                 }
                 return;
@@ -1486,7 +1487,7 @@
                 window._checkoutSelectedShipLabel = options[defaultOptIdx].cleanLabel;
                 updateShipLine();
                 updateTotalDisplay();
-                if (isExpressActive && currentStep === 2) {
+                if (currentStep === 2) {
                     updateWizardView();
                 }
             }
@@ -1503,7 +1504,7 @@
                     lbl.style.background = '#f0f9ff';
                     updateShipLine();
                     updateTotalDisplay();
-                if (isExpressActive && currentStep === 2) {
+                if (currentStep === 2) {
                     updateWizardView();
                 }
                 });
@@ -1823,7 +1824,7 @@
                     window._checkoutSelectedShipLabel = '';
                     updateShipLine();
                     updateTotalDisplay();
-                if (isExpressActive && currentStep === 2) {
+                if (currentStep === 2) {
                     updateWizardView();
                 }
                 } else if (merged.deliveryMode === 'shipping' || (merged.cp && merged.cp.length >= 3)) {
@@ -1896,24 +1897,31 @@
                 currentStep = 1;
                 updateWizardView();
             });
+        }
 
-            // Enlace opcional a notas de paso 3
-            let step3Link = document.getElementById('express-step3-optional-link');
-            if (!step3Link) {
-                step3Link = document.createElement('div');
-                step3Link.id = 'express-step3-optional-link';
-                step3Link.style.cssText = 'text-align: center; margin-top: 8px;';
-                step3Link.innerHTML = `
-                    <button type="button" style="background: none; border: none; font-size: 0.76rem; color: #0284c7; font-weight: 700; cursor: pointer; text-decoration: underline; padding: 4px 8px;">
-                        ✏️ ¿Querés agregar una aclaración especial a tu pedido? (Paso 3 opcional)
-                    </button>
-                `;
-                step2.appendChild(step3Link);
-                step3Link.querySelector('button')?.addEventListener('click', () => {
-                    currentStep = 3;
-                    updateWizardView();
-                });
-            }
+        // Toggle tildable de Aclaraciones / Notas del pedido
+        const chkOrderNotes = document.getElementById('chk-toggle-order-notes');
+        const wrapOrderNotes = document.getElementById('checkout-notes-expandable-wrap');
+        const boxOrderNotes = document.getElementById('checkout-notes-toggle-box');
+        const notesTextarea = document.getElementById('pay-modal-notes');
+
+        if (chkOrderNotes && wrapOrderNotes) {
+            chkOrderNotes.addEventListener('change', () => {
+                if (chkOrderNotes.checked) {
+                    wrapOrderNotes.style.display = 'block';
+                    if (boxOrderNotes) {
+                        boxOrderNotes.style.borderColor = '#0284c7';
+                        boxOrderNotes.style.background = '#f0f9ff';
+                    }
+                    if (notesTextarea) notesTextarea.focus();
+                } else {
+                    wrapOrderNotes.style.display = 'none';
+                    if (boxOrderNotes) {
+                        boxOrderNotes.style.borderColor = '#cbd5e1';
+                        boxOrderNotes.style.background = '#ffffff';
+                    }
+                }
+            });
         }
 
         const fieldsToAutoSave = [
@@ -1991,7 +1999,7 @@
                             renderShipOptions(res);
                             updateShipLine();
                             updateTotalDisplay();
-                if (isExpressActive && currentStep === 2) {
+                if (currentStep === 2) {
                     updateWizardView();
                 }
                         }
