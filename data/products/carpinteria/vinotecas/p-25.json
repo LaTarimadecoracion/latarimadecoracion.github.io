@@ -22,7 +22,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 26100,
+          "price": 22500,
           "cost_price": 15000,
           "legend": "",
           "showPrice": true
@@ -86,7 +86,7 @@
   "last_modified": 1784391201352,
   "primaryCatId": "Vinotecas",
   "visible": true,
-  "views": 11,
+  "views": 12,
   "stock": 0,
   "paymentConfig": {
     "transferEnabled": true,

@@ -20,7 +20,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 38200,
+          "price": 35000,
           "cost_price": 33000,
           "legend": "",
           "showPrice": true,
@@ -45,7 +45,7 @@
   ],
   "last_modified": 1786564211621,
   "primaryCatId": "sillas-sillones",
-  "views": 16,
+  "views": 17,
   "paymentConfig": {
     "transferEnabled": true,
     "linkEnabled": false,
@@ -62,5 +62,6 @@
     "Juguetes",
     "sillas-sillones"
   ],
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "price": 35000
 }

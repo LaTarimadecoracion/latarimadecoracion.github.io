@@ -23,7 +23,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 28900,
+          "price": 25000,
           "cost_price": 32999,
           "legend": "",
           "showPrice": true,
@@ -68,7 +68,7 @@
       "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
     }
   ],
-  "views": 3,
+  "views": 4,
   "categories": [
     "carpinteria-todos",
     "jardin-patio"

@@ -10,7 +10,7 @@
       "Organizadores"
     ],
     "subcategoria": "",
-    "price": 32400,
+    "price": 28000,
     "image": "img/organizador-estante-de-bano-cocina-pino/1794021714967-1-imagen.webp",
     "tags": [],
     "visible": true,
@@ -27,7 +27,7 @@
       "bazar-cocina"
     ],
     "subcategoria": "",
-    "price": 15100,
+    "price": 13000,
     "image": "img/caja-de-madera-organizadora-multiuso/1794021663825-1-imagen.webp",
     "tags": [],
     "visible": true,
@@ -44,28 +44,11 @@
       "bazar-cocina"
     ],
     "subcategoria": "",
-    "price": 8800,
+    "price": 7500,
     "image": "img/tabla-de-madera-picada-sushi/1794021584757-1-imagen.webp",
     "tags": [],
     "visible": true,
     "file": "data/products/carpinteria/bazar-cocina/p-1794021585691.json"
-  },
-  {
-    "id": "1793239693996",
-    "shortId": null,
-    "title": "Mesa Mesita De Luz Alta  Economica Pino 2 Cajones",
-    "rubro": "carpinteria",
-    "primaryCatId": "camas-madera-pino",
-    "categories": [
-      "carpinteria-todos",
-      "camas-madera-pino"
-    ],
-    "subcategoria": "",
-    "price": 32400,
-    "image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
-    "tags": [],
-    "visible": true,
-    "file": "data/products/carpinteria/camas-madera-pino/p-1793239693996.json"
   },
   {
     "id": "52",
@@ -412,7 +395,7 @@
       "bazar-cocina"
     ],
     "subcategoria": "",
-    "price": 12800,
+    "price": 11000,
     "image": "img/bazar-cocina/especiero/1793480775623-imagenwebp.webp",
     "tags": [
       "Estante",
@@ -463,7 +446,7 @@
       "bazar-cocina"
     ],
     "subcategoria": "",
-    "price": 14500,
+    "price": 12500,
     "image": "img/organizadores/Posa-Tortas/1782622590711-imagen.webp",
     "tags": [
       "posa",
@@ -494,7 +477,7 @@
       "bazar-cocina"
     ],
     "subcategoria": "",
-    "price": 9300,
+    "price": 8000,
     "image": "img/hogar/porta-rollo-de-cocina-con-base-madera/1790378932950-imagenwebp.webp",
     "tags": [],
     "visible": true,
@@ -513,7 +496,7 @@
       "cajones-madera"
     ],
     "subcategoria": "",
-    "price": 78600,
+    "price": 68000,
     "image": "img/organizadores/baul-madera-mediano/1782607702562-imagen.webp",
     "tags": [
       "baul",
@@ -570,7 +553,7 @@
       "cajones-madera"
     ],
     "subcategoria": "",
-    "price": 74000,
+    "price": 64000,
     "image": "img/organizadores/baul-madera-mediano/1783801038221-imagen.webp",
     "tags": [
       "baul",
@@ -627,7 +610,7 @@
       "cajones-madera"
     ],
     "subcategoria": "",
-    "price": 83200,
+    "price": 72000,
     "image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
     "tags": [
       "baul",
@@ -848,7 +831,7 @@
       "cunas-madera-pino"
     ],
     "subcategoria": "",
-    "price": 86700,
+    "price": 75000,
     "image": "img/cunas/Eco-fija-100x50cm-Modelo-unico/1783750807676-imagen.webp",
     "tags": [
       "cuna",
@@ -922,7 +905,7 @@
       "cunas-madera-pino"
     ],
     "subcategoria": "",
-    "price": 119600,
+    "price": 103500,
     "image": "img/cunas/eco-rebatible/1783750834642-imagen.webp",
     "tags": [
       "cuna",
@@ -1286,7 +1269,7 @@
       "muebles"
     ],
     "subcategoria": "",
-    "price": 38200,
+    "price": 33000,
     "image": "img/organizadores/Banco Escalera De Pino 3 Escalones/1786226275337-imagen.webp",
     "tags": [],
     "visible": true,
@@ -1304,7 +1287,7 @@
       "muebles"
     ],
     "subcategoria": "",
-    "price": 63600,
+    "price": 55000,
     "image": "img/escaleras/escaleras/1780288089831-imagen.webp",
     "tags": [],
     "visible": true,
@@ -1370,7 +1353,7 @@
       "Juguetes"
     ],
     "subcategoria": "",
-    "price": 15100,
+    "price": 13000,
     "image": "img/organizadores/estantes-montessori/1.webp",
     "tags": [
       "estante",
@@ -1421,7 +1404,7 @@
       "Juguetes"
     ],
     "subcategoria": "",
-    "price": 42800,
+    "price": 37000,
     "image": "img/organizadores/Repisa Biblioteca Estantes Montessori/1787709158727-imagen.webp",
     "tags": [],
     "visible": true,
@@ -1438,7 +1421,7 @@
       "Estantes"
     ],
     "subcategoria": "",
-    "price": 25500,
+    "price": 22000,
     "image": "img/estantes/hexagonales/hexagonales.webp",
     "tags": [
       "estante",
@@ -1522,7 +1505,7 @@
       "Estantes"
     ],
     "subcategoria": "",
-    "price": 23100,
+    "price": 20000,
     "image": "img/estantes/triangulos/1789446728633-edit_1789446674661webp.webp",
     "tags": [
       "estante",
@@ -1562,7 +1545,7 @@
       "Estantes"
     ],
     "subcategoria": "",
-    "price": 23100,
+    "price": 20000,
     "image": "img/estantes-repisas/estantes-x3-cuadrados/1794021464288-imagenwebp.webp",
     "tags": [
       "estante",
@@ -1603,7 +1586,7 @@
       "Estantes"
     ],
     "subcategoria": "",
-    "price": 23100,
+    "price": 20000,
     "image": "img/estantes/repisa-estante-de-pared-con-toallero/1788916001180-imagen.webp",
     "tags": [],
     "visible": true,
@@ -1621,7 +1604,7 @@
       "Juguetes"
     ],
     "subcategoria": "",
-    "price": 23100,
+    "price": 20000,
     "image": "img/estantes/estante-repisa-casita-x-3-unidades/1789446426275-edit_1789446400027webp.webp",
     "tags": [],
     "visible": true,
@@ -1638,7 +1621,7 @@
       "Steps"
     ],
     "subcategoria": "",
-    "price": 19700,
+    "price": 17000,
     "image": "img/steps-cajones/cajones-50cm/stepscajones.webp",
     "tags": [
       "steps",
@@ -1695,7 +1678,7 @@
       "Organizadores"
     ],
     "subcategoria": "",
-    "price": 30100,
+    "price": 26000,
     "image": "img/organizadores/Mueble-Multifunción/1780707094761-imagen.webp",
     "tags": [
       "mueble",
@@ -1763,7 +1746,7 @@
       "camas-madera-pino"
     ],
     "subcategoria": "",
-    "price": 69300,
+    "price": 60000,
     "image": "img/cunas/pie-cama-romano/1786839481815-imagen.webp",
     "tags": [
       "pie",
@@ -1865,7 +1848,7 @@
       "bazar-cocina"
     ],
     "subcategoria": "",
-    "price": 11600,
+    "price": 10000,
     "image": "img/hogar/palo-de-amasar-de-madera-mango-fijo-40-cm/1788916679797-imagen.webp",
     "tags": [],
     "visible": true,
@@ -1882,7 +1865,7 @@
       "bazar-cocina"
     ],
     "subcategoria": "",
-    "price": 15100,
+    "price": 13000,
     "image": "img/hogar/tabla-para-picada-mapa-argentina-regalos/1788917343556-imagen.webp",
     "tags": [],
     "visible": true,
@@ -2053,7 +2036,7 @@
       "jardin-patio"
     ],
     "subcategoria": "",
-    "price": 63600,
+    "price": 55000,
     "image": "img/jardin/cesto-de-basura/1783742426725-imagen.webp",
     "tags": [
       "cesto de basura",
@@ -2160,7 +2143,7 @@
       "Mesas-madera"
     ],
     "subcategoria": "",
-    "price": 92400,
+    "price": 80000,
     "image": "img/mesas-de-madera/Mesas para Candy Bar/1783813269259-imagen.webp",
     "tags": [
       "mesas candy bar",
@@ -2295,7 +2278,7 @@
       "Organizadores"
     ],
     "subcategoria": "",
-    "price": 23100,
+    "price": 20000,
     "image": "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
     "tags": [
       "verdulero",
@@ -2349,7 +2332,7 @@
       "Estantes"
     ],
     "subcategoria": "",
-    "price": 46200,
+    "price": 40000,
     "image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
     "tags": [
       "esquinero",
@@ -2417,7 +2400,7 @@
       "Organizadores"
     ],
     "subcategoria": "",
-    "price": 10400,
+    "price": 9000,
     "image": "img/organizadores/organizador-tribuna-x3/1780323408539-imagen.webp",
     "tags": [
       "organizador",
@@ -2485,7 +2468,7 @@
       "Estantes"
     ],
     "subcategoria": "",
-    "price": 10400,
+    "price": 9000,
     "image": "img/organizadores/mensulas/mensulas.webp",
     "tags": [
       "mensula",
@@ -2521,7 +2504,7 @@
       "Estantes"
     ],
     "subcategoria": "",
-    "price": 5300,
+    "price": 4500,
     "image": "img/organizadores/mensulas/mensulas.webp",
     "tags": [
       "mensula",
@@ -2575,7 +2558,7 @@
       "Organizadores"
     ],
     "subcategoria": "",
-    "price": 26600,
+    "price": 23000,
     "image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
     "tags": [],
     "visible": true,
@@ -2592,7 +2575,7 @@
       "Percheros"
     ],
     "subcategoria": "",
-    "price": 40500,
+    "price": 35000,
     "image": "img/percheros/perchero-1/1782624223963-imagen.webp",
     "tags": [
       "perchero",
@@ -2646,7 +2629,7 @@
       "Percheros"
     ],
     "subcategoria": "",
-    "price": 45100,
+    "price": 39000,
     "image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
     "tags": [
       "perchero",
@@ -2700,7 +2683,7 @@
       "Percheros"
     ],
     "subcategoria": "",
-    "price": 28900,
+    "price": 25000,
     "image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
     "tags": [
       "perchero",
@@ -2768,7 +2751,7 @@
       "Percheros"
     ],
     "subcategoria": "",
-    "price": 24300,
+    "price": 21000,
     "image": "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
     "tags": [
       "perchero",
@@ -2836,7 +2819,7 @@
       "Percheros"
     ],
     "subcategoria": "",
-    "price": 22000,
+    "price": 19000,
     "image": "img/percheros/perchero-nordico-pared-x5/1784163561616-imagen.webp",
     "tags": [
       "percheros de pared nórdicos",
@@ -2954,7 +2937,7 @@
       "Percheros"
     ],
     "subcategoria": "",
-    "price": 17400,
+    "price": 15000,
     "image": "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
     "tags": [
       "percheros de pared nórdicos",
@@ -3072,7 +3055,7 @@
       "Percheros"
     ],
     "subcategoria": "",
-    "price": 13900,
+    "price": 12000,
     "image": "img/percheros/perchero-madera-tuvitos5/1784389644815-imagen.webp",
     "tags": [
       "perchero",
@@ -3140,7 +3123,7 @@
       "Percheros"
     ],
     "subcategoria": "",
-    "price": 19700,
+    "price": 17000,
     "image": "img/percheros/perchero-madera-tuvitos/1784390037823-imagen.webp",
     "tags": [
       "perchero",
@@ -3208,7 +3191,7 @@
       "Percheros"
     ],
     "subcategoria": "",
-    "price": 17400,
+    "price": 15000,
     "image": "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
     "tags": [
       "perchero",
@@ -3271,7 +3254,7 @@
       "Podios"
     ],
     "subcategoria": "",
-    "price": 404300,
+    "price": 350000,
     "image": "img/podios-de-premiacion/podio-profesional/1780774147587-imagen.webp",
     "tags": [
       "Podio de premiación",
@@ -3348,7 +3331,7 @@
       "Podios"
     ],
     "subcategoria": "",
-    "price": 288800,
+    "price": 250000,
     "image": "img/podios-de-premiacion/podio-premiacion--3-modulos-/1780774910905-imagen.webp",
     "tags": [
       "podio",
@@ -3401,7 +3384,7 @@
       "Podios"
     ],
     "subcategoria": "",
-    "price": 138600,
+    "price": 120000,
     "image": "img/podios-de-premiacion/podios-individuales/Podio premiacion (3 modulos).webp",
     "tags": [
       "podio",
@@ -3454,7 +3437,7 @@
       "bazar-cocina"
     ],
     "subcategoria": "",
-    "price": 10400,
+    "price": 9000,
     "image": "img/todo-algarrobo/Platos-madera/1782611849956-imagen.webp",
     "tags": [
       "plato",
@@ -3592,7 +3575,7 @@
       "bazar-cocina"
     ],
     "subcategoria": "",
-    "price": 10400,
+    "price": 9000,
     "image": "img/todo-algarrobo/Mate/1788927967853-imagen.webp",
     "tags": [
       "mate",
@@ -3661,7 +3644,7 @@
       "Juguetes"
     ],
     "subcategoria": "",
-    "price": 34700,
+    "price": 30000,
     "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
     "tags": [],
     "visible": true,
@@ -3728,7 +3711,7 @@
       "sillas-sillones"
     ],
     "subcategoria": "",
-    "price": 115500,
+    "price": 100000,
     "image": "img/lnea-infantil/mesa-y-2-sillas-infantil-excelente-calidad/1793504356051-imagenwebp.webp",
     "tags": [],
     "visible": true,
@@ -3746,7 +3729,7 @@
       "sillas-sillones"
     ],
     "subcategoria": "",
-    "price": 69300,
+    "price": 60000,
     "image": "img/juguetes/Juego de Mesa y Sillas redondos/1786838965424-imagen.webp",
     "tags": [],
     "visible": true,
@@ -3764,7 +3747,7 @@
       "sillas-sillones"
     ],
     "subcategoria": "",
-    "price": 69300,
+    "price": 60000,
     "image": "img/juguetes/Juego de Mesa y Sillas colonial/1786839007827-imagen.webp",
     "tags": [],
     "visible": true,
@@ -3782,7 +3765,7 @@
       "sillas-sillones"
     ],
     "subcategoria": "",
-    "price": 38200,
+    "price": 35000,
     "image": "img/sillas-y-sillones/banquito-de-plaza/1782606556989-imagen.webp",
     "tags": [
       "sillon",
@@ -3810,7 +3793,7 @@
       "Juguetes"
     ],
     "subcategoria": "",
-    "price": 23100,
+    "price": 20000,
     "image": "img/sillas-y-sillones/silla-infantil/1780323571344-imagen.webp",
     "tags": [
       "silla",
@@ -3878,7 +3861,7 @@
       "Juguetes"
     ],
     "subcategoria": "",
-    "price": 41600,
+    "price": 36000,
     "image": "img/sillas-y-sillones/sillon-gervasoni-simple-chico/1783814275891-imagen.webp",
     "tags": [
       "sillon",
@@ -3946,7 +3929,7 @@
       "Vinotecas"
     ],
     "subcategoria": "",
-    "price": 69300,
+    "price": 60000,
     "image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
     "tags": [],
     "visible": true,
@@ -3963,7 +3946,7 @@
       "Vinotecas"
     ],
     "subcategoria": "",
-    "price": 92400,
+    "price": 80000,
     "image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
     "tags": [
       "vinos",
@@ -4033,7 +4016,7 @@
       "Vinotecas"
     ],
     "subcategoria": "",
-    "price": 115500,
+    "price": 100000,
     "image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
     "tags": [
       "vinos",
@@ -4104,7 +4087,7 @@
       "bazar-cocina"
     ],
     "subcategoria": "",
-    "price": 26100,
+    "price": 22500,
     "image": "img/vinotecas-bodegas/bodega-madera-6-rectangular/1784391190209-imagen.webp",
     "tags": [
       "bodega",
@@ -4172,7 +4155,7 @@
       "Vinotecas"
     ],
     "subcategoria": "",
-    "price": 28900,
+    "price": 25000,
     "image": "img/vinotecas-bodegas/soporte-vinos-vinoteca-6/1786828054739-imagen.webp",
     "tags": [],
     "visible": true,
@@ -4189,7 +4172,7 @@
       "Vinotecas"
     ],
     "subcategoria": "",
-    "price": 52000,
+    "price": 45000,
     "image": "img/vinotecas-bodegas/Soporte Para 12 Vinos Bodega Vinoteca/1786828216763-imagen.webp",
     "tags": [],
     "visible": true,
@@ -4206,7 +4189,7 @@
       "cortes-madera"
     ],
     "subcategoria": "",
-    "price": 6800,
+    "price": 5800,
     "image": "img/cortes-de-madera/estantes-a-medida/1791766625835-imagenwebp.webp",
     "tags": [],
     "visible": true,
@@ -4223,7 +4206,7 @@
       "cortes-madera"
     ],
     "subcategoria": "",
-    "price": 31900,
+    "price": 27500,
     "image": "img/cortes-de-madera/escritorios-y-mesas/1791766660522-imagenwebp.webp",
     "tags": [
       "escritorio",
@@ -4332,7 +4315,7 @@
       "Steps"
     ],
     "subcategoria": "",
-    "price": 83200,
+    "price": 72000,
     "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
     "tags": [
       "cajon",
@@ -4440,7 +4423,7 @@
       "cat-28-mvay9cq6"
     ],
     "subcategoria": "",
-    "price": 25500,
+    "price": 20500,
     "image": "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
     "tags": [
       "borrador",
@@ -4465,7 +4448,7 @@
       "cat-28-mvay9cq6"
     ],
     "subcategoria": "",
-    "price": 26600,
+    "price": 26000,
     "image": "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700352-imagenwebp.webp",
     "tags": [],
     "visible": true,
@@ -4482,7 +4465,7 @@
       "jardin-patio"
     ],
     "subcategoria": "",
-    "price": 52000,
+    "price": 45000,
     "image": "img/jardn-decks/mesa-de-madera-plegable-jardn-camping/1793480275098-imagenwebp.webp",
     "tags": [
       "borrador",
@@ -4508,7 +4491,7 @@
       "jardin-patio"
     ],
     "subcategoria": "",
-    "price": 23100,
+    "price": 20000,
     "image": "img/jardn-decks/fanal-madera-pino-por-tres-unidades/1793480381833-imagenwebp.webp",
     "tags": [
       "borrador",
@@ -4534,7 +4517,7 @@
       "jardin-patio"
     ],
     "subcategoria": "",
-    "price": 28900,
+    "price": 25000,
     "image": "img/jardn-decks/mesa-plegable-playera-jardn-2-modelos/1793480476107-imagenwebp.webp",
     "tags": [
       "borrador",
@@ -4560,7 +4543,7 @@
       "Mesas-madera"
     ],
     "subcategoria": "",
-    "price": 26600,
+    "price": 25000,
     "image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
     "tags": [
       "borrador",
@@ -4586,7 +4569,7 @@
       "Organizadores"
     ],
     "subcategoria": "",
-    "price": 75100,
+    "price": 65000,
     "image": "img/organizadores-muebles/4-maceteros-canasta-organizadores-en-junco/1793494225817-imagenwebp.webp",
     "tags": [
       "borrador",
@@ -4611,7 +4594,7 @@
       "Mesas-madera"
     ],
     "subcategoria": "",
-    "price": 42800,
+    "price": 37000,
     "image": "img/mesas-escritorios/mesa-plegable-madera-pino-redonda/1793500205812-edit_1793500204338webp.webp",
     "tags": [
       "borrador",
@@ -4636,7 +4619,7 @@
       "Vinotecas"
     ],
     "subcategoria": "",
-    "price": 138600,
+    "price": 120000,
     "image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
     "tags": [
       "vinos",
@@ -4894,7 +4877,7 @@
       "Steps"
     ],
     "subcategoria": "",
-    "price": 92400,
+    "price": 80000,
     "image": "img/steps-cajones/cajones-profesional/1780590450688-imagen.webp",
     "tags": [
       "cajon",
@@ -4931,7 +4914,7 @@
       "Steps"
     ],
     "subcategoria": "",
-    "price": 17400,
+    "price": 15000,
     "image": "img/steps-cajones/cajones-50cm/1780589685655-imagen.webp",
     "tags": [
       "steps",
@@ -4987,7 +4970,7 @@
       "Steps"
     ],
     "subcategoria": "",
-    "price": 19700,
+    "price": 17000,
     "image": "img/steps-cajones/cajones-50cm/1780589685491-imagen.webp",
     "tags": [
       "steps",
@@ -5043,7 +5026,7 @@
       "Steps"
     ],
     "subcategoria": "fitness",
-    "price": 63600,
+    "price": 55000,
     "image": "img/borrador/portada-imagen.webp",
     "tags": [
       "borrador",
@@ -5069,7 +5052,7 @@
       "Steps"
     ],
     "subcategoria": "fitness",
-    "price": 34700,
+    "price": 30000,
     "image": "img/borrador/portada-imagen.webp",
     "tags": [
       "borrador",
@@ -5111,7 +5094,7 @@
       "Organizadores"
     ],
     "subcategoria": "",
-    "price": 17400,
+    "price": 15000,
     "image": "img/organizadores/estantes-montessori/1.webp",
     "tags": [
       "verdulero",
@@ -5161,7 +5144,7 @@
       "Organizadores"
     ],
     "subcategoria": "",
-    "price": 40500,
+    "price": 35000,
     "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
     "tags": [
       "verdulero",
@@ -5228,11 +5211,27 @@
       "camas-madera-pino"
     ],
     "subcategoria": "",
-    "price": 28900,
+    "price": 30000,
     "image": "img/camas-dormitorio/mesita-de-luz-angosta/1793479341249-edit_1793479339384webp.webp",
     "tags": [],
     "visible": true,
     "file": "data/products/carpinteria/camas-madera-pino/p-F3.json"
+  },
+  {
+    "id": "1793239693996",
+    "shortId": "3O",
+    "title": "Mesa Mesita De Luz Alta  Economica Pino 2 Cajones",
+    "rubro": "carpinteria",
+    "primaryCatId": "camas-madera-pino",
+    "categories": [
+      "camas-madera-pino"
+    ],
+    "subcategoria": "",
+    "price": 35000,
+    "image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
+    "tags": [],
+    "visible": true,
+    "file": "data/products/carpinteria/camas-madera-pino/p-1793239693996.json"
   },
   {
     "id": "4G",
@@ -5244,7 +5243,7 @@
       "muebles"
     ],
     "subcategoria": "",
-    "price": 23100,
+    "price": 20000,
     "image": "img/escaleras/banco-banquito-escalera-nios-infantil/1793485683697-imagenwebp.webp",
     "tags": [],
     "visible": true,
@@ -5260,7 +5259,7 @@
       "muebles"
     ],
     "subcategoria": "",
-    "price": 23100,
+    "price": 20000,
     "image": "img/banco-banquito-escalera/1793485819869-1-imagen.webp",
     "tags": [],
     "visible": true,
@@ -5276,7 +5275,7 @@
       "jardin-patio"
     ],
     "subcategoria": "",
-    "price": 23100,
+    "price": 20000,
     "image": "img/jardn-decks/macetas-colgante-de-eucalipto/1793681585775-edit_1793681583731webp.webp",
     "tags": [
       "Porta maceta colgante de madera",
@@ -5344,7 +5343,7 @@
       "jardin-patio"
     ],
     "subcategoria": "decks-macetas",
-    "price": 16800,
+    "price": 14500,
     "image": "img/borrador/portada-imagen.webp",
     "tags": [
       "borrador",
@@ -5368,7 +5367,7 @@
       "jardin-patio"
     ],
     "subcategoria": "",
-    "price": 9900,
+    "price": 8500,
     "image": "img/jardn-decks/deck-base-macetas-madera-50-x-20-cm/1794017501386-imagenwebp.webp",
     "tags": [
       "borrador",
@@ -5392,7 +5391,7 @@
       "jardin-patio"
     ],
     "subcategoria": "",
-    "price": 63600,
+    "price": 55000,
     "image": "img/jardn-decks/deck-base-macetas-madera-80-x-40-cm/1794017570899-imagenwebp.webp",
     "tags": [
       "borrador",
@@ -5416,7 +5415,7 @@
       "productos-algarrobo"
     ],
     "subcategoria": "platos-asado",
-    "price": 13900,
+    "price": 12000,
     "image": "img/borrador/portada-imagen.webp",
     "tags": [
       "borrador",
@@ -5443,7 +5442,7 @@
       "bazar-cocina"
     ],
     "subcategoria": "",
-    "price": 15100,
+    "price": 13000,
     "image": "img/bazar-cocina/organizador-verdulero-frutero-pino-2-estantes/1793887981518-edit_1793887970524webp.webp",
     "tags": [
       "verdulero",
@@ -5496,7 +5495,7 @@
       "cat-28-mvay9cq6"
     ],
     "subcategoria": "pizarras",
-    "price": 35900,
+    "price": 30500,
     "image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
     "tags": [],
     "visible": true,
@@ -5512,7 +5511,7 @@
       "cat-28-mvay9cq6"
     ],
     "subcategoria": "",
-    "price": 23100,
+    "price": 22000,
     "image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
     "tags": [],
     "visible": true,
@@ -5529,7 +5528,7 @@
       "cat-21-mu7q9i7y"
     ],
     "subcategoria": "",
-    "price": 142700,
+    "price": 123500,
     "image": "img/kits-electricos/kit-instalacin-electrica-domiciliario-termica-y-diyuntor/1789839131702-imagenwebp.webp",
     "tags": [],
     "visible": true,
@@ -5546,7 +5545,7 @@
       "cat-21-mu7q9i7y"
     ],
     "subcategoria": "",
-    "price": 288800,
+    "price": 250000,
     "image": "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-2-ambientes/1789839031531-imagenwebp.webp",
     "tags": [],
     "visible": true,
@@ -5563,7 +5562,7 @@
       "cat-21-mu7q9i7y"
     ],
     "subcategoria": "",
-    "price": 450500,
+    "price": 390000,
     "image": "img/kits-electricos/kit-materiales-elctricos-domiciliarios-ccables-3-ambientes/1789839502383-imagenwebp.webp",
     "tags": [],
     "visible": true,
@@ -5580,7 +5579,7 @@
       "cat-21-mu7q9i7y"
     ],
     "subcategoria": "",
-    "price": 691900,
+    "price": 599000,
     "image": "img/kits-electricos/kit-instalacin-materiales-elctricos-cables-completo-full/1789848498770-imagenwebp.webp",
     "tags": [],
     "visible": true,
@@ -5597,7 +5596,7 @@
       "cat-23-mu93q76a"
     ],
     "subcategoria": "",
-    "price": 19700,
+    "price": 17000,
     "image": "img/tornillos/tornillo-punta-aguja-6-x-1-12-drywall-p-madera/1789865946940-imagenwebp.webp",
     "tags": [],
     "visible": true,

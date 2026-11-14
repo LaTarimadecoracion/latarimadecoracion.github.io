@@ -21,7 +21,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 9900,
+          "price": 8500,
           "cost_price": 8500,
           "legend": "",
           "showPrice": true,
@@ -70,7 +70,7 @@
     }
   ],
   "rubro": "carpinteria",
-  "views": 3,
+  "views": 5,
   "categories": [
     "jardin-patio"
   ]

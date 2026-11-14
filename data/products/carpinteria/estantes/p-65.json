@@ -23,7 +23,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 23100,
+          "price": 20000,
           "cost_price": 20000,
           "legend": "",
           "showPrice": true,
@@ -81,7 +81,7 @@
   "last_modified": 1794021508802,
   "primaryCatId": "Estantes",
   "history": [],
-  "views": 7,
+  "views": 8,
   "categories": [
     "carpinteria-todos",
     "Estantes"

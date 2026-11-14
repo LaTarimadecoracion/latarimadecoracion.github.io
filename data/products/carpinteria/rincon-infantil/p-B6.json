@@ -19,7 +19,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 69300,
+          "price": 60000,
           "cost_price": 40000,
           "legend": "",
           "showPrice": true
@@ -31,7 +31,7 @@
   "tags": [],
   "last_modified": 1786839110101,
   "primaryCatId": "Juguetes",
-  "views": 3,
+  "views": 4,
   "paymentConfig": {
     "transferEnabled": true,
     "linkEnabled": false,

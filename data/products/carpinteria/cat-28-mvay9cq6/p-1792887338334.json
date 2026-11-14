@@ -22,7 +22,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 25500,
+          "price": 20500,
           "cost_price": "",
           "legend": "",
           "showPrice": true,
@@ -67,6 +67,7 @@
     }
   ],
   "views": 3,
+  "price": 20500,
   "categories": [
     "carpinteria-todos",
     "cat-28-mvay9cq6"

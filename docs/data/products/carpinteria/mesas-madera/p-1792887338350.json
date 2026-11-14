@@ -21,11 +21,15 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 26600,
-          "cost_price": "",
+          "price": 25000,
+          "cost_price": 25000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
@@ -46,11 +50,15 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 28900,
-          "cost_price": "",
+          "price": 25000,
+          "cost_price": 25000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
@@ -71,11 +79,15 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 28900,
+          "price": 25000,
           "cost_price": 25000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
@@ -96,11 +108,15 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 28900,
-          "cost_price": "",
+          "price": 25000,
+          "cost_price": 25000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
@@ -132,7 +148,7 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1793586546740,
+  "last_modified": 1794518673813,
   "primaryCatId": "Mesas-madera",
   "history": [
     {
@@ -141,8 +157,7 @@
       "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
     }
   ],
-  "views": 5,
-  "price": 26600,
+  "views": 13,
   "categories": [
     "carpinteria-todos",
     "Mesas-madera"

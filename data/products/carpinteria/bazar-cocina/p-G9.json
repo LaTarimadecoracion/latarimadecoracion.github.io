@@ -21,7 +21,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 15100,
+          "price": 13000,
           "cost_price": "",
           "legend": "",
           "showPrice": true,
@@ -71,5 +71,5 @@
     "bazar-cocina"
   ],
   "rubro": "carpinteria",
-  "price": 15100
+  "price": 13000
 }

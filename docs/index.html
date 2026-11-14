@@ -206,6 +206,10 @@
                     <span class="material-symbols-outlined" style="font-size: 18px; color: #FFB300;">notifications</span>
                     <span class="badge" id="header-nav-badge" style="position: absolute; top: -1px; right: -1px; width: 9px; height: 9px; background: #ff3b30; border-radius: 50%; display: none; border: 1.5px solid var(--surface-color); box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></span>
                 </button>
+                
+                <button id="nav-user-btn-mobile" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: none; align-items: center; justify-content: center; flex-shrink: 0; position: relative; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden; border: 1.5px solid #86efac; cursor: pointer;" onclick="if(window.UserProfileDrawer){window.UserProfileDrawer.open();}else if(window.ensureUserProfileModalLoaded){window.ensureUserProfileModalLoaded().then(()=>{if(window.UserProfileDrawer)window.UserProfileDrawer.open();else if(window.openUserProfileModal)window.openUserProfileModal();});}else if(window.openUserProfileModal){window.openUserProfileModal();}" title="Mi Cuenta">
+                    <span class="material-symbols-outlined" style="font-size: 18px; color: #16a34a;">account_circle</span>
+                </button>
             </div>
 
             

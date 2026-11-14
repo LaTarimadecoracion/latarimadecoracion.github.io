@@ -21,7 +21,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 83200,
+          "price": 72000,
           "cost_price": 36000,
           "legend": "",
           "showPrice": true,
@@ -73,7 +73,7 @@
   ],
   "last_modified": 1783906817810,
   "primaryCatId": "cajones-madera",
-  "views": 2,
+  "views": 3,
   "paymentConfig": {
     "transferEnabled": true,
     "linkEnabled": false,

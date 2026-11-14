@@ -33,7 +33,7 @@ const productsData = [
                                 "linkLabel": "Ver en Mercado Libre",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 32400,
+                                "price": 28000,
                                 "cost_price": 14000,
                                 "legend": "",
                                 "showPrice": true,
@@ -99,7 +99,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Estándar",
-                                "price": 15100,
+                                "price": 13000,
                                 "cost_price": 6500,
                                 "link": "https://www.mercadolibre.com.ar/caja-de-madera-organizadora-multiuso/up/MLAU5782902933",
                                 "linkLabel": "Ver en Mercado Libre",
@@ -146,7 +146,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Estándar",
-                                "price": 8800,
+                                "price": 7500,
                                 "cost_price": 3750,
                                 "link": "https://www.mercadolibre.com.ar/tabla-de-madera-picada-sushi/up/MLAU5782447121",
                                 "linkLabel": "Ver en Mercado Libre",
@@ -161,54 +161,6 @@ const productsData = [
                     }
                 ],
                 "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                }
-            },
-            {
-                "id": "1793239693996",
-                "title": "Mesa Mesita De Luz Alta  Economica Pino 2 Cajones",
-                "description": "MESA AUXILIAR DE MADERA – IDEAL PARA LIVING O DORMITORIO\n\nPráctica y funcional mesa auxiliar de madera, ideal para colocar junto al sillón o la cama. Su diseño combina cajones frontales y un espacio de guardado inferior abierto, ofreciendo una solución práctica para organizar tus objetos y aprovechar mejor los espacios.\n\nSu estilo natural permite combinarla con diferentes ambientes y estilos de decoración.\n\nCARACTERÍSTICAS\n\nMaterial: madera de pino natural.\n\nDiseño con cajones frontales y estante inferior abierto.\n\nIdeal para living, dormitorio o espacios reducidos.\n\nTerminación en madera natural.\n\nMEDIDAS\n\nAlto: 75 cm.\n\nAncho: 30 cm.\n\nProfundidad: 23 cm.\n\n\nRealizamos factura A.\n\nIMPORTANTE\n\nLas imágenes son ilustrativas y tienen como finalidad mostrar el producto en un ambiente decorado. Al tratarse de madera natural, las vetas, los nudos y las tonalidades pueden variar de una pieza a otra.\n\nAntes de realizar la compra, verificá las medidas para asegurarte de que el producto se adapte al espacio donde querés colocarlo.\n\nSin garantía",
-                "image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
-                "order": 0,
-                "visible": true,
-                "primaryCatId": "camas-madera-pino",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Estándar",
-                        "cover_image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
-                        "images_list": [
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693248-2-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693331-3-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693485-4-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693554-5-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693659-6-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693713-7-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693802-8-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693858-9-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Estándar",
-                                "price": 32400,
-                                "cost_price": 14000,
-                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-2-cajones/up/MLAU5669889579",
-                                "linkLabel": "Ver en Mercado Libre",
-                                "iconType": "local_shipping",
-                                "stock": 5,
-                                "showPrice": true,
-                                "highlight": false,
-                                "default": true,
-                                "hidden": false
-                            }
-                        ]
-                    }
-                ],
-                "category": "camas-madera-pino",
-                "views": 7,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -662,7 +614,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 16
+                "views": 17
             },
             {
                 "id": "53",
@@ -953,7 +905,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -1353,7 +1305,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -1367,7 +1319,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -1381,7 +1333,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -1395,7 +1347,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -1470,7 +1422,7 @@ const productsData = [
                         "detail": "Costo: $0 ➔ $2500"
                     }
                 ],
-                "views": 7
+                "views": 11
             },
             {
                 "id": "4A",
@@ -1494,7 +1446,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 14500,
+                                "price": 12500,
                                 "cost_price": 6500,
                                 "legend": "",
                                 "showPrice": true
@@ -1507,7 +1459,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 14500,
+                                "price": 12500,
                                 "cost_price": 7000,
                                 "legend": "",
                                 "showPrice": true
@@ -1574,7 +1526,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 9300,
+                                "price": 8000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -1636,7 +1588,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 78600,
+                                "price": 68000,
                                 "cost_price": 34000,
                                 "legend": "",
                                 "showPrice": true,
@@ -1732,7 +1684,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 74000,
+                                "price": 64000,
                                 "cost_price": 32000,
                                 "legend": "",
                                 "showPrice": true,
@@ -1784,7 +1736,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -1827,7 +1779,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 83200,
+                                "price": 72000,
                                 "cost_price": 36000,
                                 "legend": "",
                                 "showPrice": true,
@@ -1879,7 +1831,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -2148,7 +2100,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 86700,
+                                "price": 75000,
                                 "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
@@ -2256,7 +2208,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 119600,
+                                "price": 103500,
                                 "cost_price": 69000,
                                 "legend": "",
                                 "showPrice": true
@@ -2735,7 +2687,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
@@ -2787,7 +2739,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 63600,
+                                "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true,
@@ -2801,7 +2753,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 57800,
+                                "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true,
@@ -2815,7 +2767,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 52000,
+                                "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true,
@@ -2829,7 +2781,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
+                                "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -2843,7 +2795,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40500,
+                                "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
@@ -2857,7 +2809,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 34700,
+                                "price": 30000,
                                 "cost_price": 30000,
                                 "legend": "",
                                 "showPrice": true,
@@ -2887,7 +2839,7 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 11,
+                "views": 12,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -2987,7 +2939,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 15100,
+                                "price": 13000,
                                 "cost_price": 13000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3001,7 +2953,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3015,7 +2967,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40500,
+                                "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3029,7 +2981,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3056,7 +3008,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 16200,
+                                "price": 14000,
                                 "cost_price": 14000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3070,7 +3022,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 30100,
+                                "price": 26000,
                                 "cost_price": 26000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3084,7 +3036,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 41600,
+                                "price": 35998,
                                 "cost_price": 35998,
                                 "legend": "",
                                 "showPrice": true,
@@ -3098,7 +3050,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3125,7 +3077,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17400,
+                                "price": 15000,
                                 "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3139,7 +3091,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 32400,
+                                "price": 28000,
                                 "cost_price": 28000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3153,7 +3105,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
+                                "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3167,7 +3119,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3258,7 +3210,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 42800,
+                                "price": 37000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true
@@ -3312,7 +3264,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 25500,
+                                "price": 22000,
                                 "cost_price": 11000,
                                 "legend": "",
                                 "showPrice": false,
@@ -3592,7 +3544,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3673,7 +3625,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3731,7 +3683,7 @@ const productsData = [
                 "last_modified": 1794021508802,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 7
+                "views": 8
             },
             {
                 "id": "7C",
@@ -3758,7 +3710,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3838,7 +3790,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3907,7 +3859,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 19700,
+                                "price": 17000,
                                 "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3936,7 +3888,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3965,7 +3917,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 35900,
+                                "price": 31000,
                                 "cost_price": 31000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3994,7 +3946,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 37000,
+                                "price": 32000,
                                 "cost_price": 32000,
                                 "legend": "",
                                 "showPrice": false,
@@ -4092,7 +4044,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 30100,
+                                "price": 26000,
                                 "cost_price": 6500,
                                 "legend": "",
                                 "showPrice": true
@@ -4197,7 +4149,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 69300,
+                                "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -4383,7 +4335,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 11600,
+                                "price": 10000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
@@ -4404,7 +4356,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10400,
+                                "price": 9000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -4425,7 +4377,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 13900,
+                                "price": 12000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -4499,7 +4451,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 15100,
+                                "price": 13000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -4549,7 +4501,7 @@ const productsData = [
                     "bazar-cocina"
                 ],
                 "rubro": "carpinteria",
-                "price": 15100
+                "price": 13000
             },
             {
                 "id": "E1",
@@ -4957,7 +4909,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true
@@ -4970,7 +4922,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 43900,
+                                "price": 38000,
                                 "cost_price": 38000,
                                 "legend": "",
                                 "showPrice": true
@@ -4983,7 +4935,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 63600,
+                                "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true
@@ -5096,7 +5048,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 63600,
+                                "price": 55000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -5120,7 +5072,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 98200,
+                                "price": 85000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -5302,7 +5254,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 92400,
+                                "price": 80000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
@@ -5315,7 +5267,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 32400,
+                                "price": 28000,
                                 "cost_price": 14000,
                                 "legend": "",
                                 "showPrice": true
@@ -5328,7 +5280,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 39300,
+                                "price": 34000,
                                 "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
@@ -5341,7 +5293,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
+                                "price": 40000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true
@@ -5602,7 +5554,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -5697,7 +5649,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
+                                "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -5811,7 +5763,7 @@ const productsData = [
                                 "highlight": false,
                                 "legend": "",
                                 "showPrice": true,
-                                "price": 10400
+                                "price": 9000
                             }
                         ],
                         "hidden": false
@@ -5910,7 +5862,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10400,
+                                "price": 9000,
                                 "cost_price": 9000,
                                 "legend": "",
                                 "showPrice": true
@@ -5923,7 +5875,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 19700,
+                                "price": 17000,
                                 "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
@@ -5936,7 +5888,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
@@ -5949,7 +5901,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 55500,
+                                "price": 47998,
                                 "cost_price": 47998,
                                 "legend": "",
                                 "showPrice": true
@@ -5972,7 +5924,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 11600,
+                                "price": 10000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true
@@ -5985,7 +5937,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20800,
+                                "price": 18000,
                                 "cost_price": 18000,
                                 "legend": "",
                                 "showPrice": true
@@ -5998,7 +5950,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40500,
+                                "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
@@ -6011,7 +5963,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 57800,
+                                "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
@@ -6034,7 +5986,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 13400,
+                                "price": 11500,
                                 "cost_price": 11500,
                                 "legend": "",
                                 "showPrice": true
@@ -6047,7 +5999,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 25500,
+                                "price": 22000,
                                 "cost_price": 22000,
                                 "legend": "",
                                 "showPrice": true
@@ -6060,7 +6012,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 49700,
+                                "price": 43000,
                                 "cost_price": 43000,
                                 "legend": "",
                                 "showPrice": true
@@ -6073,7 +6025,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 72800,
+                                "price": 62999,
                                 "cost_price": 62999,
                                 "legend": "",
                                 "showPrice": true
@@ -6145,7 +6097,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 5300,
+                                "price": 4500,
                                 "cost_price": 500,
                                 "legend": "",
                                 "showPrice": true
@@ -6158,7 +6110,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 9300,
+                                "price": 8000,
                                 "cost_price": 5500,
                                 "legend": "",
                                 "showPrice": true
@@ -6181,7 +6133,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 5300,
+                                "price": 4500,
                                 "cost_price": 4500,
                                 "legend": "",
                                 "showPrice": true
@@ -6194,7 +6146,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 9900,
+                                "price": 8500,
                                 "cost_price": 8500,
                                 "legend": "",
                                 "showPrice": true
@@ -6207,7 +6159,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 19700,
+                                "price": 17000,
                                 "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
@@ -6332,7 +6284,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 26600,
+                                "price": 23000,
                                 "cost_price": 23000,
                                 "legend": "",
                                 "showPrice": true,
@@ -6362,7 +6314,7 @@ const productsData = [
                 "last_modified": 1790738317696,
                 "primaryCatId": "Organizadores",
                 "history": [],
-                "views": 25,
+                "views": 26,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores"
@@ -6393,7 +6345,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40500,
+                                "price": 35000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -6407,7 +6359,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40500,
+                                "price": 35000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -6512,7 +6464,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45100,
+                                "price": 39000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -6526,7 +6478,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45100,
+                                "price": 39000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -6637,7 +6589,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 25000,
                                 "cost_price": 12500,
                                 "legend": "",
                                 "showPrice": true,
@@ -6760,7 +6712,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 24300,
+                                "price": 21000,
                                 "cost_price": 10500,
                                 "legend": "",
                                 "showPrice": true,
@@ -6884,7 +6836,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 22000,
+                                "price": 19000,
                                 "cost_price": 9500,
                                 "legend": "",
                                 "showPrice": true,
@@ -7043,7 +6995,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17400,
+                                "price": 15000,
                                 "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": true,
@@ -7202,7 +7154,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 13900,
+                                "price": 12000,
                                 "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": true,
@@ -7320,7 +7272,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 19700,
+                                "price": 17000,
                                 "cost_price": 8500,
                                 "legend": "",
                                 "showPrice": true,
@@ -7439,7 +7391,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17400,
+                                "price": 15000,
                                 "legend": "",
                                 "showPrice": false,
                                 "cost_price": 7500,
@@ -7453,7 +7405,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17400,
+                                "price": 15000,
                                 "legend": "",
                                 "showPrice": false,
                                 "cost_price": 7500,
@@ -7467,7 +7419,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17400,
+                                "price": 15000,
                                 "legend": "",
                                 "showPrice": false,
                                 "cost_price": 7500,
@@ -7581,7 +7533,7 @@ const productsData = [
                                 "default": false,
                                 "volumeDiscounts": [],
                                 "cost_price": 35000,
-                                "price": 404300,
+                                "price": 350000,
                                 "stock": 0,
                                 "showPrice": true,
                                 "weight": 2.5
@@ -7713,7 +7665,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 288800,
+                                "price": 250000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
@@ -7811,7 +7763,7 @@ const productsData = [
                                 "default": true,
                                 "volumeDiscounts": [],
                                 "cost_price": 25000,
-                                "price": 138600,
+                                "price": 120000,
                                 "stock": 0,
                                 "showPrice": true,
                                 "weight": 2.5
@@ -7822,7 +7774,7 @@ const productsData = [
                                 "default": false,
                                 "volumeDiscounts": [],
                                 "cost_price": 25000,
-                                "price": 115500,
+                                "price": 100000,
                                 "stock": 0,
                                 "showPrice": true,
                                 "weight": 2.5
@@ -7833,7 +7785,7 @@ const productsData = [
                                 "default": false,
                                 "volumeDiscounts": [],
                                 "cost_price": 25000,
-                                "price": 92400,
+                                "price": 80000,
                                 "stock": 0,
                                 "showPrice": true,
                                 "weight": 2.5
@@ -7941,7 +7893,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10400,
+                                "price": 9000,
                                 "cost_price": 4500,
                                 "legend": "",
                                 "showPrice": true,
@@ -8146,7 +8098,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10400,
+                                "price": 9000,
                                 "cost_price": 4500,
                                 "legend": "",
                                 "showPrice": true,
@@ -8253,7 +8205,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 34700,
+                                "price": 30000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -8292,7 +8244,7 @@ const productsData = [
                     "Juguetes"
                 ],
                 "rubro": "carpinteria",
-                "price": 34700
+                "price": 30000
             },
             {
                 "id": "B1",
@@ -8403,7 +8355,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 115500,
+                                "price": 100000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -8457,7 +8409,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 69300,
+                                "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
@@ -8508,7 +8460,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 69300,
+                                "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
@@ -8520,7 +8472,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786839110101,
                 "primaryCatId": "Juguetes",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -8560,7 +8512,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 35000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
@@ -8585,7 +8537,7 @@ const productsData = [
                 ],
                 "last_modified": 1786564211621,
                 "primaryCatId": "sillas-sillones",
-                "views": 16,
+                "views": 17,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -8602,7 +8554,8 @@ const productsData = [
                     "Juguetes",
                     "sillas-sillones"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 35000
             },
             {
                 "id": "C2",
@@ -8627,7 +8580,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true,
@@ -8741,7 +8694,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 41600,
+                                "price": 36000,
                                 "cost_price": 18000,
                                 "legend": "",
                                 "showPrice": true
@@ -8847,7 +8800,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 69300,
+                                "price": 60000,
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
@@ -8901,7 +8854,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 135,
+                "views": 145,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -8932,7 +8885,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 92400,
+                                "price": 80000,
                                 "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true
@@ -8997,7 +8950,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 20,
+                "views": 23,
                 "stock": 0,
                 "history": [
                     {
@@ -9024,7 +8977,7 @@ const productsData = [
                     "Hogar"
                 ],
                 "rubro": "carpinteria",
-                "price": 92400
+                "price": 80000
             },
             {
                 "id": "23",
@@ -9049,7 +9002,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 115500,
+                                "price": 100000,
                                 "cost_price": 31000,
                                 "legend": "",
                                 "showPrice": true
@@ -9141,7 +9094,7 @@ const productsData = [
                     "Hogar"
                 ],
                 "rubro": "carpinteria",
-                "price": 115500
+                "price": 100000
             },
             {
                 "id": "25",
@@ -9167,7 +9120,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 26100,
+                                "price": 22500,
                                 "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true
@@ -9231,7 +9184,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 11,
+                "views": 12,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -9274,7 +9227,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 25000,
                                 "cost_price": 5000,
                                 "legend": "",
                                 "showPrice": true
@@ -9334,7 +9287,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 52000,
+                                "price": 45000,
                                 "cost_price": 7000,
                                 "legend": "",
                                 "showPrice": true
@@ -9402,7 +9355,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 6800,
+                                "price": 5800,
                                 "cost_price": 1458,
                                 "legend": "",
                                 "showPrice": true,
@@ -9416,7 +9369,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 9000,
+                                "price": 7700,
                                 "cost_price": 1944,
                                 "legend": "",
                                 "showPrice": true,
@@ -9430,7 +9383,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 11300,
+                                "price": 9700,
                                 "cost_price": 2431,
                                 "legend": "",
                                 "showPrice": true,
@@ -9444,7 +9397,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10100,
+                                "price": 8750,
                                 "cost_price": 2188,
                                 "legend": "",
                                 "showPrice": true,
@@ -9458,7 +9411,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 13500,
+                                "price": 11600,
                                 "cost_price": 2917,
                                 "legend": "",
                                 "showPrice": true,
@@ -9472,7 +9425,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 16800,
+                                "price": 14500,
                                 "cost_price": 3646,
                                 "legend": "",
                                 "showPrice": true,
@@ -9536,7 +9489,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 31900,
+                                "price": 27500,
                                 "cost_price": 16500,
                                 "legend": "",
                                 "showPrice": true,
@@ -9550,7 +9503,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": true,
-                                "price": 45800,
+                                "price": 39600,
                                 "cost_price": 23500,
                                 "legend": "",
                                 "showPrice": true,
@@ -9564,7 +9517,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 53400,
+                                "price": 46200,
                                 "cost_price": 27500,
                                 "legend": "",
                                 "showPrice": true,
@@ -9578,7 +9531,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 62300,
+                                "price": 53900,
                                 "cost_price": 32000,
                                 "legend": "",
                                 "showPrice": true,
@@ -9852,7 +9805,7 @@ const productsData = [
                                 "linkLabel": "Configurar",
                                 "iconType": "straighten",
                                 "highlight": true,
-                                "price": 83200,
+                                "price": 72000,
                                 "cost_price": 22000,
                                 "legend": "Oficial Box CrossFit",
                                 "showPrice": true,
@@ -9878,7 +9831,7 @@ const productsData = [
                                 "linkLabel": "Configurar",
                                 "iconType": "straighten",
                                 "highlight": false,
-                                "price": 67000,
+                                "price": 58000,
                                 "cost_price": 17000,
                                 "legend": "Intermedio",
                                 "showPrice": true,
@@ -9904,7 +9857,7 @@ const productsData = [
                                 "linkLabel": "Configurar",
                                 "iconType": "straighten",
                                 "highlight": false,
-                                "price": 48600,
+                                "price": 42000,
                                 "cost_price": 12000,
                                 "legend": "Funcional / Principiante",
                                 "showPrice": true,
@@ -9930,7 +9883,7 @@ const productsData = [
                                 "linkLabel": "Calcular",
                                 "iconType": "straighten",
                                 "highlight": false,
-                                "price": 83200,
+                                "price": 72000,
                                 "cost_price": 22000,
                                 "legend": "Personalizado",
                                 "showPrice": true,
@@ -10191,7 +10144,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 25500,
+                                "price": 20500,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -10235,7 +10188,8 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3946726502)"
                     }
                 ],
-                "views": 3
+                "views": 3,
+                "price": 20500
             },
             {
                 "id": "1792154576619",
@@ -10262,7 +10216,7 @@ const productsData = [
                                 "linkLabel": "Ver en Mercado Libre",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 26600,
+                                "price": 26000,
                                 "cost_price": 11500,
                                 "legend": "",
                                 "showPrice": true,
@@ -10293,7 +10247,8 @@ const productsData = [
                 "primaryCatId": "cat-28-mvay9cq6",
                 "history": [],
                 "visible": true,
-                "views": 2
+                "views": 3,
+                "price": 26000
             },
             {
                 "id": "1792887338351",
@@ -10320,7 +10275,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 52000,
+                                "price": 45000,
                                 "cost_price": 60000,
                                 "legend": "",
                                 "showPrice": true,
@@ -10392,7 +10347,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 24500,
                                 "legend": "",
                                 "showPrice": true,
@@ -10464,7 +10419,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 25000,
                                 "cost_price": 32999,
                                 "legend": "",
                                 "showPrice": true,
@@ -10509,7 +10464,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
                     }
                 ],
-                "views": 3
+                "views": 4
             },
             {
                 "id": "1792887338350",
@@ -10534,11 +10489,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 26600,
-                                "cost_price": "",
+                                "price": 25000,
+                                "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -10559,11 +10518,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
-                                "cost_price": "",
+                                "price": 25000,
+                                "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -10584,11 +10547,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -10609,11 +10576,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
-                                "cost_price": "",
+                                "price": 25000,
+                                "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -10645,7 +10616,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586546740,
+                "last_modified": 1794518673813,
                 "primaryCatId": "Mesas-madera",
                 "history": [
                     {
@@ -10654,8 +10625,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
                     }
                 ],
-                "views": 5,
-                "price": 26600
+                "views": 13
             },
             {
                 "id": "1792887338354",
@@ -10685,7 +10655,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 75100,
+                                "price": 65000,
                                 "cost_price": 88000,
                                 "legend": "",
                                 "showPrice": true,
@@ -10755,7 +10725,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 42800,
+                                "price": 37000,
                                 "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true,
@@ -10843,7 +10813,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 69300,
+                                "price": 60000,
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
@@ -10897,7 +10867,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 135,
+                "views": 145,
                 "categories": [
                     "carpinteria-todos",
                     "Vinotecas",
@@ -10928,7 +10898,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 92400,
+                                "price": 80000,
                                 "cost_price": 27000,
                                 "legend": "",
                                 "showPrice": true
@@ -10993,7 +10963,7 @@ const productsData = [
                 ],
                 "last_modified": 1784083095519,
                 "primaryCatId": "Vinotecas",
-                "views": 20,
+                "views": 23,
                 "stock": 0,
                 "history": [
                     {
@@ -11020,7 +10990,7 @@ const productsData = [
                     "Hogar"
                 ],
                 "rubro": "carpinteria",
-                "price": 92400
+                "price": 80000
             },
             {
                 "id": "23",
@@ -11045,7 +11015,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 115500,
+                                "price": 100000,
                                 "cost_price": 31000,
                                 "legend": "",
                                 "showPrice": true
@@ -11137,7 +11107,7 @@ const productsData = [
                     "Hogar"
                 ],
                 "rubro": "carpinteria",
-                "price": 115500
+                "price": 100000
             },
             {
                 "id": "24",
@@ -11163,7 +11133,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 138600,
+                                "price": 120000,
                                 "cost_price": 36000,
                                 "legend": "",
                                 "showPrice": true,
@@ -11177,7 +11147,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 104000,
+                                "price": 90000,
                                 "cost_price": 90000,
                                 "legend": "Entrega Rápida",
                                 "showPrice": true,
@@ -11269,8 +11239,8 @@ const productsData = [
                     }
                 ],
                 "rubro": "carpinteria",
-                "views": 11,
-                "price": 138600
+                "views": 12,
+                "price": 120000
             },
             {
                 "id": "25",
@@ -11296,7 +11266,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 26100,
+                                "price": 22500,
                                 "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true
@@ -11360,7 +11330,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 11,
+                "views": 12,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -11403,7 +11373,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 25000,
                                 "cost_price": 5000,
                                 "legend": "",
                                 "showPrice": true
@@ -11463,7 +11433,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 52000,
+                                "price": 45000,
                                 "cost_price": 7000,
                                 "legend": "",
                                 "showPrice": true
@@ -11540,7 +11510,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40500,
+                                "price": 35000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -11554,7 +11524,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40500,
+                                "price": 35000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -11659,7 +11629,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45100,
+                                "price": 39000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -11673,7 +11643,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45100,
+                                "price": 39000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -11778,7 +11748,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 34700,
+                                "price": 30000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -11817,7 +11787,7 @@ const productsData = [
                     "Juguetes"
                 ],
                 "rubro": "carpinteria",
-                "price": 34700
+                "price": 30000
             },
             {
                 "id": "33",
@@ -11848,7 +11818,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 25000,
                                 "cost_price": 12500,
                                 "legend": "",
                                 "showPrice": true,
@@ -11971,7 +11941,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 24300,
+                                "price": 21000,
                                 "cost_price": 10500,
                                 "legend": "",
                                 "showPrice": true,
@@ -12095,7 +12065,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 22000,
+                                "price": 19000,
                                 "cost_price": 9500,
                                 "legend": "",
                                 "showPrice": true,
@@ -12254,7 +12224,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17400,
+                                "price": 15000,
                                 "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": true,
@@ -12413,7 +12383,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 13900,
+                                "price": 12000,
                                 "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": true,
@@ -12531,7 +12501,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 19700,
+                                "price": 17000,
                                 "cost_price": 8500,
                                 "legend": "",
                                 "showPrice": true,
@@ -12650,7 +12620,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17400,
+                                "price": 15000,
                                 "legend": "",
                                 "showPrice": false,
                                 "cost_price": 7500,
@@ -12664,7 +12634,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17400,
+                                "price": 15000,
                                 "legend": "",
                                 "showPrice": false,
                                 "cost_price": 7500,
@@ -12678,7 +12648,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17400,
+                                "price": 15000,
                                 "legend": "",
                                 "showPrice": false,
                                 "cost_price": 7500,
@@ -13316,7 +13286,7 @@ const productsData = [
                 "primaryCatId": "Barandas",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 89
+                "views": 91
             },
             {
                 "id": "52",
@@ -13765,7 +13735,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 16
+                "views": 17
             },
             {
                 "id": "53",
@@ -14056,7 +14026,7 @@ const productsData = [
                     ]
                 },
                 "primaryCatId": "Barandas",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -15148,7 +15118,7 @@ const productsData = [
                                 "linkLabel": "Configurar",
                                 "iconType": "straighten",
                                 "highlight": true,
-                                "price": 83200,
+                                "price": 72000,
                                 "cost_price": 22000,
                                 "legend": "Oficial Box CrossFit",
                                 "showPrice": true,
@@ -15174,7 +15144,7 @@ const productsData = [
                                 "linkLabel": "Configurar",
                                 "iconType": "straighten",
                                 "highlight": false,
-                                "price": 67000,
+                                "price": 58000,
                                 "cost_price": 17000,
                                 "legend": "Intermedio",
                                 "showPrice": true,
@@ -15200,7 +15170,7 @@ const productsData = [
                                 "linkLabel": "Configurar",
                                 "iconType": "straighten",
                                 "highlight": false,
-                                "price": 48600,
+                                "price": 42000,
                                 "cost_price": 12000,
                                 "legend": "Funcional / Principiante",
                                 "showPrice": true,
@@ -15226,7 +15196,7 @@ const productsData = [
                                 "linkLabel": "Calcular",
                                 "iconType": "straighten",
                                 "highlight": false,
-                                "price": 83200,
+                                "price": 72000,
                                 "cost_price": 22000,
                                 "legend": "Personalizado",
                                 "showPrice": true,
@@ -15325,7 +15295,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 92400,
+                                "price": 80000,
                                 "cost_price": 80000,
                                 "legend": "",
                                 "showPrice": true,
@@ -15339,7 +15309,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
+                                "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -15353,7 +15323,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40500,
+                                "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
@@ -15436,7 +15406,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17400,
+                                "price": 15000,
                                 "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true,
@@ -15465,7 +15435,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -15494,7 +15464,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
@@ -15596,7 +15566,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 19700,
+                                "price": 17000,
                                 "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true,
@@ -15625,7 +15595,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 27800,
+                                "price": 24000,
                                 "cost_price": 24000,
                                 "legend": "",
                                 "showPrice": true,
@@ -15654,7 +15624,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 37000,
+                                "price": 32000,
                                 "cost_price": 32000,
                                 "legend": "",
                                 "showPrice": true,
@@ -15683,7 +15653,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
+                                "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -15755,7 +15725,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 1
+                "views": 4
             },
             {
                 "id": "A4",
@@ -15785,7 +15755,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 19700,
+                                "price": 17000,
                                 "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true,
@@ -15814,7 +15784,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
@@ -15843,7 +15813,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 35900,
+                                "price": 31000,
                                 "cost_price": 31000,
                                 "legend": "",
                                 "showPrice": true,
@@ -15872,7 +15842,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 37000,
+                                "price": 32000,
                                 "cost_price": 32000,
                                 "legend": "",
                                 "showPrice": false,
@@ -15960,7 +15930,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "name": "Medida Única",
-                                "price": 63600,
+                                "price": 55000,
                                 "stock": 964,
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-1375418215"
                             }
@@ -16022,7 +15992,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "name": "Medida Única",
-                                "price": 34700,
+                                "price": 30000,
                                 "stock": 987,
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-2180486792"
                             }
@@ -16050,7 +16020,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA2180486792)"
                     }
                 ],
-                "views": 1,
+                "views": 5,
                 "paymentConfig": {
                     "mode": "store",
                     "showBuyButton": true,
@@ -16146,7 +16116,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -16160,7 +16130,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -16174,7 +16144,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -16188,7 +16158,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -16263,7 +16233,7 @@ const productsData = [
                         "detail": "Costo: $0 ➔ $2500"
                     }
                 ],
-                "views": 7,
+                "views": 11,
                 "order": 0
             },
             {
@@ -16292,7 +16262,7 @@ const productsData = [
                                 "linkLabel": "Ver en Mercado Libre",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 32400,
+                                "price": 28000,
                                 "cost_price": 14000,
                                 "legend": "",
                                 "showPrice": true,
@@ -16355,7 +16325,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -16453,7 +16423,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 26600,
+                                "price": 23000,
                                 "cost_price": 23000,
                                 "legend": "",
                                 "showPrice": true,
@@ -16483,7 +16453,7 @@ const productsData = [
                 "last_modified": 1794021964488,
                 "primaryCatId": "Organizadores",
                 "history": [],
-                "views": 25,
+                "views": 26,
                 "categories": [
                     "carpinteria-todos",
                     "Organizadores"
@@ -16516,7 +16486,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -16598,7 +16568,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17400,
+                                "price": 15000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": false,
@@ -16701,7 +16671,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40500,
+                                "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
@@ -16810,7 +16780,7 @@ const productsData = [
                                 "highlight": false,
                                 "legend": "",
                                 "showPrice": true,
-                                "price": 10400
+                                "price": 9000
                             }
                         ],
                         "hidden": false
@@ -16912,7 +16882,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 9300,
+                                "price": 8000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -16979,7 +16949,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 75100,
+                                "price": 65000,
                                 "cost_price": 88000,
                                 "legend": "",
                                 "showPrice": true,
@@ -17050,7 +17020,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 78600,
+                                "price": 68000,
                                 "cost_price": 34000,
                                 "legend": "",
                                 "showPrice": true,
@@ -17147,104 +17117,8 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 74000,
+                                "price": 64000,
                                 "cost_price": 32000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 1
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 1
-                    }
-                ],
-                "tags": [
-                    "baul",
-                    "cofre",
-                    "organizar",
-                    "juguetes",
-                    "ropa",
-                    "baules",
-                    "baul madera",
-                    "baul pino",
-                    "baul mediano",
-                    "baul juguetes",
-                    "guardado",
-                    "juguetero",
-                    "almacenamiento",
-                    "organizacion",
-                    "caja madera",
-                    "cajon madera",
-                    "banco baul",
-                    "mueble guardado",
-                    "bahul",
-                    "bahules",
-                    "baul de madera",
-                    "baul de pino",
-                    "organizador de juguetes",
-                    "caja de madera",
-                    "cofre de madera",
-                    "baul infantil",
-                    "mueble de guardado",
-                    "baul rustico",
-                    "juguetero de pino",
-                    "guardajuguetes",
-                    "banco de madera",
-                    "banco baul madera",
-                    "caja de pino",
-                    "guardado de juguetes",
-                    "cajon de juguetes",
-                    "baulera de madera",
-                    "baulera pino"
-                ],
-                "last_modified": 1794021964488,
-                "primaryCatId": "cajones-madera",
-                "views": 1,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "stock": 1,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "camas-madera-pino",
-                    "cajones-madera"
-                ],
-                "rubro": "carpinteria",
-                "order": 11
-            },
-            {
-                "id": "J2",
-                "title": "Baúl de madera de pino - Grande (100 cm)",
-                "description": "Baúl extra grande de madera de pino macizo. Medidas: 100 cm de largo (1 metro) x 40 cm de profundidad x 40 cm de alto. Excelente capacidad de guardado, ideal para pie de cama sommier de dos plazas o baulera de herramientas/juguetes.",
-                "image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "Pino seleccionado cepillado y pulido de 1 pulgada, gran resistencia.",
-                        "cover_image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
-                            "img/organizadores/baul-madera-mediano/1783801106027-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "100 x 40 x 40 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 83200,
-                                "cost_price": 36000,
                                 "legend": "",
                                 "showPrice": true,
                                 "stock": 1
@@ -17314,6 +17188,102 @@ const productsData = [
                     "cajones-madera"
                 ],
                 "rubro": "carpinteria",
+                "order": 11
+            },
+            {
+                "id": "J2",
+                "title": "Baúl de madera de pino - Grande (100 cm)",
+                "description": "Baúl extra grande de madera de pino macizo. Medidas: 100 cm de largo (1 metro) x 40 cm de profundidad x 40 cm de alto. Excelente capacidad de guardado, ideal para pie de cama sommier de dos plazas o baulera de herramientas/juguetes.",
+                "image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "Pino seleccionado cepillado y pulido de 1 pulgada, gran resistencia.",
+                        "cover_image": "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
+                        "images_list": [
+                            "img/organizadores/baul-madera-mediano/1783801105880-imagen.webp",
+                            "img/organizadores/baul-madera-mediano/1783801106027-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "100 x 40 x 40 cm",
+                                "link": "",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 72000,
+                                "cost_price": 36000,
+                                "legend": "",
+                                "showPrice": true,
+                                "stock": 1
+                            }
+                        ],
+                        "hidden": false,
+                        "stock": 1
+                    }
+                ],
+                "tags": [
+                    "baul",
+                    "cofre",
+                    "organizar",
+                    "juguetes",
+                    "ropa",
+                    "baules",
+                    "baul madera",
+                    "baul pino",
+                    "baul mediano",
+                    "baul juguetes",
+                    "guardado",
+                    "juguetero",
+                    "almacenamiento",
+                    "organizacion",
+                    "caja madera",
+                    "cajon madera",
+                    "banco baul",
+                    "mueble guardado",
+                    "bahul",
+                    "bahules",
+                    "baul de madera",
+                    "baul de pino",
+                    "organizador de juguetes",
+                    "caja de madera",
+                    "cofre de madera",
+                    "baul infantil",
+                    "mueble de guardado",
+                    "baul rustico",
+                    "juguetero de pino",
+                    "guardajuguetes",
+                    "banco de madera",
+                    "banco baul madera",
+                    "caja de pino",
+                    "guardado de juguetes",
+                    "cajon de juguetes",
+                    "baulera de madera",
+                    "baulera pino"
+                ],
+                "last_modified": 1794021964488,
+                "primaryCatId": "cajones-madera",
+                "views": 3,
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "shippingConfig": {
+                    "logisticaEnabled": false,
+                    "fleteEnabled": true,
+                    "otroEnabled": false
+                },
+                "stock": 1,
+                "categories": [
+                    "carpinteria-todos",
+                    "Organizadores",
+                    "camas-madera-pino",
+                    "cajones-madera"
+                ],
+                "rubro": "carpinteria",
                 "order": 12
             },
             {
@@ -17337,7 +17307,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
+                                "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -17492,7 +17462,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 30100,
+                                "price": 26000,
                                 "cost_price": 6500,
                                 "legend": "",
                                 "showPrice": true
@@ -18109,7 +18079,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 42800,
+                                "price": 37000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true
@@ -18166,7 +18136,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -18180,7 +18150,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -18194,7 +18164,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -18208,7 +18178,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -18283,7 +18253,7 @@ const productsData = [
                         "detail": "Costo: $0 ➔ $2500"
                     }
                 ],
-                "views": 7
+                "views": 11
             },
             {
                 "id": "7C",
@@ -18310,7 +18280,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -18391,7 +18361,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 15100,
+                                "price": 13000,
                                 "cost_price": 13000,
                                 "legend": "",
                                 "showPrice": true,
@@ -18405,7 +18375,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
@@ -18419,7 +18389,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40500,
+                                "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
@@ -18433,7 +18403,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
@@ -18460,7 +18430,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 16200,
+                                "price": 14000,
                                 "cost_price": 14000,
                                 "legend": "",
                                 "showPrice": true,
@@ -18474,7 +18444,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 30100,
+                                "price": 26000,
                                 "cost_price": 26000,
                                 "legend": "",
                                 "showPrice": true,
@@ -18488,7 +18458,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 41600,
+                                "price": 35998,
                                 "cost_price": 35998,
                                 "legend": "",
                                 "showPrice": true,
@@ -18502,7 +18472,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
@@ -18529,7 +18499,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17400,
+                                "price": 15000,
                                 "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true,
@@ -18543,7 +18513,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 32400,
+                                "price": 28000,
                                 "cost_price": 28000,
                                 "legend": "",
                                 "showPrice": true,
@@ -18557,7 +18527,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
+                                "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -18571,7 +18541,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
@@ -18854,7 +18824,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 25500,
+                                "price": 22000,
                                 "cost_price": 11000,
                                 "legend": "",
                                 "showPrice": false,
@@ -18941,7 +18911,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -19022,7 +18992,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -19080,7 +19050,7 @@ const productsData = [
                 "last_modified": 1794021508802,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 7
+                "views": 8
             },
             {
                 "id": "7D",
@@ -19107,7 +19077,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -19169,7 +19139,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
+                                "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -19446,7 +19416,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10400,
+                                "price": 9000,
                                 "cost_price": 9000,
                                 "legend": "",
                                 "showPrice": true
@@ -19459,7 +19429,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 19700,
+                                "price": 17000,
                                 "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
@@ -19472,7 +19442,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
@@ -19485,7 +19455,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 55500,
+                                "price": 47998,
                                 "cost_price": 47998,
                                 "legend": "",
                                 "showPrice": true
@@ -19508,7 +19478,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 11600,
+                                "price": 10000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true
@@ -19521,7 +19491,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20800,
+                                "price": 18000,
                                 "cost_price": 18000,
                                 "legend": "",
                                 "showPrice": true
@@ -19534,7 +19504,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40500,
+                                "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true
@@ -19547,7 +19517,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 57800,
+                                "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
@@ -19570,7 +19540,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 13400,
+                                "price": 11500,
                                 "cost_price": 11500,
                                 "legend": "",
                                 "showPrice": true
@@ -19583,7 +19553,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 25500,
+                                "price": 22000,
                                 "cost_price": 22000,
                                 "legend": "",
                                 "showPrice": true
@@ -19596,7 +19566,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 49700,
+                                "price": 43000,
                                 "cost_price": 43000,
                                 "legend": "",
                                 "showPrice": true
@@ -19609,7 +19579,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 72800,
+                                "price": 62999,
                                 "cost_price": 62999,
                                 "legend": "",
                                 "showPrice": true
@@ -19681,7 +19651,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 5300,
+                                "price": 4500,
                                 "cost_price": 500,
                                 "legend": "",
                                 "showPrice": true
@@ -19694,7 +19664,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 9300,
+                                "price": 8000,
                                 "cost_price": 5500,
                                 "legend": "",
                                 "showPrice": true
@@ -19717,7 +19687,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 5300,
+                                "price": 4500,
                                 "cost_price": 4500,
                                 "legend": "",
                                 "showPrice": true
@@ -19730,7 +19700,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 9900,
+                                "price": 8500,
                                 "cost_price": 8500,
                                 "legend": "",
                                 "showPrice": true
@@ -19743,7 +19713,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 19700,
+                                "price": 17000,
                                 "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
@@ -20027,7 +19997,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 86700,
+                                "price": 75000,
                                 "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true
@@ -20135,7 +20105,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 119600,
+                                "price": 103500,
                                 "cost_price": 69000,
                                 "legend": "",
                                 "showPrice": true
@@ -20624,7 +20594,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 30000,
                                 "cost_price": 18000,
                                 "legend": "",
                                 "showPrice": true,
@@ -20656,57 +20626,72 @@ const productsData = [
                 "primaryCatId": "camas-madera-pino",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 17,
-                "price": 28900
+                "views": 19,
+                "price": 30000
             },
             {
                 "id": "1793239693996",
+                "shortId": "3O",
                 "title": "Mesa Mesita De Luz Alta  Economica Pino 2 Cajones",
                 "description": "MESA AUXILIAR DE MADERA – IDEAL PARA LIVING O DORMITORIO\n\nPráctica y funcional mesa auxiliar de madera, ideal para colocar junto al sillón o la cama. Su diseño combina cajones frontales y un espacio de guardado inferior abierto, ofreciendo una solución práctica para organizar tus objetos y aprovechar mejor los espacios.\n\nSu estilo natural permite combinarla con diferentes ambientes y estilos de decoración.\n\nCARACTERÍSTICAS\n\nMaterial: madera de pino natural.\n\nDiseño con cajones frontales y estante inferior abierto.\n\nIdeal para living, dormitorio o espacios reducidos.\n\nTerminación en madera natural.\n\nMEDIDAS\n\nAlto: 75 cm.\n\nAncho: 30 cm.\n\nProfundidad: 23 cm.\n\n\nRealizamos factura A.\n\nIMPORTANTE\n\nLas imágenes son ilustrativas y tienen como finalidad mostrar el producto en un ambiente decorado. Al tratarse de madera natural, las vetas, los nudos y las tonalidades pueden variar de una pieza a otra.\n\nAntes de realizar la compra, verificá las medidas para asegurarte de que el producto se adapte al espacio donde querés colocarlo.\n\nSin garantía",
                 "image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
-                "order": 1,
-                "visible": true,
-                "primaryCatId": "camas-madera-pino",
                 "acabados_groups": [
                     {
                         "acabado_name": "Estándar",
+                        "description": "",
                         "cover_image": "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
                         "images_list": [
                             "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239692936-1-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693248-2-imagen.webp",
                             "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693331-3-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693485-4-imagen.webp",
                             "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693554-5-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693659-6-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693713-7-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693802-8-imagen.webp",
-                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693858-9-imagen.webp"
+                            "img/mesa-mesita-de-luz-alta-economica-pino-2-cajones/1793239693713-7-imagen.webp"
                         ],
                         "medidas_variants": [
                             {
                                 "medida": "Estándar",
-                                "price": 32400,
-                                "cost_price": 14000,
                                 "link": "https://www.mercadolibre.com.ar/mesa-mesita-de-luz-alta--economica-pino-2-cajones/up/MLAU5669889579",
+                                "default": true,
+                                "hidden": false,
                                 "linkLabel": "Ver en Mercado Libre",
                                 "iconType": "local_shipping",
-                                "stock": 5,
-                                "showPrice": true,
                                 "highlight": false,
-                                "default": true,
-                                "hidden": false
+                                "price": 35000,
+                                "cost_price": 14000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
-                        ]
+                        ],
+                        "hidden": false
                     }
                 ],
-                "category": "camas-madera-pino",
-                "views": 7,
-                "last_modified": 1793586887358,
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
-                }
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1794588125836,
+                "primaryCatId": "camas-madera-pino",
+                "history": [],
+                "visible": true,
+                "rubro": "carpinteria",
+                "views": 12
             },
             {
                 "id": "F2",
@@ -20770,7 +20755,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 63600,
+                                "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true,
@@ -20784,7 +20769,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 57800,
+                                "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true,
@@ -20798,7 +20783,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 52000,
+                                "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true,
@@ -20812,7 +20797,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
+                                "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -20826,7 +20811,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40500,
+                                "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
@@ -20840,7 +20825,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 34700,
+                                "price": 30000,
                                 "cost_price": 30000,
                                 "legend": "",
                                 "showPrice": true,
@@ -20870,7 +20855,7 @@ const productsData = [
                 "last_modified": 1793586887358,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 11,
+                "views": 12,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -20903,7 +20888,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 78600,
+                                "price": 68000,
                                 "cost_price": 34000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21000,7 +20985,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 74000,
+                                "price": 64000,
                                 "cost_price": 32000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21052,7 +21037,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586887358,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21096,7 +21081,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 83200,
+                                "price": 72000,
                                 "cost_price": 36000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21148,7 +21133,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586887358,
                 "primaryCatId": "cajones-madera",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21230,7 +21215,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 69300,
+                                "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21347,7 +21332,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 63600,
+                                "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21361,7 +21346,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 57800,
+                                "price": 50000,
                                 "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21375,7 +21360,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 52000,
+                                "price": 45000,
                                 "cost_price": 45000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21389,7 +21374,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
+                                "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21403,7 +21388,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40500,
+                                "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21417,7 +21402,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 34700,
+                                "price": 30000,
                                 "cost_price": 30000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21447,7 +21432,7 @@ const productsData = [
                 "last_modified": 1788738695697,
                 "primaryCatId": "muebles",
                 "history": [],
-                "views": 11,
+                "views": 12,
                 "categories": [
                     "carpinteria-todos",
                     "camas-madera-pino",
@@ -21544,7 +21529,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true
@@ -21599,7 +21584,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21659,7 +21644,7 @@ const productsData = [
                                 "linkLabel": "Ver en Mercado Libre",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21724,7 +21709,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 35000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21749,7 +21734,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586859102,
                 "primaryCatId": "sillas-sillones",
-                "views": 16,
+                "views": 17,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -21767,7 +21752,8 @@ const productsData = [
                     "sillas-sillones"
                 ],
                 "rubro": "carpinteria",
-                "order": 0
+                "order": 0,
+                "price": 35000
             },
             {
                 "id": "C2",
@@ -21792,7 +21778,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21909,7 +21895,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 115500,
+                                "price": 100000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21965,7 +21951,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 34700,
+                                "price": 30000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -22005,7 +21991,7 @@ const productsData = [
                 ],
                 "rubro": "carpinteria",
                 "order": 3,
-                "price": 34700
+                "price": 30000
             },
             {
                 "id": "4A",
@@ -22029,7 +22015,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 14500,
+                                "price": 12500,
                                 "cost_price": 6500,
                                 "legend": "",
                                 "showPrice": true
@@ -22042,7 +22028,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 14500,
+                                "price": 12500,
                                 "cost_price": 7000,
                                 "legend": "",
                                 "showPrice": true
@@ -22113,7 +22099,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 15100,
+                                "price": 13000,
                                 "cost_price": 13000,
                                 "legend": "",
                                 "showPrice": true,
@@ -22127,7 +22113,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
@@ -22141,7 +22127,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40500,
+                                "price": 35000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
@@ -22155,7 +22141,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
@@ -22182,7 +22168,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 16200,
+                                "price": 14000,
                                 "cost_price": 14000,
                                 "legend": "",
                                 "showPrice": true,
@@ -22196,7 +22182,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 30100,
+                                "price": 26000,
                                 "cost_price": 26000,
                                 "legend": "",
                                 "showPrice": true,
@@ -22210,7 +22196,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 41600,
+                                "price": 35998,
                                 "cost_price": 35998,
                                 "legend": "",
                                 "showPrice": true,
@@ -22224,7 +22210,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
@@ -22251,7 +22237,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17400,
+                                "price": 15000,
                                 "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true,
@@ -22265,7 +22251,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 32400,
+                                "price": 28000,
                                 "cost_price": 28000,
                                 "legend": "",
                                 "showPrice": true,
@@ -22279,7 +22265,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
+                                "price": 40000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -22293,7 +22279,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 33000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
@@ -22384,7 +22370,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 42800,
+                                "price": 37000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true
@@ -22441,7 +22427,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -22504,7 +22490,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 69300,
+                                "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
@@ -22682,7 +22668,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 92400,
+                                "price": 80000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
@@ -22695,7 +22681,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 32400,
+                                "price": 28000,
                                 "cost_price": 14000,
                                 "legend": "",
                                 "showPrice": true
@@ -22708,7 +22694,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 39300,
+                                "price": 34000,
                                 "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
@@ -22721,7 +22707,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
+                                "price": 40000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true
@@ -22938,7 +22924,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 69300,
+                                "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
@@ -22950,7 +22936,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1793586859102,
                 "primaryCatId": "Juguetes",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -22992,7 +22978,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 41600,
+                                "price": 36000,
                                 "cost_price": 18000,
                                 "legend": "",
                                 "showPrice": true
@@ -23107,7 +23093,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 38200,
+                                "price": 35000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
@@ -23132,7 +23118,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586813439,
                 "primaryCatId": "sillas-sillones",
-                "views": 16,
+                "views": 17,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23150,7 +23136,8 @@ const productsData = [
                     "sillas-sillones"
                 ],
                 "rubro": "carpinteria",
-                "order": 0
+                "order": 0,
+                "price": 35000
             },
             {
                 "id": "B4",
@@ -23177,7 +23164,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 115500,
+                                "price": 100000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
@@ -23231,7 +23218,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 69300,
+                                "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
@@ -23283,7 +23270,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 69300,
+                                "price": 60000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
@@ -23295,7 +23282,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1793586813439,
                 "primaryCatId": "Juguetes",
-                "views": 3,
+                "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23446,7 +23433,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 92400,
+                                "price": 80000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true
@@ -23459,7 +23446,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 32400,
+                                "price": 28000,
                                 "cost_price": 14000,
                                 "legend": "",
                                 "showPrice": true
@@ -23472,7 +23459,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 39300,
+                                "price": 34000,
                                 "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true
@@ -23485,7 +23472,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 46200,
+                                "price": 40000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true
@@ -23783,7 +23770,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 42800,
+                                "price": 37000,
                                 "cost_price": 50000,
                                 "legend": "",
                                 "showPrice": true,
@@ -23853,11 +23840,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 26600,
-                                "cost_price": "",
+                                "price": 25000,
+                                "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -23878,11 +23869,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
-                                "cost_price": "",
+                                "price": 25000,
+                                "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -23903,11 +23898,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 25000,
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -23928,11 +23927,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
-                                "cost_price": "",
+                                "price": 25000,
+                                "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -23964,7 +23967,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586546740,
+                "last_modified": 1794518673813,
                 "primaryCatId": "Mesas-madera",
                 "history": [
                     {
@@ -23973,8 +23976,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
                     }
                 ],
-                "views": 5,
-                "price": 26600
+                "views": 13
             }
         ]
     },
@@ -24014,7 +24016,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 9000,
                                 "legend": "",
                                 "showPrice": true,
@@ -24129,7 +24131,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 24500,
                                 "legend": "",
                                 "showPrice": true,
@@ -24254,7 +24256,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 52000,
+                                "price": 45000,
                                 "cost_price": 60000,
                                 "legend": "",
                                 "showPrice": true,
@@ -24327,7 +24329,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28900,
+                                "price": 25000,
                                 "cost_price": 32999,
                                 "legend": "",
                                 "showPrice": true,
@@ -24372,7 +24374,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
                     }
                 ],
-                "views": 3,
+                "views": 4,
                 "order": 4
             },
             {
@@ -24449,7 +24451,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 63600,
+                                "price": 55000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -24473,7 +24475,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 98200,
+                                "price": 85000,
                                 "legend": "",
                                 "showPrice": true
                             }
@@ -24940,7 +24942,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 20000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true
@@ -24953,7 +24955,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 43900,
+                                "price": 38000,
                                 "cost_price": 38000,
                                 "legend": "",
                                 "showPrice": true
@@ -24966,7 +24968,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 63600,
+                                "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true
@@ -25072,7 +25074,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "name": "Medida Única",
-                                "price": 16800,
+                                "price": 14500,
                                 "stock": 989,
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-3322888876"
                             }
@@ -25141,7 +25143,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 9900,
+                                "price": 8500,
                                 "cost_price": 8500,
                                 "legend": "",
                                 "showPrice": true,
@@ -25190,7 +25192,7 @@ const productsData = [
                     }
                 ],
                 "rubro": "carpinteria",
-                "views": 3
+                "views": 5
             },
             {
                 "id": "1792887338345",
@@ -25215,7 +25217,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 63600,
+                                "price": 55000,
                                 "cost_price": 55000,
                                 "legend": "",
                                 "showPrice": true,
@@ -25298,7 +25300,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10400,
+                                "price": 9000,
                                 "cost_price": 4500,
                                 "legend": "",
                                 "showPrice": true,
@@ -25503,7 +25505,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10400,
+                                "price": 9000,
                                 "cost_price": 4500,
                                 "legend": "",
                                 "showPrice": true,
@@ -25602,7 +25604,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "name": "Medida Única",
-                                "price": 13900,
+                                "price": 12000,
                                 "stock": 5,
                                 "link": "https://articulo.mercadolibre.com.ar/MLA-3993235002"
                             }
@@ -25688,7 +25690,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Estándar",
-                                "price": 15100,
+                                "price": 13000,
                                 "cost_price": 6500,
                                 "link": "https://www.mercadolibre.com.ar/caja-de-madera-organizadora-multiuso/up/MLAU5782902933",
                                 "linkLabel": "Ver en Mercado Libre",
@@ -25735,7 +25737,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Estándar",
-                                "price": 8800,
+                                "price": 7500,
                                 "cost_price": 3750,
                                 "link": "https://www.mercadolibre.com.ar/tabla-de-madera-picada-sushi/up/MLAU5782447121",
                                 "linkLabel": "Ver en Mercado Libre",
@@ -25782,7 +25784,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -25796,7 +25798,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -25810,7 +25812,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -25824,7 +25826,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12800,
+                                "price": 11000,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -25899,7 +25901,7 @@ const productsData = [
                         "detail": "Costo: $0 ➔ $2500"
                     }
                 ],
-                "views": 7
+                "views": 11
             },
             {
                 "id": "44",
@@ -25929,7 +25931,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 15100,
+                                "price": 13000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -26026,7 +26028,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 14500,
+                                "price": 12500,
                                 "cost_price": 6500,
                                 "legend": "",
                                 "showPrice": true
@@ -26039,7 +26041,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 14500,
+                                "price": 12500,
                                 "cost_price": 7000,
                                 "legend": "",
                                 "showPrice": true
@@ -26106,7 +26108,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 9300,
+                                "price": 8000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -26167,7 +26169,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 11600,
+                                "price": 10000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
@@ -26188,7 +26190,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10400,
+                                "price": 9000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -26209,7 +26211,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 13900,
+                                "price": 12000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -26283,7 +26285,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 15100,
+                                "price": 13000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -26333,7 +26335,7 @@ const productsData = [
                     "bazar-cocina"
                 ],
                 "rubro": "carpinteria",
-                "price": 15100
+                "price": 13000
             },
             {
                 "id": "G1",
@@ -26358,7 +26360,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10400,
+                                "price": 9000,
                                 "cost_price": 4500,
                                 "legend": "",
                                 "showPrice": true,
@@ -26563,7 +26565,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10400,
+                                "price": 9000,
                                 "cost_price": 4500,
                                 "legend": "",
                                 "showPrice": true,
@@ -26671,7 +26673,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 26100,
+                                "price": 22500,
                                 "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true
@@ -26735,7 +26737,7 @@ const productsData = [
                 "last_modified": 1784391201352,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
-                "views": 11,
+                "views": 12,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
@@ -26938,7 +26940,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -27033,7 +27035,7 @@ const productsData = [
                 ],
                 "last_modified": 1783906817810,
                 "primaryCatId": "cajones-madera",
-                "views": 2,
+                "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -27086,7 +27088,7 @@ const productsData = [
                         "medidas_variants": [
                             {
                                 "medida": "Estándar",
-                                "price": 35900,
+                                "price": 30500,
                                 "cost_price": 15500,
                                 "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-doble-hoja-grande-vereda/up/MLAU5156448073",
                                 "linkLabel": "Ver en Mercado Libre",
@@ -27101,7 +27103,7 @@ const productsData = [
                     }
                 ],
                 "rubro": "carpinteria",
-                "views": 5,
+                "views": 6,
                 "categories": [
                     "carpinteria-todos",
                     "cat-28-mvay9cq6"
@@ -27111,7 +27113,8 @@ const productsData = [
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
-                }
+                },
+                "price": 30500
             },
             {
                 "id": "1792154576619",
@@ -27138,7 +27141,7 @@ const productsData = [
                                 "linkLabel": "Ver en Mercado Libre",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 26600,
+                                "price": 26000,
                                 "cost_price": 11500,
                                 "legend": "",
                                 "showPrice": true,
@@ -27169,7 +27172,8 @@ const productsData = [
                 "primaryCatId": "cat-28-mvay9cq6",
                 "history": [],
                 "visible": true,
-                "views": 2
+                "views": 3,
+                "price": 26000
             },
             {
                 "id": "S3",
@@ -27198,7 +27202,7 @@ const productsData = [
                                 "linkLabel": "Ver en Mercado Libre",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23100,
+                                "price": 22000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
@@ -27229,7 +27233,8 @@ const productsData = [
                 "primaryCatId": "cat-28-mvay9cq6",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 2
+                "views": 2,
+                "price": 22000
             },
             {
                 "id": "1792887338334",
@@ -27255,7 +27260,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 25500,
+                                "price": 20500,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -27299,7 +27304,8 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3946726502)"
                     }
                 ],
-                "views": 3
+                "views": 3,
+                "price": 20500
             }
         ]
     },
@@ -27333,7 +27339,7 @@ const productsData = [
                                 "default": false,
                                 "volumeDiscounts": [],
                                 "cost_price": 35000,
-                                "price": 404300,
+                                "price": 350000,
                                 "stock": 0,
                                 "showPrice": true,
                                 "weight": 2.5
@@ -27465,7 +27471,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 288800,
+                                "price": 250000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
@@ -27563,7 +27569,7 @@ const productsData = [
                                 "default": true,
                                 "volumeDiscounts": [],
                                 "cost_price": 25000,
-                                "price": 138600,
+                                "price": 120000,
                                 "stock": 0,
                                 "showPrice": true,
                                 "weight": 2.5
@@ -27574,7 +27580,7 @@ const productsData = [
                                 "default": false,
                                 "volumeDiscounts": [],
                                 "cost_price": 25000,
-                                "price": 115500,
+                                "price": 100000,
                                 "stock": 0,
                                 "showPrice": true,
                                 "weight": 2.5
@@ -27585,7 +27591,7 @@ const productsData = [
                                 "default": false,
                                 "volumeDiscounts": [],
                                 "cost_price": 25000,
-                                "price": 92400,
+                                "price": 80000,
                                 "stock": 0,
                                 "showPrice": true,
                                 "weight": 2.5
@@ -27712,7 +27718,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 142700,
+                                "price": 123500,
                                 "cost_price": 123500,
                                 "legend": "",
                                 "showPrice": true,
@@ -27774,7 +27780,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 288800,
+                                "price": 250000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -27836,7 +27842,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 450500,
+                                "price": 390000,
                                 "cost_price": 390000,
                                 "legend": "",
                                 "showPrice": true,
@@ -27899,7 +27905,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 691900,
+                                "price": 599000,
                                 "cost_price": 599000,
                                 "legend": "",
                                 "showPrice": true,
@@ -27971,7 +27977,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 142700,
+                                "price": 123500,
                                 "cost_price": 123500,
                                 "legend": "",
                                 "showPrice": true,
@@ -28033,7 +28039,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 288800,
+                                "price": 250000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -28095,7 +28101,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 450500,
+                                "price": 390000,
                                 "cost_price": 390000,
                                 "legend": "",
                                 "showPrice": true,
@@ -28158,7 +28164,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 691900,
+                                "price": 599000,
                                 "cost_price": 599000,
                                 "legend": "",
                                 "showPrice": true,
@@ -28229,7 +28235,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 19700,
+                                "price": 17000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -28243,7 +28249,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10400,
+                                "price": 9000,
                                 "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true,
@@ -28312,7 +28318,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 19700,
+                                "price": 17000,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -28326,7 +28332,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 10400,
+                                "price": 9000,
                                 "cost_price": 17000,
                                 "legend": "",
                                 "showPrice": true,

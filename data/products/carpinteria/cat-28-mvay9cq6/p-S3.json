@@ -25,7 +25,7 @@
           "linkLabel": "Ver en Mercado Libre",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 23100,
+          "price": 22000,
           "cost_price": 10000,
           "legend": "",
           "showPrice": true,
@@ -57,6 +57,7 @@
   "history": [],
   "rubro": "carpinteria",
   "views": 2,
+  "price": 22000,
   "categories": [
     "cat-28-mvay9cq6"
   ]

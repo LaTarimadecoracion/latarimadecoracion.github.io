@@ -166,7 +166,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 23100,
+          "price": 20000,
           "cost_price": 20000,
           "legend": "",
           "showPrice": true
@@ -179,7 +179,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 43900,
+          "price": 38000,
           "cost_price": 38000,
           "legend": "",
           "showPrice": true
@@ -192,7 +192,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 63600,
+          "price": 55000,
           "cost_price": 55000,
           "legend": "",
           "showPrice": true

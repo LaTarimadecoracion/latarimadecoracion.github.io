@@ -13,7 +13,7 @@
       "medidas_variants": [
         {
           "name": "Medida Única",
-          "price": 34700,
+          "price": 30000,
           "stock": 987,
           "link": "https://articulo.mercadolibre.com.ar/MLA-2180486792"
         }
@@ -41,7 +41,7 @@
       "details": "Importado como borrador desde Mercado Libre (MLA2180486792)"
     }
   ],
-  "views": 1,
+  "views": 5,
   "paymentConfig": {
     "mode": "store",
     "showBuyButton": true,

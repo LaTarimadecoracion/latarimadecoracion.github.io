@@ -23,7 +23,7 @@
           "linkLabel": "Ver en Mercado Libre",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 26600,
+          "price": 26000,
           "cost_price": 11500,
           "legend": "",
           "showPrice": true,
@@ -54,7 +54,8 @@
   "primaryCatId": "cat-28-mvay9cq6",
   "history": [],
   "visible": true,
-  "views": 2,
+  "views": 3,
+  "price": 26000,
   "categories": [
     "carpinteria-todos",
     "cat-28-mvay9cq6"
