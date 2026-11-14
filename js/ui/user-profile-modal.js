@@ -300,17 +300,15 @@
 
             const subViewTitles = {
                 menu: 'Mi Cuenta y Perfil',
-                contact: 'Datos de Contacto',
-                address: 'Dirección de Entrega',
-                billing: 'Datos de Facturación',
+                personal: 'Mis Datos Personales',
+                contact: 'Mis Datos Personales',
                 notifications: 'Notificaciones y Avisos'
             };
 
             const subViewIcons = {
                 menu: 'account_circle',
+                personal: 'person',
                 contact: 'person',
-                address: 'location_on',
-                billing: 'receipt_long',
                 notifications: 'notifications'
             };
 
@@ -429,29 +427,11 @@
                                 </div>
                             </button>
 
-                            <!-- 3. Datos Personales y Contacto -->
-                            <button type="button" class="profile-menu-btn" id="btn-opt-contact">
+                            <!-- 3. Mis Datos Personales (Contacto, Entrega y Facturación) -->
+                            <button type="button" class="profile-menu-btn" id="btn-opt-personal">
                                 <div class="profile-menu-btn-content">
                                     <span class="material-symbols-outlined profile-menu-icon">person</span>
-                                    <span class="profile-menu-title">Datos Personales y Contacto</span>
-                                </div>
-                                <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
-                            </button>
-
-                            <!-- 4. Dirección de Entrega y Envíos -->
-                            <button type="button" class="profile-menu-btn" id="btn-opt-address">
-                                <div class="profile-menu-btn-content">
-                                    <span class="material-symbols-outlined profile-menu-icon">location_on</span>
-                                    <span class="profile-menu-title">Dirección de Entrega y Envíos</span>
-                                </div>
-                                <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
-                            </button>
-
-                            <!-- 5. Datos de Facturación (Opcional) -->
-                            <button type="button" class="profile-menu-btn" id="btn-opt-billing">
-                                <div class="profile-menu-btn-content">
-                                    <span class="material-symbols-outlined profile-menu-icon">receipt_long</span>
-                                    <span class="profile-menu-title">Datos de Facturación</span>
+                                    <span class="profile-menu-title">Mis Datos Personales</span>
                                 </div>
                                 <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
                             </button>
@@ -519,21 +499,9 @@
                     }, 180);
                 });
 
-                // 3. Entrar a Datos de Contacto
-                card.querySelector('#btn-opt-contact')?.addEventListener('click', () => {
-                    currentSubView = 'contact';
-                    renderCurrentState();
-                });
-
-                // 4. Entrar a Dirección de Entrega
-                card.querySelector('#btn-opt-address')?.addEventListener('click', () => {
-                    currentSubView = 'address';
-                    renderCurrentState();
-                });
-
-                // 5. Entrar a Datos de Facturación
-                card.querySelector('#btn-opt-billing')?.addEventListener('click', () => {
-                    currentSubView = 'billing';
+                // 3. Entrar a Mis Datos Personales (Contacto, Entrega y Facturación)
+                card.querySelector('#btn-opt-personal')?.addEventListener('click', () => {
+                    currentSubView = 'personal';
                     renderCurrentState();
                 });
 
@@ -589,24 +557,31 @@
             }
 
             // =========================================================================
-            // VISTA 2: DATOS PERSONALES Y CONTACTO
+            // VISTA 2: MIS DATOS PERSONALES (CONTACTO, ENTREGA Y FACTURACIÓN UNIFICADOS)
             // =========================================================================
-            if (currentSubView === 'contact') {
+            if (currentSubView === 'personal' || currentSubView === 'contact') {
                 const prefilledName = currentData.name || (publicUser && publicUser.nombre) || '';
                 const prefilledEmail = (publicUser && publicUser.email) || currentData.email || '';
+                const hasBilling = Boolean(currentData.cuit || currentData.razonSocial);
 
                 card.innerHTML = `
                     ${headerHTML}
 
-                    <div style="flex: 1; overflow-y: auto; padding: ${isModal ? '1rem 1.25rem' : '1rem 0'}; box-sizing: border-box; width: 100%; max-width: ${isModal ? '100%' : '650px'}; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; -webkit-overflow-scrolling: touch;">
+                    <div style="flex: 1; overflow-y: auto; padding: ${isModal ? '1rem 1.25rem' : '1rem 0'}; box-sizing: border-box; width: 100%; max-width: ${isModal ? '100%' : '650px'}; margin: 0 auto; display: flex; flex-direction: column; gap: 1.1rem; -webkit-overflow-scrolling: touch;">
                         
-                        <!-- Barra para volver al Menú -->
+                        <!-- Barra para volver al Menú Principal -->
                         <button type="button" id="btn-back-to-menu" class="profile-subview-back-bar">
                             <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a;">arrow_back</span>
                             <span style="font-size: 0.82rem; font-weight: 800; color: #0f172a;">Volver al Menú Principal</span>
                         </button>
 
-                        <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.1rem; display: flex; flex-direction: column; gap: 14px;">
+                        <!-- SECCIÓN 1: DATOS PERSONALES Y CONTACTO -->
+                        <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 1.15rem; display: flex; flex-direction: column; gap: 13px;">
+                            <div style="display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
+                                <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a;">person</span>
+                                <span style="font-size: 0.88rem; font-weight: 800; color: #0f172a;">Datos de Contacto</span>
+                            </div>
+
                             <div>
                                 <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
                                     Nombre y Apellido *
@@ -619,7 +594,7 @@
                                     Teléfono / WhatsApp *
                                 </label>
                                 <input type="tel" id="prof-phone" value="${esc(currentData.phone || '')}" placeholder="Ej: 11 1234 5678" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
-                                <span style="font-size: 0.68rem; color: #64748b; margin-top: 2px; display: block;">Te avisaremos por WhatsApp el estado de fabricación de tu pedido.</span>
+                                <span style="font-size: 0.68rem; color: #64748b; margin-top: 3px; display: block;">Te avisaremos por WhatsApp el estado de tu pedido.</span>
                             </div>
 
                             <div>
@@ -631,78 +606,21 @@
                             </div>
                         </div>
 
-                    </div>
+                        <!-- SECCIÓN 2: DIRECCIÓN DE ENTREGA Y ENVÍOS -->
+                        <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 1.15rem; display: flex; flex-direction: column; gap: 13px;">
+                            <div style="display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
+                                <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a;">location_on</span>
+                                <span style="font-size: 0.88rem; font-weight: 800; color: #0f172a;">Dirección de Entrega y Envíos</span>
+                            </div>
 
-                    <!-- Footer con Botón Guardar -->
-                    <div style="width: 100%; border-top: 1px solid #f1f5f9; padding: 0.85rem 1.25rem; flex-shrink: 0; background: #ffffff; display: flex; gap: 8px;">
-                        <button type="button" id="btn-save-contact" style="flex: 1; background: #16a34a; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.4rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3); transition: all 0.2s;">
-                            <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
-                            <span>Guardar Datos de Contacto</span>
-                        </button>
-                    </div>
-                `;
-
-                const closeBtn = card.querySelector('#btn-close-user-profile');
-                if (closeBtn) closeBtn.onclick = onClose;
-
-                card.querySelector('#btn-back-to-menu')?.addEventListener('click', () => {
-                    currentSubView = 'menu';
-                    renderCurrentState();
-                });
-
-                card.querySelector('#btn-save-contact')?.addEventListener('click', () => {
-                    const nameVal = (card.querySelector('#prof-name').value || '').trim();
-                    const phoneVal = (card.querySelector('#prof-phone').value || '').trim();
-                    const emailVal = (card.querySelector('#prof-email').value || '').trim();
-
-                    if (!nameVal) {
-                        alert('Por favor ingresá tu Nombre y Apellido.');
-                        card.querySelector('#prof-name').focus();
-                        return;
-                    }
-
-                    const payload = { ...currentData, name: nameVal, phone: phoneVal, email: emailVal };
-                    if (window.UserDataManager && typeof window.UserDataManager.save === 'function') {
-                        window.UserDataManager.save(payload);
-                    }
-                    if (window.AdminAuth && typeof window.AdminAuth.saveClientProfileToCloud === 'function') {
-                        window.AdminAuth.saveClientProfileToCloud(payload);
-                    }
-                    if (typeof window.showToast === 'function') {
-                        window.showToast('✅ Datos de contacto guardados');
-                    }
-                    currentSubView = 'menu';
-                    renderCurrentState();
-                });
-
-                return;
-            }
-
-            // =========================================================================
-            // VISTA 3: DIRECCIÓN DE ENTREGA Y ENVÍOS
-            // =========================================================================
-            if (currentSubView === 'address') {
-                card.innerHTML = `
-                    ${headerHTML}
-
-                    <div style="flex: 1; overflow-y: auto; padding: ${isModal ? '1rem 1.25rem' : '1rem 0'}; box-sizing: border-box; width: 100%; max-width: ${isModal ? '100%' : '650px'}; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; -webkit-overflow-scrolling: touch;">
-                        
-                        <!-- Barra para volver al Menú -->
-                        <button type="button" id="btn-back-to-menu" class="profile-subview-back-bar">
-                            <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a;">arrow_back</span>
-                            <span style="font-size: 0.82rem; font-weight: 800; color: #0f172a;">Volver al Menú Principal</span>
-                        </button>
-
-                        <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.1rem; display: flex; flex-direction: column; gap: 12px;">
-                            
                             <div>
                                 <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
-                                    Dirección de Entrega (Calle, Altura, Piso / Dpto)
+                                    Dirección (Calle, Altura, Piso / Dpto)
                                 </label>
                                 <input type="text" id="prof-address" value="${esc(currentData.address || '')}" placeholder="Ej: Av. Corrientes 1234, 4to B" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
                             </div>
 
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px;">
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px;">
                                 <div>
                                     <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
                                         Código Postal (CP)
@@ -730,18 +648,80 @@
                                 <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
                                     Indicaciones para el Repartidor (Opcional)
                                 </label>
-                                <input type="text" id="prof-delivery-notes" value="${esc(currentData.deliveryNotes || '')}" placeholder="Ej: Tocar timbre 4B, entre calles Lavalle y Corrientes" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                <input type="text" id="prof-delivery-notes" value="${esc(currentData.deliveryNotes || '')}" placeholder="Ej: Timbre 4B, entre Lavalle y Corrientes" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                            </div>
+                        </div>
+
+                        <!-- SECCIÓN 3: DATOS DE FACTURACIÓN -->
+                        <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 1.15rem; display: flex; flex-direction: column; gap: 13px;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a;">receipt_long</span>
+                                    <div>
+                                        <span style="font-size: 0.88rem; font-weight: 800; color: #0f172a; display: block;">Datos de Facturación</span>
+                                        <span style="font-size: 0.7rem; color: #64748b; display: block;">Factura con CUIT / Factura A</span>
+                                    </div>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer" style="margin: 0;">
+                                    <input type="checkbox" id="prof-factura-a-toggle" ${hasBilling ? 'checked' : ''} class="sr-only peer">
+                                    <div class="w-11 h-6 bg-zinc-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                </label>
                             </div>
 
+                            <div id="prof-billing-fields" style="display: ${hasBilling ? 'flex' : 'none'}; flex-direction: column; gap: 12px;">
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Razón Social / Nombre Fiscal
+                                    </label>
+                                    <input type="text" id="prof-razon-social" value="${esc(currentData.razonSocial || '')}" placeholder="Ej: Constructora del Norte S.A." style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        CUIT / DNI
+                                    </label>
+                                    <input type="text" id="prof-cuit" value="${esc(currentData.cuit || '')}" placeholder="Ej: 30-71234567-8" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Domicilio Fiscal
+                                    </label>
+                                    <input type="text" id="prof-dir-fiscal" value="${esc(currentData.dirFiscal || '')}" placeholder="Ej: San Martín 500, Piso 2" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Condición frente al IVA
+                                    </label>
+                                    <select id="prof-condicion-iva" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.85rem; color: #0f172a; font-family: inherit; outline: none; background: #ffffff;">
+                                        <option value="Consumidor Final" ${(currentData.condIva === 'Consumidor Final' || !currentData.condIva) ? 'selected' : ''}>Consumidor Final</option>
+                                        <option value="Responsable Inscripto" ${currentData.condIva === 'Responsable Inscripto' ? 'selected' : ''}>IVA Responsable Inscripto (Factura A)</option>
+                                        <option value="Responsable Monotributo" ${currentData.condIva === 'Responsable Monotributo' ? 'selected' : ''}>Responsable Monotributo</option>
+                                        <option value="IVA Exento" ${currentData.condIva === 'IVA Exento' ? 'selected' : ''}>IVA Exento</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Correo para Envío de Factura Electrónica
+                                    </label>
+                                    <input type="email" id="prof-email-fiscal" value="${esc(currentData.emailFiscal || '')}" placeholder="Ej: facturacion@empresa.com" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+                            </div>
+
+                            <div id="prof-consumidor-final-note" style="display: ${hasBilling ? 'none' : 'block'}; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.75rem 0.9rem; font-size: 0.76rem; color: #64748b; line-height: 1.45;">
+                                ℹ️ Por defecto emitimos <strong>Factura B a Consumidor Final</strong> con los datos de tu pedido. Si requerís Factura A, activá la opción arriba.
+                            </div>
                         </div>
 
                     </div>
 
-                    <!-- Footer con Botón Guardar -->
+                    <!-- Footer con Botón Guardar Unificado -->
                     <div style="width: 100%; border-top: 1px solid #f1f5f9; padding: 0.85rem 1.25rem; flex-shrink: 0; background: #ffffff; display: flex; gap: 8px;">
-                        <button type="button" id="btn-save-address" style="flex: 1; background: #16a34a; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.4rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3); transition: all 0.2s;">
+                        <button type="button" id="btn-save-personal" style="flex: 1; background: #16a34a; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.4rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3); transition: all 0.2s;">
                             <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
-                            <span>Guardar Dirección de Entrega</span>
+                            <span>Guardar Mis Datos</span>
                         </button>
                     </div>
                 `;
@@ -785,140 +765,12 @@
                     }
                 };
 
-                cpField.oninput = evalCP;
-                if (cpField.value) evalCP();
+                if (cpField) {
+                    cpField.oninput = evalCP;
+                    if (cpField.value) evalCP();
+                }
 
-                card.querySelector('#btn-save-address')?.addEventListener('click', () => {
-                    const addrVal = (card.querySelector('#prof-address').value || '').trim();
-                    const zipVal = (card.querySelector('#prof-zip').value || '').trim();
-                    const locVal = (card.querySelector('#prof-locality').value || '').trim();
-                    const provVal = (card.querySelector('#prof-province').value || '').trim();
-                    const notesVal = (card.querySelector('#prof-delivery-notes').value || '').trim();
-
-                    const payload = {
-                        ...currentData,
-                        address: addrVal,
-                        zipCode: zipVal,
-                        locality: locVal,
-                        province: provVal,
-                        deliveryNotes: notesVal
-                    };
-
-                    if (window.UserDataManager && typeof window.UserDataManager.save === 'function') {
-                        window.UserDataManager.save(payload);
-                    }
-                    if (window.AdminAuth && typeof window.AdminAuth.saveClientProfileToCloud === 'function') {
-                        window.AdminAuth.saveClientProfileToCloud(payload);
-                    }
-                    if (typeof window.showToast === 'function') {
-                        window.showToast('✅ Dirección de entrega guardada');
-                    }
-                    currentSubView = 'menu';
-                    renderCurrentState();
-                });
-
-                return;
-            }
-
-            // =========================================================================
-            // VISTA 4: DATOS FISCALES Y FACTURACIÓN
-            // =========================================================================
-            if (currentSubView === 'billing') {
-                const hasBilling = Boolean(currentData.cuit || currentData.razonSocial);
-
-                card.innerHTML = `
-                    ${headerHTML}
-
-                    <div style="flex: 1; overflow-y: auto; padding: ${isModal ? '1rem 1.25rem' : '1rem 0'}; box-sizing: border-box; width: 100%; max-width: ${isModal ? '100%' : '650px'}; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; -webkit-overflow-scrolling: touch;">
-                        
-                        <!-- Barra para volver al Menú -->
-                        <button type="button" id="btn-back-to-menu" class="profile-subview-back-bar">
-                            <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a;">arrow_back</span>
-                            <span style="font-size: 0.82rem; font-weight: 800; color: #0f172a;">Volver al Menú Principal</span>
-                        </button>
-
-                        <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.1rem; display: flex; flex-direction: column; gap: 12px;">
-                            
-                            <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid #f1f5f9;">
-                                <div>
-                                    <span style="font-size: 0.85rem; font-weight: 800; color: #0f172a; block">Factura con CUIT / Factura A</span>
-                                    <span style="font-size: 0.72rem; color: #64748b; block">Habilitar si necesitas factura a nombre de una empresa o Responsable Inscripto</span>
-                                </div>
-                                <label class="relative inline-flex items-center cursor-pointer">
-                                    <input type="checkbox" id="prof-factura-a-toggle" ${hasBilling ? 'checked' : ''} class="sr-only peer">
-                                    <div class="w-11 h-6 bg-zinc-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
-                                </label>
-                            </div>
-
-                            <div id="prof-billing-fields" style="display: ${hasBilling ? 'flex' : 'none'}; flex-direction: column; gap: 12px;">
-                                
-                                <div>
-                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
-                                        Razón Social / Nombre Fiscal
-                                    </label>
-                                    <input type="text" id="prof-razon-social" value="${esc(currentData.razonSocial || '')}" placeholder="Ej: Constructora del Norte S.A." style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
-                                </div>
-
-                                <div>
-                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
-                                        CUIT / DNI
-                                    </label>
-                                    <input type="text" id="prof-cuit" value="${esc(currentData.cuit || '')}" placeholder="Ej: 30-71234567-8" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
-                                </div>
-
-                                <div>
-                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
-                                        Domicilio Fiscal
-                                    </label>
-                                    <input type="text" id="prof-dir-fiscal" value="${esc(currentData.dirFiscal || '')}" placeholder="Ej: San Martín 500, Piso 2" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
-                                </div>
-
-                                <div>
-                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
-                                        Condición frente al IVA
-                                    </label>
-                                    <select id="prof-condicion-iva" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.85rem; color: #0f172a; font-family: inherit; outline: none; background: #ffffff;">
-                                        <option value="Consumidor Final" ${(currentData.condIva === 'Consumidor Final' || !currentData.condIva) ? 'selected' : ''}>Consumidor Final</option>
-                                        <option value="Responsable Inscripto" ${currentData.condIva === 'Responsable Inscripto' ? 'selected' : ''}>IVA Responsable Inscripto (Factura A)</option>
-                                        <option value="Responsable Monotributo" ${currentData.condIva === 'Responsable Monotributo' ? 'selected' : ''}>Responsable Monotributo</option>
-                                        <option value="IVA Exento" ${currentData.condIva === 'IVA Exento' ? 'selected' : ''}>IVA Exento</option>
-                                    </select>
-                                </div>
-
-                                <div>
-                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
-                                        Correo para Envío de Factura Electrónica
-                                    </label>
-                                    <input type="email" id="prof-email-fiscal" value="${esc(currentData.emailFiscal || '')}" placeholder="Ej: facturacion@empresa.com" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
-                                </div>
-
-                            </div>
-
-                            <div id="prof-consumidor-final-note" style="display: ${hasBilling ? 'none' : 'block'}; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.78rem; color: #64748b; line-height: 1.45;">
-                                ℹ️ Por defecto emitimos <strong>Factura B a Consumidor Final</strong> con los datos de tu pedido. Si requerís Factura A, activá la opción arriba para ingresar CUIT y Razón Social.
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- Footer con Botón Guardar -->
-                    <div style="width: 100%; border-top: 1px solid #f1f5f9; padding: 0.85rem 1.25rem; flex-shrink: 0; background: #ffffff; display: flex; gap: 8px;">
-                        <button type="button" id="btn-save-billing" style="flex: 1; background: #16a34a; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.4rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3); transition: all 0.2s;">
-                            <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
-                            <span>Guardar Datos de Facturación</span>
-                        </button>
-                    </div>
-                `;
-
-                const closeBtn = card.querySelector('#btn-close-user-profile');
-                if (closeBtn) closeBtn.onclick = onClose;
-
-                card.querySelector('#btn-back-to-menu')?.addEventListener('click', () => {
-                    currentSubView = 'menu';
-                    renderCurrentState();
-                });
-
+                // Factura A toggle
                 const billingToggle = card.querySelector('#prof-factura-a-toggle');
                 const billingFields = card.querySelector('#prof-billing-fields');
                 const finalNote = card.querySelector('#prof-consumidor-final-note');
@@ -931,7 +783,24 @@
                     };
                 }
 
-                card.querySelector('#btn-save-billing')?.addEventListener('click', () => {
+                // Guardar Todo Junto
+                card.querySelector('#btn-save-personal')?.addEventListener('click', () => {
+                    const nameVal = (card.querySelector('#prof-name').value || '').trim();
+                    const phoneVal = (card.querySelector('#prof-phone').value || '').trim();
+                    const emailVal = (card.querySelector('#prof-email').value || '').trim();
+
+                    if (!nameVal) {
+                        alert('Por favor ingresá tu Nombre y Apellido.');
+                        card.querySelector('#prof-name').focus();
+                        return;
+                    }
+
+                    const addrVal = (card.querySelector('#prof-address')?.value || '').trim();
+                    const zipVal = (card.querySelector('#prof-zip')?.value || '').trim();
+                    const locVal = (card.querySelector('#prof-locality')?.value || '').trim();
+                    const provVal = (card.querySelector('#prof-province')?.value || '').trim();
+                    const notesVal = (card.querySelector('#prof-delivery-notes')?.value || '').trim();
+
                     const isChecked = billingToggle?.checked || false;
                     const razonVal = isChecked ? (card.querySelector('#prof-razon-social')?.value || '').trim() : '';
                     const cuitVal = isChecked ? (card.querySelector('#prof-cuit')?.value || '').trim() : '';
@@ -941,6 +810,14 @@
 
                     const payload = {
                         ...currentData,
+                        name: nameVal,
+                        phone: phoneVal,
+                        email: emailVal,
+                        address: addrVal,
+                        zipCode: zipVal,
+                        locality: locVal,
+                        province: provVal,
+                        deliveryNotes: notesVal,
                         razonSocial: razonVal,
                         cuit: cuitVal,
                         dirFiscal: dirFiscalVal,
@@ -955,7 +832,7 @@
                         window.AdminAuth.saveClientProfileToCloud(payload);
                     }
                     if (typeof window.showToast === 'function') {
-                        window.showToast('✅ Datos de facturación guardados');
+                        window.showToast('✅ Datos guardados con éxito');
                     }
                     currentSubView = 'menu';
                     renderCurrentState();
