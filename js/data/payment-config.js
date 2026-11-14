@@ -10,7 +10,7 @@ window.sessionPaymentConfig = {
         "bank": "Banco Santander",
         "titular": "Yonatan Lucas Orellana",
         "cuit": "20-35281538-2",
-        "discountPercent": 10
+        "discountPercent": 5
     },
     "transferCecilia": {
         "active": true,
@@ -19,14 +19,14 @@ window.sessionPaymentConfig = {
         "bank": "Mercado Pago",
         "titular": "Cecilia Beatriz Cerón",
         "cuit": "27-28767339-1",
-        "discountPercent": 10
+        "discountPercent": 5
     },
     "mercadopago": {
         "active": true,
         "mode": "production",
         "publicKey": "APP_USR-be803e20-9c32-45f1-8354-8691ea7fa550",
         "accessToken": "",
-        "workerUrl": "https://super-shadow-4ad9.latarimadecoracion.workers.dev",
+        "workerUrl": "",
         "surchargePercent": 0,
         "creditSurchargePercent": 0,
         "maxInstallments": 12,
