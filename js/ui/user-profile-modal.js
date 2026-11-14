@@ -114,81 +114,71 @@
                 transform: rotate(90deg);
             }
 
-            /* Estilos de la Lista de Opciones (Columna) */
+            /* Estilos de la Lista de Opciones (Columna Sobria Full-Width) */
             .profile-menu-list {
                 display: flex;
                 flex-direction: column;
-                gap: 10px;
                 width: 100%;
                 box-sizing: border-box;
             }
             .profile-menu-btn {
                 width: 100%;
-                background: #ffffff;
-                border: 1.5px solid #e2e8f0;
-                border-radius: 14px;
-                padding: 0.85rem 1rem;
+                background: transparent;
+                border: none;
+                border-bottom: 1px solid #f1f5f9;
+                border-radius: 0;
+                padding: 0.95rem 1.25rem;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 gap: 12px;
                 cursor: pointer;
                 text-align: left;
-                transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+                transition: background-color 0.15s ease, padding-left 0.15s ease;
                 box-sizing: border-box;
                 font-family: inherit;
             }
             .profile-menu-btn:hover {
-                border-color: #cbd5e1;
                 background: #f8fafc;
-                transform: translateY(-1px);
-                box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+                padding-left: 1.45rem;
             }
             .profile-menu-btn:active {
-                transform: translateY(0);
                 background: #f1f5f9;
             }
             .profile-menu-btn-content {
                 display: flex;
                 align-items: center;
-                gap: 12px;
+                gap: 14px;
                 min-width: 0;
                 flex: 1;
             }
             .profile-menu-icon {
-                width: 40px;
-                height: 40px;
-                border-radius: 10px;
+                color: #475569;
+                font-size: 22px;
+                flex-shrink: 0;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                flex-shrink: 0;
-                font-size: 20px;
+                transition: color 0.15s ease;
+            }
+            .profile-menu-btn:hover .profile-menu-icon {
+                color: #0f172a;
             }
             .profile-menu-title {
-                font-size: 0.88rem;
-                font-weight: 800;
-                color: #0f172a;
-                line-height: 1.25;
-            }
-            .profile-menu-subtitle {
-                font-size: 0.72rem;
-                color: #64748b;
-                margin-top: 2px;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                max-width: 250px;
+                font-size: 0.92rem;
+                font-weight: 700;
+                color: #1e293b;
+                letter-spacing: -0.15px;
             }
             .profile-menu-chevron {
-                font-size: 20px;
+                font-size: 18px;
                 color: #94a3b8;
                 flex-shrink: 0;
-                transition: transform 0.2s;
+                transition: transform 0.15s, color 0.15s;
             }
             .profile-menu-btn:hover .profile-menu-chevron {
                 color: #0f172a;
-                transform: translateX(2px);
+                transform: translateX(3px);
             }
 
             /* Sub-vistas (Formularios enfocados) */
@@ -327,22 +317,22 @@
                 card.innerHTML = `
                     ${headerHTML}
 
-                    <div style="flex: 1; overflow-y: auto; padding: ${isModal ? '1rem 1.25rem' : '1rem 0'}; box-sizing: border-box; width: 100%; max-width: ${isModal ? '100%' : '650px'}; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; -webkit-overflow-scrolling: touch;">
+                    <div style="flex: 1; overflow-y: auto; padding: 0; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; -webkit-overflow-scrolling: touch;">
 
-                        <!-- Tarjeta de Identidad de Cuenta -->
-                        <div style="background: ${publicUser ? '#f0fdf4' : '#f8fafc'}; border: 1.5px solid ${publicUser ? '#bbf7d0' : '#e2e8f0'}; border-radius: 16px; padding: 0.9rem 1.1rem; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+                        <!-- Tarjeta de Identidad de Cuenta Sobria Full-Width -->
+                        <div style="padding: 1.1rem 1.25rem; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #ffffff;">
                             <div style="display: flex; align-items: center; gap: 12px; min-width: 0; flex: 1;">
                                 ${userAvatarHTML}
                                 <div style="min-width: 0; flex: 1;">
                                     <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                                        <span style="font-size: 0.95rem; font-weight: 900; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                        <span style="font-size: 0.95rem; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                             ${esc(publicUser ? (publicUser.nombre || 'Usuario Google') : 'Comprador Invitado')}
                                         </span>
-                                        <span style="background: ${isStaff ? '#fee2e2' : (publicUser ? '#dcfce7' : '#f1f5f9')}; color: ${isStaff ? '#dc2626' : (publicUser ? '#15803d' : '#64748b')}; border: 1px solid ${isStaff ? '#fecaca' : (publicUser ? '#86efac' : '#cbd5e1')}; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.3px;">
+                                        <span style="background: ${isStaff ? '#fee2e2' : '#f1f5f9'}; color: ${isStaff ? '#dc2626' : '#475569'}; border: 1px solid ${isStaff ? '#fecaca' : '#e2e8f0'}; font-size: 0.65rem; font-weight: 800; padding: 2px 7px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.3px;">
                                             ${roleBadgeText}
                                         </span>
                                     </div>
-                                    <div style="font-size: 0.76rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px;">
+                                    <div style="font-size: 0.76rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px;">
                                         ${esc(publicUser ? (publicUser.email || '') : 'Sin registrar · Podés comprar igual')}
                                     </div>
                                 </div>
@@ -351,37 +341,34 @@
                             <!-- Botones de Acción en Cabecera (Login / Logout) -->
                             <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
                                 ${!publicUser ? `
-                                    <button type="button" id="btn-menu-google-login" style="background: #ffffff; color: #0f172a; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.5rem 0.85rem; font-size: 0.78rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; transition: all 0.2s;" onmouseenter="this.style.borderColor='#0f172a';" onmouseleave="this.style.borderColor='#cbd5e1';">
+                                    <button type="button" id="btn-menu-google-login" style="background: #ffffff; color: #0f172a; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.78rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; transition: all 0.2s;" onmouseenter="this.style.borderColor='#0f172a';" onmouseleave="this.style.borderColor='#cbd5e1';">
                                         ${GOOGLE_SVG}
-                                        <span>Iniciar Sesión</span>
+                                        <span>Acceder</span>
                                     </button>
                                 ` : `
-                                    <button type="button" id="btn-profile-google-logout" style="background: #ffffff; border: 1px solid #cbd5e1; color: #64748b; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; display: inline-flex; align-items: center; gap: 4px;" title="Cerrar sesión" onmouseenter="this.style.borderColor='#ef4444';this.style.color='#dc2626';" onmouseleave="this.style.borderColor='#cbd5e1';this.style.color='#64748b';">
-                                        <span class="material-symbols-outlined" style="font-size: 16px;">logout</span>
+                                    <button type="button" id="btn-profile-google-logout" style="background: transparent; border: 1px solid #e2e8f0; color: #64748b; border-radius: 8px; padding: 0.4rem 0.65rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; display: inline-flex; align-items: center; gap: 4px;" title="Cerrar sesión" onmouseenter="this.style.borderColor='#ef4444';this.style.color='#dc2626';" onmouseleave="this.style.borderColor='#e2e8f0';this.style.color='#64748b';">
+                                        <span class="material-symbols-outlined" style="font-size: 15px;">logout</span>
                                         <span>Salir</span>
                                     </button>
                                 `}
                             </div>
                         </div>
 
-                        <!-- COLUMNA DE OPCIONES EN LISTA -->
+                        <!-- COLUMNA DE OPCIONES SOBRIA Y FULL-WIDTH -->
                         <div class="profile-menu-list">
 
                             <!-- 1. Mis Compras / Pedidos -->
                             <button type="button" class="profile-menu-btn" id="btn-opt-my-orders">
                                 <div class="profile-menu-btn-content">
-                                    <div class="profile-menu-icon" style="background: #dbeafe; color: #2563eb;">
-                                        <span class="material-symbols-outlined">shopping_bag</span>
-                                    </div>
-                                    <div style="min-width: 0; flex: 1;">
-                                        <div class="profile-menu-title">Mis Pedidos y Compras</div>
-                                        <div class="profile-menu-subtitle">Seguimiento en vivo y pedidos guardados</div>
-                                    </div>
+                                    <span class="material-symbols-outlined profile-menu-icon">shopping_bag</span>
+                                    <span class="profile-menu-title">Mis Pedidos y Compras</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 6px;">
-                                    <span style="background: #eff6ff; color: #1d4ed8; font-size: 0.72rem; font-weight: 800; padding: 3px 8px; border-radius: 999px; border: 1px solid #bfdbfe;">
-                                        ${ordersCountText}
-                                    </span>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    ${ordersCount > 0 ? `
+                                        <span style="background: #f1f5f9; color: #475569; font-size: 0.72rem; font-weight: 700; padding: 2px 7px; border-radius: 6px;">
+                                            ${ordersCountText}
+                                        </span>
+                                    ` : ''}
                                     <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
                                 </div>
                             </button>
@@ -389,18 +376,15 @@
                             <!-- 2. Mi Carrito -->
                             <button type="button" class="profile-menu-btn" id="btn-opt-cart">
                                 <div class="profile-menu-btn-content">
-                                    <div class="profile-menu-icon" style="background: #dcfce7; color: #16a34a;">
-                                        <span class="material-symbols-outlined">shopping_cart</span>
-                                    </div>
-                                    <div style="min-width: 0; flex: 1;">
-                                        <div class="profile-menu-title">Mi Carrito de Compras</div>
-                                        <div class="profile-menu-subtitle">Tus productos seleccionados listos para pedir</div>
-                                    </div>
+                                    <span class="material-symbols-outlined profile-menu-icon">shopping_cart</span>
+                                    <span class="profile-menu-title">Mi Carrito de Compras</span>
                                 </div>
-                                <div style="display: flex; align-items: center; gap: 6px;">
-                                    <span style="background: #f0fdf4; color: #15803d; font-size: 0.72rem; font-weight: 800; padding: 3px 8px; border-radius: 999px; border: 1px solid #bbf7d0;">
-                                        ${cartCountText}
-                                    </span>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    ${cartCount > 0 ? `
+                                        <span style="background: #f1f5f9; color: #475569; font-size: 0.72rem; font-weight: 700; padding: 2px 7px; border-radius: 6px;">
+                                            ${cartCountText}
+                                        </span>
+                                    ` : ''}
                                     <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
                                 </div>
                             </button>
@@ -408,13 +392,8 @@
                             <!-- 3. Datos Personales y Contacto -->
                             <button type="button" class="profile-menu-btn" id="btn-opt-contact">
                                 <div class="profile-menu-btn-content">
-                                    <div class="profile-menu-icon" style="background: #ede9fe; color: #7c3aed;">
-                                        <span class="material-symbols-outlined">person</span>
-                                    </div>
-                                    <div style="min-width: 0; flex: 1;">
-                                        <div class="profile-menu-title">Datos Personales y Contacto</div>
-                                        <div class="profile-menu-subtitle">${contactSubtitle}</div>
-                                    </div>
+                                    <span class="material-symbols-outlined profile-menu-icon">person</span>
+                                    <span class="profile-menu-title">Datos Personales y Contacto</span>
                                 </div>
                                 <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
                             </button>
@@ -422,13 +401,8 @@
                             <!-- 4. Dirección de Entrega y Envíos -->
                             <button type="button" class="profile-menu-btn" id="btn-opt-address">
                                 <div class="profile-menu-btn-content">
-                                    <div class="profile-menu-icon" style="background: #fef3c7; color: #d97706;">
-                                        <span class="material-symbols-outlined">location_on</span>
-                                    </div>
-                                    <div style="min-width: 0; flex: 1;">
-                                        <div class="profile-menu-title">Dirección de Entrega y Envíos</div>
-                                        <div class="profile-menu-subtitle">${addressSubtitle}</div>
-                                    </div>
+                                    <span class="material-symbols-outlined profile-menu-icon">location_on</span>
+                                    <span class="profile-menu-title">Dirección de Entrega y Envíos</span>
                                 </div>
                                 <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
                             </button>
@@ -436,13 +410,8 @@
                             <!-- 5. Datos de Facturación (Opcional) -->
                             <button type="button" class="profile-menu-btn" id="btn-opt-billing">
                                 <div class="profile-menu-btn-content">
-                                    <div class="profile-menu-icon" style="background: #e0e7ff; color: #4f46e5;">
-                                        <span class="material-symbols-outlined">receipt_long</span>
-                                    </div>
-                                    <div style="min-width: 0; flex: 1;">
-                                        <div class="profile-menu-title">Datos de Facturación</div>
-                                        <div class="profile-menu-subtitle">${billingSubtitle}</div>
-                                    </div>
+                                    <span class="material-symbols-outlined profile-menu-icon">receipt_long</span>
+                                    <span class="profile-menu-title">Datos de Facturación</span>
                                 </div>
                                 <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
                             </button>
@@ -450,37 +419,27 @@
                             <!-- 6. Centro de Notificaciones -->
                             <button type="button" class="profile-menu-btn" id="btn-opt-notif">
                                 <div class="profile-menu-btn-content">
-                                    <div class="profile-menu-icon" style="background: #fffbeb; color: #f59e0b;">
-                                        <span class="material-symbols-outlined">notifications</span>
-                                    </div>
-                                    <div style="min-width: 0; flex: 1;">
-                                        <div class="profile-menu-title">Notificaciones y Avisos</div>
-                                        <div class="profile-menu-subtitle">Novedades y estado de tus compras</div>
-                                    </div>
+                                    <span class="material-symbols-outlined profile-menu-icon">notifications</span>
+                                    <span class="profile-menu-title">Notificaciones y Avisos</span>
                                 </div>
                                 <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
                             </button>
 
                             <!-- 7. Panel de Administración (Staff / SuperAdmin) -->
                             ${isStaff ? `
-                                <button type="button" class="profile-menu-btn" id="btn-opt-admin" style="background: #fff1f2; border-color: #fecdd3;">
+                                <button type="button" class="profile-menu-btn" id="btn-opt-admin">
                                     <div class="profile-menu-btn-content">
-                                        <div class="profile-menu-icon" style="background: #ffe4e6; color: #e11d48;">
-                                            <span class="material-symbols-outlined">shield_person</span>
-                                        </div>
-                                        <div style="min-width: 0; flex: 1;">
-                                            <div class="profile-menu-title" style="color: #9f1239;">Panel de Administración</div>
-                                            <div class="profile-menu-subtitle" style="color: #e11d48;">Taller, pedidos y métricas</div>
-                                        </div>
+                                        <span class="material-symbols-outlined profile-menu-icon" style="color: #0f172a;">admin_panel_settings</span>
+                                        <span class="profile-menu-title" style="color: #0f172a;">Panel de Administración</span>
                                     </div>
-                                    <span class="material-symbols-outlined profile-menu-chevron" style="color: #e11d48;">chevron_right</span>
+                                    <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
                                 </button>
                             ` : ''}
 
                         </div>
 
                         <!-- Pie del menú con soporte y limpieza -->
-                        <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                        <div style="margin-top: auto; padding: 1.25rem; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; gap: 10px;">
                             <button type="button" id="btn-clear-user-profile" style="background: transparent; border: none; color: #94a3b8; font-size: 0.75rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; padding: 4px 6px; border-radius: 6px;" onmouseenter="this.style.color='#dc2626';" onmouseleave="this.style.color='#94a3b8';">
                                 <span class="material-symbols-outlined" style="font-size: 16px;">delete</span>
                                 <span>Limpiar datos guardados</span>
