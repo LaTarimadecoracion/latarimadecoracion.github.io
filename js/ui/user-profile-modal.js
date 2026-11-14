@@ -1,7 +1,8 @@
 // js/ui/user-profile-modal.js
-// --- USER PROFILE DRAWER LATERAL (LAZY-LOADED) ---
-// Abre un panel lateral deslizante (Side Drawer) para gestionar el perfil de usuario,
-// datos de envío y facturación con sincronización automática en la nube vía Google Auth.
+// --- USER PROFILE & ACCOUNT MENU (SIDE DRAWER LATERAL) ---
+// Transforma el perfil en un Menú y Lista estructurado en columna de opciones:
+// El usuario ve todas sus opciones ordenadas en lista (Mis Compras, Carrito, Datos Personales, 
+// Dirección de Entrega, Facturación, etc.) y puede entrar a cada una presionando su botón.
 
 (function() {
     'use strict';
@@ -19,7 +20,7 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: rgba(15, 23, 42, 0.5);
+                background: rgba(15, 23, 42, 0.55);
                 backdrop-filter: blur(4px);
                 -webkit-backdrop-filter: blur(4px);
                 z-index: 999998;
@@ -113,6 +114,103 @@
                 transform: rotate(90deg);
             }
 
+            /* Estilos de la Lista de Opciones (Columna) */
+            .profile-menu-list {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .profile-menu-btn {
+                width: 100%;
+                background: #ffffff;
+                border: 1.5px solid #e2e8f0;
+                border-radius: 14px;
+                padding: 0.85rem 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 12px;
+                cursor: pointer;
+                text-align: left;
+                transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+                box-sizing: border-box;
+                font-family: inherit;
+            }
+            .profile-menu-btn:hover {
+                border-color: #cbd5e1;
+                background: #f8fafc;
+                transform: translateY(-1px);
+                box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+            }
+            .profile-menu-btn:active {
+                transform: translateY(0);
+                background: #f1f5f9;
+            }
+            .profile-menu-btn-content {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                min-width: 0;
+                flex: 1;
+            }
+            .profile-menu-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                font-size: 20px;
+            }
+            .profile-menu-title {
+                font-size: 0.88rem;
+                font-weight: 800;
+                color: #0f172a;
+                line-height: 1.25;
+            }
+            .profile-menu-subtitle {
+                font-size: 0.72rem;
+                color: #64748b;
+                margin-top: 2px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: 250px;
+            }
+            .profile-menu-chevron {
+                font-size: 20px;
+                color: #94a3b8;
+                flex-shrink: 0;
+                transition: transform 0.2s;
+            }
+            .profile-menu-btn:hover .profile-menu-chevron {
+                color: #0f172a;
+                transform: translateX(2px);
+            }
+
+            /* Sub-vistas (Formularios enfocados) */
+            .profile-subview-back-bar {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                background: #f8fafc;
+                border: 1px solid #e2e8f0;
+                border-radius: 12px;
+                padding: 0.6rem 0.85rem;
+                cursor: pointer;
+                width: 100%;
+                box-sizing: border-box;
+                font-family: inherit;
+                transition: all 0.2s;
+            }
+            .profile-subview-back-bar:hover {
+                background: #f1f5f9;
+                border-color: #cbd5e1;
+            }
+
             @media (max-width: 640px) {
                 #user-profile-drawer {
                     max-width: 100%;
@@ -135,619 +233,733 @@
         const onClose = typeof options.onClose === 'function' ? options.onClose : () => {};
         const onReopen = typeof options.onReopen === 'function' ? options.onReopen : () => {};
 
-        const publicUser = (window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function')
-            ? window.AdminAuth.getPublicUser()
-            : null;
+        // Estado interno de subvista: 'menu' | 'contact' | 'address' | 'billing'
+        let currentSubView = 'menu';
 
-        const currentData = (window.UserDataManager && typeof window.UserDataManager.get === 'function')
-            ? window.UserDataManager.get()
-            : {};
+        function renderCurrentState() {
+            const publicUser = (window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function')
+                ? window.AdminAuth.getPublicUser()
+                : null;
 
-        const headerHTML = isModal ? `
-            <div class="user-profile-drawer-header">
-                <div class="user-profile-drawer-title-wrap">
-                    <span class="material-symbols-outlined user-profile-drawer-icon">account_circle</span>
-                    <div style="min-width: 0;">
-                        <div class="user-profile-drawer-badge">La Tarima · Mi Cuenta</div>
-                        <h3 class="user-profile-drawer-title">${publicUser ? 'Mi Cuenta y Perfil' : 'Mi Perfil de Entrega'}</h3>
-                    </div>
-                </div>
-                <button type="button" id="btn-close-user-profile" class="user-profile-drawer-close-btn" title="Cerrar perfil">
-                    ✕
-                </button>
-            </div>
-            <div style="height: 3px; background: linear-gradient(90deg, #16a34a, #22c55e); flex-shrink: 0;"></div>
-        ` : `
-            <div style="width: 100%; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.75rem; flex-shrink: 0; box-sizing: border-box;">
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem;">
-                    <div style="display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1;">
-                        <span class="material-symbols-outlined" style="color: #0f172a; font-size: 22px; background: #f1f5f9; padding: 6px; border-radius: 10px; flex-shrink: 0;">account_circle</span>
-                        <div style="min-width: 0; flex: 1;">
-                            <div style="font-size: 0.65rem; font-weight: 800; color: #94a3b8; letter-spacing: 0.8px; text-transform: uppercase;">LA TARIMA - PERFIL DE USUARIO</div>
-                            <h3 style="font-size: 1.05rem; font-weight: 800; color: #0f172a; margin: 0; line-height: 1.2;">Mi Perfil de Entrega</h3>
+            const currentData = (window.UserDataManager && typeof window.UserDataManager.get === 'function')
+                ? window.UserDataManager.get()
+                : {};
+
+            const ordersList = (typeof window.getMyLocalOrders === 'function') ? window.getMyLocalOrders() : [];
+            const ordersCount = ordersList.length;
+            const ordersCountText = ordersCount > 0 ? `${ordersCount} ${ordersCount === 1 ? 'pedido' : 'pedidos'}` : 'Sin pedidos';
+
+            let cartCount = 0;
+            try {
+                const rawCart = localStorage.getItem('cartItems');
+                if (rawCart) {
+                    const parsed = JSON.parse(rawCart);
+                    cartCount = Array.isArray(parsed) ? parsed.length : 0;
+                }
+            } catch (e) {}
+            const cartCountText = cartCount > 0 ? `${cartCount} ${cartCount === 1 ? 'producto' : 'productos'}` : 'Vacío';
+
+            const isStaff = publicUser && (publicUser.role === 'superadmin' || publicUser.role === 'colaborador');
+            const roleBadgeText = publicUser
+                ? (publicUser.role === 'superadmin'
+                    ? 'SuperAdmin'
+                    : (publicUser.role === 'colaborador' ? 'Equipo Taller' : (publicUser.clientTier === 'mayorista' ? 'Mayorista VIP' : 'Cliente Verificado')))
+                : 'Invitado';
+
+            const googleInitial = publicUser ? (((publicUser.nombre || publicUser.email || 'U').trim().charAt(0) || 'U').toUpperCase()) : 'I';
+            const userAvatarHTML = (publicUser && publicUser.picture)
+                ? `<img src="${esc(publicUser.picture)}" referrerpolicy="no-referrer" alt="${esc(publicUser.nombre || 'Google')}" style="width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid #86efac; flex-shrink: 0;">`
+                : `<div style="width: 46px; height: 46px; border-radius: 50%; background: ${publicUser ? '#16a34a' : '#64748b'}; color: #ffffff; font-weight: 900; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">${esc(googleInitial)}</div>`;
+
+            // Subtítulos dinámicos para los botones del menú
+            const contactSubtitle = (currentData.name || (publicUser && publicUser.nombre))
+                ? `${esc(currentData.name || publicUser.nombre)} ${currentData.phone ? '· ' + esc(currentData.phone) : ''}`
+                : 'Nombre, teléfono y WhatsApp';
+
+            const addressSubtitle = currentData.address
+                ? `${esc(currentData.address)} ${currentData.zipCode ? '(CP ' + esc(currentData.zipCode) + ')' : ''}`
+                : (currentData.zipCode ? `Código Postal: ${esc(currentData.zipCode)}` : 'Configurar domicilio habitual de entrega');
+
+            const billingSubtitle = currentData.cuit
+                ? `${esc(currentData.razonSocial || 'Factura')} · CUIT: ${esc(currentData.cuit)}`
+                : 'Factura B a Consumidor Final o Factura A (Opcional)';
+
+            // Cabecera superior del Drawer
+            const headerHTML = isModal ? `
+                <div class="user-profile-drawer-header">
+                    <div class="user-profile-drawer-title-wrap">
+                        <span class="material-symbols-outlined user-profile-drawer-icon">
+                            ${currentSubView === 'menu' ? 'account_circle' : (currentSubView === 'contact' ? 'person' : (currentSubView === 'address' ? 'location_on' : 'receipt_long'))}
+                        </span>
+                        <div style="min-width: 0;">
+                            <div class="user-profile-drawer-badge">La Tarima · Mi Cuenta</div>
+                            <h3 class="user-profile-drawer-title">
+                                ${currentSubView === 'menu' ? 'Mi Cuenta y Perfil' : (currentSubView === 'contact' ? 'Datos de Contacto' : (currentSubView === 'address' ? 'Dirección de Entrega' : 'Datos de Facturación'))}
+                            </h3>
                         </div>
                     </div>
-                </div>
-                <div style="height: 4px; background: linear-gradient(90deg, #16a34a, #22c55e); border-radius: 4px; margin-top: 8px;"></div>
-            </div>
-        `;
-
-        // CASO A: Usuario NO autenticado -> Pantalla limpia de acceso con Google
-        if (!publicUser) {
-            const hasDesktopHeader = Boolean(window.DesktopHeader);
-            card.innerHTML = `
-                ${headerHTML}
-
-                <div style="flex: 1; overflow-y: auto; padding: ${isModal ? '1.5rem 1.25rem' : '1.5rem 0'}; box-sizing: border-box; width: 100%; max-width: 520px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 1.25rem; -webkit-overflow-scrolling: touch;">
-                    <div style="width: 72px; height: 72px; border-radius: 50%; background: #f0fdf4; border: 2px solid #bbf7d0; color: #16a34a; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(22, 163, 74, 0.12);">
-                        <span class="material-symbols-outlined" style="font-size: 36px;">verified_user</span>
-                    </div>
-
-                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                        <h2 style="margin: 0; font-size: 1.35rem; font-weight: 900; color: #0f172a; line-height: 1.25;">
-                            Iniciá sesión gratis para gestionar tu Perfil de Entrega
-                        </h2>
-                        <p style="margin: 0; font-size: 0.9rem; color: #475569; line-height: 1.5;">
-                            Tus datos (dirección, WhatsApp y facturación) quedan guardados de forma segura en tu cuenta entre PC y celular para comprar en 1 clic.
-                        </p>
-                    </div>
-
-                    <button type="button" id="btn-profile-google-login" style="width: 100%; max-width: 340px; background: #ffffff; color: #0f172a; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 0.9rem 1.25rem; font-size: 0.95rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08); transition: all 0.2s; font-family: inherit;" onmouseenter="if(!this.disabled){this.style.borderColor='#0f172a';this.style.transform='translateY(-1px)';}" onmouseleave="this.style.borderColor='#cbd5e1';this.style.transform='translateY(0)';">
-                        ${GOOGLE_SVG}
-                        <span>Continuar con Google</span>
+                    <button type="button" id="btn-close-user-profile" class="user-profile-drawer-close-btn" title="Cerrar">
+                        ✕
                     </button>
-
-                    <div id="prof-google-auth-error" style="display: none; width: 100%; max-width: 380px; background: #fef2f2; border: 1px solid #fecaca; color: #b91c1c; border-radius: 10px; padding: 0.65rem 0.9rem; font-size: 0.8rem; font-weight: 700;"></div>
-
-                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.78rem; color: #64748b; line-height: 1.45; max-width: 440px;">
-                        💡 <em>Si solo querés calcular costos de envío, podés ingresar tu Código Postal directamente en la barra superior o en el producto sin registrarte.</em>
+                </div>
+                <div style="height: 3px; background: linear-gradient(90deg, #16a34a, #22c55e); flex-shrink: 0;"></div>
+            ` : `
+                <div style="width: 100%; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.75rem; flex-shrink: 0; box-sizing: border-box;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.25rem;">
+                        <div style="display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1;">
+                            <span class="material-symbols-outlined" style="color: #0f172a; font-size: 22px; background: #f1f5f9; padding: 6px; border-radius: 10px; flex-shrink: 0;">account_circle</span>
+                            <div style="min-width: 0; flex: 1;">
+                                <div style="font-size: 0.65rem; font-weight: 800; color: #94a3b8; letter-spacing: 0.8px; text-transform: uppercase;">LA TARIMA - MI CUENTA</div>
+                                <h3 style="font-size: 1.05rem; font-weight: 800; color: #0f172a; margin: 0; line-height: 1.2;">
+                                    ${currentSubView === 'menu' ? 'Mi Cuenta y Perfil' : (currentSubView === 'contact' ? 'Datos de Contacto' : (currentSubView === 'address' ? 'Dirección de Entrega' : 'Datos de Facturación'))}
+                                </h3>
+                            </div>
+                        </div>
                     </div>
-
-                    ${(isModal && hasDesktopHeader) ? `
-                        <button type="button" id="btn-close-user-profile-secondary" style="background: transparent; border: 1px solid #e2e8f0; color: #64748b; border-radius: 10px; padding: 0.55rem 1.15rem; font-size: 0.82rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s;" onmouseenter="this.style.color='#0f172a';this.style.borderColor='#94a3b8';" onmouseleave="this.style.color='#64748b';this.style.borderColor='#e2e8f0';">
-                            Cerrar y seguir navegando
-                        </button>
-                    ` : ''}
+                    <div style="height: 4px; background: linear-gradient(90deg, #16a34a, #22c55e); border-radius: 4px; margin-top: 8px;"></div>
                 </div>
             `;
 
-            const closeBtn = card.querySelector('#btn-close-user-profile');
-            if (closeBtn) closeBtn.onclick = onClose;
-            const secCloseBtn = card.querySelector('#btn-close-user-profile-secondary');
-            if (secCloseBtn) secCloseBtn.onclick = onClose;
+            // =========================================================================
+            // VISTA 1: MENÚ Y LISTA DE OPCIONES EN COLUMNA (VISTA PRINCIPAL)
+            // =========================================================================
+            if (currentSubView === 'menu') {
+                card.innerHTML = `
+                    ${headerHTML}
 
-            const googleLoginBtn = card.querySelector('#btn-profile-google-login');
-            const authErrorEl = card.querySelector('#prof-google-auth-error');
-            if (googleLoginBtn) {
-                const defaultBtnHTML = googleLoginBtn.innerHTML;
-                googleLoginBtn.onclick = async () => {
-                    if (!window.AdminAuth || typeof window.AdminAuth.loginPublicStoreWithGoogle !== 'function') {
-                        if (authErrorEl) {
-                            authErrorEl.textContent = 'El servicio de acceso con Google aún está cargando. Intentá nuevamente en un segundo.';
-                            authErrorEl.style.display = 'block';
+                    <div style="flex: 1; overflow-y: auto; padding: ${isModal ? '1rem 1.25rem' : '1rem 0'}; box-sizing: border-box; width: 100%; max-width: ${isModal ? '100%' : '650px'}; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; -webkit-overflow-scrolling: touch;">
+
+                        <!-- Tarjeta de Identidad de Cuenta -->
+                        <div style="background: ${publicUser ? '#f0fdf4' : '#f8fafc'}; border: 1.5px solid ${publicUser ? '#bbf7d0' : '#e2e8f0'}; border-radius: 16px; padding: 0.9rem 1.1rem; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;">
+                            <div style="display: flex; align-items: center; gap: 12px; min-width: 0; flex: 1;">
+                                ${userAvatarHTML}
+                                <div style="min-width: 0; flex: 1;">
+                                    <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                                        <span style="font-size: 0.95rem; font-weight: 900; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                            ${esc(publicUser ? (publicUser.nombre || 'Usuario Google') : 'Comprador Invitado')}
+                                        </span>
+                                        <span style="background: ${isStaff ? '#fee2e2' : (publicUser ? '#dcfce7' : '#f1f5f9')}; color: ${isStaff ? '#dc2626' : (publicUser ? '#15803d' : '#64748b')}; border: 1px solid ${isStaff ? '#fecaca' : (publicUser ? '#86efac' : '#cbd5e1')}; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.3px;">
+                                            ${roleBadgeText}
+                                        </span>
+                                    </div>
+                                    <div style="font-size: 0.76rem; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 1px;">
+                                        ${esc(publicUser ? (publicUser.email || '') : 'Sin registrar · Podés comprar igual')}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Botones de Acción en Cabecera (Login / Logout) -->
+                            <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+                                ${!publicUser ? `
+                                    <button type="button" id="btn-menu-google-login" style="background: #ffffff; color: #0f172a; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.5rem 0.85rem; font-size: 0.78rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; transition: all 0.2s;" onmouseenter="this.style.borderColor='#0f172a';" onmouseleave="this.style.borderColor='#cbd5e1';">
+                                        ${GOOGLE_SVG}
+                                        <span>Iniciar Sesión</span>
+                                    </button>
+                                ` : `
+                                    <button type="button" id="btn-profile-google-logout" style="background: #ffffff; border: 1px solid #cbd5e1; color: #64748b; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; display: inline-flex; align-items: center; gap: 4px;" title="Cerrar sesión" onmouseenter="this.style.borderColor='#ef4444';this.style.color='#dc2626';" onmouseleave="this.style.borderColor='#cbd5e1';this.style.color='#64748b';">
+                                        <span class="material-symbols-outlined" style="font-size: 16px;">logout</span>
+                                        <span>Salir</span>
+                                    </button>
+                                `}
+                            </div>
+                        </div>
+
+                        <!-- COLUMNA DE OPCIONES EN LISTA -->
+                        <div class="profile-menu-list">
+
+                            <!-- 1. Mis Compras / Pedidos -->
+                            <button type="button" class="profile-menu-btn" id="btn-opt-my-orders">
+                                <div class="profile-menu-btn-content">
+                                    <div class="profile-menu-icon" style="background: #dbeafe; color: #2563eb;">
+                                        <span class="material-symbols-outlined">shopping_bag</span>
+                                    </div>
+                                    <div style="min-width: 0; flex: 1;">
+                                        <div class="profile-menu-title">Mis Pedidos y Compras</div>
+                                        <div class="profile-menu-subtitle">Seguimiento en vivo y pedidos guardados</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span style="background: #eff6ff; color: #1d4ed8; font-size: 0.72rem; font-weight: 800; padding: 3px 8px; border-radius: 999px; border: 1px solid #bfdbfe;">
+                                        ${ordersCountText}
+                                    </span>
+                                    <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
+                                </div>
+                            </button>
+
+                            <!-- 2. Mi Carrito -->
+                            <button type="button" class="profile-menu-btn" id="btn-opt-cart">
+                                <div class="profile-menu-btn-content">
+                                    <div class="profile-menu-icon" style="background: #dcfce7; color: #16a34a;">
+                                        <span class="material-symbols-outlined">shopping_cart</span>
+                                    </div>
+                                    <div style="min-width: 0; flex: 1;">
+                                        <div class="profile-menu-title">Mi Carrito de Compras</div>
+                                        <div class="profile-menu-subtitle">Tus productos seleccionados listos para pedir</div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 6px;">
+                                    <span style="background: #f0fdf4; color: #15803d; font-size: 0.72rem; font-weight: 800; padding: 3px 8px; border-radius: 999px; border: 1px solid #bbf7d0;">
+                                        ${cartCountText}
+                                    </span>
+                                    <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
+                                </div>
+                            </button>
+
+                            <!-- 3. Datos Personales y Contacto -->
+                            <button type="button" class="profile-menu-btn" id="btn-opt-contact">
+                                <div class="profile-menu-btn-content">
+                                    <div class="profile-menu-icon" style="background: #ede9fe; color: #7c3aed;">
+                                        <span class="material-symbols-outlined">person</span>
+                                    </div>
+                                    <div style="min-width: 0; flex: 1;">
+                                        <div class="profile-menu-title">Datos Personales y Contacto</div>
+                                        <div class="profile-menu-subtitle">${contactSubtitle}</div>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
+                            </button>
+
+                            <!-- 4. Dirección de Entrega y Envíos -->
+                            <button type="button" class="profile-menu-btn" id="btn-opt-address">
+                                <div class="profile-menu-btn-content">
+                                    <div class="profile-menu-icon" style="background: #fef3c7; color: #d97706;">
+                                        <span class="material-symbols-outlined">location_on</span>
+                                    </div>
+                                    <div style="min-width: 0; flex: 1;">
+                                        <div class="profile-menu-title">Dirección de Entrega y Envíos</div>
+                                        <div class="profile-menu-subtitle">${addressSubtitle}</div>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
+                            </button>
+
+                            <!-- 5. Datos de Facturación (Opcional) -->
+                            <button type="button" class="profile-menu-btn" id="btn-opt-billing">
+                                <div class="profile-menu-btn-content">
+                                    <div class="profile-menu-icon" style="background: #e0e7ff; color: #4f46e5;">
+                                        <span class="material-symbols-outlined">receipt_long</span>
+                                    </div>
+                                    <div style="min-width: 0; flex: 1;">
+                                        <div class="profile-menu-title">Datos de Facturación</div>
+                                        <div class="profile-menu-subtitle">${billingSubtitle}</div>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
+                            </button>
+
+                            <!-- 6. Centro de Notificaciones -->
+                            <button type="button" class="profile-menu-btn" id="btn-opt-notif">
+                                <div class="profile-menu-btn-content">
+                                    <div class="profile-menu-icon" style="background: #fffbeb; color: #f59e0b;">
+                                        <span class="material-symbols-outlined">notifications</span>
+                                    </div>
+                                    <div style="min-width: 0; flex: 1;">
+                                        <div class="profile-menu-title">Notificaciones y Avisos</div>
+                                        <div class="profile-menu-subtitle">Novedades y estado de tus compras</div>
+                                    </div>
+                                </div>
+                                <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
+                            </button>
+
+                            <!-- 7. Panel de Administración (Staff / SuperAdmin) -->
+                            ${isStaff ? `
+                                <button type="button" class="profile-menu-btn" id="btn-opt-admin" style="background: #fff1f2; border-color: #fecdd3;">
+                                    <div class="profile-menu-btn-content">
+                                        <div class="profile-menu-icon" style="background: #ffe4e6; color: #e11d48;">
+                                            <span class="material-symbols-outlined">shield_person</span>
+                                        </div>
+                                        <div style="min-width: 0; flex: 1;">
+                                            <div class="profile-menu-title" style="color: #9f1239;">Panel de Administración</div>
+                                            <div class="profile-menu-subtitle" style="color: #e11d48;">Taller, pedidos y métricas</div>
+                                        </div>
+                                    </div>
+                                    <span class="material-symbols-outlined profile-menu-chevron" style="color: #e11d48;">chevron_right</span>
+                                </button>
+                            ` : ''}
+
+                        </div>
+
+                        <!-- Pie del menú con soporte y limpieza -->
+                        <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                            <button type="button" id="btn-clear-user-profile" style="background: transparent; border: none; color: #94a3b8; font-size: 0.75rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; padding: 4px 6px; border-radius: 6px;" onmouseenter="this.style.color='#dc2626';" onmouseleave="this.style.color='#94a3b8';">
+                                <span class="material-symbols-outlined" style="font-size: 16px;">delete</span>
+                                <span>Limpiar datos guardados</span>
+                            </button>
+                            <span style="font-size: 0.72rem; color: #cbd5e1; font-weight: 700;">La Tarima v2.0</span>
+                        </div>
+
+                    </div>
+                `;
+
+                // Eventos del Menú Principal
+                const closeBtn = card.querySelector('#btn-close-user-profile');
+                if (closeBtn) closeBtn.onclick = onClose;
+
+                // 1. Mis Compras
+                card.querySelector('#btn-opt-my-orders')?.addEventListener('click', () => {
+                    onClose();
+                    if (window.navigateToView) window.navigateToView('view-my-orders');
+                });
+
+                // 2. Mi Carrito
+                card.querySelector('#btn-opt-cart')?.addEventListener('click', () => {
+                    onClose();
+                    setTimeout(() => {
+                        if (window.CartDrawer && typeof window.CartDrawer.open === 'function') {
+                            window.CartDrawer.open();
+                        } else if (window.navigateToView) {
+                            window.navigateToView('view-profile');
                         }
+                    }, 180);
+                });
+
+                // 3. Entrar a Datos de Contacto
+                card.querySelector('#btn-opt-contact')?.addEventListener('click', () => {
+                    currentSubView = 'contact';
+                    renderCurrentState();
+                });
+
+                // 4. Entrar a Dirección de Entrega
+                card.querySelector('#btn-opt-address')?.addEventListener('click', () => {
+                    currentSubView = 'address';
+                    renderCurrentState();
+                });
+
+                // 5. Entrar a Datos de Facturación
+                card.querySelector('#btn-opt-billing')?.addEventListener('click', () => {
+                    currentSubView = 'billing';
+                    renderCurrentState();
+                });
+
+                // 6. Notificaciones
+                card.querySelector('#btn-opt-notif')?.addEventListener('click', () => {
+                    onClose();
+                    if (window.navigateToView) window.navigateToView('view-notifications');
+                });
+
+                // 7. Panel Admin
+                card.querySelector('#btn-opt-admin')?.addEventListener('click', () => {
+                    onClose();
+                    if (window.navigateToView) window.navigateToView('view-admin');
+                });
+
+                // Login con Google desde cabecera
+                card.querySelector('#btn-menu-google-login')?.addEventListener('click', async () => {
+                    if (!window.AdminAuth || typeof window.AdminAuth.loginPublicStoreWithGoogle !== 'function') {
+                        alert('Cargando servicio de Google, intentá en un segundo.');
                         return;
                     }
-                    if (authErrorEl) authErrorEl.style.display = 'none';
-                    googleLoginBtn.disabled = true;
-                    googleLoginBtn.style.opacity = '0.7';
-                    googleLoginBtn.style.cursor = 'wait';
-                    googleLoginBtn.innerHTML = `<span class="material-symbols-outlined" style="font-size:18px;">hourglass_top</span><span>Conectando con Google...</span>`;
-
                     try {
-                        const loggedUser = await window.AdminAuth.loginPublicStoreWithGoogle();
-                        if (!loggedUser) {
-                            return;
-                        }
-                        if (window.AdminAuth && typeof window.AdminAuth.syncClientProfileFromCloud === 'function') {
-                            await window.AdminAuth.syncClientProfileFromCloud();
-                        }
-                        if (typeof window.renderPerfilCarritoView === 'function') {
-                            window.renderPerfilCarritoView();
-                        }
-                        onReopen();
-                    } catch (err) {
-                        googleLoginBtn.disabled = false;
-                        googleLoginBtn.style.opacity = '1';
-                        googleLoginBtn.style.cursor = 'pointer';
-                        googleLoginBtn.innerHTML = defaultBtnHTML;
-                        if (err && err.code !== 'auth/popup-closed-by-user' && authErrorEl) {
-                            authErrorEl.textContent = err.message || 'No se pudo iniciar sesión con Google. Intentá nuevamente.';
-                            authErrorEl.style.display = 'block';
-                        }
+                        await window.AdminAuth.loginPublicStoreWithGoogle();
+                        renderCurrentState();
+                    } catch (e) {
+                        console.error(e);
                     }
-                };
-            }
-            return;
-        }
+                });
 
-        // CASO B: Usuario SÍ autenticado con Google
-        const rawAvatar = (currentData.avatar || '').trim();
-        const hasCustomAvatar = Boolean(rawAvatar && rawAvatar !== '👤' && rawAvatar !== 'face');
-        const initialAvatar = hasCustomAvatar
-            ? rawAvatar
-            : (publicUser.picture || 'face');
-
-        const isImageAvatar = (val) => Boolean(val && (val.startsWith('data:image') || val.startsWith('http')));
-        const googleInitial = ((publicUser.nombre || publicUser.email || 'U').trim().charAt(0) || 'U').toUpperCase();
-        const googleCardAvatarHTML = publicUser.picture
-            ? `<img src="${esc(publicUser.picture)}" referrerpolicy="no-referrer" alt="${esc(publicUser.nombre || 'Google')}" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 1.5px solid #86efac; flex-shrink: 0;">`
-            : `<div style="width: 42px; height: 42px; border-radius: 50%; background: #16a34a; color: #ffffff; font-weight: 900; font-size: 1rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">${esc(googleInitial)}</div>`;
-
-        const prefilledName = currentData.name || publicUser.nombre || '';
-        const prefilledEmail = publicUser.email || currentData.email || '';
-
-        const ordersList = (typeof window.getMyLocalOrders === 'function') ? window.getMyLocalOrders() : [];
-        const ordersCount = ordersList.length;
-        const ordersCountText = ordersCount > 0 ? `${ordersCount} ${ordersCount === 1 ? 'pedido' : 'pedidos'}` : 'Ver compras';
-
-        let cartCount = 0;
-        try {
-            const rawCart = localStorage.getItem('cartItems');
-            if (rawCart) {
-                const parsed = JSON.parse(rawCart);
-                cartCount = Array.isArray(parsed) ? parsed.length : 0;
-            }
-        } catch (e) {}
-        const cartCountText = cartCount > 0 ? `${cartCount} ${cartCount === 1 ? 'producto' : 'productos'}` : 'Ver carrito';
-
-        const isStaff = publicUser.role === 'superadmin' || publicUser.role === 'colaborador';
-        const roleBadgeText = publicUser.role === 'superadmin'
-            ? 'SuperAdmin'
-            : (publicUser.role === 'colaborador' ? 'Equipo Taller' : (publicUser.clientTier === 'mayorista' ? 'Mayorista VIP' : 'Cliente Verificado'));
-
-        card.innerHTML = `
-            ${headerHTML}
-
-            <!-- Contenido Principal Desplazable -->
-            <div style="flex: 1; overflow-y: auto; padding: ${isModal ? '1rem 1.25rem' : '1rem 0'}; box-sizing: border-box; width: 100%; max-width: ${isModal ? '100%' : '650px'}; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; -webkit-overflow-scrolling: touch;">
-
-                <!-- Tarjeta de Cuenta Google Conectada -->
-                <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 14px; padding: 0.75rem 1rem; display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1;">
-                        ${googleCardAvatarHTML}
-                        <div style="min-width: 0; flex: 1;">
-                            <div style="display: flex; align-items: center; gap: 6px; flex-wrap: wrap;">
-                                <span style="font-size: 0.88rem; font-weight: 800; color: #0f172a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${esc(publicUser.nombre || 'Usuario Google')}</span>
-                                <span style="background: ${isStaff ? '#fee2e2' : '#dcfce7'}; color: ${isStaff ? '#dc2626' : '#15803d'}; border: 1px solid ${isStaff ? '#fecaca' : '#86efac'}; font-size: 0.65rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; text-transform: uppercase; letter-spacing: 0.3px;">${roleBadgeText}</span>
-                            </div>
-                            <div style="font-size: 0.75rem; color: #475569; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${esc(publicUser.email || '')}</div>
-                        </div>
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
-                        <button type="button" id="btn-clear-user-profile" style="background: #ffffff; border: 1px solid #fecaca; color: #dc2626; border-radius: 8px; padding: 0.4rem 0.65rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 3px; transition: all 0.2s;" title="Limpiar formulario" onmouseenter="this.style.background='#fef2f2';" onmouseleave="this.style.background='#ffffff';">
-                            <span class="material-symbols-outlined" style="font-size: 15px;">delete</span>
-                            <span>Limpiar</span>
-                        </button>
-                        <button type="button" id="btn-profile-google-logout" style="background: #ffffff; border: 1px solid #cbd5e1; color: #475569; border-radius: 8px; padding: 0.4rem 0.75rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s;" onmouseenter="this.style.borderColor='#ef4444';this.style.color='#dc2626';" onmouseleave="this.style.borderColor='#cbd5e1';this.style.color='#475569';">
-                            Cerrar sesión
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Accesos Rápidos de la Cuenta (Hub Ordenado) -->
-                <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 14px; padding: 0.85rem; width: 100%; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px;">
-                    <div style="font-size: 0.7rem; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.6px; display: flex; align-items: center; justify-content: space-between;">
-                        <span>Accesos Rápidos</span>
-                        <span style="font-size: 0.65rem; color: #16a34a; font-weight: 700;">● Sesión activa</span>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-                        <button type="button" id="btn-drawer-my-orders" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.65rem 0.75rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left; transition: all 0.2s;" onmouseenter="this.style.borderColor='#3b82f6';this.style.background='#eff6ff';" onmouseleave="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';">
-                            <span class="material-symbols-outlined" style="font-size: 20px; color: #2563eb; background: #dbeafe; padding: 6px; border-radius: 8px; flex-shrink: 0;">shopping_bag</span>
-                            <div style="min-width: 0; flex: 1;">
-                                <div style="font-size: 0.78rem; font-weight: 800; color: #0f172a; line-height: 1.2;">Mis Compras</div>
-                                <div style="font-size: 0.68rem; color: #64748b; margin-top: 2px;">${ordersCountText}</div>
-                            </div>
-                        </button>
-
-                        <button type="button" id="btn-drawer-cart" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.65rem 0.75rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left; transition: all 0.2s;" onmouseenter="this.style.borderColor='#16a34a';this.style.background='#f0fdf4';" onmouseleave="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';">
-                            <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a; background: #dcfce7; padding: 6px; border-radius: 8px; flex-shrink: 0;">shopping_cart</span>
-                            <div style="min-width: 0; flex: 1;">
-                                <div style="font-size: 0.78rem; font-weight: 800; color: #0f172a; line-height: 1.2;">Mi Carrito</div>
-                                <div style="font-size: 0.68rem; color: #64748b; margin-top: 2px;">${cartCountText}</div>
-                            </div>
-                        </button>
-
-                        <button type="button" id="btn-drawer-notif" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.65rem 0.75rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left; transition: all 0.2s;" onmouseenter="this.style.borderColor='#f59e0b';this.style.background='#fffbeb';" onmouseleave="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';">
-                            <span class="material-symbols-outlined" style="font-size: 20px; color: #d97706; background: #fef3c7; padding: 6px; border-radius: 8px; flex-shrink: 0;">notifications</span>
-                            <div style="min-width: 0; flex: 1;">
-                                <div style="font-size: 0.78rem; font-weight: 800; color: #0f172a; line-height: 1.2;">Avisos</div>
-                                <div style="font-size: 0.68rem; color: #64748b; margin-top: 2px;">Notificaciones</div>
-                            </div>
-                        </button>
-
-                        <button type="button" id="btn-drawer-favs" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 0.65rem 0.75rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left; transition: all 0.2s;" onmouseenter="this.style.borderColor='#ec4899';this.style.background='#fdf2f8';" onmouseleave="this.style.borderColor='#e2e8f0';this.style.background='#f8fafc';">
-                            <span class="material-symbols-outlined" style="font-size: 20px; color: #db2777; background: #fce7f3; padding: 6px; border-radius: 8px; flex-shrink: 0;">favorite</span>
-                            <div style="min-width: 0; flex: 1;">
-                                <div style="font-size: 0.78rem; font-weight: 800; color: #0f172a; line-height: 1.2;">Favoritos</div>
-                                <div style="font-size: 0.68rem; color: #64748b; margin-top: 2px;">Guardados</div>
-                            </div>
-                        </button>
-
-                        ${isStaff ? `
-                        <button type="button" id="btn-drawer-admin" style="grid-column: 1 / -1; background: #fff1f2; border: 1px solid #fecdd3; border-radius: 10px; padding: 0.65rem 0.85rem; display: flex; align-items: center; gap: 8px; cursor: pointer; text-align: left; transition: all 0.2s;" onmouseenter="this.style.borderColor='#f43f5e';this.style.background='#ffe4e6';" onmouseleave="this.style.borderColor='#fecdd3';this.style.background='#fff1f2';">
-                            <span class="material-symbols-outlined" style="font-size: 20px; color: #e11d48; background: #ffffff; padding: 6px; border-radius: 8px; flex-shrink: 0;">shield_person</span>
-                            <div style="min-width: 0; flex: 1;">
-                                <div style="font-size: 0.8rem; font-weight: 800; color: #9f1239; line-height: 1.2;">Panel de Administración</div>
-                                <div style="font-size: 0.68rem; color: #e11d48; margin-top: 2px;">Taller, pedidos y métricas</div>
-                            </div>
-                            <span class="material-symbols-outlined" style="font-size: 18px; color: #e11d48;">chevron_right</span>
-                        </button>
-                        ` : ''}
-                    </div>
-                </div>
-
-                <!-- 1. Datos de Contacto -->
-                <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 0.85rem 1rem; width: 100%; box-sizing: border-box;">
-                    <div style="font-size: 0.72rem; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
-                        👤 1. Datos de Contacto:
-                    </div>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
-                        <div>
-                            <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                Nombre y Apellido *
-                            </label>
-                            <input type="text" id="prof-name" value="${esc(prefilledName)}" placeholder="Ej: María González" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; font-family: inherit; outline: none;">
-                        </div>
-                        <div>
-                            <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                Teléfono / WhatsApp *
-                            </label>
-                            <input type="tel" id="prof-phone" value="${esc(currentData.phone || '')}" placeholder="Ej: 11 1234 5678" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; font-family: inherit; outline: none;">
-                        </div>
-                        <div style="grid-column: 1 / -1; width: 100%;">
-                            <label style="display: flex; align-items: center; justify-content: space-between; gap: 6px; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                <span>Correo Electrónico (Email) *</span>
-                                <span style="font-size: 0.66rem; color: #16a34a; font-weight: 700; text-transform: none;">Email de tu cuenta Google</span>
-                            </label>
-                            <input type="email" id="prof-email" value="${esc(prefilledEmail)}" readonly style="width: 100%; box-sizing: border-box; border: 1.5px solid #e2e8f0; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #475569; background: #f8fafc; font-family: inherit; outline: none; cursor: not-allowed;">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 2. Ubicación y Código Postal para Beneficios -->
-                <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 0.85rem 1rem; width: 100%; box-sizing: border-box;">
-                    <div style="font-size: 0.72rem; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
-                        📍 2. Ubicación y Beneficios de Envío:
-                    </div>
-                    
-                    <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <div>
-                            <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                Dirección de Entrega (Calle y Altura):
-                            </label>
-                            <input type="text" id="prof-address" value="${currentData.address || ''}" placeholder="Ej: Av. Corrientes 1234, 4to B" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
-                        </div>
-
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px;">
-                            <div>
-                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    Código Postal *
-                                </label>
-                                <input type="text" id="prof-zip" value="${currentData.zipCode || ''}" placeholder="Ej: 1712" maxlength="5" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.82rem; font-weight: 800; color: #0f172a; font-family: inherit; outline: none;">
-                            </div>
-                            <div>
-                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    Ciudad / Localidad:
-                                </label>
-                                <input type="text" id="prof-locality" value="${currentData.locality || ''}" placeholder="Ej: Castelar / CABA" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
-                            </div>
-                            <div>
-                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    Provincia:
-                                </label>
-                                <input type="text" id="prof-province" value="${currentData.province || ''}" placeholder="Ej: Buenos Aires" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
-                            </div>
-                        </div>
-
-                        <div>
-                            <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                Indicaciones / Notas de Entrega (Opcional):
-                            </label>
-                            <input type="text" id="prof-delivery-notes" value="${currentData.deliveryNotes || ''}" placeholder="Ej: Timbre no funciona / Entregar en portería" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
-                        </div>
-
-                        <!-- Feedback de Cobertura -->
-                        <div id="prof-cp-feedback" style="font-size: 0.78rem; font-weight: 700; padding: 8px 12px; border-radius: 8px; background: #f8fafc; border: 1px solid #e2e8f0; display: none; margin-top: 4px;"></div>
-                    </div>
-                </div>
-
-                <!-- 3. Datos Fiscales y Facturación (Opcional) -->
-                <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 14px; padding: 0.85rem 1rem; width: 100%; box-sizing: border-box;">
-                    <div style="display: flex; align-items: center; justify-content: space-between;">
-                        <div style="font-size: 0.72rem; font-weight: 800; color: #475569; text-transform: uppercase; letter-spacing: 0.5px;">
-                            📄 3. Datos de Facturación / Factura A (Opcional):
-                        </div>
-                        <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 0.78rem; font-weight: 700; color: #0f172a;">
-                            <input type="checkbox" id="prof-factura-a-toggle" ${(currentData.cuit || currentData.razonSocial) ? 'checked' : ''} style="accent-color: #0f172a; cursor: pointer;">
-                            <span>Datos para Factura</span>
-                        </label>
-                    </div>
-
-                    <div id="prof-factura-a-menu" style="display: ${(currentData.cuit || currentData.razonSocial) ? 'flex' : 'none'}; flex-direction: column; gap: 10px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #cbd5e1;">
-
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-                            <div>
-                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    1. Razón Social / Persona / Entidad
-                                </label>
-                                <input type="text" id="prof-razon-social" value="${esc(currentData.razonSocial || '')}" placeholder="Ej: La Tarima SRL o Tu Nombre" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
-                            </div>
-
-                            <div>
-                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    2. CUIT / CUIL / DNI
-                                </label>
-                                <input type="text" id="prof-cuit" value="${esc(currentData.cuit || '')}" placeholder="Ej: 30-12345678-9" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
-                            </div>
-
-                            <div style="grid-column: 1 / -1; width: 100%;">
-                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    3. Domicilio / Dirección Fiscal
-                                </label>
-                                <input type="text" id="prof-dir-fiscal" value="${esc(currentData.dirFiscal || currentData.fiscalAddress || '')}" placeholder="Av. Rivadavia 1234, Ciudad/Localidad, Provincia" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
-                            </div>
-
-                            <div>
-                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    4. Provincia / Jurisdicción Fiscal
-                                </label>
-                                <input type="text" id="prof-provincia-fiscal" value="${esc(currentData.provinciaFiscal || '')}" placeholder="Ej: Buenos Aires / CABA" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
-                            </div>
-
-                            <div>
-                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    5. Condición frente al IVA
-                                </label>
-                                <select id="prof-condicion-iva" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none; background: #ffffff; cursor: pointer;">
-                                    <option value="Consumidor Final" ${(currentData.condIva === 'Consumidor Final' || !currentData.condIva) ? 'selected' : ''}>Consumidor Final</option>
-                                    <option value="Responsable Inscripto" ${currentData.condIva === 'Responsable Inscripto' ? 'selected' : ''}>IVA Responsable Inscripto (Factura A)</option>
-                                    <option value="Responsable Monotributo" ${currentData.condIva === 'Responsable Monotributo' ? 'selected' : ''}>Responsable Monotributo</option>
-                                    <option value="IVA Exento" ${currentData.condIva === 'IVA Exento' ? 'selected' : ''}>IVA Exento / No Gravado</option>
-                                    <option value="Sujeto No Categorizado" ${currentData.condIva === 'Sujeto No Categorizado' ? 'selected' : ''}>Sujeto No Categorizado</option>
-                                </select>
-                            </div>
-
-                            <div style="grid-column: 1 / -1; width: 100%;">
-                                <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
-                                    6. Correo para Envío de Factura (Opcional)
-                                </label>
-                                <input type="email" id="prof-email-fiscal" value="${esc(currentData.emailFiscal || '')}" placeholder="Ej: facturacion@empresa.com (si dejás vacío se usa tu email principal)" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Footer con Botones estilo Checkout / Drawer -->
-            <div style="width: 100%; border-top: 1px solid #f1f5f9; padding: ${isModal ? '0.85rem 1.25rem' : '0.75rem 0'}; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; max-width: ${isModal ? '100%' : '650px'}; margin: 0 auto; box-sizing: border-box; background: #ffffff;">
-                <div id="prof-validation-error" style="display: none; background: #fef2f2; border: 1.5px solid #fca5a5; color: #991b1b; padding: 0.65rem 0.9rem; border-radius: 10px; font-size: 0.78rem; font-weight: 700; text-align: center;">
-                    ⚠️ Por favor completá todos los campos obligatorios de Contacto y Ubicación antes de guardar.
-                </div>
-                <div style="display: flex; justify-content: flex-end; align-items: center; gap: 10px; width: 100%;">
-                    <button type="button" id="btn-save-user-profile" style="width: ${isModal ? '100%' : 'auto'}; background: #16a34a; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.6rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3); transition: all 0.2s;">
-                        <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
-                        <span>Guardar Mi Perfil</span>
-                    </button>
-                </div>
-            </div>
-        `;
-
-        const closeBtn = card.querySelector('#btn-close-user-profile');
-        if (closeBtn) closeBtn.onclick = onClose;
-
-        // Accesos rápidos desde el Drawer de la cuenta
-        card.querySelector('#btn-drawer-my-orders')?.addEventListener('click', () => {
-            onClose();
-            if (window.navigateToView) window.navigateToView('view-my-orders');
-        });
-
-        card.querySelector('#btn-drawer-cart')?.addEventListener('click', () => {
-            onClose();
-            setTimeout(() => {
-                if (window.CartDrawer && typeof window.CartDrawer.open === 'function') {
-                    window.CartDrawer.open();
-                } else if (window.navigateToView) {
-                    window.navigateToView('view-profile');
-                }
-            }, 180);
-        });
-
-        card.querySelector('#btn-drawer-notif')?.addEventListener('click', () => {
-            onClose();
-            if (window.navigateToView) window.navigateToView('view-notifications');
-        });
-
-        card.querySelector('#btn-drawer-favs')?.addEventListener('click', () => {
-            onClose();
-            if (window.navigateToView) window.navigateToView('view-profile');
-        });
-
-        card.querySelector('#btn-drawer-admin')?.addEventListener('click', () => {
-            onClose();
-            if (window.navigateToView) window.navigateToView('view-admin');
-        });
-
-        const googleLogoutBtn = card.querySelector('#btn-profile-google-logout');
-        if (googleLogoutBtn) {
-            googleLogoutBtn.onclick = async () => {
-                googleLogoutBtn.disabled = true;
-                googleLogoutBtn.textContent = 'Cerrando...';
-                try {
-                    if (window.AdminAuth && typeof window.AdminAuth.logoutPublic === 'function') {
-                        await window.AdminAuth.logoutPublic();
-                    }
-                } catch (e) {}
-                if (typeof window.renderPerfilCarritoView === 'function') {
-                    window.renderPerfilCarritoView();
-                }
-                if (isModal) {
-                    onClose();
-                } else {
-                    onReopen();
-                }
-            };
-        }
-
-        // Toggle desplegable de Factura A
-        const facturaAToggle = card.querySelector('#prof-factura-a-toggle');
-        const facturaAMenu = card.querySelector('#prof-factura-a-menu');
-        if (facturaAToggle && facturaAMenu) {
-            facturaAToggle.addEventListener('change', () => {
-                facturaAMenu.style.display = facturaAToggle.checked ? 'flex' : 'none';
-            });
-        }
-
-        // Avatar del perfil (hereda automáticamente la foto de la cuenta Google conectada)
-        let selectedAvatar = publicUser.picture || currentData.avatar || initialAvatar || 'face';
-
-        // Evento de Limpieza Total de Datos (Tacho de Basura)
-        const clearBtn = card.querySelector('#btn-clear-user-profile');
-        if (clearBtn) {
-            clearBtn.onclick = () => {
-                if (confirm('¿Querés borrar todos tus datos de perfil guardados?')) {
-                    if (window.UserDataManager && typeof window.UserDataManager.clear === 'function') {
-                        window.UserDataManager.clear();
-                    }
-                    
-                    // Resetear inputs del modal (manteniendo el email readonly de la cuenta Google)
-                    ['#prof-name', '#prof-phone', '#prof-address', '#prof-zip', '#prof-locality', '#prof-province', '#prof-delivery-notes', '#prof-razon-social', '#prof-cuit', '#prof-dir-fiscal', '#prof-provincia-fiscal', '#prof-email-fiscal'].forEach(id => {
-                        const input = card.querySelector(id);
-                        if (input) {
-                            input.value = '';
-                            input.style.borderColor = '#cbd5e1';
-                            input.style.boxShadow = 'none';
+                // Logout de Google
+                card.querySelector('#btn-profile-google-logout')?.addEventListener('click', async () => {
+                    try {
+                        if (window.AdminAuth && typeof window.AdminAuth.logoutPublic === 'function') {
+                            await window.AdminAuth.logoutPublic();
                         }
-                    });
-                    const emailEl = card.querySelector('#prof-email');
-                    if (emailEl) {
-                        emailEl.value = publicUser.email || '';
+                    } catch (e) {}
+                    if (typeof window.renderPerfilCarritoView === 'function') window.renderPerfilCarritoView();
+                    renderCurrentState();
+                });
+
+                // Limpiar Datos
+                card.querySelector('#btn-clear-user-profile')?.addEventListener('click', () => {
+                    if (confirm('¿Querés borrar todos los datos de perfil guardados en este dispositivo?')) {
+                        if (window.UserDataManager && typeof window.UserDataManager.clear === 'function') {
+                            window.UserDataManager.clear();
+                        }
+                        if (typeof window.showToast === 'function') window.showToast('Datos de perfil eliminados');
+                        renderCurrentState();
                     }
+                });
 
-                    // Desmarcar Factura A
-                    if (facturaAToggle) facturaAToggle.checked = false;
-                    if (facturaAMenu) facturaAMenu.style.display = 'none';
-
-                    // Ocultar banner de error
-                    const errBanner = card.querySelector('#prof-validation-error');
-                    if (errBanner) errBanner.style.display = 'none';
-
-                    // Resetear avatar UI
-                    selectedAvatar = publicUser?.picture || 'face';
-
-                    // Actualizar vista del carrito si corresponde
-                    if (typeof window.renderPerfilCarritoView === 'function') {
-                        window.renderPerfilCarritoView();
-                    }
-                }
-            };
-        }
-
-        // Auto evaluar CP en el modal al escribir
-        const cpField = card.querySelector('#prof-zip');
-        const feedbackEl = card.querySelector('#prof-cp-feedback');
-        const localityField = card.querySelector('#prof-locality');
-        const provinceField = card.querySelector('#prof-province');
-
-        const evalCP = () => {
-            const val = (cpField.value || '').trim();
-            if (!val) {
-                feedbackEl.style.display = 'none';
                 return;
             }
-            if (typeof window.lookupPostalCode === 'function') {
-                const res = window.lookupPostalCode(val);
-                feedbackEl.style.display = 'block';
-                if (res && res.hasLocalMatch !== false) {
-                    feedbackEl.innerHTML = `✅ Cobertura confirmada: <strong>${res.localidad} (${res.provincia})</strong>`;
-                    feedbackEl.style.color = '#15803d';
-                    feedbackEl.style.background = '#f0fdf4';
-                    feedbackEl.style.borderColor = '#86efac';
-                    if (res.localidad && localityField && !localityField.value) localityField.value = res.localidad;
-                    if (res.provincia && provinceField && !provinceField.value) provinceField.value = res.provincia;
-                } else {
-                    feedbackEl.innerHTML = `📦 Envíos al interior vía Mercado Libre / Transporte`;
-                    feedbackEl.style.color = '#b45309';
-                    feedbackEl.style.background = '#fffbeb';
-                    feedbackEl.style.borderColor = '#fcd34d';
-                }
-            }
-        };
-        cpField.oninput = () => {
-            evalCP();
-            cpField.style.borderColor = '#cbd5e1';
-            cpField.style.boxShadow = 'none';
-        };
-        evalCP();
 
-        ['#prof-name', '#prof-phone', '#prof-email', '#prof-address', '#prof-locality', '#prof-province'].forEach(id => {
-            const inputEl = card.querySelector(id);
-            if (inputEl) {
-                inputEl.oninput = () => {
-                    inputEl.style.borderColor = '#cbd5e1';
-                    inputEl.style.boxShadow = 'none';
+            // =========================================================================
+            // VISTA 2: DATOS PERSONALES Y CONTACTO
+            // =========================================================================
+            if (currentSubView === 'contact') {
+                const prefilledName = currentData.name || (publicUser && publicUser.nombre) || '';
+                const prefilledEmail = (publicUser && publicUser.email) || currentData.email || '';
+
+                card.innerHTML = `
+                    ${headerHTML}
+
+                    <div style="flex: 1; overflow-y: auto; padding: ${isModal ? '1rem 1.25rem' : '1rem 0'}; box-sizing: border-box; width: 100%; max-width: ${isModal ? '100%' : '650px'}; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; -webkit-overflow-scrolling: touch;">
+                        
+                        <!-- Barra para volver al Menú -->
+                        <button type="button" id="btn-back-to-menu" class="profile-subview-back-bar">
+                            <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a;">arrow_back</span>
+                            <span style="font-size: 0.82rem; font-weight: 800; color: #0f172a;">Volver al Menú Principal</span>
+                        </button>
+
+                        <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.1rem; display: flex; flex-direction: column; gap: 14px;">
+                            <div>
+                                <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                    Nombre y Apellido *
+                                </label>
+                                <input type="text" id="prof-name" value="${esc(prefilledName)}" placeholder="Ej: María González" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                            </div>
+
+                            <div>
+                                <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                    Teléfono / WhatsApp *
+                                </label>
+                                <input type="tel" id="prof-phone" value="${esc(currentData.phone || '')}" placeholder="Ej: 11 1234 5678" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                <span style="font-size: 0.68rem; color: #64748b; margin-top: 2px; display: block;">Te avisaremos por WhatsApp el estado de fabricación de tu pedido.</span>
+                            </div>
+
+                            <div>
+                                <label style="display: flex; align-items: center; justify-content: space-between; gap: 6px; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                    <span>Correo Electrónico (Email)</span>
+                                    ${publicUser ? `<span style="font-size: 0.66rem; color: #16a34a; font-weight: 700; text-transform: none;">Google Verificado</span>` : ''}
+                                </label>
+                                <input type="email" id="prof-email" value="${esc(prefilledEmail)}" ${publicUser ? 'readonly' : ''} placeholder="tuemail@ejemplo.com" style="width: 100%; box-sizing: border-box; border: 1.5px solid #e2e8f0; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: ${publicUser ? '#64748b' : '#0f172a'}; background: ${publicUser ? '#f8fafc' : '#ffffff'}; font-family: inherit; outline: none; ${publicUser ? 'cursor: not-allowed;' : ''}">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Footer con Botón Guardar -->
+                    <div style="width: 100%; border-top: 1px solid #f1f5f9; padding: 0.85rem 1.25rem; flex-shrink: 0; background: #ffffff; display: flex; gap: 8px;">
+                        <button type="button" id="btn-save-contact" style="flex: 1; background: #16a34a; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.4rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3); transition: all 0.2s;">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
+                            <span>Guardar Datos de Contacto</span>
+                        </button>
+                    </div>
+                `;
+
+                const closeBtn = card.querySelector('#btn-close-user-profile');
+                if (closeBtn) closeBtn.onclick = onClose;
+
+                card.querySelector('#btn-back-to-menu')?.addEventListener('click', () => {
+                    currentSubView = 'menu';
+                    renderCurrentState();
+                });
+
+                card.querySelector('#btn-save-contact')?.addEventListener('click', () => {
+                    const nameVal = (card.querySelector('#prof-name').value || '').trim();
+                    const phoneVal = (card.querySelector('#prof-phone').value || '').trim();
+                    const emailVal = (card.querySelector('#prof-email').value || '').trim();
+
+                    if (!nameVal) {
+                        alert('Por favor ingresá tu Nombre y Apellido.');
+                        card.querySelector('#prof-name').focus();
+                        return;
+                    }
+
+                    const payload = { ...currentData, name: nameVal, phone: phoneVal, email: emailVal };
+                    if (window.UserDataManager && typeof window.UserDataManager.save === 'function') {
+                        window.UserDataManager.save(payload);
+                    }
+                    if (window.AdminAuth && typeof window.AdminAuth.saveClientProfileToCloud === 'function') {
+                        window.AdminAuth.saveClientProfileToCloud(payload);
+                    }
+                    if (typeof window.showToast === 'function') {
+                        window.showToast('✅ Datos de contacto guardados');
+                    }
+                    currentSubView = 'menu';
+                    renderCurrentState();
+                });
+
+                return;
+            }
+
+            // =========================================================================
+            // VISTA 3: DIRECCIÓN DE ENTREGA Y ENVÍOS
+            // =========================================================================
+            if (currentSubView === 'address') {
+                card.innerHTML = `
+                    ${headerHTML}
+
+                    <div style="flex: 1; overflow-y: auto; padding: ${isModal ? '1rem 1.25rem' : '1rem 0'}; box-sizing: border-box; width: 100%; max-width: ${isModal ? '100%' : '650px'}; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; -webkit-overflow-scrolling: touch;">
+                        
+                        <!-- Barra para volver al Menú -->
+                        <button type="button" id="btn-back-to-menu" class="profile-subview-back-bar">
+                            <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a;">arrow_back</span>
+                            <span style="font-size: 0.82rem; font-weight: 800; color: #0f172a;">Volver al Menú Principal</span>
+                        </button>
+
+                        <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.1rem; display: flex; flex-direction: column; gap: 12px;">
+                            
+                            <div>
+                                <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                    Dirección de Entrega (Calle, Altura, Piso / Dpto)
+                                </label>
+                                <input type="text" id="prof-address" value="${esc(currentData.address || '')}" placeholder="Ej: Av. Corrientes 1234, 4to B" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px;">
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Código Postal (CP)
+                                    </label>
+                                    <input type="text" id="prof-zip" value="${esc(currentData.zipCode || '')}" placeholder="Ej: 1414" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Localidad / Barrio
+                                    </label>
+                                    <input type="text" id="prof-locality" value="${esc(currentData.locality || '')}" placeholder="Ej: Palermo" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Provincia
+                                    </label>
+                                    <input type="text" id="prof-province" value="${esc(currentData.province || '')}" placeholder="Ej: CABA / Bs As" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+                            </div>
+
+                            <!-- Feedback de Cobertura en tiempo real -->
+                            <div id="prof-cp-feedback" style="display: none; font-size: 0.78rem; font-weight: 700; padding: 0.55rem 0.8rem; border-radius: 10px; border: 1px solid transparent;"></div>
+
+                            <div>
+                                <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                    Indicaciones para el Repartidor (Opcional)
+                                </label>
+                                <input type="text" id="prof-delivery-notes" value="${esc(currentData.deliveryNotes || '')}" placeholder="Ej: Tocar timbre 4B, entre calles Lavalle y Corrientes" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Footer con Botón Guardar -->
+                    <div style="width: 100%; border-top: 1px solid #f1f5f9; padding: 0.85rem 1.25rem; flex-shrink: 0; background: #ffffff; display: flex; gap: 8px;">
+                        <button type="button" id="btn-save-address" style="flex: 1; background: #16a34a; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.4rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3); transition: all 0.2s;">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
+                            <span>Guardar Dirección de Entrega</span>
+                        </button>
+                    </div>
+                `;
+
+                const closeBtn = card.querySelector('#btn-close-user-profile');
+                if (closeBtn) closeBtn.onclick = onClose;
+
+                card.querySelector('#btn-back-to-menu')?.addEventListener('click', () => {
+                    currentSubView = 'menu';
+                    renderCurrentState();
+                });
+
+                // Auto evaluar CP al escribir
+                const cpField = card.querySelector('#prof-zip');
+                const feedbackEl = card.querySelector('#prof-cp-feedback');
+                const localityField = card.querySelector('#prof-locality');
+                const provinceField = card.querySelector('#prof-province');
+
+                const evalCP = () => {
+                    const val = (cpField.value || '').trim();
+                    if (!val) {
+                        feedbackEl.style.display = 'none';
+                        return;
+                    }
+                    if (typeof window.lookupPostalCode === 'function') {
+                        const res = window.lookupPostalCode(val);
+                        feedbackEl.style.display = 'block';
+                        if (res && res.hasLocalMatch !== false) {
+                            feedbackEl.innerHTML = `✅ Cobertura confirmada: <strong>${res.localidad} (${res.provincia})</strong>`;
+                            feedbackEl.style.color = '#15803d';
+                            feedbackEl.style.background = '#f0fdf4';
+                            feedbackEl.style.borderColor = '#86efac';
+                            if (res.localidad && localityField && !localityField.value) localityField.value = res.localidad;
+                            if (res.provincia && provinceField && !provinceField.value) provinceField.value = res.provincia;
+                        } else {
+                            feedbackEl.innerHTML = `📦 Envíos al interior vía Mercado Libre / Transporte`;
+                            feedbackEl.style.color = '#b45309';
+                            feedbackEl.style.background = '#fffbeb';
+                            feedbackEl.style.borderColor = '#fcd34d';
+                        }
+                    }
                 };
-            }
-        });
 
-        card.querySelector('#btn-save-user-profile').onclick = () => {
-            const zipVal = (cpField.value || '').trim();
-            const nameVal = (card.querySelector('#prof-name').value || '').trim();
-            const phoneVal = (card.querySelector('#prof-phone').value || '').trim();
-            const emailVal = (card.querySelector('#prof-email').value || '').trim();
-            const addrVal = (card.querySelector('#prof-address').value || '').trim();
-            const locVal = (localityField ? localityField.value : '').trim();
-            const provVal = (provinceField ? provinceField.value : '').trim();
-            const notesVal = (card.querySelector('#prof-delivery-notes').value || '').trim();
+                cpField.oninput = evalCP;
+                if (cpField.value) evalCP();
 
-            const isFacturaA = card.querySelector('#prof-factura-a-toggle')?.checked || false;
-            const razonVal = isFacturaA ? (card.querySelector('#prof-razon-social')?.value || '').trim() : '';
-            const cuitVal = isFacturaA ? (card.querySelector('#prof-cuit')?.value || '').trim() : '';
-            const dirFiscalVal = isFacturaA ? (card.querySelector('#prof-dir-fiscal')?.value || '').trim() : '';
-            const provFiscalVal = isFacturaA ? (card.querySelector('#prof-provincia-fiscal')?.value || '').trim() : '';
-            const condIvaVal = isFacturaA ? (card.querySelector('#prof-condicion-iva')?.value || 'Consumidor Final') : '';
-            const emailFiscalVal = isFacturaA ? (card.querySelector('#prof-email-fiscal')?.value || '').trim() : '';
+                card.querySelector('#btn-save-address')?.addEventListener('click', () => {
+                    const addrVal = (card.querySelector('#prof-address').value || '').trim();
+                    const zipVal = (card.querySelector('#prof-zip').value || '').trim();
+                    const locVal = (card.querySelector('#prof-locality').value || '').trim();
+                    const provVal = (card.querySelector('#prof-province').value || '').trim();
+                    const notesVal = (card.querySelector('#prof-delivery-notes').value || '').trim();
 
-            const profilePayload = {
-                avatar: selectedAvatar,
-                zipCode: zipVal,
-                name: nameVal,
-                phone: phoneVal,
-                email: emailVal,
-                address: addrVal,
-                locality: locVal,
-                province: provVal,
-                deliveryNotes: notesVal,
-                razonSocial: razonVal,
-                cuit: cuitVal,
-                dirFiscal: dirFiscalVal,
-                provinciaFiscal: provFiscalVal,
-                condIva: condIvaVal,
-                emailFiscal: emailFiscalVal
-            };
+                    const payload = {
+                        ...currentData,
+                        address: addrVal,
+                        zipCode: zipVal,
+                        locality: locVal,
+                        province: provVal,
+                        deliveryNotes: notesVal
+                    };
 
-            let savedData = profilePayload;
-            if (window.UserDataManager && typeof window.UserDataManager.save === 'function') {
-                savedData = window.UserDataManager.save(profilePayload) || profilePayload;
+                    if (window.UserDataManager && typeof window.UserDataManager.save === 'function') {
+                        window.UserDataManager.save(payload);
+                    }
+                    if (window.AdminAuth && typeof window.AdminAuth.saveClientProfileToCloud === 'function') {
+                        window.AdminAuth.saveClientProfileToCloud(payload);
+                    }
+                    if (typeof window.showToast === 'function') {
+                        window.showToast('✅ Dirección de entrega guardada');
+                    }
+                    currentSubView = 'menu';
+                    renderCurrentState();
+                });
+
+                return;
             }
 
-            if (window.AdminAuth && typeof window.AdminAuth.saveClientProfileToCloud === 'function') {
-                window.AdminAuth.saveClientProfileToCloud(savedData);
-            }
+            // =========================================================================
+            // VISTA 4: DATOS FISCALES Y FACTURACIÓN
+            // =========================================================================
+            if (currentSubView === 'billing') {
+                const hasBilling = Boolean(currentData.cuit || currentData.razonSocial);
 
-            if (typeof window.renderPerfilCarritoView === 'function') {
-                window.renderPerfilCarritoView();
-            }
+                card.innerHTML = `
+                    ${headerHTML}
 
-            if (typeof window.showToast === 'function') {
-                window.showToast('Perfil guardado y sincronizado en tu cuenta');
-            }
+                    <div style="flex: 1; overflow-y: auto; padding: ${isModal ? '1rem 1.25rem' : '1rem 0'}; box-sizing: border-box; width: 100%; max-width: ${isModal ? '100%' : '650px'}; margin: 0 auto; display: flex; flex-direction: column; gap: 1rem; -webkit-overflow-scrolling: touch;">
+                        
+                        <!-- Barra para volver al Menú -->
+                        <button type="button" id="btn-back-to-menu" class="profile-subview-back-bar">
+                            <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a;">arrow_back</span>
+                            <span style="font-size: 0.82rem; font-weight: 800; color: #0f172a;">Volver al Menú Principal</span>
+                        </button>
 
-            if (isModal) {
-                onClose();
+                        <div style="background: #ffffff; border: 1.5px solid #cbd5e1; border-radius: 16px; padding: 1.1rem; display: flex; flex-direction: column; gap: 12px;">
+                            
+                            <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 8px; border-bottom: 1px solid #f1f5f9;">
+                                <div>
+                                    <span style="font-size: 0.85rem; font-weight: 800; color: #0f172a; block">Factura con CUIT / Factura A</span>
+                                    <span style="font-size: 0.72rem; color: #64748b; block">Habilitar si necesitas factura a nombre de una empresa o Responsable Inscripto</span>
+                                </div>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" id="prof-factura-a-toggle" ${hasBilling ? 'checked' : ''} class="sr-only peer">
+                                    <div class="w-11 h-6 bg-zinc-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-600"></div>
+                                </label>
+                            </div>
+
+                            <div id="prof-billing-fields" style="display: ${hasBilling ? 'flex' : 'none'}; flex-direction: column; gap: 12px;">
+                                
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Razón Social / Nombre Fiscal
+                                    </label>
+                                    <input type="text" id="prof-razon-social" value="${esc(currentData.razonSocial || '')}" placeholder="Ej: Constructora del Norte S.A." style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        CUIT / DNI
+                                    </label>
+                                    <input type="text" id="prof-cuit" value="${esc(currentData.cuit || '')}" placeholder="Ej: 30-71234567-8" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Domicilio Fiscal
+                                    </label>
+                                    <input type="text" id="prof-dir-fiscal" value="${esc(currentData.dirFiscal || '')}" placeholder="Ej: San Martín 500, Piso 2" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Condición frente al IVA
+                                    </label>
+                                    <select id="prof-condicion-iva" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.85rem; color: #0f172a; font-family: inherit; outline: none; background: #ffffff;">
+                                        <option value="Consumidor Final" ${(currentData.condIva === 'Consumidor Final' || !currentData.condIva) ? 'selected' : ''}>Consumidor Final</option>
+                                        <option value="Responsable Inscripto" ${currentData.condIva === 'Responsable Inscripto' ? 'selected' : ''}>IVA Responsable Inscripto (Factura A)</option>
+                                        <option value="Responsable Monotributo" ${currentData.condIva === 'Responsable Monotributo' ? 'selected' : ''}>Responsable Monotributo</option>
+                                        <option value="IVA Exento" ${currentData.condIva === 'IVA Exento' ? 'selected' : ''}>IVA Exento</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Correo para Envío de Factura Electrónica
+                                    </label>
+                                    <input type="email" id="prof-email-fiscal" value="${esc(currentData.emailFiscal || '')}" placeholder="Ej: facturacion@empresa.com" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.65rem 0.85rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+
+                            </div>
+
+                            <div id="prof-consumidor-final-note" style="display: ${hasBilling ? 'none' : 'block'}; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.78rem; color: #64748b; line-height: 1.45;">
+                                ℹ️ Por defecto emitimos <strong>Factura B a Consumidor Final</strong> con los datos de tu pedido. Si requerís Factura A, activá la opción arriba para ingresar CUIT y Razón Social.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Footer con Botón Guardar -->
+                    <div style="width: 100%; border-top: 1px solid #f1f5f9; padding: 0.85rem 1.25rem; flex-shrink: 0; background: #ffffff; display: flex; gap: 8px;">
+                        <button type="button" id="btn-save-billing" style="flex: 1; background: #16a34a; color: #ffffff; border: none; border-radius: 12px; padding: 0.85rem 1.4rem; font-weight: 900; font-size: 0.92rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3); transition: all 0.2s;">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
+                            <span>Guardar Datos de Facturación</span>
+                        </button>
+                    </div>
+                `;
+
+                const closeBtn = card.querySelector('#btn-close-user-profile');
+                if (closeBtn) closeBtn.onclick = onClose;
+
+                card.querySelector('#btn-back-to-menu')?.addEventListener('click', () => {
+                    currentSubView = 'menu';
+                    renderCurrentState();
+                });
+
+                const billingToggle = card.querySelector('#prof-factura-a-toggle');
+                const billingFields = card.querySelector('#prof-billing-fields');
+                const finalNote = card.querySelector('#prof-consumidor-final-note');
+
+                if (billingToggle) {
+                    billingToggle.onchange = () => {
+                        const isChecked = billingToggle.checked;
+                        if (billingFields) billingFields.style.display = isChecked ? 'flex' : 'none';
+                        if (finalNote) finalNote.style.display = isChecked ? 'none' : 'block';
+                    };
+                }
+
+                card.querySelector('#btn-save-billing')?.addEventListener('click', () => {
+                    const isChecked = billingToggle?.checked || false;
+                    const razonVal = isChecked ? (card.querySelector('#prof-razon-social')?.value || '').trim() : '';
+                    const cuitVal = isChecked ? (card.querySelector('#prof-cuit')?.value || '').trim() : '';
+                    const dirFiscalVal = isChecked ? (card.querySelector('#prof-dir-fiscal')?.value || '').trim() : '';
+                    const condIvaVal = isChecked ? (card.querySelector('#prof-condicion-iva')?.value || 'Consumidor Final') : 'Consumidor Final';
+                    const emailFiscalVal = isChecked ? (card.querySelector('#prof-email-fiscal')?.value || '').trim() : '';
+
+                    const payload = {
+                        ...currentData,
+                        razonSocial: razonVal,
+                        cuit: cuitVal,
+                        dirFiscal: dirFiscalVal,
+                        condIva: condIvaVal,
+                        emailFiscal: emailFiscalVal
+                    };
+
+                    if (window.UserDataManager && typeof window.UserDataManager.save === 'function') {
+                        window.UserDataManager.save(payload);
+                    }
+                    if (window.AdminAuth && typeof window.AdminAuth.saveClientProfileToCloud === 'function') {
+                        window.AdminAuth.saveClientProfileToCloud(payload);
+                    }
+                    if (typeof window.showToast === 'function') {
+                        window.showToast('✅ Datos de facturación guardados');
+                    }
+                    currentSubView = 'menu';
+                    renderCurrentState();
+                });
+
+                return;
             }
-        };
+        }
+
+        renderCurrentState();
     }
 
     window.openUserProfileModal = function() {
@@ -768,7 +980,7 @@
         drawer.id = 'user-profile-drawer';
         drawer.setAttribute('role', 'dialog');
         drawer.setAttribute('aria-modal', 'true');
-        drawer.setAttribute('aria-label', 'Mi Perfil de Entrega');
+        drawer.setAttribute('aria-label', 'Mi Cuenta y Perfil');
 
         let isClosing = false;
         const closeDrawer = () => {
@@ -843,7 +1055,7 @@
 
         container.innerHTML = '';
         const wrapper = document.createElement('div');
-        wrapper.style.cssText = 'max-width: 760px; margin: 1.25rem auto 2.5rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 1.35rem 1.5rem; box-shadow: 0 8px 28px rgba(15, 23, 42, 0.05); font-family: var(--font-main); display: flex; flex-direction: column; gap: 0.75rem; box-sizing: border-box;';
+        wrapper.style.cssText = 'max-width: 600px; margin: 1.25rem auto 2.5rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 1.35rem 1.5rem; box-shadow: 0 8px 28px rgba(15, 23, 42, 0.05); font-family: var(--font-main); display: flex; flex-direction: column; gap: 0.75rem; box-sizing: border-box;';
 
         mountUserProfileUI(wrapper, {
             isModal: false,
