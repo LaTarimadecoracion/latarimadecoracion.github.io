@@ -39,7 +39,7 @@
                 right: 0;
                 bottom: 0;
                 width: 100%;
-                max-width: 480px;
+                max-width: 360px;
                 background: #ffffff;
                 z-index: 999999;
                 box-shadow: -10px 0 35px rgba(0, 0, 0, 0.22);
@@ -127,20 +127,18 @@
                 border: none;
                 border-bottom: 1px solid #f1f5f9;
                 border-radius: 0;
-                padding: 0.95rem 1.25rem;
+                padding: 0.85rem 1.15rem;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
                 gap: 12px;
                 cursor: pointer;
                 text-align: left;
-                transition: background-color 0.15s ease, padding-left 0.15s ease;
                 box-sizing: border-box;
                 font-family: inherit;
             }
             .profile-menu-btn:hover {
                 background: #f8fafc;
-                padding-left: 1.45rem;
             }
             .profile-menu-btn:active {
                 background: #f1f5f9;
@@ -148,24 +146,23 @@
             .profile-menu-btn-content {
                 display: flex;
                 align-items: center;
-                gap: 14px;
+                gap: 12px;
                 min-width: 0;
                 flex: 1;
             }
             .profile-menu-icon {
                 color: #475569;
-                font-size: 22px;
+                font-size: 20px;
                 flex-shrink: 0;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                transition: color 0.15s ease;
             }
             .profile-menu-btn:hover .profile-menu-icon {
                 color: #0f172a;
             }
             .profile-menu-title {
-                font-size: 0.92rem;
+                font-size: 0.88rem;
                 font-weight: 700;
                 color: #1e293b;
                 letter-spacing: -0.15px;
@@ -174,11 +171,9 @@
                 font-size: 18px;
                 color: #94a3b8;
                 flex-shrink: 0;
-                transition: transform 0.15s, color 0.15s;
             }
             .profile-menu-btn:hover .profile-menu-chevron {
                 color: #0f172a;
-                transform: translateX(3px);
             }
 
             /* Sub-vistas (Formularios enfocados) */
@@ -358,7 +353,7 @@
                     <div style="flex: 1; overflow-y: auto; padding: 0; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; -webkit-overflow-scrolling: touch;">
 
                         <!-- Tarjeta de Identidad de Cuenta Sobria Full-Width -->
-                        <div style="padding: 1.1rem 1.25rem; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: #ffffff;">
+                        <div style="padding: 0.95rem 1.15rem; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between; gap: 10px; background: #ffffff;">
                             <div style="display: flex; align-items: center; gap: 12px; min-width: 0; flex: 1;">
                                 ${userAvatarHTML}
                                 <div style="min-width: 0; flex: 1;">
@@ -376,20 +371,15 @@
                                 </div>
                             </div>
 
-                            <!-- Botones de Acción en Cabecera (Login / Logout) -->
-                            <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
-                                ${!publicUser ? `
+                            <!-- Botones de Acción en Cabecera (Login cuando no autenticado) -->
+                            ${!publicUser ? `
+                                <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
                                     <button type="button" id="btn-menu-google-login" style="background: #ffffff; color: #0f172a; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.78rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-family: inherit; transition: all 0.2s;" onmouseenter="this.style.borderColor='#0f172a';" onmouseleave="this.style.borderColor='#cbd5e1';">
                                         ${GOOGLE_SVG}
                                         <span>Acceder</span>
                                     </button>
-                                ` : `
-                                    <button type="button" id="btn-profile-google-logout" style="background: transparent; border: 1px solid #e2e8f0; color: #64748b; border-radius: 8px; padding: 0.4rem 0.65rem; font-size: 0.75rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; display: inline-flex; align-items: center; gap: 4px;" title="Cerrar sesión" onmouseenter="this.style.borderColor='#ef4444';this.style.color='#dc2626';" onmouseleave="this.style.borderColor='#e2e8f0';this.style.color='#64748b';">
-                                        <span class="material-symbols-outlined" style="font-size: 15px;">logout</span>
-                                        <span>Salir</span>
-                                    </button>
-                                `}
-                            </div>
+                                </div>
+                            ` : ''}
                         </div>
 
                         <!-- COLUMNA DE OPCIONES SOBRIA Y FULL-WIDTH -->
