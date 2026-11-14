@@ -200,6 +200,11 @@
                 background: #f1f5f9;
                 border-color: #cbd5e1;
             }
+            .lt-drawer-notif-item:hover {
+                background: #f1f5f9 !important;
+                background: #f1f5f9;
+                border-color: #cbd5e1;
+            }
 
             @media (max-width: 640px) {
                 #user-profile-drawer {
@@ -274,17 +279,52 @@
                 ? `${esc(currentData.razonSocial || 'Factura')} · CUIT: ${esc(currentData.cuit)}`
                 : 'Factura B a Consumidor Final o Factura A (Opcional)';
 
+            let unreadNotifCount = 0;
+            try {
+                if (window.NotificationsCenter && typeof window.NotificationsCenter.loadState === 'function') {
+                    const nState = window.NotificationsCenter.loadState();
+                    if (nState && Array.isArray(nState.notifications)) {
+                        unreadNotifCount = nState.notifications.filter(n => !n.read).length;
+                    }
+                } else {
+                    const userKey = (publicUser && publicUser.email) ? String(publicUser.email).trim().toLowerCase() : 'guest';
+                    const raw = localStorage.getItem('latarima_notif_state_v2:' + userKey);
+                    if (raw) {
+                        const parsed = JSON.parse(raw);
+                        if (parsed && Array.isArray(parsed.notifications)) {
+                            unreadNotifCount = parsed.notifications.filter(n => !n.read).length;
+                        }
+                    }
+                }
+            } catch (e) {}
+
+            const subViewTitles = {
+                menu: 'Mi Cuenta y Perfil',
+                contact: 'Datos de Contacto',
+                address: 'Dirección de Entrega',
+                billing: 'Datos de Facturación',
+                notifications: 'Notificaciones y Avisos'
+            };
+
+            const subViewIcons = {
+                menu: 'account_circle',
+                contact: 'person',
+                address: 'location_on',
+                billing: 'receipt_long',
+                notifications: 'notifications'
+            };
+
             // Cabecera superior del Drawer
             const headerHTML = isModal ? `
                 <div class="user-profile-drawer-header">
                     <div class="user-profile-drawer-title-wrap">
                         <span class="material-symbols-outlined user-profile-drawer-icon">
-                            ${currentSubView === 'menu' ? 'account_circle' : (currentSubView === 'contact' ? 'person' : (currentSubView === 'address' ? 'location_on' : 'receipt_long'))}
+                            ${subViewIcons[currentSubView] || 'account_circle'}
                         </span>
                         <div style="min-width: 0;">
                             <div class="user-profile-drawer-badge">La Tarima · Mi Cuenta</div>
                             <h3 class="user-profile-drawer-title">
-                                ${currentSubView === 'menu' ? 'Mi Cuenta y Perfil' : (currentSubView === 'contact' ? 'Datos de Contacto' : (currentSubView === 'address' ? 'Dirección de Entrega' : 'Datos de Facturación'))}
+                                ${subViewTitles[currentSubView] || 'Mi Cuenta y Perfil'}
                             </h3>
                         </div>
                     </div>
@@ -301,7 +341,7 @@
                             <div style="min-width: 0; flex: 1;">
                                 <div style="font-size: 0.65rem; font-weight: 800; color: #94a3b8; letter-spacing: 0.8px; text-transform: uppercase;">LA TARIMA - MI CUENTA</div>
                                 <h3 style="font-size: 1.05rem; font-weight: 800; color: #0f172a; margin: 0; line-height: 1.2;">
-                                    ${currentSubView === 'menu' ? 'Mi Cuenta y Perfil' : (currentSubView === 'contact' ? 'Datos de Contacto' : (currentSubView === 'address' ? 'Dirección de Entrega' : 'Datos de Facturación'))}
+                                    ${subViewTitles[currentSubView] || 'Mi Cuenta y Perfil'}
                                 </h3>
                             </div>
                         </div>
@@ -422,7 +462,14 @@
                                     <span class="material-symbols-outlined profile-menu-icon">notifications</span>
                                     <span class="profile-menu-title">Notificaciones y Avisos</span>
                                 </div>
-                                <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    ${unreadNotifCount > 0 ? `
+                                        <span style="background: #2563eb; color: #ffffff; font-size: 0.7rem; font-weight: 800; padding: 2px 7px; border-radius: 999px;">
+                                            ${unreadNotifCount} ${unreadNotifCount === 1 ? 'nueva' : 'nuevas'}
+                                        </span>
+                                    ` : ''}
+                                    <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
+                                </div>
                             </button>
 
                             <!-- 7. Panel de Administración (Staff / SuperAdmin) -->
@@ -490,10 +537,10 @@
                     renderCurrentState();
                 });
 
-                // 6. Notificaciones
+                // 6. Notificaciones (Dentro del mismo Drawer lateral)
                 card.querySelector('#btn-opt-notif')?.addEventListener('click', () => {
-                    onClose();
-                    if (window.navigateToView) window.navigateToView('view-notifications');
+                    currentSubView = 'notifications';
+                    renderCurrentState();
                 });
 
                 // 7. Panel Admin
@@ -912,6 +959,157 @@
                     }
                     currentSubView = 'menu';
                     renderCurrentState();
+                });
+
+                return;
+            }
+
+            // =========================================================================
+            // VISTA 5: NOTIFICACIONES Y AVISOS (INTEGRADO EN EL DRAWER LATERAL)
+            // =========================================================================
+            if (currentSubView === 'notifications') {
+                const notifState = (window.NotificationsCenter && typeof window.NotificationsCenter.loadState === 'function')
+                    ? window.NotificationsCenter.loadState()
+                    : { notifications: [] };
+                const items = Array.isArray(notifState.notifications) ? notifState.notifications : [];
+                const unreadCount = items.filter(n => !n.read).length;
+                const readCount = items.length - unreadCount;
+
+                const formatTime = (ts) => {
+                    if (window.NotificationsCenter && typeof window.NotificationsCenter.formatRelativeTime === 'function') {
+                        return window.NotificationsCenter.formatRelativeTime(ts);
+                    }
+                    return 'Reciente';
+                };
+
+                let notifListHtml = '';
+                if (items.length === 0) {
+                    notifListHtml = `
+                        <div style="padding: 3.5rem 1.5rem; text-align: center; color: #64748b; background: #ffffff;">
+                            <span class="material-symbols-outlined" style="font-size: 44px; color: #cbd5e1; display: block; margin-bottom: 10px;">notifications_none</span>
+                            <div style="font-size: 0.95rem; font-weight: 800; color: #0f172a;">Estás al día</div>
+                            <div style="font-size: 0.78rem; color: #64748b; margin-top: 6px; line-height: 1.45; max-width: 320px; margin-left: auto; margin-right: auto;">
+                                Acá vas a ver los avisos sobre tus pedidos, cambios de estado en taller, ofertas y novedades de La Tarima.
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    notifListHtml = `
+                        <div style="display: flex; flex-direction: column; width: 100%;">
+                            ${items.map(item => {
+                                const isUnread = !item.read;
+                                const thumbHtml = item.image
+                                    ? `<img src="${esc(item.image)}" alt="" style="width: 40px; height: 40px; border-radius: 10px; object-fit: cover; flex-shrink: 0; border: 1px solid #e2e8f0;" onerror="this.style.display='none'">`
+                                    : `<div style="width: 38px; height: 38px; border-radius: 10px; background: ${esc(item.bg || '#f1f5f9')}; color: ${esc(item.accent || '#334155')}; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                            <span class="material-symbols-outlined" style="font-size: 20px;">${esc(item.icon || 'notifications')}</span>
+                                       </div>`;
+
+                                return `
+                                    <button type="button" class="lt-drawer-notif-item" data-notif-id="${esc(item.id)}" style="width: 100%; text-align: left; background: ${isUnread ? '#f8fafc' : '#ffffff'}; border: none; border-bottom: 1px solid #f1f5f9; padding: 0.95rem 1.25rem; display: flex; align-items: flex-start; gap: 12px; cursor: pointer; font-family: inherit; transition: background-color 0.15s ease; box-sizing: border-box;">
+                                        ${thumbHtml}
+                                        <div style="flex: 1; min-width: 0;">
+                                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                                                <span style="font-size: 0.86rem; font-weight: 700; color: #0f172a; line-height: 1.3;">${esc(item.title)}</span>
+                                                ${isUnread ? '<span style="width: 8px; height: 8px; border-radius: 50%; background: #2563eb; flex-shrink: 0;" title="No leída"></span>' : ''}
+                                            </div>
+                                            <p style="margin: 3px 0 6px; font-size: 0.78rem; color: #475569; line-height: 1.4; white-space: normal;">${esc(item.body)}</p>
+                                            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                                ${item.badgeText ? `<span style="font-size: 0.65rem; font-weight: 800; text-transform: uppercase; padding: 2px 7px; border-radius: 6px; background: ${esc(item.bg || '#f1f5f9')}; color: ${esc(item.accent || '#475569')};">${esc(item.badgeText)}</span>` : ''}
+                                                <span style="font-size: 0.7rem; color: #94a3b8; font-weight: 600;">${esc(formatTime(item.timestamp))}</span>
+                                            </div>
+                                        </div>
+                                    </button>
+                                `;
+                            }).join('')}
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    ${headerHTML}
+
+                    <div style="flex: 1; overflow-y: auto; padding: 0; box-sizing: border-box; width: 100%; display: flex; flex-direction: column; -webkit-overflow-scrolling: touch;">
+                        
+                        <!-- Barra para volver al Menú -->
+                        <div style="padding: 0.85rem 1.25rem 0.5rem; flex-shrink: 0;">
+                            <button type="button" id="btn-back-to-menu" class="profile-subview-back-bar">
+                                <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a;">arrow_back</span>
+                                <span style="font-size: 0.82rem; font-weight: 800; color: #0f172a;">Volver al Menú Principal</span>
+                            </button>
+                        </div>
+
+                        <!-- Barra de Herramientas de Notificaciones -->
+                        <div style="padding: 0.6rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 8px; border-bottom: 1px solid #f1f5f9; background: #ffffff; flex-shrink: 0;">
+                            <div style="font-size: 0.78rem; font-weight: 700; color: #64748b;">
+                                ${unreadCount > 0 ? `<span style="color: #2563eb; font-weight: 800;">${unreadCount} sin leer</span>` : 'Todas leídas'}
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                ${unreadCount > 0 ? `
+                                    <button type="button" id="btn-drawer-notif-mark-read" style="background: transparent; border: 1px solid #cbd5e1; color: #0f172a; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.72rem; font-weight: 700; cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 4px;">
+                                        <span class="material-symbols-outlined" style="font-size: 14px;">done_all</span>
+                                        <span>Marcar leídas</span>
+                                    </button>
+                                ` : ''}
+                                ${readCount > 0 ? `
+                                    <button type="button" id="btn-drawer-notif-clear-read" style="background: transparent; border: 1px solid #e2e8f0; color: #94a3b8; border-radius: 6px; padding: 0.3rem 0.6rem; font-size: 0.72rem; font-weight: 700; cursor: pointer; font-family: inherit;">
+                                        Limpiar leídas
+                                    </button>
+                                ` : ''}
+                            </div>
+                        </div>
+
+                        <!-- Lista de Alertas -->
+                        <div style="flex: 1; overflow-y: auto;">
+                            ${notifListHtml}
+                        </div>
+
+                    </div>
+                `;
+
+                const closeBtn = card.querySelector('#btn-close-user-profile');
+                if (closeBtn) closeBtn.onclick = onClose;
+
+                card.querySelector('#btn-back-to-menu')?.addEventListener('click', () => {
+                    currentSubView = 'menu';
+                    renderCurrentState();
+                });
+
+                card.querySelector('#btn-drawer-notif-mark-read')?.addEventListener('click', () => {
+                    if (window.NotificationsCenter && typeof window.NotificationsCenter.markAllAsRead === 'function') {
+                        window.NotificationsCenter.markAllAsRead();
+                    }
+                    renderCurrentState();
+                });
+
+                card.querySelector('#btn-drawer-notif-clear-read')?.addEventListener('click', () => {
+                    if (window.NotificationsCenter && typeof window.NotificationsCenter.clearReadNotifications === 'function') {
+                        window.NotificationsCenter.clearReadNotifications();
+                    }
+                    renderCurrentState();
+                });
+
+                // Clic en tarjeta de notificación
+                card.querySelectorAll('.lt-drawer-notif-item[data-notif-id]').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const notifId = btn.getAttribute('data-notif-id');
+                        if (!notifId) return;
+
+                        const item = items.find(n => n.id === notifId);
+                        const hasTargetView = item && (item.actionType === 'order' || item.actionType === 'product' || item.actionType === 'offers' || item.actionType === 'view' || item.actionType === 'url');
+
+                        if (window.NotificationsCenter && typeof window.NotificationsCenter.handleNotificationClick === 'function') {
+                            if (hasTargetView) {
+                                onClose();
+                            }
+                            window.NotificationsCenter.handleNotificationClick(notifId);
+                            if (!hasTargetView) {
+                                renderCurrentState();
+                            }
+                        } else {
+                            if (item) item.read = true;
+                            renderCurrentState();
+                        }
+                    });
                 });
 
                 return;
