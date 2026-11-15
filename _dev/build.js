@@ -102,7 +102,7 @@ async function build() {
         const folderDest = path.join(distDir, folder);
         if (fs.existsSync(folderSrc)) {
             console.log(`📂 Sincronizando carpeta ${folder}...`);
-            if (folder === 'img') {
+            if (folder === 'img' || folder === 'partials') {
                 // Borrar archivos en docs/img que ya no existen en img/
                 removeOrphans(folderSrc, folderDest);
             }

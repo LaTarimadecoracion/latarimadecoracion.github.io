@@ -244,7 +244,6 @@ window.loadAdminPartialsOnDemand = function() {
             'partials/admin/view-shipping.html',
             'partials/admin/view-cortes.html',
             'partials/admin/view-cajones.html',
-            'partials/admin/view-payments.html',
             'partials/admin/view-bulk-edit.html',
             'partials/admin/view-catalog.html',
             'partials/admin/view-ml-importer.html',
@@ -253,8 +252,6 @@ window.loadAdminPartialsOnDemand = function() {
             'partials/admin/view-notifications.html',
             'partials/admin/view-settings.html',
             'partials/admin/view-orders.html',
-            'partials/admin/view-quotes.html',
-            'partials/admin/view-users.html',
             'partials/admin/modal-label-print.html'
         ];
 
