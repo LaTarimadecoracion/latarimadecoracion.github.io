@@ -237,7 +237,7 @@
 
             const ordersList = (typeof window.getMyLocalOrders === 'function') ? window.getMyLocalOrders() : [];
             const ordersCount = ordersList.length;
-            const ordersCountText = ordersCount > 0 ? `${ordersCount} ${ordersCount === 1 ? 'pedido' : 'pedidos'}` : 'Sin pedidos';
+            const ordersCountText = ordersCount > 0 ? `${ordersCount} ${ordersCount === 1 ? 'compra' : 'compras'}` : 'Sin compras';
 
             let cartCount = 0;
             try {
@@ -400,7 +400,7 @@
                             <button type="button" class="profile-menu-btn" id="btn-opt-my-orders">
                                 <div class="profile-menu-btn-content">
                                     <span class="material-symbols-outlined profile-menu-icon">shopping_bag</span>
-                                    <span class="profile-menu-title">Mis Pedidos y Compras</span>
+                                    <span class="profile-menu-title">Mis Compras</span>
                                 </div>
                                 <div style="display: flex; align-items: center; gap: 8px;">
                                     ${ordersCount > 0 ? `
