@@ -543,6 +543,11 @@
                 activeCatalogRubro = r.id;
                 activeCategoryId = 'all';
                 activeSubcategory = null;
+                currentSearchQuery = '';
+                const searchInput = document.getElementById('search-input');
+                const btnClearSearch = document.getElementById('btn-clear-search');
+                if (searchInput) searchInput.value = '';
+                if (btnClearSearch) btnClearSearch.style.display = 'none';
                 loadProducts();
                 renderCatalogRubrosTabs();
                 updateCatalogUrl('all', { updateUrl: true });
@@ -708,6 +713,33 @@
         const countEl = document.getElementById('catalog-results-count');
         if (countEl) {
             countEl.textContent = `${results.length} ${results.length === 1 ? 'producto' : 'productos'}`;
+        }
+
+        // Cartel activo de filtro de búsqueda dentro del catálogo
+        const activeBanner = document.getElementById('catalog-active-filter-banner');
+        if (activeBanner) {
+            if (hasSearch) {
+                activeBanner.style.display = 'block';
+                activeBanner.innerHTML = `
+                    <div style="display: flex; align-items: center; justify-content: space-between; background: var(--admin-accent-light, rgba(160,113,91,0.08)); border: 1.5px solid rgba(160,113,91,0.28); border-radius: 8px; padding: 7px 14px; margin: 0 1rem 0.75rem 1rem; gap: 8px;">
+                        <div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; color: #1C1917;">
+                            <span class="material-symbols-outlined" style="font-size: 18px; color: var(--primary-color, #A0715B);">search</span>
+                            <span>Búsqueda: <strong style="color: var(--primary-color, #A0715B);">"${currentSearchQuery.replace(/</g, '&lt;')}"</strong></span>
+                        </div>
+                        <button type="button" id="btn-catalog-banner-clear" style="background: #FFFFFF; border: 1px solid rgba(160,113,91,0.35); border-radius: 6px; padding: 4px 10px; font-size: 0.78rem; font-weight: 700; color: var(--primary-color, #A0715B); cursor: pointer; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 2px rgba(0,0,0,0.05);" title="Borrar filtro de búsqueda">
+                            <span class="material-symbols-outlined" style="font-size: 15px;">close</span>
+                            <span>Quitar filtro</span>
+                        </button>
+                    </div>
+                `;
+                activeBanner.querySelector('#btn-catalog-banner-clear')?.addEventListener('click', () => {
+                    if (window.clearSearchQuery) window.clearSearchQuery();
+                    else clearAllFilters();
+                });
+            } else {
+                activeBanner.style.display = 'none';
+                activeBanner.innerHTML = '';
+            }
         }
 
         const clearBtn = document.getElementById('catalog-clear-filters-btn');
@@ -1175,6 +1207,7 @@
             <div class="catalog-container">
                 <div id="catalog-rubros-tabs-container" class="rubros-tabs-bar"></div>
                 <div id="catalog-subcategories-bar" class="catalog-subcategories-bar" style="display: none;"></div>
+                <div id="catalog-active-filter-banner" style="display: none;"></div>
                 <div class="catalog-toolbar" id="catalog-toolbar">
                     <div class="catalog-toolbar-left">
                         <span class="catalog-results-count" id="catalog-results-count">Cargando catálogo...</span>
@@ -1255,6 +1288,15 @@
         activeCategoryId = targetCatId;
         activeSubcategory = options.subcategory || null;
 
+        // Limpiar búsqueda activa al seleccionar una categoría explícita para no bloquear los productos
+        if (!options.preserveSearch) {
+            currentSearchQuery = '';
+            const searchInput = document.getElementById('search-input');
+            const btnClearSearch = document.getElementById('btn-clear-search');
+            if (searchInput) searchInput.value = '';
+            if (btnClearSearch) btnClearSearch.style.display = 'none';
+        }
+
         loadProducts();
         renderCatalogRubrosTabs();
         ensureValidCategorySelection();
@@ -1314,6 +1356,7 @@
         refresh,
         filter,
         setCategory,
+        clearAllFilters,
         getState
     };
 

@@ -86,7 +86,7 @@
             card.innerHTML = `
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap;">
                     <div style="display: flex; align-items: center; gap: 6px; flex: 1; min-width: 220px;">
-                        <span class="material-symbols-outlined cajon-mat-drag-handle" style="color: #854D0E; font-size: 22px; cursor: grab; user-select: none; padding: 2px 4px; border-radius: 4px;" title="Mantener presionado para arrastrar y reordenar materiales">layers</span>
+                        <span class="material-symbols-outlined cajon-mat-drag-handle" style="color: #94A3B8; font-size: 20px; cursor: grab; user-select: none; padding: 2px 4px; border-radius: 4px;" title="Arrastrar para reordenar">drag_indicator</span>
                         <input type="text" class="admin-input mat-inp-name" value="${mat.name || ''}" placeholder="Nombre del material o placa" style="font-weight: 700; width: 100%;">
                     </div>
                     <div style="display: flex; align-items: center; gap: 10px; background: #FFF; padding: 4px 10px; border-radius: 8px; border: 1px solid #E2E8F0;">

@@ -239,7 +239,8 @@ function ensureAdminCore() {
             'js/admin/admin-core.js?v=4'
         ]);
 
-        await Promise.all(cdnPromises);
+        // Cargar librerías CDN en segundo plano sin bloquear el renderizado visual
+        Promise.all(cdnPromises).catch(() => {});
     })();
 
     return _adminCorePromise;

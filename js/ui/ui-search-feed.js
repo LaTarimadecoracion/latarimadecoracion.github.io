@@ -1122,15 +1122,50 @@
         runSearch();
     }
 
+    window.ensureSearchCatalogActive = function() {
+        const activeView = document.querySelector('.view.active');
+        if (!activeView || activeView.id !== 'view-catalogo') {
+            if (typeof window.navigateToView === 'function') {
+                window.navigateToView('view-catalogo');
+            }
+        }
+    };
+
+    window.clearSearchQuery = function() {
+        const searchInput = document.getElementById('search-input');
+        const btnClearSearch = document.getElementById('btn-clear-search');
+        if (searchInput) {
+            searchInput.value = '';
+        }
+        if (btnClearSearch) {
+            btnClearSearch.style.display = 'none';
+        }
+        hideRecentSearchesDropdown();
+        if (window.CatalogNative && typeof window.CatalogNative.clearAllFilters === 'function') {
+            window.CatalogNative.clearAllFilters();
+        } else if (window.CatalogNative && typeof window.CatalogNative.filter === 'function') {
+            window.CatalogNative.filter('');
+        }
+        if (typeof window.runSearch === 'function') {
+            window.runSearch();
+        }
+    };
+
     // Attach search input listener, desplegable de últimas 3 búsquedas y botón de limpieza rápida
     const btnClearSearch = document.getElementById('btn-clear-search');
     if (searchInput) {
         searchInput.addEventListener('focus', () => {
+            window.ensureSearchCatalogActive();
             renderRecentSearchesDropdown();
+            const hasText = !!searchInput.value.trim();
+            if (btnClearSearch) btnClearSearch.style.display = hasText ? 'flex' : 'none';
         });
 
         searchInput.addEventListener('click', () => {
+            window.ensureSearchCatalogActive();
             renderRecentSearchesDropdown();
+            const hasText = !!searchInput.value.trim();
+            if (btnClearSearch) btnClearSearch.style.display = hasText ? 'flex' : 'none';
         });
 
         searchInput.addEventListener('blur', () => {
@@ -1144,6 +1179,10 @@
                 const val = searchInput.value.trim();
                 if (val.length >= 2) saveSearchTerm(val);
                 hideRecentSearchesDropdown();
+                window.ensureSearchCatalogActive();
+                if (window.CatalogNative && typeof window.CatalogNative.filter === 'function') {
+                    window.CatalogNative.filter(val);
+                }
                 searchInput.blur();
             } else if (e.key === 'Escape') {
                 hideRecentSearchesDropdown();
@@ -1160,17 +1199,17 @@
             } else {
                 renderRecentSearchesDropdown();
             }
+            window.ensureSearchCatalogActive();
+            if (window.CatalogNative && typeof window.CatalogNative.filter === 'function') {
+                window.CatalogNative.filter(searchInput.value);
+            }
             window.runSearch();
         });
 
         if (btnClearSearch) {
             btnClearSearch.addEventListener('click', (e) => {
                 e.preventDefault();
-                searchInput.value = '';
-                btnClearSearch.style.display = 'none';
-                searchInput.focus();
-                renderRecentSearchesDropdown();
-                window.runSearch();
+                window.clearSearchQuery();
             });
         }
     }

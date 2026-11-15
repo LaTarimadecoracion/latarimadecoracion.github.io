@@ -199,9 +199,17 @@
 
     // ─── Mostrar / Ocultar ──────────────────────────────────────────────────────
     function showBanner(banner) {
+        if (!shouldShow()) {
+            if (banner && banner.parentNode) banner.remove();
+            return;
+        }
         // Forzar reflow antes de añadir la clase visible
         requestAnimationFrame(() => {
             requestAnimationFrame(() => {
+                if (!shouldShow()) {
+                    if (banner && banner.parentNode) banner.remove();
+                    return;
+                }
                 banner.classList.add('lt-pwa-visible');
             });
         });
@@ -220,6 +228,9 @@
     function shouldShow() {
         // No mostrar en la vista del panel admin
         if (window.location.search.includes('view=admin') || window.location.hash.includes('view-admin')) return false;
+        const adminView = document.getElementById('view-admin');
+        if (adminView && adminView.classList.contains('active')) return false;
+        if (document.querySelector('.admin-top-navbar')) return false;
 
         // No mostrar si ya está instalado (standalone)
         if (window.matchMedia('(display-mode: standalone)').matches) return false;

@@ -121,7 +121,7 @@
             card.innerHTML = `
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap;">
                     <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 240px;">
-                        <span class="material-symbols-outlined cajon-regla-drag-handle" style="color: #6366F1; font-size: 22px; cursor: grab; user-select: none; padding: 2px 4px; border-radius: 4px;" title="Mantener presionado para arrastrar y reordenar reglas">layers</span>
+                        <span class="material-symbols-outlined cajon-regla-drag-handle" style="color: #94A3B8; font-size: 20px; cursor: grab; user-select: none; padding: 2px 4px; border-radius: 4px;" title="Arrastrar para reordenar">drag_indicator</span>
                         <input type="text" class="admin-input regla-inp-name" value="${regla.name || ''}" placeholder="Nombre de la Regla (ej: Cajón Simple)" style="font-weight: 800; font-size: 0.95rem; width: 100%;">
                     </div>
                     <div style="display: flex; align-items: center; gap: 10px; background: #FFF; padding: 4px 10px; border-radius: 8px; border: 1px solid #E2E8F0;">

@@ -100,14 +100,9 @@
         const currentActiveView = Array.from(window.views).find(v => v.classList.contains('active'));
         const currentActiveViewId = currentActiveView ? currentActiveView.id : null;
 
-        // En Modo PC (>= 900px), unificar Buscador (?view=buscar), Categorías (?cat=...) -> Catálogo
-        // y Pedidos (?view=pedidos) -> Mis Compras inline
-        if (window.innerWidth >= 900) {
-            if (viewId === 'view-search' || viewId === 'view-category-feed') {
-                viewId = 'view-catalogo';
-            } else if (viewId === 'view-pedidos') {
-                // Mantener view-pedidos (pedidos/index.html) también en PC con su detalle completo y T&C
-            }
+        // Unificar Buscador (?view=buscar / ?view=search) y Categorías -> Catálogo Unificado en TODOS los dispositivos
+        if (viewId === 'view-search' || viewId === 'view-category-feed') {
+            viewId = 'view-catalogo';
         }
 
         // Protección de seguridad RBAC para el Panel Admin
@@ -320,6 +315,14 @@
             } else if (viewId === 'view-catalogo') {
                 const targetCat = (context && context.categoryId) ? String(context.categoryId) : 'all';
                 const searchEl = document.getElementById('search-input');
+                const btnClearEl = document.getElementById('btn-clear-search');
+
+                // Si se navega explícitamente a una categoría específica, limpiamos el buscador para no bloquear la categoría
+                if (context && context.categoryId && context.categoryId !== 'all') {
+                    if (searchEl) searchEl.value = '';
+                    if (btnClearEl) btnClearEl.style.display = 'none';
+                }
+
                 const currentQuery = (searchEl && searchEl.value) ? searchEl.value.trim() : '';
                 const syncCatalog = () => {
                     if (window.CatalogNative && typeof window.CatalogNative.refresh === 'function') {
@@ -438,8 +441,8 @@
             }
         }
 
-        // Limpiar el input del buscador automáticamente al salir de las vistas de búsqueda/catálogo (ej. al entrar a un producto o cambiar de sección)
-        if (viewId !== 'view-search' && viewId !== 'view-catalogo' && viewId !== 'view-mayorista') {
+        // Limpiar el input del buscador automáticamente al salir de la vista de catálogo
+        if (viewId !== 'view-catalogo' && viewId !== 'view-mayorista') {
             const globalSearchInput = document.getElementById('search-input');
             const globalBtnClear = document.getElementById('btn-clear-search');
             if (globalSearchInput && globalSearchInput.value) {
@@ -448,6 +451,9 @@
             }
             if (globalBtnClear) {
                 globalBtnClear.style.display = 'none';
+            }
+            if (window.CatalogNative && typeof window.CatalogNative.filter === 'function') {
+                window.CatalogNative.filter('');
             }
         }
 

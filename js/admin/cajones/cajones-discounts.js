@@ -58,7 +58,7 @@
             row.style.cssText = 'display: grid; grid-template-columns: auto 1fr 1fr auto; gap: 10px; align-items: center; background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 8px; padding: 8px 12px; transition: transform 0.15s ease, box-shadow 0.15s ease;';
 
             row.innerHTML = `
-                <span class="material-symbols-outlined cajon-esc-drag-handle" style="color: #64748B; font-size: 20px; cursor: grab; user-select: none; padding: 2px;" title="Mantener presionado para arrastrar y reordenar escalas">layers</span>
+                <span class="material-symbols-outlined cajon-esc-drag-handle" style="color: #94A3B8; font-size: 20px; cursor: grab; user-select: none; padding: 2px;" title="Arrastrar para reordenar">drag_indicator</span>
                 <div style="display: flex; align-items: center; gap: 6px;">
                     <label style="font-size: 0.72rem; font-weight: 700; color: #475569; white-space: nowrap;">A partir de:</label>
                     <input type="number" class="admin-input cajon-esc-inp-qty" value="${esc.minQty || (idx * 3 + 3)}" min="2" max="999" style="width: 75px; padding: 4px 8px; font-size: 0.8rem; font-weight: 700;">

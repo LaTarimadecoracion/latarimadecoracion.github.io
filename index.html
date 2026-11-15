@@ -187,8 +187,8 @@
             <!-- Centro: Buscador -->
             <div class="search-bar-container" style="flex: 1; margin: 0; padding: 0.4rem 0.6rem; min-width: 0; position: relative;">
                 <span class="material-symbols-outlined search-icon" style="font-size: 18px;">search</span>
-                <input type="text" id="search-input" placeholder="Buscar muebles, medidas..." class="search-input" autocomplete="off" onfocus="const activeView = document.querySelector('.view.active'); if(activeView && activeView.id !== 'view-catalogo' && activeView.id !== 'view-calculator' && activeView.id !== 'view-mayorista' && window.navigateToView) window.navigateToView('view-search'); if(window.showRecentSearchesDropdown) window.showRecentSearchesDropdown();" style="font-size: 0.9rem; padding: 0;">
-                <button id="btn-clear-search" type="button" style="display: none; background: none; border: none; padding: 0; margin: 0 4px; cursor: pointer; color: #94a3b8; align-items: center; justify-content: center;" title="Limpiar búsqueda">
+                <input type="text" id="search-input" placeholder="Buscar muebles, medidas..." class="search-input" autocomplete="off" onfocus="if(window.ensureSearchCatalogActive) window.ensureSearchCatalogActive(); if(window.showRecentSearchesDropdown) window.showRecentSearchesDropdown();" onclick="if(window.ensureSearchCatalogActive) window.ensureSearchCatalogActive();" style="font-size: 0.9rem; padding: 0;">
+                <button id="btn-clear-search" type="button" onclick="if(window.clearSearchQuery) window.clearSearchQuery();" style="display: none; background: none; border: none; padding: 2px 6px; margin: 0 4px; cursor: pointer; color: #78716c; align-items: center; justify-content: center; border-radius: 50%;" title="Limpiar búsqueda">
                     <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
                 </button>
                 <!-- Desplegable estilo Mercado Libre (hasta 3 últimas búsquedas en el mismo buscador) -->

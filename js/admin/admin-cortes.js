@@ -161,7 +161,6 @@
             card.innerHTML = `
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap;">
                     <div style="display: flex; align-items: center; gap: 6px; flex: 1; min-width: 220px;">
-                        <span class="material-symbols-outlined" style="color: #854D0E; font-size: 20px;">layers</span>
                         <input type="text" class="admin-input mat-inp-name" value="${mat.name || ''}" placeholder="Nombre del material o placa" style="font-weight: 700; width: 100%;">
                     </div>
                     <div style="display: flex; align-items: center; gap: 8px;">

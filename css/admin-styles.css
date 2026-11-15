@@ -1169,8 +1169,8 @@
         display: none !important; /* Innecesario en móviles */
     }
 
-    .btn-global-publish span,
-    .btn-navbar-close span {
+    .btn-global-publish span:not(.material-symbols-outlined),
+    .btn-navbar-close span:not(.material-symbols-outlined) {
         display: none !important; /* Solo mostrar íconos en pantallas pequeñas */
     }
 
@@ -1572,6 +1572,21 @@
 .cajones-material-card:hover {
     border-color: var(--admin-border-strong) !important;
     box-shadow: var(--admin-shadow-sm) !important;
+}
+
+/* Ocultar cualquier banner PWA, calculador flotante o popup de la tienda pública dentro del Admin */
+body:has(#view-admin.active) #lt-pwa-banner,
+body:has(#view-admin.active) .shipping-calculator-toggle,
+body:has(#view-admin.active) #btn-shipping-float,
+body:has(#view-admin.active) #btn-floating-tracking,
+body:has(#view-admin.active) .cart-fab-container,
+#view-admin.active ~ #lt-pwa-banner,
+#view-admin.active ~ .shipping-calculator-toggle,
+#view-admin.active ~ #btn-shipping-float,
+#view-admin.active ~ #btn-floating-tracking {
+    display: none !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
 }
 
 
