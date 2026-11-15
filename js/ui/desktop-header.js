@@ -539,8 +539,19 @@
         document.getElementById('desktop-location-btn')?.addEventListener('click', openLocationModal);
 
         document.getElementById('desktop-notif-btn')?.addEventListener('click', (e) => {
+            e.preventDefault();
             e.stopPropagation();
-            toggleNotifDropdown();
+            closeUserMenu();
+            closeNotifDropdown();
+            if (window.openUserProfileModal) {
+                window.openUserProfileModal('notifications');
+            } else if (window.ensureUserProfileModalLoaded) {
+                window.ensureUserProfileModalLoaded().then(() => {
+                    if (window.openUserProfileModal) window.openUserProfileModal('notifications');
+                });
+            } else if (window.navigateToView) {
+                window.navigateToView('view-notifications');
+            }
         });
 
         document.addEventListener('click', (e) => {

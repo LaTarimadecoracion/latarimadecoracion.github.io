@@ -49,7 +49,7 @@
                 right: 0;
                 bottom: 0;
                 width: 100%;
-                max-width: 440px;
+                max-width: 360px;
                 background: #ffffff;
                 z-index: 999999;
                 box-shadow: -10px 0 35px rgba(0, 0, 0, 0.22);
@@ -69,7 +69,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding: 1rem 1.25rem;
+                padding: 0.85rem 1.15rem;
                 border-bottom: 1px solid #f1f5f9;
                 background: #ffffff;
                 flex-shrink: 0;
@@ -158,8 +158,8 @@
                 box-shadow: 0 4px 12px rgba(0,0,0,0.03);
             }
             .cart-drawer-item-thumb {
-                width: 68px;
-                height: 68px;
+                width: 60px;
+                height: 60px;
                 border-radius: 10px;
                 object-fit: cover;
                 background: #f1f5f9;

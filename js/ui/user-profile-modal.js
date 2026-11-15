@@ -223,8 +223,8 @@
         const onClose = typeof options.onClose === 'function' ? options.onClose : () => {};
         const onReopen = typeof options.onReopen === 'function' ? options.onReopen : () => {};
 
-        // Estado interno de subvista: 'menu' | 'contact' | 'address' | 'billing'
-        let currentSubView = 'menu';
+        // Estado interno de subvista: 'menu' | 'personal' | 'notifications'
+        let currentSubView = options.initialSubView || 'menu';
 
         function renderCurrentState() {
             const publicUser = (window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function')
@@ -986,7 +986,8 @@
         renderCurrentState();
     }
 
-    window.openUserProfileModal = function() {
+    window.openUserProfileModal = function(arg = 'menu') {
+        const initialSubView = (typeof arg === 'string' && arg) ? arg : (arg && arg.subView ? arg.subView : 'menu');
         injectProfileDrawerStyles();
 
         // Limpiar overlays o drawers previos si existieran
@@ -1024,12 +1025,13 @@
 
         mountUserProfileUI(drawer, {
             isModal: true,
+            initialSubView: initialSubView,
             onClose: closeDrawer,
             onReopen: () => {
                 if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll();
                 overlay.remove();
                 drawer.remove();
-                window.openUserProfileModal();
+                window.openUserProfileModal(initialSubView);
             }
         });
 
@@ -1065,10 +1067,17 @@
         }, 320);
     };
 
-    window.openUserProfileDrawer = window.openUserProfileModal;
+    window.openUserProfileDrawer = function(subView = 'menu') {
+        window.openUserProfileModal(subView);
+    };
+    window.openNotificationsDrawer = function() {
+        window.openUserProfileModal('notifications');
+    };
     window.closeUserProfileDrawer = window.closeUserProfileModal;
     window.UserProfileDrawer = {
-        open: window.openUserProfileModal,
+        open: function(subView = 'menu') {
+            window.openUserProfileModal(subView);
+        },
         close: window.closeUserProfileModal,
         isOpen: () => isProfileDrawerOpen
     };

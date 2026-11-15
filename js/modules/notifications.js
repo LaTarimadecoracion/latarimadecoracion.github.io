@@ -1182,7 +1182,9 @@
             e.stopPropagation();
             document.getElementById('desktop-notif-wrapper')?.classList.remove('open');
             document.getElementById('desktop-notif-btn')?.setAttribute('aria-expanded', 'false');
-            if (window.navigateToView) {
+            if (window.openUserProfileModal) {
+                window.openUserProfileModal('notifications');
+            } else if (window.navigateToView) {
                 window.navigationHistory = [];
                 window.navigateToView('view-notifications');
             }
