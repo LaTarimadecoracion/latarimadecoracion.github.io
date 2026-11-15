@@ -249,7 +249,7 @@
             } catch (e) {}
             const cartCountText = cartCount > 0 ? `${cartCount} ${cartCount === 1 ? 'producto' : 'productos'}` : 'Vacío';
 
-            const isStaff = publicUser && (publicUser.role === 'superadmin' || publicUser.role === 'colaborador');
+            const isStaff = (publicUser && (publicUser.role === 'superadmin' || publicUser.role === 'colaborador')) || !!(window.AdminAuth && typeof window.AdminAuth.isAuthenticated === 'function' && window.AdminAuth.isAuthenticated());
             const roleBadgeText = publicUser
                 ? (publicUser.role === 'superadmin'
                     ? 'SuperAdmin'
@@ -275,11 +275,13 @@
                 : 'Factura B a Consumidor Final o Factura A (Opcional)';
 
             let unreadNotifCount = 0;
+            let adminNewOrdersCount = 0;
             try {
+                let allNotifs = [];
                 if (window.NotificationsCenter && typeof window.NotificationsCenter.loadState === 'function') {
                     const nState = window.NotificationsCenter.loadState();
                     if (nState && Array.isArray(nState.notifications)) {
-                        unreadNotifCount = nState.notifications.filter(n => !n.read).length;
+                        allNotifs = nState.notifications;
                     }
                 } else {
                     const userKey = (publicUser && publicUser.email) ? String(publicUser.email).trim().toLowerCase() : 'guest';
@@ -287,9 +289,18 @@
                     if (raw) {
                         const parsed = JSON.parse(raw);
                         if (parsed && Array.isArray(parsed.notifications)) {
-                            unreadNotifCount = parsed.notifications.filter(n => !n.read).length;
+                            allNotifs = parsed.notifications;
                         }
                     }
+                }
+                unreadNotifCount = allNotifs.filter(n => !n.read).length;
+                if (isStaff) {
+                    adminNewOrdersCount = allNotifs.filter(n => !n.read && (
+                        n.type === 'order' ||
+                        n.actionType === 'order' ||
+                        (n.actionPayload && n.actionPayload.orderId) ||
+                        (n.ruleKey && n.ruleKey.startsWith('order'))
+                    )).length;
                 }
             } catch (e) {}
 
@@ -442,7 +453,26 @@
                                 </div>
                             </button>
 
-                            <!-- 7. Panel de Administración (Staff / SuperAdmin) -->
+                            <!-- 7. Pedidos de Ventas para Admin / Staff -->
+                            ${isStaff ? `
+                                <button type="button" class="profile-menu-btn" id="btn-opt-admin-orders">
+                                    <div class="profile-menu-btn-content">
+                                        <span class="material-symbols-outlined profile-menu-icon" style="color: #0f172a;">receipt_long</span>
+                                        <span class="profile-menu-title" style="color: #0f172a;">Pedidos</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        ${adminNewOrdersCount > 0 ? `
+                                            <span style="background: #ef4444; color: #ffffff; font-size: 0.7rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; display: inline-flex; align-items: center; gap: 4px; box-shadow: 0 1px 3px rgba(239, 68, 68, 0.25);">
+                                                <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #ffffff;"></span>
+                                                <span>${adminNewOrdersCount} ${adminNewOrdersCount === 1 ? 'nuevo' : 'nuevos'}</span>
+                                            </span>
+                                        ` : ''}
+                                        <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
+                                    </div>
+                                </button>
+                            ` : ''}
+
+                            <!-- 8. Panel de Administración (Staff / SuperAdmin) -->
                             ${isStaff ? `
                                 <button type="button" class="profile-menu-btn" id="btn-opt-admin">
                                     <div class="profile-menu-btn-content">
@@ -501,7 +531,50 @@
                     renderCurrentState();
                 });
 
-                // 7. Panel Admin
+                // 7. Pedidos para Administrador / Staff (Ventas de Clientes)
+                card.querySelector('#btn-opt-admin-orders')?.addEventListener('click', () => {
+                    onClose();
+
+                    // Marcar notificaciones de pedidos como leídas
+                    try {
+                        if (window.NotificationsCenter && typeof window.NotificationsCenter.loadState === 'function') {
+                            const nState = window.NotificationsCenter.loadState();
+                            if (nState && Array.isArray(nState.notifications)) {
+                                let changed = false;
+                                nState.notifications.forEach(n => {
+                                    if (!n.read && (n.type === 'order' || n.actionType === 'order' || (n.actionPayload && n.actionPayload.orderId) || (n.ruleKey && n.ruleKey.startsWith('order')))) {
+                                        n.read = true;
+                                        changed = true;
+                                    }
+                                });
+                                if (changed && typeof window.NotificationsCenter.saveState === 'function') {
+                                    window.NotificationsCenter.saveState(nState);
+                                    if (typeof window.NotificationsCenter.syncBadges === 'function') {
+                                        window.NotificationsCenter.syncBadges();
+                                    }
+                                }
+                            }
+                        }
+                    } catch (e) {}
+
+                    window.currentAdminTab = 'orders';
+                    try {
+                        const url = new URL(window.location.href);
+                        url.searchParams.set('tab', 'orders');
+                        window.history.replaceState({ tab: 'orders' }, '', url.toString());
+                    } catch (e) {}
+
+                    if (window.navigateToView) {
+                        window.navigateToView('view-admin', { tab: 'orders' });
+                    }
+
+                    const tabBtnOrders = document.getElementById('tab-btn-orders');
+                    if (tabBtnOrders && document.getElementById('view-admin')?.classList.contains('active')) {
+                        tabBtnOrders.click();
+                    }
+                });
+
+                // 8. Panel Admin
                 card.querySelector('#btn-opt-admin')?.addEventListener('click', () => {
                     onClose();
                     if (window.navigateToView) window.navigateToView('view-admin');
@@ -988,6 +1061,9 @@
 
     window.openUserProfileModal = function(arg = 'menu') {
         const initialSubView = (typeof arg === 'string' && arg) ? arg : (arg && arg.subView ? arg.subView : 'menu');
+        if (window.NotificationsCenter && typeof window.NotificationsCenter.scanAll === 'function') {
+            try { window.NotificationsCenter.scanAll(); } catch (e) {}
+        }
         injectProfileDrawerStyles();
 
         // Limpiar overlays o drawers previos si existieran

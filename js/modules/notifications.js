@@ -1013,6 +1013,9 @@
             }
         }
         if (menuDot) menuDot.style.display = unreadCount > 0 ? 'block' : 'none';
+        try {
+            window.dispatchEvent(new CustomEvent('latarima:notifications-updated', { detail: { unreadCount, state } }));
+        } catch(e) {}
     }
 
     function handleNotificationClick(notifId) {
@@ -1292,6 +1295,7 @@
         scanAll,
         syncBadges,
         loadState,
+        saveState,
         handleNotificationClick,
         formatRelativeTime,
         renderDesktopDropdown,
