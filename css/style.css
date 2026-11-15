@@ -5049,12 +5049,12 @@ details[open] summary .expand-arrow {
 
 /* Sleek Flat Cards */
 .admin-card {
-    background: #FFFFFF !important;
-    border: 1px solid #E2E8F0 !important;
-    border-radius: 8px !important;
-    box-shadow: none !important;
-    padding: 1.25rem !important;
-    margin-bottom: 1.25rem !important;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    box-shadow: none;
+    padding: 1.25rem;
+    margin-bottom: 1.25rem;
 }
 
 /* Modern Headers */

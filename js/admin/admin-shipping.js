@@ -139,26 +139,19 @@
         const btnProds = document.getElementById('btn-ship-tab-products');
 
         if (btnRates && btnProds) {
+            btnRates.style.background = '';
+            btnRates.style.color = '';
+            btnRates.style.boxShadow = '';
+            btnProds.style.background = '';
+            btnProds.style.color = '';
+            btnProds.style.boxShadow = '';
+
             if (currentShipMainTab === 'rates') {
                 btnRates.classList.add('active');
-                btnRates.style.background = '#0f172a';
-                btnRates.style.color = '#ffffff';
-                btnRates.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
-
                 btnProds.classList.remove('active');
-                btnProds.style.background = 'transparent';
-                btnProds.style.color = '#64748b';
-                btnProds.style.boxShadow = 'none';
             } else {
                 btnProds.classList.add('active');
-                btnProds.style.background = '#0f172a';
-                btnProds.style.color = '#ffffff';
-                btnProds.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
-
                 btnRates.classList.remove('active');
-                btnRates.style.background = 'transparent';
-                btnRates.style.color = '#64748b';
-                btnRates.style.boxShadow = 'none';
             }
         }
 
@@ -179,16 +172,14 @@
         const subtabBtns = document.querySelectorAll('.admin-shipping-subtab-btn');
         subtabBtns.forEach(btn => {
             const mode = btn.dataset.shipMode;
+            btn.style.borderColor = '';
+            btn.style.background = '';
+            btn.style.color = '';
+
             if (mode === currentShipMode) {
                 btn.classList.add('active');
-                btn.style.borderColor = '#0f172a';
-                btn.style.background = '#0f172a';
-                btn.style.color = '#ffffff';
             } else {
                 btn.classList.remove('active');
-                btn.style.borderColor = '#e2e8f0';
-                btn.style.background = '#ffffff';
-                btn.style.color = '#475569';
             }
 
             btn.onclick = () => {

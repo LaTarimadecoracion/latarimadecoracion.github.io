@@ -139,7 +139,7 @@
         const cta = ruleState && ruleState.cta ? ruleState.cta : def.defaultCta;
 
         return `
-            <div class="admin-notif-rule-card" data-rule-key="${escapeHtml(def.key)}" style="border: 1px solid ${enabled ? '#e2e8f0' : '#f1f5f9'}; background: ${enabled ? '#ffffff' : '#f8fafc'}; border-radius: 12px; padding: 0.85rem; opacity: ${enabled ? '1' : '0.72'}; transition: all 0.15s ease;">
+            <div class="admin-notif-rule-card" data-rule-key="${escapeHtml(def.key)}" style="border: 1px solid var(--admin-border-color); background: ${enabled ? '#ffffff' : 'var(--admin-surface-hover)'}; border-radius: var(--admin-radius-md); padding: 1rem; box-shadow: var(--admin-shadow-xs); opacity: ${enabled ? '1' : '0.72'}; transition: all 0.15s ease;">
                 <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 0.65rem;">
                     <div style="display: flex; align-items: center; gap: 8px; min-width: 0;">
                         <span style="width: 32px; height: 32px; border-radius: 9px; background: ${def.bg}; color: ${def.accent}; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;">

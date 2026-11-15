@@ -50,27 +50,27 @@
             </button>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.25rem;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 1.5rem; align-items: start;">
             <!-- GRUPO: PEDIDOS -->
-            <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.2rem;">
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.9rem; padding-bottom: 0.65rem; border-bottom: 1px solid #f1f5f9;">
-                    <h4 style="margin: 0; font-size: 0.96rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 7px;">
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+                <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.5rem; border-bottom: 1px solid var(--admin-border-color);">
+                    <h4 style="margin: 0; font-size: 0.96rem; font-weight: 800; color: var(--admin-text-main); display: flex; align-items: center; gap: 7px;">
                         <span class="material-symbols-outlined" style="color: #2563eb; font-size: 20px;">receipt_long</span>
                         <span>Alertas de Pedidos</span>
                     </h4>
-                    <span style="font-size: 0.72rem; color: #64748b; font-weight: 700;">Asociado a: Mis Compras</span>
+                    <span style="font-size: 0.72rem; color: var(--admin-text-muted); font-weight: 700;">Asociado a: Mis Compras</span>
                 </div>
                 <div id="admin-notif-rules-orders" style="display: flex; flex-direction: column; gap: 10px;"></div>
             </div>
 
             <!-- GRUPO: FAVORITOS & CATÁLOGO -->
-            <div style="background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.2rem;">
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.9rem; padding-bottom: 0.65rem; border-bottom: 1px solid #f1f5f9;">
-                    <h4 style="margin: 0; font-size: 0.96rem; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 7px;">
+            <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+                <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.5rem; border-bottom: 1px solid var(--admin-border-color);">
+                    <h4 style="margin: 0; font-size: 0.96rem; font-weight: 800; color: var(--admin-text-main); display: flex; align-items: center; gap: 7px;">
                         <span class="material-symbols-outlined" style="color: #ea580c; font-size: 20px;">local_offer</span>
                         <span>Favoritos, Ofertas &amp; Lanzamientos</span>
                     </h4>
-                    <span style="font-size: 0.72rem; color: #64748b; font-weight: 700;">Asociado a: Producto / Ofertas</span>
+                    <span style="font-size: 0.72rem; color: var(--admin-text-muted); font-weight: 700;">Asociado a: Producto / Ofertas</span>
                 </div>
                 <div id="admin-notif-rules-catalog" style="display: flex; flex-direction: column; gap: 10px;"></div>
             </div>

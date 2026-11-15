@@ -281,17 +281,7 @@ window.initPagesAdmin = function() {
         };
 
         const card = document.createElement('div');
-        card.style.cssText = `
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0.85rem 1.2rem;
-            background: white;
-            border-radius: var(--radius-md);
-            border: 1.5px solid #E8ECF0;
-            gap: 1rem;
-            box-shadow: var(--shadow-sm);
-        `;
+        card.className = 'menu-config-card';
 
         const isVisible = config.visible !== false;
 
@@ -397,18 +387,7 @@ window.initPagesAdmin = function() {
             const card = document.createElement('div');
             card.className = 'view-builder-card';
             card.setAttribute('data-index', idx);
-            card.style.cssText = `
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 0.75rem 1rem;
-                background: white;
-                border-radius: var(--radius-md);
-                border: 1.5px solid #E8ECF0;
-                gap: 1rem;
-                box-shadow: var(--shadow-sm);
-                transition: all 0.2s ease;
-            `;
+            card.style.cssText = 'display: flex; align-items: center; justify-content: space-between; gap: 1rem;';
 
             // Miniatura según el tipo de componente
             let thumbHtml = '';
@@ -697,17 +676,6 @@ window.initPagesAdmin = function() {
             card.className = 'section-row';
             card.setAttribute('data-id', sectionId);
             card.setAttribute('draggable', 'false');
-            card.style.cssText = `
-                background: #fafafa;
-                border: 1.5px solid #E8ECF0;
-                border-radius: 12px;
-                padding: 1.2rem;
-                display: flex;
-                flex-direction: column;
-                gap: 0.85rem;
-                box-shadow: var(--shadow-sm);
-                transition: all 0.2s ease;
-            `;
 
             if (sectionId.startsWith('comp-')) {
                 // Componente dinámico individual del View Builder
@@ -1354,7 +1322,7 @@ window.initMayoristaAdmin = function() {
         paymentMethodsContainer.innerHTML = '';
         currentPaymentMethods.forEach((pm, idx) => {
             const card = document.createElement('div');
-            card.style.cssText = 'border: 1px solid #E2E8F0; border-radius: 8px; padding: 1rem; background: #F8FAFC; position: relative;';
+            card.style.cssText = 'border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-md); padding: 1.15rem; background: #FFFFFF; position: relative; box-shadow: var(--admin-shadow-xs);';
             card.innerHTML = `
                 <button type="button" class="btn-del-pm" data-index="${idx}" style="position: absolute; top: 10px; right: 10px; background: none; border: none; color: #EF4444; cursor: pointer; font-size: 1.2rem;" title="Eliminar Método">&times;</button>
                 <div style="display: grid; grid-template-columns: 1fr 120px; gap: 1rem; margin-bottom: 0.8rem;">
