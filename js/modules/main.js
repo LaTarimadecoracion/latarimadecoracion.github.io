@@ -334,9 +334,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 'mis-compras': 'view-my-orders',
                 'carrito': 'view-profile',
                 'cart': 'view-profile',
-                'alquileres': 'view-rentals',
-                'alquiles': 'view-rentals',
-                'rentas': 'view-rentals',
                 'admin': 'view-admin',
                 'catalogo': 'view-catalogo',
                 'calcular': 'view-calculator',
@@ -396,14 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.replace('apps/editor-fotos.html');
             return;
         }
-        if (cleanPath.endsWith('/alquiles') || cleanPath.endsWith('/alquileres') || cleanPath.endsWith('/rentas')) {
-            setTimeout(() => {
-                if (window.navigateToView) {
-                    console.log(`[Router] Ruta limpia detectada: ${cleanPath}. Redirigiendo a Alquileres.`);
-                    window.navigateToView('view-rentals');
-                }
-            }, 150);
-        }
+
         if (cleanPath.endsWith('/calcular') || cleanPath.endsWith('/calculador') || cleanPath.endsWith('/web/calcular')) {
             setTimeout(() => {
                 if (window.navigateToView) {
@@ -552,9 +542,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 'perfil': 'view-user-profile',
                 'mi-perfil': 'view-user-profile',
                 'mis-compras': 'view-my-orders',
-                'alquileres': 'view-rentals',
-                'alquiles': 'view-rentals',
-                'rentas': 'view-rentals',
                 'admin': 'view-admin',
                 'catalogo': 'view-catalogo',
                 'calcular': 'view-calculator',

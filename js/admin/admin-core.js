@@ -159,7 +159,6 @@ function initAdminUX20() {
     if (typeof window.initSocialLinksAdmin === 'function') window.initSocialLinksAdmin();
     if (typeof window.initThemeAdmin === 'function') window.initThemeAdmin();
     if (typeof window.initGithubPublishAdmin === 'function') window.initGithubPublishAdmin();
-    if (typeof window.initRentalsAdmin === 'function') window.initRentalsAdmin();
     if (typeof window.initMayoristaAdmin === 'function') window.initMayoristaAdmin();
     if (typeof window.initVacationAdmin === 'function') window.initVacationAdmin();
     if (typeof window.initNotificationsAdmin === 'function') window.initNotificationsAdmin();
@@ -506,7 +505,6 @@ function renderAdminUX() {
                 if (categoriesView) categoriesView.style.display = 'block';
                 if (productsView) productsView.style.display = 'none';
                 if (typeof renderAdminTree === 'function') renderAdminTree();
-                if (typeof renderAdminRentals === 'function') renderAdminRentals();
             } else if (currentAdminPhase === 'products') {
                 if (categoriesView) categoriesView.style.display = 'none';
                 if (productsView) productsView.style.display = 'block';

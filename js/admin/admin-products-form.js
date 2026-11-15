@@ -1071,9 +1071,7 @@ window.addEventListener('message', (event) => {
     let sourceCategoryIdx = null; // tracks which category the product came from
 
     function openProductForm(cIdx, existingProd = null) {
-        if (cIdx !== null) {
-            window.isRentalMode = false;
-        }
+
 
         targetCategoryIdForProduct = cIdx;
         sourceCategoryIdx = cIdx;                          // guardar categoría de origen
@@ -1096,15 +1094,7 @@ window.addEventListener('message', (event) => {
         activeGroupsUI = [];
         groupCounter = 0;
 
-        // Mostrar / Ocultar campos específicos de Alquiler
-        const rentalPriceGroup = document.getElementById('admin-product-rental-price-group');
-        const categoriesDetails = document.getElementById('admin-product-categories-details');
-        if (rentalPriceGroup) rentalPriceGroup.style.display = window.isRentalMode ? 'block' : 'none';
-        if (categoriesDetails) categoriesDetails.style.display = window.isRentalMode ? 'none' : 'block';
 
-        if (window.isRentalMode) {
-            document.getElementById('admin-product-rental-price').value = existingProd?.price || '';
-        }
 
         // Campos globales (Auto-generar ID Base36 único garantizado si es un producto nuevo)
         let autoId = existingProd?.id || '';
@@ -1157,11 +1147,11 @@ window.addEventListener('message', (event) => {
             }
         }
 
-        // ── Poblar checkboxes de categorías y marcar principal (solo si no es alquiler) ──
+        // ── Poblar checkboxes de categorías y marcar principal ──
         const assignedCategoryIds = [];
         let primaryCategoryId = existingProd?.primaryCatId || null;
 
-        if (!window.isRentalMode) {
+        {
             if (existingProd) {
                 const searchId = isCloning && existingProd.id ? existingProd.id.replace(/-copia$/, '') : existingProd.id;
                 sessionProducts.forEach(cat => {
@@ -1193,7 +1183,7 @@ window.addEventListener('message', (event) => {
         const checkboxesContainer = document.getElementById('product-categories-checkboxes');
         if (checkboxesContainer) {
             checkboxesContainer.innerHTML = '';
-            if (!window.isRentalMode) {
+            {
                 const primaryCatObj = sessionProducts.find(c => c.id === primaryCategoryId);
                 const activeRubroId = primaryCatObj ? (primaryCatObj.rubro || 'carpinteria') : 'carpinteria';
 
@@ -1364,16 +1354,9 @@ window.addEventListener('message', (event) => {
         }
 
         const isClon = existingProd && existingProd.id && existingProd.id.endsWith('-copia');
-        let titleText = '';
-        if (window.isRentalMode) {
-            titleText = existingProd
-                ? (isClon ? `📋 Clonando Alquiler: ${existingProd.title}` : `Editando Alquiler: ${existingProd.title}`)
-                : `Nuevo Alquiler`;
-        } else {
-            titleText = existingProd
-                ? (isClon ? `📋 Clonando: ${existingProd.title}` : `Editando: ${existingProd.title}`)
-                : `Nuevo Producto en ${cIdx !== null ? sessionProducts[cIdx].name : 'Catálogo General'}`;
-        }
+        let titleText = existingProd
+            ? (isClon ? `📋 Clonando: ${existingProd.title}` : `Editando: ${existingProd.title}`)
+            : `Nuevo Producto en ${cIdx !== null ? sessionProducts[cIdx].name : 'Catálogo General'}`;
         const adminFormTitle = document.getElementById('admin-form-title');
         const productModal = document.getElementById('admin-product-modal');
         if (adminFormTitle) adminFormTitle.textContent = titleText;
@@ -1444,7 +1427,7 @@ window.addEventListener('message', (event) => {
             let primaryCatId = primaryRadio ? primaryRadio.value : (realSelectedCatIds.length > 0 ? realSelectedCatIds[0] : (selectedCatIds.length > 0 ? selectedCatIds[0] : null));
 
             let primaryCatObj = sessionProducts.find(c => c.id === primaryCatId);
-            const catName = window.isRentalMode ? 'alquileres' : (primaryCatObj ? primaryCatObj.name : (targetCategoryIdForProduct !== null && sessionProducts[targetCategoryIdForProduct] ? sessionProducts[targetCategoryIdForProduct].name : 'general'));
+            const catName = (primaryCatObj ? primaryCatObj.name : (targetCategoryIdForProduct !== null && sessionProducts[targetCategoryIdForProduct] ? sessionProducts[targetCategoryIdForProduct].name : 'general'));
 
             // Configuración de Descuentos por Cantidad del Producto
             const discountRows = [...(document.getElementById('product-discounts-container')?.querySelectorAll('.discount-tier-row') || [])];
@@ -1581,7 +1564,7 @@ window.addEventListener('message', (event) => {
 
             // Preservar o generar shortId estático inmutable
             let existingShortId = undefined;
-            const allCategoriesToSearch = [...(window.sessionProducts || []), { id: 'alquileres', products: window.sessionRentals || [] }];
+            const allCategoriesToSearch = [...(window.sessionProducts || [])];
             for (const cat of allCategoriesToSearch) {
                 if (cat && Array.isArray(cat.products)) {
                     const existingProd = cat.products.find(p => p.id === (editingProductId || idVal));
@@ -1624,103 +1607,7 @@ window.addEventListener('message', (event) => {
                 product.optional_variant = { label: optLabel, options: optOptions };
             }
 
-            if (window.isRentalMode) {
-                product.price = document.getElementById('admin-product-rental-price').value.trim();
-                product.primaryCatId = 'alquileres';
 
-                // Validar duplicado de ID en rentals si es nuevo
-                if (!editingProductId) {
-                    if (sessionRentals.some(r => r.id === product.id)) {
-                        alert(`Ya existe un alquiler con el ID "${product.id}". Cambiá el ID e intentá de nuevo.`);
-                        resetSaveButtons();
-                        return;
-                    }
-                }
-
-                // Buscar estado de visibilidad existente
-                let existingRentalVisibleState = undefined;
-                const found = sessionRentals.find(r => r.id === (editingProductId || product.id));
-                if (found && found.visible !== undefined) {
-                    existingRentalVisibleState = found.visible;
-                }
-                if (existingRentalVisibleState !== undefined) {
-                    product.visible = existingRentalVisibleState;
-                }
-
-                // Guardar/Actualizar en sessionRentals
-                const matchIndex = sessionRentals.findIndex(r => r.id === (editingProductId || product.id));
-                if (matchIndex !== -1) {
-                    sessionRentals[matchIndex] = product;
-                } else {
-                    sessionRentals.push(product);
-                }
-
-                // Auto-crear aviso si es un alquiler totalmente nuevo
-                if (!editingProductId) {
-                    const autoAvisoCheck = document.getElementById('admin-product-auto-aviso');
-                    const shouldPublish = autoAvisoCheck ? autoAvisoCheck.checked : true;
-                    
-                    if (shouldPublish) {
-                        const productCover = Array.isArray(product.image) ? product.image[0] : (product.image || 'img/logo_provisional.png');
-                        const newAvisoBlock = {
-                            title: `¡Nuevo Alquiler: ${product.title}!`,
-                            description: `Sumamos un nuevo artículo a nuestra sección de alquileres. ¡Hacé clic para conocer todos los detalles de ${product.title}!`,
-                            mediaType: 'image',
-                            image: productCover,
-                            videoUrl: '',
-                            mapQuery: '',
-                            links: [
-                                {
-                                    text: 'Ver Alquiler',
-                                    url: `?view=view-product-detail&prod=${product.id}`,
-                                    newTab: false
-                                }
-                            ],
-                            linkUrl: `?view=view-product-detail&prod=${product.id}`,
-                            linkText: 'Ver Alquiler',
-                            linkNewTab: false,
-                            timestamp: Date.now()
-                        };
-
-                        if (typeof window.sessionAvisos !== 'undefined') {
-                            window.sessionAvisos.unshift(newAvisoBlock);
-                            localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
-                            if (window.syncSiteConfigWithServer) {
-                                window.syncSiteConfigWithServer();
-                            }
-                        }
-                    }
-                }
-                // Sincronizar avisos vinculados a este alquiler
-                if (window.sessionAvisos && Array.isArray(window.sessionAvisos)) {
-                    let avisosChanged = false;
-                    window.sessionAvisos.forEach(aviso => {
-                        const linksList = aviso.links || [];
-                        const hasLinkToProduct = (aviso.linkUrl && aviso.linkUrl.includes(`prod=${product.id}`)) ||
-                                                 linksList.some(l => l.url && l.url.includes(`prod=${product.id}`));
-                        if (hasLinkToProduct && aviso.image !== product.image) {
-                            aviso.image = product.image;
-                            avisosChanged = true;
-                        }
-                    });
-                    if (avisosChanged) {
-                        localStorage.setItem('sessionAvisosAutonomo', JSON.stringify(window.sessionAvisos));
-                    }
-                }
-
-                showAdminToast(editingProductId ? '✅ Alquiler actualizado correctamente' : '✅ Alquiler creado correctamente');
-
-                if (window.saveRentalsToServer) {
-                    await window.saveRentalsToServer();
-                }
-
-                const productModal = document.getElementById('admin-product-modal');
-                if (productModal) productModal.style.display = 'none';
-                renderAdminRentals();
-
-                resetSaveButtons();
-                return;
-            }
 
             // Obtener categorías seleccionadas y principal (solo modo normal)
             if (checkboxesContainer) {

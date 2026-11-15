@@ -70,10 +70,7 @@ window.sessionProducts = (() => {
     return localList;
 })();
 
-// Estado global de Alquileres
-window.sessionRentals = typeof rentalsData !== 'undefined' && Array.isArray(rentalsData) && rentalsData.length > 0
-    ? [...rentalsData]
-    : (localStorage.getItem('sessionRentals') ? JSON.parse(localStorage.getItem('sessionRentals')) : []);
+window.sessionRentals = [];
 
 // Estado global de Ofertas (Priorizar base de datos del servidor js/offers-data.js)
 window.sessionOffers = typeof offersData !== 'undefined' && Array.isArray(offersData) && offersData.length > 0
@@ -84,7 +81,6 @@ window.sessionOffers = typeof offersData !== 'undefined' && Array.isArray(offers
 try {
     localStorage.removeItem('sessionOffersAutonomo');
     localStorage.removeItem('sessionProductsAutonomo');
-    localStorage.removeItem('sessionRentalsAutonomo');
 } catch (e) {}
 
 // Garantizar que existan las estructuras de siteConfig del servidor
@@ -320,22 +316,7 @@ if (Array.isArray(window.sessionAvisos)) {
                 }
             }
 
-            if (!targetCover && window.sessionRentals && Array.isArray(window.sessionRentals)) {
-                const found = window.sessionRentals.find(r => {
-                    if (!r) return false;
-                    const rId = String(r.id != null ? r.id : '').trim().toLowerCase();
-                    const rTitle = String(r.title != null ? r.title : '').trim().toLowerCase();
-                    return rId === decodedProdId || rTitle === decodedProdId;
-                });
-                if (found) {
-                    if (found.acabados_groups && found.acabados_groups.length > 0) {
-                        targetCover = found.acabados_groups[0].cover_image || (found.acabados_groups[0].images_list && found.acabados_groups[0].images_list[0]);
-                    }
-                    if (!targetCover && found.image) {
-                        targetCover = Array.isArray(found.image) ? found.image[0] : found.image;
-                    }
-                }
-            }
+
 
             if (targetCover && targetCover !== 'img/logo_provisional.png' && aviso.image !== targetCover) {
                 aviso.image = targetCover;
@@ -387,17 +368,7 @@ if (Array.isArray(window.sessionAvisos)) {
             }
         }
 
-        // Verificar existencia en alquileres
-        if (window.sessionRentals && Array.isArray(window.sessionRentals)) {
-            for (const r of window.sessionRentals) {
-                if (!r) continue;
-                const rId = String(r.id != null ? r.id : '').trim().toLowerCase();
-                const rTitle = String(r.title != null ? r.title : '').trim().toLowerCase();
-                const normRTitle = rTitle.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
-                if (prodParam && (rId === prodParam || normRTitle === prodParam)) return true;
-                if (normATitle && (normRTitle === normATitle || (normRTitle.length > 5 && normATitle.includes(normRTitle)))) return true;
-            }
-        }
+
 
         return false; // Es un aviso de producto pero el producto ya no existe: eliminar
     });

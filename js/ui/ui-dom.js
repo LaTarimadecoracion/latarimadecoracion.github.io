@@ -1,18 +1,5 @@
 
-    document.addEventListener('DOMContentLoaded', () => {
-        const modal = document.getElementById('rental-detail-modal');
-        const closeBtn = document.getElementById('btn-close-rental-detail');
-        if (closeBtn && modal) {
-            closeBtn.addEventListener('click', () => {
-                modal.style.display = 'none';
-            });
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        }
-    });
+
 
 
     function renderAvisosCliente() {

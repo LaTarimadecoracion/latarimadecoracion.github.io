@@ -100,21 +100,7 @@
             }
         }
 
-        // 3. Buscar en Alquileres
-        if (window.sessionRentals && Array.isArray(window.sessionRentals)) {
-            for (const r of window.sessionRentals) {
-                if (!r) continue;
-                const normRId = normalizeAvisoString(r.id);
-                const normRTitle = normalizeAvisoString(r.title);
 
-                const isIdMatch = prodParam && (r.id === prodParam || normRId === normProdParam);
-                const isTitleMatch = normBlockTitle && (normRTitle === normBlockTitle || (normRTitle.length > 5 && normBlockTitle.includes(normRTitle)) || (normRTitle.length > 5 && normRTitle.includes(normBlockTitle)));
-
-                if (isIdMatch || isTitleMatch) {
-                    return { type: 'rental', product: r, catName: 'alquileres' };
-                }
-            }
-        }
 
         return null;
     }
@@ -208,9 +194,7 @@
                         if (matched.type === 'offer' && window.showOfferDetail) {
                             return window.showOfferDetail(matched.offer);
                         }
-                        if (matched.type === 'rental' && window.showProductDetail) {
-                            return window.showProductDetail(matched.product, 'alquileres');
-                        }
+
                     }
 
                     // Fallback a URL externa si no se encontró en memoria local
@@ -340,13 +324,13 @@
                                         window.showProductDetail(found.product, found.catName);
                                     } else {
                                         if (targetView) {
-                                            const viewIdMap = { 'nosotros': 'view-about', 'buscar': 'view-search', 'avisos': 'view-notifications', 'perfil': 'view-profile', 'alquileres': 'view-rentals', 'admin': 'view-admin', 'catalogo': 'view-catalogo', 'calcular': 'view-calculator', 'home': 'view-home', 'categorias': 'view-categories', 'carrito': 'view-cart', 'videos': 'view-videos' };
+                                            const viewIdMap = { 'nosotros': 'view-about', 'buscar': 'view-search', 'avisos': 'view-notifications', 'perfil': 'view-profile', 'admin': 'view-admin', 'catalogo': 'view-catalogo', 'calcular': 'view-calculator', 'home': 'view-home', 'categorias': 'view-categories', 'carrito': 'view-cart', 'videos': 'view-videos' };
                                             const viewId = viewIdMap[targetView] || targetView;
                                             if (window.navigateToView) window.navigateToView(viewId);
                                         }
                                     }
                                 } else if (targetView) {
-                                    const viewIdMap = { 'nosotros': 'view-about', 'buscar': 'view-search', 'avisos': 'view-notifications', 'perfil': 'view-profile', 'alquileres': 'view-rentals', 'admin': 'view-admin', 'catalogo': 'view-catalogo', 'calcular': 'view-calculator', 'home': 'view-home', 'categorias': 'view-categories', 'carrito': 'view-cart', 'videos': 'view-videos' };
+                                    const viewIdMap = { 'nosotros': 'view-about', 'buscar': 'view-search', 'avisos': 'view-notifications', 'perfil': 'view-profile', 'admin': 'view-admin', 'catalogo': 'view-catalogo', 'calcular': 'view-calculator', 'home': 'view-home', 'categorias': 'view-categories', 'carrito': 'view-cart', 'videos': 'view-videos' };
                                     const viewId = viewIdMap[targetView] || targetView;
                                     if (window.navigateToView) window.navigateToView(viewId);
                                 } else if (targetCat) {

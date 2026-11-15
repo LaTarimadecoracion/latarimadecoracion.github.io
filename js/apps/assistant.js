@@ -1044,7 +1044,6 @@
                             stock: { title: "Control de Stock Personal", url: "apps/stock.html", icon: "📦", view: "view-stock" },
                             musica: { title: "Reproductor de Música", url: "musica.html", icon: "🎵", view: "view-musica" },
                             visualizador: { title: "Visualizador 3D", url: "visualizador.html", icon: "👁️", view: "view-visualizador" },
-                            alquileres: { title: "Alquiler de Muebles", url: "index.html?view=alquileres", icon: "🎪", view: "view-rentals" },
                             nosotros: { title: "Nosotros", url: "index.html?view=nosotros", icon: "ℹ️", view: "view-about" },
                             perfil: { title: "Carrito / Mi Pedido", url: "index.html?view=perfil", icon: "🛒", view: "view-profile" },
                             avisos: { title: "Avisos y Novedades", url: "index.html?view=avisos", icon: "🔔", view: "view-notifications" },

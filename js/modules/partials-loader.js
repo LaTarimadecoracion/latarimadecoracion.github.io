@@ -295,7 +295,6 @@ window.loadAdminPartialsOnDemand = function() {
             'js/admin/importer/admin-ml-importer.js?v=2',
             'js/admin/admin-tnube.js?v=1',
             'js/admin/admin-bulk-edit.js?v=1',
-            'js/admin/admin-rentals.js?v=1',
             'js/admin/admin-offers.js?v=1',
             'js/admin/admin-shipping.js?v=1',
             'js/admin/admin-cortes.js?v=1',

@@ -10,11 +10,7 @@ const sharp   = require('sharp');     // Conversión de imágenes a WebP
 const app = express();
 const PORT = 7000;
 
-// Ensure rentals database file exists
-const rentalsDbPath = path.join(ROOT_DIR, 'js', 'data', 'rentals-data.js');
-if (!fs.existsSync(rentalsDbPath)) {
-    fs.writeFileSync(rentalsDbPath, 'const rentalsData = [];\n', 'utf8');
-}
+
 
 // Ensure offers database file exists
 const offersDbPath = path.join(ROOT_DIR, 'js', 'data', 'offers-data.js');
@@ -618,17 +614,7 @@ app.post('/api/save-products', (req, res) => {
                 if (cat.products) addProductImages(cat.products);
             });
 
-            // 2. Alquileres
-            try {
-                const rentalsPath = path.join(ROOT_DIR, 'js', 'data', 'rentals-data.js');
-                if (fs.existsSync(rentalsPath)) {
-                    const rawRentals = fs.readFileSync(rentalsPath, 'utf8');
-                    const match = rawRentals.match(/const\s+rentalsData\s*=\s*(\[.*?\]);?\s*$/s);
-                    if (match && match[1]) {
-                        addProductImages(JSON.parse(match[1]));
-                    }
-                }
-            } catch (e) { console.warn('Error parseando rentalsData', e); }
+
 
             // 3. Ofertas
             try {
@@ -970,26 +956,7 @@ app.post('/api/save-assistant-config', (req, res) => {
     }
 });
 
-// API Endpoint to save rentalsData JSON
-app.post('/api/save-rentals', (req, res) => {
-    try {
-        const rentalsArray = req.body;
-        
-        if (!Array.isArray(rentalsArray)) {
-            return res.status(400).json({ success: false, message: 'El payload debe ser un array.' });
-        }
 
-        const fileContent = 'const rentalsData = ' + JSON.stringify(rentalsArray, null, 4) + ';\n';
-        const filePath = path.join(ROOT_DIR, 'js', 'data', 'rentals-data.js');
-        
-        fs.writeFileSync(filePath, fileContent, 'utf8');
-        console.log('✅ js/rentals-data.js actualizado correctamente.');
-        res.json({ success: true, message: 'Alquileres guardados exitosamente.' });
-    } catch (error) {
-        console.error('❌ Error guardando alquileres:', error);
-        res.status(500).json({ success: false, message: 'Error interno del servidor.' });
-    }
-});
 
 // API Endpoint to save offersData JSON
 app.post('/api/save-offers', (req, res) => {

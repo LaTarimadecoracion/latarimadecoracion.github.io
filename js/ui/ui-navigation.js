@@ -242,7 +242,6 @@
             'view-search': 'Buscar Productos | LA TARIMA - Decoración',
             'view-videos': 'Videos | LA TARIMA - Decoración',
             'view-notifications': 'Notificaciones | LA TARIMA - Decoración',
-            'view-rentals': 'Alquileres | LA TARIMA - Decoración',
             'view-catalogo': 'Catálogo | LA TARIMA - Decoración',
             'view-offers': 'Ofertas & Combos | LA TARIMA - Decoración',
             'view-calculator': 'Calculadora | LA TARIMA - Decoración',
@@ -387,8 +386,6 @@
                 }
             } else if (viewId === 'view-search') {
                 if (window.runSearch) window.runSearch();
-            } else if (viewId === 'view-rentals') {
-                renderRentals();
             } else if (viewId === 'view-my-orders') {
                 const ordId = (context && context.orderId) || new URLSearchParams(window.location.search).get('id') || '';
                 const orderOpts = ordId ? { orderId: ordId } : {};
@@ -489,7 +486,6 @@
                 'view-profile': 'carrito',
                 'view-user-profile': 'perfil',
                 'view-my-orders': 'mis-compras',
-                'view-rentals': 'alquileres',
                 'view-admin': 'admin',
                 'view-catalogo': 'catalogo',
                 'view-offers': 'ofertas',
@@ -508,7 +504,7 @@
             };
             
             let basePath = window.location.pathname.replace(/\/index\.html$/, '/');
-            basePath = basePath.replace(/\/(alquiles|alquileres|rentas|rentales|stock|mayorista|catalogo|musica|admin|ofertas)\/?$/, '/');
+            basePath = basePath.replace(/\/(stock|mayorista|catalogo|musica|admin|ofertas)\/?$/, '/');
             
             let query = '';
             if (prettyNames[viewId]) {
