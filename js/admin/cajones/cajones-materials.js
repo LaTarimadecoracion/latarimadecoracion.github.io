@@ -81,7 +81,7 @@
             const card = document.createElement('div');
             card.className = 'cajones-material-card';
             card.dataset.materialId = mat.id || ('mat_' + Date.now() + '_' + idx);
-            card.style.cssText = 'background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 10px; padding: 0.85rem; display: flex; flex-direction: column; gap: 8px; transition: transform 0.15s ease, box-shadow 0.15s ease;';
+            card.style.cssText = 'transition: transform 0.15s ease, box-shadow 0.15s ease;';
 
             card.innerHTML = `
                 <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap;">

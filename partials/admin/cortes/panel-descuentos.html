@@ -1,32 +1,31 @@
-                                <div id="cortes-modpanel-descuentos" class="cortes-module-panel" style="display: none;">
-                                    <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--admin-shadow-sm);">
-                                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem; flex-wrap: wrap; gap: 8px;">
-                                            <div>
-                                                <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 8px;">
-                                                    <span class="material-symbols-outlined" style="font-size: 22px; color: #10B981;">sell</span>
-                                                    Descuentos por Cantidad en Tablas y Cortes (Precio Unitario)
-                                                </h4>
-                                                <p style="margin: 3px 0 0 0; font-size: 0.78rem; color: #64748B;">
-                                                    Escala de precios mayoristas por volumen de piezas compradas (independiente del flete seleccionado). Podés agregar todos los tramos que necesites.
-                                                </p>
-                                            </div>
-                                            <div style="display: flex; align-items: center; gap: 10px;">
-                                                <button type="button" class="btn-secondary" onclick="window.addCortesMaderaDiscountScaleRow()" style="font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; display: inline-flex; align-items: center; gap: 4px;">
-                                                    <span class="material-symbols-outlined" style="font-size: 15px;">add</span>
-                                                    <span>Agregar Escala</span>
-                                                </button>
-                                                <div style="display: flex; align-items: center; gap: 6px;">
-                                                    <input type="checkbox" id="chk-cortes-desc-activo" checked style="width: 16px; height: 16px; cursor: pointer;">
-                                                    <label for="chk-cortes-desc-activo" style="font-size: 0.78rem; font-weight: 700; cursor: pointer;">Activo</label>
-                                                </div>
-                                            </div>
-                                        </div>
+<!-- partials/admin/cortes/panel-descuentos.html -->
+<div id="cortes-modpanel-descuentos" class="cortes-module-panel" style="display: none;">
+    <div class="admin-card" style="background: #FFFFFF; border: 1px solid var(--admin-border-color); border-radius: var(--admin-radius-md); padding: 1.25rem; box-shadow: var(--admin-shadow-xs);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 8px;">
+            <div>
+                <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--admin-text-main); display: flex; align-items: center; gap: 8px;">
+                    <span class="material-symbols-outlined" style="font-size: 22px; color: #10B981;">sell</span>
+                    Descuentos por Cantidad en Tablas y Cortes (Precio Unitario)
+                </h4>
+                <p style="margin: 3px 0 0 0; font-size: 0.8rem; color: var(--admin-text-muted);">
+                    Escala de precios mayoristas por volumen de piezas compradas. Podés agregar todos los tramos que necesites.
+                </p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <button type="button" class="btn-primary" onclick="window.addCortesMaderaDiscountScaleRow()" style="font-size: 0.8rem; padding: 0.45rem 0.9rem; border-radius: 8px; display: inline-flex; align-items: center; gap: 6px; font-weight: 700; cursor: pointer;">
+                    <span class="material-symbols-outlined" style="font-size: 17px;">add</span>
+                    <span>Agregar Escala</span>
+                </button>
+                <div style="display: flex; align-items: center; gap: 6px; background: var(--admin-surface-hover); padding: 4px 10px; border-radius: 6px; border: 1px solid var(--admin-border-color);">
+                    <input type="checkbox" id="chk-cortes-desc-activo" checked style="width: 16px; height: 16px; cursor: pointer;">
+                    <label for="chk-cortes-desc-activo" style="font-size: 0.8rem; font-weight: 700; cursor: pointer; color: var(--admin-text-main);">Activo</label>
+                </div>
+            </div>
+        </div>
 
-                                        <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 12px; padding: 1rem;">
-                                            <!-- Contenedor dinámico de escalas de descuento de madera -->
-                                            <div id="cortes-madera-escalas-container" style="display: flex; flex-direction: column; gap: 8px;">
-                                                <!-- Inyectado dinámicamente por renderMaderaDiscountScalesUI() -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+        <!-- Contenedor dinámico de escalas de descuento de madera -->
+        <div id="cortes-madera-escalas-container" style="display: flex; flex-direction: column; gap: 8px;">
+            <!-- Inyectado dinámicamente por renderMaderaDiscountScalesUI() -->
+        </div>
+    </div>
+</div>

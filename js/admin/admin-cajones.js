@@ -23,9 +23,9 @@
         tabs.forEach(t => {
             if (t.btn) {
                 t.btn.classList.remove('active');
-                t.btn.style.background = 'transparent';
-                t.btn.style.color = '#475569';
-                t.btn.style.boxShadow = 'none';
+                t.btn.style.background = '';
+                t.btn.style.color = '';
+                t.btn.style.boxShadow = '';
             }
             if (t.panel) {
                 t.panel.style.display = 'none';
@@ -35,9 +35,9 @@
         const activeTab = tabs.find(t => t.id === modName) || tabs[0];
         if (activeTab.btn) {
             activeTab.btn.classList.add('active');
-            activeTab.btn.style.background = '#0F172A';
-            activeTab.btn.style.color = '#FFFFFF';
-            activeTab.btn.style.boxShadow = '0 1px 3px rgba(0,0,0,0.12)';
+            activeTab.btn.style.background = '';
+            activeTab.btn.style.color = '';
+            activeTab.btn.style.boxShadow = '';
         }
         if (activeTab.panel) {
             activeTab.panel.style.display = 'block';

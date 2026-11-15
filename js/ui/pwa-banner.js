@@ -218,6 +218,9 @@
 
     // ─── ¿Hay que mostrar el banner? ────────────────────────────────────────────
     function shouldShow() {
+        // No mostrar en la vista del panel admin
+        if (window.location.search.includes('view=admin') || window.location.hash.includes('view-admin')) return false;
+
         // No mostrar si ya está instalado (standalone)
         if (window.matchMedia('(display-mode: standalone)').matches) return false;
         if (window.navigator.standalone === true) return false;

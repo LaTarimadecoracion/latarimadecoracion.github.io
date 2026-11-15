@@ -1,24 +1,22 @@
 <!-- partials/admin/cajones/panel-materiales.html -->
 <div id="cajones-modpanel-materiales" class="cajones-module-panel" style="display: block;">
-    <div style="background: #FFFFFF; border: 1px solid #E2E8F0; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--admin-shadow-sm);">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.85rem; flex-wrap: wrap; gap: 8px;">
-            <div>
-                <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: #0F172A; display: flex; align-items: center; gap: 8px;">
-                    <span class="material-symbols-outlined" style="font-size: 22px; color: #854D0E;">forest</span>
-                    Materiales & Tableros (Dimensiones Máximas y Precios)
-                </h4>
-                <p style="margin: 3px 0 0 0; font-size: 0.78rem; color: #64748B;">
-                    Configurá cada madera o placa disponible para la fabricación de cajones. Podés agregar o eliminar placas y definir sus costos y márgenes.
-                </p>
-            </div>
-            <button type="button" class="btn-secondary" onclick="window.addCajonMaterialRow()" style="font-size: 0.78rem; padding: 0.4rem 0.8rem; display: flex; align-items: center; gap: 4px; border-radius: 8px; cursor: pointer;">
-                <span class="material-symbols-outlined" style="font-size: 16px;">add</span>
-                <span>+ Nuevo Material</span>
-            </button>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 10px;">
+        <div>
+            <h4 style="margin: 0; font-size: 1.05rem; font-weight: 800; color: var(--admin-text-main); display: flex; align-items: center; gap: 8px;">
+                <span class="material-symbols-outlined" style="font-size: 22px; color: #854D0E;">forest</span>
+                Materiales & Tableros (Dimensiones Máximas y Precios)
+            </h4>
+            <p style="margin: 3px 0 0 0; font-size: 0.8rem; color: var(--admin-text-muted);">
+                Configurá cada madera o placa disponible para la fabricación de cajones. Podés agregar o eliminar placas y definir sus costos y márgenes.
+            </p>
         </div>
+        <button type="button" class="btn-primary" onclick="window.addCajonMaterialRow()" style="font-size: 0.82rem; padding: 0.45rem 1rem; display: inline-flex; align-items: center; gap: 6px; border-radius: 8px; font-weight: 700; cursor: pointer;">
+            <span class="material-symbols-outlined" style="font-size: 18px;">add</span>
+            <span>Nuevo Material</span>
+        </button>
+    </div>
 
-        <div id="cajones-materiales-container" style="display: flex; flex-direction: column; gap: 0.75rem;">
-            <!-- Filas de materiales generadas dinámicamente con la misma plantilla de Cortes -->
-        </div>
+    <div id="cajones-materiales-container" style="display: flex; flex-direction: column; gap: 1rem;">
+        <!-- Filas de materiales generadas dinámicamente -->
     </div>
 </div>
