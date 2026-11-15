@@ -10467,167 +10467,6 @@ const productsData = [
                 "views": 4
             },
             {
-                "id": "1792887338350",
-                "shortId": "3O",
-                "title": "Mesa Mesita Auxiliar Matera Plegable",
-                "description": "",
-                "image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Vivaro",
-                        "description": "",
-                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
-                        "images_list": [
-                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Algarrobo",
-                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": 25000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true,
-                                "material": "",
-                                "espesor": "",
-                                "armado": "",
-                                "extra": ""
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Wengue",
-                        "description": "",
-                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797068-imagenwebp.webp",
-                        "images_list": [
-                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797068-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Algarrobo",
-                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": 25000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true,
-                                "material": "",
-                                "espesor": "",
-                                "armado": "",
-                                "extra": ""
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Algarrobo",
-                        "description": "",
-                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797078-imagenwebp.webp",
-                        "images_list": [
-                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797078-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Algarrobo",
-                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": 25000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true,
-                                "material": "",
-                                "espesor": "",
-                                "armado": "",
-                                "extra": ""
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Pitiribi",
-                        "description": "",
-                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797084-imagenwebp.webp",
-                        "images_list": [
-                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797084-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Algarrobo",
-                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": 25000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true,
-                                "material": "",
-                                "espesor": "",
-                                "armado": "",
-                                "extra": ""
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "borrador",
-                    "mercado libre",
-                    "mla3936801982",
-                    "mesa",
-                    "mesita",
-                    "auxiliar",
-                    "matera",
-                    "plegable"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1794518673813,
-                "primaryCatId": "Mesas-madera",
-                "history": [
-                    {
-                        "type": "import_ml",
-                        "timestamp": 1792887338344,
-                        "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
-                    }
-                ],
-                "views": 13
-            },
-            {
                 "id": "1792887338354",
                 "shortId": "3O",
                 "title": "4 Maceteros Canasta Organizadores En Junco",
@@ -23822,14 +23661,14 @@ const productsData = [
                 "shortId": "3O",
                 "title": "Mesa Mesita Auxiliar Matera Plegable",
                 "description": "",
-                "image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
+                "image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1794718723401-edit_1794718721768webp.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Vivaro",
+                        "acabado_name": "Wengue",
                         "description": "",
-                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1794718723401-edit_1794718721768webp.webp",
                         "images_list": [
-                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp"
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1794718723401-edit_1794718721768webp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -23854,11 +23693,11 @@ const productsData = [
                         "hidden": false
                     },
                     {
-                        "acabado_name": "Wengue",
+                        "acabado_name": "Vivaro",
                         "description": "",
-                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797068-imagenwebp.webp",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
                         "images_list": [
-                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797068-imagenwebp.webp"
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp"
                         ],
                         "medidas_variants": [
                             {
@@ -23967,7 +23806,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1794518673813,
+                "last_modified": 1794718986203,
                 "primaryCatId": "Mesas-madera",
                 "history": [
                     {
@@ -23976,7 +23815,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
                     }
                 ],
-                "views": 13
+                "rubro": "carpinteria"
             }
         ]
     },

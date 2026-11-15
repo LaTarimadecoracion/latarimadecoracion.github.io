@@ -3,14 +3,14 @@
   "shortId": "3O",
   "title": "Mesa Mesita Auxiliar Matera Plegable",
   "description": "",
-  "image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
+  "image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1794718723401-edit_1794718721768webp.webp",
   "acabados_groups": [
     {
-      "acabado_name": "Vivaro",
+      "acabado_name": "Wengue",
       "description": "",
-      "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
+      "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1794718723401-edit_1794718721768webp.webp",
       "images_list": [
-        "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp"
+        "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1794718723401-edit_1794718721768webp.webp"
       ],
       "medidas_variants": [
         {
@@ -35,11 +35,11 @@
       "hidden": false
     },
     {
-      "acabado_name": "Wengue",
+      "acabado_name": "Vivaro",
       "description": "",
-      "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797068-imagenwebp.webp",
+      "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
       "images_list": [
-        "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797068-imagenwebp.webp"
+        "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp"
       ],
       "medidas_variants": [
         {
@@ -148,7 +148,7 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1794518673813,
+  "last_modified": 1794718986203,
   "primaryCatId": "Mesas-madera",
   "history": [
     {
@@ -156,11 +156,6 @@
       "timestamp": 1792887338344,
       "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
     }
-  ],
-  "views": 13,
-  "categories": [
-    "carpinteria-todos",
-    "Mesas-madera"
   ],
   "rubro": "carpinteria"
 }
