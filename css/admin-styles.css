@@ -240,6 +240,66 @@
     box-sizing: border-box;
 }
 
+/* Barra Superior de Subpestañas por Área Maestra */
+.admin-subtabs-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--admin-border-color);
+    padding: 0.65rem 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+.admin-subtab-pills {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.admin-subtab-pills::-webkit-scrollbar {
+    display: none;
+}
+
+.admin-subtab-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--admin-text-muted);
+    background: #F5F5F4;
+    border: 1px solid #E7E5E4;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.admin-subtab-pill:hover {
+    color: var(--admin-text-main);
+    background: #E7E5E4;
+    border-color: #D6D3D1;
+}
+
+.admin-subtab-pill.active {
+    color: #FFFFFF;
+    background: var(--admin-accent);
+    border-color: var(--admin-accent);
+    font-weight: 700;
+    box-shadow: 0 1px 4px rgba(160, 113, 91, 0.28);
+}
+
+.admin-subtab-pill .material-symbols-outlined {
+    font-size: 17px;
+    line-height: 1;
+}
+
 #admin-bulk-edit-view.fullwidth-active {
     padding: 0.5rem 1rem !important;
 }

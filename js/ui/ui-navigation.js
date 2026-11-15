@@ -416,14 +416,14 @@
             } else if (viewId === 'view-admin') {
                 const urlParams = new URLSearchParams(window.location.search);
                 const tabFromUrl = (context && context.tab) || urlParams.get('tab') || window.location.hash.replace('#', '');
-                const validTabs = ['dashboard', 'settings', 'catalog', 'offers', 'shipping', 'cortes', 'stock', 'pc-stock', 'pages', 'notifications', 'orders', 'quotes', 'users', 'maintenance'];
+                const validTabs = ['orders', 'quotes', 'catalog', 'bulk-edit', 'offers', 'ml-importer', 'tnube', 'cortes', 'cajones', 'pages', 'notifications', 'settings', 'payments', 'shipping', 'users', 'dashboard', 'maintenance'];
                 if (tabFromUrl && validTabs.includes(tabFromUrl)) {
                     window.currentAdminTab = tabFromUrl;
                 } else if (!window.currentAdminTab) {
-                    window.currentAdminTab = 'dashboard';
+                    window.currentAdminTab = 'orders';
                 }
                 if (window.loadAdminPartialsOnDemand) {
-                    window.loadAdminPartialsOnDemand().then(() => {
+                    window.loadAdminPartialsOnDemand(window.currentAdminTab).then(() => {
                         if (window.renderAdminUX) window.renderAdminUX();
                         if (window.AdminAuth && typeof window.AdminAuth.renderHeaderUserBadge === 'function') {
                             window.AdminAuth.renderHeaderUserBadge();

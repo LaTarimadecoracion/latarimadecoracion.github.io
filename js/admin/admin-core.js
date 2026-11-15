@@ -47,6 +47,129 @@ function updateAdminUrlTab(tabKey) {
     } catch(e) {}
 }
 
+// --- ÁREAS MAESTRAS Y NAVEGACIÓN MODULAR V3.1 ---
+const ADMIN_MASTER_AREAS = {
+    sales: {
+        id: 'sales',
+        btnId: 'tab-btn-orders',
+        name: 'Ventas',
+        icon: 'receipt_long',
+        defaultTab: 'orders',
+        tabs: [
+            { key: 'orders', label: 'Pedidos en Vivo', icon: 'description' },
+            { key: 'quotes', label: 'Crear Presupuesto', icon: 'request_quote' }
+        ]
+    },
+    catalog: {
+        id: 'catalog',
+        btnId: 'tab-btn-catalog',
+        name: 'Productos',
+        icon: 'inventory_2',
+        defaultTab: 'catalog',
+        tabs: [
+            { key: 'catalog', label: 'Catálogo', icon: 'inventory_2' },
+            { key: 'bulk-edit', label: 'Editor Masivo', icon: 'table_chart' },
+            { key: 'offers', label: 'Ofertas & Combos', icon: 'local_offer' },
+            { key: 'ml-importer', label: 'Importar ML', icon: 'storefront' },
+            { key: 'tnube', label: 'Tiendanube', icon: 'cloud_upload' }
+        ]
+    },
+    workshop: {
+        id: 'workshop',
+        btnId: 'tab-btn-cortes',
+        name: 'Taller',
+        icon: 'carpenter',
+        defaultTab: 'cortes',
+        tabs: [
+            { key: 'cortes', label: 'Cortes de Madera', icon: 'carpenter' },
+            { key: 'cajones', label: 'Cajones CrossFit', icon: 'sports_gymnastics' }
+        ]
+    },
+    design: {
+        id: 'design',
+        btnId: 'tab-btn-pages',
+        name: 'Diseño',
+        icon: 'view_quilt',
+        defaultTab: 'pages',
+        tabs: [
+            { key: 'pages', label: 'Páginas & Banners', icon: 'view_quilt' },
+            { key: 'notifications', label: 'Notificaciones', icon: 'notifications_active' }
+        ]
+    },
+    settings: {
+        id: 'settings',
+        btnId: 'tab-btn-settings',
+        name: 'Ajustes',
+        icon: 'tune',
+        defaultTab: 'settings',
+        tabs: [
+            { key: 'settings', label: 'General & Taller', icon: 'tune' },
+            { key: 'payments', label: 'Métodos de Pago', icon: 'payments' },
+            { key: 'shipping', label: 'Envíos & Zonas', icon: 'local_shipping' },
+            { key: 'users', label: 'Usuarios & Permisos', icon: 'group' }
+        ]
+    }
+};
+
+const ADMIN_TAB_TO_MASTER = {
+    orders: 'sales',
+    quotes: 'sales',
+    catalog: 'catalog',
+    'bulk-edit': 'catalog',
+    offers: 'catalog',
+    'ml-importer': 'catalog',
+    tnube: 'catalog',
+    cortes: 'workshop',
+    cajones: 'workshop',
+    pages: 'design',
+    notifications: 'design',
+    settings: 'settings',
+    payments: 'settings',
+    shipping: 'settings',
+    users: 'settings',
+    dashboard: 'sales',
+    maintenance: 'settings',
+    'inventory-v3': 'catalog'
+};
+
+window.ADMIN_MASTER_AREAS = ADMIN_MASTER_AREAS;
+window.ADMIN_TAB_TO_MASTER = ADMIN_TAB_TO_MASTER;
+
+window.switchAdminTab = async function(targetTab) {
+    if (!targetTab) return;
+    let tabKey = targetTab.startsWith('tab-btn-') ? targetTab.replace('tab-btn-', '') : targetTab;
+
+    let masterKey = ADMIN_TAB_TO_MASTER[tabKey];
+    if (!masterKey) {
+        if (ADMIN_MASTER_AREAS[tabKey]) {
+            masterKey = tabKey;
+            tabKey = ADMIN_MASTER_AREAS[tabKey].defaultTab;
+        } else {
+            masterKey = 'sales';
+            tabKey = 'orders';
+        }
+    }
+
+    if (typeof window.ensureAdminAreaLoaded === 'function') {
+        await window.ensureAdminAreaLoaded(masterKey);
+    }
+
+    currentAdminTab = tabKey;
+    updateAdminUrlTab(tabKey);
+
+    if (tabKey === 'pages' && typeof switchAdminSubtab === 'function') {
+        switchAdminSubtab('page-home');
+    }
+    if (tabKey === 'ml-importer' && typeof window.populateMlTargetCategories === 'function') {
+        window.populateMlTargetCategories();
+    }
+    if (tabKey === 'tnube' && window.AdminTnubeModule && typeof window.AdminTnubeModule.init === 'function') {
+        window.AdminTnubeModule.init();
+    }
+
+    renderAdminUX();
+};
+
 function initAdminUX20() {
     const mainTabBtn = document.getElementById('tab-btn-orders');
     if (!mainTabBtn) {
@@ -73,56 +196,54 @@ function initAdminUX20() {
     // Leer la pestaña activa inicial desde la URL (?tab=...) o HASH (#tab)
     const urlParams = new URLSearchParams(window.location.search);
     const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
-    const validTabs = ['dashboard', 'settings', 'catalog', 'ml-importer', 'tnube', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'pages', 'notifications', 'orders', 'quotes', 'users', 'maintenance'];
-    if (tabFromUrl && validTabs.includes(tabFromUrl)) {
+    if (tabFromUrl && ADMIN_TAB_TO_MASTER[tabFromUrl]) {
         currentAdminTab = tabFromUrl;
     }
 
     // Asegurar que la URL mantenga el parámetro de la pestaña actual
     updateAdminUrlTab(currentAdminTab);
 
-    // --- LISTENERS DE CORE / NAVEGACIÓN (V2) ---
-    validTabs.forEach(tab => {
-        const btn = document.getElementById(`tab-btn-${tab}`);
+    // Listeners directos en botones de sidebar para compatibilidad
+    Object.values(ADMIN_MASTER_AREAS).forEach(area => {
+        const btn = document.getElementById(area.btnId);
         if (btn) {
             btn.addEventListener('click', () => {
-                currentAdminTab = tab;
-                updateAdminUrlTab(tab);
-                if (tab === 'pages') {
-                    switchAdminSubtab('page-home');
-                }
-                if (tab === 'ml-importer' && typeof window.populateMlTargetCategories === 'function') {
-                    window.populateMlTargetCategories();
-                }
-                if (tab === 'tnube' && window.AdminTnubeModule && typeof window.AdminTnubeModule.init === 'function') {
-                    window.AdminTnubeModule.init();
-                }
-                renderAdminUX();
+                window.switchAdminTab(area.defaultTab);
             });
         }
     });
 
-    // Delegación global de clics para pestañas, subpestañas y ancho del panel
+    // Delegación global de clics para pestañas maestras, subpestañas y ancho del panel
     if (!window._adminNavigationDelegated) {
         window._adminNavigationDelegated = true;
         document.addEventListener('click', (e) => {
+            // 1. Clic en botón del Sidebar
             const navBtn = e.target.closest('.admin-sidebar-btn, .admin-nav-btn');
             if (navBtn && navBtn.id && navBtn.id.startsWith('tab-btn-')) {
                 const tabKey = navBtn.id.replace('tab-btn-', '');
-                currentAdminTab = tabKey;
-                updateAdminUrlTab(tabKey);
-                if (tabKey === 'pages') switchAdminSubtab('page-home');
-                renderAdminUX();
+                window.switchAdminTab(tabKey);
                 return;
             }
 
+            // 2. Clic en píldora de subpestaña maestra
+            const subtabPill = e.target.closest('.admin-subtab-pill');
+            if (subtabPill) {
+                const targetTab = subtabPill.getAttribute('data-admin-subtab');
+                if (targetTab) {
+                    window.switchAdminTab(targetTab);
+                }
+                return;
+            }
+
+            // 3. Subpestañas internas de páginas
             const subtabBtn = e.target.closest('.admin-pill-tab');
             if (subtabBtn) {
                 const targetSubtab = subtabBtn.getAttribute('data-subtab');
-                if (targetSubtab) switchAdminSubtab(targetSubtab);
+                if (targetSubtab && typeof switchAdminSubtab === 'function') switchAdminSubtab(targetSubtab);
                 return;
             }
 
+            // 4. Selector de ancho normal/completo
             const widthTab = e.target.closest('.admin-width-tab');
             if (widthTab) {
                 const widthMode = widthTab.getAttribute('data-width') || 'normal';
@@ -148,7 +269,7 @@ function initAdminUX20() {
         });
     }
 
-    // Inicializar sub-módulos
+    // Inicializar sub-módulos si ya están presentes
     if (typeof window.initSettingsAdmin === 'function') window.initSettingsAdmin();
     if (typeof window.initPagesGroupingAdmin === 'function') window.initPagesGroupingAdmin();
     if (typeof window.initMaintenanceAdmin === 'function') window.initMaintenanceAdmin();
@@ -371,49 +492,64 @@ function renderAdminUX() {
     // Asegurar lectura de URL en cada renderizado
     const urlParams = new URLSearchParams(window.location.search);
     const tabFromUrl = urlParams.get('tab') || window.location.hash.replace('#', '');
-    const validTabs = ['dashboard', 'settings', 'catalog', 'ml-importer', 'tnube', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'stock', 'pc-stock', 'pages', 'notifications', 'orders', 'quotes', 'users', 'maintenance'];
-    if (tabFromUrl && validTabs.includes(tabFromUrl)) {
+    if (tabFromUrl && ADMIN_TAB_TO_MASTER[tabFromUrl]) {
         currentAdminTab = tabFromUrl;
     }
 
-    // Control visual de la barra de navegación del panel (V2)
-        const tabs = ['orders', 'quotes', 'catalog', 'ml-importer', 'tnube', 'bulk-edit', 'offers', 'shipping', 'cortes', 'cajones', 'payments', 'pages', 'notifications', 'settings', 'users'];
-        tabs.forEach(tab => {
-            const btn = document.getElementById(`tab-btn-${tab}`);
-            if (btn) {
-                if (currentAdminTab === tab) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
+    const currentMasterKey = ADMIN_TAB_TO_MASTER[currentAdminTab] || 'sales';
+    const masterArea = ADMIN_MASTER_AREAS[currentMasterKey] || ADMIN_MASTER_AREAS.sales;
+
+    // 1. Control visual de los 5 botones maestros en el Sidebar
+    Object.values(ADMIN_MASTER_AREAS).forEach(area => {
+        const btn = document.getElementById(area.btnId);
+        if (btn) {
+            if (area.id === currentMasterKey) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
             }
-        });
+        }
+    });
 
-        // Ocultar todas las secciones principales y actualizar el título dinámico del Header
-        const tabNames = {
-            dashboard: { title: 'Panel de Control', icon: 'dashboard' },
-            settings: { title: 'Configuración General', icon: 'tune' },
-            catalog: { title: 'Catálogo de Productos', icon: 'inventory_2' },
-            'ml-importer': { title: 'Importador de Mercado Libre', icon: 'storefront' },
-            'tnube': { title: 'Exportador Tiendanube', icon: 'cloud_upload' },
-            'bulk-edit': { title: 'Editor Masivo de Precios & Productos', icon: 'table_chart' },
-            offers: { title: 'Ofertas & Combos', icon: 'local_offer' },
-            shipping: { title: 'Envíos & Zonas Tarifarias', icon: 'local_shipping' },
-            cortes: { title: 'Cortes de Madera & Precios', icon: 'carpenter' },
-            cajones: { title: 'Cajones CrossFit & Pliométricos', icon: 'sports_gymnastics' },
-            payments: { title: 'Métodos & Pasarelas de Pago', icon: 'payments' },
-            pages: { title: 'Diseño de Páginas', icon: 'view_quilt' },
-            notifications: { title: 'Centro de Notificaciones', icon: 'notifications_active' },
-            orders: { title: 'Gestión de Pedidos', icon: 'description' },
-            quotes: { title: 'Generador de Presupuestos', icon: 'request_quote' },
-            users: { title: 'Usuarios & Permisos', icon: 'group' }
-        };
+    // 2. Renderizar barra superior de subpestañas (#admin-subtabs-bar)
+    const subtabsBar = document.getElementById('admin-subtabs-bar');
+    const pillsContainer = document.getElementById('admin-subtab-pills');
+    if (subtabsBar && pillsContainer) {
+        subtabsBar.style.display = 'block';
+        pillsContainer.innerHTML = masterArea.tabs.map(tab => {
+            const isActive = (tab.key === currentAdminTab);
+            return `<button type="button" class="admin-subtab-pill ${isActive ? 'active' : ''}" data-admin-subtab="${tab.key}">
+                <span class="material-symbols-outlined">${tab.icon}</span>
+                <span>${tab.label}</span>
+            </button>`;
+        }).join('');
+    }
 
-        const currentTabInfo = tabNames[currentAdminTab] || { title: 'Panel de Control', icon: 'shield_person' };
-        const topbarTitleEl = document.getElementById('admin-topbar-title');
-        const topbarIconEl = document.getElementById('admin-topbar-icon');
-        if (topbarTitleEl) topbarTitleEl.textContent = currentTabInfo.title;
-        if (topbarIconEl) topbarIconEl.textContent = currentTabInfo.icon;
+    // 3. Título dinámico del Topbar e ícono
+    const tabNames = {
+        orders: { title: 'Gestión de Pedidos', icon: 'description' },
+        quotes: { title: 'Generador de Presupuestos', icon: 'request_quote' },
+        catalog: { title: 'Catálogo de Productos', icon: 'inventory_2' },
+        'bulk-edit': { title: 'Editor Masivo de Precios & Productos', icon: 'table_chart' },
+        offers: { title: 'Ofertas & Combos', icon: 'local_offer' },
+        'ml-importer': { title: 'Importador de Mercado Libre', icon: 'storefront' },
+        tnube: { title: 'Exportador Tiendanube', icon: 'cloud_upload' },
+        cortes: { title: 'Cortes de Madera & Precios', icon: 'carpenter' },
+        cajones: { title: 'Cajones CrossFit & Pliométricos', icon: 'sports_gymnastics' },
+        payments: { title: 'Métodos & Pasarelas de Pago', icon: 'payments' },
+        pages: { title: 'Diseño de Páginas', icon: 'view_quilt' },
+        notifications: { title: 'Centro de Notificaciones', icon: 'notifications_active' },
+        settings: { title: 'Configuración General', icon: 'tune' },
+        shipping: { title: 'Envíos & Zonas Tarifarias', icon: 'local_shipping' },
+        users: { title: 'Usuarios & Permisos', icon: 'group' },
+        dashboard: { title: 'Panel de Control', icon: 'dashboard' }
+    };
+
+    const currentTabInfo = tabNames[currentAdminTab] || { title: masterArea.name, icon: masterArea.icon };
+    const topbarTitleEl = document.getElementById('admin-topbar-title');
+    const topbarIconEl = document.getElementById('admin-topbar-icon');
+    if (topbarTitleEl) topbarTitleEl.textContent = currentTabInfo.title;
+    if (topbarIconEl) topbarIconEl.textContent = currentTabInfo.icon;
 
         const viewIds = {
             dashboard: 'admin-dashboard-view',

@@ -47,77 +47,44 @@
         </button>
         <nav class="admin-sidebar-nav">
             <!-- 1. Ventas & Operaciones -->
-            <button type="button" id="tab-btn-orders" class="admin-sidebar-btn active" data-tooltip="Pedidos">
-                <span class="material-symbols-outlined">description</span>
-                <span class="nav-label">Pedidos</span>
-            </button>
-            <button type="button" id="tab-btn-quotes" class="admin-sidebar-btn" data-tooltip="Crear Presupuesto">
-                <span class="material-symbols-outlined">request_quote</span>
-                <span class="nav-label">Crear Presupuesto</span>
+            <button type="button" id="tab-btn-orders" class="admin-sidebar-btn active" data-tooltip="Ventas">
+                <span class="material-symbols-outlined">receipt_long</span>
+                <span class="nav-label">Ventas</span>
             </button>
 
             <!-- 2. Catálogo & Productos -->
-            <button type="button" id="tab-btn-catalog" class="admin-sidebar-btn" data-tooltip="Catálogo">
+            <button type="button" id="tab-btn-catalog" class="admin-sidebar-btn" data-tooltip="Productos">
                 <span class="material-symbols-outlined">inventory_2</span>
-                <span class="nav-label">Catálogo</span>
-            </button>
-            <button type="button" id="tab-btn-ml-importer" class="admin-sidebar-btn" data-tooltip="Importar Mercado Libre">
-                <span class="material-symbols-outlined" style="color: #FFE600;">storefront</span>
-                <span class="nav-label">Importar ML</span>
-            </button>
-            <button type="button" id="tab-btn-tnube" class="admin-sidebar-btn" data-tooltip="Exportar Tiendanube">
-                <span class="material-symbols-outlined" style="color: #0284C7;">cloud_upload</span>
-                <span class="nav-label">Tiendanube</span>
-            </button>
-            <button type="button" id="tab-btn-bulk-edit" class="admin-sidebar-btn" data-tooltip="Editor Masivo">
-                <span class="material-symbols-outlined">table_chart</span>
-                <span class="nav-label">Editor Masivo</span>
-            </button>
-            <button type="button" id="tab-btn-offers" class="admin-sidebar-btn" data-tooltip="Ofertas & Combos">
-                <span class="material-symbols-outlined">local_offer</span>
-                <span class="nav-label">Ofertas &amp; Combos</span>
+                <span class="nav-label">Productos</span>
             </button>
 
-            <!-- 3. Cotizadores & Reglas -->
-            <button type="button" id="tab-btn-shipping" class="admin-sidebar-btn" data-tooltip="Envíos & Zonas">
-                <span class="material-symbols-outlined">local_shipping</span>
-                <span class="nav-label">Envíos &amp; Zonas</span>
-            </button>
-            <button type="button" id="tab-btn-cortes" class="admin-sidebar-btn" data-tooltip="Cortes de Madera">
+            <!-- 3. Taller & Cotizadores -->
+            <button type="button" id="tab-btn-cortes" class="admin-sidebar-btn" data-tooltip="Taller">
                 <span class="material-symbols-outlined">carpenter</span>
-                <span class="nav-label">Cortes de Madera</span>
-            </button>
-            <button type="button" id="tab-btn-cajones" class="admin-sidebar-btn" data-tooltip="Cajones CrossFit">
-                <span class="material-symbols-outlined">sports_gymnastics</span>
-                <span class="nav-label">Cajones CrossFit</span>
-            </button>
-            <button type="button" id="tab-btn-payments" class="admin-sidebar-btn" data-tooltip="Métodos de Pago">
-                <span class="material-symbols-outlined">payments</span>
-                <span class="nav-label">Métodos de Pago</span>
+                <span class="nav-label">Taller</span>
             </button>
 
-            <!-- 4. Diseño & Ajustes del Sistema -->
-            <button type="button" id="tab-btn-pages" class="admin-sidebar-btn" data-tooltip="Diseño de Páginas">
+            <!-- 4. Diseño & Tienda -->
+            <button type="button" id="tab-btn-pages" class="admin-sidebar-btn" data-tooltip="Diseño">
                 <span class="material-symbols-outlined">view_quilt</span>
-                <span class="nav-label">Diseño de Páginas</span>
+                <span class="nav-label">Diseño</span>
             </button>
-            <button type="button" id="tab-btn-notifications" class="admin-sidebar-btn" data-tooltip="Notificaciones">
-                <span class="material-symbols-outlined">notifications_active</span>
-                <span class="nav-label">Notificaciones</span>
-            </button>
-            <button type="button" id="tab-btn-settings" class="admin-sidebar-btn" data-tooltip="Configuración General">
+
+            <!-- 5. Ajustes & Configuración -->
+            <button type="button" id="tab-btn-settings" class="admin-sidebar-btn" data-tooltip="Ajustes">
                 <span class="material-symbols-outlined">tune</span>
-                <span class="nav-label">Configuración General</span>
-            </button>
-            <button type="button" id="tab-btn-users" class="admin-sidebar-btn" data-tooltip="Usuarios & Permisos">
-                <span class="material-symbols-outlined">group</span>
-                <span class="nav-label">Usuarios &amp; Permisos</span>
+                <span class="nav-label">Ajustes</span>
             </button>
         </nav>
     </aside>
 
     <!-- Área de contenido principal: Submódulos inyectados limpiamente desde partials/admin/ -->
     <main class="admin-main" id="admin-main-container">
+        <!-- Barra Superior de Subpestañas Dinámica por Área Maestra -->
+        <div id="admin-subtabs-bar" class="admin-subtabs-wrapper">
+            <div class="admin-subtab-pills" id="admin-subtab-pills"></div>
+        </div>
+
         <!-- Vistas contenedoras nativas (inyectadas dinámicamente por sus módulos JS) -->
         <div id="admin-quotes-view" class="admin-section-view" style="display: none;"></div>
         <div id="admin-payments-view" class="admin-section-view" style="display: none;"></div>

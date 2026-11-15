@@ -207,18 +207,136 @@ window.ensureCatalogModuleLoaded = function() {
     return _catalogModulePromise;
 };
 
-// --- PANEL DE ADMINISTRACIÓN 100% BAJO DEMANDA ---
+// --- PANEL DE ADMINISTRACIÓN 100% MODULAR Y BAJO DEMANDA V3.1 ---
 
 window.adminPartialsLoaded = false;
-let _adminLoadPromise = null;
+let _adminCoreLoadPromise = null;
+const _adminAreasLoaded = {};
 
-window.loadAdminPartialsOnDemand = function() {
-    if (_adminLoadPromise) return _adminLoadPromise;
+// Cargador modular bajo demanda para cada una de las 5 Áreas Maestras
+window.ensureAdminAreaLoaded = function(masterKey) {
+    if (!masterKey) masterKey = 'sales';
+    if (_adminAreasLoaded[masterKey]) return _adminAreasLoaded[masterKey];
+
+    _adminAreasLoaded[masterKey] = (async () => {
+        // Asegurar que el núcleo del Admin esté listo antes de inyectar submódulos
+        if (_adminCoreLoadPromise) await _adminCoreLoadPromise;
+
+        if (masterKey === 'sales') {
+            await Promise.all([
+                loadPartial('partials/admin/view-orders.html', '#admin-main-container', 'beforeend'),
+                loadPartial('partials/admin/modal-label-print.html', '#admin-main-container', 'beforeend')
+            ]);
+            await loadScriptOnDemand('js/admin/admin-quotes.js?v=2');
+        } else if (masterKey === 'catalog') {
+            const catalogViews = [
+                'partials/admin/view-catalog.html',
+                'partials/admin/view-bulk-edit.html',
+                'partials/admin/view-offers.html',
+                'partials/admin/view-ml-importer.html',
+                'partials/admin/view-tnube.html'
+            ];
+            await Promise.all([
+                ...catalogViews.map(url => loadPartial(url, '#admin-main-container', 'beforeend')),
+                loadPartial('partials/admin/modal-offer.html', '#view-admin', 'beforeend'),
+                loadPartial('partials/admin/modals-forms.html', 'body', 'beforeend')
+            ]);
+            await loadScriptsSequential([
+                'js/admin/admin-categories.js?v=2',
+                'js/admin/admin-categories-form.js?v=2',
+                'js/admin/admin-products.js?v=7',
+                'js/admin/admin-products-form.js?v=7',
+                'js/admin/importer/admin-ml-importer.js?v=3',
+                'js/admin/admin-tnube.js?v=2',
+                'js/admin/admin-bulk-edit.js?v=2',
+                'js/admin/admin-offers.js?v=2'
+            ]);
+            if (typeof window.initCategoriesFormAdmin === 'function') window.initCategoriesFormAdmin();
+            if (typeof window.initProductsAdmin === 'function') window.initProductsAdmin();
+            if (typeof window.initAdminOffers === 'function') window.initAdminOffers();
+        } else if (masterKey === 'workshop') {
+            await Promise.all([
+                window.ensureCortesModulesLoaded(),
+                window.ensureCajonesModulesLoaded()
+            ]);
+            await Promise.all([
+                loadPartial('partials/admin/view-cortes.html', '#admin-main-container', 'beforeend'),
+                loadPartial('partials/admin/view-cajones.html', '#admin-main-container', 'beforeend')
+            ]);
+            const cortesPanels = [
+                'partials/admin/cortes/panel-materiales.html',
+                'partials/admin/cortes/panel-usos.html',
+                'partials/admin/cortes/panel-logistica.html',
+                'partials/admin/cortes/panel-descuentos.html',
+                'partials/admin/cortes/panel-simulador.html'
+            ];
+            const cajonesPanels = [
+                'partials/admin/cajones/panel-materiales.html',
+                'partials/admin/cajones/panel-usos.html',
+                'partials/admin/cajones/panel-logistica.html',
+                'partials/admin/cajones/panel-descuentos.html',
+                'partials/admin/cajones/panel-simulador.html'
+            ];
+            await Promise.all([
+                ...cortesPanels.map(url => loadPartial(url, '#cortes-subpanels-container', 'beforeend')),
+                ...cajonesPanels.map(url => loadPartial(url, '#cajones-subpanels-container', 'beforeend'))
+            ]);
+            await loadScriptsSequential([
+                'js/admin/admin-cortes.js?v=2',
+                'js/admin/cajones/cajones-drag.js?v=2',
+                'js/admin/cajones/cajones-materials.js?v=2',
+                'js/admin/cajones/cajones-rules.js?v=2',
+                'js/admin/cajones/cajones-discounts.js?v=2',
+                'js/admin/cajones/cajones-simulator.js?v=2',
+                'js/admin/admin-cajones.js?v=4'
+            ]);
+        } else if (masterKey === 'design') {
+            await Promise.all([
+                loadPartial('partials/admin/view-pages.html', '#admin-main-container', 'beforeend'),
+                loadPartial('partials/admin/view-notifications.html', '#admin-main-container', 'beforeend')
+            ]);
+            await loadScriptsSequential([
+                'js/admin/admin-pages.js?v=5',
+                'js/admin/admin-notifications.js?v=2'
+            ]);
+            if (typeof window.initPagesGroupingAdmin === 'function') window.initPagesGroupingAdmin();
+            if (typeof window.initPagesAdmin === 'function') window.initPagesAdmin();
+            if (typeof window.initSocialLinksAdmin === 'function') window.initSocialLinksAdmin();
+            if (typeof window.initThemeAdmin === 'function') window.initThemeAdmin();
+            if (typeof window.initMayoristaAdmin === 'function') window.initMayoristaAdmin();
+            if (typeof window.initVacationAdmin === 'function') window.initVacationAdmin();
+            if (typeof window.initNotificationsAdmin === 'function') window.initNotificationsAdmin();
+        } else if (masterKey === 'settings') {
+            await window.ensurePostalLookupLoaded();
+            await Promise.all([
+                loadPartial('partials/admin/view-settings.html', '#admin-main-container', 'beforeend'),
+                loadPartial('partials/admin/view-shipping.html', '#admin-main-container', 'beforeend')
+            ]);
+            await loadScriptsSequential([
+                'js/admin/admin-payments.js?v=6',
+                'js/admin/admin-shipping.js?v=2',
+                'js/admin/admin-users.js?v=2'
+            ]);
+            if (typeof window.initSettingsAdmin === 'function') window.initSettingsAdmin();
+        }
+    })();
+
+    return _adminAreasLoaded[masterKey];
+};
+
+window.loadAdminPartialsOnDemand = function(initialTab) {
+    if (_adminCoreLoadPromise) {
+        if (initialTab) {
+            const masterKey = (window.ADMIN_TAB_TO_MASTER && window.ADMIN_TAB_TO_MASTER[initialTab]) || 'sales';
+            return window.ensureAdminAreaLoaded(masterKey);
+        }
+        return _adminCoreLoadPromise;
+    }
     window.adminPartialsLoaded = true;
 
-    _adminLoadPromise = (async () => {
+    _adminCoreLoadPromise = (async () => {
         // 1. Estilos del Admin y CropperJS
-        loadStyleOnDemand('css/admin-styles.css?v=7');
+        loadStyleOnDemand('css/admin-styles.css?v=8');
         loadStyleOnDemand('https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css');
 
         // 2. Librerías externas CDN del Admin (en paralelo, sin bloquear)
@@ -229,87 +347,23 @@ window.loadAdminPartialsOnDemand = function() {
             loadScriptOnDemand('https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js')
         ];
 
-        // 3. Asegurar dependencias de configuraciones de envíos/cortes/cajones
-        await Promise.all([
-            window.ensurePostalLookupLoaded(),
-            window.ensureCortesModulesLoaded(),
-            window.ensureCajonesModulesLoaded()
-        ]);
-
-        // 4. Cargar estructura HTML base del Admin
+        // 3. Cargar estructura HTML base del Admin (Sidebar con 5 Áreas Maestras + Subtabs bar)
         await loadPartial('partials/view-admin.html', '#view-admin', 'innerHTML');
-        
-        const adminViews = [
-            'partials/admin/view-offers.html',
-            'partials/admin/view-shipping.html',
-            'partials/admin/view-cortes.html',
-            'partials/admin/view-cajones.html',
-            'partials/admin/view-bulk-edit.html',
-            'partials/admin/view-catalog.html',
-            'partials/admin/view-ml-importer.html',
-            'partials/admin/view-tnube.html',
-            'partials/admin/view-pages.html',
-            'partials/admin/view-notifications.html',
-            'partials/admin/view-settings.html',
-            'partials/admin/view-orders.html',
-            'partials/admin/modal-label-print.html'
-        ];
 
-        await Promise.all([
-            ...adminViews.map(url => loadPartial(url, '#admin-main-container', 'beforeend')),
-            loadPartial('partials/admin/modal-offer.html', '#view-admin'),
-            loadPartial('partials/admin/modals-forms.html', 'body')
+        // 4. Scripts del Núcleo del Admin
+        await loadScriptsSequential([
+            'js/admin/admin-utils.js?v=2',
+            'js/admin/admin-settings.js?v=2',
+            'js/admin/admin-core.js?v=4'
         ]);
 
-        const cortesPanels = [
-            'partials/admin/cortes/panel-materiales.html',
-            'partials/admin/cortes/panel-usos.html',
-            'partials/admin/cortes/panel-logistica.html',
-            'partials/admin/cortes/panel-descuentos.html',
-            'partials/admin/cortes/panel-simulador.html'
-        ];
-        const cajonesPanels = [
-            'partials/admin/cajones/panel-materiales.html',
-            'partials/admin/cajones/panel-usos.html',
-            'partials/admin/cajones/panel-logistica.html',
-            'partials/admin/cajones/panel-descuentos.html',
-            'partials/admin/cajones/panel-simulador.html'
-        ];
-        await Promise.all([
-            ...cortesPanels.map(url => loadPartial(url, '#cortes-subpanels-container', 'beforeend')),
-            ...cajonesPanels.map(url => loadPartial(url, '#cajones-subpanels-container', 'beforeend'))
-        ]);
-
-        // 5. Cargar los 23 módulos JS de Administración en orden exacto
-        const adminScripts = [
-            'js/admin/admin-utils.js?v=1',
-            'js/admin/admin-settings.js?v=1',
-            'js/admin/admin-core.js?v=3',
-            'js/admin/admin-categories.js?v=1',
-            'js/admin/admin-categories-form.js?v=1',
-            'js/admin/admin-products.js?v=6',
-            'js/admin/admin-products-form.js?v=6',
-            'js/admin/importer/admin-ml-importer.js?v=2',
-            'js/admin/admin-tnube.js?v=1',
-            'js/admin/admin-bulk-edit.js?v=1',
-            'js/admin/admin-offers.js?v=1',
-            'js/admin/admin-shipping.js?v=1',
-            'js/admin/admin-cortes.js?v=1',
-            'js/admin/cajones/cajones-drag.js?v=1',
-            'js/admin/cajones/cajones-materials.js?v=1',
-            'js/admin/cajones/cajones-rules.js?v=1',
-            'js/admin/cajones/cajones-discounts.js?v=1',
-            'js/admin/cajones/cajones-simulator.js?v=1',
-            'js/admin/admin-cajones.js?v=3',
-            'js/admin/admin-payments.js?v=5',
-            'js/admin/admin-pages.js?v=4',
-            'js/admin/admin-quotes.js?v=1',
-            'js/admin/admin-users.js?v=1',
-            'js/admin/admin-notifications.js?v=1'
-        ];
-
-        await loadScriptsSequential(adminScripts);
         await Promise.all(cdnPromises);
+
+        // 5. Determinar qué área maestra cargar inicialmente (por defecto 'sales' para Pedidos)
+        const targetTab = initialTab || window.currentAdminTab || new URLSearchParams(window.location.search).get('tab') || 'orders';
+        const targetMaster = (window.ADMIN_TAB_TO_MASTER && window.ADMIN_TAB_TO_MASTER[targetTab]) || 'sales';
+
+        await window.ensureAdminAreaLoaded(targetMaster);
 
         // 6. Inicializar Panel Admin
         if (typeof window.initAdminUX20 === 'function') {
@@ -327,7 +381,7 @@ window.loadAdminPartialsOnDemand = function() {
         }
     })();
 
-    return _adminLoadPromise;
+    return _adminCoreLoadPromise;
 };
 
 // Carga asíncrona al iniciar la aplicación (Ultra liviana para clientes)
