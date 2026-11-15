@@ -210,8 +210,40 @@ window.ensureCatalogModuleLoaded = function() {
 // --- PANEL DE ADMINISTRACIÓN 100% MODULAR Y BAJO DEMANDA V3.1 ---
 
 window.adminPartialsLoaded = false;
-let _adminCoreLoadPromise = null;
+let _adminCorePromise = null;
 const _adminAreasLoaded = {};
+
+function ensureAdminCore() {
+    if (_adminCorePromise) return _adminCorePromise;
+
+    _adminCorePromise = (async () => {
+        // 1. Estilos del Admin y CropperJS
+        loadStyleOnDemand('css/admin-styles.css?v=9');
+        loadStyleOnDemand('https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css');
+
+        // 2. Librerías externas CDN del Admin (en paralelo, sin bloquear)
+        const cdnPromises = [
+            loadScriptOnDemand('https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.min.js'),
+            loadScriptOnDemand('https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js'),
+            loadScriptOnDemand('https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js'),
+            loadScriptOnDemand('https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js')
+        ];
+
+        // 3. Cargar estructura HTML base del Admin (Sidebar con 5 Áreas Maestras + Subtabs bar)
+        await loadPartial('partials/view-admin.html', '#view-admin', 'innerHTML');
+
+        // 4. Scripts del Núcleo del Admin
+        await loadScriptsSequential([
+            'js/admin/admin-utils.js?v=2',
+            'js/admin/admin-settings.js?v=2',
+            'js/admin/admin-core.js?v=4'
+        ]);
+
+        await Promise.all(cdnPromises);
+    })();
+
+    return _adminCorePromise;
+}
 
 // Cargador modular bajo demanda para cada una de las 5 Áreas Maestras
 window.ensureAdminAreaLoaded = function(masterKey) {
@@ -219,8 +251,8 @@ window.ensureAdminAreaLoaded = function(masterKey) {
     if (_adminAreasLoaded[masterKey]) return _adminAreasLoaded[masterKey];
 
     _adminAreasLoaded[masterKey] = (async () => {
-        // Asegurar que el núcleo del Admin esté listo antes de inyectar submódulos
-        if (_adminCoreLoadPromise) await _adminCoreLoadPromise;
+        // Asegurar que el núcleo esté listo antes de inyectar submódulos (sin circularidad)
+        await ensureAdminCore();
 
         if (masterKey === 'sales') {
             await Promise.all([
@@ -324,64 +356,29 @@ window.ensureAdminAreaLoaded = function(masterKey) {
     return _adminAreasLoaded[masterKey];
 };
 
-window.loadAdminPartialsOnDemand = function(initialTab) {
-    if (_adminCoreLoadPromise) {
-        if (initialTab) {
-            const masterKey = (window.ADMIN_TAB_TO_MASTER && window.ADMIN_TAB_TO_MASTER[initialTab]) || 'sales';
-            return window.ensureAdminAreaLoaded(masterKey);
-        }
-        return _adminCoreLoadPromise;
-    }
+window.loadAdminPartialsOnDemand = async function(initialTab) {
     window.adminPartialsLoaded = true;
 
-    _adminCoreLoadPromise = (async () => {
-        // 1. Estilos del Admin y CropperJS
-        loadStyleOnDemand('css/admin-styles.css?v=8');
-        loadStyleOnDemand('https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css');
+    const targetTab = initialTab || window.currentAdminTab || new URLSearchParams(window.location.search).get('tab') || 'orders';
+    const targetMaster = (window.ADMIN_TAB_TO_MASTER && window.ADMIN_TAB_TO_MASTER[targetTab]) || 'sales';
 
-        // 2. Librerías externas CDN del Admin (en paralelo, sin bloquear)
-        const cdnPromises = [
-            loadScriptOnDemand('https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.min.js'),
-            loadScriptOnDemand('https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js'),
-            loadScriptOnDemand('https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js'),
-            loadScriptOnDemand('https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js')
-        ];
+    // 1. Cargar el área requerida (garantiza que el Core ya está listo)
+    await window.ensureAdminAreaLoaded(targetMaster);
 
-        // 3. Cargar estructura HTML base del Admin (Sidebar con 5 Áreas Maestras + Subtabs bar)
-        await loadPartial('partials/view-admin.html', '#view-admin', 'innerHTML');
-
-        // 4. Scripts del Núcleo del Admin
-        await loadScriptsSequential([
-            'js/admin/admin-utils.js?v=2',
-            'js/admin/admin-settings.js?v=2',
-            'js/admin/admin-core.js?v=4'
-        ]);
-
-        await Promise.all(cdnPromises);
-
-        // 5. Determinar qué área maestra cargar inicialmente (por defecto 'sales' para Pedidos)
-        const targetTab = initialTab || window.currentAdminTab || new URLSearchParams(window.location.search).get('tab') || 'orders';
-        const targetMaster = (window.ADMIN_TAB_TO_MASTER && window.ADMIN_TAB_TO_MASTER[targetTab]) || 'sales';
-
-        await window.ensureAdminAreaLoaded(targetMaster);
-
-        // 6. Inicializar Panel Admin
-        if (typeof window.initAdminUX20 === 'function') {
-            window.adminUX20Initialized = false;
-            window.initAdminUX20();
-        }
-        if (typeof window.renderAdminUX === 'function') {
-            window.renderAdminUX();
-        }
-        if (typeof window.initGithubPublishAdmin === 'function') {
-            window.initGithubPublishAdmin();
-        }
-        if (typeof window.renderAdminViewBuilderList === 'function') {
-            window.renderAdminViewBuilderList();
-        }
-    })();
-
-    return _adminCoreLoadPromise;
+    // 2. Inicializar Panel Admin
+    if (typeof window.initAdminUX20 === 'function') {
+        window.adminUX20Initialized = false;
+        window.initAdminUX20();
+    }
+    if (typeof window.renderAdminUX === 'function') {
+        window.renderAdminUX();
+    }
+    if (typeof window.initGithubPublishAdmin === 'function') {
+        window.initGithubPublishAdmin();
+    }
+    if (typeof window.renderAdminViewBuilderList === 'function') {
+        window.renderAdminViewBuilderList();
+    }
 };
 
 // Carga asíncrona al iniciar la aplicación (Ultra liviana para clientes)

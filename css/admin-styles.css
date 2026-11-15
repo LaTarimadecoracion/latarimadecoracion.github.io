@@ -1175,6 +1175,15 @@
         padding: 0.85rem 0.65rem !important;
     }
 
+    .admin-subtabs-wrapper {
+        padding: 0.5rem 0.65rem !important;
+    }
+
+    .admin-subtab-pill {
+        padding: 5px 11px !important;
+        font-size: 0.78rem !important;
+    }
+
     .admin-card {
         padding: 0.85rem 0.75rem !important;
         border-radius: 10px !important;
