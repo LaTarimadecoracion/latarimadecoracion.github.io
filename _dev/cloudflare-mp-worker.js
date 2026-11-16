@@ -380,6 +380,115 @@ export default {
       }
 
       // -------------------------------------------------------------
+      // 4b3. GET & POST /precios-nube y /admin/precios-nube — Sincronización en Vivo de Precios
+      // -------------------------------------------------------------
+      if (path === '/precios-nube' || path === '/api/precios-nube') {
+        if (!env.ORDERS_KV) {
+          return new Response(JSON.stringify({ success: true, updatedAt: 0, products: {}, workshop: null }), {
+            status: 200,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+
+        const rawPrices = await env.ORDERS_KV.get('prices:live_delta');
+        const rawWorkshop = await env.ORDERS_KV.get('workshop:costs');
+        const priceData = rawPrices ? JSON.parse(rawPrices) : { updatedAt: 0, products: {} };
+        const workshopData = rawWorkshop ? JSON.parse(rawWorkshop) : null;
+
+        // Sanitización de seguridad: filtrar cost_price para visitantes públicos
+        const authHeader = request.headers.get('Authorization') || '';
+        const isAdmin = authHeader.includes('Bearer ') || url.searchParams.get('admin') === 'true';
+
+        let cleanProducts = priceData.products || {};
+        if (!isAdmin) {
+          cleanProducts = {};
+          for (const [pid, pVal] of Object.entries(priceData.products || {})) {
+            if (!pVal) continue;
+            const pCopy = { price: pVal.price };
+            if (pVal.variants) {
+              pCopy.variants = {};
+              for (const [vName, vVal] of Object.entries(pVal.variants)) {
+                pCopy.variants[vName] = { price: vVal.price };
+              }
+            }
+            cleanProducts[pid] = pCopy;
+          }
+        }
+
+        return new Response(JSON.stringify({
+          success: true,
+          updatedAt: priceData.updatedAt || 0,
+          updatedBy: isAdmin ? priceData.updatedBy : undefined,
+          products: cleanProducts,
+          workshop: workshopData
+        }), {
+          status: 200,
+          headers: {
+            ...corsHeaders,
+            'Content-Type': 'application/json',
+            'Cache-Control': 'public, max-age=60, s-maxage=120'
+          }
+        });
+      }
+
+      if (path === '/admin/precios-nube' || path === '/api/admin/precios-nube') {
+        if (request.method === 'POST') {
+          if (!env.ORDERS_KV) {
+            return new Response(JSON.stringify({ success: false, message: 'KV no configurado' }), { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+          }
+          const body = await request.json();
+          if (!body || typeof body !== 'object') {
+            return new Response(JSON.stringify({ success: false, message: 'Payload inválido' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+          }
+
+          const existingRaw = await env.ORDERS_KV.get('prices:live_delta');
+          const existing = existingRaw ? JSON.parse(existingRaw) : { products: {} };
+
+          // Mergear deltas nuevos manteniendo los anteriores
+          const mergedProducts = { ...(existing.products || {}), ...(body.products || {}) };
+          const payload = {
+            updatedAt: Date.now(),
+            updatedBy: String(body.updatedBy || 'admin').slice(0, 100),
+            products: mergedProducts
+          };
+
+          await env.ORDERS_KV.put('prices:live_delta', JSON.stringify(payload));
+
+          if (body.workshop && typeof body.workshop === 'object') {
+            await env.ORDERS_KV.put('workshop:costs', JSON.stringify({
+              updatedAt: Date.now(),
+              ...body.workshop
+            }));
+          }
+
+          return new Response(JSON.stringify({
+            success: true,
+            count: Object.keys(mergedProducts).length,
+            updatedAt: payload.updatedAt
+          }), {
+            status: 200,
+            headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          });
+        }
+      }
+
+      if (path === '/admin/costos-taller' && request.method === 'POST') {
+        if (!env.ORDERS_KV) {
+          return new Response(JSON.stringify({ success: false, message: 'KV no configurado' }), { status: 500, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+        }
+        const body = await request.json();
+        const payload = {
+          updatedAt: Date.now(),
+          ...(body || {})
+        };
+        await env.ORDERS_KV.put('workshop:costs', JSON.stringify(payload));
+        return new Response(JSON.stringify({ success: true, workshop: payload }), {
+          status: 200,
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        });
+      }
+
+      // -------------------------------------------------------------
       // 4c. POST /pedidos/transferencia — Registrar pedido por Transferencia Bancaria
       // -------------------------------------------------------------
       if (request.method === 'POST' && (path === '/pedidos/transferencia' || path === '/api/pedidos/transferencia')) {

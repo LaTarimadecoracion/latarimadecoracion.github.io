@@ -278,6 +278,10 @@
                     console.log(`[Carrito] Cantidad incrementada: ${product.title} (${acabado}) x${cartItems[idx].qty}`);
                 }
             } else {
+                if (window.PriceOverlay && typeof window.PriceOverlay.applyToProduct === 'function') {
+                    window.PriceOverlay.applyToProduct(product);
+                }
+
                 // Resolver imagen de la variante o fallback
                 let img = product.image;
                 if (product.acabados_groups) {
@@ -2359,6 +2363,37 @@ window.CarritoModule = {
                         const viewProfile = document.getElementById('view-profile');
                         if (viewProfile && viewProfile.classList.contains('active')) {
                             renderPerfilCarritoView();
+                        }
+                    });
+
+                    // Sincronización reactiva de precios en caliente (Cloud Delta)
+                    window.addEventListener('latarima:prices-updated', (e) => {
+                        const delta = (e && e.detail && e.detail.products) ? e.detail.products : null;
+                        if (!delta || !Array.isArray(cartItems)) return;
+                        let hasChanges = false;
+                        cartItems.forEach(item => {
+                            const pDelta = delta[String(item.id)];
+                            if (pDelta) {
+                                if (item.medida && pDelta.variants && pDelta.variants[item.medida]) {
+                                    const newP = Number(pDelta.variants[item.medida].price);
+                                    if (newP > 0 && newP !== item.price) {
+                                        item.price = newP;
+                                        hasChanges = true;
+                                    }
+                                } else if (pDelta.price !== undefined && pDelta.price !== null) {
+                                    const newP = Number(pDelta.price);
+                                    if (newP > 0 && newP !== item.price) {
+                                        item.price = newP;
+                                        hasChanges = true;
+                                    }
+                                }
+                            }
+                        });
+                        if (hasChanges) {
+                            saveCart();
+                            updateCartCount();
+                            if (typeof window.renderCartDrawer === 'function') window.renderCartDrawer();
+                            console.log('[Carrito] ⚡ Precios del carrito sincronizados en vivo desde la nube');
                         }
                     });
                 }

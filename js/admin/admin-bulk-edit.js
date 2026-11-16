@@ -141,6 +141,7 @@
                                     acabado: acabName,
                                     medida: v.medida || 'Única',
                                     price: currentPrice,
+                                    cost_price: Number(v.cost_price || 0),
                                     weight: (v.weight !== undefined && v.weight !== null) ? v.weight : ((prod.weight !== undefined && prod.weight !== null) ? prod.weight : ''),
                                     showPrice: v.showPrice !== false,
                                     link: v.link || '',
@@ -166,6 +167,7 @@
                         acabado: 'Único',
                         medida: 'Única',
                         price: currentPrice,
+                        cost_price: Number(prod.cost_price || 0),
                         weight: (prod.weight !== undefined && prod.weight !== null) ? prod.weight : '',
                         showPrice: true,
                         link: '',
@@ -177,6 +179,33 @@
         });
 
         return rows;
+    }
+
+    function renderBulkMarginBadge(price, cost) {
+        if (!cost || Number(cost) <= 0) return '';
+        const p = Number(price) || 0;
+        const c = Number(cost) || 0;
+        if (window.CostGuard && typeof window.CostGuard.validatePrice === 'function') {
+            const check = window.CostGuard.validatePrice(p, c);
+            if (check.status === 'critical') {
+                return `<div style="font-size: 0.68rem; color: #DC2626; font-weight: 700; margin-top: 3px; display: flex; align-items: center; gap: 3px;" title="Costo base: $${c.toLocaleString('es-AR')}">
+                    <span class="material-symbols-outlined" style="font-size: 13px;">error</span>
+                    <span>Pérdida -$${Math.abs(check.profit).toLocaleString('es-AR')}</span>
+                </div>`;
+            }
+            if (check.status === 'danger') {
+                return `<div style="font-size: 0.68rem; color: #D97706; font-weight: 700; margin-top: 3px; display: flex; align-items: center; gap: 3px;" title="Costo: $${c.toLocaleString('es-AR')} (Piso sugerido: $${check.floorPrice.toLocaleString('es-AR')})">
+                    <span class="material-symbols-outlined" style="font-size: 13px;">warning</span>
+                    <span>Margen ${check.marginPct}% (<25%)</span>
+                </div>`;
+            }
+            return `<div style="font-size: 0.68rem; color: #059669; font-weight: 600; margin-top: 3px; display: flex; align-items: center; gap: 3px;" title="Costo: $${c.toLocaleString('es-AR')} | Ganancia: +$${check.profit.toLocaleString('es-AR')}">
+                <span class="material-symbols-outlined" style="font-size: 13px;">check_circle</span>
+                <span>Margen ${check.marginPct}% (+$${check.profit.toLocaleString('es-AR')})</span>
+            </div>`;
+        }
+        const margin = p > 0 ? Math.round(((p - c) / p) * 100) : 0;
+        return `<div style="font-size: 0.68rem; color: #64748B; margin-top: 2px;">Costo: $${c.toLocaleString('es-AR')} (${margin}%)</div>`;
     }
 
     window.renderBulkEditTable = function() {
@@ -229,10 +258,13 @@
                 <td>
                     <div style="display: flex; align-items: center; gap: 6px;">
                         <span style="font-weight: 700; color: var(--admin-text-muted);">$</span>
-                        <input type="number" class="bulk-price-input" data-key="${row.rowKey}" value="${row.price || ''}" placeholder="0" style="width: 95px; padding: 6px 8px; border: 1.5px solid ${row.price === 0 ? '#E67700' : 'var(--admin-border-strong)'}; border-radius: 6px; font-weight: 800; font-size: 0.9rem; color: #c0510a; background: #fff;">
+                        <input type="number" class="bulk-price-input" data-key="${row.rowKey}" data-cost="${row.cost_price || 0}" value="${row.price || ''}" placeholder="0" style="width: 95px; padding: 6px 8px; border: 1.5px solid ${row.price === 0 ? '#E67700' : 'var(--admin-border-strong)'}; border-radius: 6px; font-weight: 800; font-size: 0.9rem; color: #c0510a; background: #fff;">
                         <button type="button" class="bulk-price-vis-btn" data-key="${row.rowKey}" title="${row.showPrice ? 'Precio Visible en Web (Clic para Ocultar)' : 'Precio Oculto en Web (Clic para Mostrar)'}" style="background: transparent; border: none; cursor: pointer; padding: 2px; color: ${row.showPrice ? '#A0715B' : '#94A3B8'}; display: flex; align-items: center; justify-content: center;">
                             <span class="material-symbols-outlined" style="font-size: 20px;">${row.showPrice ? 'visibility' : 'visibility_off'}</span>
                         </button>
+                    </div>
+                    <div class="bulk-margin-badge" id="margin-badge-${row.rowKey}">
+                        ${renderBulkMarginBadge(row.price, row.cost_price)}
                     </div>
                 </td>
                 <td style="text-align: center;">
@@ -256,10 +288,20 @@
         });
 
         tbody.querySelectorAll('.bulk-price-input').forEach(inp => {
+            inp.addEventListener('input', (e) => {
+                const key = e.target.getAttribute('data-key');
+                const val = Number(e.target.value) || 0;
+                const cost = Number(e.target.getAttribute('data-cost')) || 0;
+                const badge = document.getElementById(`margin-badge-${key}`);
+                if (badge) badge.innerHTML = renderBulkMarginBadge(val, cost);
+            });
             inp.addEventListener('change', (e) => {
                 const key = e.target.getAttribute('data-key');
                 const val = Number(e.target.value) || 0;
+                const cost = Number(e.target.getAttribute('data-cost')) || 0;
                 updateRowObject(key, 'price', val);
+                const badge = document.getElementById(`margin-badge-${key}`);
+                if (badge) badge.innerHTML = renderBulkMarginBadge(val, cost);
             });
         });
 
@@ -444,30 +486,95 @@
         alert(`✅ Se ${newVisState ? 'mostró' : 'ocultó'} el precio en ${count} productos. No olvides presionar "Guardar Todos los Cambios".`);
     };
 
-    // Guardar cambios a localStorage y servidor
+    // Guardar cambios a localStorage, servidor local y Nube en tiempo real
     window.saveBulkEditChanges = async function() {
         const btn = document.getElementById('btn-save-bulk-edit');
         if (btn) {
             btn.disabled = true;
-            btn.innerHTML = '<span class="material-symbols-outlined spin">sync</span> Guardando...';
+            btn.innerHTML = '<span class="material-symbols-outlined spin">sync</span> Sincronizando en la nube...';
         }
 
         try {
-            // 1. Guardar localmente
+            const rows = getBulkRowsData();
+
+            // 1. Validación de seguridad con CostGuard (Blindaje Anti-Pérdida)
+            let criticalErrors = [];
+            if (window.CostGuard && typeof window.CostGuard.validatePrice === 'function') {
+                rows.forEach(r => {
+                    if (r.price > 0 && r.cost_price > 0) {
+                        const check = window.CostGuard.validatePrice(r.price, r.cost_price);
+                        if (check.status === 'critical') {
+                            criticalErrors.push(`• ${r.prodTitle} (${r.medida}): Venta $${r.price.toLocaleString('es-AR')} < Costo $${r.cost_price.toLocaleString('es-AR')}`);
+                        }
+                    }
+                });
+            }
+
+            if (criticalErrors.length > 0) {
+                const sample = criticalErrors.slice(0, 4).join('\n');
+                const proceed = confirm(`⚠️ ALERTA DE COSTOS CRÍTICA:\nHay ${criticalErrors.length} variantes con precio por debajo del costo base:\n\n${sample}\n\n¿Deseas continuar y guardar de todas formas?`);
+                if (!proceed) {
+                    if (btn) {
+                        btn.disabled = false;
+                        btn.innerHTML = '<span class="material-symbols-outlined">save</span><span>Guardar Todos los Cambios</span>';
+                    }
+                    return;
+                }
+            }
+
+            // 2. Guardar localmente en el navegador
             localStorage.setItem('sessionProducts', JSON.stringify(window.sessionProducts));
 
-            // 2. Intentar guardar en backend / API local si está disponible
+            // 3. Sincronizar en la Nube (Cloudflare Worker KV) en tiempo real
+            let cloudOk = false;
+            if (window.PriceOverlay && typeof window.PriceOverlay.pushPricesToCloud === 'function') {
+                const delta = {};
+                rows.forEach(r => {
+                    const pid = String(r.prodId);
+                    if (!delta[pid]) {
+                        delta[pid] = { price: r.price, variants: {} };
+                    }
+                    if (r.medida && r.medida !== 'Única') {
+                        delta[pid].variants[r.medida] = {
+                            price: r.price,
+                            cost_price: r.cost_price
+                        };
+                    } else {
+                        delta[pid].price = r.price;
+                        delta[pid].cost_price = r.cost_price;
+                    }
+                });
+
+                const adminUser = (window.adminAuth && typeof window.adminAuth.getPublicSession === 'function')
+                    ? window.adminAuth.getPublicSession()?.user?.email
+                    : 'admin';
+
+                const cloudRes = await window.PriceOverlay.pushPricesToCloud(delta, null, adminUser);
+                if (cloudRes && cloudRes.ok) {
+                    cloudOk = true;
+                }
+            }
+
+            // 4. Intentar guardar en backend / API local si está disponible (servidor dev)
+            let localServerOk = false;
             try {
-                await fetch('/api/save-products', {
+                const resLocal = await fetch('/api/save-products', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(window.sessionProducts)
                 });
+                if (resLocal.ok) localServerOk = true;
             } catch (e) {
-                console.warn('[BulkEdit] Servidor estático o sin endpoint /api/save-products. Guardado en localStorage OK.');
+                // Servidor local no conectado (comportamiento normal en GitHub Pages)
             }
 
-            alert('🎉 ¡Todos los precios y cambios fueron guardados exitosamente!');
+            if (cloudOk) {
+                alert('⚡ ¡Precios sincronizados al instante en la Nube!\nTodos los visitantes ya ven los nuevos precios en vivo sin demoras ni builds.');
+            } else if (localServerOk) {
+                alert('🎉 ¡Precios guardados en los archivos locales del servidor!');
+            } else {
+                alert('💾 Precios guardados localmente.');
+            }
         } catch (err) {
             console.error('Error al guardar cambios masivos:', err);
             alert('⚠️ Error al guardar los cambios. Revisa la consola.');

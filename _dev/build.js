@@ -110,6 +110,44 @@ async function build() {
         }
     }
 
+    // 1b. Sanitización de seguridad: eliminar costos privados (cost_price) de docs/data/products
+    console.log('🔒 Sanitizando archivos públicos en docs/ (eliminando cost_price)...');
+    const sanitizePublicCosts = (dir) => {
+        if (!fs.existsSync(dir)) return;
+        const entries = fs.readdirSync(dir, { withFileTypes: true });
+        for (const entry of entries) {
+            const fullPath = path.join(dir, entry.name);
+            if (entry.isDirectory()) {
+                sanitizePublicCosts(fullPath);
+            } else if (entry.name.endsWith('.json') && entry.name.startsWith('p-')) {
+                try {
+                    const data = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+                    let modified = false;
+                    if (Array.isArray(data.acabados_groups)) {
+                        data.acabados_groups.forEach(g => {
+                            if (Array.isArray(g.medidas_variants)) {
+                                g.medidas_variants.forEach(v => {
+                                    if (v.cost_price !== undefined) {
+                                        delete v.cost_price;
+                                        modified = true;
+                                    }
+                                });
+                            }
+                        });
+                    }
+                    if (data.cost_price !== undefined) {
+                        delete data.cost_price;
+                        modified = true;
+                    }
+                    if (modified) {
+                        fs.writeFileSync(fullPath, JSON.stringify(data, null, 2), 'utf8');
+                    }
+                } catch (e) {}
+            }
+        }
+    };
+    sanitizePublicCosts(path.join(distDir, 'data', 'products'));
+
     // 2. Copiar archivos raíz sueltos
     const rootFiles = ['favicon.ico', 'manifest.json', 'robots.txt', 'sitemap.xml', 'sw.js'];
     for (const file of rootFiles) {

@@ -30,6 +30,9 @@
             return;
         }
         if (!product) return;
+        if (window.PriceOverlay && typeof window.PriceOverlay.applyToProduct === 'function') {
+            window.PriceOverlay.applyToProduct(product);
+        }
 
         // Resetear contenedor de configuración inferior de cortes a medida si existiera
         const bottomCuttingContainer = document.getElementById('detail-custom-cutting-bottom-container');
@@ -44,6 +47,9 @@
                 const fullP = await window.fetchProductDetailAsync(product.id);
                 if (fullP) {
                     product = Object.assign(product, fullP);
+                    if (window.PriceOverlay && typeof window.PriceOverlay.applyToProduct === 'function') {
+                        window.PriceOverlay.applyToProduct(product);
+                    }
                 }
             } catch (loadErr) {
                 console.warn('[showProductDetail] Error cargando detalle completo:', loadErr);

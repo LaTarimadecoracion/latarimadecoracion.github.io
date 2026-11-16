@@ -211,6 +211,9 @@
 
     function getProductPriceDisplay(product, specificAcabadoName = null) {
         if (!product) return '<span class="feed-card-price-custom">Consultar precio</span>';
+        if (window.PriceOverlay && typeof window.PriceOverlay.applyToProduct === 'function') {
+            window.PriceOverlay.applyToProduct(product);
+        }
         
         let allPrices = [];
         let allComparePrices = [];
@@ -244,6 +247,11 @@
             if (product.medidas_variants && Array.isArray(product.medidas_variants)) {
                 product.medidas_variants.forEach(collectPrices);
             }
+        }
+
+        // Si es un ítem del índice liviano que solo tiene product.price
+        if (allPrices.length === 0 && product.price !== undefined && product.price !== '' && !isNaN(parseFloat(product.price))) {
+            allPrices.push(parseFloat(product.price));
         }
 
         if (allPrices.length === 0) {

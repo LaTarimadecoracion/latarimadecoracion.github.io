@@ -555,6 +555,40 @@ app.post('/api/save-product-single', (req, res) => {
     }
 });
 
+// Mock / Fallback local para sincronización de precios en la nube
+const CLOUD_PRICES_FILE = path.join(DATA_DIR, 'cloud-prices.json');
+app.get('/api/precios-nube', (req, res) => {
+    try {
+        if (fs.existsSync(CLOUD_PRICES_FILE)) {
+            const data = JSON.parse(fs.readFileSync(CLOUD_PRICES_FILE, 'utf8'));
+            return res.json({ success: true, ...data });
+        }
+        return res.json({ success: true, updatedAt: 0, products: {}, workshop: null });
+    } catch (e) {
+        return res.json({ success: true, updatedAt: 0, products: {} });
+    }
+});
+
+app.post('/api/admin/precios-nube', (req, res) => {
+    try {
+        const body = req.body || {};
+        let existing = { products: {}, workshop: null };
+        if (fs.existsSync(CLOUD_PRICES_FILE)) {
+            try { existing = JSON.parse(fs.readFileSync(CLOUD_PRICES_FILE, 'utf8')); } catch (_) {}
+        }
+        const merged = {
+            updatedAt: Date.now(),
+            updatedBy: body.updatedBy || 'admin',
+            products: { ...(existing.products || {}), ...(body.products || {}) },
+            workshop: body.workshop || existing.workshop || null
+        };
+        fs.writeFileSync(CLOUD_PRICES_FILE, JSON.stringify(merged, null, 2), 'utf8');
+        return res.json({ success: true, count: Object.keys(merged.products).length, updatedAt: merged.updatedAt });
+    } catch (err) {
+        return res.status(500).json({ success: false, message: err.message });
+    }
+});
+
 // API Endpoint to save productsData JSON
 app.post('/api/save-products', (req, res) => {
     try {

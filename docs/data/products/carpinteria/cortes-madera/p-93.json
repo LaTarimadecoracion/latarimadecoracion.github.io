@@ -22,7 +22,6 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": "",
-          "cost_price": 35000,
           "legend": "Consultar precio / cotización inmediata por WhatsApp",
           "showPrice": false,
           "logisticaEnabled": true
