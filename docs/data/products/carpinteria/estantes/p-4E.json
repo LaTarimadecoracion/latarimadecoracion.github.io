@@ -25,7 +25,6 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 13000,
-          "cost_price": 13000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -39,7 +38,6 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 25000,
-          "cost_price": 25000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -53,7 +51,6 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 35000,
-          "cost_price": 35000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -67,7 +64,6 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 33000,
-          "cost_price": 33000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -94,7 +90,6 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 14000,
-          "cost_price": 14000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -108,7 +103,6 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 26000,
-          "cost_price": 26000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -122,7 +116,6 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 35998,
-          "cost_price": 35998,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -136,7 +129,6 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 33000,
-          "cost_price": 33000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -163,7 +155,6 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 15000,
-          "cost_price": 15000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -177,7 +168,6 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 28000,
-          "cost_price": 28000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -191,7 +181,6 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 40000,
-          "cost_price": 40000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -205,7 +194,6 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 33000,
-          "cost_price": 33000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true

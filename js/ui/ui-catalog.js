@@ -684,6 +684,7 @@
             // 2. Re-render Medidas Select (Cascade)
             divMedida.innerHTML = '';
             let defaultMedidaName = '';
+            const isGodModeVariants = Boolean(window.GodMode && typeof window.GodMode.isEnabled === 'function' && window.GodMode.isEnabled());
             if (grupo.medidas_variants && grupo.medidas_variants.length > 0) {
                 const uniqueMedidas = [];
                 grupo.medidas_variants.forEach(m => {
@@ -784,7 +785,6 @@
                     divMedida.style.display = 'none';
                 }
             } else {
-                const isGodModeVariants = Boolean(window.GodMode && window.GodMode.isEnabled());
                 if (isGodModeVariants) {
                     divMedida.className = 'variant-selector-wrapper mt-1';
                     divMedida.innerHTML = `
