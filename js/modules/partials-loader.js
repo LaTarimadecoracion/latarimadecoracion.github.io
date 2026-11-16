@@ -236,7 +236,7 @@ function ensureAdminCore() {
         await loadScriptsSequential([
             'js/admin/admin-utils.js?v=2',
             'js/admin/admin-settings.js?v=2',
-            'js/admin/admin-core.js?v=4'
+            'js/admin/admin-core.js?v=5'
         ]);
 
         // Cargar librerías CDN en segundo plano sin bloquear el renderizado visual
