@@ -24,7 +24,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 11000,
+          "price": 17500,
           "cost_price": 2500,
           "legend": "",
           "showPrice": true,
@@ -142,6 +142,7 @@
     }
   ],
   "views": 11,
+  "price": 17500,
   "categories": [
     "carpinteria-todos",
     "Organizadores",

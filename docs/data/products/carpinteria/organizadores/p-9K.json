@@ -7,6 +7,7 @@
   "acabados_groups": [
     {
       "acabado_name": "",
+      "description": "",
       "cover_image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
       "images_list": [
         "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
@@ -21,11 +22,22 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 23000,
+          "price": 33000,
           "cost_price": 23000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": "",
+          "volumeDiscounts": [
+            {
+              "minQty": 1,
+              "discountPercent": 15,
+              "shippingDiscountPercent": 0
+            }
+          ]
         }
       ],
       "hidden": false
@@ -47,11 +59,16 @@
     "linkEnabled": false,
     "creditEnabled": false
   },
-  "quantityDiscounts": [],
-  "last_modified": 1790738317696,
+  "quantityDiscounts": [
+    {
+      "minUnits": 1,
+      "discountPercent": 15,
+      "shippingDiscountPercent": 0
+    }
+  ],
+  "last_modified": 1794796790637,
   "primaryCatId": "Organizadores",
   "history": [],
-  "views": 26,
   "categories": [
     "carpinteria-todos",
     "Organizadores"

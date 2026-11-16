@@ -57,7 +57,26 @@
             const grupoName = productContext?.grupo?.acabado_name || '';
             const medidaName = productContext?.medida || '';
             const opcionName = productContext?.opcion || '';
-            const variantPrice = productContext?.price !== undefined ? productContext.price : (parseFloat(offer.price) || 0);
+            let variantPrice = productContext?.price !== undefined ? productContext.price : (parseFloat(offer.price) || 0);
+
+            // Resguardo: Si vino el precio de lista bruto sin descontar, evaluar regla de volumen/descuento
+            const activeVariant = (productContext?.grupo?.medidas_variants || offer.medidas_variants || []).find(m => m && (m.medida || '').trim() === (medidaName || '').trim());
+            const origListPrice = activeVariant?.price !== undefined ? parseFloat(activeVariant.price) : (parseFloat(offer.price) || 0);
+            if (variantPrice === origListPrice && typeof window.getBestDiscountRule === 'function') {
+                const discRule = window.getBestDiscountRule(offer, packQty, activeVariant);
+                if (discRule) {
+                    if (discRule.discountPercent !== undefined && Number(discRule.discountPercent) > 0) {
+                        variantPrice = Math.round(variantPrice * (1 - Number(discRule.discountPercent) / 100));
+                    } else if (discRule.discountValue !== undefined && Number(discRule.discountValue) > 0) {
+                        const minU = discRule.minQty !== undefined ? discRule.minQty : discRule.minUnits;
+                        const totalDisc = Math.floor(packQty / minU) * discRule.discountValue;
+                        variantPrice = Math.max(0, variantPrice - Math.round(totalDisc / packQty));
+                    }
+                } else if (offer.discountPercent && Number(offer.discountPercent) > 0) {
+                    variantPrice = Math.round(variantPrice * (1 - Number(offer.discountPercent) / 100));
+                }
+            }
+
             basePrice = variantPrice;
             const extraDetails = [];
             if (grupoName && grupoName !== 'Único') extraDetails.push(`Acabado: ${grupoName}`);

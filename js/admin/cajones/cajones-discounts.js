@@ -61,7 +61,7 @@
                 <span class="material-symbols-outlined cajon-esc-drag-handle" style="color: #94A3B8; font-size: 20px; cursor: grab; user-select: none; padding: 2px;" title="Arrastrar para reordenar">drag_indicator</span>
                 <div style="display: flex; align-items: center; gap: 6px;">
                     <label style="font-size: 0.72rem; font-weight: 700; color: #475569; white-space: nowrap;">A partir de:</label>
-                    <input type="number" class="admin-input cajon-esc-inp-qty" value="${esc.minQty || (idx * 3 + 3)}" min="2" max="999" style="width: 75px; padding: 4px 8px; font-size: 0.8rem; font-weight: 700;">
+                    <input type="number" class="admin-input cajon-esc-inp-qty" value="${esc.minQty || (idx * 3 + 3)}" min="1" max="999" style="width: 75px; padding: 4px 8px; font-size: 0.8rem; font-weight: 700;">
                     <span style="font-size: 0.72rem; color: #64748B;">cajones</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 6px;">

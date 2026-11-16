@@ -1,11 +1,13 @@
 {
   "id": "39",
+  "shortId": "3O",
   "title": "Perchero de pared",
   "description": "Medidas:\n3 ganchos:\n5 Ganchos:\n7 Ganchos:",
   "image": "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
       "images_list": [
         "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
@@ -20,11 +22,22 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 15000,
-          "legend": "",
-          "showPrice": false,
+          "price": 19000,
           "cost_price": 7500,
-          "stock": 0
+          "legend": "",
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": "",
+          "volumeDiscounts": [
+            {
+              "minQty": 1,
+              "discountPercent": 15,
+              "shippingDiscountPercent": 0
+            }
+          ]
         },
         {
           "medida": "5 Ganchos",
@@ -35,10 +48,21 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 15000,
+          "cost_price": 7500,
           "legend": "",
           "showPrice": false,
-          "cost_price": 7500,
-          "stock": 0
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": "",
+          "volumeDiscounts": [
+            {
+              "minQty": 1,
+              "discountPercent": 15,
+              "shippingDiscountPercent": 0
+            }
+          ]
         },
         {
           "medida": "7 Ganchos",
@@ -49,14 +73,24 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 15000,
+          "cost_price": 7500,
           "legend": "",
           "showPrice": false,
-          "cost_price": 7500,
-          "stock": 0
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": "",
+          "volumeDiscounts": [
+            {
+              "minQty": 1,
+              "discountPercent": 15,
+              "shippingDiscountPercent": 0
+            }
+          ]
         }
       ],
-      "hidden": false,
-      "stock": 0
+      "hidden": false
     }
   ],
   "tags": [
@@ -106,10 +140,31 @@
     "percheros rusticos",
     "percheros de pino"
   ],
-  "last_modified": 1783617272723,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 3,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [
+    {
+      "minUnits": 1,
+      "discountPercent": 15,
+      "shippingDiscountPercent": 0
+    }
+  ],
+  "last_modified": 1794796513907,
   "primaryCatId": "Percheros",
-  "views": 9,
-  "stock": 0,
   "history": [
     {
       "date": "27/8, 12:09 a. m.",
@@ -122,17 +177,6 @@
       "detail": "Costo: $0 ➔ $7.500"
     }
   ],
-  "paymentConfig": {
-    "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
-  },
-  "shippingConfig": {
-    "logisticaEnabled": true,
-    "fleteEnabled": true,
-    "otroEnabled": false,
-    "logisticaMaxUnits": 3
-  },
   "categories": [
     "carpinteria-todos",
     "Percheros"

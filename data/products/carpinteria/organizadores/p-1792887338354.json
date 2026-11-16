@@ -26,11 +26,22 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 65000,
+          "price": 88000,
           "cost_price": 88000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": "",
+          "volumeDiscounts": [
+            {
+              "minQty": 1,
+              "discountPercent": 15,
+              "shippingDiscountPercent": 0
+            }
+          ]
         }
       ],
       "hidden": false
@@ -60,8 +71,14 @@
     "linkEnabled": false,
     "creditEnabled": false
   },
-  "quantityDiscounts": [],
-  "last_modified": 1793494240983,
+  "quantityDiscounts": [
+    {
+      "minUnits": 1,
+      "discountPercent": 15,
+      "shippingDiscountPercent": 0
+    }
+  ],
+  "last_modified": 1794796870037,
   "primaryCatId": "Organizadores",
   "history": [
     {
@@ -70,7 +87,7 @@
       "details": "Importado como borrador desde Mercado Libre (MLA4087248102)"
     }
   ],
-  "views": 1,
+  "price": 88000,
   "categories": [
     "carpinteria-todos",
     "Organizadores"

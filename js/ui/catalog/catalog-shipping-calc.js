@@ -55,9 +55,22 @@
             const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
             const optLabel = product.optional_variant?.label || '';
             const curVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaText);
-            const variantPrice = (curVariant && curVariant.price !== undefined && curVariant.price !== '') ? curVariant.price : (parseFloat(product.price) || 0);
+            let variantPrice = (curVariant && curVariant.price !== undefined && curVariant.price !== '') ? curVariant.price : (parseFloat(product.price) || 0);
             const qtyValEl = document.getElementById('qty-value');
             const qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1', 10) : 1;
+
+            const rule = window.getBestDiscountRule ? window.getBestDiscountRule(product, qtyVal, curVariant) : null;
+            if (rule) {
+                if (rule.discountPercent !== undefined && Number(rule.discountPercent) > 0) {
+                    variantPrice = Math.round(variantPrice * (1 - Number(rule.discountPercent) / 100));
+                } else if (rule.discountValue !== undefined && Number(rule.discountValue) > 0) {
+                    const minU = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
+                    const totalDisc = Math.floor(qtyVal / minU) * rule.discountValue;
+                    variantPrice = Math.max(0, variantPrice - Math.round(totalDisc / qtyVal));
+                }
+            } else if (product.discountPercent && Number(product.discountPercent) > 0) {
+                variantPrice = Math.round(variantPrice * (1 - Number(product.discountPercent) / 100));
+            }
 
             if (window.showProductPaymentModal) {
                 window.showProductPaymentModal(product, grupo, medidaText, variantPrice, qtyVal, optText, optLabel);

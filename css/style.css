@@ -1624,10 +1624,25 @@ body.theme-final-mundial .add-to-cart-btn:hover {
 }
 
 .feed-card-price-current {
-    font-size: 1.05rem;
-    font-weight: 800;
+    font-size: 1.25rem;
+    font-weight: 900;
     color: #0f172a;
     letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.feed-card-discount-pill {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #15803d;
+    background: #dcfce7;
+    padding: 1.5px 6px;
+    border-radius: 4px;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+    vertical-align: middle;
 }
 
 .feed-card-price-prefix {

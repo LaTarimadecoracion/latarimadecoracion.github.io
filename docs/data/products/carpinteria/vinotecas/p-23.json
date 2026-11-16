@@ -1,11 +1,13 @@
 {
   "id": "23",
-  "title": "Vinoteca - 13 Vinos",
+  "shortId": "3O",
+  "title": "Vinoteca Cava Bodega Madera Mueble 13 Vinos Rustica Campo",
   "description": "Cavas y bodegas rústicas de madera.",
   "image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
   "acabados_groups": [
     {
       "acabado_name": "Tintado",
+      "description": "",
       "cover_image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
       "images_list": [
         "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
@@ -21,10 +23,22 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 100000,
+          "price": 150000,
           "cost_price": 31000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": "",
+          "volumeDiscounts": [
+            {
+              "minQty": 1,
+              "discountPercent": 15,
+              "shippingDiscountPercent": 0
+            }
+          ]
         }
       ],
       "hidden": false
@@ -84,10 +98,32 @@
     "cava de pino",
     "portabotellas de pared"
   ],
-  "last_modified": 1784083089360,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 1,
+    "logisticaFreeMinUnits": 1,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [
+    {
+      "minUnits": 1,
+      "discountPercent": 15,
+      "shippingDiscountPercent": 0
+    }
+  ],
+  "last_modified": 1794795847991,
   "primaryCatId": "Vinotecas",
-  "views": 7,
-  "stock": 0,
   "history": [
     {
       "date": "26/8, 11:55 p. m.",
@@ -95,22 +131,10 @@
       "detail": "Costo: $40.000 ➔ $31.000"
     }
   ],
-  "paymentConfig": {
-    "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
-  },
-  "shippingConfig": {
-    "logisticaEnabled": true,
-    "fleteEnabled": true,
-    "otroEnabled": false,
-    "logisticaMaxUnits": 1,
-    "logisticaFreeMinUnits": 1
-  },
+  "views": 7,
   "categories": [
     "carpinteria-todos",
     "Vinotecas"
   ],
-  "rubro": "carpinteria",
-  "price": 100000
+  "rubro": "carpinteria"
 }

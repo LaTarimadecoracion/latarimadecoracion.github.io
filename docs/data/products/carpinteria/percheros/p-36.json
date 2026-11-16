@@ -1,11 +1,13 @@
 {
   "id": "36",
+  "shortId": "3O",
   "title": "Perchero nórdico de pared x3",
   "description": "",
   "image": "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
       "images_list": [
         "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
@@ -23,15 +25,25 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 15000,
+          "price": 24000,
           "cost_price": 7500,
           "legend": "",
           "showPrice": true,
-          "stock": 0
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": "",
+          "volumeDiscounts": [
+            {
+              "minQty": 1,
+              "discountPercent": 15,
+              "shippingDiscountPercent": 0
+            }
+          ]
         }
       ],
-      "hidden": false,
-      "stock": 0
+      "hidden": false
     }
   ],
   "tags": [
@@ -136,21 +148,33 @@
     "colgador abrigo pared",
     "perchero minimalista madera"
   ],
-  "last_modified": 1784162786027,
-  "primaryCatId": "Percheros",
-  "views": 3,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 3,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
   "paymentConfig": {
     "transferEnabled": true,
     "linkEnabled": false,
     "creditEnabled": false
   },
-  "shippingConfig": {
-    "logisticaEnabled": true,
-    "fleteEnabled": true,
-    "otroEnabled": false,
-    "logisticaMaxUnits": 3
-  },
-  "stock": 0,
+  "quantityDiscounts": [
+    {
+      "minUnits": 1,
+      "discountPercent": 15,
+      "shippingDiscountPercent": 0
+    }
+  ],
+  "last_modified": 1794796550139,
+  "primaryCatId": "Percheros",
+  "history": [],
+  "price": 24000,
   "categories": [
     "carpinteria-todos",
     "Percheros"

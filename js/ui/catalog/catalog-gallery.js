@@ -27,9 +27,13 @@
         images.forEach((imgUrl, index) => {
             if (!imgUrl) return;
             galleryHTML += `
-                <div class="product-detail-slide">
+                <div class="product-detail-slide" data-slide-index="${index}">
                     <div class="product-gallery-img-wrapper" style="position:relative; width:100%; height:100%;">
-                        <img src="${imgUrl}" class="product-detail-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')">
+                        <img src="${imgUrl}" class="product-detail-img lazy-img" alt="${product.title}" loading="lazy" onload="this.classList.add('loaded')" data-god-type="product-image" data-god-id="${product.id}" data-group-index="${currentGroupIndex}" data-slide-index="${index}">
+                        <button type="button" class="god-photo-trigger-btn" data-god-id="${product.id}" data-group-index="${currentGroupIndex}" data-slide-index="${index}" title="Cambiar esta foto">
+                            <span class="material-symbols-outlined">add_a_photo</span>
+                            <span>Cambiar Foto</span>
+                        </button>
                     </div>
                     <span class="slide-indicator">${index + 1} / ${images.length}</span>
                 </div>
@@ -64,7 +68,7 @@
                         return `
                             <button type="button" class="gallery-acabado-btn ${i === currentGroupIndex ? 'active' : ''}" data-index="${i}" style="width: ${btnWidthPct} !important; min-width: ${btnWidthPct} !important; flex: 1 1 ${btnWidthPct} !important;" title="Ver acabado ${g.acabado_name}">
                                 ${imgUrl ? `<img src="${imgUrl}" class="gallery-acabado-thumb" alt="${g.acabado_name}" onerror="if(window.__imgFallback) window.__imgFallback(this);">` : ''}
-                                <span class="gallery-acabado-label">${g.acabado_name}</span>
+                                <span class="gallery-acabado-label" data-god-type="variant-acabado-name" data-god-id="${product.id}" data-group-index="${i}">${g.acabado_name}</span>
                             </button>
                         `;
                     }).join('')}
@@ -80,17 +84,54 @@
             wrapper.style.cursor = 'zoom-in';
             wrapper.title = 'Hacé clic para ampliar en pantalla completa';
             wrapper.addEventListener('click', (e) => {
+                if (window.GodMode && window.GodMode.isEnabled()) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const targetImg = wrapper.querySelector('img');
+                    window.GodMode.openPhotoModal({
+                        productId: product.id,
+                        groupIndex: currentGroupIndex,
+                        slideIndex: idx,
+                        currentUrl: images[idx] || (targetImg ? targetImg.src : ''),
+                        imgElement: targetImg,
+                        productTitle: product.title || ''
+                    });
+                    return;
+                }
                 e.stopPropagation();
                 if (window.openProductLightbox) {
                     window.openProductLightbox(images, idx, product.title);
                 }
             });
+
+            const triggerBtn = wrapper.querySelector('.god-photo-trigger-btn');
+            if (triggerBtn) {
+                triggerBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (window.GodMode && window.GodMode.openPhotoModal) {
+                        const targetImg = wrapper.querySelector('img');
+                        window.GodMode.openPhotoModal({
+                            productId: product.id,
+                            groupIndex: currentGroupIndex,
+                            slideIndex: idx,
+                            currentUrl: images[idx] || (targetImg ? targetImg.src : ''),
+                            imgElement: targetImg,
+                            productTitle: product.title || ''
+                        });
+                    }
+                });
+            }
         });
 
         // Escuchar clics en los botones de acabado de la galería
         const acabadosOverlay = detailImgContainer.querySelector('.gallery-acabados-overlay');
         if (acabadosOverlay) {
             acabadosOverlay.addEventListener('click', (e) => {
+                if (e.target.closest('.gallery-acabado-label') && window.GodMode && window.GodMode.isEnabled()) {
+                    // Si está en Modo Dios y hace clic en la etiqueta para editarla, permitir foco
+                    return;
+                }
                 const btn = e.target.closest('.gallery-acabado-btn');
                 if (!btn) return;
                 

@@ -82,6 +82,9 @@
             }
         });
 
+        if (typeof window.groupCategoryProducts === 'function') {
+            return window.groupCategoryProducts(allItems);
+        }
         return allItems;
     }
 

@@ -1,11 +1,13 @@
 {
   "id": "33",
+  "shortId": "3O",
   "title": "Perchero 5 - Rustico",
   "description": "Medidas:\n63 x 13 cm",
   "image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
   "acabados_groups": [
     {
       "acabado_name": "",
+      "description": "",
       "cover_image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
       "images_list": [
         "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
@@ -27,15 +29,25 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 25000,
+          "price": 35000,
           "cost_price": 12500,
           "legend": "",
           "showPrice": true,
-          "stock": 0
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": "",
+          "volumeDiscounts": [
+            {
+              "minQty": 1,
+              "discountPercent": 15,
+              "shippingDiscountPercent": 0
+            }
+          ]
         }
       ],
-      "hidden": false,
-      "stock": 0
+      "hidden": false
     }
   ],
   "tags": [
@@ -90,11 +102,31 @@
     "perchero toallero",
     "perchero baño"
   ],
-  "last_modified": 1784773922188,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 3,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [
+    {
+      "minUnits": 1,
+      "discountPercent": 15,
+      "shippingDiscountPercent": 0
+    }
+  ],
+  "last_modified": 1794796631235,
   "primaryCatId": "Percheros",
-  "visible": true,
-  "views": 1,
-  "stock": 0,
   "history": [
     {
       "date": "27/8, 12:05 a. m.",
@@ -107,17 +139,7 @@
       "detail": "Costo: $10.000 ➔ $12.500"
     }
   ],
-  "paymentConfig": {
-    "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
-  },
-  "shippingConfig": {
-    "logisticaEnabled": true,
-    "fleteEnabled": true,
-    "otroEnabled": false,
-    "logisticaMaxUnits": 3
-  },
+  "visible": true,
   "categories": [
     "carpinteria-todos",
     "Percheros"

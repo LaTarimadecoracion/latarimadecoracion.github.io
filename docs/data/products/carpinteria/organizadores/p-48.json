@@ -1,11 +1,13 @@
 {
   "id": "48",
-  "title": "Esquinero x3",
+  "shortId": "3M",
+  "title": "Estante Esquinero Torneado 3 Estantes",
   "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
   "image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
       "images_list": [
         "img/organizadores/esquinero-x3/Esquinero x3.webp"
@@ -19,11 +21,22 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 40000,
+          "price": 75000,
           "cost_price": 40000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": "",
+          "volumeDiscounts": [
+            {
+              "minQty": 1,
+              "discountPercent": 15,
+              "shippingDiscountPercent": 0
+            }
+          ]
         }
       ],
       "hidden": false
@@ -97,11 +110,16 @@
     "linkEnabled": false,
     "creditEnabled": false
   },
-  "quantityDiscounts": [],
-  "last_modified": 1788914164738,
+  "quantityDiscounts": [
+    {
+      "minUnits": 1,
+      "discountPercent": 15,
+      "shippingDiscountPercent": 0
+    }
+  ],
+  "last_modified": 1794797048622,
   "primaryCatId": "Organizadores",
   "history": [],
-  "views": 0,
   "categories": [
     "carpinteria-todos",
     "Organizadores",

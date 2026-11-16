@@ -24,7 +24,7 @@
           "linkLabel": "Ver en Mercado Libre",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 28000,
+          "price": 33000,
           "cost_price": 14000,
           "legend": "",
           "showPrice": true,
@@ -61,6 +61,7 @@
   "visible": true,
   "order": 1,
   "views": 0,
+  "price": 33000,
   "categories": [
     "carpinteria-todos",
     "Organizadores"

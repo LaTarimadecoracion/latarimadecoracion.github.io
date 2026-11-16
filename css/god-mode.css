@@ -540,3 +540,500 @@ body.god-mode-active .god-mode-dock {
         display: none;
     }
 }
+
+
+/* =============================================================================
+   7. Botones e Indicadores de Edición para Fotos, Specs y Variantes
+   ============================================================================= */
+
+/* Botón flotante para cambiar foto en la galería */
+.god-photo-trigger-btn {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 50;
+    display: none;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    background: rgba(15, 23, 42, 0.85);
+    color: #ffffff;
+    border: 1.5px solid var(--god-terracota);
+    border-radius: 9999px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.god-mode-active .god-photo-trigger-btn {
+    display: inline-flex;
+}
+
+.god-photo-trigger-btn:hover {
+    background: var(--god-terracota);
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(194, 94, 62, 0.5);
+}
+
+.god-photo-trigger-btn .material-symbols-outlined {
+    font-size: 1.1rem;
+}
+
+/* Hover en imágenes cuando Modo Dios está activo */
+body.god-mode-active .feed-card-photo-container img,
+body.god-mode-active .product-gallery-img-wrapper img,
+body.god-mode-active .feed-card-img,
+body.god-mode-active [data-god-type="product-image"] {
+    cursor: pointer !important;
+    transition: filter 0.2s ease, outline 0.2s ease;
+}
+
+body.god-mode-active .product-gallery-img-wrapper:hover img,
+body.god-mode-active [data-god-type="product-image"]:hover {
+    outline: 3px solid var(--god-terracota) !important;
+    outline-offset: -3px;
+    filter: brightness(0.92);
+}
+
+/* Botón de Editar Variantes */
+.btn-god-edit-variants {
+    display: none;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    background: rgba(194, 94, 62, 0.12);
+    border: 1px solid rgba(194, 94, 62, 0.35);
+    border-radius: 8px;
+    color: var(--god-terracota);
+    font-size: 0.76rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.god-mode-active .btn-god-edit-variants {
+    display: inline-flex !important;
+}
+
+.btn-god-edit-variants:hover {
+    background: var(--god-terracota);
+    color: #ffffff;
+    border-color: var(--god-terracota);
+    transform: translateY(-1px);
+}
+
+/* Botón de Agregar Característica a la Ficha */
+.btn-god-add-spec {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    padding: 7px 12px;
+    background: rgba(194, 94, 62, 0.08);
+    border: 1.5px dashed var(--god-terracota);
+    border-radius: 8px;
+    color: var(--god-terracota);
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+body.god-mode-active .btn-god-add-spec {
+    display: inline-flex !important;
+}
+
+.btn-god-add-spec:hover {
+    background: rgba(194, 94, 62, 0.18);
+    transform: translateY(-1px);
+}
+
+/* Botón de Eliminar Característica */
+.god-delete-spec-btn {
+    transition: transform 0.15s ease, color 0.15s ease;
+}
+
+body.god-mode-active .god-delete-spec-btn {
+    display: inline-flex !important;
+}
+
+.god-delete-spec-btn:hover {
+    color: #dc2626 !important;
+    transform: scale(1.15);
+}
+
+/* Títulos y Valores de Specs Editables */
+body.god-mode-active .product-spec-title,
+body.god-mode-active .product-spec-val,
+body.god-mode-active .gallery-acabado-label {
+    cursor: text !important;
+    padding: 2px 4px;
+    border-radius: 4px;
+    min-width: 30px;
+}
+
+body.god-mode-active .product-spec-title:hover,
+body.god-mode-active .product-spec-val:hover,
+body.god-mode-active .gallery-acabado-label:hover {
+    background: rgba(194, 94, 62, 0.12) !important;
+    outline: 1.5px dashed var(--god-terracota) !important;
+}
+
+body.god-mode-active .product-spec-title:focus,
+body.god-mode-active .product-spec-val:focus,
+body.god-mode-active .gallery-acabado-label:focus {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    outline: 2px solid var(--god-terracota) !important;
+    box-shadow: 0 0 0 3px rgba(194, 94, 62, 0.25) !important;
+}
+
+/* =============================================================================
+   8. Modales Genéricos del Modo Dios (#god-photo-modal, #god-variants-modal)
+   ============================================================================= */
+.god-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 100020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    box-sizing: border-box;
+    animation: godFadeIn 0.2s ease-out;
+}
+
+@keyframes godFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.god-modal-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(194, 94, 62, 0.25);
+    max-width: 520px;
+    width: 100%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: godSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes godSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.god-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid #f1f5f9;
+    background: #fafbfc;
+}
+
+.god-modal-title {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.god-modal-close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.god-modal-close:hover {
+    color: #0f172a;
+}
+
+.god-modal-body {
+    padding: 1.25rem;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.god-modal-prod-info {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--god-terracota);
+    background: rgba(194, 94, 62, 0.08);
+    padding: 6px 12px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(194, 94, 62, 0.2);
+}
+
+.god-help-text {
+    font-size: 0.82rem;
+    color: #64748b;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.god-form-group {
+    margin-bottom: 1rem;
+}
+
+.god-label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 6px;
+}
+
+.god-input-text {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    background: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.88rem;
+    color: #0f172a;
+    transition: all 0.2s ease;
+}
+
+.god-input-text:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: var(--god-terracota);
+    box-shadow: 0 0 0 3px rgba(194, 94, 62, 0.2);
+}
+
+/* Vista previa de imagen */
+.god-photo-preview-wrap {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    background: #0f172a;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.god-photo-preview-wrap img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.god-upload-loading {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.8);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+/* Dropzone de subida de archivos */
+.god-file-dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.god-file-dropzone:hover {
+    background: rgba(194, 94, 62, 0.05);
+    border-color: var(--god-terracota);
+}
+
+.god-drop-icon {
+    font-size: 2rem;
+    color: var(--god-terracota);
+    margin-bottom: 4px;
+}
+
+.god-drop-text {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.god-drop-sub {
+    font-size: 0.72rem;
+    color: #64748b;
+    margin-top: 3px;
+}
+
+/* Modal de Variantes */
+.god-variants-modal-card {
+    max-width: 600px;
+}
+
+.god-variants-rows-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.god-variant-row-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+.god-var-col-name {
+    flex: 2;
+}
+
+.god-var-col-price {
+    flex: 1.2;
+}
+
+.god-var-col-espesor {
+    flex: 1.2;
+}
+
+.god-var-col-actions {
+    flex-shrink: 0;
+    margin-top: 18px;
+}
+
+.god-var-sublabel {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: #64748b;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+}
+
+.god-var-del-btn {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.god-var-del-btn:hover {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Botones de Footer de Modal */
+.god-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 0.9rem 1.25rem;
+    border-top: 1px solid #f1f5f9;
+    background: #fafbfc;
+}
+
+.god-btn-cancel {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #475569;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.god-btn-cancel:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+}
+
+.god-btn-primary {
+    background: linear-gradient(135deg, #c25e3e 0%, #a0715b 100%);
+    border: none;
+    color: #ffffff;
+    font-size: 0.82rem;
+    font-weight: 800;
+    padding: 8px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(194, 94, 62, 0.35);
+}
+
+.god-btn-primary:hover {
+    background: linear-gradient(135deg, #d36a49 0%, #b37e66 100%);
+    box-shadow: 0 6px 16px rgba(194, 94, 62, 0.5);
+    transform: translateY(-1px);
+}
+
+.god-btn-secondary {
+    background: rgba(194, 94, 62, 0.1);
+    border: 1.5px dashed var(--god-terracota);
+    color: var(--god-terracota);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 7px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+}
+
+.god-btn-secondary:hover {
+    background: rgba(194, 94, 62, 0.2);
+}

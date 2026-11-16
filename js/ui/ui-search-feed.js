@@ -253,7 +253,16 @@
         const minPrice = Math.min(...allPrices);
         const maxPrice = Math.max(...allPrices);
 
+        const baseProd = product.product || product;
+        const directPercent = Number(product.discountPercent || product.descuento || baseProd.discountPercent || baseProd.descuento || 0);
+        const qDisc = product.quantityDiscounts || baseProd.quantityDiscounts;
+        const tier1 = Array.isArray(qDisc) ? qDisc.find(d => Number(d.minUnits) <= 1 && Number(d.discountPercent) > 0) : null;
+        const activePct = directPercent > 0 ? directPercent : (tier1 ? Number(tier1.discountPercent) : 0);
+
         let oldPriceHtml = '';
+        let discountBadgeHtml = '';
+        let displayPrice = minPrice;
+
         if (allComparePrices.length > 0) {
             const maxCompare = Math.max(...allComparePrices);
             if (maxCompare > minPrice) {
@@ -263,12 +272,15 @@
             oldPriceHtml = `<span class="feed-card-price-old">${feedCurrencyFormatter.format(Number(product.comparePrice))}</span>`;
         } else if (product.originalPrice && Number(product.originalPrice) > minPrice) {
             oldPriceHtml = `<span class="feed-card-price-old">${feedCurrencyFormatter.format(Number(product.originalPrice))}</span>`;
+        } else if (activePct > 0) {
+            displayPrice = Math.round(minPrice * (1 - activePct / 100));
+            oldPriceHtml = `<span class="feed-card-price-old">${feedCurrencyFormatter.format(minPrice)}</span>`;
         }
 
         if (minPrice === maxPrice) {
-            return `${oldPriceHtml}<span class="feed-card-price-current">${feedCurrencyFormatter.format(minPrice)}</span>`;
+            return `${oldPriceHtml}<span class="feed-card-price-current">${feedCurrencyFormatter.format(displayPrice)}</span>`;
         } else {
-            return `${oldPriceHtml}<span class="feed-card-price-prefix">Desde</span><span class="feed-card-price-current">${feedCurrencyFormatter.format(minPrice)}</span>`;
+            return `${oldPriceHtml}<span class="feed-card-price-prefix">Desde</span><span class="feed-card-price-current">${feedCurrencyFormatter.format(displayPrice)}</span>`;
         }
     }
 
@@ -384,12 +396,13 @@
             const tiers = product.quantityDiscounts.filter(d => Number(d.discountPercent) > 0 && Number(d.minUnits) > 0);
             if (tiers.length > 0) {
                 const firstTier = tiers[0];
+                const isSingleUnit = Number(firstTier.minUnits) <= 1;
                 return {
                     type: 'volume',
                     percent: firstTier.discountPercent,
                     minUnits: firstTier.minUnits,
-                    label: `${firstTier.discountPercent}% OFF desde ${firstTier.minUnits} u.`,
-                    badgeText: `${firstTier.discountPercent}% OFF x cant.`
+                    label: isSingleUnit ? `${firstTier.discountPercent}% OFF` : `${firstTier.discountPercent}% OFF desde ${firstTier.minUnits} u.`,
+                    badgeText: `${firstTier.discountPercent}% OFF`
                 };
             }
         }
@@ -495,7 +508,7 @@
                             <span>${freeShipInfo.label}</span>
                         </span>
                     ` : ''}
-                    ${(!freeShipInfo && discountInfo) ? `
+                    ${(!freeShipInfo && discountInfo && Number(discountInfo.minUnits || 0) > 1) ? `
                         <span class="feed-card-promo-discount" title="${discountInfo.label}">
                             ${discountInfo.label}
                         </span>
@@ -1034,16 +1047,25 @@
             categoryProducts = (cat.products || []).filter(p => p.visible !== false);
         }
 
+        if (typeof window.groupCategoryProducts === 'function') {
+            categoryProducts = window.groupCategoryProducts(categoryProducts);
+        }
+
         function renderFeedCards(prodsToRender) {
             if (!categoryFeedList) return;
             categoryFeedList.innerHTML = '';
-            if (prodsToRender.length === 0) {
+            const finalProds = (typeof window.groupCategoryProducts === 'function')
+                ? window.groupCategoryProducts(prodsToRender)
+                : prodsToRender;
+
+            if (finalProds.length === 0) {
                 if (categoryFeedEmpty) categoryFeedEmpty.style.display = 'flex';
                 return;
             }
             if (categoryFeedEmpty) categoryFeedEmpty.style.display = 'none';
 
-                        prodsToRender.forEach(product => {
+            finalProds.forEach(item => {
+                const product = item.product || item;
                 const defaultAcabado = (product.acabados_groups && product.acabados_groups[0]?.acabado_name) || '';
                 const card = createFeedProductCard(product, {
                     catName: cat.name,

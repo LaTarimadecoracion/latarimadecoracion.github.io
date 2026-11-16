@@ -373,15 +373,57 @@ body.standalone-catalog .bg-glow-2 { bottom: -150px; left: -150px; }
     box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
 }
 
+/* Fila de Precio y Descuentos en Catálogo */
+.catalog-price-row {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 2px 0 4px 0;
+}
+
+.catalog-price-old {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #94a3b8;
+    text-decoration: line-through;
+    line-height: 1.1;
+    margin-right: 2px;
+}
+
 /* Badge de Precio */
 .catalog-price-tag {
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     font-weight: 800;
     color: var(--primary-color, #c0510a);
     display: inline-flex;
-    align-items: center;
+    align-items: baseline;
     gap: 4px;
     margin-top: 2px;
+    letter-spacing: -0.01em;
+}
+
+.catalog-price-tag.has-discount,
+.catalog-price-tag.catalog-price-discounted {
+    font-size: 1.25rem !important;
+    font-weight: 900 !important;
+    color: #0f172a !important;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+}
+
+.catalog-discount-pill {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: #15803d;
+    background: #dcfce7;
+    padding: 1.5px 6px;
+    border-radius: 4px;
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+    vertical-align: middle;
 }
 
 /* Tooltip Informativo */
@@ -569,7 +611,7 @@ body.standalone-catalog .bg-glow-2 { bottom: -150px; left: -150px; }
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 10px 14px;
     margin: 0.5rem 0 0.25rem 0;
     padding: 0.65rem 0.9rem;
@@ -585,17 +627,26 @@ body.standalone-catalog .catalog-toolbar {
     margin: 0.75rem 1rem 0.25rem 1rem;
 }
 
+.catalog-toolbar-left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
 .catalog-results-count {
     font-size: 0.84rem;
     font-weight: 700;
     color: var(--text-main, #2D3748);
+    white-space: nowrap;
 }
 
 .catalog-toolbar-controls {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 10px;
+    flex-shrink: 0;
 }
 
 .catalog-price-filter {
@@ -830,14 +881,18 @@ body.standalone-catalog .catalog-toolbar {
     }
     .catalog-toolbar {
         margin: 0.4rem 0 0.25rem 0;
-        padding: 0.6rem 0.75rem;
+        padding: 0.5rem 0.65rem;
+        flex-wrap: nowrap !important;
+        gap: 6px !important;
     }
     body.standalone-catalog .catalog-toolbar {
         margin: 0.5rem 0.75rem 0.25rem 0.75rem;
     }
     .catalog-toolbar-controls {
-        width: 100%;
-        justify-content: space-between;
+        width: auto !important;
+        justify-content: flex-end !important;
+        gap: 6px !important;
+        flex-shrink: 0 !important;
     }
     .catalog-price-input {
         width: 62px;

@@ -42,7 +42,6 @@ window.safeRender = function(fn, name) {
 
 
 (function() {
-    console.log("🚀 Initializing Drag-to-Scroll for carousels...");
     let isDown = false;
     let startX;
     let scrollLeft;
@@ -73,7 +72,6 @@ window.safeRender = function(fn, name) {
             }
         `;
         document.head.appendChild(style);
-        console.log("✅ Custom drag styles injected successfully.");
     } catch (err) {
         console.error("❌ Error injecting drag styles:", err);
     }
@@ -81,7 +79,6 @@ window.safeRender = function(fn, name) {
     // Prevent native drag-and-drop of images and links inside the carousel
     document.addEventListener('dragstart', (e) => {
         if (e.target.closest(carouselSelector)) {
-            console.log("🚫 Prevented native dragstart inside carousel");
             e.preventDefault();
         }
     }, true);
@@ -90,7 +87,6 @@ window.safeRender = function(fn, name) {
         const carousel = e.target.closest(carouselSelector);
         if (!carousel) return;
 
-        console.log("🎯 Mousedown detected on carousel:", carousel.id || carousel.className);
         isDown = true;
         activeCarousel = carousel;
         carousel.classList.add('grabbing');
@@ -113,7 +109,6 @@ window.safeRender = function(fn, name) {
 
     const endDrag = () => {
         if (!isDown || !activeCarousel) return;
-        console.log("👋 Mouseup/Leave: Ending drag on carousel");
         isDown = false;
         activeCarousel.classList.remove('grabbing');
 
@@ -125,7 +120,6 @@ window.safeRender = function(fn, name) {
 
         if (Math.abs(velocity) > 0.5) {
             let momentum = velocity * 15;
-            console.log(`🌀 Momentum scroll initiated with velocity: ${velocity}, scrollLeft: ${carousel.scrollLeft}`);
             const step = () => {
                 if (isDown) return;
                 carousel.scrollLeft -= momentum;
@@ -133,13 +127,11 @@ window.safeRender = function(fn, name) {
                 if (Math.abs(momentum) > 0.5) {
                     requestAnimationFrame(step);
                 } else {
-                    console.log("💤 Momentum scroll finished. Restoring scroll-snap.");
                     if (carousel.classList.contains('product-detail-carousel')) { carousel.style.removeProperty('scroll-snap-type'); }
                 }
             };
             requestAnimationFrame(step);
         } else {
-            console.log("Restoring scroll-snap immediately.");
             if (carousel.classList.contains('product-detail-carousel')) { carousel.style.removeProperty('scroll-snap-type'); }
         }
     };
@@ -158,11 +150,6 @@ window.safeRender = function(fn, name) {
 
         // Apply relative drag scrolling to avoid resetting positions modified by infinite scroll prepend
         activeCarousel.scrollLeft = activeCarousel.scrollLeft - deltaXDrag * 1.5;
-        
-        // Log dragging progress occasionally
-        if (Math.random() < 0.1) {
-            console.log(`Dragging... DeltaXDrag: ${deltaXDrag}, scrollLeft: ${activeCarousel.scrollLeft}`);
-        }
 
         const now = Date.now();
         const elapsed = now - lastTime;
@@ -181,7 +168,6 @@ window.safeRender = function(fn, name) {
         const deltaX = Math.abs(e.clientX - clickStartX);
         const deltaY = Math.abs(e.clientY - clickStartY);
         if (deltaX > 10 || deltaY > 10) {
-            console.log("🚫 Click prevented because it was a drag operation");
             e.preventDefault();
             e.stopPropagation();
         }

@@ -1,11 +1,13 @@
 {
   "id": "4I",
+  "shortId": "3O",
   "title": "Perchero De Pie Torneado 8 Ganchos Niños",
   "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
   "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
   "acabados_groups": [
     {
       "acabado_name": "Percherito",
+      "description": "",
       "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
       "images_list": [
         "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
@@ -21,18 +23,28 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 30000,
-          "cost_price": "",
+          "price": 42000,
+          "cost_price": 42000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": "",
+          "volumeDiscounts": [
+            {
+              "minQty": 1,
+              "discountPercent": 15,
+              "shippingDiscountPercent": 0
+            }
+          ]
         }
       ],
       "hidden": false
     }
   ],
   "tags": [],
-  "estimatedWeight": 2,
   "shippingConfig": {
     "logisticaEnabled": true,
     "logisticaCost": 0,
@@ -49,16 +61,20 @@
     "linkEnabled": false,
     "creditEnabled": false
   },
-  "quantityDiscounts": [],
-  "last_modified": 1788918811368,
+  "quantityDiscounts": [
+    {
+      "minUnits": 1,
+      "discountPercent": 15,
+      "shippingDiscountPercent": 0
+    }
+  ],
+  "last_modified": 1794796470483,
   "primaryCatId": "Juguetes",
   "history": [],
-  "views": 4,
   "categories": [
     "carpinteria-todos",
     "Percheros",
     "Juguetes"
   ],
-  "rubro": "carpinteria",
-  "price": 30000
+  "rubro": "carpinteria"
 }

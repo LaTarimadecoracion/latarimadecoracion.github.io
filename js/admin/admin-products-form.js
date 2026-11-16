@@ -130,7 +130,7 @@ window.addEventListener('message', (event) => {
     }
 
     // Helper: Crear fila de Escala de Descuento por Cantidad (Precio y/o Envío)
-    function createDiscountTierRow(minUnits = 3, discountPercent = 10, shippingDiscountPercent = 0) {
+    function createDiscountTierRow(minUnits = 1, discountPercent = 15, shippingDiscountPercent = 0) {
         const row = document.createElement('div');
         row.className = 'discount-tier-row';
         row.style.cssText = 'display: flex; align-items: center; justify-content: space-between; gap: 8px; background: white; border: 1px solid #cbd5e1; border-radius: 6px; padding: 6px 8px; flex-wrap: wrap;';
@@ -138,11 +138,11 @@ window.addEventListener('message', (event) => {
         row.innerHTML = `
             <div style="display: flex; align-items: center; gap: 4px;">
                 <span style="font-size: 0.72rem; color: #64748b; font-weight: 700;">Desde</span>
-                <input type="number" class="discount-tier-units" min="2" placeholder="Ej: 3" value="${minUnits}" style="width: 52px; font-size: 0.8rem; padding: 3px 5px; border: 1px solid #cbd5e1; border-radius: 4px;">
+                <input type="number" class="discount-tier-units" min="1" placeholder="Ej: 1" value="${minUnits}" style="width: 52px; font-size: 0.8rem; padding: 3px 5px; border: 1px solid #cbd5e1; border-radius: 4px;">
                 <span style="font-size: 0.72rem; color: #64748b; font-weight: 700;">uds:</span>
             </div>
             <div style="display: flex; align-items: center; gap: 3px;" title="Descuento en el precio del producto">
-                <input type="number" class="discount-tier-percent" min="0" max="100" placeholder="0" value="${discountPercent}" style="width: 50px; font-size: 0.8rem; padding: 3px 5px; border: 1px solid #cbd5e1; border-radius: 4px;">
+                <input type="number" class="discount-tier-percent" min="0" max="100" placeholder="15" value="${discountPercent}" style="width: 50px; font-size: 0.8rem; padding: 3px 5px; border: 1px solid #cbd5e1; border-radius: 4px;">
                 <span style="font-size: 0.72rem; color: #16a34a; font-weight: 700;">% OFF Prod.</span>
             </div>
             <div style="display: flex; align-items: center; gap: 3px;" title="Descuento en el costo del envío (ej: 50% OFF o 100% OFF envío gratis)">
@@ -165,7 +165,10 @@ window.addEventListener('message', (event) => {
         if (btnAdd) {
             const container = document.getElementById('product-discounts-container');
             if (container) {
-                container.appendChild(createDiscountTierRow(3, 10, 0));
+                const count = container.querySelectorAll('.discount-tier-row').length;
+                const defaultMin = count === 0 ? 1 : (count === 1 ? 3 : (count * 2 + 1));
+                const defaultDiscount = count === 0 ? 15 : (count === 1 ? 20 : 25);
+                container.appendChild(createDiscountTierRow(defaultMin, defaultDiscount, 0));
             }
         }
     });
@@ -1436,7 +1439,7 @@ window.addEventListener('message', (event) => {
                 const discountPercent = parseFloat(row.querySelector('.discount-tier-percent')?.value) || 0;
                 const shippingDiscountPercent = parseFloat(row.querySelector('.discount-tier-shipping-percent')?.value) || 0;
                 return { minUnits, discountPercent, shippingDiscountPercent };
-            }).filter(d => d.minUnits > 1 && (d.discountPercent > 0 || d.shippingDiscountPercent > 0))
+            }).filter(d => d.minUnits >= 1 && (d.discountPercent > 0 || d.shippingDiscountPercent > 0))
               .sort((a, b) => a.minUnits - b.minUnits);
 
             const finalAcabadosGroups = [];

@@ -23,7 +23,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 20000,
+          "price": 25000,
           "cost_price": 20000,
           "legend": "",
           "showPrice": true,
@@ -75,5 +75,6 @@
     "Organizadores",
     "Estantes"
   ],
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "price": 25000
 }

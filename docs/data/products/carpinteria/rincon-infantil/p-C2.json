@@ -21,7 +21,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 20000,
+          "price": 23000,
           "cost_price": 15000,
           "legend": "",
           "showPrice": true,
@@ -109,5 +109,6 @@
     "Juguetes"
   ],
   "rubro": "carpinteria",
-  "category": "Juguetes"
+  "category": "Juguetes",
+  "price": 23000
 }

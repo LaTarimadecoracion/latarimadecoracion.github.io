@@ -33,7 +33,7 @@ const productsData = [
                                 "linkLabel": "Ver en Mercado Libre",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28000,
+                                "price": 33000,
                                 "cost_price": 14000,
                                 "legend": "",
                                 "showPrice": true,
@@ -69,7 +69,8 @@ const productsData = [
                 "history": [],
                 "visible": true,
                 "order": 1,
-                "views": 0
+                "views": 0,
+                "price": 33000
             },
             {
                 "id": "1794021665338",
@@ -1078,7 +1079,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 6,
+                "views": 7,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -1305,7 +1306,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 11000,
+                                "price": 17500,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -1422,7 +1423,8 @@ const productsData = [
                         "detail": "Costo: $0 ➔ $2500"
                     }
                 ],
-                "views": 11
+                "views": 11,
+                "price": 17500
             },
             {
                 "id": "4A",
@@ -3710,7 +3712,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20000,
+                                "price": 25000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -3763,7 +3765,8 @@ const productsData = [
                     "Estantes",
                     "Hogar"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 25000
             },
             {
                 "id": "7D",
@@ -4044,7 +4047,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 26000,
+                                "price": 30000,
                                 "cost_price": 6500,
                                 "legend": "",
                                 "showPrice": true
@@ -4126,7 +4129,8 @@ const productsData = [
                     "Hogar"
                 ],
                 "rubro": "carpinteria",
-                "category": "Organizadores"
+                "category": "Organizadores",
+                "price": 30000
             },
             {
                 "id": "79",
@@ -4274,45 +4278,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "F4",
-                "title": "Tender",
-                "description": "",
-                "image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Único",
-                        "cover_image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
-                        "images_list": [
-                            "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
-                            "img/hogar/tendre-ropa-madera/1786334918048-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786334918176,
-                "primaryCatId": "Organizadores",
-                "views": 3,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria",
-                "category": "Organizadores"
-            },
-            {
                 "id": "G8",
                 "title": "Palo De Amasar De Madera Mango Fijo 40 Cm",
                 "description": "Lo que tenés que saber de este producto\nLargo del mango: 7 cm\nLargo total: 40 cm\nDiámetro: 4.5 cm\nFabricado en madera.\nEs apto para lavavajillas.",
@@ -4451,7 +4416,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 13000,
+                                "price": 17500,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -4495,13 +4460,13 @@ const productsData = [
                 "last_modified": 1788917344040,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 2,
+                "views": 6,
                 "categories": [
                     "carpinteria-todos",
                     "bazar-cocina"
                 ],
                 "rubro": "carpinteria",
-                "price": 13000
+                "price": 17500
             },
             {
                 "id": "E1",
@@ -5538,6 +5503,7 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
                         "images_list": [
                             "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
@@ -5554,11 +5520,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20000,
-                                "cost_price": "",
+                                "price": 30000,
+                                "cost_price": 30000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -5617,25 +5594,27 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1790380546917,
-                "primaryCatId": "Organizadores",
-                "history": [],
-                "views": 5,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores"
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
                 ],
-                "rubro": "carpinteria"
+                "last_modified": 1794796783964,
+                "primaryCatId": "Organizadores",
+                "history": []
             },
             {
                 "id": "48",
-                "title": "Esquinero x3",
+                "shortId": "3M",
+                "title": "Estante Esquinero Torneado 3 Estantes",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
                         "images_list": [
                             "img/organizadores/esquinero-x3/Esquinero x3.webp"
@@ -5649,11 +5628,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40000,
+                                "price": 75000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -5727,17 +5717,16 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1788914164738,
-                "primaryCatId": "Organizadores",
-                "history": [],
-                "views": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Estantes"
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
                 ],
-                "rubro": "carpinteria"
+                "last_modified": 1794797048622,
+                "primaryCatId": "Organizadores",
+                "history": []
             },
             {
                 "id": "49",
@@ -6224,44 +6213,6 @@ const productsData = [
                 "category": "Estantes"
             },
             {
-                "id": "4F",
-                "title": "Caballetes de madera",
-                "description": "",
-                "image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Steve",
-                        "cover_image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786332743079,
-                "primaryCatId": "Organizadores",
-                "views": 3,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Mesas-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "9K",
                 "shortId": "3E",
                 "title": "Exhibidor Organizador 4 Estantes De Madera",
@@ -6270,6 +6221,7 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "",
+                        "description": "",
                         "cover_image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
                         "images_list": [
                             "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
@@ -6284,11 +6236,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23000,
+                                "price": 33000,
                                 "cost_price": 23000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -6310,25 +6273,27 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1790738317696,
-                "primaryCatId": "Organizadores",
-                "history": [],
-                "views": 26,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores"
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
                 ],
-                "rubro": "carpinteria"
+                "last_modified": 1794796790637,
+                "primaryCatId": "Organizadores",
+                "history": []
             },
             {
                 "id": "31",
+                "shortId": "3O",
                 "title": "Perchero De Pie Torneado Reforzado 8 Ganchos",
                 "description": "Funcionalidad y elegancia para organizar tu entrada.",
                 "image": "img/percheros/perchero-1/1782624223963-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/percheros/perchero-1/1782624223963-imagen.webp",
                         "images_list": [
                             "img/percheros/perchero-1/1782624223963-imagen.webp",
@@ -6345,11 +6310,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 35000,
+                                "price": 60000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             },
                             {
                                 "medida": "2 Unidad",
@@ -6363,11 +6339,21 @@ const productsData = [
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -6408,10 +6394,31 @@ const productsData = [
                     "percheros rusticos",
                     "percheros de pino"
                 ],
-                "last_modified": 1786826453117,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794796432955,
                 "primaryCatId": "Percheros",
-                "views": 17,
-                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:04 a. m.",
@@ -6424,32 +6431,18 @@ const productsData = [
                         "detail": "Costo: $17.000 ➔ $20.000"
                     }
                 ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "visible": true,
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros"
-                ],
-                "rubro": "carpinteria"
+                "visible": true
             },
             {
                 "id": "32",
+                "shortId": "3O",
                 "title": "Perchero De Pie Torneado Reforzado 8 Ganchos (2)",
                 "description": "Funcionalidad y elegancia para organizar tu entrada.",
                 "image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
                         "images_list": [
                             "img/percheros/perchero-1-2/1786839959391-imagen.webp",
@@ -6464,11 +6457,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 39000,
+                                "price": 60000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             },
                             {
                                 "medida": "2 Unidad",
@@ -6482,11 +6486,21 @@ const productsData = [
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -6527,10 +6541,31 @@ const productsData = [
                     "percheros rusticos",
                     "percheros de pino"
                 ],
-                "last_modified": 1786923534481,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794796445210,
                 "primaryCatId": "Percheros",
-                "views": 9,
-                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:04 a. m.",
@@ -6542,32 +6577,18 @@ const productsData = [
                         "type": "Costo Bajó",
                         "detail": "Costo: $26.000 ➔ $20.000"
                     }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros"
-                ],
-                "rubro": "carpinteria"
+                ]
             },
             {
                 "id": "33",
+                "shortId": "3O",
                 "title": "Perchero 5 - Rustico",
                 "description": "Medidas:\n63 x 13 cm",
                 "image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
+                        "description": "",
                         "cover_image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
                         "images_list": [
                             "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
@@ -6589,15 +6610,25 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 25000,
+                                "price": 35000,
                                 "cost_price": 12500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -6652,11 +6683,31 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784773922188,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794796631235,
                 "primaryCatId": "Percheros",
-                "visible": true,
-                "views": 1,
-                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:05 a. m.",
@@ -6669,31 +6720,18 @@ const productsData = [
                         "detail": "Costo: $10.000 ➔ $12.500"
                     }
                 ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros"
-                ],
-                "rubro": "carpinteria"
+                "visible": true
             },
             {
                 "id": "34",
+                "shortId": "3O",
                 "title": "Perchero 3 - Rustico",
                 "description": "Medidas:\n50 x 13 cm",
                 "image": "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
+                        "description": "",
                         "cover_image": "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
                         "images_list": [
                             "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
@@ -6712,15 +6750,25 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 21000,
+                                "price": 30000,
                                 "cost_price": 10500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -6775,11 +6823,31 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784773568612,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794796652780,
                 "primaryCatId": "Percheros",
-                "visible": true,
-                "views": 1,
-                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:05 a. m.",
@@ -6792,22 +6860,7 @@ const productsData = [
                         "detail": "Costo: $8.000 ➔ $10.500"
                     }
                 ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros"
-                ],
-                "rubro": "carpinteria"
+                "visible": true
             },
             {
                 "id": "35",
@@ -6836,7 +6889,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 19000,
+                                "price": 30000,
                                 "cost_price": 9500,
                                 "legend": "",
                                 "showPrice": true,
@@ -6968,16 +7021,19 @@ const productsData = [
                     "carpinteria-todos",
                     "Percheros"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 30000
             },
             {
                 "id": "36",
+                "shortId": "3O",
                 "title": "Perchero nórdico de pared x3",
                 "description": "",
                 "image": "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
                         "images_list": [
                             "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
@@ -6995,15 +7051,25 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 15000,
+                                "price": 24000,
                                 "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -7108,26 +7174,33 @@ const productsData = [
                     "colgador abrigo pared",
                     "perchero minimalista madera"
                 ],
-                "last_modified": 1784162786027,
-                "primaryCatId": "Percheros",
-                "views": 3,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "stock": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros"
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
                 ],
-                "rubro": "carpinteria"
+                "last_modified": 1794796550139,
+                "primaryCatId": "Percheros",
+                "history": [],
+                "price": 24000
             },
             {
                 "id": "37",
@@ -7154,7 +7227,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12000,
+                                "price": 23000,
                                 "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": true,
@@ -7244,7 +7317,8 @@ const productsData = [
                     "carpinteria-todos",
                     "Percheros"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 23000
             },
             {
                 "id": "38",
@@ -7272,7 +7346,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17000,
+                                "price": 24000,
                                 "cost_price": 8500,
                                 "legend": "",
                                 "showPrice": true,
@@ -7367,16 +7441,19 @@ const productsData = [
                     "carpinteria-todos",
                     "Percheros"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 24000
             },
             {
                 "id": "39",
+                "shortId": "3O",
                 "title": "Perchero de pared",
                 "description": "Medidas:\n3 ganchos:\n5 Ganchos:\n7 Ganchos:",
                 "image": "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
                         "images_list": [
                             "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
@@ -7391,11 +7468,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 15000,
-                                "legend": "",
-                                "showPrice": false,
+                                "price": 19000,
                                 "cost_price": 7500,
-                                "stock": 0
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             },
                             {
                                 "medida": "5 Ganchos",
@@ -7406,10 +7494,21 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 15000,
+                                "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": false,
-                                "cost_price": 7500,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             },
                             {
                                 "medida": "7 Ganchos",
@@ -7420,14 +7519,24 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 15000,
+                                "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": false,
-                                "cost_price": 7500,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -7477,10 +7586,31 @@ const productsData = [
                     "percheros rusticos",
                     "percheros de pino"
                 ],
-                "last_modified": 1783617272723,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794796513907,
                 "primaryCatId": "Percheros",
-                "views": 9,
-                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:09 a. m.",
@@ -7492,23 +7622,7 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $7.500"
                     }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros"
-                ],
-                "rubro": "carpinteria"
+                ]
             },
             {
                 "id": "H1",
@@ -8184,12 +8298,14 @@ const productsData = [
             },
             {
                 "id": "4I",
+                "shortId": "3O",
                 "title": "Perchero De Pie Torneado 8 Ganchos Niños",
                 "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
                 "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Percherito",
+                        "description": "",
                         "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
                         "images_list": [
                             "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
@@ -8205,18 +8321,28 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 30000,
-                                "cost_price": "",
+                                "price": 42000,
+                                "cost_price": 42000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "estimatedWeight": 2,
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "logisticaCost": 0,
@@ -8233,18 +8359,16 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1788918811368,
-                "primaryCatId": "Juguetes",
-                "history": [],
-                "views": 4,
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros",
-                    "Juguetes"
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
                 ],
-                "rubro": "carpinteria",
-                "price": 30000
+                "last_modified": 1794796470483,
+                "primaryCatId": "Juguetes",
+                "history": []
             },
             {
                 "id": "B1",
@@ -8268,8 +8392,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false,
-                                "stock": 2
+                                "showPrice": true,
+                                "stock": 2,
+                                "price": 18000
                             }
                         ],
                         "hidden": false,
@@ -8328,7 +8453,8 @@ const productsData = [
                     "carpinteria-todos",
                     "Juguetes"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 18000
             },
             {
                 "id": "B4",
@@ -8580,7 +8706,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20000,
+                                "price": 23000,
                                 "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true,
@@ -8669,7 +8795,8 @@ const productsData = [
                     "sillas-sillones"
                 ],
                 "rubro": "carpinteria",
-                "category": "Juguetes"
+                "category": "Juguetes",
+                "price": 23000
             },
             {
                 "id": "C3",
@@ -8780,12 +8907,13 @@ const productsData = [
             {
                 "id": "21",
                 "shortId": "37",
-                "title": "Vinoteca - 5 Vinos",
+                "title": "Vinoteca Cava Bodega Madera Mueble 5 Vinos Rustica Campo",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
+                        "description": "",
                         "cover_image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
                         "images_list": [
                             "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
@@ -8800,11 +8928,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 60000,
+                                "price": 100000,
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -8829,8 +8968,14 @@ const productsData = [
                     "linkEnabled": true,
                     "creditEnabled": true
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1789442399047,
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794795773447,
                 "primaryCatId": "Vinotecas",
                 "history": [
                     {
@@ -8854,22 +8999,18 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 145,
-                "categories": [
-                    "carpinteria-todos",
-                    "Vinotecas",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
+                "views": 145
             },
             {
                 "id": "22",
-                "title": "Vinoteca - 9 Vinos",
+                "shortId": "3O",
+                "title": "Vinoteca Cava Bodega Madera Mueble 9 Vinos Rustica Campo",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
+                        "description": "",
                         "cover_image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
                         "images_list": [
                             "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
@@ -8885,10 +9026,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 80000,
+                                "price": 135000,
                                 "cost_price": 27000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -8948,10 +9101,32 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1784083095519,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794795893944,
                 "primaryCatId": "Vinotecas",
-                "views": 23,
-                "stock": 0,
                 "history": [
                     {
                         "date": "26/8, 11:55 p. m.",
@@ -8959,34 +9134,18 @@ const productsData = [
                         "detail": "Costo: $35.000 ➔ $27.000"
                     }
                 ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1,
-                    "logisticaFreeMinUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Vinotecas",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria",
-                "price": 80000
+                "views": 24
             },
             {
                 "id": "23",
-                "title": "Vinoteca - 13 Vinos",
+                "shortId": "3O",
+                "title": "Vinoteca Cava Bodega Madera Mueble 13 Vinos Rustica Campo",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
+                        "description": "",
                         "cover_image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
                         "images_list": [
                             "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
@@ -9002,10 +9161,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 100000,
+                                "price": 150000,
                                 "cost_price": 31000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -9065,10 +9236,32 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1784083089360,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794795847991,
                 "primaryCatId": "Vinotecas",
-                "views": 7,
-                "stock": 0,
                 "history": [
                     {
                         "date": "26/8, 11:55 p. m.",
@@ -9076,25 +9269,7 @@ const productsData = [
                         "detail": "Costo: $40.000 ➔ $31.000"
                     }
                 ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1,
-                    "logisticaFreeMinUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Vinotecas",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria",
-                "price": 100000
+                "views": 7
             },
             {
                 "id": "25",
@@ -9120,7 +9295,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 22500,
+                                "price": 25000,
                                 "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true
@@ -9203,7 +9378,8 @@ const productsData = [
                     "Hogar",
                     "bazar-cocina"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 25000
             },
             {
                 "id": "26",
@@ -9287,7 +9463,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45000,
+                                "price": 35000,
                                 "cost_price": 7000,
                                 "legend": "",
                                 "showPrice": true
@@ -9329,7 +9505,8 @@ const productsData = [
                     "carpinteria-todos",
                     "Vinotecas"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 35000
             },
             {
                 "id": "67",
@@ -9641,7 +9818,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 3
+                "views": 4
             },
             {
                 "id": "94",
@@ -10467,6 +10644,167 @@ const productsData = [
                 "views": 4
             },
             {
+                "id": "1792887338350",
+                "shortId": "3O",
+                "title": "Mesa Mesita Auxiliar Matera Plegable",
+                "description": "",
+                "image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1794718723401-edit_1794718721768webp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Wengue",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1794718723401-edit_1794718721768webp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1794718723401-edit_1794718721768webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 25000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Vivaro",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491876813-edit_1793491863269webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 25000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Algarrobo",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797078-imagenwebp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797078-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 25000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
+                            }
+                        ],
+                        "hidden": false
+                    },
+                    {
+                        "acabado_name": "Pitiribi",
+                        "description": "",
+                        "cover_image": "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797084-imagenwebp.webp",
+                        "images_list": [
+                            "img/mesas-escritorios/mesa-mesita-auxiliar-matera-plegable/1793491797084-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Algarrobo",
+                                "link": "https://www.mercadolibre.com.ar/mesa-mesita-auxiliar-matera-plegable/up/MLAU5168740588",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 25000,
+                                "cost_price": 25000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3936801982",
+                    "mesa",
+                    "mesita",
+                    "auxiliar",
+                    "matera",
+                    "plegable"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1794718986203,
+                "primaryCatId": "Mesas-madera",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338344,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
+                    }
+                ],
+                "views": 23
+            },
+            {
                 "id": "1792887338354",
                 "shortId": "3O",
                 "title": "4 Maceteros Canasta Organizadores En Junco",
@@ -10494,11 +10832,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 65000,
+                                "price": 88000,
                                 "cost_price": 88000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -10528,8 +10877,14 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1793494240983,
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794796870037,
                 "primaryCatId": "Organizadores",
                 "history": [
                     {
@@ -10538,7 +10893,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA4087248102)"
                     }
                 ],
-                "views": 1
+                "price": 88000
             },
             {
                 "id": "1792887338348",
@@ -10632,12 +10987,13 @@ const productsData = [
             {
                 "id": "21",
                 "shortId": "37",
-                "title": "Vinoteca - 5 Vinos",
+                "title": "Vinoteca Cava Bodega Madera Mueble 5 Vinos Rustica Campo",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
+                        "description": "",
                         "cover_image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
                         "images_list": [
                             "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
@@ -10652,11 +11008,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 60000,
+                                "price": 100000,
                                 "cost_price": 25000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -10681,8 +11048,14 @@ const productsData = [
                     "linkEnabled": true,
                     "creditEnabled": true
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1789442399047,
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794795773447,
                 "primaryCatId": "Vinotecas",
                 "history": [
                     {
@@ -10706,22 +11079,18 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 145,
-                "categories": [
-                    "carpinteria-todos",
-                    "Vinotecas",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria"
+                "views": 145
             },
             {
                 "id": "22",
-                "title": "Vinoteca - 9 Vinos",
+                "shortId": "3O",
+                "title": "Vinoteca Cava Bodega Madera Mueble 9 Vinos Rustica Campo",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
+                        "description": "",
                         "cover_image": "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
                         "images_list": [
                             "img/vinotecas-bodegas/9-vinos/1783741401314-imagen.webp",
@@ -10737,10 +11106,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 80000,
+                                "price": 135000,
                                 "cost_price": 27000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -10800,10 +11181,32 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1784083095519,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794795893944,
                 "primaryCatId": "Vinotecas",
-                "views": 23,
-                "stock": 0,
                 "history": [
                     {
                         "date": "26/8, 11:55 p. m.",
@@ -10811,34 +11214,18 @@ const productsData = [
                         "detail": "Costo: $35.000 ➔ $27.000"
                     }
                 ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1,
-                    "logisticaFreeMinUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Vinotecas",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria",
-                "price": 80000
+                "views": 24
             },
             {
                 "id": "23",
-                "title": "Vinoteca - 13 Vinos",
+                "shortId": "3O",
+                "title": "Vinoteca Cava Bodega Madera Mueble 13 Vinos Rustica Campo",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Tintado",
+                        "description": "",
                         "cover_image": "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
                         "images_list": [
                             "img/vinotecas-bodegas/13-vinos/1783741654477-imagen.webp",
@@ -10854,10 +11241,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 100000,
+                                "price": 150000,
                                 "cost_price": 31000,
                                 "legend": "",
-                                "showPrice": true
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -10917,10 +11316,32 @@ const productsData = [
                     "cava de pino",
                     "portabotellas de pared"
                 ],
-                "last_modified": 1784083089360,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "logisticaFreeMinUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794795847991,
                 "primaryCatId": "Vinotecas",
-                "views": 7,
-                "stock": 0,
                 "history": [
                     {
                         "date": "26/8, 11:55 p. m.",
@@ -10928,35 +11349,17 @@ const productsData = [
                         "detail": "Costo: $40.000 ➔ $31.000"
                     }
                 ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1,
-                    "logisticaFreeMinUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Vinotecas",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria",
-                "price": 100000
+                "views": 7
             },
             {
                 "id": "24",
                 "shortId": "2Z",
-                "title": "Vinoteca - 17 Vinos",
+                "title": "Vinoteca Cava Bodega Madera Mueble 17 Vinos Rustica Campo",
                 "description": "Cavas y bodegas rústicas de madera.",
                 "image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
                 "acabados_groups": [
                     {
-                        "acabado_name": "Tinte",
+                        "acabado_name": "Wengue",
                         "description": "",
                         "cover_image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
                         "images_list": [
@@ -10972,25 +11375,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 120000,
+                                "price": 160000,
                                 "cost_price": 36000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "17 Vinos",
-                                "link": "https://www.mercadolibre.com.ar/bodega-para-17-vinos--la-tarima/up/MLAU5439753557",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 90000,
-                                "cost_price": 90000,
-                                "legend": "Entrega Rápida",
-                                "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -11067,8 +11467,14 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1791737670624,
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794794051309,
                 "primaryCatId": "Vinotecas",
                 "history": [
                     {
@@ -11078,8 +11484,7 @@ const productsData = [
                     }
                 ],
                 "rubro": "carpinteria",
-                "views": 12,
-                "price": 120000
+                "views": 20
             },
             {
                 "id": "25",
@@ -11105,7 +11510,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 22500,
+                                "price": 25000,
                                 "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true
@@ -11188,7 +11593,8 @@ const productsData = [
                     "Hogar",
                     "bazar-cocina"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 25000
             },
             {
                 "id": "26",
@@ -11272,7 +11678,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45000,
+                                "price": 35000,
                                 "cost_price": 7000,
                                 "legend": "",
                                 "showPrice": true
@@ -11314,7 +11720,8 @@ const productsData = [
                     "carpinteria-todos",
                     "Vinotecas"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 35000
             }
         ]
     },
@@ -11327,12 +11734,14 @@ const productsData = [
         "products": [
             {
                 "id": "31",
+                "shortId": "3O",
                 "title": "Perchero De Pie Torneado Reforzado 8 Ganchos",
                 "description": "Funcionalidad y elegancia para organizar tu entrada.",
                 "image": "img/percheros/perchero-1/1782624223963-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/percheros/perchero-1/1782624223963-imagen.webp",
                         "images_list": [
                             "img/percheros/perchero-1/1782624223963-imagen.webp",
@@ -11349,11 +11758,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 35000,
+                                "price": 60000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             },
                             {
                                 "medida": "2 Unidad",
@@ -11367,238 +11787,61 @@ const productsData = [
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "perchero",
-                    "percheros",
-                    "perchero pared",
-                    "perchero madera",
-                    "perchero pino",
-                    "colgar",
-                    "perchas",
-                    "abrigo",
-                    "camperas",
-                    "entrada",
-                    "recibidor",
-                    "pared",
-                    "colgar ropa",
-                    "gancho",
-                    "ganchos",
-                    "organizacion",
-                    "perchero de pared",
-                    "perchero de madera",
-                    "perchero de pino",
-                    "colgador",
-                    "colgador de ropa",
-                    "ganchos para colgar",
-                    "organizador entrada",
-                    "recibidor de madera",
-                    "mueble recibidor",
-                    "perchero rustico",
-                    "colgar camperas",
-                    "colgar abrigos",
-                    "colgar bolsos",
-                    "perchero infantil",
-                    "perchero clasico",
-                    "perchero doble",
-                    "porta abrigos",
-                    "colgador pared",
-                    "percheros rusticos",
-                    "percheros de pino"
-                ],
-                "last_modified": 1786826453117,
-                "primaryCatId": "Percheros",
-                "views": 17,
-                "stock": 0,
-                "history": [
-                    {
-                        "date": "27/8, 12:04 a. m.",
-                        "type": "Precio Venta Subió",
-                        "detail": "Venta: $34.000 ➔ $35.000"
-                    },
-                    {
-                        "date": "27/8, 12:04 a. m.",
-                        "type": "Costo Aumentó",
-                        "detail": "Costo: $17.000 ➔ $20.000"
-                    }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "visible": true,
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "32",
-                "title": "Perchero De Pie Torneado Reforzado 8 Ganchos (2)",
-                "description": "Funcionalidad y elegancia para organizar tu entrada.",
-                "image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "cover_image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
-                        "images_list": [
-                            "img/percheros/perchero-1-2/1786839959391-imagen.webp",
-                            "img/percheros/perchero-1-2/1786839928203-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "1 Unidad",
-                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-reforzado-8-ganchos/up/MLAU4772440234",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 39000,
-                                "cost_price": 20000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            },
-                            {
-                                "medida": "2 Unidad",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 39000,
-                                "cost_price": 20000,
-                                "legend": "",
-                                "showPrice": true,
-                                "stock": 0
-                            }
-                        ],
-                        "hidden": false,
-                        "stock": 0
-                    }
-                ],
-                "tags": [
-                    "perchero",
-                    "percheros",
-                    "perchero pared",
-                    "perchero madera",
-                    "perchero pino",
-                    "colgar",
-                    "perchas",
-                    "abrigo",
-                    "camperas",
-                    "entrada",
-                    "recibidor",
-                    "pared",
-                    "colgar ropa",
-                    "gancho",
-                    "ganchos",
-                    "organizacion",
-                    "perchero de pared",
-                    "perchero de madera",
-                    "perchero de pino",
-                    "colgador",
-                    "colgador de ropa",
-                    "ganchos para colgar",
-                    "organizador entrada",
-                    "recibidor de madera",
-                    "mueble recibidor",
-                    "perchero rustico",
-                    "colgar camperas",
-                    "colgar abrigos",
-                    "colgar bolsos",
-                    "perchero infantil",
-                    "perchero clasico",
-                    "perchero doble",
-                    "porta abrigos",
-                    "colgador pared",
-                    "percheros rusticos",
-                    "percheros de pino"
-                ],
-                "last_modified": 1786923534481,
-                "primaryCatId": "Percheros",
-                "views": 9,
-                "stock": 0,
-                "history": [
-                    {
-                        "date": "27/8, 12:04 a. m.",
-                        "type": "Precio Venta Bajó",
-                        "detail": "Venta: $78.000 ➔ $39.000"
-                    },
-                    {
-                        "date": "27/8, 12:04 a. m.",
-                        "type": "Costo Bajó",
-                        "detail": "Costo: $26.000 ➔ $20.000"
-                    }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
-                "id": "4I",
-                "title": "Perchero De Pie Torneado 8 Ganchos Niños",
-                "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
-                "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Percherito",
-                        "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                        "images_list": [
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811091-imagen.webp",
-                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811246-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Alto 110 cm",
-                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-8-ganchos-ninos/up/MLAU5114065953?pdp_filters=item_id:MLA2073891131",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 30000,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
                     }
                 ],
-                "tags": [],
-                "estimatedWeight": 2,
+                "tags": [
+                    "perchero",
+                    "percheros",
+                    "perchero pared",
+                    "perchero madera",
+                    "perchero pino",
+                    "colgar",
+                    "perchas",
+                    "abrigo",
+                    "camperas",
+                    "entrada",
+                    "recibidor",
+                    "pared",
+                    "colgar ropa",
+                    "gancho",
+                    "ganchos",
+                    "organizacion",
+                    "perchero de pared",
+                    "perchero de madera",
+                    "perchero de pino",
+                    "colgador",
+                    "colgador de ropa",
+                    "ganchos para colgar",
+                    "organizador entrada",
+                    "recibidor de madera",
+                    "mueble recibidor",
+                    "perchero rustico",
+                    "colgar camperas",
+                    "colgar abrigos",
+                    "colgar bolsos",
+                    "perchero infantil",
+                    "perchero clasico",
+                    "perchero doble",
+                    "porta abrigos",
+                    "colgador pared",
+                    "percheros rusticos",
+                    "percheros de pino"
+                ],
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "logisticaCost": 0,
@@ -11615,27 +11858,259 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1788918811368,
-                "primaryCatId": "Juguetes",
-                "history": [],
-                "views": 4,
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros",
-                    "Juguetes"
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
                 ],
-                "rubro": "carpinteria",
-                "price": 30000
+                "last_modified": 1794796432955,
+                "primaryCatId": "Percheros",
+                "history": [
+                    {
+                        "date": "27/8, 12:04 a. m.",
+                        "type": "Precio Venta Subió",
+                        "detail": "Venta: $34.000 ➔ $35.000"
+                    },
+                    {
+                        "date": "27/8, 12:04 a. m.",
+                        "type": "Costo Aumentó",
+                        "detail": "Costo: $17.000 ➔ $20.000"
+                    }
+                ],
+                "visible": true
+            },
+            {
+                "id": "32",
+                "shortId": "3O",
+                "title": "Perchero De Pie Torneado Reforzado 8 Ganchos (2)",
+                "description": "Funcionalidad y elegancia para organizar tu entrada.",
+                "image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Natural",
+                        "description": "",
+                        "cover_image": "img/percheros/perchero-1-2/1786839959391-imagen.webp",
+                        "images_list": [
+                            "img/percheros/perchero-1-2/1786839959391-imagen.webp",
+                            "img/percheros/perchero-1-2/1786839928203-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "1 Unidad",
+                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-reforzado-8-ganchos/up/MLAU4772440234",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 60000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            },
+                            {
+                                "medida": "2 Unidad",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 39000,
+                                "cost_price": 20000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "perchero",
+                    "percheros",
+                    "perchero pared",
+                    "perchero madera",
+                    "perchero pino",
+                    "colgar",
+                    "perchas",
+                    "abrigo",
+                    "camperas",
+                    "entrada",
+                    "recibidor",
+                    "pared",
+                    "colgar ropa",
+                    "gancho",
+                    "ganchos",
+                    "organizacion",
+                    "perchero de pared",
+                    "perchero de madera",
+                    "perchero de pino",
+                    "colgador",
+                    "colgador de ropa",
+                    "ganchos para colgar",
+                    "organizador entrada",
+                    "recibidor de madera",
+                    "mueble recibidor",
+                    "perchero rustico",
+                    "colgar camperas",
+                    "colgar abrigos",
+                    "colgar bolsos",
+                    "perchero infantil",
+                    "perchero clasico",
+                    "perchero doble",
+                    "porta abrigos",
+                    "colgador pared",
+                    "percheros rusticos",
+                    "percheros de pino"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794796445210,
+                "primaryCatId": "Percheros",
+                "history": [
+                    {
+                        "date": "27/8, 12:04 a. m.",
+                        "type": "Precio Venta Bajó",
+                        "detail": "Venta: $78.000 ➔ $39.000"
+                    },
+                    {
+                        "date": "27/8, 12:04 a. m.",
+                        "type": "Costo Bajó",
+                        "detail": "Costo: $26.000 ➔ $20.000"
+                    }
+                ]
+            },
+            {
+                "id": "4I",
+                "shortId": "3O",
+                "title": "Perchero De Pie Torneado 8 Ganchos Niños",
+                "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
+                "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Percherito",
+                        "description": "",
+                        "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                        "images_list": [
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811091-imagen.webp",
+                            "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918811246-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Alto 110 cm",
+                                "link": "https://www.mercadolibre.com.ar/perchero-de-pie-torneado-8-ganchos-ninos/up/MLAU5114065953?pdp_filters=item_id:MLA2073891131",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 42000,
+                                "cost_price": 42000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 1,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794796470483,
+                "primaryCatId": "Juguetes",
+                "history": []
             },
             {
                 "id": "33",
+                "shortId": "3O",
                 "title": "Perchero 5 - Rustico",
                 "description": "Medidas:\n63 x 13 cm",
                 "image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
+                        "description": "",
                         "cover_image": "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
                         "images_list": [
                             "img/percheros/Perchero 5 - Rusctio - campo decorado/1784346979215-imagen.webp",
@@ -11657,15 +12132,25 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 25000,
+                                "price": 35000,
                                 "cost_price": 12500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -11720,11 +12205,31 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784773922188,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794796631235,
                 "primaryCatId": "Percheros",
-                "visible": true,
-                "views": 1,
-                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:05 a. m.",
@@ -11737,31 +12242,18 @@ const productsData = [
                         "detail": "Costo: $10.000 ➔ $12.500"
                     }
                 ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros"
-                ],
-                "rubro": "carpinteria"
+                "visible": true
             },
             {
                 "id": "34",
+                "shortId": "3O",
                 "title": "Perchero 3 - Rustico",
                 "description": "Medidas:\n50 x 13 cm",
                 "image": "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "",
+                        "description": "",
                         "cover_image": "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
                         "images_list": [
                             "img/percheros/Perchero 3 - Rustico/1784347711326-imagen.webp",
@@ -11780,15 +12272,25 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 21000,
+                                "price": 30000,
                                 "cost_price": 10500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -11843,11 +12345,31 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784773568612,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794796652780,
                 "primaryCatId": "Percheros",
-                "visible": true,
-                "views": 1,
-                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:05 a. m.",
@@ -11860,22 +12382,7 @@ const productsData = [
                         "detail": "Costo: $8.000 ➔ $10.500"
                     }
                 ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros"
-                ],
-                "rubro": "carpinteria"
+                "visible": true
             },
             {
                 "id": "35",
@@ -11904,7 +12411,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 19000,
+                                "price": 30000,
                                 "cost_price": 9500,
                                 "legend": "",
                                 "showPrice": true,
@@ -12036,16 +12543,19 @@ const productsData = [
                     "carpinteria-todos",
                     "Percheros"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 30000
             },
             {
                 "id": "36",
+                "shortId": "3O",
                 "title": "Perchero nórdico de pared x3",
                 "description": "",
                 "image": "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
                         "images_list": [
                             "img/percheros/perchero-nordico-pared-x3/1784162163699-imagen.webp",
@@ -12063,15 +12573,25 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 15000,
+                                "price": 24000,
                                 "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": true,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -12176,26 +12696,33 @@ const productsData = [
                     "colgador abrigo pared",
                     "perchero minimalista madera"
                 ],
-                "last_modified": 1784162786027,
-                "primaryCatId": "Percheros",
-                "views": 3,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "stock": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros"
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
                 ],
-                "rubro": "carpinteria"
+                "last_modified": 1794796550139,
+                "primaryCatId": "Percheros",
+                "history": [],
+                "price": 24000
             },
             {
                 "id": "37",
@@ -12222,7 +12749,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 12000,
+                                "price": 23000,
                                 "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": true,
@@ -12312,7 +12839,8 @@ const productsData = [
                     "carpinteria-todos",
                     "Percheros"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 23000
             },
             {
                 "id": "38",
@@ -12340,7 +12868,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 17000,
+                                "price": 24000,
                                 "cost_price": 8500,
                                 "legend": "",
                                 "showPrice": true,
@@ -12435,16 +12963,19 @@ const productsData = [
                     "carpinteria-todos",
                     "Percheros"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 24000
             },
             {
                 "id": "39",
+                "shortId": "3O",
                 "title": "Perchero de pared",
                 "description": "Medidas:\n3 ganchos:\n5 Ganchos:\n7 Ganchos:",
                 "image": "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
                         "images_list": [
                             "img/percheros/perchero-pared-doblegancho/1783617272520-imagen.webp",
@@ -12459,11 +12990,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 15000,
-                                "legend": "",
-                                "showPrice": false,
+                                "price": 19000,
                                 "cost_price": 7500,
-                                "stock": 0
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             },
                             {
                                 "medida": "5 Ganchos",
@@ -12474,10 +13016,21 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 15000,
+                                "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": false,
-                                "cost_price": 7500,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             },
                             {
                                 "medida": "7 Ganchos",
@@ -12488,14 +13041,24 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "price": 15000,
+                                "cost_price": 7500,
                                 "legend": "",
                                 "showPrice": false,
-                                "cost_price": 7500,
-                                "stock": 0
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
-                        "hidden": false,
-                        "stock": 0
+                        "hidden": false
                     }
                 ],
                 "tags": [
@@ -12545,10 +13108,31 @@ const productsData = [
                     "percheros rusticos",
                     "percheros de pino"
                 ],
-                "last_modified": 1783617272723,
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "logisticaMaxUnits": 3,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794796513907,
                 "primaryCatId": "Percheros",
-                "views": 9,
-                "stock": 0,
                 "history": [
                     {
                         "date": "27/8, 12:09 a. m.",
@@ -12560,23 +13144,7 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $7.500"
                     }
-                ],
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 3
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros"
-                ],
-                "rubro": "carpinteria"
+                ]
             }
         ]
     },
@@ -14722,7 +15290,7 @@ const productsData = [
                 ],
                 "last_modified": 1783616739128,
                 "primaryCatId": "Barandas",
-                "views": 6,
+                "views": 7,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -15955,7 +16523,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 11000,
+                                "price": 17500,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -16073,7 +16641,8 @@ const productsData = [
                     }
                 ],
                 "views": 11,
-                "order": 0
+                "order": 0,
+                "price": 17500
             },
             {
                 "id": "1794021715927",
@@ -16101,7 +16670,7 @@ const productsData = [
                                 "linkLabel": "Ver en Mercado Libre",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 28000,
+                                "price": 33000,
                                 "cost_price": 14000,
                                 "legend": "",
                                 "showPrice": true,
@@ -16137,7 +16706,8 @@ const productsData = [
                 "history": [],
                 "visible": true,
                 "order": 1,
-                "views": 0
+                "views": 0,
+                "price": 33000
             },
             {
                 "id": "45",
@@ -16148,6 +16718,7 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
                         "images_list": [
                             "img/organizadores/exhibidor-organizador-3-estantes-de-madera/1790380546868-imagenwebp.webp",
@@ -16164,11 +16735,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20000,
-                                "cost_price": "",
+                                "price": 30000,
+                                "cost_price": 30000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -16227,17 +16809,16 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1794021964488,
-                "primaryCatId": "Organizadores",
-                "history": [],
-                "views": 5,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores"
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
                 ],
-                "rubro": "carpinteria",
-                "order": 2
+                "last_modified": 1794796783964,
+                "primaryCatId": "Organizadores",
+                "history": []
             },
             {
                 "id": "9K",
@@ -16248,6 +16829,7 @@ const productsData = [
                 "acabados_groups": [
                     {
                         "acabado_name": "",
+                        "description": "",
                         "cover_image": "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
                         "images_list": [
                             "img/organizadores/exhibidor-organizador-4-estantes-de-madera/1790381108412-imagenwebp.webp",
@@ -16262,11 +16844,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23000,
+                                "price": 33000,
                                 "cost_price": 23000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -16288,17 +16881,16 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1794021964488,
-                "primaryCatId": "Organizadores",
-                "history": [],
-                "views": 26,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores"
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
                 ],
-                "rubro": "carpinteria",
-                "order": 3
+                "last_modified": 1794796790637,
+                "primaryCatId": "Organizadores",
+                "history": []
             },
             {
                 "id": "7C",
@@ -16325,7 +16917,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20000,
+                                "price": 25000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -16379,221 +16971,8 @@ const productsData = [
                     "Hogar"
                 ],
                 "rubro": "carpinteria",
-                "order": 4
-            },
-            {
-                "id": "43",
-                "shortId": "3U",
-                "title": "Verdulero Clasico",
-                "description": "Verdulero con estante superior",
-                "image": "img/organizadores/estantes-montessori/1.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "",
-                        "cover_image": "img/organizadores/estantes-montessori/1.webp",
-                        "images_list": [
-                            "img/organizadores/estantes-montessori/1.webp",
-                            "img/organizadores/estantes-montessori/2.webp",
-                            "img/organizadores/verdulero-clasico/3.webp",
-                            "img/organizadores/verdulero-clasico/4.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Cargando...",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1508958407-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 15000,
-                                "cost_price": 2500,
-                                "legend": "",
-                                "showPrice": false,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "verdulero",
-                    "verduras",
-                    "organizar",
-                    "mueble de cocina",
-                    "cosina",
-                    "frutas",
-                    "frutero",
-                    "verduleros",
-                    "verdulero clasico",
-                    "verdulero madera",
-                    "verdulero pino",
-                    "cocina",
-                    "cajones",
-                    "verdulería",
-                    "frutería",
-                    "organizador cocina",
-                    "mueble cocina",
-                    "carro verdulero",
-                    "berdulero",
-                    "berdulería",
-                    "verdulero de pino",
-                    "verdulero de madera",
-                    "verdulería de cocina",
-                    "cesta de verduras",
-                    "cajonera de pino",
-                    "carro de cocina",
-                    "mueble para verduras",
-                    "cajon verdulero",
-                    "organizacion de alimentos",
-                    "despensa de pino",
-                    "verdulero rustico",
-                    "verdulero con cajones",
-                    "cesta de frutas"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 3,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1794021964488,
-                "primaryCatId": "Organizadores",
-                "history": [
-                    {
-                        "date": "27/8, 12:39 a. m.",
-                        "type": "Precio Venta Subió",
-                        "detail": "Venta: $0 ➔ $15.000"
-                    },
-                    {
-                        "date": "27/8, 12:39 a. m.",
-                        "type": "Costo Aumentó",
-                        "detail": "Costo: $0 ➔ $2500"
-                    }
-                ],
-                "rubro": "carpinteria",
-                "views": 1,
-                "order": 5
-            },
-            {
-                "id": "47",
-                "shortId": "3U",
-                "title": "Verdulero x3",
-                "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
-                "image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "",
-                        "cover_image": "img/organizadores/verdulero-x3/1780708453865-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/verdulero-x3/1780708453865-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Único",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-2414802538-organizador-verdulero-frutero-canasta-pino-3-estantes-_JM",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 35000,
-                                "cost_price": 35000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "verdulero",
-                    "carpintería",
-                    "madera",
-                    "pino",
-                    "carpinteria",
-                    "rustico",
-                    "natural",
-                    "mueble",
-                    "hogar",
-                    "casa",
-                    "decoracion",
-                    "calidad",
-                    "diseño",
-                    "artesanal",
-                    "comprar",
-                    "tienda",
-                    "envio",
-                    "seguro",
-                    "fuerte",
-                    "resistente",
-                    "lindo",
-                    "util",
-                    "practico",
-                    "duradero",
-                    "excelente",
-                    "verdulero de madera",
-                    "verdulero de pino",
-                    "mueble verdulero",
-                    "carpintería  verdulero",
-                    "carpintería de madera",
-                    "carpintería de pino",
-                    "mueble carpintería",
-                    "carpintería  carpintería",
-                    "mueble de madera",
-                    "mueble de pino",
-                    "carpinteria artesanal",
-                    "decoracion del hogar",
-                    "mueble rustico",
-                    "mueble natural",
-                    "hecho a mano",
-                    "muebles de calidad",
-                    "diseño artesanal",
-                    "mueble util",
-                    "mueble practico",
-                    "muebles para casa",
-                    "envios a todo el pais",
-                    "directo de fabrica",
-                    "fabricacion nacional",
-                    "madera de pino",
-                    "madera cepillada"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": false,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1794021964488,
-                "primaryCatId": "Organizadores",
-                "history": [],
-                "rubro": "carpinteria",
-                "views": 0,
-                "order": 6
+                "order": 4,
+                "price": 25000
             },
             {
                 "id": "49",
@@ -16788,11 +17167,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 65000,
+                                "price": 88000,
                                 "cost_price": 88000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -16822,8 +17212,14 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1794021964488,
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
+                ],
+                "last_modified": 1794796870037,
                 "primaryCatId": "Organizadores",
                 "history": [
                     {
@@ -16832,8 +17228,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA4087248102)"
                     }
                 ],
-                "views": 1,
-                "order": 9
+                "price": 88000
             },
             {
                 "id": "41",
@@ -17127,12 +17522,14 @@ const productsData = [
             },
             {
                 "id": "48",
-                "title": "Esquinero x3",
+                "shortId": "3M",
+                "title": "Estante Esquinero Torneado 3 Estantes",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
                         "images_list": [
                             "img/organizadores/esquinero-x3/Esquinero x3.webp"
@@ -17146,11 +17543,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40000,
+                                "price": 75000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -17224,57 +17632,16 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1794021964488,
-                "primaryCatId": "Organizadores",
-                "history": [],
-                "views": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Estantes"
-                ],
-                "rubro": "carpinteria",
-                "order": 13
-            },
-            {
-                "id": "4F",
-                "title": "Caballetes de madera",
-                "description": "",
-                "image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
-                "acabados_groups": [
+                "quantityDiscounts": [
                     {
-                        "acabado_name": "Steve",
-                        "cover_image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
                     }
                 ],
-                "tags": [],
-                "last_modified": 1794021964488,
+                "last_modified": 1794797048622,
                 "primaryCatId": "Organizadores",
-                "views": 3,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Mesas-madera"
-                ],
-                "rubro": "carpinteria",
-                "order": 14
+                "history": []
             },
             {
                 "id": "46",
@@ -17301,7 +17668,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 26000,
+                                "price": 30000,
                                 "cost_price": 6500,
                                 "legend": "",
                                 "showPrice": true
@@ -17384,47 +17751,8 @@ const productsData = [
                 ],
                 "rubro": "carpinteria",
                 "category": "Organizadores",
-                "order": 15
-            },
-            {
-                "id": "F4",
-                "title": "Tender",
-                "description": "",
-                "image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Único",
-                        "cover_image": "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
-                        "images_list": [
-                            "img/hogar/tendre-ropa-madera/1786334917868-imagen.webp",
-                            "img/hogar/tendre-ropa-madera/1786334918048-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1794021964488,
-                "primaryCatId": "Organizadores",
-                "views": 3,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Hogar"
-                ],
-                "rubro": "carpinteria",
-                "category": "Organizadores",
-                "order": 16
+                "order": 15,
+                "price": 30000
             }
         ]
     },
@@ -17814,7 +18142,7 @@ const productsData = [
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
-                "views": 3
+                "views": 4
             },
             {
                 "id": "94",
@@ -17975,7 +18303,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 11000,
+                                "price": 17500,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -18092,7 +18420,8 @@ const productsData = [
                         "detail": "Costo: $0 ➔ $2500"
                     }
                 ],
-                "views": 11
+                "views": 11,
+                "price": 17500
             },
             {
                 "id": "7C",
@@ -18119,7 +18448,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20000,
+                                "price": 25000,
                                 "cost_price": 20000,
                                 "legend": "",
                                 "showPrice": true,
@@ -18172,7 +18501,8 @@ const productsData = [
                     "Estantes",
                     "Hogar"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 25000
             },
             {
                 "id": "4E",
@@ -18959,12 +19289,14 @@ const productsData = [
             },
             {
                 "id": "48",
-                "title": "Esquinero x3",
+                "shortId": "3M",
+                "title": "Estante Esquinero Torneado 3 Estantes",
                 "description": "Soluciones inteligentes para mantener cada rincón en su lugar.",
                 "image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Natural",
+                        "description": "",
                         "cover_image": "img/organizadores/esquinero-x3/Esquinero x3.webp",
                         "images_list": [
                             "img/organizadores/esquinero-x3/Esquinero x3.webp"
@@ -18978,11 +19310,22 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40000,
+                                "price": 75000,
                                 "cost_price": 40000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
@@ -19056,17 +19399,16 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1788914164738,
-                "primaryCatId": "Organizadores",
-                "history": [],
-                "views": 0,
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Estantes"
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
                 ],
-                "rubro": "carpinteria"
+                "last_modified": 1794797048622,
+                "primaryCatId": "Organizadores",
+                "history": []
             },
             {
                 "id": "1792887338328",
@@ -20530,7 +20872,7 @@ const productsData = [
                 "history": [],
                 "visible": true,
                 "rubro": "carpinteria",
-                "views": 12
+                "views": 15
             },
             {
                 "id": "F2",
@@ -21423,7 +21765,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20000,
+                                "price": 25000,
                                 "cost_price": 33000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21455,7 +21797,8 @@ const productsData = [
                 "primaryCatId": "muebles",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 5
+                "views": 5,
+                "price": 25000
             },
             {
                 "id": "1793485821041",
@@ -21483,7 +21826,7 @@ const productsData = [
                                 "linkLabel": "Ver en Mercado Libre",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20000,
+                                "price": 25000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21515,7 +21858,8 @@ const productsData = [
                 "history": [],
                 "visible": true,
                 "rubro": "carpinteria",
-                "views": 5
+                "views": 5,
+                "price": 25000
             }
         ]
     },
@@ -21617,7 +21961,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 20000,
+                                "price": 23000,
                                 "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true,
@@ -21707,7 +22051,8 @@ const productsData = [
                 ],
                 "rubro": "carpinteria",
                 "category": "Juguetes",
-                "order": 1
+                "order": 1,
+                "price": 23000
             },
             {
                 "id": "B4",
@@ -21769,12 +22114,14 @@ const productsData = [
             },
             {
                 "id": "4I",
+                "shortId": "3O",
                 "title": "Perchero De Pie Torneado 8 Ganchos Niños",
                 "description": "Lo que tenés que saber de este producto\nFabricado en madera.\nDimensiones: 27 cm de ancho, 110 cm de alto y 13 cm de profundidad.",
                 "image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
                 "acabados_groups": [
                     {
                         "acabado_name": "Percherito",
+                        "description": "",
                         "cover_image": "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
                         "images_list": [
                             "img/percheros/perchero-de-pie-torneado-8-ganchos-ninos/1788918810907-imagen.webp",
@@ -21790,18 +22137,28 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 30000,
-                                "cost_price": "",
+                                "price": 42000,
+                                "cost_price": 42000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": "",
+                                "volumeDiscounts": [
+                                    {
+                                        "minQty": 1,
+                                        "discountPercent": 15,
+                                        "shippingDiscountPercent": 0
+                                    }
+                                ]
                             }
                         ],
                         "hidden": false
                     }
                 ],
                 "tags": [],
-                "estimatedWeight": 2,
                 "shippingConfig": {
                     "logisticaEnabled": true,
                     "logisticaCost": 0,
@@ -21818,19 +22175,16 @@ const productsData = [
                     "linkEnabled": false,
                     "creditEnabled": false
                 },
-                "quantityDiscounts": [],
-                "last_modified": 1793586859102,
-                "primaryCatId": "Juguetes",
-                "history": [],
-                "views": 4,
-                "categories": [
-                    "carpinteria-todos",
-                    "Percheros",
-                    "Juguetes"
+                "quantityDiscounts": [
+                    {
+                        "minUnits": 1,
+                        "discountPercent": 15,
+                        "shippingDiscountPercent": 0
+                    }
                 ],
-                "rubro": "carpinteria",
-                "order": 3,
-                "price": 30000
+                "last_modified": 1794796470483,
+                "primaryCatId": "Juguetes",
+                "history": []
             },
             {
                 "id": "4A",
@@ -22382,8 +22736,9 @@ const productsData = [
                                 "iconType": "local_shipping",
                                 "highlight": false,
                                 "legend": "",
-                                "showPrice": false,
-                                "stock": 2
+                                "showPrice": true,
+                                "stock": 2,
+                                "price": 18000
                             }
                         ],
                         "hidden": false,
@@ -22443,7 +22798,8 @@ const productsData = [
                     "Juguetes"
                 ],
                 "rubro": "carpinteria",
-                "order": 9
+                "order": 9,
+                "price": 18000
             },
             {
                 "id": "81",
@@ -23548,44 +23904,6 @@ const productsData = [
                 "rubro": "carpinteria"
             },
             {
-                "id": "4F",
-                "title": "Caballetes de madera",
-                "description": "",
-                "image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Steve",
-                        "cover_image": "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp",
-                        "images_list": [
-                            "img/organizadores/caballetes-madera-pino/1786332672126-imagen.webp"
-                        ],
-                        "medidas_variants": [],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "last_modified": 1786332743079,
-                "primaryCatId": "Organizadores",
-                "views": 3,
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "fleteEnabled": true,
-                    "otroEnabled": false,
-                    "logisticaMaxUnits": 1
-                },
-                "categories": [
-                    "carpinteria-todos",
-                    "Organizadores",
-                    "Mesas-madera"
-                ],
-                "rubro": "carpinteria"
-            },
-            {
                 "id": "1792887338348",
                 "shortId": "3O",
                 "title": "Mesa Plegable Madera Pino Redonda",
@@ -23815,7 +24133,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3936801982)"
                     }
                 ],
-                "rubro": "carpinteria"
+                "views": 23
             }
         ]
     },
@@ -25623,7 +25941,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 11000,
+                                "price": 17500,
                                 "cost_price": 2500,
                                 "legend": "",
                                 "showPrice": true,
@@ -25740,7 +26058,8 @@ const productsData = [
                         "detail": "Costo: $0 ➔ $2500"
                     }
                 ],
-                "views": 11
+                "views": 11,
+                "price": 17500
             },
             {
                 "id": "44",
@@ -26124,7 +26443,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 13000,
+                                "price": 17500,
                                 "cost_price": "",
                                 "legend": "",
                                 "showPrice": true,
@@ -26168,13 +26487,13 @@ const productsData = [
                 "last_modified": 1788917344040,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 2,
+                "views": 6,
                 "categories": [
                     "carpinteria-todos",
                     "bazar-cocina"
                 ],
                 "rubro": "carpinteria",
-                "price": 13000
+                "price": 17500
             },
             {
                 "id": "G1",
@@ -26512,7 +26831,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 22500,
+                                "price": 25000,
                                 "cost_price": 15000,
                                 "legend": "",
                                 "showPrice": true
@@ -26595,7 +26914,8 @@ const productsData = [
                     "Hogar",
                     "bazar-cocina"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 25000
             }
         ]
     },

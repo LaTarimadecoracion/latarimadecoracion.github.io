@@ -610,8 +610,44 @@ window.fetchProductDetailAsync = async function(productId) {
     return null;
 };
 
+// Helper para extraer el nombre base de un producto limpiando sufijos de tamaño y medidas
+window.getBaseProductTitle = function(title) {
+    if (!title) return '';
+    let clean = title.trim();
+    // Quitar tamaños entre paréntesis: (80 cm), (60 cm), (100 cm), (30 cm), (50cm), (30 X 40 Cm), etc.
+    clean = clean.replace(/\s*\(\s*\d+\s*(?:cm|x|\/|\s*|-)\s*[^)]*\)/gi, '');
+    // Quitar sufijos de tamaño: - Mediano, - Chico, - Grande, - 5 Vinos, - 9 Vinos, etc.
+    clean = clean.replace(/\s*[-–]\s*(?:Chico|Mediano|Grande|Pequeño|Extra Grande|\d+\s*Vinos|\d+\s*Ambientes)\b/gi, '');
+    // Quitar dimensiones como 45x45cm o 50x50cm
+    clean = clean.replace(/\s*\b\d+\s*[xX]\s*\d+\s*(?:cm)?\b/gi, '');
+    // Quitar espacios extra y guiones huérfanos
+    clean = clean.replace(/\s{2,}/g, ' ').replace(/\s*[-–]\s*$/, '').trim();
+    return clean;
+};
+
+// Asegura que en categorías cada producto aparezca exactamente 1 vez (sin multiplicar por sus acabados/variantes internas)
+// Preserva todos los productos independientes del catálogo según su ID único
+window.groupCategoryProducts = function(items) {
+    if (!Array.isArray(items) || items.length <= 1) return items || [];
+
+    const seenIds = new Set();
+    const result = [];
+
+    items.forEach(item => {
+        if (!item) return;
+        const rawProd = item.product || item;
+        const pId = String(rawProd.id || item.id || item.productId || '').trim();
+        if (pId && seenIds.has(pId)) return;
+        if (pId) seenIds.add(pId);
+        result.push(item);
+    });
+
+    return result;
+};
+
 // Motor centralizado unificado de indexación de productos/acabados
-window.getNormalizedCatalogProducts = function(targetRubro = null) {
+window.getNormalizedCatalogProducts = function(targetRubro = null, options = {}) {
+    const expandVariants = options.expandVariants === true;
     const indexed = [];
     
     // Obtener la fuente de verdad de productos (sessionProducts > productsData)
@@ -640,9 +676,62 @@ window.getNormalizedCatalogProducts = function(targetRubro = null) {
 
                 seenProductIds.add(product.id);
 
+                // Si expandVariants es false (comportamiento estándar de catálogo y categorías):
+                // Indexar el producto UNA SOLA VEZ, sin multiplicar tarjetas por cada acabado
+                if (!expandVariants) {
+                    const allAcabadosNames = (product.acabados_groups || []).map(g => g.acabado_name || '').join(' ');
+                    const allMedidas = [];
+                    (product.acabados_groups || []).forEach(ag => {
+                        (ag.medidas_variants || []).forEach(mv => {
+                            if (mv && mv.medida && !allMedidas.includes(mv.medida)) allMedidas.push(mv.medida);
+                        });
+                    });
+                    if (product.medidas_variants) {
+                        product.medidas_variants.forEach(mv => {
+                            if (mv && mv.medida && !allMedidas.includes(mv.medida)) allMedidas.push(mv.medida);
+                        });
+                    }
+
+                    let coverImg = product.image;
+                    if (Array.isArray(coverImg)) coverImg = coverImg[0];
+                    if (!coverImg && product.acabados_groups?.[0]) {
+                        coverImg = product.acabados_groups[0].cover_image || product.acabados_groups[0].images_list?.[0];
+                    }
+
+                    indexed.push({
+                        uniqueId: String(product.id),
+                        id: product.id,
+                        productId: product.id,
+                        product: product,
+                        cat: catObj,
+                        categoryName: catObj.name,
+                        title: product.title,
+                        baseTitle: product.title,
+                        nombre: product.title,
+                        description: product.description || '',
+                        acabado: '',
+                        selectedAcabado: '',
+                        image: coverImg || 'img/logo_provisional.png',
+                        acabados_groups: product.acabados_groups || [],
+                        all_acabados_groups: product.acabados_groups || [],
+                        medidas_variants: product.acabados_groups?.[0]?.medidas_variants || product.medidas_variants || [],
+                        optional_variant: product.optional_variant || null,
+                        tags: product.tags || [],
+                        acabadosSearch: allAcabadosNames,
+                        medidas: allMedidas,
+                        shippingConfig: product.shippingConfig || null,
+                        isFreeShipping: product.isFreeShipping || false,
+                        quantityDiscounts: product.quantityDiscounts || null,
+                        discountPercent: product.discountPercent || 0,
+                        comparePrice: product.comparePrice || null,
+                        originalPrice: product.originalPrice || null
+                    });
+                    return;
+                }
+
                 let indexedAnyVariant = false;
 
-                // Indexar cada acabado visible como elemento independiente
+                // Indexar cada acabado visible como elemento independiente (solo si expandVariants es explícitamente true)
                 if (product.acabados_groups && Array.isArray(product.acabados_groups) && product.acabados_groups.length > 0) {
                     product.acabados_groups.forEach(acabado => {
                         if (acabado && acabado.hidden !== true && acabado.acabado_name) {

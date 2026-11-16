@@ -22,7 +22,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 22500,
+          "price": 25000,
           "cost_price": 15000,
           "legend": "",
           "showPrice": true
@@ -104,5 +104,6 @@
     "Vinotecas",
     "bazar-cocina"
   ],
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "price": 25000
 }

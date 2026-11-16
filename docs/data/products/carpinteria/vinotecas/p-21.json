@@ -1,12 +1,13 @@
 {
   "id": "21",
   "shortId": "37",
-  "title": "Vinoteca - 5 Vinos",
+  "title": "Vinoteca Cava Bodega Madera Mueble 5 Vinos Rustica Campo",
   "description": "Cavas y bodegas rústicas de madera.",
   "image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
   "acabados_groups": [
     {
       "acabado_name": "Tintado",
+      "description": "",
       "cover_image": "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
       "images_list": [
         "img/vinotecas-bodegas/chico/1783741139430-imagen.webp",
@@ -21,11 +22,22 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 60000,
+          "price": 100000,
           "cost_price": 25000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": "",
+          "volumeDiscounts": [
+            {
+              "minQty": 1,
+              "discountPercent": 15,
+              "shippingDiscountPercent": 0
+            }
+          ]
         }
       ],
       "hidden": false
@@ -50,8 +62,14 @@
     "linkEnabled": true,
     "creditEnabled": true
   },
-  "quantityDiscounts": [],
-  "last_modified": 1789442399047,
+  "quantityDiscounts": [
+    {
+      "minUnits": 1,
+      "discountPercent": 15,
+      "shippingDiscountPercent": 0
+    }
+  ],
+  "last_modified": 1794795773447,
   "primaryCatId": "Vinotecas",
   "history": [
     {

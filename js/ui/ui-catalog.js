@@ -443,39 +443,61 @@
                 val: 'Fabricación propia artesanal (Hurlingham, Bs. As.)'
             });
 
-            // Si hay menos de 1 fila válida no mostrar
-            if (rows.length === 0) {
+            // 8. Características personalizadas adicionales (cargadas dinámicamente o desde Modo Dios)
+            if (Array.isArray(product.custom_specs)) {
+                product.custom_specs.forEach((cs, csIdx) => {
+                    if (cs && (cs.label || cs.val)) {
+                        rows.push({
+                            icon: cs.icon || 'tune',
+                            label: cs.label || 'Característica',
+                            val: cs.val || '',
+                            isCustom: true,
+                            customIndex: csIdx
+                        });
+                    }
+                });
+            }
+
+            const isGodMode = Boolean(window.GodMode && window.GodMode.isEnabled());
+
+            // Si hay menos de 1 fila válida no mostrar (salvo en Modo Dios para permitir agregar)
+            if (rows.length === 0 && !isGodMode) {
                 cardEl.style.display = 'none';
                 return;
             }
 
             // Helper para renderizar cada fila
-            const createRowHtml = (r) => `
-                <div style="display: flex; align-items: flex-start; justify-content: space-between; padding: 6px 10px; background: #f8fafc; border-radius: 8px; font-size: 0.82rem; gap: 8px;">
-                    <div style="display: flex; align-items: center; gap: 6px; color: #475569; font-weight: 600; min-width: 140px;">
-                        <span class="material-symbols-outlined" style="font-size: 17px; color: #64748b; flex-shrink: 0;">${r.icon}</span>
-                        <span>${r.label}</span>
+            const createRowHtml = (r, idx, isExt) => `
+                <div class="product-spec-row" data-spec-key="${r.label}" data-spec-custom="${r.isCustom ? '1' : '0'}" data-custom-index="${typeof r.customIndex !== 'undefined' ? r.customIndex : ''}" style="display: flex; align-items: flex-start; justify-content: space-between; padding: 7px 10px; background: #f8fafc; border-radius: 8px; font-size: 0.82rem; gap: 8px; position: relative;">
+                    <div class="product-spec-header" style="display: flex; align-items: center; gap: 6px; color: #475569; font-weight: 600; min-width: 140px;">
+                        <span class="material-symbols-outlined product-spec-icon" style="font-size: 17px; color: #64748b; flex-shrink: 0;">${r.icon || 'tune'}</span>
+                        <span class="product-spec-title" data-god-type="product-spec-title" data-god-id="${product.id}" data-spec-key="${r.label}" style="display: inline-block;">${r.label}</span>
                     </div>
-                    <div style="font-weight: 700; color: #0f172a; text-align: right; word-break: break-word;">
-                        ${r.val}
+                    <div style="display: flex; align-items: center; gap: 8px; flex: 1; justify-content: flex-end;">
+                        <span class="product-spec-val" data-god-type="product-spec-val" data-god-id="${product.id}" data-spec-key="${r.label}" style="font-weight: 700; color: #0f172a; text-align: right; word-break: break-word; display: inline-block;">
+                            ${r.val}
+                        </span>
+                        <button type="button" class="god-delete-spec-btn" data-spec-key="${r.label}" data-custom-index="${typeof r.customIndex !== 'undefined' ? r.customIndex : ''}" title="Eliminar característica" style="display: none; background: transparent; border: none; color: #ef4444; cursor: pointer; padding: 2px;">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">delete</span>
+                        </button>
                     </div>
                 </div>
             `;
 
             // Primeras 2 filas fijas
             const primaryRows = rows.slice(0, 2);
-            primaryEl.innerHTML = primaryRows.map(createRowHtml).join('');
+            primaryEl.innerHTML = primaryRows.map((r, i) => createRowHtml(r, i, false)).join('');
 
             // Filas extendidas (a partir de la 3era)
             const extendedRows = rows.slice(2);
             if (extendedRows.length > 0) {
-                extendedEl.innerHTML = extendedRows.map(createRowHtml).join('');
-                extendedEl.style.display = 'none'; // colapsado por defecto
+                extendedEl.innerHTML = extendedRows.map((r, i) => createRowHtml(r, i, true)).join('');
+                extendedEl.style.display = isGodMode ? 'flex' : 'none'; // Desplegado en Modo Dios para edición ágil
 
                 if (toggleBtn) {
-                    toggleBtn.style.display = 'inline-flex';
+                    toggleBtn.style.display = isGodMode ? 'none' : 'inline-flex';
                     if (toggleText) toggleText.textContent = `Ver más detalles (${extendedRows.length})`;
-                    if (toggleIcon) toggleIcon.style.transform = 'rotate(0deg)';
+                    if (toggleIcon) toggleIcon.style.transform = isGodMode ? 'rotate(180deg)' : 'rotate(0deg)';
 
                     toggleBtn.onclick = () => {
                         const isExpanded = extendedEl.style.display === 'flex';
@@ -496,7 +518,56 @@
                 if (toggleBtn) toggleBtn.style.display = 'none';
             }
 
+            // Inyectar o actualizar contenedor de botón "+ Agregar Característica" para Modo Dios
+            let addSpecContainer = cardEl.querySelector('#god-add-spec-container');
+            if (!addSpecContainer) {
+                addSpecContainer = document.createElement('div');
+                addSpecContainer.id = 'god-add-spec-container';
+                addSpecContainer.className = 'god-add-spec-container';
+                addSpecContainer.style.marginTop = '10px';
+                addSpecContainer.innerHTML = `
+                    <button type="button" id="btn-god-add-spec" class="btn-god-add-spec" style="display: none;">
+                        <span class="material-symbols-outlined" style="font-size: 16px;">add_circle</span>
+                        <span>Agregar Característica</span>
+                    </button>
+                `;
+                cardEl.appendChild(addSpecContainer);
+            }
+
+            const addSpecBtn = addSpecContainer.querySelector('#btn-god-add-spec');
+            if (addSpecBtn) {
+                addSpecBtn.style.display = isGodMode ? 'inline-flex' : 'none';
+                addSpecBtn.onclick = (e) => {
+                    e.preventDefault();
+                    if (window.GodMode && window.GodMode.addNewProductSpec) {
+                        window.GodMode.addNewProductSpec(product, () => {
+                            renderProductSpecs(activeGrupo, currentMedidaName);
+                        });
+                    }
+                };
+            }
+
+            // Escuchar clics en botones de eliminar característica en Modo Dios
+            cardEl.querySelectorAll('.god-delete-spec-btn').forEach(btn => {
+                btn.style.display = isGodMode ? 'inline-flex' : 'none';
+                btn.onclick = (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const specKey = btn.dataset.specKey;
+                    const cIdx = btn.dataset.customIndex;
+                    if (window.GodMode && window.GodMode.removeProductSpec) {
+                        window.GodMode.removeProductSpec(product, specKey, cIdx, () => {
+                            renderProductSpecs(activeGrupo, currentMedidaName);
+                        });
+                    }
+                };
+            });
+
             cardEl.style.display = 'block';
+
+            if (isGodMode && window.GodMode && window.GodMode.scan) {
+                window.GodMode.scan();
+            }
         };
 
         const updateBuyButton = (grupoParam, medidaNameParam) => {
@@ -653,11 +724,17 @@
                         getProductVolumeDiscounts: (v) => window.getProductVolumeDiscounts ? window.getProductVolumeDiscounts(product, v) : [],
                         preselectedMedida
                     });
-                } else {
+                } else if (uniqueMedidas.length > 1 || isGodModeVariants) {
                     divMedida.className = 'variant-selector-wrapper mt-1';
                     divMedida.innerHTML = `
-                        <label class="variant-label">📏 Medida / Variantes</label>
-                        <select class="variant-select-cascade">
+                        <div class="variant-label-row" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+                            <label class="variant-label" style="margin-bottom: 0;">📏 Medida / Variantes</label>
+                            <button type="button" class="btn-god-edit-variants" id="btn-god-edit-variants" style="${isGodModeVariants ? 'display: inline-flex;' : 'display: none;'}" title="Editar y renombrar variantes con Modo Dios">
+                                <span class="material-symbols-outlined" style="font-size: 15px;">tune</span>
+                                <span>Editar Variantes</span>
+                            </button>
+                        </div>
+                        <select class="variant-select-cascade" ${uniqueMedidas.length <= 1 && isGodModeVariants ? 'style="opacity: 0.8;"' : ''}>
                             ${uniqueMedidas.map(name => `
                                 <option value="${name}" ${name === defaultMedidaName ? 'selected' : ''}>${name}</option>
                             `).join('')}
@@ -669,9 +746,71 @@
                         updateFavState();
                         updateUrlWithVariants();
                     });
+
+                    const btnEditVar = divMedida.querySelector('#btn-god-edit-variants');
+                    if (btnEditVar) {
+                        btnEditVar.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            if (window.GodMode && window.GodMode.openVariantsModal) {
+                                window.GodMode.openVariantsModal({
+                                    product,
+                                    grupo,
+                                    currentGroupIndex,
+                                    onApplied: () => {
+                                        updateGroupView(currentGroupIndex);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                } else {
+                    // Si solo tiene 1 variante única y no está en Modo Dios, ocultamos el selector
+                    // ya que está aclarado en la foto/título y solo ocupa espacio innecesario.
+                    // Mantenemos el <select> oculto para que la lógica de cálculo y compra siga funcionando 100%.
+                    divMedida.className = 'variant-selector-wrapper';
+                    divMedida.innerHTML = `
+                        <select class="variant-select-cascade" style="display: none;">
+                            ${uniqueMedidas.map(name => `
+                                <option value="${name}" ${name === defaultMedidaName ? 'selected' : ''}>${name}</option>
+                            `).join('')}
+                        </select>
+                    `;
+                    divMedida.style.display = 'none';
                 }
             } else {
-                divMedida.style.display = 'none';
+                const isGodModeVariants = Boolean(window.GodMode && window.GodMode.isEnabled());
+                if (isGodModeVariants) {
+                    divMedida.className = 'variant-selector-wrapper mt-1';
+                    divMedida.innerHTML = `
+                        <div class="variant-label-row" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+                            <label class="variant-label" style="margin-bottom: 0;">📏 Medida / Variantes</label>
+                            <button type="button" class="btn-god-edit-variants" id="btn-god-edit-variants" style="display: inline-flex;" title="Crear o configurar variantes con Modo Dios">
+                                <span class="material-symbols-outlined" style="font-size: 15px;">add_circle</span>
+                                <span>Configurar Variantes</span>
+                            </button>
+                        </div>
+                        <div style="font-size: 0.8rem; color: #64748b; font-style: italic; padding: 4px 0;">(Sin variantes adicionales configuradas)</div>
+                    `;
+                    divMedida.style.display = 'block';
+                    const btnEditVar = divMedida.querySelector('#btn-god-edit-variants');
+                    if (btnEditVar) {
+                        btnEditVar.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            if (window.GodMode && window.GodMode.openVariantsModal) {
+                                window.GodMode.openVariantsModal({
+                                    product,
+                                    grupo,
+                                    currentGroupIndex,
+                                    onApplied: () => {
+                                        updateGroupView(currentGroupIndex);
+                                    }
+                                });
+                            }
+                        });
+                    }
+                } else {
+                    divMedida.style.display = 'none';
+                }
             }
 
             // Actualización inicial de botones y precios para este grupo
@@ -681,6 +820,15 @@
             updateBuyButton(grupo, initialMedida);
             updateFavState();
             updateUrlWithVariants();
+
+            // Ocultar attrContainer si no hay ningún selector visible (ni medida ni opcional ni acabado)
+            const hasVisibleSelector = (divAcabado && divAcabado.style.display !== 'none' && divAcabado.innerHTML.trim() !== '') ||
+                                       (divMedida && divMedida.style.display !== 'none' && divMedida.innerHTML.trim() !== '') ||
+                                       (divOpt && divOpt.style.display !== 'none' && divOpt.innerHTML.trim() !== '');
+            if (attrContainer) {
+                attrContainer.style.display = hasVisibleSelector ? 'block' : 'none';
+                attrContainer.style.marginBottom = hasVisibleSelector ? '1.25rem' : '0px';
+            }
         }
 
         // Acabado Selector (Integrado directamente sobre la foto del producto)
@@ -724,6 +872,14 @@
 
         // Inicializar la vista con el grupo seleccionado
         updateGroupView(currentGroupIndex);
+
+        if (attrContainer) {
+            const hasVisibleSelector = (divAcabado && divAcabado.style.display !== 'none' && divAcabado.innerHTML.trim() !== '') ||
+                                       (divMedida && divMedida.style.display !== 'none' && divMedida.innerHTML.trim() !== '') ||
+                                       (divOpt && divOpt.style.display !== 'none' && divOpt.innerHTML.trim() !== '');
+            attrContainer.style.display = hasVisibleSelector ? 'block' : 'none';
+            attrContainer.style.marginBottom = hasVisibleSelector ? '1.25rem' : '0px';
+        }
 
         preselectedAcabado = '';
         preselectedMedida = '';
@@ -782,6 +938,20 @@
                     medidaText = `Despiece (${totalPieces} piezas: ${cutsSummary})`;
                     variantPrice = Math.round(netSubtotal / totalPieces);
                     qtyVal = totalPieces;
+                } else {
+                    // Producto estándar: evaluar descuentos por cantidad/volumen o descuento directo
+                    const rule = window.getBestDiscountRule ? window.getBestDiscountRule(product, qtyVal, activeVariant) : null;
+                    if (rule) {
+                        if (rule.discountPercent !== undefined && Number(rule.discountPercent) > 0) {
+                            variantPrice = Math.round(variantPrice * (1 - Number(rule.discountPercent) / 100));
+                        } else if (rule.discountValue !== undefined && Number(rule.discountValue) > 0) {
+                            const minU = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
+                            const totalDisc = Math.floor(qtyVal / minU) * rule.discountValue;
+                            variantPrice = Math.max(0, variantPrice - Math.round(totalDisc / qtyVal));
+                        }
+                    } else if (product.discountPercent && Number(product.discountPercent) > 0) {
+                        variantPrice = Math.round(variantPrice * (1 - Number(product.discountPercent) / 100));
+                    }
                 }
 
                 if (window.showProductPaymentModal) {
@@ -847,6 +1017,20 @@
                         medidaText = `Despiece (${totalPieces} piezas: ${cutsSummary})`;
                         itemPrice = Math.round(netSubtotal / totalPieces);
                         qtyVal = totalPieces;
+                    } else if (itemPrice !== null) {
+                        // Producto estándar: evaluar descuentos por cantidad/volumen o descuento directo
+                        const rule = window.getBestDiscountRule ? window.getBestDiscountRule(product, qtyVal, activeVariant) : null;
+                        if (rule) {
+                            if (rule.discountPercent !== undefined && Number(rule.discountPercent) > 0) {
+                                itemPrice = Math.round(itemPrice * (1 - Number(rule.discountPercent) / 100));
+                            } else if (rule.discountValue !== undefined && Number(rule.discountValue) > 0) {
+                                const minU = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
+                                const totalDisc = Math.floor(qtyVal / minU) * rule.discountValue;
+                                itemPrice = Math.max(0, itemPrice - Math.round(totalDisc / qtyVal));
+                            }
+                        } else if (product.discountPercent && Number(product.discountPercent) > 0) {
+                            itemPrice = Math.round(itemPrice * (1 - Number(product.discountPercent) / 100));
+                        }
                     }
 
                     window.CarritoModule.toggle(product, acabadoName, categoryName, medidaText, optText, optLabel, itemPrice, qtyVal);
@@ -975,14 +1159,14 @@
                 const candidateSeenIds = new Set();
                 candidateSeenIds.add(currentProdId);
 
-// Determinar la categoría concreta del producto actual (evitando categorías contenedor como '-todos')
+                // Determinar la categoría concreta del producto actual (evitando categorías contenedor como '-todos')
                 let directCatId = '';
                 if (product.primaryCatId && !String(product.primaryCatId).endsWith('-todos')) {
                     directCatId = String(product.primaryCatId).trim();
                 } else if (product.category && !String(product.category).endsWith('-todos')) {
                     directCatId = String(product.category).trim();
                 } else if (categoryName) {
-                    const foundByCatName = sourceData.find(c => c.name === categoryName && !String(c.id).endsWith('-todos'));
+                    const foundByCatName = sourceData.find(c => (c.name === categoryName || c.id === categoryName) && !String(c.id).endsWith('-todos'));
                     if (foundByCatName) directCatId = String(foundByCatName.id).trim();
                 }
                 
@@ -991,94 +1175,165 @@
                     if (validCat) directCatId = String(validCat).trim();
                 }
 
-                sourceData.forEach(cat => {
-                    if (cat.visible === false || String(cat.id).endsWith('-todos')) return;
-                    if (String(cat.id).trim() === directCatId && Array.isArray(cat.products)) {
-                        cat.products.forEach(p => {
-                            if (p.visible === false) return;
-                            const pid = String(p.id).trim();
-                            if (candidateSeenIds.has(pid)) return;
-                            candidateSeenIds.add(pid);
-                            carouselProductIds.add(pid);
-                            candidateProds.push({
-                                type: 'product',
-                                data: p,
-                                catName: cat.name,
-                                catId: cat.id,
-                                price: getProductMaxPrice(p)
+                // 2.A: Primer intento - Productos de la categoría directa
+                if (directCatId) {
+                    const targetCatIdLower = directCatId.toLowerCase();
+                    sourceData.forEach(cat => {
+                        if (cat.visible === false || String(cat.id).endsWith('-todos')) return;
+                        const catIdStr = String(cat.id || '').trim().toLowerCase();
+                        const catNameStr = String(cat.name || '').trim().toLowerCase();
+                        if ((catIdStr === targetCatIdLower || catNameStr === targetCatIdLower) && Array.isArray(cat.products)) {
+                            cat.products.forEach(p => {
+                                if (p.visible === false) return;
+                                const pid = String(p.id).trim();
+                                if (candidateSeenIds.has(pid)) return;
+                                candidateSeenIds.add(pid);
+                                carouselProductIds.add(pid);
+                                candidateProds.push({
+                                    type: 'product',
+                                    data: p,
+                                    catName: cat.name,
+                                    catId: cat.id,
+                                    price: getProductMaxPrice(p)
+                                });
                             });
-                        });
-                    }
-                });
+                        }
+                    });
+                }
 
-                // Ordenar los productos de la misma categoría de MAYOR a MENOR PRECIO
+                // 2.B: Fallback Inteligente - Si la categoría tiene pocos productos (< 6) o está vacía,
+                // rellenar con los productos más destacados del MISMO RUBRO para garantizar siempre un carrusel completo
+                if (candidateProds.length < 6) {
+                    sourceData.forEach(cat => {
+                        if (cat.visible === false || String(cat.id).endsWith('-todos')) return;
+                        const catRubro = (cat.rubro || 'carpinteria').toLowerCase().trim();
+                        if (catRubro === currentRubro && Array.isArray(cat.products)) {
+                            cat.products.forEach(p => {
+                                if (p.visible === false) return;
+                                const pid = String(p.id).trim();
+                                if (candidateSeenIds.has(pid)) return;
+                                candidateSeenIds.add(pid);
+                                carouselProductIds.add(pid);
+                                candidateProds.push({
+                                    type: 'product',
+                                    data: p,
+                                    catName: cat.name,
+                                    catId: cat.id,
+                                    price: getProductMaxPrice(p)
+                                });
+                            });
+                        }
+                    });
+                }
+
+                // 2.C: Fallback General - Si aún no alcanza, rellenar con cualquier producto disponible de la tienda
+                if (candidateProds.length < 6) {
+                    sourceData.forEach(cat => {
+                        if (cat.visible === false || String(cat.id).endsWith('-todos')) return;
+                        if (Array.isArray(cat.products)) {
+                            cat.products.forEach(p => {
+                                if (p.visible === false) return;
+                                const pid = String(p.id).trim();
+                                if (candidateSeenIds.has(pid)) return;
+                                candidateSeenIds.add(pid);
+                                carouselProductIds.add(pid);
+                                candidateProds.push({
+                                    type: 'product',
+                                    data: p,
+                                    catName: cat.name,
+                                    catId: cat.id,
+                                    price: getProductMaxPrice(p)
+                                });
+                            });
+                        }
+                    });
+                }
+
+                // Ordenar los productos de MAYOR a MENOR PRECIO
                 candidateProds.sort((a, b) => b.price - a.price);
 
                 // Unir Combos de oferta primero + productos de la categoría
                 const itemsToRender = [...combosToRender, ...candidateProds];
+
+                // Asegurar visibilidad del contenedor de recomendados si hay ítems
+                const relatedContainer = relatedList.parentElement;
+                if (relatedContainer) {
+                    relatedContainer.style.display = itemsToRender.length > 0 ? 'block' : 'none';
+                }
 
                 // Renderizar carrusel
                 const renderCarousel = (window.setupInfiniteCarousel && typeof window.setupInfiniteCarousel === 'function')
                     ? window.setupInfiniteCarousel
                     : (container, items, renderFn) => {
                         container.innerHTML = '';
-                        items.forEach((it, i) => container.appendChild(renderFn(it, i)));
+                        items.forEach((it, i) => {
+                            const node = renderFn(it, i);
+                            if (node) container.appendChild(node);
+                        });
                     };
 
                 renderCarousel(relatedList, itemsToRender, (item, idx) => {
                     const isEager = idx < 3;
 
-                    if (item.type === 'combo') {
-                        const pCard = document.createElement('div');
-                        pCard.className = 'category-card';
-                        pCard.style.cssText = 'cursor: pointer; border: 1px solid rgba(212, 175, 55, 0.35); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);';
-                        pCard.innerHTML = `
-                            <div class="category-card-img-wrapper" style="position:relative;">
-                                <img src="${window.getThumbUrl ? window.getThumbUrl(item.image) : item.image}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${item.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
-                                <div style="position: absolute; top: 6px; left: 6px; background: linear-gradient(135deg, #b38728, #fcf6ba); color: #000; font-size: 0.65rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 2;">
-                                    ${item.badge}
+                    try {
+                        if (item.type === 'combo') {
+                            const pCard = document.createElement('div');
+                            pCard.className = 'category-card';
+                            pCard.style.cssText = 'cursor: pointer; border: 1px solid rgba(212, 175, 55, 0.35); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);';
+                            pCard.innerHTML = `
+                                <div class="category-card-img-wrapper" style="position:relative;">
+                                    <img src="${window.getThumbUrl ? window.getThumbUrl(item.image) : item.image}" class="category-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${item.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
+                                    <div style="position: absolute; top: 6px; left: 6px; background: linear-gradient(135deg, #b38728, #fcf6ba); color: #000; font-size: 0.65rem; font-weight: 800; padding: 2px 6px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 2;">
+                                        ${item.badge}
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="category-overlay">
-                                <span>${item.title}</span>
-                            </div>
-                        `;
-                        pCard.addEventListener('click', () => {
-                            if (window.openOfferDetailView) {
-                                window.openOfferDetailView(item.data);
-                            }
-                        });
-                        return pCard;
-                    } else {
-                        const p = item.data;
-                        if (typeof window.createFeedProductCard === 'function') {
-                            return window.createFeedProductCard(p, {
-                                catName: item.catName || '',
-                                extraClass: 'carousel-feed-item',
-                                isCarousel: true
+                                <div class="category-overlay">
+                                    <span>${item.title}</span>
+                                </div>
+                            `;
+                            pCard.addEventListener('click', () => {
+                                if (window.openOfferDetailView) {
+                                    window.openOfferDetailView(item.data);
+                                }
                             });
-                        }
+                            return pCard;
+                        } else {
+                            const p = item.data;
+                            if (typeof window.createFeedProductCard === 'function') {
+                                const card = window.createFeedProductCard(p, {
+                                    catName: item.catName || '',
+                                    extraClass: 'carousel-feed-item',
+                                    isCarousel: true
+                                });
+                                if (card) return card;
+                            }
 
-                        // Fallback
-                        const pCard = document.createElement('div');
-                        pCard.className = 'feed-card carousel-feed-item';
-                        pCard.style.cursor = 'pointer';
-                        const rawProductCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
-                        const productCover = window.getThumbUrl ? window.getThumbUrl(rawProductCover) : rawProductCover;
-                        pCard.innerHTML = `
-                            <div class="feed-card-photo-container">
-                                <img src="${productCover}" class="feed-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${p.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
-                            </div>
-                            <div class="feed-card-info">
-                                <div class="feed-card-title-container">
-                                    <h3 class="feed-card-title" title="${p.title}">${p.title}</h3>
+                            // Fallback
+                            const pCard = document.createElement('div');
+                            pCard.className = 'feed-card carousel-feed-item';
+                            pCard.style.cursor = 'pointer';
+                            const rawProductCover = Array.isArray(p.image) ? p.image[0] : (p.image || 'img/logo_provisional.png');
+                            const productCover = window.getThumbUrl ? window.getThumbUrl(rawProductCover) : rawProductCover;
+                            pCard.innerHTML = `
+                                <div class="feed-card-photo-container">
+                                    <img src="${productCover}" class="feed-card-img ${isEager ? 'loaded' : 'lazy-img'}" alt="${p.title}" loading="${isEager ? 'eager' : 'lazy'}" ${isEager ? '' : 'onload="this.classList.add(\'loaded\')"'}>
                                 </div>
-                            </div>
-                        `;
-                        pCard.addEventListener('click', () => {
-                            if (window.showProductDetail) window.showProductDetail(p, item.catName);
-                        });
-                        return pCard;
+                                <div class="feed-card-info">
+                                    <div class="feed-card-title-container">
+                                        <h3 class="feed-card-title" title="${p.title}">${p.title}</h3>
+                                    </div>
+                                </div>
+                            `;
+                            pCard.addEventListener('click', () => {
+                                if (window.showProductDetail) window.showProductDetail(p, item.catName);
+                            });
+                            return pCard;
+                        }
+                    } catch (err) {
+                        console.error('[Related Carousel Item Render Error]', err);
+                        const fallbackDiv = document.createElement('div');
+                        fallbackDiv.style.display = 'none';
+                        return fallbackDiv;
                     }
                 });
 

@@ -20,8 +20,9 @@
           "iconType": "local_shipping",
           "highlight": false,
           "legend": "",
-          "showPrice": false,
-          "stock": 2
+          "showPrice": true,
+          "stock": 2,
+          "price": 18000
         }
       ],
       "hidden": false,
@@ -80,5 +81,6 @@
     "carpinteria-todos",
     "Juguetes"
   ],
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "price": 18000
 }

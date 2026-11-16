@@ -91,11 +91,12 @@
             const tiers = qDisc.filter(d => Number(d.discountPercent) > 0 && Number(d.minUnits) > 0);
             if (tiers.length > 0) {
                 const first = tiers[0];
+                const isSingleUnit = Number(first.minUnits) <= 1;
                 return {
                     type: 'volume',
                     percent: first.discountPercent,
                     minUnits: first.minUnits,
-                    label: `${first.discountPercent}% OFF desde ${first.minUnits} u.`,
+                    label: isSingleUnit ? `${first.discountPercent}% OFF` : `${first.discountPercent}% OFF desde ${first.minUnits} u.`,
                     badgeText: `${first.discountPercent}% OFF`
                 };
             }
@@ -125,7 +126,10 @@
     let activeCategoryId = 'all';
     let activeSubcategory = null;
     let currentSearchQuery = '';
-    let currentSortMode = safeGetStorage(SORT_STORAGE_KEY) || 'az';
+    let currentSortMode = safeGetStorage(SORT_STORAGE_KEY);
+    if (!currentSortMode || currentSortMode === 'default' || currentSortMode === 'az') {
+        currentSortMode = 'destacado';
+    }
     let currentViewMode = safeGetStorage(VIEW_STORAGE_KEY) || (window.innerWidth >= 900 ? 'cards' : 'list');
 
     let allProducts = [];
@@ -639,28 +643,53 @@
 
     // --- FILTRADO, ORDENAMIENTO Y RENDERIZADO DE PRODUCTOS ---
     function getCategoryScopedProducts() {
+        let items = [];
         if (!activeCategoryId || activeCategoryId === 'all') {
-            return [...allProducts];
-        }
-        const source = getSourceCategories();
-        const catObj = source.find(c => c && c.id === activeCategoryId);
-        const catProdIds = new Set();
-        if (catObj && Array.isArray(catObj.products)) {
-            catObj.products.forEach(p => {
-                if (p && p.visible !== false && p.id) {
-                    catProdIds.add(String(p.id));
-                }
+            items = [...allProducts];
+            items.forEach((item, idx) => {
+                item._catOrderIndex = idx;
             });
+        } else {
+            const source = getSourceCategories();
+            const catObj = source.find(c => c && c.id === activeCategoryId);
+            if (catObj && Array.isArray(catObj.products)) {
+                const prodMap = new Map();
+                allProducts.forEach(item => {
+                    const pid = String(item.id || item.productId || item.product?.id || '').trim();
+                    if (pid && !prodMap.has(pid)) {
+                        prodMap.set(pid, item);
+                    }
+                });
+
+                catObj.products.forEach((p, idx) => {
+                    if (!p || p.visible === false || !p.id) return;
+                    const pid = String(p.id).trim();
+                    const item = prodMap.get(pid);
+                    if (item) {
+                        item._catOrderIndex = idx;
+                        items.push(item);
+                    }
+                });
+            } else {
+                items = allProducts.filter(item => item.cat && item.cat.id === activeCategoryId);
+                items.forEach((item, idx) => {
+                    item._catOrderIndex = idx;
+                });
+            }
         }
-        return allProducts.filter(item => {
-            if (item.cat && item.cat.id === activeCategoryId) return true;
-            return catProdIds.has(String(item.id));
-        });
+
+        // Agrupar variantes para que dentro de la categoría solo salga el producto principal
+        if (typeof window.groupCategoryProducts === 'function') {
+            return window.groupCategoryProducts(items);
+        }
+        return items;
     }
 
     function sortCatalogResults(results) {
         if (currentSortMode === 'za') {
             results.sort((a, b) => (b.title || '').localeCompare((a.title || ''), 'es', { sensitivity: 'base' }));
+        } else if (currentSortMode === 'az') {
+            results.sort((a, b) => (a.title || '').localeCompare((b.title || ''), 'es', { sensitivity: 'base' }));
         } else if (currentSortMode === 'price-asc') {
             results.sort((a, b) => {
                 const pa = getProductPriceRange(a).sortPrice;
@@ -680,7 +709,12 @@
                 return pb - pa;
             });
         } else {
-            results.sort((a, b) => (a.title || '').localeCompare((b.title || ''), 'es', { sensitivity: 'base' }));
+            // 'destacado' o por defecto: respeta estrictamente el orden asignado en dicha categoría
+            results.sort((a, b) => {
+                const idxA = a._catOrderIndex !== undefined ? a._catOrderIndex : 99999;
+                const idxB = b._catOrderIndex !== undefined ? b._catOrderIndex : 99999;
+                return idxA - idxB;
+            });
         }
     }
 
@@ -702,7 +736,7 @@
                 ? window.searchCatalogScore(scoped, currentSearchQuery)
                 : scoreCatalogFallback(scoped, currentSearchQuery);
             results = scored.map(s => s.item);
-            if (currentSortMode !== 'az') {
+            if (currentSortMode !== 'destacado') {
                 sortCatalogResults(results);
             }
         } else {
@@ -762,15 +796,10 @@
 
         const handleProductClick = (e) => {
             e.preventDefault();
-            const foundData = typeof window.findProductById === 'function'
-                ? window.findProductById(product.id)
-                : null;
-            if (foundData && typeof window.showProductDetail === 'function') {
-                window.showProductDetail(foundData.product, foundData.catName, product.selectedAcabado || '');
-                return;
-            }
+            const prodToOpen = product.product || product;
+            const catName = product.categoryName || (product.cat && product.cat.name) || 'Catálogo';
             if (typeof window.showProductDetail === 'function') {
-                window.showProductDetail(product.product || product, product.categoryName || 'Catálogo', product.selectedAcabado || '');
+                window.showProductDetail(prodToOpen, catName, product.selectedAcabado || '');
             }
         };
 
@@ -856,49 +885,142 @@
         textCol.appendChild(titleRow);
 
         const priceRow = document.createElement('div');
-        priceRow.style.cssText = 'display:flex; align-items:center; flex-wrap:wrap; gap:6px; margin:2px 0 4px 0;';
+        priceRow.className = 'catalog-price-row';
+        priceRow.style.cssText = 'display:flex; align-items:baseline; flex-wrap:wrap; gap:6px; margin:2px 0 4px 0;';
 
-        // Precio anterior tachado si hay descuento
-        if (discInfo && discInfo.oldPrice) {
-            const oldPriceEl = document.createElement('span');
-            oldPriceEl.style.cssText = 'font-size:0.8rem; font-weight:600; color:#94a3b8; text-decoration:line-through;';
-            oldPriceEl.textContent = currencyFormatter.format(discInfo.oldPrice);
-            priceRow.appendChild(oldPriceEl);
-        }
+        const oldPriceEl = document.createElement('span');
+        oldPriceEl.className = 'catalog-price-old';
 
         const priceTag = document.createElement('span');
         priceTag.className = 'catalog-price-tag';
 
-        const getFormattedPriceText = (v) => {
-            if (v && v.price) {
-                return currencyFormatter.format(v.price);
+        const discTag = document.createElement('span');
+        discTag.className = 'catalog-discount-pill';
+
+        const computeVariantPriceState = (v) => {
+            const baseProd = product.product || product;
+            const directPercent = Number(product.discountPercent || product.descuento || baseProd.discountPercent || baseProd.descuento || 0);
+            const qDisc = product.quantityDiscounts || baseProd.quantityDiscounts;
+            const tier1 = Array.isArray(qDisc) ? qDisc.find(d => Number(d.minUnits) <= 1 && Number(d.discountPercent) > 0) : null;
+            const volTier = Array.isArray(qDisc) ? qDisc.find(d => Number(d.discountPercent) > 0) : null;
+            const activePct = directPercent > 0 ? directPercent : (tier1 ? Number(tier1.discountPercent) : 0);
+
+            let rawPrice = (v && v.price !== undefined && v.price !== '') ? parseFloat(v.price) : null;
+            let comparePrice = (v && v.comparePrice) ? parseFloat(v.comparePrice) : (product.comparePrice || product.originalPrice || baseProd.comparePrice || baseProd.originalPrice ? parseFloat(product.comparePrice || product.originalPrice || baseProd.comparePrice || baseProd.originalPrice) : null);
+            let isRange = false;
+
+            if (rawPrice === null || isNaN(rawPrice)) {
+                const validPrices = shippingVariants.filter(sv => sv.price && !isNaN(parseFloat(sv.price))).map(sv => parseFloat(sv.price));
+                if (validPrices.length > 0) {
+                    const minP = Math.min(...validPrices);
+                    const maxP = Math.max(...validPrices);
+                    rawPrice = minP;
+                    isRange = minP !== maxP;
+                }
             }
-            const validPrices = shippingVariants.filter(sv => sv.price).map(sv => sv.price);
-            if (validPrices.length > 0) {
-                const minP = Math.min(...validPrices);
-                const maxP = Math.max(...validPrices);
-                return minP === maxP ? currencyFormatter.format(minP) : `Desde ${currencyFormatter.format(minP)}`;
+
+            if (rawPrice === null || isNaN(rawPrice)) {
+                return {
+                    isConsult: true,
+                    oldPriceText: '',
+                    finalPriceText: 'Consultar precio',
+                    discountLabel: '',
+                    hasDiscount: false,
+                    finalPriceNumber: 0
+                };
             }
-            return 'Consultar precio';
+
+            // 1. Compare price mayor al precio base
+            if (comparePrice && !isNaN(comparePrice) && comparePrice > rawPrice) {
+                const pct = Math.round(((comparePrice - rawPrice) / comparePrice) * 100);
+                return {
+                    isConsult: false,
+                    oldPriceText: currencyFormatter.format(comparePrice),
+                    finalPriceText: isRange ? `Desde ${currencyFormatter.format(rawPrice)}` : currencyFormatter.format(rawPrice),
+                    discountLabel: `${pct}% OFF`,
+                    hasDiscount: true,
+                    finalPriceNumber: rawPrice
+                };
+            }
+
+            // 2. Descuento porcentual directo o desde 1 unidad
+            if (activePct > 0) {
+                const discounted = Math.round(rawPrice * (1 - activePct / 100));
+                return {
+                    isConsult: false,
+                    oldPriceText: currencyFormatter.format(rawPrice),
+                    finalPriceText: isRange ? `Desde ${currencyFormatter.format(discounted)}` : currencyFormatter.format(discounted),
+                    discountLabel: `${activePct}% OFF`,
+                    hasDiscount: true,
+                    finalPriceNumber: discounted
+                };
+            }
+
+            // 3. Descuento por volumen para más de 1 unidad
+            if (volTier && Number(volTier.minUnits) > 1) {
+                return {
+                    isConsult: false,
+                    oldPriceText: '',
+                    finalPriceText: isRange ? `Desde ${currencyFormatter.format(rawPrice)}` : currencyFormatter.format(rawPrice),
+                    discountLabel: `${volTier.discountPercent}% OFF desde ${volTier.minUnits} u.`,
+                    hasDiscount: false,
+                    finalPriceNumber: rawPrice
+                };
+            }
+
+            // 4. Precio estándar
+            return {
+                isConsult: false,
+                oldPriceText: '',
+                finalPriceText: isRange ? `Desde ${currencyFormatter.format(rawPrice)}` : currencyFormatter.format(rawPrice),
+                discountLabel: '',
+                hasDiscount: false,
+                finalPriceNumber: rawPrice
+            };
         };
 
-        const initialPriceText = getFormattedPriceText(shippingVariants[defaultIdx]);
-        priceTag.textContent = initialPriceText;
-        if (initialPriceText === 'Consultar precio') {
-            priceTag.style.fontSize = '0.85rem';
-            priceTag.style.color = '#c0510a';
-            priceTag.style.fontWeight = '700';
-        }
+        const updatePriceRowUI = (v) => {
+            const state = computeVariantPriceState(v);
+            if (state.oldPriceText) {
+                oldPriceEl.textContent = state.oldPriceText;
+                oldPriceEl.style.display = 'inline';
+            } else {
+                oldPriceEl.textContent = '';
+                oldPriceEl.style.display = 'none';
+            }
+
+            priceTag.textContent = state.finalPriceText;
+            priceTag.classList.toggle('has-discount', state.hasDiscount);
+            priceTag.classList.toggle('catalog-price-discounted', state.hasDiscount);
+
+            if (state.isConsult) {
+                priceTag.style.fontSize = '0.85rem';
+                priceTag.style.color = '#c0510a';
+                priceTag.style.fontWeight = '700';
+            } else {
+                priceTag.style.fontSize = '';
+                priceTag.style.color = '';
+                priceTag.style.fontWeight = '';
+            }
+
+            // Si el producto tiene descuento desde 1 unidad, ya se ve la rebaja con el precio tachado y el precio grande destacado (más el badge sobre la foto).
+            // Solo se muestra pastilla informativa si la escala por cantidad requiere más de 1 unidad (ej. "15% OFF desde 3 u.")
+            if (!state.hasDiscount && state.discountLabel) {
+                discTag.textContent = state.discountLabel;
+                discTag.style.display = 'inline-flex';
+                discTag.style.background = '#fef3c7';
+                discTag.style.color = '#b45309';
+            } else {
+                discTag.textContent = '';
+                discTag.style.display = 'none';
+            }
+        };
+
+        updatePriceRowUI(shippingVariants[defaultIdx]);
+
+        priceRow.appendChild(oldPriceEl);
         priceRow.appendChild(priceTag);
-
-        // Si hay descuento, etiqueta de promo en la misma fila del precio
-        if (discInfo && discInfo.label) {
-            const discTag = document.createElement('span');
-            discTag.style.cssText = 'color:#b45309; background:#fef3c7; font-size:0.7rem; font-weight:700; padding:1px 6px; border-radius:4px; margin-left:3px;';
-            discTag.textContent = discInfo.label;
-            priceRow.appendChild(discTag);
-        }
-
+        priceRow.appendChild(discTag);
         textCol.appendChild(priceRow);
 
         // Envío Gratis DEBAJO del precio en su propia línea (sin interrumpir ni amontonar el precio/descuentos)
@@ -999,9 +1121,12 @@
             const grupo = groups.find(g => (g.acabado_name || '').trim().toLowerCase() === acabadoName.trim().toLowerCase())
                 || groups[0]
                 || {};
-            const variantPrice = (selectedVar.price !== undefined && selectedVar.price !== null)
-                ? selectedVar.price
-                : (parseFloat(rawProduct.price) || 0);
+            const priceState = computeVariantPriceState(selectedVar);
+            const variantPrice = (priceState.hasDiscount && priceState.finalPriceNumber)
+                ? priceState.finalPriceNumber
+                : ((selectedVar.price !== undefined && selectedVar.price !== null)
+                    ? selectedVar.price
+                    : (parseFloat(rawProduct.price) || 0));
 
             if (typeof window.showProductPaymentModal === 'function') {
                 window.showProductPaymentModal(rawProduct, grupo, medidaName, variantPrice, 1);
@@ -1026,17 +1151,7 @@
                 if (!selectedVar) return;
 
                 btnWpp.href = getWhatsAppUrl(product.title, selectedVar.label);
-                const newPriceText = getFormattedPriceText(selectedVar);
-                priceTag.textContent = newPriceText;
-                if (newPriceText === 'Consultar precio') {
-                    priceTag.style.fontSize = '0.85rem';
-                    priceTag.style.color = '#c0510a';
-                    priceTag.style.fontWeight = '700';
-                } else {
-                    priceTag.style.fontSize = '';
-                    priceTag.style.color = '';
-                    priceTag.style.fontWeight = '';
-                }
+                updatePriceRowUI(selectedVar);
                 refreshCartButtonUI(selectedVar.acabado || product.selectedAcabado || '');
             });
         }
@@ -1216,6 +1331,7 @@
                         <div class="catalog-sort-wrapper">
                             <span class="material-symbols-outlined catalog-sort-icon">sort</span>
                             <select id="catalog-sort-select" class="catalog-sort-select" title="Ordenar productos">
+                                <option value="destacado">Destacado</option>
                                 <option value="az">Nombre: A - Z</option>
                                 <option value="za">Nombre: Z - A</option>
                                 <option value="price-asc">Menor precio</option>
@@ -1254,7 +1370,7 @@
         if (sortSelect) {
             sortSelect.value = currentSortMode;
             sortSelect.addEventListener('change', (e) => {
-                currentSortMode = e.target.value || 'az';
+                currentSortMode = e.target.value || 'destacado';
                 safeSetStorage(SORT_STORAGE_KEY, currentSortMode);
                 applyAllFiltersAndSort();
             });

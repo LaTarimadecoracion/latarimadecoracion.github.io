@@ -1,12 +1,12 @@
 {
   "id": "24",
   "shortId": "2Z",
-  "title": "Vinoteca - 17 Vinos",
+  "title": "Vinoteca Cava Bodega Madera Mueble 17 Vinos Rustica Campo",
   "description": "Cavas y bodegas rústicas de madera.",
   "image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
   "acabados_groups": [
     {
-      "acabado_name": "Tinte",
+      "acabado_name": "Wengue",
       "description": "",
       "cover_image": "img/vinotecas-bodegas/17-vinos/1783741906853-imagen.webp",
       "images_list": [
@@ -22,25 +22,22 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 120000,
+          "price": 160000,
           "cost_price": 36000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
-        },
-        {
-          "medida": "17 Vinos",
-          "link": "https://www.mercadolibre.com.ar/bodega-para-17-vinos--la-tarima/up/MLAU5439753557",
-          "default": false,
-          "hidden": false,
-          "linkLabel": "",
-          "iconType": "local_shipping",
-          "highlight": false,
-          "price": 90000,
-          "cost_price": 90000,
-          "legend": "Entrega Rápida",
-          "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": "",
+          "volumeDiscounts": [
+            {
+              "minQty": 1,
+              "discountPercent": 15,
+              "shippingDiscountPercent": 0
+            }
+          ]
         }
       ],
       "hidden": false
@@ -117,8 +114,14 @@
     "linkEnabled": false,
     "creditEnabled": false
   },
-  "quantityDiscounts": [],
-  "last_modified": 1791737670624,
+  "quantityDiscounts": [
+    {
+      "minUnits": 1,
+      "discountPercent": 15,
+      "shippingDiscountPercent": 0
+    }
+  ],
+  "last_modified": 1794794051309,
   "primaryCatId": "Vinotecas",
   "history": [
     {
@@ -128,8 +131,7 @@
     }
   ],
   "rubro": "carpinteria",
-  "views": 12,
-  "price": 120000,
+  "views": 20,
   "categories": [
     "Vinotecas"
   ]

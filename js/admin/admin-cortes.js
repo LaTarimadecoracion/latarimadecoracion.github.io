@@ -912,7 +912,7 @@
             row.innerHTML = `
                 <div style="display: flex; align-items: center; gap: 6px;">
                     <label style="font-size: 0.72rem; font-weight: 700; color: #475569; white-space: nowrap;">A partir de:</label>
-                    <input type="number" class="admin-input madera-esc-inp-qty" value="${esc.minQty || (idx * 3 + 3)}" min="2" max="999" style="width: 75px; padding: 4px 8px; font-size: 0.8rem; font-weight: 700;">
+                    <input type="number" class="admin-input madera-esc-inp-qty" value="${esc.minQty || (idx * 3 + 3)}" min="1" max="999" style="width: 75px; padding: 4px 8px; font-size: 0.8rem; font-weight: 700;">
                     <span style="font-size: 0.72rem; color: #64748B;">piezas</span>
                 </div>
                 <div style="display: flex; align-items: center; gap: 6px;">

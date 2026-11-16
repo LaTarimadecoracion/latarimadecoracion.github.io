@@ -24,7 +24,7 @@
           "linkLabel": "Ver en Mercado Libre",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 20000,
+          "price": 25000,
           "cost_price": 10000,
           "legend": "",
           "showPrice": true,
@@ -57,6 +57,7 @@
   "visible": true,
   "rubro": "carpinteria",
   "views": 5,
+  "price": 25000,
   "categories": [
     "muebles"
   ]

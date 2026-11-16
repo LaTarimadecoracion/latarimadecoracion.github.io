@@ -1,11 +1,13 @@
 {
   "id": "31",
+  "shortId": "3O",
   "title": "Perchero De Pie Torneado Reforzado 8 Ganchos",
   "description": "Funcionalidad y elegancia para organizar tu entrada.",
   "image": "img/percheros/perchero-1/1782624223963-imagen.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/percheros/perchero-1/1782624223963-imagen.webp",
       "images_list": [
         "img/percheros/perchero-1/1782624223963-imagen.webp",
@@ -22,11 +24,22 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 35000,
+          "price": 60000,
           "cost_price": 20000,
           "legend": "",
           "showPrice": true,
-          "stock": 0
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": "",
+          "volumeDiscounts": [
+            {
+              "minQty": 1,
+              "discountPercent": 15,
+              "shippingDiscountPercent": 0
+            }
+          ]
         },
         {
           "medida": "2 Unidad",
@@ -40,11 +53,21 @@
           "cost_price": 20000,
           "legend": "",
           "showPrice": true,
-          "stock": 0
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": "",
+          "volumeDiscounts": [
+            {
+              "minQty": 1,
+              "discountPercent": 15,
+              "shippingDiscountPercent": 0
+            }
+          ]
         }
       ],
-      "hidden": false,
-      "stock": 0
+      "hidden": false
     }
   ],
   "tags": [
@@ -85,10 +108,31 @@
     "percheros rusticos",
     "percheros de pino"
   ],
-  "last_modified": 1786826453117,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 1,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [
+    {
+      "minUnits": 1,
+      "discountPercent": 15,
+      "shippingDiscountPercent": 0
+    }
+  ],
+  "last_modified": 1794796432955,
   "primaryCatId": "Percheros",
-  "views": 17,
-  "stock": 0,
   "history": [
     {
       "date": "27/8, 12:04 a. m.",
@@ -101,17 +145,6 @@
       "detail": "Costo: $17.000 ➔ $20.000"
     }
   ],
-  "paymentConfig": {
-    "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
-  },
-  "shippingConfig": {
-    "logisticaEnabled": true,
-    "fleteEnabled": true,
-    "otroEnabled": false,
-    "logisticaMaxUnits": 1
-  },
   "visible": true,
   "categories": [
     "carpinteria-todos",

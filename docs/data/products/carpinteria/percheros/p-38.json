@@ -24,7 +24,7 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 17000,
+          "price": 24000,
           "cost_price": 8500,
           "legend": "",
           "showPrice": true,
@@ -119,5 +119,6 @@
     "carpinteria-todos",
     "Percheros"
   ],
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "price": 24000
 }

@@ -583,7 +583,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- CONTROLES DE VISTA (LISTA / TARJETAS), ORDENAMIENTO Y RANGO DE PRECIOS ---
     let currentSearchQuery = '';
-    let currentSortMode = localStorage.getItem('latarima_catalog_sort_mode') || 'az';
+    let currentSortMode = localStorage.getItem('latarima_catalog_sort_mode');
+    if (!currentSortMode || currentSortMode === 'default' || currentSortMode === 'az') {
+        currentSortMode = 'destacado';
+    }
     let currentViewMode = localStorage.getItem('latarima_catalog_view_mode') || (window.innerWidth >= 900 ? 'cards' : 'list');
 
     function getProductPriceRange(product) {
@@ -649,9 +652,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        // 3. Ordenamiento (A-Z, Z-A, Menor precio, Mayor precio)
+        // 3. Ordenamiento (Destacado, A-Z, Z-A, Menor precio, Mayor precio)
         if (currentSortMode === 'za') {
             results.sort((a, b) => (b.title || '').localeCompare((a.title || ''), 'es', { sensitivity: 'base' }));
+        } else if (currentSortMode === 'az') {
+            results.sort((a, b) => (a.title || '').localeCompare((b.title || ''), 'es', { sensitivity: 'base' }));
         } else if (currentSortMode === 'price-asc') {
             results.sort((a, b) => {
                 const pa = getProductPriceRange(a).sortPrice;
@@ -671,7 +676,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return pb - pa;
             });
         } else {
-            results.sort((a, b) => (a.title || '').localeCompare((b.title || ''), 'es', { sensitivity: 'base' }));
+            // 'destacado' o por defecto: respeta el orden asignado
+            results.sort((a, b) => (a._sourceIndex ?? 0) - (b._sourceIndex ?? 0));
         }
 
         // Actualizar contador y botón limpiar
@@ -728,7 +734,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sortSelect) {
         sortSelect.value = currentSortMode;
         sortSelect.addEventListener('change', (e) => {
-            currentSortMode = e.target.value || 'az';
+            currentSortMode = e.target.value || 'destacado';
             try { localStorage.setItem('latarima_catalog_sort_mode', currentSortMode); } catch (err) {}
             applyAllFiltersAndSort();
         });
