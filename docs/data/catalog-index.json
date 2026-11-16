@@ -4833,6 +4833,38 @@
     "file": "data/products/carpinteria/barandas/p-55.json"
   },
   {
+    "id": "1792123134173",
+    "shortId": null,
+    "title": "Pizarra Pizarron Cartel Doble Hoja Grande Vereda",
+    "rubro": "carpinteria",
+    "primaryCatId": "cat-28-mvay9cq6",
+    "categories": [
+      "cat-28-mvay9cq6"
+    ],
+    "subcategoria": "pizarras",
+    "price": 30500,
+    "image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
+    "tags": [],
+    "visible": true,
+    "file": "data/products/carpinteria/cat-28-mvay9cq6/p-1792123134173.json"
+  },
+  {
+    "id": "S3",
+    "shortId": "34",
+    "title": "Pizarra Pizarron Cartel Para Colgar 95x54",
+    "rubro": "carpinteria",
+    "primaryCatId": "cat-28-mvay9cq6",
+    "categories": [
+      "cat-28-mvay9cq6"
+    ],
+    "subcategoria": "",
+    "price": 22000,
+    "image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
+    "tags": [],
+    "visible": true,
+    "file": "data/products/carpinteria/cat-28-mvay9cq6/p-S3.json"
+  },
+  {
     "id": "A1",
     "shortId": "3Q",
     "title": "Steps / Cajones / Profesionales",
@@ -5332,38 +5364,6 @@
     ],
     "visible": true,
     "file": "data/products/carpinteria/bazar-cocina/p-44.json"
-  },
-  {
-    "id": "1792123134173",
-    "shortId": null,
-    "title": "Pizarra Pizarron Cartel Doble Hoja Grande Vereda",
-    "rubro": "carpinteria",
-    "primaryCatId": "cat-28-mvay9cq6",
-    "categories": [
-      "cat-28-mvay9cq6"
-    ],
-    "subcategoria": "pizarras",
-    "price": 30500,
-    "image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
-    "tags": [],
-    "visible": true,
-    "file": "data/products/carpinteria/cat-28-mvay9cq6/p-1792123134173.json"
-  },
-  {
-    "id": "S3",
-    "shortId": "34",
-    "title": "Pizarra Pizarron Cartel Para Colgar 95x54",
-    "rubro": "carpinteria",
-    "primaryCatId": "cat-28-mvay9cq6",
-    "categories": [
-      "cat-28-mvay9cq6"
-    ],
-    "subcategoria": "",
-    "price": 22000,
-    "image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
-    "tags": [],
-    "visible": true,
-    "file": "data/products/carpinteria/cat-28-mvay9cq6/p-S3.json"
   },
   {
     "id": "L1",

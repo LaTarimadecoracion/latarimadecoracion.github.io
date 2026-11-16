@@ -639,7 +639,8 @@
 
         function updateGroupView(index) {
             currentGroupIndex = index;
-            const grupo = grupos[index];
+            const grupo = grupos[index] || {};
+            const isGodModeVariants = Boolean(window.GodMode && typeof window.GodMode.isEnabled === 'function' && window.GodMode.isEnabled());
 
             // Actualizar subtítulo en la barra superior con el acabado si aplica
             const sub = document.getElementById('dynamic-subtitle');
@@ -684,7 +685,6 @@
             // 2. Re-render Medidas Select (Cascade)
             divMedida.innerHTML = '';
             let defaultMedidaName = '';
-            const isGodModeVariants = Boolean(window.GodMode && typeof window.GodMode.isEnabled === 'function' && window.GodMode.isEnabled());
             if (grupo.medidas_variants && grupo.medidas_variants.length > 0) {
                 const uniqueMedidas = [];
                 grupo.medidas_variants.forEach(m => {

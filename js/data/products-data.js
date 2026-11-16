@@ -3516,7 +3516,7 @@ const productsData = [
                 "last_modified": 1793586175821,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 0
+                "views": 1
             },
             {
                 "id": "64",
@@ -4972,7 +4972,7 @@ const productsData = [
                 ],
                 "last_modified": 1786812326311,
                 "primaryCatId": "jardin-patio",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -5603,7 +5603,8 @@ const productsData = [
                 ],
                 "last_modified": 1794796783964,
                 "primaryCatId": "Organizadores",
-                "history": []
+                "history": [],
+                "views": 5
             },
             {
                 "id": "48",
@@ -5726,7 +5727,8 @@ const productsData = [
                 ],
                 "last_modified": 1794797048622,
                 "primaryCatId": "Organizadores",
-                "history": []
+                "history": [],
+                "views": 6
             },
             {
                 "id": "49",
@@ -6282,7 +6284,8 @@ const productsData = [
                 ],
                 "last_modified": 1794796790637,
                 "primaryCatId": "Organizadores",
-                "history": []
+                "history": [],
+                "views": 26
             },
             {
                 "id": "31",
@@ -6431,7 +6434,8 @@ const productsData = [
                         "detail": "Costo: $17.000 ➔ $20.000"
                     }
                 ],
-                "visible": true
+                "visible": true,
+                "views": 19
             },
             {
                 "id": "32",
@@ -6577,7 +6581,8 @@ const productsData = [
                         "type": "Costo Bajó",
                         "detail": "Costo: $26.000 ➔ $20.000"
                     }
-                ]
+                ],
+                "views": 10
             },
             {
                 "id": "33",
@@ -6720,7 +6725,8 @@ const productsData = [
                         "detail": "Costo: $10.000 ➔ $12.500"
                     }
                 ],
-                "visible": true
+                "visible": true,
+                "views": 1
             },
             {
                 "id": "34",
@@ -6860,7 +6866,8 @@ const productsData = [
                         "detail": "Costo: $8.000 ➔ $10.500"
                     }
                 ],
-                "visible": true
+                "visible": true,
+                "views": 1
             },
             {
                 "id": "35",
@@ -7200,7 +7207,8 @@ const productsData = [
                 "last_modified": 1794796550139,
                 "primaryCatId": "Percheros",
                 "history": [],
-                "price": 24000
+                "price": 24000,
+                "views": 3
             },
             {
                 "id": "37",
@@ -7622,7 +7630,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $7.500"
                     }
-                ]
+                ],
+                "views": 9
             },
             {
                 "id": "H1",
@@ -8368,7 +8377,8 @@ const productsData = [
                 ],
                 "last_modified": 1794796470483,
                 "primaryCatId": "Juguetes",
-                "history": []
+                "history": [],
+                "views": 4
             },
             {
                 "id": "B1",
@@ -8999,7 +9009,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 145
+                "views": 146
             },
             {
                 "id": "22",
@@ -10893,7 +10903,8 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA4087248102)"
                     }
                 ],
-                "price": 88000
+                "price": 88000,
+                "views": 2
             },
             {
                 "id": "1792887338348",
@@ -11079,7 +11090,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 145
+                "views": 146
             },
             {
                 "id": "22",
@@ -11879,7 +11890,8 @@ const productsData = [
                         "detail": "Costo: $17.000 ➔ $20.000"
                     }
                 ],
-                "visible": true
+                "visible": true,
+                "views": 19
             },
             {
                 "id": "32",
@@ -12025,7 +12037,8 @@ const productsData = [
                         "type": "Costo Bajó",
                         "detail": "Costo: $26.000 ➔ $20.000"
                     }
-                ]
+                ],
+                "views": 10
             },
             {
                 "id": "4I",
@@ -12099,7 +12112,8 @@ const productsData = [
                 ],
                 "last_modified": 1794796470483,
                 "primaryCatId": "Juguetes",
-                "history": []
+                "history": [],
+                "views": 4
             },
             {
                 "id": "33",
@@ -12242,7 +12256,8 @@ const productsData = [
                         "detail": "Costo: $10.000 ➔ $12.500"
                     }
                 ],
-                "visible": true
+                "visible": true,
+                "views": 1
             },
             {
                 "id": "34",
@@ -12382,7 +12397,8 @@ const productsData = [
                         "detail": "Costo: $8.000 ➔ $10.500"
                     }
                 ],
-                "visible": true
+                "visible": true,
+                "views": 1
             },
             {
                 "id": "35",
@@ -12722,7 +12738,8 @@ const productsData = [
                 "last_modified": 1794796550139,
                 "primaryCatId": "Percheros",
                 "history": [],
-                "price": 24000
+                "price": 24000,
+                "views": 3
             },
             {
                 "id": "37",
@@ -13144,7 +13161,8 @@ const productsData = [
                         "type": "Costo Aumentó",
                         "detail": "Costo: $0 ➔ $7.500"
                     }
-                ]
+                ],
+                "views": 9
             }
         ]
     },
@@ -13693,7 +13711,7 @@ const productsData = [
                 "primaryCatId": "Barandas",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 91
+                "views": 95
             },
             {
                 "id": "52",
@@ -15494,10 +15512,262 @@ const productsData = [
         ]
     },
     {
+        "id": "cat-28-mvay9cq6",
+        "name": "Pizarras & Carteles",
+        "image": "img/pizzarones/portada-imagenwebp.webp",
+        "rubro": "carpinteria",
+        "order": 5,
+        "products": [
+            {
+                "id": "1792123134173",
+                "title": "Pizarra Pizarron Cartel Doble Hoja Grande Vereda",
+                "description": "PIZARRA  DE MADERA – 100 x 45 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\n\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 100 cm\nAncho: 45 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nLas imagenes son ilustrativas.\n\nSin garantía",
+                "image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
+                "order": 0,
+                "visible": true,
+                "primaryCatId": "cat-28-mvay9cq6",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "cover_image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
+                        "images_list": [
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133598-2-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133703-3-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133798-4-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133851-5-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133950-6-imagen.webp",
+                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123134008-7-imagen.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "price": 30500,
+                                "cost_price": 15500,
+                                "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-doble-hoja-grande-vereda/up/MLAU5156448073",
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "stock": 5,
+                                "showPrice": true,
+                                "highlight": false,
+                                "default": true,
+                                "hidden": false
+                            }
+                        ]
+                    }
+                ],
+                "rubro": "carpinteria",
+                "views": 6,
+                "categories": [
+                    "carpinteria-todos",
+                    "cat-28-mvay9cq6"
+                ],
+                "subcategoria": "pizarras",
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "price": 30500
+            },
+            {
+                "id": "1792154576619",
+                "shortId": "3R",
+                "title": "Pizarra Pizarron Cartel Doble Hoja",
+                "description": "PIZARRA CABALLETE DE MADERA – 80 x 50 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra tipo caballete es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\n\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño tipo caballete, práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 80 cm\nAncho: 50 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nLas imagenes son ilustrativas.\n\nSin garantía",
+                "image": "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700352-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "description": "",
+                        "cover_image": "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700352-imagenwebp.webp",
+                        "images_list": [
+                            "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700352-imagenwebp.webp",
+                            "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700368-imagenwebp.webp",
+                            "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479738312-edit_1793479717508webp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-doble-hoja/up/MLAU5507345905",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 26000,
+                                "cost_price": 11500,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793479781268,
+                "primaryCatId": "cat-28-mvay9cq6",
+                "history": [],
+                "visible": true,
+                "views": 3,
+                "price": 26000
+            },
+            {
+                "id": "S3",
+                "shortId": "34",
+                "title": "Pizarra Pizarron Cartel Para Colgar 95x54",
+                "description": "PIZARRA COLGANTE DE MADERA – 95 x 54 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 95 cm\nAncho: 54 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nLas imagenes son ilustrativas.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nSin garantía",
+                "image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "Estándar",
+                        "description": "",
+                        "cover_image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
+                        "images_list": [
+                            "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
+                            "https://http2.mlstatic.com/D_NQ_NP_2X_699397-MLA119487331203_102026-O.webp",
+                            "https://http2.mlstatic.com/D_NQ_NP_2X_770016-MLA119485646423_102026-O.webp",
+                            "https://http2.mlstatic.com/D_NQ_NP_2X_921204-MLA119485229649_102026-O.webp",
+                            "https://http2.mlstatic.com/D_NQ_NP_2X_969672-MLA119482643569_102026-O.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Estándar",
+                                "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-para-colgar-95x54/up/MLAU5552344028",
+                                "default": true,
+                                "hidden": false,
+                                "linkLabel": "Ver en Mercado Libre",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 22000,
+                                "cost_price": 10000,
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1792154651487,
+                "primaryCatId": "cat-28-mvay9cq6",
+                "history": [],
+                "rubro": "carpinteria",
+                "views": 2,
+                "price": 22000
+            },
+            {
+                "id": "1792887338334",
+                "shortId": "3R",
+                "title": "Pizarra Pizarron Para Colgar X3",
+                "description": "Publicación importada desde Mercado Libre (MLA3946726502).",
+                "image": "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
+                "acabados_groups": [
+                    {
+                        "acabado_name": "",
+                        "description": "",
+                        "cover_image": "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
+                        "images_list": [
+                            "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
+                            "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479566823-imagenwebp.webp"
+                        ],
+                        "medidas_variants": [
+                            {
+                                "medida": "Pizzaron x3",
+                                "link": "",
+                                "default": false,
+                                "hidden": false,
+                                "linkLabel": "",
+                                "iconType": "local_shipping",
+                                "highlight": false,
+                                "price": 20500,
+                                "cost_price": "",
+                                "legend": "",
+                                "showPrice": true,
+                                "logisticaEnabled": true
+                            }
+                        ],
+                        "hidden": false
+                    }
+                ],
+                "tags": [
+                    "borrador",
+                    "mercado libre",
+                    "mla3946726502",
+                    "pizarra",
+                    "pizarron",
+                    "para",
+                    "colgar"
+                ],
+                "shippingConfig": {
+                    "logisticaEnabled": true,
+                    "logisticaCost": 0,
+                    "fleteEnabled": true,
+                    "fleteCost": 0,
+                    "otroEnabled": false,
+                    "otroLabel": "A convenir",
+                    "otroCost": 0,
+                    "isFreeShipping": false
+                },
+                "paymentConfig": {
+                    "transferEnabled": true,
+                    "linkEnabled": false,
+                    "creditEnabled": false
+                },
+                "quantityDiscounts": [],
+                "last_modified": 1793479628428,
+                "primaryCatId": "cat-28-mvay9cq6",
+                "history": [
+                    {
+                        "type": "import_ml",
+                        "timestamp": 1792887338333,
+                        "details": "Importado como borrador desde Mercado Libre (MLA3946726502)"
+                    }
+                ],
+                "views": 3,
+                "price": 20500
+            }
+        ]
+    },
+    {
         "id": "Steps",
         "name": "Fitness & Steps",
         "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
-        "order": 5,
+        "order": 6,
         "rubro": "carpinteria",
         "products": [
             {
@@ -16495,7 +16765,7 @@ const productsData = [
         "name": "Organizadores & Muebles",
         "image": "img/organizadores/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 6,
+        "order": 7,
         "products": [
             {
                 "id": "42",
@@ -16818,7 +17088,8 @@ const productsData = [
                 ],
                 "last_modified": 1794796783964,
                 "primaryCatId": "Organizadores",
-                "history": []
+                "history": [],
+                "views": 5
             },
             {
                 "id": "9K",
@@ -16890,7 +17161,8 @@ const productsData = [
                 ],
                 "last_modified": 1794796790637,
                 "primaryCatId": "Organizadores",
-                "history": []
+                "history": [],
+                "views": 26
             },
             {
                 "id": "7C",
@@ -17228,7 +17500,8 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA4087248102)"
                     }
                 ],
-                "price": 88000
+                "price": 88000,
+                "views": 2
             },
             {
                 "id": "41",
@@ -17641,7 +17914,8 @@ const productsData = [
                 ],
                 "last_modified": 1794797048622,
                 "primaryCatId": "Organizadores",
-                "history": []
+                "history": [],
+                "views": 6
             },
             {
                 "id": "46",
@@ -17762,7 +18036,7 @@ const productsData = [
         "rubro": "carpinteria",
         "image": "img/cortes-de-madera/portada-1791766769534-imagen.webp",
         "visible": true,
-        "order": 7,
+        "order": 8,
         "products": [
             {
                 "id": "69",
@@ -18219,7 +18493,7 @@ const productsData = [
         "id": "Estantes",
         "name": "Estantes & Repisas",
         "image": "img/estantes/portada-1780775756126-imagen.webp",
-        "order": 8,
+        "order": 9,
         "rubro": "carpinteria",
         "products": [
             {
@@ -18968,7 +19242,7 @@ const productsData = [
                 "last_modified": 1793586175821,
                 "primaryCatId": "Estantes",
                 "history": [],
-                "views": 0
+                "views": 1
             },
             {
                 "id": "62",
@@ -19408,7 +19682,8 @@ const productsData = [
                 ],
                 "last_modified": 1794797048622,
                 "primaryCatId": "Organizadores",
-                "history": []
+                "history": [],
+                "views": 6
             },
             {
                 "id": "1792887338328",
@@ -19965,7 +20240,7 @@ const productsData = [
         "name": "Cunas",
         "image": "img/cunas/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 9,
+        "order": 10,
         "visible": true,
         "products": [
             {
@@ -20749,7 +21024,7 @@ const productsData = [
         "name": "Camas & Dormitorio",
         "image": "img/camas-para-ninos/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 10,
+        "order": 11,
         "products": [
             {
                 "id": "F3",
@@ -21488,7 +21763,7 @@ const productsData = [
         "id": "muebles",
         "name": "Escaleras",
         "image": "img/escaleras/portada-1780288150186-imagen.webp",
-        "order": 11,
+        "order": 12,
         "rubro": "carpinteria",
         "products": [
             {
@@ -21867,7 +22142,7 @@ const productsData = [
         "id": "Juguetes",
         "name": "Línea Infantil",
         "image": "img/juguetes/portada-1783038439545-imagen.webp",
-        "order": 12,
+        "order": 13,
         "rubro": "carpinteria",
         "products": [
             {
@@ -22184,7 +22459,8 @@ const productsData = [
                 ],
                 "last_modified": 1794796470483,
                 "primaryCatId": "Juguetes",
-                "history": []
+                "history": [],
+                "views": 4
             },
             {
                 "id": "4A",
@@ -23264,7 +23540,7 @@ const productsData = [
         "name": "Sillas & Sillones",
         "image": "img/sillas-y-sillones/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 13,
+        "order": 14,
         "products": [
             {
                 "id": "C1",
@@ -23503,7 +23779,7 @@ const productsData = [
         "name": "Mesas & Escritorios",
         "image": "img/mesas-de-madera/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 14,
+        "order": 15,
         "products": [
             {
                 "id": "D2",
@@ -24142,7 +24418,7 @@ const productsData = [
         "name": "Jardín & Decks",
         "image": "img/jardin/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 15,
+        "order": 16,
         "products": [
             {
                 "id": "E3",
@@ -25197,7 +25473,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586789934,
                 "primaryCatId": "jardin-patio",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -25432,7 +25708,7 @@ const productsData = [
         "name": "Línea Algarrobo",
         "image": "img/todo-algarrobo/portada-imagen.webp",
         "rubro": "carpinteria",
-        "order": 16,
+        "order": 17,
         "products": [
             {
                 "id": "G1",
@@ -25816,7 +26092,7 @@ const productsData = [
         "name": "Bazar & Cocina",
         "image": "img/bazar-cocina/portada-1793480888205-imagen.webp",
         "rubro": "carpinteria",
-        "order": 17,
+        "order": 18,
         "visible": true,
         "products": [
             {
@@ -26924,7 +27200,7 @@ const productsData = [
         "name": "Baúles de Madera",
         "image": "img/baules-de-madera/portada-1793480550075-imagen.webp",
         "rubro": "carpinteria",
-        "order": 18,
+        "order": 19,
         "visible": true,
         "products": [
             {
@@ -27213,258 +27489,6 @@ const productsData = [
                     "cajones-madera"
                 ],
                 "rubro": "carpinteria"
-            }
-        ]
-    },
-    {
-        "id": "cat-28-mvay9cq6",
-        "name": "Pizarras & Carteles",
-        "image": "img/pizzarones/portada-imagenwebp.webp",
-        "rubro": "carpinteria",
-        "order": 19,
-        "products": [
-            {
-                "id": "1792123134173",
-                "title": "Pizarra Pizarron Cartel Doble Hoja Grande Vereda",
-                "description": "PIZARRA  DE MADERA – 100 x 45 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\n\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 100 cm\nAncho: 45 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nLas imagenes son ilustrativas.\n\nSin garantía",
-                "image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
-                "order": 0,
-                "visible": true,
-                "primaryCatId": "cat-28-mvay9cq6",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Estándar",
-                        "cover_image": "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
-                        "images_list": [
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133332-1-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133598-2-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133703-3-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133798-4-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133851-5-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123133950-6-imagen.webp",
-                            "img/pizarra-pizarron-cartel-doble-hoja-grande-vereda/1792123134008-7-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Estándar",
-                                "price": 30500,
-                                "cost_price": 15500,
-                                "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-doble-hoja-grande-vereda/up/MLAU5156448073",
-                                "linkLabel": "Ver en Mercado Libre",
-                                "iconType": "local_shipping",
-                                "stock": 5,
-                                "showPrice": true,
-                                "highlight": false,
-                                "default": true,
-                                "hidden": false
-                            }
-                        ]
-                    }
-                ],
-                "rubro": "carpinteria",
-                "views": 6,
-                "categories": [
-                    "carpinteria-todos",
-                    "cat-28-mvay9cq6"
-                ],
-                "subcategoria": "pizarras",
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "price": 30500
-            },
-            {
-                "id": "1792154576619",
-                "shortId": "3R",
-                "title": "Pizarra Pizarron Cartel Doble Hoja",
-                "description": "PIZARRA CABALLETE DE MADERA – 80 x 50 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra tipo caballete es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\n\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño tipo caballete, práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 80 cm\nAncho: 50 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nLas imagenes son ilustrativas.\n\nSin garantía",
-                "image": "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700352-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Estándar",
-                        "description": "",
-                        "cover_image": "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700352-imagenwebp.webp",
-                        "images_list": [
-                            "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700352-imagenwebp.webp",
-                            "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479700368-imagenwebp.webp",
-                            "img/pizarras-carteles/pizarra-pizarron-cartel-doble-hoja/1793479738312-edit_1793479717508webp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Estándar",
-                                "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-doble-hoja/up/MLAU5507345905",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "Ver en Mercado Libre",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 26000,
-                                "cost_price": 11500,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1793479781268,
-                "primaryCatId": "cat-28-mvay9cq6",
-                "history": [],
-                "visible": true,
-                "views": 3,
-                "price": 26000
-            },
-            {
-                "id": "S3",
-                "shortId": "34",
-                "title": "Pizarra Pizarron Cartel Para Colgar 95x54",
-                "description": "PIZARRA COLGANTE DE MADERA – 95 x 54 CM\n\nIdeal para comercios, negocios, restaurantes, bares, cafeterías, verdulerías, carnicerías, ferias y eventos.\n\nEsta pizarra es una excelente opción para comunicar promociones, precios, ofertas, menús, productos destacados o mensajes para tus clientes.\nCARACTERÍSTICAS:\n\nFabricada en madera natural.\nSuperficie tipo pizarra color negro.\nDiseño práctico y fácil de colocar.\nIdeal para uso comercial y decorativo.\nSe puede escribir y renovar el mensaje según la necesidad.\nIdeal para colocar en la vereda, entrada del local o interior del comercio.\nLa madera aporta un estilo cálido y artesanal.\n\nMEDIDAS:\n\nAlto total: 95 cm\nAncho: 54 cm\n\nIDEAL PARA:\n- Verdulerías\n- Carnicerías\n- Panaderías\n- Restaurantes\n- Cafeterías\n- Bares\n- Ferias\n- Locales de ropa\n- Tiendas de decoración\n- Eventos y fiestas\n- Promociones y ofertas\n\nUna forma práctica y llamativa de captar la atención de quienes pasan frente a tu negocio.\n\nLas imagenes son ilustrativas.\n\nPRODUCTO ARTESANAL DE FABRICACIÓN PROPIA\n\nHACEMOS FACTURA A\n\nSin garantía",
-                "image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Estándar",
-                        "description": "",
-                        "cover_image": "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
-                        "images_list": [
-                            "https://http2.mlstatic.com/D_NQ_NP_2X_758814-MLA119483920383_102026-O.webp",
-                            "https://http2.mlstatic.com/D_NQ_NP_2X_699397-MLA119487331203_102026-O.webp",
-                            "https://http2.mlstatic.com/D_NQ_NP_2X_770016-MLA119485646423_102026-O.webp",
-                            "https://http2.mlstatic.com/D_NQ_NP_2X_921204-MLA119485229649_102026-O.webp",
-                            "https://http2.mlstatic.com/D_NQ_NP_2X_969672-MLA119482643569_102026-O.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Estándar",
-                                "link": "https://www.mercadolibre.com.ar/pizarra-pizarron-cartel-para-colgar-95x54/up/MLAU5552344028",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "Ver en Mercado Libre",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 22000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1792154651487,
-                "primaryCatId": "cat-28-mvay9cq6",
-                "history": [],
-                "rubro": "carpinteria",
-                "views": 2,
-                "price": 22000
-            },
-            {
-                "id": "1792887338334",
-                "shortId": "3R",
-                "title": "Pizarra Pizarron Para Colgar X3",
-                "description": "Publicación importada desde Mercado Libre (MLA3946726502).",
-                "image": "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "",
-                        "description": "",
-                        "cover_image": "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
-                        "images_list": [
-                            "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479535513-imagenwebp.webp",
-                            "img/pizarras-carteles/pizarra-pizarron-para-colgar-x3/1793479566823-imagenwebp.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "Pizzaron x3",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 20500,
-                                "cost_price": "",
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "borrador",
-                    "mercado libre",
-                    "mla3946726502",
-                    "pizarra",
-                    "pizarron",
-                    "para",
-                    "colgar"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1793479628428,
-                "primaryCatId": "cat-28-mvay9cq6",
-                "history": [
-                    {
-                        "type": "import_ml",
-                        "timestamp": 1792887338333,
-                        "details": "Importado como borrador desde Mercado Libre (MLA3946726502)"
-                    }
-                ],
-                "views": 3,
-                "price": 20500
             }
         ]
     },

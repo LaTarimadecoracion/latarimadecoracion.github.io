@@ -38,10 +38,17 @@
     "rubro": "carpinteria"
   },
   {
+    "id": "cat-28-mvay9cq6",
+    "name": "Pizarras & Carteles",
+    "image": "img/pizzarones/portada-imagenwebp.webp",
+    "rubro": "carpinteria",
+    "order": 5
+  },
+  {
     "id": "Steps",
     "name": "Fitness & Steps",
     "image": "img/steps---cajones/portada-1780590385947-imagen.webp",
-    "order": 5,
+    "order": 6,
     "rubro": "carpinteria"
   },
   {
@@ -49,7 +56,7 @@
     "name": "Organizadores & Muebles",
     "image": "img/organizadores/portada-imagen.webp",
     "rubro": "carpinteria",
-    "order": 6
+    "order": 7
   },
   {
     "id": "cortes-madera",
@@ -57,13 +64,13 @@
     "rubro": "carpinteria",
     "image": "img/cortes-de-madera/portada-1791766769534-imagen.webp",
     "visible": true,
-    "order": 7
+    "order": 8
   },
   {
     "id": "Estantes",
     "name": "Estantes & Repisas",
     "image": "img/estantes/portada-1780775756126-imagen.webp",
-    "order": 8,
+    "order": 9,
     "rubro": "carpinteria"
   },
   {
@@ -71,7 +78,7 @@
     "name": "Cunas",
     "image": "img/cunas/portada-imagen.webp",
     "rubro": "carpinteria",
-    "order": 9,
+    "order": 10,
     "visible": true
   },
   {
@@ -79,20 +86,20 @@
     "name": "Camas & Dormitorio",
     "image": "img/camas-para-ninos/portada-imagen.webp",
     "rubro": "carpinteria",
-    "order": 10
+    "order": 11
   },
   {
     "id": "muebles",
     "name": "Escaleras",
     "image": "img/escaleras/portada-1780288150186-imagen.webp",
-    "order": 11,
+    "order": 12,
     "rubro": "carpinteria"
   },
   {
     "id": "Juguetes",
     "name": "Línea Infantil",
     "image": "img/juguetes/portada-1783038439545-imagen.webp",
-    "order": 12,
+    "order": 13,
     "rubro": "carpinteria"
   },
   {
@@ -100,35 +107,35 @@
     "name": "Sillas & Sillones",
     "image": "img/sillas-y-sillones/portada-imagen.webp",
     "rubro": "carpinteria",
-    "order": 13
+    "order": 14
   },
   {
     "id": "Mesas-madera",
     "name": "Mesas & Escritorios",
     "image": "img/mesas-de-madera/portada-imagen.webp",
     "rubro": "carpinteria",
-    "order": 14
+    "order": 15
   },
   {
     "id": "jardin-patio",
     "name": "Jardín & Decks",
     "image": "img/jardin/portada-imagen.webp",
     "rubro": "carpinteria",
-    "order": 15
+    "order": 16
   },
   {
     "id": "productos-algarrobo",
     "name": "Línea Algarrobo",
     "image": "img/todo-algarrobo/portada-imagen.webp",
     "rubro": "carpinteria",
-    "order": 16
+    "order": 17
   },
   {
     "id": "bazar-cocina",
     "name": "Bazar & Cocina",
     "image": "img/bazar-cocina/portada-1793480888205-imagen.webp",
     "rubro": "carpinteria",
-    "order": 17,
+    "order": 18,
     "visible": true
   },
   {
@@ -136,15 +143,8 @@
     "name": "Baúles de Madera",
     "image": "img/baules-de-madera/portada-1793480550075-imagen.webp",
     "rubro": "carpinteria",
-    "order": 18,
+    "order": 19,
     "visible": true
-  },
-  {
-    "id": "cat-28-mvay9cq6",
-    "name": "Pizarras & Carteles",
-    "image": "img/pizzarones/portada-imagenwebp.webp",
-    "rubro": "carpinteria",
-    "order": 19
   },
   {
     "id": "Podios",
