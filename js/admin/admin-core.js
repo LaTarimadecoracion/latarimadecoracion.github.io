@@ -170,6 +170,88 @@ window.switchAdminTab = async function(targetTab) {
     renderAdminUX();
 };
 
+
+let isGithubPublishing = false;
+function initGithubPublishAdmin() {
+    if (window._githubPublishBound) return;
+    window._githubPublishBound = true;
+
+    document.addEventListener('click', async (e) => {
+        const publishBtn = e.target.closest('.btn-publish-trigger, #admin-github-publish-btn, #dashboard-github-publish-btn, #maintenance-publish-btn');
+        if (!publishBtn) return;
+        e.preventDefault();
+
+        if (isGithubPublishing) return;
+        isGithubPublishing = true;
+
+        const publishButtons = document.querySelectorAll('.btn-publish-trigger, #admin-github-publish-btn, #dashboard-github-publish-btn, #maintenance-publish-btn');
+        const statusIndicators = document.querySelectorAll('.publish-status-indicator, #publish-status-msg, #dashboard-publish-status-msg, #maintenance-publish-status');
+
+        const originalHtmls = [];
+        publishButtons.forEach((btn, index) => {
+            originalHtmls[index] = btn.innerHTML;
+            btn.disabled = true;
+            btn.style.pointerEvents = 'none';
+            btn.innerHTML = '<span class="material-symbols-outlined" style="animation: spin-saw 1.5s linear infinite;">sync</span> <span>Subiendo cambios...</span>';
+        });
+
+        statusIndicators.forEach((statusMsg) => {
+            statusMsg.style.display = 'block';
+            statusMsg.style.background = '#EFF6FF';
+            statusMsg.style.color = '#1E40AF';
+            statusMsg.textContent = '⏳ Compilando archivos locales y subiendo a GitHub Pages...';
+        });
+
+        try {
+            const res = await fetch('/api/publish-github', { method: 'POST' });
+            let data = {};
+            try {
+                data = await res.json();
+            } catch (jsonErr) {
+                data = { success: false, message: 'Respuesta del servidor no válida (' + res.status + ')' };
+            }
+
+            if (res.ok && data.success) {
+                statusIndicators.forEach((statusMsg) => {
+                    statusMsg.style.background = '#DCFCE7';
+                    statusMsg.style.color = '#15803D';
+                    statusMsg.textContent = '✅ ¡Web publicada con éxito! En unos minutos estará disponible en línea.';
+                });
+                if (typeof showAdminToast === 'function') showAdminToast('✅ Publicado exitosamente en GitHub Pages');
+                alert('✅ ¡Web compilada y publicada exitosamente en GitHub Pages!');
+            } else {
+                const failReason = data.message || data.error || data.details || 'Error en el servidor al compilar o subir a GitHub.';
+                throw new Error(failReason);
+            }
+        } catch (err) {
+            console.error('Error publicando a GitHub:', err);
+            let errMessage = '⚠️ Error al subir cambios a GitHub.';
+            if (window.location.hostname.includes('github.io')) {
+                errMessage = '⚠️ Para subir cambios a Internet, debés abrir el Panel de Administración local desde tu PC ejecutando "iniciar.bat". (Esta web en línea es solo lectura).';
+            } else if (err.message) {
+                errMessage = '⚠️ Error al publicar: ' + err.message;
+            }
+
+            statusIndicators.forEach((statusMsg) => {
+                statusMsg.style.display = 'block';
+                statusMsg.style.background = '#FEE2E2';
+                statusMsg.style.color = '#B91C1C';
+                statusMsg.textContent = errMessage;
+            });
+            if (typeof showAdminToast === 'function') showAdminToast('❌ Error al publicar cambios');
+            alert(errMessage);
+        } finally {
+            isGithubPublishing = false;
+            publishButtons.forEach((btn, index) => {
+                btn.disabled = false;
+                btn.style.pointerEvents = 'auto';
+                btn.innerHTML = originalHtmls[index] || btn.innerHTML;
+            });
+        }
+    });
+}
+window.initGithubPublishAdmin = initGithubPublishAdmin;
+
 function initAdminUX20() {
     const mainTabBtn = document.getElementById('tab-btn-orders');
     if (!mainTabBtn) {
@@ -247,7 +329,10 @@ function initAdminUX20() {
             const widthTab = e.target.closest('.admin-width-tab');
             if (widthTab) {
                 const widthMode = widthTab.getAttribute('data-width') || 'normal';
-                const container = document.getElementById('admin-layout-container');
+                const container = document.getElementById('admin-layout-container') || document.querySelector('.admin-body-wrapper') || document.getElementById('view-admin');
+                if (container) {
+                    container.classList.toggle('width-full', widthMode === 'full');
+                }
                 if (container) {
                     container.className = `admin-layout width-${widthMode}`;
                 }

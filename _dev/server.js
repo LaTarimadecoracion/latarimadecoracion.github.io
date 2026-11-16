@@ -1276,7 +1276,7 @@ app.post('/api/publish-github', async (req, res) => {
         try {
             // Si hay un proceso git colgado en Windows, forzar su cierre para liberar el lock
             const { execSync } = require('child_process');
-            execSync('taskkill /F /IM git.exe /T 2>nul || exit 0', { shell: 'cmd.exe' });
+            execSync('taskkill /F /IM git.exe /IM git-credential-manager.exe /IM git-remote-https.exe /T 2>nul || exit 0', { shell: 'cmd.exe' });
         } catch (e) {}
 
         const lockFilePath = path.join(ROOT_DIR, '.git', 'index.lock');
