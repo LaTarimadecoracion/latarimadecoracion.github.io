@@ -45,6 +45,7 @@
     <link rel="stylesheet" href="css/style.css?v=64">
     <link rel="stylesheet" href="css/mobile.css?v=1" media="(max-width: 899.98px)">
     <link rel="stylesheet" href="css/desktop.css?v=12" media="(min-width: 900px)">
+    <link rel="stylesheet" href="css/god-mode.css?v=1">
     
     
 
@@ -245,6 +246,10 @@
             <!-- 3. Mis Compras, Notificaciones y Carrito -->
             <div class="desktop-subnav-account">
                 <a href="#" class="desktop-account-link" data-target="view-my-orders" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-my-orders');">Mis compras</a>
+                <button type="button" id="btn-god-mode-trigger" class="god-mode-trigger-btn" title="Activar Modo Dios (Live Visual In-Place Editor)" style="display: none;" onclick="if(window.GodMode) window.GodMode.toggle();">
+                    <span class="material-symbols-outlined god-bolt-icon">bolt</span>
+                    <span class="god-trigger-text">Modo Dios</span>
+                </button>
                 <div class="desktop-notif-wrapper" id="desktop-notif-wrapper">
                     <button type="button" class="desktop-icon-btn desktop-notif-btn" id="desktop-notif-btn" aria-haspopup="true" aria-expanded="false" aria-label="Notificaciones" title="Notificaciones">
                         <span class="material-symbols-outlined">notifications</span>
@@ -800,6 +805,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js" defer></script>
     <script src="js/admin/admin-auth.js?v=7" defer></script>
+    <script src="js/admin/god-mode.js?v=1" defer></script>
     <script src="js/ui/ui-navigation.js?v=10" defer></script>
     <script src="js/modules/notifications.js?v=5" defer></script>
     <script src="js/ui/desktop-header.js?v=10" defer></script>

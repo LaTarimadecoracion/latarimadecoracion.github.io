@@ -4,7 +4,7 @@ const path = require('path');
 const { minify } = require('terser');
 const CleanCSS = require('clean-css');
 
-const cleanCSS = new CleanCSS({ compatibility: '*' });
+const cleanCSS = new CleanCSS({ compatibility: '*', inline: false });
 
 async function build() {
     const srcDir = path.join(__dirname, '..');

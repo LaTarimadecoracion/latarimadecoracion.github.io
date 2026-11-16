@@ -204,6 +204,7 @@
                 sessionStorage.setItem(STORAGE_SESSION_KEY, JSON.stringify(session));
             }
         } catch (e) {}
+        syncGodModeTriggerVisibility();
         return session;
     }
 
@@ -211,6 +212,23 @@
         try {
             localStorage.removeItem(STORAGE_SESSION_KEY);
             sessionStorage.removeItem(STORAGE_SESSION_KEY);
+        } catch (e) {}
+        syncGodModeTriggerVisibility();
+    }
+
+    function syncGodModeTriggerVisibility() {
+        const isAuth = isAuthenticated();
+        if (window.DesktopHeader && typeof window.DesktopHeader.syncGodModeTrigger === 'function') {
+            window.DesktopHeader.syncGodModeTrigger();
+        } else {
+            const btn = document.getElementById('btn-god-mode-trigger');
+            if (btn) btn.style.display = isAuth ? 'inline-flex' : 'none';
+        }
+        if (!isAuth && window.GodMode && typeof window.GodMode.isEnabled === 'function' && window.GodMode.isEnabled()) {
+            window.GodMode.disable();
+        }
+        try {
+            window.dispatchEvent(new CustomEvent('latarima:auth-changed', { detail: { isAuthenticated: isAuth } }));
         } catch (e) {}
     }
 
@@ -960,6 +978,7 @@
         logoutPublic,
         showLoginModal,
         renderHeaderUserBadge,
+        syncGodModeTriggerVisibility,
         getUsers: getStoredUsers,
         saveUsers: saveStoredUsers,
         registerClientUser,
@@ -972,6 +991,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         syncUsersFromCloud();
         initAuthListener();
+        syncGodModeTriggerVisibility();
         if (isAuthenticated()) {
             renderHeaderUserBadge();
         }

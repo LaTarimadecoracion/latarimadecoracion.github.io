@@ -409,7 +409,18 @@
         }
     }
 
+    function syncGodModeTrigger() {
+        const btn = document.getElementById('btn-god-mode-trigger');
+        if (!btn) return;
+        const isAuth = Boolean(window.AdminAuth && typeof window.AdminAuth.isAuthenticated === 'function' && window.AdminAuth.isAuthenticated());
+        btn.style.display = isAuth ? 'inline-flex' : 'none';
+        if (!isAuth && window.GodMode && typeof window.GodMode.isEnabled === 'function' && window.GodMode.isEnabled()) {
+            window.GodMode.disable();
+        }
+    }
+
     function renderAccount() {
+        syncGodModeTrigger();
         const container = document.getElementById('desktop-account-area');
         if (!container) return;
 
@@ -511,6 +522,7 @@
         if (window.AdminAuth && typeof window.AdminAuth.logoutPublic === 'function') {
             await window.AdminAuth.logoutPublic();
         }
+        syncGodModeTrigger();
         renderAccount();
         if (window.NotificationsCenter && typeof window.NotificationsCenter.scanAll === 'function') {
             window.NotificationsCenter.scanAll();
@@ -523,6 +535,7 @@
 
     function init() {
         renderLocation();
+        syncGodModeTrigger();
         renderAccount();
         syncCartBadge();
         syncNotifBadge();
@@ -535,6 +548,8 @@
             cpListenerAttached = true;
             window.addEventListener('latarima:cp-updated', renderLocation);
         }
+
+        window.addEventListener('latarima:auth-changed', syncGodModeTrigger);
 
         document.getElementById('desktop-location-btn')?.addEventListener('click', openLocationModal);
 
@@ -583,6 +598,7 @@
         syncActive,
         syncCartBadge,
         syncNotifBadge,
+        syncGodModeTrigger,
         renderLocation,
         openLocationModal,
         renderAccount,
