@@ -527,6 +527,7 @@
 
             // 3. Sincronizar en la Nube (Cloudflare Worker KV) en tiempo real
             let cloudOk = false;
+            let offlineQueued = false;
             if (window.PriceOverlay && typeof window.PriceOverlay.pushPricesToCloud === 'function') {
                 const delta = {};
                 rows.forEach(r => {
@@ -551,7 +552,11 @@
 
                 const cloudRes = await window.PriceOverlay.pushPricesToCloud(delta, null, adminUser);
                 if (cloudRes && cloudRes.ok) {
-                    cloudOk = true;
+                    if (cloudRes.offlineQueued) {
+                        offlineQueued = true;
+                    } else {
+                        cloudOk = true;
+                    }
                 }
             }
 
@@ -570,6 +575,8 @@
 
             if (cloudOk) {
                 alert('⚡ ¡Precios sincronizados al instante en la Nube!\nTodos los visitantes ya ven los nuevos precios en vivo sin demoras ni builds.');
+            } else if (offlineQueued) {
+                alert('📦 Guardado Offline en tu PC:\nNo se detectó conexión a internet en este momento. Los precios quedaron guardados y se subirán a la nube automáticamente al reconectar.');
             } else if (localServerOk) {
                 alert('🎉 ¡Precios guardados en los archivos locales del servidor!');
             } else {

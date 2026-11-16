@@ -3,6 +3,12 @@
  * js/modules/price-overlay.js
  * Motor Híbrido de Precios en Vivo y Respaldo Offline (Price Delta Overlay)
  * La Tarima 2.0
+ * 
+ * Soporta dos modos bidireccionales inteligentes:
+ * 1. Online: Sincronización instantánea con Cloudflare Worker KV.
+ * 2. Offline / Local-First: Si modificás precios en tu PC sin internet, se
+ *    guardan localmente y en una cola de salida (Outbox). Al volver la
+ *    conexión, tu PC actualiza a la nube (y no al revés).
  * =============================================================================
  */
 
@@ -13,6 +19,7 @@
     const isLocal = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'));
     const API_BASE = isLocal ? '/api' : WORKER_URL;
     const STORAGE_KEY = 'latarima_prices_cache';
+    const OUTBOX_KEY = 'latarima_pending_cloud_sync';
     const CACHE_TTL_MS = 45 * 1000; // 45 segundos para re-validar con el Edge
 
     let state = {
@@ -58,6 +65,48 @@
         } catch (e) {
             console.warn('[PriceOverlay] Error guardando caché local:', e);
         }
+    }
+
+    /**
+     * Obtiene la cola de cambios pendientes hechos sin conexión
+     */
+    function getPendingOutbox() {
+        try {
+            const raw = localStorage.getItem(OUTBOX_KEY);
+            return raw ? JSON.parse(raw) : null;
+        } catch (_) {
+            return null;
+        }
+    }
+
+    /**
+     * Guarda cambios en la cola de salida para subir cuando haya internet
+     */
+    function savePendingOutbox(productsDelta, workshopDelta, adminEmail) {
+        try {
+            const current = getPendingOutbox() || { products: {}, workshop: null, adminEmail: 'admin', localModifiedAt: 0 };
+            const mergedProducts = { ...(current.products || {}), ...(productsDelta || {}) };
+            const mergedWorkshop = workshopDelta ? { ...(current.workshop || {}), ...workshopDelta } : current.workshop;
+
+            localStorage.setItem(OUTBOX_KEY, JSON.stringify({
+                products: mergedProducts,
+                workshop: mergedWorkshop,
+                adminEmail: adminEmail || current.adminEmail || 'admin',
+                localModifiedAt: Date.now()
+            }));
+            console.log('[PriceOverlay] 📦 Cambios guardados en cola offline. Se sincronizarán al conectarse a internet.');
+        } catch (e) {
+            console.warn('[PriceOverlay] Error guardando cola offline:', e);
+        }
+    }
+
+    /**
+     * Limpia la cola offline tras sincronización exitosa
+     */
+    function clearPendingOutbox() {
+        try {
+            localStorage.removeItem(OUTBOX_KEY);
+        } catch (_) {}
     }
 
     /**
@@ -136,9 +185,39 @@
     }
 
     /**
+     * Vacía la cola de cambios pendientes hacia la nube en cuanto hay conexión
+     */
+    async function flushPendingOutbox() {
+        const pending = getPendingOutbox();
+        if (!pending || (!pending.products && !pending.workshop)) return false;
+
+        console.log('[PriceOverlay] 🔄 Vaciando cola de salida offline hacia la nube...');
+        const res = await pushPricesToCloud(pending.products, pending.workshop, pending.adminEmail, true);
+        if (res && res.ok && !res.offlineQueued) {
+            clearPendingOutbox();
+            console.log('[PriceOverlay] ✅ Sincronización offline completada con éxito.');
+            try {
+                if (window.showAdminToast) {
+                    window.showAdminToast('⚡ Conexión recuperada: Precios offline sincronizados con la nube');
+                }
+            } catch (_) {}
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Consulta al Edge Worker de Cloudflare por actualizaciones
      */
     async function syncFromCloud(force = false) {
+        // Si tenemos cambios locales pendientes que hicimos sin conexión,
+        // primero enviamos nuestros cambios a la nube para que NO se sobreescriban al revés
+        const pending = getPendingOutbox();
+        if (pending) {
+            const flushed = await flushPendingOutbox();
+            if (flushed) return state;
+        }
+
         const now = Date.now();
         if (!force && (now - state.lastFetch) < CACHE_TTL_MS) {
             return state;
@@ -185,47 +264,65 @@
 
     /**
      * Envía nuevos precios a la nube desde el panel de administración
+     * Si no hay conexión, los almacena en el Outbox y los enviará al reconectar
      */
-    async function pushPricesToCloud(productsDelta, workshopDelta, adminEmail) {
+    async function pushPricesToCloud(productsDelta, workshopDelta, adminEmail, isFlushing = false) {
+        // 1. Siempre actualizar el estado local en la PC inmediatamente (0ms)
+        const now = Date.now();
+        state.updatedAt = now;
+        state.products = { ...state.products, ...(productsDelta || {}) };
+        if (workshopDelta) state.workshop = { ...(state.workshop || {}), ...workshopDelta };
+        saveToLocalCache();
+
+        window.dispatchEvent(new CustomEvent('latarima:prices-updated', {
+            detail: {
+                updatedAt: state.updatedAt,
+                products: state.products,
+                workshop: state.workshop
+            }
+        }));
+
+        // 2. Intentar enviar a la nube
         try {
             const payload = {
                 updatedBy: adminEmail || 'admin',
                 products: productsDelta || {},
-                workshop: workshopDelta || null
+                workshop: workshopDelta || null,
+                timestamp: now
             };
 
             const url = `${API_BASE}/admin/precios-nube`;
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 6000);
+
             const res = await fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
+                body: JSON.stringify(payload),
+                signal: controller.signal
             });
+            clearTimeout(timeoutId);
 
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const data = await res.json();
 
             if (data && data.success) {
-                // Actualizar estado local inmediatamente
-                state.updatedAt = data.updatedAt || Date.now();
-                state.products = { ...state.products, ...(productsDelta || {}) };
-                if (workshopDelta) state.workshop = { ...(state.workshop || {}), ...workshopDelta };
-                saveToLocalCache();
-
-                window.dispatchEvent(new CustomEvent('latarima:prices-updated', {
-                    detail: {
-                        updatedAt: state.updatedAt,
-                        products: state.products,
-                        workshop: state.workshop
-                    }
-                }));
-
+                if (!isFlushing) clearPendingOutbox();
                 return { ok: true, count: data.count, updatedAt: state.updatedAt };
             } else {
-                return { ok: false, message: data.message || 'Error en respuesta del Worker' };
+                throw new Error(data.message || 'Error en respuesta del Worker');
             }
         } catch (err) {
-            console.error('[PriceOverlay] Error publicando precios en la nube:', err);
-            return { ok: false, message: err.message };
+            console.warn('[PriceOverlay] ⚠️ No se pudo conectar a la nube en este momento:', err.message);
+            // Si falló el envío (offline o error de red), encolar en el Outbox local
+            if (!isFlushing) {
+                savePendingOutbox(productsDelta, workshopDelta, adminEmail);
+            }
+            return {
+                ok: true,
+                offlineQueued: true,
+                message: 'Precios guardados localmente en tu PC. Se sincronizarán a la nube automáticamente al detectar conexión.'
+            };
         }
     }
 
@@ -234,10 +331,19 @@
      */
     function init() {
         loadFromLocalCache();
+
+        // Si hay conexión o vuelve la conexión a internet, procesar cola de cambios
+        if (typeof window !== 'undefined' && window.addEventListener) {
+            window.addEventListener('online', () => {
+                console.log('[PriceOverlay] 🌐 Conexión detectada: Sincronizando cambios locales con la nube...');
+                flushPendingOutbox().catch(() => {});
+            });
+        }
+
         // Sincronizar en segundo plano sin bloquear el renderizado
         setTimeout(() => {
             syncFromCloud().catch(() => {});
-        }, 100);
+        }, 150);
     }
 
     // Auto-arranque
@@ -248,7 +354,9 @@
         applyToProduct,
         applyToCatalogList,
         syncFromCloud,
-        pushPricesToCloud
+        pushPricesToCloud,
+        flushPendingOutbox,
+        hasPendingOutbox: () => Boolean(getPendingOutbox())
     };
 
 })(typeof window !== 'undefined' ? window : globalThis);
