@@ -536,7 +536,7 @@
                     <span class="material-symbols-outlined cart-drawer-empty-icon">remove_shopping_cart</span>
                     <h3 class="cart-drawer-empty-title">Tu carrito está vacío</h3>
                     <p class="cart-drawer-empty-desc">Explorá nuestro catálogo de madera maciza y agregá lo que más te guste.</p>
-                    <button type="button" class="btn-cart-drawer-checkout" style="padding: 0.75rem 1.25rem; font-size: 0.85rem;" onclick="window.CartDrawer.close(); if(window.navigateToView) window.navigateToView('view-catalog');">
+                    <button type="button" class="btn-cart-drawer-checkout" style="padding: 0.75rem 1.25rem; font-size: 0.85rem;" onclick="window.CartDrawer.close(); if(window.navigateToView) window.navigateToView('view-catalogo');">
                         <span class="material-symbols-outlined" style="font-size: 18px;">grid_view</span>
                         <span>Explorar el Catálogo</span>
                     </button>

@@ -100,8 +100,8 @@
         const currentActiveView = Array.from(window.views).find(v => v.classList.contains('active'));
         const currentActiveViewId = currentActiveView ? currentActiveView.id : null;
 
-        // Unificar Buscador (?view=buscar / ?view=search) y Categorías -> Catálogo Unificado en TODOS los dispositivos
-        if (viewId === 'view-search' || viewId === 'view-category-feed') {
+        // Unificar Buscador (?view=buscar / ?view=search), Categorías y alias -> Catálogo Unificado en TODOS los dispositivos
+        if (viewId === 'view-search' || viewId === 'view-category-feed' || viewId === 'view-catalog' || viewId === 'catalog' || viewId === 'catalogo') {
             viewId = 'view-catalogo';
         }
 
