@@ -10,6 +10,8 @@
     'use strict';
 
     const WORKER_URL = 'https://super-shadow-4ad9.latarimadecoracion.workers.dev';
+    const isLocal = (typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'));
+    const API_BASE = isLocal ? '/api' : WORKER_URL;
     const STORAGE_KEY = 'latarima_prices_cache';
     const CACHE_TTL_MS = 45 * 1000; // 45 segundos para re-validar con el Edge
 
@@ -144,7 +146,7 @@
 
         try {
             state.lastFetch = now;
-            const url = `${WORKER_URL}/precios-nube?v=${state.updatedAt || 0}`;
+            const url = `${API_BASE}/precios-nube?v=${state.updatedAt || 0}`;
             const res = await fetch(url, { method: 'GET', mode: 'cors' });
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
@@ -192,7 +194,7 @@
                 workshop: workshopDelta || null
             };
 
-            const url = `${WORKER_URL}/admin/precios-nube`;
+            const url = `${API_BASE}/admin/precios-nube`;
             const res = await fetch(url, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

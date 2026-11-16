@@ -556,7 +556,7 @@ app.post('/api/save-product-single', (req, res) => {
 });
 
 // Mock / Fallback local para sincronización de precios en la nube
-const CLOUD_PRICES_FILE = path.join(DATA_DIR, 'cloud-prices.json');
+const CLOUD_PRICES_FILE = path.join(ROOT_DIR, 'data', 'cloud-prices.json');
 app.get('/api/precios-nube', (req, res) => {
     try {
         if (fs.existsSync(CLOUD_PRICES_FILE)) {
