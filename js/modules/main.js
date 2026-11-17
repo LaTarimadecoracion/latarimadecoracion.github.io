@@ -428,7 +428,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Popstate event listener for native back/forward navigation support
     window.addEventListener('popstate', (e) => {
-        // Interceptar modales abiertos antes de cambiar de vista en navegación móvil (Puntos 12, 13 y 91)
+        // Interceptar Cart Drawer si está abierto en mobile
+        if (window.CartDrawer && typeof window.CartDrawer.isOpen === 'function' && window.CartDrawer.isOpen()) {
+            window.CartDrawer.close(true);
+            return;
+        }
+
+        // Interceptar Drawer de Perfil
+        if (window.UserProfileDrawer && typeof window.UserProfileDrawer.isOpen === 'function' && window.UserProfileDrawer.isOpen()) {
+            window.UserProfileDrawer.close();
+            return;
+        }
+
+        // Interceptar modales abiertos antes de cambiar de vista en navegación móvil
         const openLightbox = document.getElementById('product-lightbox-modal');
         if (openLightbox && openLightbox.style.display !== 'none') {
             openLightbox.style.display = 'none';
@@ -438,6 +450,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const openCheckoutModal = document.getElementById('offer-payment-modal-overlay');
         if (openCheckoutModal) {
+            const btnPrev = document.getElementById('btn-checkout-prev');
+            const stepTitle = document.getElementById('checkout-step-title')?.textContent || '';
+            if ((stepTitle.includes('2.') || stepTitle.includes('3.')) && btnPrev && btnPrev.style.display !== 'none') {
+                btnPrev.click();
+                return;
+            }
             openCheckoutModal.remove();
             if (typeof window.unlockBodyScroll === 'function') window.unlockBodyScroll(true);
             return;

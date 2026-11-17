@@ -3364,7 +3364,7 @@ body.in-iframe,
 .product-detail-carousel {
     display: flex !important;
     overflow-x: auto !important;
-    scroll-snap-type: none !important; /* No !important so JS can disable it while dragging */
+    scroll-snap-type: x mandatory; /* Snap fluido en cada imagen */
     scroll-behavior: smooth; /* Smooth scrolling when using arrows or snap */
     width: 100% !important;
     aspect-ratio: 3 / 2 !important;

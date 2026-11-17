@@ -22,6 +22,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 75000,
+          "cost_price": 40000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true,

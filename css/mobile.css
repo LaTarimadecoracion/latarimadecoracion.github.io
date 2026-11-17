@@ -245,3 +245,195 @@
     margin: 0 !important;
     background: #ffffff !important;
 }
+
+/* =============================================================================
+   5. OPTIMIZACIONES ERGONÓMICAS TÁCTILES Y ANTI-ZOOM (iOS / Android)
+   ============================================================================= */
+
+/* 5.1. Anti-zoom en iOS Safari: forzar 16px mínimo en todos los inputs móviles */
+@media (max-width: 899.98px) {
+    input[type="text"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="email"],
+    select,
+    textarea,
+    .search-input,
+    .catalog-select,
+    .variant-select-cascade {
+        font-size: 16px !important;
+    }
+}
+
+/* 5.2. Carrusel de Detalle: Snap magnético perfecto para fotos sin corte */
+#view-product-detail .product-detail-carousel {
+    display: flex !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-behavior: smooth !important;
+}
+
+#view-product-detail .product-detail-slide {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    scroll-snap-align: center !important;
+    scroll-snap-stop: always !important;
+}
+
+/* 5.3. Safe-Areas y Desacople Armónico de FABs (Asistente + Seguimiento) */
+@media (max-width: 899.98px) {
+    .bottom-nav {
+        height: calc(56px + env(safe-area-inset-bottom, 0px)) !important;
+        padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+        z-index: 1000 !important;
+    }
+
+    /* Asistente Virtual: esquina inferior derecha */
+    .assistant-fab {
+        bottom: calc(66px + env(safe-area-inset-bottom, 0px)) !important;
+        right: 14px !important;
+        width: 50px !important;
+        height: 50px !important;
+        z-index: 1020 !important;
+    }
+
+    /* Botón Seguimiento de Pedidos: apilado ordenadamente arriba del asistente */
+    .tracking-fab {
+        bottom: calc(124px + env(safe-area-inset-bottom, 0px)) !important;
+        right: 14px !important;
+        width: 48px !important;
+        height: 48px !important;
+        z-index: 1015 !important;
+    }
+
+    /* Botón de Accesibilidad / Parlante */
+    #lt-speaker-btn {
+        bottom: calc(180px + env(safe-area-inset-bottom, 0px)) !important;
+        right: 14px !important;
+        z-index: 1010 !important;
+    }
+
+    /* Modales y hojas móviles con altura dinámica para soportar teclado */
+    .tracking-bottom-sheet {
+        max-height: 85dvh !important;
+        padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    .assistant-chat-window {
+        height: 100dvh !important;
+        padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+    }
+}
+
+/* 5.4. Botón flotante de Carrito en Catálogo: Touch target ergonómico */
+@media (max-width: 599.98px) {
+    .catalog-list.view-cards .catalog-thumb-cart-btn {
+        width: 38px !important;
+        height: 38px !important;
+        top: 6px !important;
+        right: 6px !important;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18) !important;
+    }
+
+    .catalog-list.view-cards .catalog-thumb-cart-btn span {
+        font-size: 1.25rem !important;
+    }
+}
+
+/* 5.5. Barra Fija de Compra Rápida en Celular (Sticky Buy Bar) */
+@media (max-width: 899.98px) {
+    .product-sticky-buy-bar {
+        position: fixed;
+        bottom: calc(56px + env(safe-area-inset-bottom, 0px));
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1rem;
+        z-index: 995;
+        box-sizing: border-box;
+    }
+
+    #view-product-detail.active .product-sticky-buy-bar {
+        display: flex !important;
+    }
+
+    .sticky-buy-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .sticky-buy-label {
+        font-size: 0.68rem;
+        color: #64748b;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        line-height: 1;
+    }
+
+    .sticky-buy-price {
+        font-size: 1.2rem;
+        font-weight: 900;
+        color: #0f172a;
+        line-height: 1.2;
+    }
+
+    .sticky-buy-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-sticky-cart {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: #f0fdf4;
+        border: 1.5px solid #86efac;
+        color: #166534;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 0;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .btn-sticky-cart:active {
+        background: #dcfce7;
+        transform: scale(0.96);
+    }
+
+    .btn-sticky-buy {
+        height: 44px;
+        padding: 0 1.2rem;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        color: #ffffff;
+        font-weight: 900;
+        font-size: 0.92rem;
+        border: none;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+        cursor: pointer;
+        letter-spacing: 0.3px;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .btn-sticky-buy:active {
+        transform: scale(0.97);
+        filter: brightness(0.95);
+    }
+}
+

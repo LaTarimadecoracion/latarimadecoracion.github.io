@@ -192,7 +192,7 @@
         overlay.style.cssText = 'position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 99999; display: flex; align-items: center; justify-content: center; padding: 0; opacity: 0; transition: opacity 0.25s ease-out; box-sizing: border-box; width: 100vw; height: 100vh; height: 100dvh;';
 
         const card = document.createElement('div');
-        card.style.cssText = 'position: relative; width: 100vw; height: 100vh; height: 100dvh; max-width: 100vw; max-height: 100vh; max-height: 100dvh; border-radius: 0; padding: 1rem 1.25rem; background: #ffffff; box-shadow: none; border: none; font-family: var(--font-main); box-sizing: border-box; display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; transform: scale(0.98); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); margin: 0; overflow: hidden;';
+        card.style.cssText = 'position: relative; width: 100vw; height: 100vh; height: 100dvh; max-width: 100vw; max-height: 100vh; max-height: 100dvh; border-radius: 0; padding: max(0.85rem, env(safe-area-inset-top, 0.85rem)) 1.15rem max(0.85rem, env(safe-area-inset-bottom, 0.85rem)) 1.15rem; background: #ffffff; box-shadow: none; border: none; font-family: var(--font-main); box-sizing: border-box; display: flex; flex-direction: column; align-items: stretch; justify-content: space-between; transform: scale(0.98); transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1); margin: 0; overflow: hidden;';
 
         const publicUserCheckout = (window.AdminAuth && typeof window.AdminAuth.getClientUser === 'function')
             ? window.AdminAuth.getClientUser()
@@ -212,7 +212,7 @@
         
         card.innerHTML = `
             <!-- Botón X cerrado bien arriba a la derecha -->
-            <button type="button" id="pay-modal-close-x" title="Cerrar" style="position: fixed; top: 0.85rem; right: 0.85rem; width: 30px; height: 30px; background: none; border: none; font-size: 26px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #94a3b8; z-index: 100000; padding: 0; transition: color 0.2s;" onmouseenter="this.style.color='#0f172a'" onmouseleave="this.style.color='#94a3b8'">&times;</button>
+            <button type="button" id="pay-modal-close-x" title="Cerrar" style="position: absolute; top: max(0.85rem, env(safe-area-inset-top, 0.85rem)); right: 0.85rem; width: 30px; height: 30px; background: none; border: none; font-size: 26px; line-height: 1; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #94a3b8; z-index: 100000; padding: 0; transition: color 0.2s;" onmouseenter="this.style.color='#0f172a'" onmouseleave="this.style.color='#94a3b8'">&times;</button>
 
             <!-- Header Modal con Barra de Pasos -->
             <div style="width: 100%; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.75rem; padding-right: 2rem; flex-shrink: 0; box-sizing: border-box;">
@@ -251,13 +251,13 @@
                                 <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
                                     Nombre y Apellido *
                                 </label>
-                                <input type="text" id="pay-client-name" placeholder="Ej: María González" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; font-family: inherit; outline: none;">
+                                <input type="text" id="pay-client-name" autocomplete="name" autocapitalize="words" placeholder="Ej: María González" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 16px; color: #0f172a; font-family: inherit; outline: none;">
                             </div>
                             <div>
                                 <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
                                     Teléfono / WhatsApp *
                                 </label>
-                                <input type="tel" id="pay-client-phone" placeholder="Ej: 11 1234 5678" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.82rem; color: #0f172a; font-family: inherit; outline: none;">
+                                <input type="tel" id="pay-client-phone" autocomplete="tel" inputmode="tel" placeholder="Ej: 11 1234 5678" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 16px; color: #0f172a; font-family: inherit; outline: none;">
                             </div>
                         </div>
                     </div>
@@ -286,7 +286,7 @@
                                 <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
                                     Dirección (Calle y Altura):
                                 </label>
-                                <input type="text" id="pay-ship-dir" placeholder="Ej: Av. Corrientes 1234, 4to B" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                <input type="text" id="pay-ship-dir" autocomplete="street-address" autocapitalize="words" placeholder="Ej: Av. Corrientes 1234, 4to B" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 16px; color: #0f172a; font-family: inherit; outline: none;">
                             </div>
 
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px;">
@@ -294,19 +294,19 @@
                                     <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
                                         Código Postal:
                                     </label>
-                                    <input type="text" id="pay-ship-cp" placeholder="Ej: 1712" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                    <input type="text" id="pay-ship-cp" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]*" maxlength="8" placeholder="Ej: 1712" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 16px; color: #0f172a; font-family: inherit; outline: none;">
                                 </div>
                                 <div>
                                     <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
                                         Ciudad / Localidad:
                                     </label>
-                                    <input type="text" id="pay-ship-ciudad" placeholder="Ej: Castelar / CABA" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                    <input type="text" id="pay-ship-ciudad" autocomplete="address-level2" autocapitalize="words" placeholder="Ej: Castelar / CABA" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 16px; color: #0f172a; font-family: inherit; outline: none;">
                                 </div>
                                 <div>
                                     <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
                                         Provincia:
                                     </label>
-                                    <input type="text" id="pay-ship-provincia" placeholder="Ej: Buenos Aires" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                    <input type="text" id="pay-ship-provincia" autocomplete="address-level1" autocapitalize="words" placeholder="Ej: Buenos Aires" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 16px; color: #0f172a; font-family: inherit; outline: none;">
                                 </div>
                             </div>
 
@@ -315,7 +315,7 @@
                                 <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
                                     Correo Electrónico (para seguimiento del envío):
                                 </label>
-                                <input type="email" id="pay-ship-email" placeholder="Ej: tunombre@gmail.com" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                <input type="email" id="pay-ship-email" autocomplete="email" inputmode="email" autocapitalize="off" placeholder="Ej: tunombre@gmail.com" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.45rem 0.75rem; font-size: 16px; color: #0f172a; font-family: inherit; outline: none;">
                             </div>
 
                             <!-- Resultado lookup CP + selector método de envío (Ocupa el 100% del ancho debajo de todos los campos a mano) -->
@@ -469,7 +469,7 @@
                                         <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
                                             1. Persona / Empresa / Entidad:
                                         </label>
-                                        <input type="text" id="factura-razon-social" placeholder="Ej: ARCA (Agencia de Recaudación y Control Aduanero) o Tu Nombre" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                        <input type="text" id="factura-razon-social" placeholder="Ej: ARCA (Agencia de Recaudación y Control Aduanero) o Tu Nombre" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 16px; color: #0f172a; font-family: inherit; outline: none;">
                                     </div>
 
                                     <!-- 2. Domicilio -->
@@ -477,7 +477,7 @@
                                         <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
                                             2. Domicilio:
                                         </label>
-                                        <input type="text" id="factura-direccion-fiscal" placeholder="Ej: Hipólito Yrigoyen 370, 4.° piso" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                        <input type="text" id="factura-direccion-fiscal" placeholder="Ej: Hipólito Yrigoyen 370, 4.° piso" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 16px; color: #0f172a; font-family: inherit; outline: none;">
                                     </div>
 
                                     <!-- 3. Provincia / Localidad -->
@@ -485,7 +485,7 @@
                                         <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
                                             3. Provincia / Jurisdicción:
                                         </label>
-                                        <input type="text" id="factura-provincia" placeholder="Ej: Ciudad Autónoma de Buenos Aires" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                        <input type="text" id="factura-provincia" placeholder="Ej: Ciudad Autónoma de Buenos Aires" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 16px; color: #0f172a; font-family: inherit; outline: none;">
                                     </div>
 
                                     <!-- 4. CUIT / CUIL -->
@@ -493,7 +493,7 @@
                                         <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
                                             4. CUIT / CUIL / DNI:
                                         </label>
-                                        <input type="text" id="factura-cuit" placeholder="Ej: 33-69345023-9" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                        <input type="text" id="factura-cuit" inputmode="numeric" placeholder="Ej: 33-69345023-9" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 16px; color: #0f172a; font-family: inherit; outline: none;">
                                     </div>
 
                                     <!-- 5. Condición frente al IVA (Select con opciones tributarias) -->
@@ -515,7 +515,7 @@
                                         <label style="display: block; font-size: 0.7rem; font-weight: 800; color: #475569; margin-bottom: 3px; text-transform: uppercase;">
                                             6. Correo Electrónico (para envío de factura):
                                         </label>
-                                        <input type="email" id="factura-email" placeholder="Ej: compras@arca.gob.ar o tu-correo@gmail.com" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 0.8rem; color: #0f172a; font-family: inherit; outline: none;">
+                                        <input type="email" id="factura-email" autocomplete="email" inputmode="email" autocapitalize="off" placeholder="Ej: compras@arca.gob.ar o tu-correo@gmail.com" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.5rem 0.75rem; font-size: 16px; color: #0f172a; font-family: inherit; outline: none;">
                                     </div>
                                 </div>
                             </div>

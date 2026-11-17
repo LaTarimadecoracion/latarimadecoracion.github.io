@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <!-- Google Site Verification (Search Console) -->
+    <!-- <meta name="google-site-verification" content="COPIA_EL_CODIGO_AQUI" /> -->
+
+    <!-- SEO / Indexers -->
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://latarimadecoracion.github.io/">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LA TARIMA - Decoración</title>
+    
+    <!-- PWA Meta -->
+    <meta name="theme-color" content="#FAF9F6">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/logo_provisional.png">
+
+    <!-- Open Graph / Meta de Redes Sociales (Inyectados dinámicamente en server.js) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" id="meta-og-title" content="LA TARIMA - Carpintería Premium">
+    <meta property="og:description" id="meta-og-desc" content="Muebles infantiles y de diseño a medida. Diseños escandinavos y premium para el hogar.">
+    <meta property="og:image" id="meta-og-image" content="https://latarimadecoracion.github.io/img/logo_provisional.png">
+    <meta property="og:url" content="https://latarimadecoracion.github.io/">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LA TARIMA - Carpintería Premium">
+    <meta name="twitter:description" content="Muebles infantiles y de diseño a medida. Diseños escandinavos y premium para el hogar.">
+    <meta name="twitter:image" content="https://latarimadecoracion.github.io/img/logo_provisional.png">
+    
+    <!-- Fonts & Icons (No bloqueantes para acelerar el primer renderizado) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=block" />
+    </noscript>
+    <!-- CSS Base + Capas aisladas por dispositivo (Móvil vs Escritorio) -->
+    <link rel="stylesheet" href="css/style.css?v=64">
+    <link rel="stylesheet" href="css/mobile.css?v=4" media="(max-width: 899.98px)">
+    <link rel="stylesheet" href="css/desktop.css?v=12" media="(min-width: 900px)">
+    <link rel="stylesheet" href="css/god-mode.css?v=1">
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+
+    <script src="js/data/site-config.js"></script>
+    <script src="js/data/payment-config.js?v=3"></script>
+
+</head>
+<body>
+    <!-- Script Anti-FOUC para Temáticas (Evita flashazo de color por defecto) -->
+    <script>
+        (function() {
+            try {
+                // Limpiar residuos locales — el servidor es la única fuente de verdad
+                localStorage.removeItem('activeTheme');
+                localStorage.removeItem('userSelectedTheme');
+
+                var serverTheme = window.siteConfig ? window.siteConfig.activeTheme : null;
+                var themeToApply = serverTheme || 'classic';
+                if (themeToApply && themeToApply !== 'classic') {
+                    document.body.classList.add('theme-' + themeToApply);
+                }
+            } catch(e) {}
+        })();
+    </script>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <div class="loader-saw-container">
+                <svg class="saw-blade" viewBox="0 0 100 100" id="saw-blade-svg"></svg>
+                <img src="img/logo_provisional.png" alt="La Tarima Logo" class="splash-logo">
+            </div>
+        </div>
+    </div>
+    <!-- Generación dinámica del engranaje sierra del Splash Screen -->
+    <script src="js/ui/splash.js"></script>
+
+    <!-- Cargador dinámico de fragmentos HTML (Partials) -->
+    <script src="js/modules/partials-loader.js?v=14"></script>
+
+    <!-- Banner de Modo Vacaciones -->
+    <div id="vacation-top-banner" class="vacation-top-banner" style="display: none;">
+        <span class="material-symbols-outlined vacation-icon">info</span>
+        <span id="vacation-banner-text">Estamos de vacaciones, pero seguimos tomando pedidos.</span>
+    </div>
+
+    <!-- Main App Container (SPA Views) -->
+    <!-- Cintillo Superior de Confianza (Punto 5 UX con Auto-ocultado y Botón Cerrar) -->
+    <div id="trust-top-bar" class="trust-top-bar" style="background: #2a241e; color: #fdfbf7; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.3px; line-height: 1; padding: 6px 36px 6px 72px; text-align: center; z-index: 1005; position: relative; overflow: visible; display: flex; align-items: center; justify-content: center; max-height: 40px; opacity: 1; transition: max-height 0.4s ease, opacity 0.35s ease, padding 0.4s ease;">
+        <style>
+            @keyframes platinumMedalFloat {
+                0%, 100% { transform: translateY(0) scale(1) rotate(-3deg); }
+                50% { transform: translateY(2px) scale(1.07) rotate(2deg); }
+            }
+            .trust-platinum-medal-seal {
+                position: absolute;
+                left: 6px;
+                top: 0px;
+                width: 62px;
+                height: 62px;
+                z-index: 1050;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
+                animation: platinumMedalFloat 2.6s ease-in-out infinite;
+                transition: transform 0.35s ease, opacity 0.35s ease;
+                pointer-events: auto;
+            }
+            @media (min-width: 768px) {
+                .trust-platinum-medal-seal {
+                    left: 18px;
+                    top: 0px;
+                    width: 74px;
+                    height: 74px;
+                }
+            }
+        </style>
+
+        <!-- Medalla / Premio MercadoLíder Platinum que sobresale del cintillo -->
+        <div id="trust-platinum-medal" class="trust-platinum-medal-seal" title="¡Somos MercadoLíder Platinum!">
+            <img src="img/Platinum.png" alt="MercadoLíder Platinum" style="width: 100%; height: 100%; object-fit: contain; display: block;">
+        </div>
+
+        <!-- Vista Desktop: 4 pilares juntos alineados -->
+        <div class="trust-bar-desktop" style="display: none; align-items: center; justify-content: center; gap: 18px;">
+            <span style="display: inline-flex; align-items: center; gap: 5px; color: #7dd3fc; font-weight: 800;">
+                <span>🏆 MercadoLíder Platinum</span>
+            </span>
+            <span style="opacity: 0.35;">•</span>
+            <span style="display: inline-flex; align-items: center; gap: 5px;">
+                <span class="material-symbols-outlined" style="font-size: 14px; color: #eab308;">carpenter</span>
+                <span>Somos Fabricantes</span>
+            </span>
+            <span style="opacity: 0.35;">•</span>
+            <span style="display: inline-flex; align-items: center; gap: 5px;">
+                <span class="material-symbols-outlined" style="font-size: 14px; color: #38bdf8;">local_shipping</span>
+                <span>Envíos a todo el país</span>
+            </span>
+            <span style="opacity: 0.35;">•</span>
+            <span style="display: inline-flex; align-items: center; gap: 5px;">
+                <span class="material-symbols-outlined" style="font-size: 14px; color: #4ade80;">credit_card</span>
+                <span>Todos los medios de pago</span>
+            </span>
+        </div>
+
+        <!-- Vista Mobile: Rotativo suave cada 3s (con la medalla fija sobresaliendo a la izquierda) -->
+        <div class="trust-bar-mobile" style="display: flex; align-items: center; justify-content: center; min-height: 18px;">
+            <span id="trust-mobile-item" style="display: inline-flex; align-items: center; gap: 6px; transition: opacity 0.25s ease, transform 0.25s ease; opacity: 1;">
+                <span style="color: #7dd3fc; font-weight: 800;">🏆 MercadoLíder Platinum</span>
+            </span>
+        </div>
+
+        <!-- Botón para ocultar manualmente la barra -->
+        <button type="button" id="btn-close-trust-bar" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; padding: 2px; cursor: pointer; color: #94a3b8; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%; transition: color 0.15s ease;" title="Ocultar barra">
+            <span class="material-symbols-outlined" style="font-size: 15px;">close</span>
+        </button>
+    </div>
+
+    <header class="main-header-bar" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; gap: 8px; background: var(--bg-color); position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-sm); width: 100%; box-sizing: border-box;">
+        
+        <!-- Fila Superior (Común Móvil y PC - En Móvil se ve igual que siempre) -->
+        <div class="header-top-row" style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 8px; width: 100%;">
+            <!-- Izquierda: Título y/o Botón Atrás -->
+            <div class="header-brand-left" style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+                <button id="btn-back" class="back-nav-btn" style="display: none; padding: 4px; margin: 0; position: relative; left: auto; top: auto; transform: none;">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <h1 id="dynamic-main-title" class="brand-title" onclick="if(window.innerWidth >= 900 && window.navigateToView) window.navigateToView('view-home');" style="margin: 0; font-size: 0.95rem; line-height: 1.1; font-weight: 900; letter-spacing: -0.5px; text-align: center;">LA<br>TARIMA</h1>
+                <p id="dynamic-subtitle" class="brand-subtitle" style="display: none;">Diseño en madera para tu hogar</p>
+            </div>
+
+            <!-- Centro: Buscador -->
+            <div class="search-bar-container" style="flex: 1; margin: 0; padding: 0.4rem 0.6rem; min-width: 0; position: relative;">
+                <span class="material-symbols-outlined search-icon" style="font-size: 18px;">search</span>
+                <input type="text" id="search-input" placeholder="Buscar muebles, medidas..." class="search-input" autocomplete="off" onfocus="if(window.ensureSearchCatalogActive) window.ensureSearchCatalogActive(); if(window.showRecentSearchesDropdown) window.showRecentSearchesDropdown();" onclick="if(window.ensureSearchCatalogActive) window.ensureSearchCatalogActive();" style="font-size: 0.9rem; padding: 0;">
+                <button id="btn-clear-search" type="button" onclick="if(window.clearSearchQuery) window.clearSearchQuery();" style="display: none; background: none; border: none; padding: 2px 6px; margin: 0 4px; cursor: pointer; color: #78716c; align-items: center; justify-content: center; border-radius: 50%;" title="Limpiar búsqueda">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">close</span>
+                </button>
+                <!-- Desplegable estilo Mercado Libre (hasta 3 últimas búsquedas en el mismo buscador) -->
+                <div id="search-recent-dropdown" class="search-recent-dropdown" style="display: none;"></div>
+            </div>
+
+            <!-- Derecha Móvil: Acciones (Ocultas en PC porque pasan a la sub-barra) -->
+            <div class="header-actions" style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+                <!-- Catálogo A-Z -->
+                <a href="#" onclick="event.preventDefault(); if(window.navigateToView) window.navigateToView('view-catalogo');" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; text-decoration: none; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" title="Catálogo A-Z">
+                    <span class="material-symbols-outlined" style="font-size: 18px;">list_alt</span>
+                </a>
+                <!-- Notificaciones (Amarilla) -->
+                <button id="nav-notif-btn-header" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; position: relative; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05);" onclick="if(window.openUserProfileModal){window.openUserProfileModal('notifications');}else if(window.ensureUserProfileModalLoaded){window.ensureUserProfileModalLoaded().then(()=>{if(window.openUserProfileModal)window.openUserProfileModal('notifications');else if(window.navigateToView)window.navigateToView('view-notifications');});}else if(window.navigateToView){window.navigateToView('view-notifications');}" title="Avisos">
+                    <span class="material-symbols-outlined" style="font-size: 18px; color: #FFB300;">notifications</span>
+                    <span class="badge" id="header-nav-badge" style="position: absolute; top: -1px; right: -1px; width: 9px; height: 9px; background: #ff3b30; border-radius: 50%; display: none; border: 1.5px solid var(--surface-color); box-shadow: 0 1px 3px rgba(0,0,0,0.2);"></span>
+                </button>
+                <!-- Botón Cuenta Móvil (Abre el Drawer lateral de perfil) -->
+                <button id="nav-user-btn-mobile" class="btn-outline" style="width: 32px; height: 32px; padding: 0; border-radius: 50%; display: none; align-items: center; justify-content: center; flex-shrink: 0; position: relative; background-color: var(--surface-color); box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden; border: 1.5px solid #86efac; cursor: pointer;" onclick="if(window.UserProfileDrawer){window.UserProfileDrawer.open();}else if(window.ensureUserProfileModalLoaded){window.ensureUserProfileModalLoaded().then(()=>{if(window.UserProfileDrawer)window.UserProfileDrawer.open();else if(window.openUserProfileModal)window.openUserProfileModal();});}else if(window.openUserProfileModal){window.openUserProfileModal();}" title="Mi Cuenta">
+                    <span class="material-symbols-outlined" style="font-size: 18px; color: #16a34a;">account_circle</span>
+                </button>
+            </div>
+
+            <!-- Derecha PC: Cuenta, nombre y foto de perfil -->
+            <div class="desktop-header-right-info desktop-only">
+                <div id="desktop-account-area" class="desktop-account-area">
+                    <a href="#" class="desktop-account-link" onclick="event.preventDefault(); if(window.DesktopHeader) window.DesktopHeader.triggerClientLogin();">Creá tu cuenta</a>
+                    <a href="#" class="desktop-account-link desktop-account-login" onclick="event.preventDefault(); if(window.DesktopHeader) window.DesktopHeader.triggerClientLogin();">Ingresá</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fila Inferior EXCLUSIVA PC (Estilo Mercado Libre Desktop: Ubicación | Secciones | Cuenta + Compras + Carrito) -->
+        <nav class="desktop-subnav-row desktop-only" id="desktop-subnav-row" aria-label="Navegación de escritorio">
+            <!-- 1. Ubicación / Código Postal -->
+            <button type="button" id="desktop-location-btn" class="desktop-location-btn" title="Cambiar código postal para envíos">
+                <span class="material-symbols-outlined desktop-loc-icon">location_on</span>
+                <div class="desktop-loc-text">
+                    <span class="desktop-loc-label">Enviar a</span>
+                    <span class="desktop-loc-value" id="desktop-location-value">Tu ubicación</span>
+                </div>
+            </button>
+
+            <!-- 2. Secciones de la tienda (reemplazan barra inferior en PC) -->
+            <div class="desktop-subnav-links" id="desktop-subnav-links">
+                <a href="#" class="desktop-nav-link active" data-target="view-home" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-home');">Inicio</a>
+                <a href="#" class="desktop-nav-link" data-target="view-categories" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-categories');">Categorías</a>
+                <a href="#" class="desktop-nav-link" data-target="view-catalogo" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-catalogo');">Catálogo</a>
+                <a href="#" class="desktop-nav-link" data-target="view-offers" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-offers');">Ofertas</a>
+                <a href="#" class="desktop-nav-link" data-target="view-videos" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-videos');">Videos</a>
+                <a href="#" class="desktop-nav-link" data-target="view-about" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-about');">Nosotros</a>
+            </div>
+
+            <!-- 3. Mis Compras, Notificaciones y Carrito -->
+            <div class="desktop-subnav-account">
+                <a href="#" class="desktop-account-link" data-target="view-my-orders" onclick="event.preventDefault(); window.navigationHistory = []; if(window.navigateToView) window.navigateToView('view-my-orders');">Mis compras</a>
+                <button type="button" id="btn-god-mode-trigger" class="god-mode-trigger-btn" title="Activar Modo Dios (Live Visual In-Place Editor)" style="display: none;" onclick="if(window.GodMode) window.GodMode.toggle();">
+                    <span class="material-symbols-outlined god-bolt-icon">bolt</span>
+                    <span class="god-trigger-text">Modo Dios</span>
+                </button>
+                <div class="desktop-notif-wrapper" id="desktop-notif-wrapper">
+                    <button type="button" class="desktop-icon-btn desktop-notif-btn" id="desktop-notif-btn" aria-haspopup="true" aria-expanded="false" aria-label="Notificaciones" title="Notificaciones">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span class="desktop-icon-badge" id="desktop-notif-badge" style="display: none;"></span>
+                    </button>
+                    <div class="desktop-user-dropdown desktop-notif-dropdown" id="desktop-notif-dropdown" role="menu"></div>
+                </div>
+                <button type="button" class="desktop-icon-btn desktop-cart-btn" onclick="if(window.CartDrawer) window.CartDrawer.open(); else if(window.navigateToView) window.navigateToView('view-profile');" title="Mi Carrito y Favoritos">
+                    <span class="material-symbols-outlined">shopping_cart</span>
+                    <span class="desktop-cart-badge" id="desktop-cart-badge" style="display: none;">0</span>
+                </button>
+            </div>
+        </nav>
+        
+    </header>
+    <main id="app-container">
+
+        <!-- View 1: Home -->
+        <section id="view-home" class="view active">
+
+
+            <div class="home-content">
+                <!-- Stack Superior del Constructor de Vistas -->
+                <div id="home-top-stack" style="display:none;"></div>
+
+                <!-- Carrusel 1: Categorías -->
+                <section class="home-section full-width">
+                    <div id="carousel-categories" class="carousel-categories">
+                        <!-- Categorías dinámicas -->
+                    </div>
+                </section>
+
+                <!-- Carrusel 2: Novedades / Banner Full -->
+                <section class="home-section full-width">
+                    <h2 class="section-title" style="padding: 0 1.5rem;">Nuevos Diseños 2026</h2>
+                    <div id="home-new-designs-list" class="carousel-categories">
+                        <!-- Nuevos diseños dinámicos -->
+                    </div>
+                </section>
+
+                <!-- Feed: Los Más Buscados -->
+                <section class="home-section full-width">
+                    <h2 class="section-title">Los más buscados</h2>
+                    <div id="home-product-list" class="carousel-categories">
+                        <!-- Feed inyectado dinámicamente desde js/app.js -->
+                    </div>
+                </section>
+
+                <!-- Stack Inferior del Constructor de Vistas -->
+                <div id="home-bottom-stack" style="display:none;"></div>
+            </div>
+        </section>
+
+        <!-- View: Product Detail (Hidden by default) -->
+        <section id="view-product-detail" class="view detail-view">
+            <!-- Recuadro Principal de la Publicación (Estilo Mercado Libre: termina al finalizar la publicación) -->
+            <div id="product-publication-card" class="product-publication-card">
+                <!-- Bloque Superior Destacado (2 columnas en Desktop) -->
+                <div class="detail-main-grid">
+                    <!-- 1 & 2. Header Info: Título y Categoría Sobria -->
+                    <div id="detail-header-info" style="padding: 1.25rem 1.25rem 0.5rem; text-align: left;">
+                        <h2 id="detail-title" style="margin: 0 0 0.25rem 0; font-size: 1.45rem; font-weight: 900; color: var(--text-main); line-height: 1.25; font-family: var(--font-main);"></h2>
+                        <span id="detail-category" style="font-size: 0.8rem; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px;"></span>
+                    </div>
+
+                    <!-- 3. Carrusel / Galería de Fotos del Producto -->
+                    <div class="detail-img-container" style="margin-bottom: 1.25rem;"></div>
+
+                    <!-- Cuerpo del Detalle -->
+                    <div class="detail-content" style="padding: 0 1.25rem;">
+
+                        <!-- 4 & 5. Selectores de Variantes / Acabados (sin título) y Medidas / Variantes -->
+                        <div id="detail-attributes-container" style="margin-bottom: 1.25rem;"></div>
+
+                        <!-- 6. Tarjeta Destacada de Precio Total y Cantidad (Estilo Ofertas) -->
+                        <div id="detail-pricing-box" class="detail-pricing-card" style="background: linear-gradient(135deg, #ffffff, #f0fdf4); border: 2px solid #86efac; border-radius: 16px; padding: 1.15rem 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 4px 14px rgba(22, 101, 52, 0.08); display: flex; flex-direction: column; gap: 8px;">
+                            <!-- Fila 1: Cantidad a la izquierda y Precio a la derecha -->
+                            <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                                <!-- Selector de Cantidad -->
+                                <div class="qty-selector-wrapper" style="margin: 0;">
+                                    <div class="qty-controls" style="background: white; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 4px 10px; display: inline-flex; align-items: center;">
+                                        <span class="qty-selector-label" style="font-size: 0.78rem; font-weight: 700; color: #475569; margin-right: 4px;">Un.</span>
+                                        <button type="button" class="qty-btn" id="btn-qty-minus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">−</button>
+                                        <span class="qty-value" id="qty-value" style="font-size: 0.95rem; font-weight: 900; color: #0f172a; min-width: 24px; text-align: center;">1</span>
+                                        <button type="button" class="qty-btn" id="btn-qty-plus" style="border: none; background: transparent; font-weight: 900; cursor: pointer; color: #475569; font-size: 1.2rem; padding: 0 4px;">+</button>
+                                    </div>
+                                </div>
+
+                                <!-- Precio a la derecha -->
+                                <div id="detail-price-display" class="detail-price" style="margin: 0; display: none; text-align: right;"></div>
+                            </div>
+
+                            <!-- Fila 2: Descuento / Banner de volumen destacado -->
+                            <div id="detail-qty-discount-banner" style="display: none; padding: 6px 10px; border-radius: 8px; font-size: 0.74rem; font-weight: 700; width: 100%; box-sizing: border-box;"></div>
+
+                            <!-- Fila 3: Cotizador / Mejor Precio de Envío debajo -->
+                            <div id="detail-shipping-best-price-badge" style="margin-top: 2px; padding-top: 8px; border-top: 1px dashed #cbd5e1; font-size: 0.82rem;"></div>
+                        </div>
+
+                        <!-- 7 & 8. Botonera Principal: COMPRAR YA y AGREGAR AL CARRITO -->
+                        <div class="detail-actions" id="detail-actions-container" style="display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.5rem;">
+                            <!-- Botón Principal: COMPRAR YA (Abre Checkout Wizard) -->
+                            <button type="button" id="btn-buy-now-product" class="btn-primary giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.95rem; width: 100%; border-radius: 12px; font-size: 1.05rem; font-weight: 900; background: linear-gradient(135deg, #059669, #10b981); border: none; color: white; box-shadow: 0 6px 20px rgba(5, 150, 105, 0.35); cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;">
+                                <span class="material-symbols-outlined" style="font-size: 24px;">bolt</span>
+                                <span>COMPRAR YA</span>
+                            </button>
+
+                            <!-- Botón Secundario: AGREGAR AL CARRITO (Funciona igual que el corazón) -->
+                            <button type="button" id="btn-add-cart-product" class="btn-outline giant-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.85rem; width: 100%; border-radius: 12px; font-size: 0.95rem; font-weight: 800; background: #f0fdf4; border: 1.5px solid #86efac; color: #166534; text-decoration: none; cursor: pointer; transition: all 0.2s ease;">
+                                <span class="material-symbols-outlined" style="font-size: 20px;">shopping_cart</span>
+                                <span id="btn-add-cart-text">Agregar al Carrito</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cuerpo Inferior de la Publicación (Dentro del mismo recuadro blanco) -->
+                <div class="detail-publication-body">
+                    <!-- Contenedor de ancho completo para Configuración de Medida en Cortes a Medida -->
+                    <div id="detail-custom-cutting-bottom-container" style="display: none; width: 100%; box-sizing: border-box; margin-bottom: 1.5rem;"></div>
+
+                    <!-- 10. Descripción del Producto -->
+                    <div id="detail-description-card" class="detail-description-box" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.1rem; margin-bottom: 1.25rem;">
+                        <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--text-main); margin: 0 0 0.6rem 0; display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-outlined" style="color: var(--primary-color, #c0510a);">description</span> Descripción del Producto
+                        </h3>
+                        <p id="detail-description" class="detail-description product-description-text" style="font-size: 0.9rem; color: #475569; line-height: 1.5; margin: 0; white-space: pre-line;"></p>
+                    </div>
+
+                    <!-- 11. Ficha de Detalles del Producto (Estilo Mercado Libre con Acordeón) -->
+                    <div id="product-specs-card" style="display: none; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 1.15rem; margin-bottom: 1.25rem;">
+                        <!-- Título de la Ficha -->
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.85rem;">
+                            <h4 style="font-size: 0.95rem; font-weight: 800; color: #0f172a; margin: 0; display: flex; align-items: center; gap: 7px;">
+                                <span class="material-symbols-outlined" style="font-size: 20px; color: var(--primary-color, #c0510a);">list_alt</span>
+                                <span>Características del producto</span>
+                            </h4>
+                            <span style="font-size: 0.7rem; font-weight: 700; color: #059669; background: #ecfdf5; padding: 2px 7px; border-radius: 6px; border: 1px solid #a7f3d0;">Directo de Fábrica</span>
+                        </div>
+
+                        <!-- Primeras 2 filas fijas -->
+                        <div id="product-specs-primary" style="display: flex; flex-direction: column; gap: 8px;"></div>
+
+                        <!-- Filas restantes desplegables -->
+                        <div id="product-specs-extended" style="display: none; flex-direction: column; gap: 8px; margin-top: 8px;"></div>
+
+                        <!-- Botón Ver más detalles / Menos detalles -->
+                        <button type="button" id="btn-toggle-product-specs" style="display: none; width: 100%; margin-top: 0.85rem; padding: 0.55rem; background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; font-size: 0.8rem; font-weight: 700; color: #0284c7; cursor: pointer; align-items: center; justify-content: center; gap: 5px; transition: all 0.2s ease;">
+                            <span id="btn-toggle-specs-text">Ver más detalles</span>
+                            <span id="btn-toggle-specs-icon" class="material-symbols-outlined" style="font-size: 18px; transition: transform 0.2s ease;">expand_more</span>
+                        </button>
+                    </div>
+
+                    <!-- 12. Botón de Consultar por WhatsApp (Cierre del recuadro de la publicación) -->
+                    <div style="display:flex; flex-direction:column; gap:8px; width:100%; margin-bottom: 0.25rem;">
+                        <a id="btn-buy-pickup" href="#" target="_blank" class="btn-outline giant-btn whatsapp-btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 0.85rem; width: 100%; border-radius: 12px; font-size: 0.95rem; font-weight: 800; background: #fff7ed; border: 1.5px solid #ffedd5; color: #c0510a; box-shadow: 0 2px 8px rgba(192, 81, 10, 0.08); text-decoration: none;">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">chat</span>
+                            <span>Consultar por WhatsApp</span>
+                        </a>
+
+                        <span style="font-size:0.72rem; color:#64748B; text-align:center; margin-top:2px; font-style:italic;">
+                            Chateá con nosotros para coordinar transferencias, efectivo o retiros por el taller
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barra Inferior Fuera del Recuadro (Estilo Mercado Libre: Publicación #ID | Reportar error) -->
+            <div id="detail-publication-meta-bar" class="detail-publication-meta-bar">
+                <button type="button" id="btn-copy-pub-id" class="detail-pub-id-btn" title="Clic para copiar el ID de la publicación">
+                    Publicación <strong id="detail-pub-id-label">#---</strong>
+                </button>
+                <span class="detail-pub-meta-divider">|</span>
+                <a id="btn-report-pub-error" href="#" target="_blank" rel="noopener" class="detail-pub-report-link">
+                    Reportar error
+                </a>
+            </div>
+
+            <!-- Secciones "Al Aire" Fuera de la Publicación (Mismo ancho, sobre el fondo general) -->
+            <div class="detail-outside-recommendations">
+                <!-- 13. Carrusel de Los Más Buscados -->
+                <div style="margin-top: 1.25rem; padding-top: 0.5rem;">
+                    <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.85rem; text-align: left;">
+                        🔥 Los más buscados
+                    </h3>
+                    <div id="detail-related-product-list" class="carousel-categories" style="padding: 10px 0;"></div>
+                </div>
+
+                <!-- 14. Grilla de Te Puede Interesar (Mismo rubro, selección variada) -->
+                <div id="detail-random-product-section" style="margin-top: 2rem; border-top: 1px solid rgba(148, 163, 184, 0.25); padding-top: 1.5rem; display: none;">
+                    <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 0.85rem; text-align: left;">
+                        ✨ Te puede interesar
+                    </h3>
+                    <div id="detail-random-product-grid" class="category-feed-list" style="padding: 0.5rem 0 2rem 0;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- View: Dedicated Offer / Combo Detail Page (Cargado dinámicamente desde partials/view-offer-detail.html) -->
+        <section id="view-offer-detail" class="view detail-view"></section>
+
+        <!-- View: Category Feed (Acceso exclusivo desde tarjetas de Home) -->
+        <section id="view-category-feed" class="view">
+            <!-- Barra de chips de subcategorías -->
+            <div id="category-feed-subcategories-bar" class="filter-chips category-subcats-bar" style="display:none; padding: 0.65rem 1rem; margin-bottom: 0.5rem; overflow-x: auto; white-space: nowrap;"></div>
+            <div id="category-feed-container" class="category-feed-list">
+                <!-- Feed de tarjetas inyectado dinámicamente por JS -->
+            </div>
+            <div id="category-feed-empty" class="center-content text-muted" style="display:none; padding:3rem 1.5rem;">
+                <span class="material-symbols-outlined large-icon" style="opacity:0.4;">inventory_2</span>
+                <p>Esta categoría todavía no tiene productos.<br>¡Volvé pronto!</p>
+            </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        <!-- View 2: Carrito y Lista de Deseos -->
+        <section id="view-profile" class="view">
+            <div class="view-content"></div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        <!-- View: Mi Perfil de Usuario (Exclusivo cuenta Google + sync en nube) -->
+        <section id="view-user-profile" class="view">
+            <div class="view-content" id="user-profile-view-content"></div>
+        </section>
+
+        <!-- View: Mis Compras (Historial de Pedidos del Cliente) -->
+        <section id="view-my-orders" class="view">
+            <div class="view-content" id="my-orders-view-content"></div>
+        </section>
+
+        <!-- View 3: Buscar -->
+        <section id="view-search" class="view">
+            <div class="view-content">
+                <!-- Tabs de Rubros para el buscador B2B/B2C -->
+                <div id="search-rubros-tabs-container" class="rubros-tabs-bar"></div>
+
+
+                
+                <!-- Resultados de búsqueda (feed inmersivo) -->
+                <div id="search-results-container" class="product-feed">
+                    <!-- Feed inyectado por JS -->
+                </div>
+                <!-- Estado vacío -->
+                <div id="search-empty-state" class="center-content text-muted" style="display: none; padding: 3rem 1.5rem;">
+                    <span class="material-symbols-outlined large-icon" style="opacity: 0.4;">search_off</span>
+                    <p>No encontramos productos con esa búsqueda.<br>Intentá con otra palabra clave.</p>
+                </div>
+            </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        <!-- View 4: Categorías -->
+        <section id="view-categories" class="view">
+            <div class="view-content" style="padding: 0;">
+                <!-- Tabs de Rubros para Categorías -->
+                <div id="categories-rubros-tabs-container" class="rubros-tabs-bar"></div>
+                
+                <div id="categories-menu-container" class="categories-grid-responsive" style="padding: 1rem;">
+                    <!-- Categories injected by categorias.js -->
+                </div>
+            </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        <!-- View: Ofertas y Combos -->
+        <section id="view-offers" class="view">
+            <div class="view-content" style="padding: 1rem;">
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <h2 style="font-size: 1.35rem; font-weight: 900; color: var(--text-main); margin: 0 0 4px 0; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <span>🏷️</span> OFERTAS & COMBOS ESPECIALES
+                    </h2>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">Aprovechá nuestros paquetes de productos y descuentos por tiempo limitado.</p>
+                </div>
+
+                <!-- Tarjeta Modular "invitar a cargar CP" (visible solo si no hay CP registrado) -->
+                <div id="offers-cp-bar" class="offers-cp-bar invitar-cargar-cp-card" data-component="invitar-cargar-cp" style="display: none;">
+                    <div class="offers-cp-info-group">
+                        <div id="offers-cp-icon-badge" class="offers-cp-icon-badge">
+                            <span class="material-symbols-outlined" style="font-size: 16px;">distance</span>
+                        </div>
+                        <div id="offers-cp-status-text" class="offers-cp-status-text">
+                            📍 Ingresá tu CP para activar envíos y beneficios por zona
+                        </div>
+                    </div>
+
+                    <button id="btn-open-user-profile-modal" type="button" class="offers-cp-action-btn">
+                        <span class="material-symbols-outlined" style="font-size: 15px; color: #ffffff;">tune</span>
+                        <span id="btn-profile-label">⚡ Cargar CP</span>
+                    </button>
+                </div>
+
+                <!-- Pestañas de Rubros para Ofertas -->
+                <div id="offers-rubros-tabs-container" class="rubros-tabs-bar" style="margin-bottom: 1rem;"></div>
+
+                <div id="offers-grid-container" class="offers-grid-layout">
+                    <!-- Inyectado dinámicamente por ui-offers.js -->
+                </div>
+
+                <!-- Tarjeta de Aclaraciones y Condiciones de Envío -->
+                <div class="offers-clarifications-card" style="margin-top: 2rem; background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 14px; padding: 1.25rem 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.03);">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 0.75rem; color: #1e293b;">
+                        <span class="material-symbols-outlined" style="color: #16a34a; font-size: 1.4rem;">info</span>
+                        <h4 style="margin: 0; font-size: 0.98rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px;">Información Importante sobre Envíos & Promociones</h4>
+                    </div>
+
+                    <ul style="margin: 0; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: #475569; line-height: 1.45;">
+                        <li>
+                            <strong style="color: #0f172a;">📍 Zona de Cobertura y Logística Propia:</strong> Contamos con flete directo y logística propia en <strong>Buenos Aires (AMBA y zonas aledañas)</strong> con envíos sin complicación.
+                        </li>
+                        <li>
+                            <strong style="color: #0f172a;">🚚 Publicaciones con Envío Gratis:</strong> El beneficio de envío gratis directo o por cantidad puede estar sujeto a limitaciones de transporte para envíos al interior del país o distancias de larga distancia.
+                        </li>
+                        <li>
+                            <strong style="color: #0f172a;">📦 Publicaciones de Mercado Libre:</strong> Algunas promociones o envíos gratis aplican exclusivamente comprando a través de nuestras publicaciones oficiales en Mercado Libre según sus términos de transporte.
+                        </li>
+                        <li>
+                            <strong style="color: #0f172a;">💬 Cotizaciones Personalizadas:</strong> Si estás en el interior o tenés dudas con el costo de envío a tu localidad, ¡consultanos por WhatsApp antes de comprar y coordinamos la mejor alternativa de transporte!
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        <!-- Modal Detalle de Combo / Oferta (Cargado dinámicamente desde partials/modal-offer-detail.html) -->
+
+        <!-- View 5: Videos -->
+        <section id="view-videos" class="view">
+            <div class="view-content" style="padding: 1rem;">
+                <div id="videos-grid-container" class="categories-grid-responsive">
+                    <!-- Miniaturas de videos inyectadas por videos.js -->
+                </div>
+            </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        <!-- View 6: Catálogo Unificado (Carga modular nativa bajo demanda) -->
+        <section id="view-catalogo" class="view">
+            <div class="view-content" style="padding: 0;">
+                <div id="catalog-view-root"></div>
+            </div>
+        </section>
+
+        <!-- View 7: Calculadora Iframe -->
+        <section id="view-calculator" class="view" style="height: 100%;">
+            <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+                <iframe data-src="apps/calcular.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Calcular Altura Ideal"></iframe>
+            </div>
+        </section>
+
+        <!-- View 8: Mayorista Iframe -->
+        <section id="view-mayorista" class="view" style="height: 100%;">
+            <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+                <iframe data-src="apps/mayorista.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Catálogo Mayorista"></iframe>
+            </div>
+        </section>
+
+        <!-- View Stock Iframe -->
+        <section id="view-stock" class="view" style="height: 100%;">
+            <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+                <iframe data-src="apps/stock.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Control de Stock Personal"></iframe>
+            </div>
+        </section>
+
+        <!-- View 9: Música Iframe -->
+        <section id="view-musica" class="view" style="height: 100%;">
+            <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+                <iframe data-src="apps/musica.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Música y Enganchados"></iframe>
+            </div>
+        </section>
+
+        <!-- View 10: Ayudin Iframe -->
+        <section id="view-ayudin" class="view" style="height: 100%;">
+            <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+                <iframe data-src="apps/ayudin.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Ayudín para Emprendedores"></iframe>
+            </div>
+        </section>
+
+        <!-- View 11: Pedidos Seguimiento Iframe -->
+        <section id="view-pedidos" class="view" style="height: 100%;">
+            <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+                <iframe data-src="pedidos/index.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Seguimiento de Pedido"></iframe>
+            </div>
+        </section>
+
+        <!-- View 12: Admin Pedidos Iframe -->
+        <section id="view-pedidos-admin" class="view" style="height: 100%;">
+            <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+                <iframe data-src="pedidos/admin.html" style="width: 100%; flex: 1; border: none; display: block;" title="Administración de Pedidos"></iframe>
+            </div>
+        </section>
+
+        <!-- View 13: Editor Masivo de Fotos 3:2 Iframe -->
+        <section id="view-editor" class="view" style="height: 100%;">
+            <div class="view-content" style="padding: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+                <iframe data-src="apps/editor-fotos.html" style="width: 100%; flex: 1; border: none; display: block; background: transparent;" allowtransparency="true" title="Editor Masivo de Fotos 3:2"></iframe>
+            </div>
+        </section>
+
+        <!-- Modales de TikTok y Alquiler (Cargados dinámicamente desde partials/modal-media-rentals.html) -->
+
+        <!-- View 4: Notificaciones Reales -->
+        <section id="view-notifications" class="view">
+            <div class="view-content" style="padding: 1rem;">
+                <div id="notifications-center-root"></div>
+            </div>
+            <div class="social-links-container" style="padding-bottom: 2rem;"></div>
+        </section>
+
+        <!-- View 5: Nosotros -->
+        <!-- View 5: Nosotros (Cargado dinámicamente desde partials/view-about.html) -->
+        <section id="view-about" class="view"></section>
+
+        <template id="social-links-template">
+            <div class="social-links mt-2" style="margin-top: 3rem; text-align: center;">
+                <p class="text-muted" style="margin-bottom: 1rem; font-weight: 500; font-size: 0.95rem;">Seguinos en redes:</p>
+                <div class="social-icons-row" style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                    <!-- Instagram -->
+                    <a href="https://instagram.com" target="_blank" class="social-icon-btn social-link-instagram" title="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <!-- TikTok -->
+                    <a href="https://tiktok.com" target="_blank" class="social-icon-btn social-link-tiktok" title="TikTok">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+                    </a>
+                    <!-- Facebook -->
+                    <a href="https://facebook.com" target="_blank" class="social-icon-btn social-link-facebook" title="Facebook">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="https://youtube.com" target="_blank" class="social-icon-btn social-link-youtube" title="YouTube">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                    </a>
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/5491167007723" target="_blank" class="social-icon-btn social-link-whatsapp" title="WhatsApp">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                    </a>
+                    <!-- Mercado Libre -->
+                    <a href="#" target="_blank" class="social-icon-btn social-link-mercadolibre" title="Mercado Libre">
+                        <svg width="24" height="24" viewBox="0 0 640 512" fill="currentColor"><path d="M272.2 64.6l-51.1 51.1c-15.3 4.2-29.5 11.9-41.5 22.5L153 161.9C142.8 171 129.5 176 115.8 176L96 176l0 128c20.4 .6 39.8 8.9 54.3 23.4l35.6 35.6 7 7c0 0 0 0 0 0L219.9 397c6.2 6.2 16.4 6.2 22.6 0c1.7-1.7 3-3.7 3.7-5.8c2.8-7.7 9.3-13.5 17.3-15.3s16.4 .6 22.2 6.5L296.5 393c11.6 11.6 30.4 11.6 41.9 0c5.4-5.4 8.3-12.3 8.6-19.4c.4-8.8 5.6-16.6 13.6-20.4s17.3-3 24.4 2.1c9.4 6.7 22.5 5.8 30.9-2.6c9.4-9.4 9.4-24.6 0-33.9L340.1 243l-35.8 33c-27.3 25.2-69.2 25.6-97 .9c-31.7-28.2-32.4-77.4-1.6-106.5l70.1-66.2C303.2 78.4 339.4 64 377.1 64c36.1 0 71 13.3 97.9 37.2L505.1 128l38.9 0 40 0 40 0c8.8 0 16 7.2 16 16l0 208c0 17.7-14.3 32-32 32l-32 0c-11.8 0-22.2-6.4-27.7-16l-84.9 0c-3.4 6.7-7.9 13.1-13.5 18.7c-17.1 17.1-40.8 23.8-63 20.1c-3.6 7.3-8.5 14.1-14.6 20.2c-27.3 27.3-70 30-100.4 8.1c-25.1 20.8-62.5 19.5-86-4.1L159 404l-7-7-35.6-35.6c-5.5-5.5-12.7-8.7-20.4-9.3C96 369.7 81.6 384 64 384l-32 0c-17.7 0-32-14.3-32-32L0 144c0-8.8 7.2-16 16-16l40 0 40 0 19.8 0c2 0 3.9-.7 5.3-2l26.5-23.6C175.5 77.7 211.4 64 248.7 64L259 64c4.4 0 8.9 .2 13.2 .6zM544 320l0-144-48 0c-5.9 0-11.6-2.2-15.9-6.1l-36.9-32.8c-18.2-16.2-41.7-25.1-66.1-25.1c-25.4 0-49.8 9.7-68.3 27.1l-70.1 66.2c-10.3 9.8-10.1 26.3 .5 35.7c9.3 8.3 23.4 8.1 32.5-.3l71.9-66.4c9.7-9 24.9-8.4 33.9 1.4s8.4 24.9-1.4 33.9l-.8 .8 74.4 74.4c10 10 16.5 22.3 19.4 35.1l74.8 0zM64 336a16 16 0 1 0 -32 0 16 16 0 1 0 32 0zm528 16a16 16 0 1 0 0-32 16 16 0 1 0 0 32z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </template>
+
+        <!-- View 6: Admin Panel (Cargado dinámicamente desde partials/view-admin.html) -->
+        <section id="view-admin" class="view admin-view"></section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active" data-target="view-home">
+            <span class="material-symbols-outlined">home</span>
+            <span class="nav-label">INICIO</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-categories">
+            <span class="material-symbols-outlined">category</span>
+            <span class="nav-label">CATEGORÍAS</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-profile">
+            <span id="nav-cart-icon" class="material-symbols-outlined">shopping_cart</span>
+            <span class="nav-label">CARRITO</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-videos">
+            <span class="material-symbols-outlined">play_circle</span>
+            <span class="nav-label">VIDEOS</span>
+        </a>
+        <a href="#" class="nav-item" data-target="view-about">
+            <span class="material-symbols-outlined">info</span>
+            <span class="nav-label">NOSOTROS</span>
+        </a>
+    </nav>
+    <div id="admin-toast" class="admin-toast"></div>
+
+        <!-- Modales de Formularios del Admin (Cargados dinámicamente desde partials/admin/modals-forms.html) -->
+
+
+    <!-- [PARTIAL] Modales Globales (Cargados dinámicamente desde partials/modal-globals.html) -->
+
+    <!-- Floating Order Tracking Button (FAB) & Bottom Sheet -->
+    <button type="button" id="btn-tracking-fab" class="tracking-fab" title="Seguimiento de Pedido">
+        <span class="material-symbols-outlined">local_shipping</span>
+    </button>
+
+    <div id="tracking-modal-overlay" class="tracking-modal-overlay">
+        <div class="tracking-bottom-sheet" id="tracking-sheet-container">
+            <div class="sheet-handle"></div>
+            <!-- Header flotante absoluto -->
+            <div class="sheet-header" style="position: absolute; top: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: flex-end; padding: 12px 16px; box-sizing: border-box; z-index: 10; border: none; background: transparent; pointer-events: none;">
+                <button type="button" class="sheet-close-btn" id="btn-close-tracking-sheet" onclick="if (window.closeTrackingSheet) window.closeTrackingSheet();" style="pointer-events: auto; background: none; border: none; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; color: #64748b; font-size: 1.75rem; font-weight: 300; cursor: pointer; transition: color 0.2s; outline: none;" title="Cerrar modal">&times;</button>
+            </div>
+            <div class="sheet-body">
+                <!-- Vista 1: Formulario de búsqueda nativo -->
+                <div class="tracking-search-view" id="tracking-search-view" style="padding: 2.5rem 1.5rem; text-align: center;">
+                    <span class="material-symbols-outlined" style="font-size: 64px; color: var(--primary-color, #A0715B); margin-bottom: 1rem; display: block;">local_shipping</span>
+                    <h2 style="margin: 0 0 0.5rem 0; font-size: 1.4rem; font-weight: 800; color: #0f172a;">¿Cómo viene tu pedido?</h2>
+                    <p style="font-size: 0.9rem; color: #64748b; margin: 0 0 2rem 0; line-height: 1.5;">Ingresá el número de Orden que te brindamos al realizar tu compra para conocer el estado de fabricación de tu mueble.</p>
+                    
+                    <form onsubmit="if (window.handleNativeTrackingSearch) window.handleNativeTrackingSearch(event)" style="display: flex; flex-direction: column; gap: 1rem; max-width: 360px; margin: 0 auto;">
+                        <div style="position: relative;">
+                            <span class="material-symbols-outlined" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #64748b;">tag</span>
+                            <input type="text" id="native-order-id-input" placeholder="Número de Orden o #LT-..." autocomplete="off" required title="Ingresá tu número de orden o código #LT-..." style="width: 100%; box-sizing: border-box; padding: 0.8rem 1rem 0.8rem 45px; border: 1.5px solid #e2e8f0; border-radius: 12px; font-size: 1rem; text-align: center; letter-spacing: 1px; font-weight: 600; background: #f8fafc; transition: all 0.2s;">
+                        </div>
+                        
+                        <button type="submit" class="btn-primary" style="width: auto; min-width: 180px; max-width: 220px; margin: 0.25rem auto 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 50px; background: var(--primary-color, #A0715B); color: white; border: none; cursor: pointer; transition: all 0.2s; box-shadow: 0 4px 12px rgba(160, 113, 91, 0.2);">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+                            Buscar Pedido
+                        </button>
+                        
+                        <div id="native-tracking-error" style="margin-top: 0.5rem; padding: 0.75rem 1rem; background: #fef2f2; border: 1px solid #fca5a5; color: #b91c1c; border-radius: 8px; font-size: 0.85rem; font-weight: 500; display: none; text-align: left; line-height: 1.4;"></div>
+                    </form>
+                </div>
+
+                <!-- Vista 2: Iframe con el resultado (oculto por defecto) -->
+                <iframe src="about:blank" id="tracking-sheet-iframe" class="sheet-iframe" title="Seguimiento de Compra" style="display: none; width: 100%; height: 100%; border: none;"></iframe>
+
+                <!-- Vista 3: Pantalla de error (oculta por defecto) -->
+                <div class="tracking-error-view" id="tracking-error-view" style="display: none; padding: 2.5rem 1.5rem; text-align: center; height: 100%; box-sizing: border-box; flex-direction: column; justify-content: center; align-items: center; background: #faf9f6;">
+                    <span class="material-symbols-outlined" style="font-size: 64px; color: #dc2626; margin-bottom: 1rem; display: block;">error</span>
+                    <h2 style="margin: 0 0 0.75rem 0; font-size: 1.3rem; font-weight: 800; color: #0f172a; line-height: 1.4;">Pedido no encontrado</h2>
+                    <p style="font-size: 0.92rem; color: #64748b; margin: 0 0 2rem 0; line-height: 1.6; max-width: 320px;">Tu pedido aún no se encuentra cargado, si crees que es un error, no dudes en enviarnos un WhatsApp.</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 0.75rem; width: 100%; max-width: 240px; margin: 0 auto;">
+                        <a href="https://wa.me/5491167007723?text=Hola!%20No%20logro%20encontrar%20el%20seguimiento%20de%20mi%20pedido.%20¿Me%20podrían%20ayudar?" target="_blank" class="btn-primary" style="display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 50px; background: #25d366; color: white; border: none; cursor: pointer; text-decoration: none; font-size: 0.95rem; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" style="margin-right: 2px;">
+                              <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.907h.004c4.368 0 7.926-3.559 7.93-7.93a7.9 7.9 0 0 0-2.327-5.618ZM7.994 14.52a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.69-4.98c-.202-.1-.1.195-.312.029-.24-.12-1.41-.696-1.628-.774-.217-.078-.376-.118-.534.12-.158.238-.613.774-.75 0.93-.138.156-.277.175-.48.077-.203-.1-.857-.315-1.634-1.01-.604-.539-1.013-1.207-1.13-1.408-.118-.2-.013-.309.088-.408.09-.09.202-.237.302-.355.1-.117.133-.198.2-.33.065-.133.032-.25-.016-.35-.049-.1-.44-1.054-.603-1.448-.158-.387-.313-.335-.43-.341-.11-.006-.237-.008-.363-.008a.72.72 0 0 0-.523.243c-.183.2-.697.68-6.97 1.658 0 .98.418 1.921.478 2.001.06.08 1.348 2.057 3.266 2.887.457.198.813.316 1.092.404.46.146.879.125 1.21.076.37-.056 1.144-.467 1.306-.918.162-.45.162-.837.114-.918-.049-.082-.18-.13-.376-.23"/>
+                            </svg>
+                            WhatsApp
+                        </a>
+                        <button type="button" onclick="if (window.resetTrackingSearch) window.resetTrackingSearch();" style="background: none; border: none; font-size: 0.88rem; font-weight: 700; color: #64748b; cursor: pointer; text-decoration: underline; padding: 8px;">
+                            Volver a intentar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts Core Cliente (Admin, Widgets, Checkout, Seguimiento y Catálogo se cargan bajo demanda en partials-loader.js) -->
+    <script src="js/ui/confetti-arg.js?v=2" defer></script>
+    <script src="js/ui/header-deco-arg.js?v=4" defer></script>
+    <script src="js/data/products-data.js?v=64" defer></script>
+    <script src="js/data/offers-data.js?v=1" defer></script>
+    <script src="js/data/shipping-config.js?v=1" defer></script>
+    <script src="js/data/data.js?v=12" defer></script>
+    <script src="js/modules/shortener.js?v=11" defer></script>
+    <script src="js/ui/ui-dom.js?v=2" defer></script>
+    <script src="js/ui/ui-utils.js?v=1" defer></script>
+    <script src="js/ui/ui-core.js?v=2" defer></script>
+    <!-- Firebase Authentication SDK (Compat) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js" defer></script>
+    <script src="js/admin/admin-auth.js?v=7" defer></script>
+    <script src="js/modules/cost-guard.js?v=2" defer></script>
+    <script src="js/modules/price-overlay.js?v=2" defer></script>
+    <script src="js/admin/god-mode.js?v=1" defer></script>
+    <script src="js/ui/ui-navigation.js?v=11" defer></script>
+    <script src="js/modules/notifications.js?v=5" defer></script>
+    <script src="js/ui/desktop-header.js?v=10" defer></script>
+    <script src="js/ui/ui-offers.js?v=23" defer></script>
+    <script src="js/ui/catalog/catalog-utils.js?v=4" defer></script>
+    <script src="js/ui/ui-search-feed.js?v=9" defer></script>
+    <script src="js/modules/home-infinite-catalog.js?v=4" defer></script>
+    <script src="js/ui/ui-home.js?v=7" defer></script>
+    <script src="js/ui/catalog/catalog-shipping-calc.js?v=4" defer></script>
+    <script src="js/ui/catalog/catalog-actions.js?v=5" defer></script>
+    <script src="js/ui/catalog/catalog-gallery.js?v=1" defer></script>
+    <script src="js/ui/ui-catalog.js?v=29" defer></script>
+    <script src="js/ui/ui-blocks.js?v=1" defer></script>
+    <script src="js/ui/cart-drawer.js?v=2" defer></script>
+    <script src="js/modules/carrito.js?v=16" defer></script>
+    <script src="js/modules/main.js?v=8" defer></script>
+    <script src="js/modules/categorias.js?v=3" defer></script>
+    <script src="js/ui/pwa-banner.js?v=2" defer></script>
+    <script>
+        // Lógica del cintillo de confianza: Rotativo, Cierre manual y Auto-ocultado (Punto 5 UX)
+        (function() {
+            const barEl = document.getElementById('trust-top-bar');
+            if (!barEl) return;
+
+            // Si ya fue cerrada manualmente en esta sesión, no mostrarla
+            if (sessionStorage.getItem('trustBarDismissed') === 'true') {
+                barEl.style.display = 'none';
+                return;
+            }
+
+            const hideBar = (manual = false) => {
+                const medalEl = document.getElementById('trust-platinum-medal');
+                if (medalEl) {
+                    medalEl.style.opacity = '0';
+                    medalEl.style.transform = 'scale(0.5) translateY(-10px)';
+                }
+                barEl.style.opacity = '0';
+                barEl.style.maxHeight = '0';
+                barEl.style.padding = '0';
+                if (manual) {
+                    try { sessionStorage.setItem('trustBarDismissed', 'true'); } catch(e) {}
+                }
+                setTimeout(() => {
+                    barEl.style.display = 'none';
+                }, 400);
+            };
+
+            // Botón de cierre manual
+            const btnClose = document.getElementById('btn-close-trust-bar');
+            if (btnClose) {
+                btnClose.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    hideBar(true);
+                });
+            }
+
+            // Auto-ocultado suave luego de 12 segundos para dejar la web limpia
+            setTimeout(() => {
+                hideBar(false);
+            }, 12000);
+
+            // Rotativo suave en móviles (la medalla grande queda fija sobresaliendo a la izquierda)
+            const items = [
+                { text: '🏆 MercadoLíder Platinum', isHighlight: true },
+                { text: 'Somos Fabricantes', icon: 'carpenter', color: '#eab308' },
+                { text: 'Envíos a todo el país', icon: 'local_shipping', color: '#38bdf8' },
+                { text: 'Todos los medios de pago', icon: 'credit_card', color: '#4ade80' }
+            ];
+            let currentIndex = 0;
+            const mobileEl = document.getElementById('trust-mobile-item');
+            if (!mobileEl) return;
+
+            const rotateInterval = setInterval(() => {
+                if (barEl.style.display === 'none' || barEl.style.opacity === '0') {
+                    clearInterval(rotateInterval);
+                    return;
+                }
+                currentIndex = (currentIndex + 1) % items.length;
+                mobileEl.style.opacity = '0';
+                mobileEl.style.transform = 'translateY(-4px)';
+                
+                setTimeout(() => {
+                    const item = items[currentIndex];
+                    if (item.isHighlight) {
+                        mobileEl.innerHTML = `<span style="color: #7dd3fc; font-weight: 800;">${item.text}</span>`;
+                    } else {
+                        mobileEl.innerHTML = `<span class="material-symbols-outlined" style="font-size: 14px; color: ${item.color};">${item.icon}</span><span>${item.text}</span>`;
+                    }
+                    mobileEl.style.opacity = '1';
+                    mobileEl.style.transform = 'translateY(0)';
+                }, 250);
+            }, 2800);
+        })();
+    </script>
+    
+    <script>
+        // Limpiar el parámetro ?u= de bypass de caché si quedó residual en la URL tras una actualización del SW.
+        (function() {
+            try {
+                const url = new URL(window.location.href);
+                if (url.searchParams.has('u')) {
+                    url.searchParams.delete('u');
+                    window.history.replaceState(null, '', url.toString());
+                }
+            } catch(e) {}
+        })();
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // Postergamos el registro del Service Worker 3 segundos para que en la primera visita
+                // toda la conexión del usuario se dedique 100% a mostrar la página y sus imágenes al instante.
+                setTimeout(() => {
+                    navigator.serviceWorker.register('./sw.js', { updateViaCache: 'none' }).then((registration) => {
+                        console.log('✅ ServiceWorker registrado con éxito:', registration.scope);
+
+                        // 1. Forzar búsqueda de actualizaciones al iniciar
+                        registration.update();
+
+                        // 2. Comprobar actualizaciones al regresar a la app (cambio de pestaña o desbloqueo del celu)
+                        document.addEventListener('visibilitychange', () => {
+                            if (document.visibilityState === 'visible') {
+                                registration.update();
+                                console.log('[PWA] App activa: comprobando actualizaciones en el servidor...');
+                            }
+                        });
+                    }).catch((err) => {
+                        console.error('❌ Error registrando el ServiceWorker:', err);
+                    });
+                }, 3000);
+            });
+
+            // 3. Detectar cuando el nuevo Service Worker toma el control de la página (actualización completada).
+            // IMPORTANTE: hasController se evalúa ANTES del registro para saber si ya había un SW activo.
+            // Si no había controller (primera visita o SW eliminado), controllerchange NO dispara una recarga.
+            // Solo recarga cuando hay una actualización real (ya existía un SW controlando la pestaña).
+            let refreshing = false;
+            const hasController = !!navigator.serviceWorker.controller;
+
+            navigator.serviceWorker.addEventListener('controllerchange', () => {
+                // Ya no forzamos window.location.reload() a mitad de la carga (causaba que la página
+                // pareciera colgarse o reiniciarse a los pocos segundos).
+                if (refreshing) return;
+                if (hasController) {
+                    refreshing = true;
+                    console.log('[PWA] Nueva versión del Service Worker lista y activa.');
+                }
+            });
+        }
+    </script>
+    <!-- Lógica de arrastre del botón flotante (FAB) de Seguimiento -->
+    <script src="js/ui/fab-draggable.js" defer></script>
+</body>
+</html>
+
+

@@ -342,6 +342,8 @@
                         `;
                     } else {
                         const formattedPrice = formatter.format(effectiveSubtotal);
+                        const stickyPriceEl2 = document.getElementById('sticky-bar-price');
+                        if (stickyPriceEl2) stickyPriceEl2.textContent = formattedPrice;
                         priceDisplay.innerHTML = `
                             <span style="font-size:1.65rem; font-weight:900; color:#c0510a; line-height: 1.2;">${formattedPrice}</span>
                             <div class="price-info-wrapper" style="position: relative; display: inline-flex; align-items: center;">

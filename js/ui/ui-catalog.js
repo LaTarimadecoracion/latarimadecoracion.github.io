@@ -968,6 +968,22 @@
             };
         }
 
+        // Conectar Barra Fija de Compra en Celular (Sticky Buy Bar)
+        const btnStickyBuy = document.getElementById('btn-sticky-buy-now');
+        if (btnStickyBuy) {
+            btnStickyBuy.onclick = (e) => {
+                e.preventDefault();
+                if (btnBuyNow) btnBuyNow.click();
+            };
+        }
+        const btnStickyCart = document.getElementById('btn-sticky-add-cart');
+        if (btnStickyCart) {
+            btnStickyCart.onclick = (e) => {
+                e.preventDefault();
+                if (btnAddCart) btnAddCart.click();
+            };
+        }
+
         // Conectar botón AGREGAR AL CARRITO
         const btnAddCart = document.getElementById('btn-add-cart-product');
         if (btnAddCart) {

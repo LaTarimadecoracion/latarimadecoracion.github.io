@@ -162,7 +162,7 @@ window.ensureCheckoutModalLoaded = function() {
         if (typeof window.ensurePostalLookupLoaded === 'function') {
             await window.ensurePostalLookupLoaded();
         }
-        await loadScriptOnDemand('js/ui/checkout-modal.js?v=4');
+        await loadScriptOnDemand('js/ui/checkout-modal.js?v=5');
     })();
     return _checkoutModalPromise;
 };
