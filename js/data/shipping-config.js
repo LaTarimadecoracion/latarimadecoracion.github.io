@@ -21,15 +21,15 @@ window.sessionShippingFullData = {
     "flete": {
         "flete_zona_1": {
             "active": true,
-            "baseCost": 4500
+            "baseCost": 5500
         },
         "flete_zona_2": {
             "active": true,
-            "baseCost": 20000
+            "baseCost": 45000
         },
         "flete_zona_3": {
             "active": true,
-            "baseCost": 55000
+            "baseCost": 65000
         },
         "flete_fuera_rango": {
             "active": false,

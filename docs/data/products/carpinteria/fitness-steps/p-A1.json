@@ -27,6 +27,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 80000,
+          "cost_price": 80000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -40,6 +41,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 40000,
+          "cost_price": 40000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true
@@ -53,6 +55,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 35000,
+          "cost_price": 35000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true

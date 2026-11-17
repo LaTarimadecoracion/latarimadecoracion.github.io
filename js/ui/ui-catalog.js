@@ -216,6 +216,23 @@
                     btnCartText.textContent = 'Agregar al Carrito';
                 }
             }
+
+            const btnStickyCart = document.getElementById('btn-sticky-add-cart');
+            if (btnStickyCart) {
+                if (inFav) {
+                    btnStickyCart.style.background = '#e2e8f0';
+                    btnStickyCart.style.borderColor = '#cbd5e1';
+                    btnStickyCart.style.color = '#334155';
+                    btnStickyCart.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px;">check</span>';
+                    btnStickyCart.title = 'Ya está en tu carrito';
+                } else {
+                    btnStickyCart.style.background = '#f0fdf4';
+                    btnStickyCart.style.borderColor = '#86efac';
+                    btnStickyCart.style.color = '#166534';
+                    btnStickyCart.innerHTML = '<span class="material-symbols-outlined" style="font-size: 20px;">add_shopping_cart</span>';
+                    btnStickyCart.title = 'Agregar al carrito';
+                }
+            }
         };
 
         const updateUrlWithVariants = () => {
@@ -891,22 +908,102 @@
         preselectedMedida = '';
         preselectedOpcion = '';
 
-        // Conectar botón COMPRAR YA al Wizard de Pago / Checkout
-        const btnBuyNow = document.getElementById('btn-buy-now-product');
-        if (btnBuyNow) {
-            btnBuyNow.onclick = (e) => {
-                e.preventDefault();
+        // ── ACCIÓN: COMPRAR YA (Checkout Directo / Wizard) ──
+        const executeBuyNow = async (e) => {
+            if (e && e.preventDefault) e.preventDefault();
+            
+            // Garantizar carga del modal de checkout si es bajo demanda
+            if (typeof window.ensureCheckoutModalLoaded === 'function') {
+                await window.ensureCheckoutModalLoaded();
+            }
+
+            const grupo = (grupos && grupos[currentGroupIndex]) ? grupos[currentGroupIndex] : {};
+            const selMedida = divMedida ? divMedida.querySelector('select') : null;
+            let medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
+            
+            const selOpt = divOpt ? divOpt.querySelector('select') : null;
+            const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
+            const optLabel = product.optional_variant?.label || '';
+
+            const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaText);
+            let variantPrice = (activeVariant && activeVariant.price !== undefined && activeVariant.price !== '') ? activeVariant.price : (parseFloat(product.price) || 0);
+            
+            const qtyValEl = document.getElementById('qty-value');
+            let qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1', 10) : 1;
+
+            const activeCuts = window._activeCustomCutsList || customCutsList;
+            const activeCajones = window._activeCajonesList || [];
+            if ((product.isCajonProduct === true || product.id === '95') && Array.isArray(activeCajones) && activeCajones.length > 0) {
+                const totalPieces = activeCajones.reduce((acc, c) => acc + (c.qty || 1), 0);
+                const rawSub = activeCajones.reduce((acc, c) => acc + (c.subtotal || 0), 0);
+                const rule = window.getBestDiscountRule ? window.getBestDiscountRule(product, totalPieces, activeVariant) : null;
+                let netSubtotal = rawSub;
+                if (rule && rule.discountPercent > 0) {
+                    netSubtotal = rawSub - Math.round(rawSub * (rule.discountPercent / 100));
+                }
+                const boxesSummary = activeCajones.map(c => `${c.qty}x ${c.reglaName || 'Cajón'} ${c.largo}x${c.ancho}x${c.alto}cm`).join(' | ');
+                medidaText = `A Medida (${totalPieces} cajones: ${boxesSummary})`;
+                variantPrice = Math.round(netSubtotal / totalPieces);
+                qtyVal = totalPieces;
+            } else if ((product.isCustomCutting === true || product.id === '69') && Array.isArray(activeCuts) && activeCuts.length > 0) {
+                const totalPieces = activeCuts.reduce((acc, c) => acc + (c.qty || 1), 0);
+                let netSubtotal = 0;
+                activeCuts.forEach(c => {
+                    let cSub = c.subtotal || 0;
+                    const rule = window.getBestDiscountRule ? window.getBestDiscountRule(product, c.qty || 1, activeVariant) : null;
+                    if (rule) {
+                        if (rule.discountPercent !== undefined && rule.discountPercent > 0) {
+                            cSub = cSub * (1 - rule.discountPercent / 100);
+                        } else if (rule.discountValue !== undefined && rule.discountValue > 0) {
+                            const minU = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
+                            cSub = Math.max(0, cSub - (Math.floor((c.qty || 1) / minU) * rule.discountValue));
+                        }
+                    }
+                    netSubtotal += cSub;
+                });
+                const cutsSummary = activeCuts.map(c => `${c.qty}x ${c.largo}x${c.ancho}cm (${c.material} ${c.espesor})`).join(' | ');
+                medidaText = `Despiece (${totalPieces} piezas: ${cutsSummary})`;
+                variantPrice = Math.round(netSubtotal / totalPieces);
+                qtyVal = totalPieces;
+            } else {
+                // Producto estándar: evaluar descuentos por cantidad/volumen o descuento directo
+                const rule = window.getBestDiscountRule ? window.getBestDiscountRule(product, qtyVal, activeVariant) : null;
+                if (rule) {
+                    if (rule.discountPercent !== undefined && Number(rule.discountPercent) > 0) {
+                        variantPrice = Math.round(variantPrice * (1 - Number(rule.discountPercent) / 100));
+                    } else if (rule.discountValue !== undefined && Number(rule.discountValue) > 0) {
+                        const minU = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
+                        const totalDisc = Math.floor(qtyVal / minU) * rule.discountValue;
+                        variantPrice = Math.max(0, variantPrice - Math.round(totalDisc / qtyVal));
+                    }
+                } else if (product.discountPercent && Number(product.discountPercent) > 0) {
+                    variantPrice = Math.round(variantPrice * (1 - Number(product.discountPercent) / 100));
+                }
+            }
+
+            if (window.showProductPaymentModal) {
+                window.showProductPaymentModal(product, grupo, medidaText, variantPrice, qtyVal, optText, optLabel);
+            } else if (window.showOfferPaymentModal) {
+                window.showOfferPaymentModal(product, qtyVal, { grupo, medida: medidaText, price: variantPrice, opcion: optText, opcionLabel: optLabel });
+            }
+        };
+
+        // ── ACCIÓN: AGREGAR AL CARRITO ──
+        const executeAddToCart = (e) => {
+            if (e && e.preventDefault) e.preventDefault();
+            if (window.CarritoModule && window.CarritoModule.toggle) {
                 const grupo = (grupos && grupos[currentGroupIndex]) ? grupos[currentGroupIndex] : {};
-                const selMedida = divMedida.querySelector('select');
+                const acabadoName = grupo.acabado_name || 'Único';
+                const selMedida = divMedida ? divMedida.querySelector('select') : null;
                 let medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
-                
-                const selOpt = divOpt.querySelector('select');
+
+                const selOpt = divOpt ? divOpt.querySelector('select') : null;
                 const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
                 const optLabel = product.optional_variant?.label || '';
 
                 const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaText);
-                let variantPrice = (activeVariant && activeVariant.price !== undefined && activeVariant.price !== '') ? activeVariant.price : (parseFloat(product.price) || 0);
-                
+                let itemPrice = (activeVariant && activeVariant.showPrice === true && activeVariant.price) ? activeVariant.price : null;
+
                 const qtyValEl = document.getElementById('qty-value');
                 let qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1', 10) : 1;
 
@@ -922,7 +1019,7 @@
                     }
                     const boxesSummary = activeCajones.map(c => `${c.qty}x ${c.reglaName || 'Cajón'} ${c.largo}x${c.ancho}x${c.alto}cm`).join(' | ');
                     medidaText = `A Medida (${totalPieces} cajones: ${boxesSummary})`;
-                    variantPrice = Math.round(netSubtotal / totalPieces);
+                    itemPrice = Math.round(netSubtotal / totalPieces);
                     qtyVal = totalPieces;
                 } else if ((product.isCustomCutting === true || product.id === '69') && Array.isArray(activeCuts) && activeCuts.length > 0) {
                     const totalPieces = activeCuts.reduce((acc, c) => acc + (c.qty || 1), 0);
@@ -942,123 +1039,45 @@
                     });
                     const cutsSummary = activeCuts.map(c => `${c.qty}x ${c.largo}x${c.ancho}cm (${c.material} ${c.espesor})`).join(' | ');
                     medidaText = `Despiece (${totalPieces} piezas: ${cutsSummary})`;
-                    variantPrice = Math.round(netSubtotal / totalPieces);
+                    itemPrice = Math.round(netSubtotal / totalPieces);
                     qtyVal = totalPieces;
-                } else {
+                } else if (itemPrice !== null) {
                     // Producto estándar: evaluar descuentos por cantidad/volumen o descuento directo
                     const rule = window.getBestDiscountRule ? window.getBestDiscountRule(product, qtyVal, activeVariant) : null;
                     if (rule) {
                         if (rule.discountPercent !== undefined && Number(rule.discountPercent) > 0) {
-                            variantPrice = Math.round(variantPrice * (1 - Number(rule.discountPercent) / 100));
+                            itemPrice = Math.round(itemPrice * (1 - Number(rule.discountPercent) / 100));
                         } else if (rule.discountValue !== undefined && Number(rule.discountValue) > 0) {
                             const minU = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
                             const totalDisc = Math.floor(qtyVal / minU) * rule.discountValue;
-                            variantPrice = Math.max(0, variantPrice - Math.round(totalDisc / qtyVal));
+                            itemPrice = Math.max(0, itemPrice - Math.round(totalDisc / qtyVal));
                         }
                     } else if (product.discountPercent && Number(product.discountPercent) > 0) {
-                        variantPrice = Math.round(variantPrice * (1 - Number(product.discountPercent) / 100));
+                        itemPrice = Math.round(itemPrice * (1 - Number(product.discountPercent) / 100));
                     }
                 }
 
-                if (window.showProductPaymentModal) {
-                    window.showProductPaymentModal(product, grupo, medidaText, variantPrice, qtyVal, optText, optLabel);
-                } else if (window.showOfferPaymentModal) {
-                    window.showOfferPaymentModal(product, qtyVal, { grupo, medida: medidaText, price: variantPrice, opcion: optText, opcionLabel: optLabel });
-                }
-            };
-        }
+                window.CarritoModule.toggle(product, acabadoName, categoryName, medidaText, optText, optLabel, itemPrice, qtyVal);
+                updateFavState();
+            }
+        };
 
-        // Conectar Barra Fija de Compra en Celular (Sticky Buy Bar)
+        // Conectar botones superiores (Desktop)
+        const btnBuyNow = document.getElementById('btn-buy-now-product');
+        if (btnBuyNow) btnBuyNow.onclick = executeBuyNow;
+
+        const btnAddCart = document.getElementById('btn-add-cart-product');
+        if (btnAddCart) btnAddCart.onclick = executeAddToCart;
+
+        // Conectar botones de Barra Inferior Fija (Mobile) con soporte touch & click directo
         const btnStickyBuy = document.getElementById('btn-sticky-buy-now');
         if (btnStickyBuy) {
-            btnStickyBuy.onclick = (e) => {
-                e.preventDefault();
-                if (btnBuyNow) btnBuyNow.click();
-            };
+            btnStickyBuy.onclick = executeBuyNow;
         }
+
         const btnStickyCart = document.getElementById('btn-sticky-add-cart');
         if (btnStickyCart) {
-            btnStickyCart.onclick = (e) => {
-                e.preventDefault();
-                if (btnAddCart) btnAddCart.click();
-            };
-        }
-
-        // Conectar botón AGREGAR AL CARRITO
-        const btnAddCart = document.getElementById('btn-add-cart-product');
-        if (btnAddCart) {
-            btnAddCart.onclick = (e) => {
-                e.preventDefault();
-                if (window.CarritoModule && window.CarritoModule.toggle) {
-                    const grupo = (grupos && grupos[currentGroupIndex]) ? grupos[currentGroupIndex] : {};
-                    const acabadoName = grupo.acabado_name || 'Único';
-                    const selMedida = divMedida ? divMedida.querySelector('select') : null;
-                    let medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
-
-                    const selOpt = divOpt ? divOpt.querySelector('select') : null;
-                    const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';
-                    const optLabel = product.optional_variant?.label || '';
-
-                    const activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaText);
-                    let itemPrice = (activeVariant && activeVariant.showPrice === true && activeVariant.price) ? activeVariant.price : null;
-
-                    const qtyValEl = document.getElementById('qty-value');
-                    let qtyVal = qtyValEl ? parseInt(qtyValEl.textContent || '1', 10) : 1;
-
-                    const activeCuts = window._activeCustomCutsList || customCutsList;
-                    const activeCajones = window._activeCajonesList || [];
-                    if ((product.isCajonProduct === true || product.id === '95') && Array.isArray(activeCajones) && activeCajones.length > 0) {
-                        const totalPieces = activeCajones.reduce((acc, c) => acc + (c.qty || 1), 0);
-                        const rawSub = activeCajones.reduce((acc, c) => acc + (c.subtotal || 0), 0);
-                        const rule = window.getBestDiscountRule ? window.getBestDiscountRule(product, totalPieces, activeVariant) : null;
-                        let netSubtotal = rawSub;
-                        if (rule && rule.discountPercent > 0) {
-                            netSubtotal = rawSub - Math.round(rawSub * (rule.discountPercent / 100));
-                        }
-                        const boxesSummary = activeCajones.map(c => `${c.qty}x ${c.reglaName || 'Cajón'} ${c.largo}x${c.ancho}x${c.alto}cm`).join(' | ');
-                        medidaText = `A Medida (${totalPieces} cajones: ${boxesSummary})`;
-                        itemPrice = Math.round(netSubtotal / totalPieces);
-                        qtyVal = totalPieces;
-                    } else if ((product.isCustomCutting === true || product.id === '69') && Array.isArray(activeCuts) && activeCuts.length > 0) {
-                        const totalPieces = activeCuts.reduce((acc, c) => acc + (c.qty || 1), 0);
-                        let netSubtotal = 0;
-                        activeCuts.forEach(c => {
-                            let cSub = c.subtotal || 0;
-                            const rule = window.getBestDiscountRule ? window.getBestDiscountRule(product, c.qty || 1, activeVariant) : null;
-                            if (rule) {
-                                if (rule.discountPercent !== undefined && rule.discountPercent > 0) {
-                                    cSub = cSub * (1 - rule.discountPercent / 100);
-                                } else if (rule.discountValue !== undefined && rule.discountValue > 0) {
-                                    const minU = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
-                                    cSub = Math.max(0, cSub - (Math.floor((c.qty || 1) / minU) * rule.discountValue));
-                                }
-                            }
-                            netSubtotal += cSub;
-                        });
-                        const cutsSummary = activeCuts.map(c => `${c.qty}x ${c.largo}x${c.ancho}cm (${c.material} ${c.espesor})`).join(' | ');
-                        medidaText = `Despiece (${totalPieces} piezas: ${cutsSummary})`;
-                        itemPrice = Math.round(netSubtotal / totalPieces);
-                        qtyVal = totalPieces;
-                    } else if (itemPrice !== null) {
-                        // Producto estándar: evaluar descuentos por cantidad/volumen o descuento directo
-                        const rule = window.getBestDiscountRule ? window.getBestDiscountRule(product, qtyVal, activeVariant) : null;
-                        if (rule) {
-                            if (rule.discountPercent !== undefined && Number(rule.discountPercent) > 0) {
-                                itemPrice = Math.round(itemPrice * (1 - Number(rule.discountPercent) / 100));
-                            } else if (rule.discountValue !== undefined && Number(rule.discountValue) > 0) {
-                                const minU = rule.minQty !== undefined ? rule.minQty : rule.minUnits;
-                                const totalDisc = Math.floor(qtyVal / minU) * rule.discountValue;
-                                itemPrice = Math.max(0, itemPrice - Math.round(totalDisc / qtyVal));
-                            }
-                        } else if (product.discountPercent && Number(product.discountPercent) > 0) {
-                            itemPrice = Math.round(itemPrice * (1 - Number(product.discountPercent) / 100));
-                        }
-                    }
-
-                    window.CarritoModule.toggle(product, acabadoName, categoryName, medidaText, optText, optLabel, itemPrice, qtyVal);
-                    updateFavState();
-                }
-            };
+            btnStickyCart.onclick = executeAddToCart;
         }
 
         // Conectar botones informativos (Formas de Pago, Envíos y Calidad)

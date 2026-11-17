@@ -223,9 +223,13 @@
                     priceDisplay.style.textAlign = 'right';
                     priceDisplay.innerHTML = `<span style="font-size:0.9rem; color:#64748B; font-weight:500;">Precio de Alquiler:</span> <span style="font-size:1.6rem; font-weight:800; color:var(--primary-color);">${product.price}</span>`;
                     if (rowEl) rowEl.style.display = 'flex';
+                    const stickyPriceEl = document.getElementById('sticky-bar-price');
+                    if (stickyPriceEl) stickyPriceEl.textContent = product.price;
                 } else {
                     priceDisplay.style.display = 'none';
                     if (rowEl) rowEl.style.display = 'none';
+                    const stickyPriceEl = document.getElementById('sticky-bar-price');
+                    if (stickyPriceEl) stickyPriceEl.textContent = 'A consultar';
                 }
             } else {
                 let activeVariant = (grupo.medidas_variants || []).find(m => m.hidden !== true && (m.medida || '').trim() === medidaName);
@@ -314,13 +318,15 @@
                         }
                     }
 
+                    let finalCalculatedStickyPrice = '';
                     if (totalDiscountAmount > 0) {
                         const originalTotalPrice = effectiveSubtotal;
                         const totalPrice = originalTotalPrice - totalDiscountAmount;
                         const formattedOriginalPrice = formatter.format(originalTotalPrice);
                         const formattedTotalPrice = formatter.format(totalPrice);
+                        finalCalculatedStickyPrice = formattedTotalPrice;
                         const effectivePct = Math.round((totalDiscountAmount / originalTotalPrice) * 100);
-                        const badgeText = effectivePct > 0 ? `${effectivePct}% OFF` : `-$${formatter.format(totalDiscountAmount).replace('$', '').trim()}`;
+                        const badgeText = effectivePct > 0 ? `${effectivePct}% OFF` : `-\$${formatter.format(totalDiscountAmount).replace('$', '').trim()}`;
                         
                         priceDisplay.innerHTML = `
                             <div style="display: flex; flex-direction: column; align-items: flex-end;">
@@ -342,18 +348,25 @@
                         `;
                     } else {
                         const formattedPrice = formatter.format(effectiveSubtotal);
-                        const stickyPriceEl2 = document.getElementById('sticky-bar-price');
-                        if (stickyPriceEl2) stickyPriceEl2.textContent = formattedPrice;
+                        finalCalculatedStickyPrice = formattedPrice;
                         priceDisplay.innerHTML = `
                             <span style="font-size:1.65rem; font-weight:900; color:#c0510a; line-height: 1.2;">${formattedPrice}</span>
                             <div class="price-info-wrapper" style="position: relative; display: inline-flex; align-items: center;">
                                 <span class="material-symbols-outlined price-info-icon" style="font-size: 20px; color: #94A3B8; cursor: pointer; user-select: none; transition: color 0.2s; display: flex; align-items: center; justify-content: center; padding: 4px;">help_outline</span>
                                 <div class="price-tooltip" style="display: none; position: absolute; bottom: 125%; right: 0; width: 250px; background: #1E293B; color: #FFFFFF; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.78rem; line-height: 1.4; font-weight: 500; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; box-sizing: border-box;">
-                                    Precio en efectivo/transferencia para retirar por el taller (no incluye impuestos ni envío).
-                                    <div style="position: absolute; top: 100%; right: 8px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid #1E293B;"></div>
+                                            Precio en efectivo/transferencia para retirar por el taller (no incluye impuestos ni envío).
+                                            <div style="position: absolute; top: 100%; right: 8px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid #1E293B;"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         `;
+                    }
+
+                    // Sincronizar SIEMPRE el precio con la barra de compra rápida móvil
+                    const stickyPriceEl = document.getElementById('sticky-bar-price');
+                    if (stickyPriceEl && finalCalculatedStickyPrice) {
+                        stickyPriceEl.textContent = finalCalculatedStickyPrice;
                     }
 
                     // Banner de descuentos por volumen
@@ -448,6 +461,8 @@
                             💬 Consultar precio
                         </span>
                     `;
+                    const stickyPriceEl3 = document.getElementById('sticky-bar-price');
+                    if (stickyPriceEl3) stickyPriceEl3.textContent = 'A consultar';
                 }
             }
         }

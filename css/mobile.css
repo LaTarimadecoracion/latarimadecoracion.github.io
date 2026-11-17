@@ -15,10 +15,10 @@
    sin el contenedor gris/recuadro exterior pesado que creaba tarjetas anidadas.
    ============================================================================= */
 
-/* Vista de producto general: fondo blanco continuo, sin padding exterior artificial */
+/* Vista de producto general: fondo blanco continuo con padding inferior que despeja la barra de compra */
 #view-product-detail.detail-view,
 #view-offer-detail.detail-view {
-    padding: 0 0 3rem 0 !important;
+    padding: 0 0 calc(130px + env(safe-area-inset-bottom, 0px)) 0 !important;
     background: #ffffff !important;
 }
 
@@ -344,22 +344,34 @@
 
 /* 5.5. Barra Fija de Compra Rápida en Celular (Sticky Buy Bar) */
 @media (max-width: 899.98px) {
+    /* Ocultar botones superiores de Comprar Ya y Carrito en móvil para usar exclusivamente la barra fija */
+    #view-product-detail #detail-actions-container {
+        display: none !important;
+    }
+
+    /* Ocultar botones flotantes (FABs) en la vista de detalle para no interferir ni tapar la botonera */
+    body:has(#view-product-detail.active) .tracking-fab,
+    body:has(#view-product-detail.active) #btn-tracking-fab,
+    body:has(#view-product-detail.active) .assistant-fab,
+    body:has(#view-product-detail.active) #lt-speaker-btn {
+        display: none !important;
+    }
+
     .product-sticky-buy-bar {
         position: fixed;
         bottom: calc(56px + env(safe-area-inset-bottom, 0px));
         left: 0;
         right: 0;
         height: 60px;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-top: 1px solid rgba(0, 0, 0, 0.08);
-        box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
+        background: #ffffff;
+        border-top: 1px solid #e2e8f0;
+        border-bottom: 1.5px solid #cbd5e1;
+        box-shadow: 0 -5px 16px rgba(15, 23, 42, 0.05), 0 5px 14px rgba(15, 23, 42, 0.12);
         display: none;
         align-items: center;
         justify-content: space-between;
         padding: 0 1rem;
-        z-index: 995;
+        z-index: 1005;
         box-sizing: border-box;
     }
 
@@ -383,7 +395,7 @@
     }
 
     .sticky-buy-price {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
         font-weight: 900;
         color: #0f172a;
         line-height: 1.2;
@@ -407,7 +419,12 @@
         justify-content: center;
         cursor: pointer;
         padding: 0;
+        touch-action: manipulation;
         -webkit-tap-highlight-color: transparent;
+        transition: transform 0.15s ease, background 0.15s ease;
+    }
+    .btn-sticky-cart * {
+        pointer-events: none;
     }
     .btn-sticky-cart:active {
         background: #dcfce7;
@@ -416,12 +433,12 @@
 
     .btn-sticky-buy {
         height: 44px;
-        padding: 0 1.2rem;
+        padding: 0 1.25rem;
         border-radius: 12px;
         background: linear-gradient(135deg, #059669 0%, #10b981 100%);
         color: #ffffff;
         font-weight: 900;
-        font-size: 0.92rem;
+        font-size: 0.95rem;
         border: none;
         display: flex;
         align-items: center;
@@ -429,11 +446,15 @@
         box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
         cursor: pointer;
         letter-spacing: 0.3px;
+        touch-action: manipulation;
         -webkit-tap-highlight-color: transparent;
+        transition: transform 0.15s ease, filter 0.15s ease;
+    }
+    .btn-sticky-buy * {
+        pointer-events: none;
     }
     .btn-sticky-buy:active {
         transform: scale(0.97);
         filter: brightness(0.95);
     }
 }
-
