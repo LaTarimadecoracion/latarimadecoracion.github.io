@@ -553,6 +553,7 @@
 /* Grillas auto-fill dinámicas estilo Mercado Libre / Amazon */
 .product-feed,
 .category-feed-list,
+.catalog-list.view-cards,
 #catalog-cards-grid,
 .catalog-cards-grid {
     display: grid !important;
@@ -567,6 +568,7 @@
     }
     .product-feed,
     .category-feed-list,
+    .catalog-list.view-cards,
     #catalog-cards-grid,
     .catalog-cards-grid {
         grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
@@ -581,6 +583,7 @@
     }
     .product-feed,
     .category-feed-list,
+    .catalog-list.view-cards,
     #catalog-cards-grid,
     .catalog-cards-grid {
         grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
@@ -601,3 +604,182 @@
     transform: translateY(-3px) !important;
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10) !important;
 }
+
+/* =============================================================================
+   MERCADO LIBRE STYLE BUY BOX PARA DETALLE DE PRODUCTO EN DESKTOP (>= 900px)
+   ============================================================================= */
+@media (min-width: 900px) {
+    /* 1. Ancho máximo y proporción de la vista de producto en PC */
+    #view-product-detail.detail-view {
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding: 1.5rem var(--gutter, 1.5rem) 4rem !important;
+    }
+
+    #view-product-detail .detail-main-grid {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1.25fr) minmax(360px, 420px) !important;
+        column-gap: 2.5rem !important;
+        align-items: start !important;
+    }
+
+    /* Galería de fotos con altura balanceada en PC */
+    #view-product-detail .detail-img-container {
+        max-height: 480px !important;
+        aspect-ratio: 3 / 2 !important;
+        object-fit: cover !important;
+    }
+
+    /* 2. Columna de compra flotante / sticky */
+    #view-product-detail .detail-content {
+        position: sticky !important;
+        top: 85px !important;
+        z-index: 20;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+
+    /* 3. Tarjeta de Compra Unificada Mercado Libre */
+    #view-product-detail #detail-pricing-box {
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 16px !important;
+        padding: 1.4rem 1.5rem !important;
+        margin-bottom: 0 !important;
+        box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    /* Desenvolver fila horizontal para ordenar verticalmente sin espacios vacíos */
+    #view-product-detail #detail-pricing-box > div:first-child {
+        display: contents !important;
+    }
+
+    /* 3.1. Precio en Grande Arriba a la Izquierda */
+    #view-product-detail #detail-price-display {
+        order: 1 !important;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: baseline !important;
+        text-align: left !important;
+        gap: 8px !important;
+        margin: 0 !important;
+    }
+
+    #view-product-detail #detail-price-display span {
+        font-size: 2.2rem !important;
+        font-weight: 900 !important;
+        color: #0f172a !important;
+        letter-spacing: -0.5px !important;
+        line-height: 1.1 !important;
+    }
+
+    #view-product-detail #detail-price-display .price-info-wrapper {
+        align-self: center !important;
+    }
+
+    /* 3.2. Banner de descuento por volumen si aplica */
+    #view-product-detail #detail-qty-discount-banner {
+        order: 2 !important;
+        margin-top: -4px !important;
+    }
+
+    /* 3.3. Fila de Envío Destacada */
+    #view-product-detail #detail-shipping-best-price-badge {
+        order: 3 !important;
+        width: 100% !important;
+        margin-top: 0 !important;
+        padding: 10px 12px !important;
+        background: #f8fafc !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 10px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 3.4. Selector de Cantidad con Etiqueta Limpia */
+    #view-product-detail .qty-selector-wrapper {
+        order: 4 !important;
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        margin: 0 !important;
+        padding-top: 4px !important;
+    }
+
+    #view-product-detail .qty-selector-wrapper::before {
+        content: "Cantidad:" !important;
+        font-size: 0.88rem !important;
+        font-weight: 700 !important;
+        color: #334155 !important;
+    }
+
+    #view-product-detail .qty-controls {
+        background: #ffffff !important;
+        border: 1.5px solid #cbd5e1 !important;
+        border-radius: 10px !important;
+        padding: 3px 8px !important;
+    }
+
+    #view-product-detail .qty-selector-label {
+        display: none !important;
+    }
+
+    #view-product-detail .qty-selector-wrapper::after {
+        content: "(Stock disponible)" !important;
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+        color: #059669 !important;
+        margin-left: 2px !important;
+    }
+
+    /* 4. Botonera de Compra Ergonómica en Desktop */
+    #view-product-detail #detail-actions-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+        margin-bottom: 0 !important;
+    }
+
+    #view-product-detail #btn-buy-now-product {
+        height: 50px !important;
+        padding: 0 1.5rem !important;
+        border-radius: 12px !important;
+        font-size: 1.05rem !important;
+        font-weight: 900 !important;
+        background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+        box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3) !important;
+        transition: transform 0.15s ease, filter 0.15s ease !important;
+    }
+    #view-product-detail #btn-buy-now-product:hover {
+        transform: translateY(-1px) !important;
+        filter: brightness(1.04) !important;
+    }
+    #view-product-detail #btn-buy-now-product:active {
+        transform: translateY(0) !important;
+    }
+
+    #view-product-detail #btn-add-cart-product {
+        height: 48px !important;
+        padding: 0 1.5rem !important;
+        border-radius: 12px !important;
+        font-size: 0.96rem !important;
+        font-weight: 800 !important;
+        background: #f0fdf4 !important;
+        border: 1.5px solid #86efac !important;
+        color: #166534 !important;
+        transition: transform 0.15s ease, background 0.15s ease !important;
+    }
+    #view-product-detail #btn-add-cart-product:hover {
+        background: #dcfce7 !important;
+        transform: translateY(-1px) !important;
+    }
+    #view-product-detail #btn-add-cart-product:active {
+        transform: translateY(0) !important;
+    }
+}
+
