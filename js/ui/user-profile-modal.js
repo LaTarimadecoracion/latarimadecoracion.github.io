@@ -225,6 +225,8 @@
 
         // Estado interno de subvista: 'menu' | 'personal' | 'notifications'
         let currentSubView = options.initialSubView || 'menu';
+        let editingAddressId = null;
+        let isAddingAddress = false;
 
         function renderCurrentState() {
             const publicUser = (window.AdminAuth && typeof window.AdminAuth.getPublicUser === 'function')
@@ -234,6 +236,12 @@
             const currentData = (window.UserDataManager && typeof window.UserDataManager.get === 'function')
                 ? window.UserDataManager.get()
                 : {};
+
+            const savedAddresses = (window.UserDataManager && typeof window.UserDataManager.getAddresses === 'function')
+                ? window.UserDataManager.getAddresses()
+                : (Array.isArray(currentData.addresses) ? currentData.addresses : []);
+            const addressesCount = savedAddresses.length;
+            const addressesCountText = addressesCount > 0 ? `${addressesCount} ${addressesCount === 1 ? 'dirección' : 'direcciones'}` : '';
 
             const ordersList = (typeof window.getMyLocalOrders === 'function') ? window.getMyLocalOrders() : [];
             const ordersCount = ordersList.length;
@@ -308,6 +316,7 @@
                 menu: 'Mi Cuenta y Perfil',
                 personal: 'Mis Datos Personales',
                 contact: 'Mis Datos Personales',
+                addresses: 'Mis Direcciones',
                 notifications: 'Notificaciones y Avisos'
             };
 
@@ -315,6 +324,7 @@
                 menu: 'account_circle',
                 personal: 'person',
                 contact: 'person',
+                addresses: 'location_on',
                 notifications: 'notifications'
             };
 
@@ -428,6 +438,22 @@
                                 </div>
                             </button>
 
+                            <!-- 2.5 Mis Direcciones -->
+                            <button type="button" class="profile-menu-btn" id="btn-opt-addresses">
+                                <div class="profile-menu-btn-content">
+                                    <span class="material-symbols-outlined profile-menu-icon" style="color: #16a34a;">location_on</span>
+                                    <span class="profile-menu-title">Mis Direcciones</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    ${addressesCount > 0 ? `
+                                        <span style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; font-size: 0.72rem; font-weight: 800; padding: 2px 7px; border-radius: 6px;">
+                                            ${addressesCountText}
+                                        </span>
+                                    ` : ''}
+                                    <span class="material-symbols-outlined profile-menu-chevron">chevron_right</span>
+                                </div>
+                            </button>
+
                             <!-- 3. Mis Datos Personales (Contacto, Entrega y Facturación) -->
                             <button type="button" class="profile-menu-btn" id="btn-opt-personal">
                                 <div class="profile-menu-btn-content">
@@ -517,6 +543,12 @@
                             window.navigateToView('view-profile');
                         }
                     }, 180);
+                });
+
+                // 2.5 Ir a la página dedicada de Mis Direcciones
+                card.querySelector('#btn-opt-addresses')?.addEventListener('click', () => {
+                    onClose();
+                    if (window.navigateToView) window.navigateToView('view-addresses');
                 });
 
                 // 3. Entrar a Mis Datos Personales (Contacto, Entrega y Facturación)
@@ -640,9 +672,11 @@
 
                         <!-- SECCIÓN 1: DATOS PERSONALES Y CONTACTO -->
                         <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 1.15rem; display: flex; flex-direction: column; gap: 13px;">
-                            <div style="display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
                                 <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a;">person</span>
                                 <span style="font-size: 0.88rem; font-weight: 800; color: #0f172a;">Datos de Contacto</span>
+                                </div>
                             </div>
 
                             <div>
@@ -671,9 +705,15 @@
 
                         <!-- SECCIÓN 2: DIRECCIÓN DE ENTREGA Y ENVÍOS -->
                         <div style="background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 1.15rem; display: flex; flex-direction: column; gap: 13px;">
-                            <div style="display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
+                            <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
+                                <div style="display: flex; align-items: center; gap: 8px;">
                                 <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a;">location_on</span>
-                                <span style="font-size: 0.88rem; font-weight: 800; color: #0f172a;">Dirección de Entrega y Envíos</span>
+                                <span style="font-size: 0.88rem; font-weight: 800; color: #0f172a;">Dirección Principal de Entrega</span>
+                                </div>
+                                <button type="button" id="btn-goto-addresses" style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; font-size: 0.72rem; font-weight: 800; padding: 3px 8px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+                                    <span>Mis Direcciones (${savedAddresses.length}/5)</span>
+                                    <span class="material-symbols-outlined" style="font-size: 14px;">arrow_forward</span>
+                                </button>
                             </div>
 
                             <div>
@@ -797,6 +837,11 @@
                     renderCurrentState();
                 });
 
+                card.querySelector('#btn-goto-addresses')?.addEventListener('click', () => {
+                    onClose();
+                    if (window.navigateToView) window.navigateToView('view-addresses');
+                });
+
                 // Auto evaluar CP al escribir
                 const cpField = card.querySelector('#prof-zip');
                 const feedbackEl = card.querySelector('#prof-cp-feedback');
@@ -900,6 +945,387 @@
                     currentSubView = 'menu';
                     renderCurrentState();
                 });
+
+                return;
+            }
+
+
+            // =========================================================================
+            // VISTA 4: MIS DIRECCIONES DE ENTREGA (MÚLTIPLES HASTA 5 - PRIORIDAD DE ENVÍO)
+            // =========================================================================
+            if (currentSubView === 'addresses') {
+                const addrs = (window.UserDataManager && typeof window.UserDataManager.getAddresses === 'function')
+                    ? window.UserDataManager.getAddresses()
+                    : (Array.isArray(currentData.addresses) ? currentData.addresses : []);
+                
+                const editingAddr = editingAddressId ? addrs.find(a => String(a.id) === String(editingAddressId)) : null;
+                const isFormActive = isAddingAddress || Boolean(editingAddr);
+
+                card.innerHTML = `
+                    ${headerHTML}
+
+                    <div style="flex: 1; overflow-y: auto; padding: ${isModal ? '1rem 1.25rem' : '1rem 0'}; box-sizing: border-box; width: 100%; max-width: ${isModal ? '100%' : '650px'}; margin: 0 auto; display: flex; flex-direction: column; gap: 1.1rem; -webkit-overflow-scrolling: touch;">
+                        
+                        <!-- Barra para volver al Menú Principal -->
+                        <button type="button" id="btn-back-to-menu" class="profile-subview-back-bar">
+                            <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a;">arrow_back</span>
+                            <span style="font-size: 0.82rem; font-weight: 800; color: #0f172a;">Volver al Menú Principal</span>
+                        </button>
+
+                        <!-- Banner explicativo de prioridad de entrega -->
+                        <div style="background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%); border: 1.5px solid #86efac; border-radius: 14px; padding: 0.95rem 1.15rem; display: flex; align-items: flex-start; gap: 12px;">
+                            <div style="width: 38px; height: 38px; border-radius: 10px; background: #16a34a; color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 6px rgba(22, 163, 74, 0.25);">
+                                <span class="material-symbols-outlined" style="font-size: 22px;">local_shipping</span>
+                            </div>
+                            <div style="flex: 1; min-width: 0;">
+                                <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+                                    <span style="font-size: 0.88rem; font-weight: 900; color: #0f172a;">Tus Lugares de Entrega</span>
+                                    <span style="background: #ffffff; color: #15803d; border: 1px solid #bbf7d0; font-size: 0.72rem; font-weight: 800; padding: 2px 8px; border-radius: 999px;">
+                                        ${addrs.length} / 5 guardadas
+                                    </span>
+                                </div>
+                                <div style="font-size: 0.76rem; color: #334155; margin-top: 4px; line-height: 1.45;">
+                                    Guardá tus domicilios habituales (casa, trabajo u obra). La dirección <strong>predeterminada</strong> se usa con prioridad absoluta para calcular tus envíos en toda la tienda.
+                                </div>
+                            </div>
+                        </div>
+
+                        ${!isFormActive ? `
+                            <!-- LISTADO DE DIRECCIONES GUARDADAS -->
+                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                ${addrs.length === 0 ? `
+                                    <div style="background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 16px; padding: 2.5rem 1.5rem; text-align: center; color: #64748b;">
+                                        <span class="material-symbols-outlined" style="font-size: 44px; color: #cbd5e1; display: block; margin-bottom: 8px;">home_pin</span>
+                                        <div style="font-size: 0.95rem; font-weight: 800; color: #0f172a;">No tenés direcciones cargadas</div>
+                                        <div style="font-size: 0.78rem; color: #64748b; margin-top: 4px; max-width: 320px; margin-left: auto; margin-right: auto;">
+                                            Agregá tu dirección para calcular envíos más rápido y no tener que ingresarla en cada compra.
+                                        </div>
+                                    </div>
+                                ` : `
+                                    ${addrs.map((a, index) => {
+                                        const isDef = Boolean(a.isDefault);
+                                        const aliasEmoji = a.alias.toLowerCase().includes('casa') ? '🏠' :
+                                                           a.alias.toLowerCase().includes('trabajo') || a.alias.toLowerCase().includes('oficina') ? '💼' :
+                                                           a.alias.toLowerCase().includes('obra') ? '🏗️' :
+                                                           a.alias.toLowerCase().includes('taller') ? '🔨' : '📍';
+
+                                        return `
+                                            <div style="background: #ffffff; border: 1.5px solid ${isDef ? '#86efac' : '#e2e8f0'}; border-radius: 14px; padding: 1rem 1.15rem; box-shadow: ${isDef ? '0 4px 14px rgba(22, 163, 74, 0.08)' : '0 1px 3px rgba(0,0,0,0.02)'}; display: flex; flex-direction: column; gap: 8px; transition: all 0.2s;">
+                                                <!-- Cabecera de la tarjeta con Alias y Badge Predeterminada -->
+                                                <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+                                                    <div style="display: flex; align-items: center; gap: 6px;">
+                                                        <span style="font-size: 1.05rem;">${aliasEmoji}</span>
+                                                        <span style="font-size: 0.9rem; font-weight: 800; color: #0f172a;">${esc(a.alias || 'Dirección ' + (index + 1))}</span>
+                                                    </div>
+                                                    <div>
+                                                        ${isDef ? `
+                                                            <span style="background: #dcfce7; color: #15803d; border: 1px solid #86efac; font-size: 0.68rem; font-weight: 800; padding: 2px 8px; border-radius: 999px; display: inline-flex; align-items: center; gap: 4px;">
+                                                                <span class="material-symbols-outlined" style="font-size: 14px;">check_circle</span>
+                                                                <span>Principal / Prioritaria</span>
+                                                            </span>
+                                                        ` : `
+                                                            <button type="button" class="btn-set-default-addr" data-id="${esc(a.id)}" style="background: #f8fafc; color: #475569; border: 1px solid #cbd5e1; font-size: 0.72rem; font-weight: 700; padding: 3px 8px; border-radius: 6px; cursor: pointer; transition: all 0.15s;" onmouseenter="this.style.borderColor='#16a34a'; this.style.color='#16a34a';" onmouseleave="this.style.borderColor='#cbd5e1'; this.style.color='#475569';">
+                                                                ⭐ Usar como principal
+                                                            </button>
+                                                        `}
+                                                    </div>
+                                                </div>
+
+                                                <!-- Datos de la Dirección -->
+                                                <div style="font-size: 0.92rem; font-weight: 800; color: #0f172a;">
+                                                    ${esc(a.street)} ${a.depto ? `<span style="font-weight: 600; color: #64748b;">(${esc(a.depto)})</span>` : ''}
+                                                </div>
+                                                <div style="font-size: 0.8rem; color: #475569;">
+                                                    ${esc(a.city || '')}${a.province ? ', ' + esc(a.province) : ''} · <strong style="color: #0f172a;">CP ${esc(a.cp || '')}</strong>
+                                                </div>
+                                                ${a.notes ? `
+                                                    <div style="font-size: 0.74rem; color: #64748b; background: #f8fafc; padding: 4px 8px; border-radius: 6px; border: 1px solid #f1f5f9; display: flex; align-items: center; gap: 6px;">
+                                                        <span class="material-symbols-outlined" style="font-size: 15px; color: #94a3b8;">notes</span>
+                                                        <span>${esc(a.notes)}</span>
+                                                    </div>
+                                                ` : ''}
+
+                                                <!-- Acciones de edición y eliminación -->
+                                                <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 4px; padding-top: 6px; border-top: 1px dashed #f1f5f9;">
+                                                    <button type="button" class="btn-edit-addr" data-id="${esc(a.id)}" style="background: transparent; border: 1px solid #e2e8f0; color: #334155; font-size: 0.74rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; transition: all 0.15s;" onmouseenter="this.style.borderColor='#94a3b8';" onmouseleave="this.style.borderColor='#e2e8f0';">
+                                                        <span class="material-symbols-outlined" style="font-size: 15px;">edit</span>
+                                                        <span>Editar</span>
+                                                    </button>
+                                                    <button type="button" class="btn-del-addr" data-id="${esc(a.id)}" style="background: transparent; border: 1px solid #fee2e2; color: #dc2626; font-size: 0.74rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px; transition: all 0.15s;" onmouseenter="this.style.background='#fef2f2';" onmouseleave="this.style.background='transparent';">
+                                                        <span class="material-symbols-outlined" style="font-size: 15px;">delete</span>
+                                                        <span>Eliminar</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                `}
+                            </div>
+
+                            <!-- Botón o aviso para Agregar Nueva Dirección -->
+                            ${addrs.length < 5 ? `
+                                <button type="button" id="btn-open-add-addr" style="width: 100%; background: #ffffff; color: #16a34a; border: 2px dashed #86efac; border-radius: 14px; padding: 0.9rem; font-weight: 800; font-size: 0.88rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s;" onmouseenter="this.style.background='#f0fdf4';" onmouseleave="this.style.background='#ffffff';">
+                                    <span class="material-symbols-outlined" style="font-size: 20px;">add_location_alt</span>
+                                    <span>+ Agregar otra dirección (${addrs.length}/5)</span>
+                                </button>
+                            ` : `
+                                <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 0.85rem 1rem; font-size: 0.76rem; color: #92400e; text-align: center; font-weight: 700;">
+                                    ℹ️ Tenés guardado el máximo de 5 direcciones. Si querés agregar una nueva, editá o eliminá alguna existente.
+                                </div>
+                            `}
+                        ` : `
+                            <!-- FORMULARIO DE AGREGAR / EDITAR DIRECCIÓN -->
+                            <div style="background: #ffffff; border: 1.5px solid #86efac; border-radius: 16px; padding: 1.25rem; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 4px 16px rgba(22, 163, 74, 0.08);">
+                                <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <span class="material-symbols-outlined" style="font-size: 20px; color: #16a34a;">${editingAddr ? 'edit_location' : 'add_location'}</span>
+                                        <span style="font-size: 0.92rem; font-weight: 900; color: #0f172a;">${editingAddr ? 'Editar Dirección' : 'Nueva Dirección'}</span>
+                                    </div>
+                                    <button type="button" id="btn-cancel-addr-top" style="background: transparent; border: none; font-size: 0.76rem; font-weight: 800; color: #64748b; cursor: pointer;">Cancelar</button>
+                                </div>
+
+                                <!-- Alias / Identificador -->
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Nombre / Alias de la dirección *
+                                    </label>
+                                    <div style="display: flex; gap: 6px; margin-bottom: 6px; flex-wrap: wrap;">
+                                        ${['Casa', 'Trabajo', 'Obra', 'Taller', 'Otro'].map(tag => `
+                                            <button type="button" class="btn-addr-quick-tag" data-tag="${tag}" style="background: #f1f5f9; border: 1px solid #cbd5e1; border-radius: 999px; padding: 2px 9px; font-size: 0.72rem; font-weight: 700; color: #334155; cursor: pointer;">
+                                                ${tag}
+                                            </button>
+                                        `).join('')}
+                                    </div>
+                                    <input type="text" id="addr-input-alias" value="${esc(editingAddr ? editingAddr.alias : (addrs.length === 0 ? 'Casa' : ''))}" placeholder="Ej: Casa, Trabajo, Obra Hurlingham" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.6rem 0.8rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+
+                                <!-- Calle y Altura -->
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Calle y Altura (Número) *
+                                    </label>
+                                    <input type="text" id="addr-input-street" value="${esc(editingAddr ? editingAddr.street : '')}" placeholder="Ej: Av. Vergara 1234" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.6rem 0.8rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+
+                                <!-- Piso / Dpto / Timbre -->
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Piso / Dpto / Timbre / Lote (Opcional)
+                                    </label>
+                                    <input type="text" id="addr-input-depto" value="${esc(editingAddr ? (editingAddr.depto || '') : '')}" placeholder="Ej: 2do B / Timbre blanco" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.6rem 0.8rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+
+                                <!-- CP, Ciudad y Provincia -->
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px;">
+                                    <div>
+                                        <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                            Código Postal *
+                                        </label>
+                                        <input type="text" id="addr-input-cp" value="${esc(editingAddr ? editingAddr.cp : '')}" placeholder="Ej: 1686" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.6rem 0.8rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                    </div>
+                                    <div>
+                                        <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                            Ciudad / Localidad *
+                                        </label>
+                                        <input type="text" id="addr-input-city" value="${esc(editingAddr ? editingAddr.city : '')}" placeholder="Ej: Hurlingham" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.6rem 0.8rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                    </div>
+                                    <div>
+                                        <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                            Provincia *
+                                        </label>
+                                        <input type="text" id="addr-input-province" value="${esc(editingAddr ? editingAddr.province : '')}" placeholder="Ej: Buenos Aires" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.6rem 0.8rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                    </div>
+                                </div>
+
+                                <!-- Feedback CP -->
+                                <div id="addr-cp-feedback" style="display: none; font-size: 0.76rem; font-weight: 700; padding: 0.5rem 0.75rem; border-radius: 8px; border: 1px solid transparent;"></div>
+
+                                <!-- Indicaciones adicionales -->
+                                <div>
+                                    <label style="display: block; font-size: 0.72rem; font-weight: 800; color: #475569; margin-bottom: 4px; text-transform: uppercase;">
+                                        Indicaciones para el repartidor (Opcional)
+                                    </label>
+                                    <input type="text" id="addr-input-notes" value="${esc(editingAddr ? (editingAddr.notes || '') : '')}" placeholder="Ej: Casa de rejas negras, avisar por WhatsApp" style="width: 100%; box-sizing: border-box; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.6rem 0.8rem; font-size: 0.88rem; color: #0f172a; font-family: inherit; outline: none;">
+                                </div>
+
+                                <!-- Checkbox de Dirección Predeterminada -->
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; padding: 6px 0; user-select: none;">
+                                    <input type="checkbox" id="addr-input-is-default" ${(editingAddr ? editingAddr.isDefault : (addrs.length === 0)) ? 'checked' : ''} style="accent-color: #16a34a; width: 18px; height: 18px; cursor: pointer;">
+                                    <span style="font-size: 0.82rem; font-weight: 800; color: #0f172a;">Establecer como dirección principal de entrega</span>
+                                </label>
+
+                                <!-- Botones de Guardar / Cancelar Formulario -->
+                                <div style="display: flex; gap: 8px; margin-top: 6px; padding-top: 8px; border-top: 1px solid #f1f5f9;">
+                                    <button type="button" id="btn-save-addr-item" style="flex: 1; background: #16a34a; color: #ffffff; border: none; border-radius: 10px; padding: 0.75rem; font-size: 0.88rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);">
+                                        <span class="material-symbols-outlined" style="font-size: 18px;">save</span>
+                                        <span>${editingAddr ? 'Actualizar Dirección' : 'Guardar Dirección'}</span>
+                                    </button>
+                                    <button type="button" id="btn-cancel-addr-bottom" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 10px; padding: 0.75rem 1rem; font-size: 0.85rem; font-weight: 700; cursor: pointer;">
+                                        Cancelar
+                                    </button>
+                                </div>
+                            </div>
+                        `}
+
+                    </div>
+                `;
+
+                // Eventos de la Vista de Direcciones
+                const closeBtn = card.querySelector('#btn-close-user-profile');
+                if (closeBtn) closeBtn.onclick = onClose;
+
+                card.querySelector('#btn-back-to-menu')?.addEventListener('click', () => {
+                    isAddingAddress = false;
+                    editingAddressId = null;
+                    currentSubView = 'menu';
+                    renderCurrentState();
+                });
+
+                if (!isFormActive) {
+                    card.querySelector('#btn-open-add-addr')?.addEventListener('click', () => {
+                        isAddingAddress = true;
+                        editingAddressId = null;
+                        renderCurrentState();
+                    });
+
+                    card.querySelectorAll('.btn-set-default-addr').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            const id = btn.getAttribute('data-id');
+                            if (window.UserDataManager && typeof window.UserDataManager.setDefaultAddress === 'function') {
+                                window.UserDataManager.setDefaultAddress(id);
+                                if (typeof window.showToast === 'function') window.showToast('⭐ Dirección principal actualizada');
+                                renderCurrentState();
+                            }
+                        });
+                    });
+
+                    card.querySelectorAll('.btn-edit-addr').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            editingAddressId = btn.getAttribute('data-id');
+                            isAddingAddress = false;
+                            renderCurrentState();
+                        });
+                    });
+
+                    card.querySelectorAll('.btn-del-addr').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            const id = btn.getAttribute('data-id');
+                            if (confirm('¿Eliminar esta dirección de entrega?')) {
+                                if (window.UserDataManager && typeof window.UserDataManager.deleteAddress === 'function') {
+                                    window.UserDataManager.deleteAddress(id);
+                                    if (typeof window.showToast === 'function') window.showToast('🗑️ Dirección eliminada');
+                                    renderCurrentState();
+                                }
+                            }
+                        });
+                    });
+                } else {
+                    // Acciones del formulario de edición/creación
+                    const cancelHandler = () => {
+                        isAddingAddress = false;
+                        editingAddressId = null;
+                        renderCurrentState();
+                    };
+                    card.querySelector('#btn-cancel-addr-top')?.addEventListener('click', cancelHandler);
+                    card.querySelector('#btn-cancel-addr-bottom')?.addEventListener('click', cancelHandler);
+
+                    card.querySelectorAll('.btn-addr-quick-tag').forEach(tagBtn => {
+                        tagBtn.addEventListener('click', () => {
+                            const tagVal = tagBtn.getAttribute('data-tag');
+                            const aliasInput = card.querySelector('#addr-input-alias');
+                            if (aliasInput) aliasInput.value = tagVal;
+                        });
+                    });
+
+                    const cpInput = card.querySelector('#addr-input-cp');
+                    const feedbackEl = card.querySelector('#addr-cp-feedback');
+                    const cityInput = card.querySelector('#addr-input-city');
+                    const provInput = card.querySelector('#addr-input-province');
+
+                    const evalAddrCP = () => {
+                        const val = (cpInput?.value || '').trim();
+                        if (!val || !feedbackEl) {
+                            if (feedbackEl) feedbackEl.style.display = 'none';
+                            return;
+                        }
+                        if (typeof window.lookupPostalCode === 'function') {
+                            const res = window.lookupPostalCode(val);
+                            feedbackEl.style.display = 'block';
+                            if (res && res.hasLocalMatch !== false) {
+                                feedbackEl.innerHTML = `✅ Cobertura local: <strong>${res.localidad} (${res.provincia})</strong>`;
+                                feedbackEl.style.color = '#15803d';
+                                feedbackEl.style.background = '#f0fdf4';
+                                feedbackEl.style.borderColor = '#86efac';
+                                if (res.localidad && cityInput && !cityInput.value) cityInput.value = res.localidad;
+                                if (res.provincia && provInput && !provInput.value) provInput.value = res.provincia;
+                            } else {
+                                feedbackEl.innerHTML = `📦 Envíos al interior vía Encomienda / Transporte`;
+                                feedbackEl.style.color = '#b45309';
+                                feedbackEl.style.background = '#fffbeb';
+                                feedbackEl.style.borderColor = '#fcd34d';
+                            }
+                        }
+                    };
+
+                    if (cpInput) {
+                        cpInput.oninput = evalAddrCP;
+                        if (cpInput.value) evalAddrCP();
+                    }
+
+                    // Guardar dirección
+                    card.querySelector('#btn-save-addr-item')?.addEventListener('click', () => {
+                        const aliasVal = (card.querySelector('#addr-input-alias')?.value || '').trim() || 'Mi Dirección';
+                        const streetVal = (card.querySelector('#addr-input-street')?.value || '').trim();
+                        const deptoVal = (card.querySelector('#addr-input-depto')?.value || '').trim();
+                        const cpVal = (card.querySelector('#addr-input-cp')?.value || '').trim();
+                        const cityVal = (card.querySelector('#addr-input-city')?.value || '').trim();
+                        const provVal = (card.querySelector('#addr-input-province')?.value || '').trim();
+                        const notesVal = (card.querySelector('#addr-input-notes')?.value || '').trim();
+                        const isDefVal = card.querySelector('#addr-input-is-default')?.checked || false;
+
+                        if (!streetVal) {
+                            alert('Por favor ingresá la Calle y Número de la dirección.');
+                            card.querySelector('#addr-input-street')?.focus();
+                            return;
+                        }
+                        if (!cpVal) {
+                            alert('Por favor ingresá el Código Postal.');
+                            card.querySelector('#addr-input-cp')?.focus();
+                            return;
+                        }
+                        if (!cityVal) {
+                            alert('Por favor ingresá la Ciudad o Localidad.');
+                            card.querySelector('#addr-input-city')?.focus();
+                            return;
+                        }
+
+                        if (window.UserDataManager && typeof window.UserDataManager.saveAddress === 'function') {
+                            const res = window.UserDataManager.saveAddress({
+                                id: editingAddressId || undefined,
+                                alias: aliasVal,
+                                street: streetVal,
+                                depto: deptoVal,
+                                cp: cpVal,
+                                city: cityVal,
+                                province: provVal,
+                                notes: notesVal,
+                                isDefault: isDefVal
+                            });
+
+                            if (res && res.success === false) {
+                                alert(res.message || 'No se pudo guardar la dirección');
+                                return;
+                            }
+                        }
+
+                        if (typeof window.showToast === 'function') {
+                            window.showToast(editingAddressId ? '✅ Dirección actualizada' : '✅ Dirección guardada');
+                        }
+                        isAddingAddress = false;
+                        editingAddressId = null;
+                        renderCurrentState();
+                    });
+                }
 
                 return;
             }
@@ -1172,6 +1598,498 @@
             onReopen: () => window.renderUserProfileView()
         });
 
+        container.appendChild(wrapper);
+    };
+
+    // =========================================================================
+    // PÁGINA DEDICADA: MIS DIRECCIONES (#view-addresses / ?view=mis-direcciones)
+    // =========================================================================
+    let pageEditingAddrId = null;
+
+    window.renderUserAddressesView = function(options = {}) {
+        const container = document.getElementById('addresses-view-content');
+        if (!container) return;
+
+        if (options && options.editId !== undefined) {
+            pageEditingAddrId = options.editId;
+        }
+
+        const addrs = (window.UserDataManager && typeof window.UserDataManager.getAddresses === 'function')
+            ? window.UserDataManager.getAddresses()
+            : [];
+
+        const editingAddr = pageEditingAddrId
+            ? addrs.find(a => String(a.id) === String(pageEditingAddrId))
+            : null;
+        if (pageEditingAddrId && !editingAddr) {
+            pageEditingAddrId = null;
+        }
+
+        const canShowForm = Boolean(editingAddr || addrs.length < 5);
+
+        container.innerHTML = `
+            <style>
+                .lt-addresses-page-wrap {
+                    max-width: 1120px;
+                    margin: 0 auto;
+                    padding: 1.35rem 1rem 3.5rem;
+                    box-sizing: border-box;
+                    font-family: var(--font-main, inherit);
+                }
+                .lt-addresses-page-grid {
+                    display: grid;
+                    grid-template-columns: 1.12fr 1fr;
+                    gap: 1.5rem;
+                    align-items: start;
+                }
+                .lt-addr-form-row-2 {
+                    display: grid;
+                    grid-template-columns: 1.6fr 1fr;
+                    gap: 12px;
+                }
+                .lt-addr-form-row-3 {
+                    display: grid;
+                    grid-template-columns: 0.9fr 1.2fr 1.1fr;
+                    gap: 12px;
+                }
+                .lt-addr-input {
+                    width: 100%;
+                    box-sizing: border-box;
+                    border: 1.5px solid #cbd5e1;
+                    border-radius: 12px;
+                    padding: 0.75rem 0.95rem;
+                    font-size: 0.94rem;
+                    color: #0f172a;
+                    background: #ffffff;
+                    font-family: inherit;
+                    outline: none;
+                    transition: border-color 0.2s, box-shadow 0.2s;
+                }
+                .lt-addr-input:focus {
+                    border-color: #16a34a;
+                    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.14);
+                }
+                @media (max-width: 899px) {
+                    .lt-addresses-page-grid {
+                        grid-template-columns: 1fr;
+                    }
+                    .lt-addr-form-row-2,
+                    .lt-addr-form-row-3 {
+                        grid-template-columns: 1fr;
+                    }
+                }
+            </style>
+
+            <div class="lt-addresses-page-wrap">
+                <!-- Barra Superior de Navegación y Título -->
+                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; padding: 1.15rem 1.35rem; box-shadow: 0 4px 16px rgba(15, 23, 42, 0.03);">
+                    <div style="display: flex; align-items: center; gap: 14px; min-width: 240px; flex: 1;">
+                        <div style="width: 48px; height: 48px; border-radius: 14px; background: linear-gradient(135deg, #16a34a, #15803d); color: #ffffff; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);">
+                            <span class="material-symbols-outlined" style="font-size: 26px;">location_on</span>
+                        </div>
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                <h2 style="margin: 0; font-size: 1.4rem; font-weight: 900; color: #0f172a;">Mis Direcciones</h2>
+                                <span style="background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; font-size: 0.75rem; font-weight: 800; padding: 3px 10px; border-radius: 999px;">
+                                    ${addrs.length} de 5 guardadas
+                                </span>
+                            </div>
+                            <p style="margin: 4px 0 0 0; font-size: 0.85rem; color: #64748b; line-height: 1.45;">
+                                Cargá hasta 5 domicilios de entrega. Tu dirección <strong>principal</strong> tiene prioridad para calcular el costo de envío en toda la tienda.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <button type="button" id="btn-page-addr-open-drawer" style="background: #f8fafc; color: #0f172a; border: 1.5px solid #cbd5e1; border-radius: 10px; padding: 0.6rem 1rem; font-size: 0.82rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-family: inherit;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">account_circle</span>
+                            <span>Mi Cuenta</span>
+                        </button>
+                        <button type="button" id="btn-page-addr-back-store" style="background: #0f172a; color: #ffffff; border: none; border-radius: 10px; padding: 0.6rem 1.05rem; font-size: 0.82rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; font-family: inherit;">
+                            <span class="material-symbols-outlined" style="font-size: 18px;">storefront</span>
+                            <span>Ir a la Tienda</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Grilla Principal de 2 Columnas (Formulario Amplio + Tarjetas Guardadas) -->
+                <div class="lt-addresses-page-grid">
+
+                    <!-- COLUMNA 1: FORMULARIO CÓMODO DE CARGA / EDICIÓN -->
+                    <div id="lt-page-addr-form-card" style="background: #ffffff; border: 1.5px solid ${editingAddr ? '#16a34a' : '#e2e8f0'}; border-radius: 20px; padding: 1.5rem; box-shadow: ${editingAddr ? '0 10px 28px rgba(22, 163, 74, 0.12)' : '0 6px 20px rgba(15, 23, 42, 0.04)'}; display: flex; flex-direction: column; gap: 1.15rem;">
+                        ${canShowForm ? `
+                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; border-bottom: 1px solid #f1f5f9; padding-bottom: 0.85rem; flex-wrap: wrap;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span class="material-symbols-outlined" style="font-size: 24px; color: #16a34a; background: #f0fdf4; padding: 8px; border-radius: 12px;">
+                                        ${editingAddr ? 'edit_location' : 'add_location_alt'}
+                                    </span>
+                                    <div>
+                                        <h3 style="margin: 0; font-size: 1.12rem; font-weight: 900; color: #0f172a;">
+                                            ${editingAddr ? `Editando: ${esc(editingAddr.alias || 'Dirección')}` : 'Agregar Nueva Dirección'}
+                                        </h3>
+                                        <span style="font-size: 0.78rem; color: #64748b;">
+                                            ${editingAddr ? 'Modificá los datos y guardá los cambios' : 'Completá los datos del domicilio donde querés recibir tu pedido'}
+                                        </span>
+                                    </div>
+                                </div>
+                                ${editingAddr ? `
+                                    <button type="button" id="btn-page-cancel-edit-top" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; border-radius: 8px; padding: 6px 12px; font-size: 0.76rem; font-weight: 800; cursor: pointer;">
+                                        Cancelar edición
+                                    </button>
+                                ` : ''}
+                            </div>
+
+                            <!-- 1. Alias / Identificador -->
+                            <div>
+                                <label style="display: block; font-size: 0.76rem; font-weight: 800; color: #334155; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px;">
+                                    1. Nombre o Alias para identificarla *
+                                </label>
+                                <div style="display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap;">
+                                    ${[
+                                        { label: 'Casa', icon: '🏠' },
+                                        { label: 'Trabajo', icon: '💼' },
+                                        { label: 'Obra', icon: '🏗️' },
+                                        { label: 'Taller', icon: '🔨' },
+                                        { label: 'Otro', icon: '📍' }
+                                    ].map(t => `
+                                        <button type="button" class="btn-page-addr-tag" data-tag="${t.label}" style="background: #f8fafc; border: 1.5px solid #cbd5e1; border-radius: 999px; padding: 6px 14px; font-size: 0.8rem; font-weight: 800; color: #0f172a; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; transition: all 0.15s; font-family: inherit;">
+                                            <span>${t.icon}</span>
+                                            <span>${t.label}</span>
+                                        </button>
+                                    `).join('')}
+                                </div>
+                                <input type="text" id="page-addr-alias" class="lt-addr-input" value="${esc(editingAddr ? editingAddr.alias : (addrs.length === 0 ? 'Casa' : ''))}" placeholder="Ej: Casa, Trabajo, Obra Hurlingham, Depósito...">
+                            </div>
+
+                            <!-- 2. Calle y Altura + Piso / Dpto -->
+                            <div class="lt-addr-form-row-2">
+                                <div>
+                                    <label style="display: block; font-size: 0.76rem; font-weight: 800; color: #334155; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px;">
+                                        2. Calle y Altura (Número) *
+                                    </label>
+                                    <input type="text" id="page-addr-street" class="lt-addr-input" value="${esc(editingAddr ? editingAddr.street : '')}" placeholder="Ej: Av. Vergara 1234">
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.76rem; font-weight: 800; color: #334155; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px;">
+                                        Piso / Dpto / Timbre / Lote
+                                    </label>
+                                    <input type="text" id="page-addr-depto" class="lt-addr-input" value="${esc(editingAddr ? (editingAddr.depto || '') : '')}" placeholder="Ej: Piso 2 B / Timbre blanco">
+                                </div>
+                            </div>
+
+                            <!-- 3. Código Postal, Ciudad y Provincia -->
+                            <div class="lt-addr-form-row-3">
+                                <div>
+                                    <label style="display: block; font-size: 0.76rem; font-weight: 800; color: #334155; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px;">
+                                        3. Código Postal *
+                                    </label>
+                                    <input type="text" id="page-addr-cp" class="lt-addr-input" inputmode="numeric" maxlength="8" value="${esc(editingAddr ? editingAddr.cp : '')}" placeholder="Ej: 1686">
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.76rem; font-weight: 800; color: #334155; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px;">
+                                        Ciudad / Localidad *
+                                    </label>
+                                    <input type="text" id="page-addr-city" class="lt-addr-input" value="${esc(editingAddr ? editingAddr.city : '')}" placeholder="Ej: Hurlingham">
+                                </div>
+                                <div>
+                                    <label style="display: block; font-size: 0.76rem; font-weight: 800; color: #334155; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px;">
+                                        Provincia *
+                                    </label>
+                                    <input type="text" id="page-addr-province" class="lt-addr-input" value="${esc(editingAddr ? editingAddr.province : '')}" placeholder="Ej: Buenos Aires">
+                                </div>
+                            </div>
+
+                            <!-- Feedback en vivo del Código Postal -->
+                            <div id="page-addr-cp-feedback" style="display: none; font-size: 0.82rem; font-weight: 700; padding: 0.65rem 0.9rem; border-radius: 12px; border: 1px solid transparent;"></div>
+
+                            <!-- 4. Indicaciones para el repartidor -->
+                            <div>
+                                <label style="display: block; font-size: 0.76rem; font-weight: 800; color: #334155; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.3px;">
+                                    4. Entre calles / Indicaciones para el repartidor (Opcional)
+                                </label>
+                                <input type="text" id="page-addr-notes" class="lt-addr-input" value="${esc(editingAddr ? (editingAddr.notes || '') : '')}" placeholder="Ej: Entre Lavalle y Corrientes, casa de rejas negras, avisar por WhatsApp al llegar">
+                            </div>
+
+                            <!-- 5. Prioridad de Entrega -->
+                            <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; background: #f0fdf4; border: 1.5px solid #86efac; border-radius: 14px; padding: 0.9rem 1rem; user-select: none;">
+                                <input type="checkbox" id="page-addr-is-default" ${(editingAddr ? editingAddr.isDefault : (addrs.length === 0 || !addrs.some(a => a.isDefault))) ? 'checked' : ''} style="accent-color: #16a34a; width: 20px; height: 20px; margin-top: 2px; cursor: pointer; flex-shrink: 0;">
+                                <div>
+                                    <div style="font-size: 0.88rem; font-weight: 900; color: #14532d;">
+                                        ⭐ Establecer como mi dirección principal de entrega
+                                    </div>
+                                    <div style="font-size: 0.76rem; color: #166534; margin-top: 2px; line-height: 1.4;">
+                                        El sistema usará esta dirección con prioridad absoluta para calcular costos de envío en productos, carrito y checkout.
+                                    </div>
+                                </div>
+                            </label>
+
+                            <!-- Botones de Guardar -->
+                            <div style="display: flex; gap: 10px; margin-top: 4px; flex-wrap: wrap;">
+                                <button type="button" id="btn-page-save-address" style="flex: 1; min-width: 200px; background: #16a34a; color: #ffffff; border: none; border-radius: 12px; padding: 0.9rem 1.4rem; font-size: 0.95rem; font-weight: 900; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 18px rgba(22, 163, 74, 0.28); font-family: inherit; transition: all 0.2s;">
+                                    <span class="material-symbols-outlined" style="font-size: 20px;">save</span>
+                                    <span>${editingAddr ? 'Guardar Cambios de la Dirección' : 'Guardar Dirección'}</span>
+                                </button>
+                                ${editingAddr ? `
+                                    <button type="button" id="btn-page-cancel-edit-bottom" style="background: #f1f5f9; color: #475569; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.9rem 1.25rem; font-size: 0.88rem; font-weight: 800; cursor: pointer; font-family: inherit;">
+                                        Cancelar
+                                    </button>
+                                ` : ''}
+                            </div>
+                        ` : `
+                            <div style="padding: 1.5rem 0.5rem; text-align: center;">
+                                <div style="width: 56px; height: 56px; border-radius: 50%; background: #fef3c7; color: #d97706; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 12px;">
+                                    <span class="material-symbols-outlined" style="font-size: 28px;">where_to_vote</span>
+                                </div>
+                                <h3 style="margin: 0 0 6px 0; font-size: 1.1rem; font-weight: 900; color: #0f172a;">
+                                    Tenés el máximo de 5 direcciones cargadas
+                                </h3>
+                                <p style="margin: 0; font-size: 0.86rem; color: #64748b; line-height: 1.5; max-width: 420px; margin-left: auto; margin-right: auto;">
+                                    Si necesitás modificar algún dato, presioná <strong>"Editar"</strong> en cualquiera de tus direcciones guardadas, o eliminá una para cargar otra nueva.
+                                </p>
+                            </div>
+                        `}
+                    </div>
+
+                    <!-- COLUMNA 2: LISTADO DE DIRECCIONES GUARDADAS -->
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 0 4px;">
+                            <h3 style="margin: 0; font-size: 1.05rem; font-weight: 900; color: #0f172a; display: flex; align-items: center; gap: 8px;">
+                                <span class="material-symbols-outlined" style="color: #16a34a; font-size: 22px;">bookmark_manager</span>
+                                <span>Tus Direcciones Guardadas (${addrs.length}/5)</span>
+                            </h3>
+                        </div>
+
+                        ${addrs.length === 0 ? `
+                            <div style="background: #ffffff; border: 1.5px dashed #cbd5e1; border-radius: 20px; padding: 3rem 1.5rem; text-align: center; color: #64748b;">
+                                <span class="material-symbols-outlined" style="font-size: 48px; color: #cbd5e1; display: block; margin-bottom: 10px;">home_pin</span>
+                                <div style="font-size: 1rem; font-weight: 800; color: #0f172a;">Todavía no tenés direcciones guardadas</div>
+                                <div style="font-size: 0.84rem; color: #64748b; margin-top: 6px; max-width: 340px; margin-left: auto; margin-right: auto; line-height: 1.5;">
+                                    Completá el formulario para guardar tu primera dirección. Quedará marcada automáticamente como prioritaria para calcular tus envíos.
+                                </div>
+                            </div>
+                        ` : addrs.map((a, index) => {
+                            const isDef = Boolean(a.isDefault);
+                            const isBeingEdited = Boolean(editingAddr && String(editingAddr.id) === String(a.id));
+                            const aliasLower = (a.alias || '').toLowerCase();
+                            const aliasEmoji = aliasLower.includes('casa') ? '🏠' :
+                                               aliasLower.includes('trabajo') || aliasLower.includes('oficina') ? '💼' :
+                                               aliasLower.includes('obra') ? '🏗️' :
+                                               aliasLower.includes('taller') ? '🔨' : '📍';
+
+                            return `
+                                <div style="background: #ffffff; border: 2px solid ${isBeingEdited ? '#2563eb' : (isDef ? '#16a34a' : '#e2e8f0')}; border-radius: 18px; padding: 1.25rem; box-shadow: ${isDef ? '0 8px 24px rgba(22, 163, 74, 0.1)' : '0 2px 8px rgba(15, 23, 42, 0.03)'}; display: flex; flex-direction: column; gap: 10px; transition: all 0.2s;">
+                                    <!-- Cabecera de la tarjeta -->
+                                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap;">
+                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                            <span style="font-size: 1.2rem;">${aliasEmoji}</span>
+                                            <span style="font-size: 1.02rem; font-weight: 900; color: #0f172a;">${esc(a.alias || 'Dirección ' + (index + 1))}</span>
+                                        </div>
+                                        <div>
+                                            ${isDef ? `
+                                                <span style="background: #dcfce7; color: #15803d; border: 1px solid #86efac; font-size: 0.74rem; font-weight: 900; padding: 4px 10px; border-radius: 999px; display: inline-flex; align-items: center; gap: 5px;">
+                                                    <span class="material-symbols-outlined" style="font-size: 16px;">check_circle</span>
+                                                    <span>Principal / Prioritaria</span>
+                                                </span>
+                                            ` : `
+                                                <button type="button" class="btn-page-set-default-addr" data-id="${esc(a.id)}" style="background: #f8fafc; color: #334155; border: 1.5px solid #cbd5e1; font-size: 0.76rem; font-weight: 800; padding: 5px 10px; border-radius: 8px; cursor: pointer; transition: all 0.15s; font-family: inherit;" onmouseenter="this.style.borderColor='#16a34a'; this.style.color='#16a34a';" onmouseleave="this.style.borderColor='#cbd5e1'; this.style.color='#334155';">
+                                                    ⭐ Usar como principal
+                                                </button>
+                                            `}
+                                        </div>
+                                    </div>
+
+                                    <!-- Detalle de Calle y Localidad -->
+                                    <div style="font-size: 1.02rem; font-weight: 800; color: #0f172a;">
+                                        ${esc(a.street)} ${a.depto ? `<span style="font-weight: 600; color: #64748b;">(${esc(a.depto)})</span>` : ''}
+                                    </div>
+                                    <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 0.86rem; color: #475569;">
+                                        <span>${esc(a.city || '')}${a.province ? ', ' + esc(a.province) : ''}</span>
+                                        <span style="background: #f1f5f9; color: #0f172a; font-weight: 800; font-size: 0.78rem; padding: 2px 8px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                                            CP ${esc(a.cp || '')}
+                                        </span>
+                                    </div>
+
+                                    ${a.notes ? `
+                                        <div style="font-size: 0.8rem; color: #475569; background: #f8fafc; padding: 8px 10px; border-radius: 10px; border: 1px solid #f1f5f9; display: flex; align-items: flex-start; gap: 6px;">
+                                            <span class="material-symbols-outlined" style="font-size: 16px; color: #64748b; margin-top: 1px;">notes</span>
+                                            <span>${esc(a.notes)}</span>
+                                        </div>
+                                    ` : ''}
+
+                                    <!-- Botones de Acción de la Tarjeta -->
+                                    <div style="display: flex; align-items: center; justify-content: flex-end; gap: 8px; margin-top: 4px; padding-top: 8px; border-top: 1px dashed #e2e8f0;">
+                                        <button type="button" class="btn-page-edit-addr" data-id="${esc(a.id)}" style="background: ${isBeingEdited ? '#eff6ff' : '#ffffff'}; border: 1.5px solid ${isBeingEdited ? '#3b82f6' : '#cbd5e1'}; color: ${isBeingEdited ? '#1d4ed8' : '#0f172a'}; font-size: 0.78rem; font-weight: 800; padding: 6px 12px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; font-family: inherit;">
+                                            <span class="material-symbols-outlined" style="font-size: 16px;">edit</span>
+                                            <span>${isBeingEdited ? 'Editando...' : 'Editar'}</span>
+                                        </button>
+                                        <button type="button" class="btn-page-del-addr" data-id="${esc(a.id)}" style="background: #ffffff; border: 1.5px solid #fecaca; color: #dc2626; font-size: 0.78rem; font-weight: 800; padding: 6px 12px; border-radius: 8px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; font-family: inherit;">
+                                            <span class="material-symbols-outlined" style="font-size: 16px;">delete</span>
+                                            <span>Eliminar</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+
+                </div>
+            </div>
+        `;
+
+        // Eventos de navegación superior
+        container.querySelector('#btn-page-addr-open-drawer')?.addEventListener('click', () => {
+            window.openUserProfileModal('menu');
+        });
+        container.querySelector('#btn-page-addr-back-store')?.addEventListener('click', () => {
+            if (window.navigateToView) window.navigateToView('view-home');
+        });
+
+        // Eventos del listado de tarjetas
+        container.querySelectorAll('.btn-page-set-default-addr').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.getAttribute('data-id');
+                if (window.UserDataManager && typeof window.UserDataManager.setDefaultAddress === 'function') {
+                    window.UserDataManager.setDefaultAddress(id);
+                    if (typeof window.showToast === 'function') window.showToast('⭐ Dirección principal actualizada para tus envíos');
+                    window.renderUserAddressesView();
+                }
+            });
+        });
+
+        container.querySelectorAll('.btn-page-edit-addr').forEach(btn => {
+            btn.addEventListener('click', () => {
+                pageEditingAddrId = btn.getAttribute('data-id');
+                window.renderUserAddressesView();
+                const formCard = document.getElementById('lt-page-addr-form-card');
+                if (formCard) {
+                    formCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        container.querySelectorAll('.btn-page-del-addr').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const id = btn.getAttribute('data-id');
+                if (confirm('¿Querés eliminar esta dirección de entrega?')) {
+                    if (window.UserDataManager && typeof window.UserDataManager.deleteAddress === 'function') {
+                        window.UserDataManager.deleteAddress(id);
+                        if (String(pageEditingAddrId) === String(id)) pageEditingAddrId = null;
+                        if (typeof window.showToast === 'function') window.showToast('🗑️ Dirección eliminada');
+                        window.renderUserAddressesView();
+                    }
+                }
+            });
+        });
+
+        // Eventos del formulario
+        const cancelEdit = () => {
+            pageEditingAddrId = null;
+            window.renderUserAddressesView();
+        };
+        container.querySelector('#btn-page-cancel-edit-top')?.addEventListener('click', cancelEdit);
+        container.querySelector('#btn-page-cancel-edit-bottom')?.addEventListener('click', cancelEdit);
+
+        container.querySelectorAll('.btn-page-addr-tag').forEach(tagBtn => {
+            tagBtn.addEventListener('click', () => {
+                const tagVal = tagBtn.getAttribute('data-tag');
+                const aliasInput = container.querySelector('#page-addr-alias');
+                if (aliasInput) {
+                    aliasInput.value = tagVal;
+                    aliasInput.focus();
+                }
+            });
+        });
+
+        const cpInput = container.querySelector('#page-addr-cp');
+        const feedbackEl = container.querySelector('#page-addr-cp-feedback');
+        const cityInput = container.querySelector('#page-addr-city');
+        const provInput = container.querySelector('#page-addr-province');
+
+        const evalPageCP = () => {
+            const val = (cpInput?.value || '').trim();
+            if (!val || !feedbackEl) {
+                if (feedbackEl) feedbackEl.style.display = 'none';
+                return;
+            }
+            if (typeof window.lookupPostalCode === 'function') {
+                const res = window.lookupPostalCode(val);
+                feedbackEl.style.display = 'block';
+                if (res && res.hasLocalMatch !== false) {
+                    feedbackEl.innerHTML = `✅ Cobertura local confirmada: <strong>${res.localidad} (${res.provincia})</strong>`;
+                    feedbackEl.style.color = '#15803d';
+                    feedbackEl.style.background = '#f0fdf4';
+                    feedbackEl.style.borderColor = '#86efac';
+                    if (res.localidad && cityInput && !cityInput.value) cityInput.value = res.localidad;
+                    if (res.provincia && provInput && !provInput.value) provInput.value = res.provincia;
+                } else {
+                    feedbackEl.innerHTML = `📦 Envíos al interior vía Encomienda / Transporte`;
+                    feedbackEl.style.color = '#b45309';
+                    feedbackEl.style.background = '#fffbeb';
+                    feedbackEl.style.borderColor = '#fcd34d';
+                }
+            }
+        };
+
+        if (cpInput) {
+            cpInput.oninput = evalPageCP;
+            if (cpInput.value) evalPageCP();
+        }
+
+        container.querySelector('#btn-page-save-address')?.addEventListener('click', () => {
+            const aliasVal = (container.querySelector('#page-addr-alias')?.value || '').trim() || 'Mi Dirección';
+            const streetVal = (container.querySelector('#page-addr-street')?.value || '').trim();
+            const deptoVal = (container.querySelector('#page-addr-depto')?.value || '').trim();
+            const cpVal = (container.querySelector('#page-addr-cp')?.value || '').trim();
+            const cityVal = (container.querySelector('#page-addr-city')?.value || '').trim();
+            const provVal = (container.querySelector('#page-addr-province')?.value || '').trim();
+            const notesVal = (container.querySelector('#page-addr-notes')?.value || '').trim();
+            const isDefVal = container.querySelector('#page-addr-is-default')?.checked || false;
+
+            if (!streetVal) {
+                alert('Por favor ingresá la Calle y Altura (Número).');
+                container.querySelector('#page-addr-street')?.focus();
+                return;
+            }
+            if (!cpVal) {
+                alert('Por favor ingresá el Código Postal.');
+                container.querySelector('#page-addr-cp')?.focus();
+                return;
+            }
+            if (!cityVal) {
+                alert('Por favor ingresá la Ciudad o Localidad.');
+                container.querySelector('#page-addr-city')?.focus();
+                return;
+            }
+
+            if (window.UserDataManager && typeof window.UserDataManager.saveAddress === 'function') {
+                const res = window.UserDataManager.saveAddress({
+                    id: pageEditingAddrId || undefined,
+                    alias: aliasVal,
+                    street: streetVal,
+                    depto: deptoVal,
+                    cp: cpVal,
+                    city: cityVal,
+                    province: provVal,
+                    notes: notesVal,
+                    isDefault: isDefVal
+                });
+
+                if (res && res.success === false) {
+                    alert(res.message || 'No se pudo guardar la dirección');
+                    return;
+                }
+            }
+
+            const wasEdit = Boolean(pageEditingAddrId);
+            pageEditingAddrId = null;
+            if (typeof window.showToast === 'function') {
+                window.showToast(wasEdit ? '✅ Dirección actualizada con éxito' : '✅ Dirección guardada con éxito');
+            }
+            window.renderUserAddressesView();
+        });
+    };
+
+    if (false) {
         container.appendChild(wrapper);
     };
 })();

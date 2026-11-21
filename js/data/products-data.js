@@ -169,455 +169,6 @@ const productsData = [
                 }
             },
             {
-                "id": "52",
-                "shortId": "3S",
-                "title": "Baranda: Desmontable - Estilo Montessori",
-                "description": "La Tarima - Carpintería\n\"Baranda de seguridad para cama Infantil o Adultos\" (Desmontable)\n\nMedidas: Alto x Largo: 45 x 110 cm:\n\nSi su medida no esta, puede enviarla por mensaje privado a la brevedad después de la compra.\n\n• La Publicaciones corresponde a 1 baranda al natural/rustica: Esto significa que no ira enmasillada, tampoco pintada o barnizada.\n• Súper Resistente, con un fuerte empalme a la cama.\n• La madera ya esta cepillada, lijada y con los bordes todos contorneados o redondeados, todo para que sea suave al tacto.\n\nUtilizó madera de pino de 1x3 pulgadas, muy resistente y duradera. No usó clavos ni remaches, hago las uniones con tornillos y cola vinílica para que aguanten de verdad.\n\nLEER ANTES DE COMPRAR\n\n• Agarre: Cuenta con una altura de 8cm (Ideal para un buen agarre y estabilidad), y el espesor debe elegir el que coincida con su cama, para esto recomendamos medir muy bien y luego hacer la compra.\n\n• Si necesita otro largo o alto, haga su consulta antes de comprar, ya que una vez realizada la compra estas medidas no serán modificadas.\n\nGarantía del vendedor: 30 días",
-                "image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
-                "acabados_groups": [
-                    {
-                        "acabado_name": "Natural",
-                        "description": "",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687066-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687226-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687407-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438687542-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "200 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": false
-                            },
-                            {
-                                "medida": "190 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 60000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": false
-                            },
-                            {
-                                "medida": "140 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-110x45-desmontable/up/MLAU244203090?pdp_filters=item_id:MLA1467804894",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 27000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-100x45-desmontable/up/MLAU3438278874?pdp_filters=item_id:MLA2371249298",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 27000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-100x45-desmontable/up/MLAU3438278874?pdp_filters=item_id:MLA2371249298",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 26000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-80x45-desmontable/up/MLAU233718554?pdp_filters=item_id:MLA1369581373",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 25000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "70 x 45 cm",
-                                "link": "https://articulo.mercadolibre.com.ar/MLA-1539322017-baranda-para-cama-montessori-70x45-desmontable-_JM",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 23999,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "60 x 45 cm",
-                                "link": "https://www.mercadolibre.com.ar/baranda-para-cama-montessori-60x45-desmontable/up/MLAU3438284744?pdp_filters=item_id:MLA1539346903",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 23000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Blanca",
-                        "description": "",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1780289632908-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780289632908-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541858852-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859223-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859334-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780541859445-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1780289633113-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438785271-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "70 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "60 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 45000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    },
-                    {
-                        "acabado_name": "Barnizado",
-                        "description": "",
-                        "cover_image": "img/barandas-para-cama/baranda-desmontable-montessori/1782438763672-imagen.webp",
-                        "images_list": [
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438763672-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438763850-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438764011-imagen.webp",
-                            "img/barandas-para-cama/baranda-desmontable-montessori/1782438764144-imagen.webp"
-                        ],
-                        "medidas_variants": [
-                            {
-                                "medida": "110 x 45 cm",
-                                "link": "",
-                                "default": true,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "100 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "90 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "80 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "70 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            },
-                            {
-                                "medida": "60 x 45 cm",
-                                "link": "",
-                                "default": false,
-                                "hidden": false,
-                                "linkLabel": "",
-                                "iconType": "local_shipping",
-                                "highlight": false,
-                                "price": 40000,
-                                "cost_price": 10000,
-                                "legend": "",
-                                "showPrice": true,
-                                "logisticaEnabled": true
-                            }
-                        ],
-                        "hidden": false
-                    }
-                ],
-                "tags": [
-                    "baranda",
-                    "barandas",
-                    "baranda desmontable",
-                    "baranda montessori",
-                    "baranda cama",
-                    "baranda madera",
-                    "baranda pino",
-                    "niños",
-                    "bebes",
-                    "proteccion",
-                    "seguridad",
-                    "anticaida",
-                    "infantil",
-                    "sommier",
-                    "cuna",
-                    "barrera",
-                    "barandilla",
-                    "barrera cama",
-                    "proteccion cama",
-                    "baranda anticaida",
-                    "seguridad infantil",
-                    "colecho",
-                    "anticaidas",
-                    "estilo montessori",
-                    "varanda",
-                    "varandas",
-                    "barada",
-                    "baradas",
-                    "proteccion cuna",
-                    "seguridad cuna",
-                    "defensa cuna",
-                    "barrera cuna",
-                    "baranda colecho",
-                    "baranda de seguridad",
-                    "reja de cama",
-                    "barandilla cuna",
-                    "barandilla cama",
-                    "barrera anticaida",
-                    "protector de cama",
-                    "baranda de pino",
-                    "baranda de madera",
-                    "anticaidas cuna",
-                    "protector cuna",
-                    "barandas de pino"
-                ],
-                "shippingConfig": {
-                    "logisticaEnabled": true,
-                    "logisticaCost": 0,
-                    "logisticaMaxUnits": 2,
-                    "fleteEnabled": true,
-                    "fleteCost": 0,
-                    "otroEnabled": false,
-                    "otroLabel": "A convenir",
-                    "otroCost": 0,
-                    "isFreeShipping": false
-                },
-                "paymentConfig": {
-                    "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                },
-                "quantityDiscounts": [],
-                "last_modified": 1792896707701,
-                "optional_variant": {
-                    "label": "Espesor del tirante (opcional)",
-                    "options": [
-                        "1.8 cm",
-                        "1.9 cm",
-                        "2 cm",
-                        "2.1 cm",
-                        "2.2 cm",
-                        "2.3 cm",
-                        "2.4 cm",
-                        "2.5 cm",
-                        "2.6 cm",
-                        "2.7 cm",
-                        "2.8 cm",
-                        "2.9 cm",
-                        "3 cm",
-                        "3.1 cm",
-                        "3.2 cm",
-                        "3.3 cm",
-                        "3.4 cm",
-                        "3.5 cm",
-                        "3.6 cm",
-                        "3.7 cm",
-                        "3.8 cm",
-                        "3.9 cm",
-                        "4 cm",
-                        "4.1 cm",
-                        "4.2 cm",
-                        "4.3 cm",
-                        "4.4 cm",
-                        "4.5 cm",
-                        "Otras medidas"
-                    ]
-                },
-                "primaryCatId": "Barandas",
-                "history": [],
-                "views": 17
-            },
-            {
                 "id": "53",
                 "title": "Baranda: Desmontable Clásica - Triple",
                 "description": "Seguridad y comodidad superior para la cama de los más chicos.",
@@ -13743,7 +13294,11 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": false
+                                "logisticaEnabled": false,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "190 x 45 cm",
@@ -13757,7 +13312,11 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": false
+                                "logisticaEnabled": false,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "140 x 45 cm",
@@ -13771,7 +13330,11 @@ const productsData = [
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "110 x 45 cm",
@@ -13781,11 +13344,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 27000,
+                                "price": 30000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -13795,11 +13362,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 27000,
+                                "price": 30000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -13809,11 +13380,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 26000,
+                                "price": 27000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -13823,11 +13398,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 25000,
+                                "price": 27000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -13837,11 +13416,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23999,
+                                "price": 27000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -13851,11 +13434,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 23000,
+                                "price": 27000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -13882,11 +13469,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45000,
+                                "price": 55000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -13896,11 +13487,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45000,
+                                "price": 55000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -13910,11 +13505,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45000,
+                                "price": 55000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -13924,11 +13523,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45000,
+                                "price": 55000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -13938,11 +13541,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45000,
+                                "price": 55000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -13952,11 +13559,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 45000,
+                                "price": 55000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -13980,11 +13591,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40000,
+                                "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "100 x 45 cm",
@@ -13994,11 +13609,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40000,
+                                "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "90 x 45 cm",
@@ -14008,11 +13627,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40000,
+                                "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "80 x 45 cm",
@@ -14022,11 +13645,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40000,
+                                "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "70 x 45 cm",
@@ -14036,11 +13663,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40000,
+                                "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             },
                             {
                                 "medida": "60 x 45 cm",
@@ -14050,11 +13681,15 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 40000,
+                                "price": 45000,
                                 "cost_price": 10000,
                                 "legend": "",
                                 "showPrice": true,
-                                "logisticaEnabled": true
+                                "logisticaEnabled": true,
+                                "material": "",
+                                "espesor": "",
+                                "armado": "",
+                                "extra": ""
                             }
                         ],
                         "hidden": false
@@ -14123,7 +13758,7 @@ const productsData = [
                     "creditEnabled": false
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1792896707701,
+                "last_modified": 1795223208558,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -14160,7 +13795,7 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "views": 17
+                "rubro": "carpinteria"
             },
             {
                 "id": "53",

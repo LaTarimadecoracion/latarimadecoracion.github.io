@@ -915,12 +915,35 @@ document.addEventListener('DOMContentLoaded', () => {
 (function() {
     window.UserDataManager = {
         get: function() {
-            let data = { avatar: '👤', name: '', phone: '', email: '', zipCode: '', address: '', locality: '', province: '', deliveryNotes: '', razonSocial: '', cuit: '', dirFiscal: '', provinciaFiscal: '', condIva: '', emailFiscal: '' };
+            let data = { 
+                avatar: '👤', 
+                name: '', 
+                phone: '', 
+                email: '', 
+                zipCode: '', 
+                address: '', 
+                locality: '', 
+                province: '', 
+                deliveryNotes: '', 
+                razonSocial: '', 
+                cuit: '', 
+                dirFiscal: '', 
+                provinciaFiscal: '', 
+                condIva: '', 
+                emailFiscal: '',
+                addresses: [] 
+            };
             
             // 1. Base primaria en userData
             try {
                 const raw = localStorage.getItem('userData');
-                if (raw) Object.assign(data, JSON.parse(raw));
+                if (raw) {
+                    const parsed = JSON.parse(raw);
+                    Object.assign(data, parsed);
+                    if (Array.isArray(parsed.addresses)) {
+                        data.addresses = parsed.addresses;
+                    }
+                }
             } catch(e) {}
 
             // 2. Respaldo en checkout data
@@ -941,6 +964,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (offersCp && !data.zipCode) data.zipCode = offersCp;
             } catch(e) {}
 
+            // 4. Si tiene dirección base pero no lista de direcciones, migrar como primera dirección
+            if (!Array.isArray(data.addresses) || data.addresses.length === 0) {
+                if ((data.address && data.address.trim()) || (data.zipCode && data.zipCode.trim())) {
+                    data.addresses = [{
+                        id: 'addr_default_init',
+                        alias: 'Principal',
+                        street: (data.address || '').trim(),
+                        depto: '',
+                        cp: (data.zipCode || '').trim(),
+                        city: (data.locality || '').trim(),
+                        province: (data.province || '').trim(),
+                        notes: (data.deliveryNotes || '').trim(),
+                        isDefault: true
+                    }];
+                } else {
+                    data.addresses = [];
+                }
+            }
+
             return data;
         },
 
@@ -948,6 +990,17 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!newData || typeof newData !== 'object') return;
             const current = this.get();
             const updated = Object.assign({}, current, newData);
+
+            // Asegurar integridad de addresses (máximo 5)
+            if (Array.isArray(updated.addresses)) {
+                if (updated.addresses.length > 5) {
+                    updated.addresses = updated.addresses.slice(0, 5);
+                }
+                // Si hay direcciones y ninguna está marcada como default, marcar la primera
+                if (updated.addresses.length > 0 && !updated.addresses.some(a => a.isDefault)) {
+                    updated.addresses[0].isDefault = true;
+                }
+            }
 
             try {
                 localStorage.setItem('userData', JSON.stringify(updated));
@@ -971,8 +1024,147 @@ document.addEventListener('DOMContentLoaded', () => {
             return updated;
         },
 
+        // Devuelve la lista completa de direcciones (hasta 5)
+        getAddresses: function() {
+            const d = this.get();
+            return Array.isArray(d.addresses) ? d.addresses : [];
+        },
+
+        // Devuelve la dirección de entrega prioritaria / predeterminada
+        getDefaultAddress: function() {
+            const addrs = this.getAddresses();
+            if (!addrs || addrs.length === 0) return null;
+            return addrs.find(a => a.isDefault) || addrs[0] || null;
+        },
+
+        // PRIORIDAD ABSOLUTA: El CP de la dirección de entrega activa manda sobre todo
         getZipCode: function() {
+            const def = this.getDefaultAddress();
+            if (def && (def.cp || '').trim()) {
+                return (def.cp || '').trim();
+            }
             return (this.get().zipCode || '').trim();
+        },
+
+        // Guarda o actualiza una dirección (Máx 5 direcciones)
+        saveAddress: function(addrData) {
+            if (!addrData || typeof addrData !== 'object') {
+                return { success: false, message: 'Datos de dirección inválidos' };
+            }
+            const current = this.get();
+            let addrs = Array.isArray(current.addresses) ? [...current.addresses] : [];
+
+            const isEdit = Boolean(addrData.id && addrs.some(a => String(a.id) === String(addrData.id)));
+            if (!isEdit && addrs.length >= 5) {
+                return { 
+                    success: false, 
+                    message: 'Límite máximo de 5 direcciones alcanzado. Editá o eliminá una para agregar otra.' 
+                };
+            }
+
+            const cleanId = addrData.id || ('addr_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6));
+            const shouldBeDefault = Boolean(addrData.isDefault || addrs.length === 0 || !addrs.some(a => a.isDefault));
+
+            const newEntry = {
+                id: cleanId,
+                alias: (addrData.alias || 'Mi Dirección').trim(),
+                street: (addrData.street || '').trim(),
+                depto: (addrData.depto || '').trim(),
+                cp: (addrData.cp || '').trim(),
+                city: (addrData.city || addrData.locality || '').trim(),
+                province: (addrData.province || '').trim(),
+                notes: (addrData.notes || addrData.deliveryNotes || '').trim(),
+                isDefault: shouldBeDefault
+            };
+
+            if (shouldBeDefault) {
+                addrs.forEach(a => { if (String(a.id) !== String(cleanId)) a.isDefault = false; });
+            }
+
+            if (isEdit) {
+                const idx = addrs.findIndex(a => String(a.id) === String(cleanId));
+                addrs[idx] = newEntry;
+            } else {
+                addrs.push(newEntry);
+            }
+
+            // Sincronizar campos prioritarios en userData si esta dirección es la predeterminada
+            const updatePayload = { addresses: addrs };
+            if (newEntry.isDefault) {
+                updatePayload.address = newEntry.street + (newEntry.depto ? ' ' + newEntry.depto : '');
+                updatePayload.zipCode = newEntry.cp;
+                updatePayload.locality = newEntry.city;
+                updatePayload.province = newEntry.province;
+                updatePayload.deliveryNotes = newEntry.notes;
+            }
+
+            const saved = this.save(updatePayload);
+            if (window.AdminAuth && typeof window.AdminAuth.saveClientProfileToCloud === 'function') {
+                window.AdminAuth.saveClientProfileToCloud(saved);
+            }
+
+            return { success: true, address: newEntry };
+        },
+
+        // Elimina una dirección por ID
+        deleteAddress: function(id) {
+            const current = this.get();
+            let addrs = Array.isArray(current.addresses) ? [...current.addresses] : [];
+            const target = addrs.find(a => String(a.id) === String(id));
+            if (!target) return false;
+
+            const wasDefault = Boolean(target.isDefault);
+            addrs = addrs.filter(a => String(a.id) !== String(id));
+
+            if (wasDefault && addrs.length > 0) {
+                addrs[0].isDefault = true;
+            }
+
+            const updatePayload = { addresses: addrs };
+            if (addrs.length > 0 && wasDefault) {
+                const def = addrs[0];
+                updatePayload.address = def.street + (def.depto ? ' ' + def.depto : '');
+                updatePayload.zipCode = def.cp;
+                updatePayload.locality = def.city;
+                updatePayload.province = def.province;
+                updatePayload.deliveryNotes = def.notes;
+            } else if (addrs.length === 0) {
+                updatePayload.address = '';
+                updatePayload.deliveryNotes = '';
+            }
+
+            const saved = this.save(updatePayload);
+            if (window.AdminAuth && typeof window.AdminAuth.saveClientProfileToCloud === 'function') {
+                window.AdminAuth.saveClientProfileToCloud(saved);
+            }
+            return true;
+        },
+
+        // Establece una dirección existente como la prioritaria / predeterminada
+        setDefaultAddress: function(id) {
+            const current = this.get();
+            let addrs = Array.isArray(current.addresses) ? [...current.addresses] : [];
+            const target = addrs.find(a => String(a.id) === String(id));
+            if (!target) return false;
+
+            addrs.forEach(a => {
+                a.isDefault = (String(a.id) === String(id));
+            });
+
+            const updatePayload = {
+                addresses: addrs,
+                address: target.street + (target.depto ? ' ' + target.depto : ''),
+                zipCode: target.cp,
+                locality: target.city,
+                province: target.province,
+                deliveryNotes: target.notes
+            };
+
+            const saved = this.save(updatePayload);
+            if (window.AdminAuth && typeof window.AdminAuth.saveClientProfileToCloud === 'function') {
+                window.AdminAuth.saveClientProfileToCloud(saved);
+            }
+            return true;
         },
 
         hasCompleteProfile: function() {

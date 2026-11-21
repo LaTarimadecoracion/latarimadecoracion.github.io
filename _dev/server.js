@@ -247,6 +247,7 @@ app.get(['/stock', '/mayorista', '/catalogo', '/musica', '/alquileres', '/admin'
 });
 
 // Serve static files from the current directory
+app.use('/FLUX', express.static(path.join(ROOT_DIR, '..', 'FLUX')));
 app.use(express.static(ROOT_DIR));
 
 const sanitizeFolderName = (name) => {

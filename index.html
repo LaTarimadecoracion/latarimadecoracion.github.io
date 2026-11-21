@@ -44,7 +44,7 @@
     <!-- CSS Base + Capas aisladas por dispositivo (Móvil vs Escritorio) -->
     <link rel="stylesheet" href="css/style.css?v=65">
     <link rel="stylesheet" href="css/mobile.css?v=7" media="(max-width: 899.98px)">
-    <link rel="stylesheet" href="css/desktop.css?v=14" media="(min-width: 900px)">
+    <link rel="stylesheet" href="css/desktop.css?v=15" media="(min-width: 900px)">
     <link rel="stylesheet" href="css/god-mode.css?v=1">
     
     
@@ -91,7 +91,7 @@
     <script src="js/ui/splash.js"></script>
 
     <!-- Cargador dinámico de fragmentos HTML (Partials) -->
-    <script src="js/modules/partials-loader.js?v=4"></script>
+    <script src="js/modules/partials-loader.js?v=6"></script>
 
     <!-- Banner de Modo Vacaciones -->
     <div id="vacation-top-banner" class="vacation-top-banner" style="display: none;">
@@ -493,6 +493,11 @@
             <div class="view-content" id="user-profile-view-content"></div>
         </section>
 
+        <!-- View: Mis Direcciones (Gestión de hasta 5 direcciones de entrega con prioridad de envío) -->
+        <section id="view-addresses" class="view">
+            <div class="view-content" id="addresses-view-content"></div>
+        </section>
+
         <!-- View: Mis Compras (Historial de Pedidos del Cliente) -->
         <section id="view-my-orders" class="view">
             <div class="view-content" id="my-orders-view-content"></div>
@@ -809,11 +814,11 @@
 
     <!-- Scripts Core Cliente (Admin, Widgets, Checkout, Seguimiento y Catálogo se cargan bajo demanda en partials-loader.js) -->
     <script src="js/ui/confetti-arg.js?v=2" defer></script>
-    <script src="js/ui/header-deco-arg.js?v=4" defer></script>
+    <script src="js/ui/header-deco-arg.js?v=5" defer></script>
     <script src="js/data/products-data.js?v=64" defer></script>
     <script src="js/data/offers-data.js?v=1" defer></script>
     <script src="js/data/shipping-config.js?v=1" defer></script>
-    <script src="js/data/data.js?v=12" defer></script>
+    <script src="js/data/data.js?v=13" defer></script>
     <script src="js/modules/shortener.js?v=11" defer></script>
     <script src="js/ui/ui-dom.js?v=2" defer></script>
     <script src="js/ui/ui-utils.js?v=1" defer></script>
@@ -821,26 +826,26 @@
     <!-- Firebase Authentication SDK (Compat) -->
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js" defer></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js" defer></script>
-    <script src="js/admin/admin-auth.js?v=7" defer></script>
+    <script src="js/admin/admin-auth.js?v=8" defer></script>
     <script src="js/modules/cost-guard.js?v=2" defer></script>
     <script src="js/modules/price-overlay.js?v=2" defer></script>
     <script src="js/admin/god-mode.js?v=1" defer></script>
-    <script src="js/ui/ui-navigation.js?v=11" defer></script>
+    <script src="js/ui/ui-navigation.js?v=12" defer></script>
     <script src="js/modules/notifications.js?v=5" defer></script>
     <script src="js/ui/desktop-header.js?v=10" defer></script>
-    <script src="js/ui/ui-offers.js?v=23" defer></script>
+    <script src="js/ui/ui-offers.js?v=24" defer></script>
     <script src="js/ui/catalog/catalog-utils.js?v=4" defer></script>
     <script src="js/ui/ui-search-feed.js?v=9" defer></script>
     <script src="js/modules/home-infinite-catalog.js?v=4" defer></script>
     <script src="js/ui/ui-home.js?v=7" defer></script>
     <script src="js/ui/catalog/catalog-shipping-calc.js?v=4" defer></script>
-    <script src="js/ui/catalog/catalog-actions.js?v=4" defer></script>
-    <script src="js/ui/catalog/catalog-gallery.js?v=1" defer></script>
+    <script src="js/ui/catalog/catalog-actions.js?v=6" defer></script>
+    <script src="js/ui/catalog/catalog-gallery.js?v=2" defer></script>
     <script src="js/ui/ui-catalog.js?v=30" defer></script>
     <script src="js/ui/ui-blocks.js?v=1" defer></script>
-    <script src="js/ui/cart-drawer.js?v=4" defer></script>
-    <script src="js/modules/carrito.js?v=16" defer></script>
-    <script src="js/modules/main.js?v=9" defer></script>
+    <script src="js/ui/cart-drawer.js?v=5" defer></script>
+    <script src="js/modules/carrito.js?v=17" defer></script>
+    <script src="js/modules/main.js?v=11" defer></script>
     <script src="js/modules/categorias.js?v=3" defer></script>
     <script src="js/ui/pwa-banner.js?v=2" defer></script>
     <script>

@@ -4,12 +4,17 @@
    Cualquier cambio aquí NO afecta en absoluto al modo Celular / Móvil.
    ============================================================================= */
 
-/* 1. Ocultar controles exclusivos móviles y la barra inferior en PC */
+/* 1. Ocultar controles exclusivos móviles, barra inferior y barra flotante en PC */
 .mobile-only {
     display: none !important;
 }
 
 .bottom-nav {
+    display: none !important;
+}
+
+#product-sticky-buy-bar,
+.product-sticky-buy-bar {
     display: none !important;
 }
 
@@ -20,6 +25,27 @@
 /* Liberar el espacio inferior reservado en móviles para .bottom-nav */
 .view {
     padding-bottom: 2rem;
+}
+
+#app-container {
+    padding-bottom: 2rem !important;
+}
+
+/* Quitar tope de 300px heredado en botones de escritorio para que llenen su columna */
+#view-product-detail #detail-actions-container button,
+#view-product-detail #detail-pricing-box button,
+.detail-actions button,
+.desktop-icon-btn,
+.desktop-location-btn,
+.cart-drawer-item-remove,
+.btn-cart-drawer-checkout,
+.btn-cart-drawer-continue,
+#offer-payment-modal-overlay button {
+    max-width: none;
+}
+.desktop-icon-btn,
+.desktop-location-btn {
+    width: auto !important;
 }
 
 /* =============================================================================
@@ -600,4 +626,26 @@
 .vertical-product-card:hover {
     transform: translateY(-3px) !important;
     box-shadow: 0 10px 24px rgba(15, 23, 42, 0.10) !important;
+}
+
+
+/* ==========================================================================
+   MODAL DE CHECKOUT CENTRADO COMO TARJETA EN PC
+   ========================================================================== */
+#offer-payment-modal-overlay {
+    padding: 2rem 1.5rem !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(15, 23, 42, 0.65) !important;
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+}
+#offer-payment-modal-overlay > div {
+    max-width: 720px !important;
+    max-height: 90vh !important;
+    height: auto !important;
+    border-radius: 20px !important;
+    box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.4) !important;
+    margin: 0 auto !important;
+    overflow: hidden !important;
 }

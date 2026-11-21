@@ -269,6 +269,9 @@
                 justify-content: center;
                 transition: color 0.15s;
                 -webkit-tap-highlight-color: transparent;
+                width: auto !important;
+                max-width: none !important;
+                flex-shrink: 0 !important;
             }
             .cart-drawer-item-remove:hover {
                 color: #ef4444;
@@ -350,6 +353,9 @@
                 margin-top: 6px;
             }
             .btn-cart-drawer-checkout {
+                width: 100% !important;
+                max-width: none !important;
+                box-sizing: border-box !important;
                 background: linear-gradient(135deg, #15803d 0%, #16a34a 100%);
                 color: #ffffff;
                 border: none;
@@ -376,6 +382,9 @@
                 filter: brightness(0.95);
             }
             .btn-cart-drawer-continue {
+                width: 100% !important;
+                max-width: none !important;
+                box-sizing: border-box !important;
                 background: #ffffff;
                 color: #334155;
                 border: 1.5px solid #cbd5e1;
@@ -447,9 +456,9 @@
                 </button>
             </div>
 
-            <div class="cart-drawer-promo-banner">
+            <div class="cart-drawer-promo-banner" id="cart-drawer-promo-banner">
                 <span class="material-symbols-outlined" style="font-size: 18px; color: #16a34a;">percent</span>
-                <span>¡10% DE DESCUENTO pagando por Transferencia Directa!</span>
+                <span id="cart-drawer-promo-text">¡Sumá descuento EXTRA acumulable pagando por Transferencia Directa!</span>
             </div>
 
             <div class="cart-drawer-body" id="cart-drawer-items">
@@ -462,8 +471,8 @@
                         <span>Subtotal de Lista:</span>
                         <span id="cart-drawer-subtotal" style="font-weight: 700; color: #0f172a;">$0</span>
                     </div>
-                    <div class="cart-drawer-discount-row">
-                        <span>🎉 Descuento Transferencia (-10%):</span>
+                    <div class="cart-drawer-discount-row" id="cart-drawer-discount-row">
+                        <span id="cart-drawer-discount-label">🎉 Descuento Transferencia:</span>
                         <span id="cart-drawer-discount">-$0</span>
                     </div>
                     <div class="cart-drawer-final-row">
@@ -496,7 +505,7 @@
         document.getElementById('btn-cart-drawer-continue')?.addEventListener('click', closeDrawer);
 
         document.getElementById('btn-cart-drawer-checkout')?.addEventListener('click', () => {
-            closeDrawer();
+            closeDrawer(true);
             if (typeof window.triggerCartCheckout === 'function') {
                 window.triggerCartCheckout();
             } else if (window.CarritoModule && typeof window.CarritoModule.triggerCheckout === 'function') {
@@ -508,7 +517,7 @@
 
         document.getElementById('cart-drawer-detail-link')?.addEventListener('click', (e) => {
             e.preventDefault();
-            closeDrawer();
+            closeDrawer(true);
             if (window.navigateToView) {
                 window.navigateToView('view-profile');
             }
@@ -614,16 +623,46 @@
 
         container.innerHTML = html;
 
+        // Obtener porcentaje dinámico de descuento por transferencia
+        let transferDiscountPct = 5;
+        try {
+            const stored = localStorage.getItem('sessionPaymentConfig');
+            if (stored) {
+                const parsed = JSON.parse(stored);
+                if (parsed.transfer && parsed.transfer.discountPercent !== undefined) {
+                    transferDiscountPct = parseFloat(parsed.transfer.discountPercent) || 0;
+                }
+            }
+        } catch(e) {}
+        if (!transferDiscountPct && window.sessionPaymentConfig?.transfer?.discountPercent !== undefined) {
+            transferDiscountPct = parseFloat(window.sessionPaymentConfig.transfer.discountPercent) || 0;
+        }
+
+        const promoTextEl = document.getElementById('cart-drawer-promo-text');
+        if (promoTextEl) {
+            promoTextEl.textContent = `¡Sumá un ${transferDiscountPct}% OFF EXTRA acumulable pagando por Transferencia Directa!`;
+        }
+
         // Actualizar totales en el footer
-        const discountVal = Math.round((subtotal * 0.10) / 100) * 100;
+        const discountVal = Math.round((subtotal * (transferDiscountPct / 100)) / 100) * 100;
         const finalVal = Math.max(0, subtotal - discountVal);
 
         const elSubtotal = document.getElementById('cart-drawer-subtotal');
         const elDiscount = document.getElementById('cart-drawer-discount');
+        const elDiscountRow = document.getElementById('cart-drawer-discount-row');
+        const elDiscountLabel = document.getElementById('cart-drawer-discount-label');
         const elTotal = document.getElementById('cart-drawer-total');
 
         if (elSubtotal) elSubtotal.textContent = formatPrice(subtotal);
-        if (elDiscount) elDiscount.textContent = `-${formatPrice(discountVal)}`;
+        if (elDiscountRow) {
+            if (transferDiscountPct > 0) {
+                elDiscountRow.style.display = 'flex';
+                if (elDiscountLabel) elDiscountLabel.textContent = `🎉 Descuento Transferencia (-${transferDiscountPct}% extra acumulable):`;
+                if (elDiscount) elDiscount.textContent = `-${formatPrice(discountVal)}`;
+            } else {
+                elDiscountRow.style.display = 'none';
+            }
+        }
         if (elTotal) elTotal.textContent = formatPrice(finalVal);
     }
 

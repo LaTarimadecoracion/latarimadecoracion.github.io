@@ -319,6 +319,25 @@
                     }
 
                     let finalCalculatedStickyPrice = '';
+
+                    // Cálculo dinámico de descuento extra acumulable por Transferencia
+                    let transferDiscountPct = 0;
+                    try {
+                        const storedPayConf = localStorage.getItem('sessionPaymentConfig');
+                        if (storedPayConf) {
+                            const parsed = JSON.parse(storedPayConf);
+                            if (parsed.transfer && parsed.transfer.discountPercent !== undefined) {
+                                transferDiscountPct = parseFloat(parsed.transfer.discountPercent) || 0;
+                            }
+                        }
+                    } catch(e) {}
+                    if (!transferDiscountPct && window.sessionPaymentConfig?.transfer?.discountPercent !== undefined) {
+                        transferDiscountPct = parseFloat(window.sessionPaymentConfig.transfer.discountPercent) || 0;
+                    }
+
+                    let transferLineHtml = '';
+                    let transferPriceFormatted = '';
+
                     if (totalDiscountAmount > 0) {
                         const originalTotalPrice = effectiveSubtotal;
                         const totalPrice = originalTotalPrice - totalDiscountAmount;
@@ -328,6 +347,17 @@
                         const effectivePct = Math.round((totalDiscountAmount / originalTotalPrice) * 100);
                         const badgeText = effectivePct > 0 ? `${effectivePct}% OFF` : `-\$${formatter.format(totalDiscountAmount).replace('$', '').trim()}`;
                         
+                        if (transferDiscountPct > 0 && totalPrice > 0) {
+                            const transferTotal = Math.round(totalPrice * (1 - transferDiscountPct / 100));
+                            transferPriceFormatted = formatter.format(transferTotal);
+                            transferLineHtml = `
+                                <div style="font-size: 0.85rem; font-weight: 700; color: #059669; margin-top: 3px; display: flex; align-items: center; justify-content: flex-end; gap: 4px; flex-wrap: wrap;">
+                                    <span>${transferPriceFormatted}</span>
+                                    <span style="font-size: 0.70rem; color: #166534; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 1px 6px; font-weight: 800;">con Transferencia (-${transferDiscountPct}% extra)</span>
+                                </div>
+                            `;
+                        }
+
                         priceDisplay.innerHTML = `
                             <div style="display: flex; flex-direction: column; align-items: flex-end;">
                                 <div style="display: flex; align-items: center; gap: 6px;">
@@ -338,27 +368,43 @@
                                     <span style="font-size:1.65rem; font-weight:900; color:#c0510a; line-height: 1.2;">${formattedTotalPrice}</span>
                                     <div class="price-info-wrapper" style="position: relative; display: inline-flex; align-items: center;">
                                         <span class="material-symbols-outlined price-info-icon" style="font-size: 20px; color: #94A3B8; cursor: pointer; user-select: none; transition: color 0.2s; display: flex; align-items: center; justify-content: center; padding: 4px;">help_outline</span>
-                                        <div class="price-tooltip" style="display: none; position: absolute; bottom: 125%; right: 0; width: 250px; background: #1E293B; color: #FFFFFF; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.78rem; line-height: 1.4; font-weight: 500; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; box-sizing: border-box;">
-                                            Precio en efectivo/transferencia para retirar por el taller (no incluye impuestos ni envío).
+                                        <div class="price-tooltip" style="display: none; position: absolute; bottom: 125%; right: 0; width: 260px; background: #1E293B; color: #FFFFFF; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.78rem; line-height: 1.4; font-weight: 500; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; box-sizing: border-box;">
+                                            Precio de lista oficial (no incluye costos de envío). Pagando por transferencia bancaria directa sumás un descuento extra acumulable.
                                             <div style="position: absolute; top: 100%; right: 8px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid #1E293B;"></div>
                                         </div>
                                     </div>
                                 </div>
+                                ${transferLineHtml}
                             </div>
                         `;
                     } else {
                         const formattedPrice = formatter.format(effectiveSubtotal);
                         finalCalculatedStickyPrice = formattedPrice;
+
+                        if (transferDiscountPct > 0 && effectiveSubtotal > 0) {
+                            const transferTotal = Math.round(effectiveSubtotal * (1 - transferDiscountPct / 100));
+                            transferPriceFormatted = formatter.format(transferTotal);
+                            transferLineHtml = `
+                                <div style="font-size: 0.85rem; font-weight: 700; color: #059669; margin-top: 3px; display: flex; align-items: center; justify-content: flex-end; gap: 4px; flex-wrap: wrap;">
+                                    <span>${transferPriceFormatted}</span>
+                                    <span style="font-size: 0.70rem; color: #166534; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 6px; padding: 1px 6px; font-weight: 800;">con Transferencia (-${transferDiscountPct}% extra)</span>
+                                </div>
+                            `;
+                        }
+
                         priceDisplay.innerHTML = `
-                            <span style="font-size:1.65rem; font-weight:900; color:#c0510a; line-height: 1.2;">${formattedPrice}</span>
-                            <div class="price-info-wrapper" style="position: relative; display: inline-flex; align-items: center;">
-                                <span class="material-symbols-outlined price-info-icon" style="font-size: 20px; color: #94A3B8; cursor: pointer; user-select: none; transition: color 0.2s; display: flex; align-items: center; justify-content: center; padding: 4px;">help_outline</span>
-                                <div class="price-tooltip" style="display: none; position: absolute; bottom: 125%; right: 0; width: 250px; background: #1E293B; color: #FFFFFF; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.78rem; line-height: 1.4; font-weight: 500; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; box-sizing: border-box;">
-                                            Precio en efectivo/transferencia para retirar por el taller (no incluye impuestos ni envío).
+                            <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                                <div style="display: flex; align-items: center; gap: 4px;">
+                                    <span style="font-size:1.65rem; font-weight:900; color:#c0510a; line-height: 1.2;">${formattedPrice}</span>
+                                    <div class="price-info-wrapper" style="position: relative; display: inline-flex; align-items: center;">
+                                        <span class="material-symbols-outlined price-info-icon" style="font-size: 20px; color: #94A3B8; cursor: pointer; user-select: none; transition: color 0.2s; display: flex; align-items: center; justify-content: center; padding: 4px;">help_outline</span>
+                                        <div class="price-tooltip" style="display: none; position: absolute; bottom: 125%; right: 0; width: 260px; background: #1E293B; color: #FFFFFF; padding: 0.6rem 0.8rem; border-radius: 8px; font-size: 0.78rem; line-height: 1.4; font-weight: 500; text-align: left; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; pointer-events: none; opacity: 0; transition: opacity 0.2s ease; box-sizing: border-box;">
+                                            Precio de lista oficial (no incluye costos de envío). Pagando por transferencia bancaria directa sumás un descuento extra acumulable.
                                             <div style="position: absolute; top: 100%; right: 8px; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 6px solid #1E293B;"></div>
                                         </div>
                                     </div>
                                 </div>
+                                ${transferLineHtml}
                             </div>
                         `;
                     }
@@ -366,7 +412,14 @@
                     // Sincronizar SIEMPRE el precio con la barra de compra rápida móvil
                     const stickyPriceEl = document.getElementById('sticky-bar-price');
                     if (stickyPriceEl && finalCalculatedStickyPrice) {
-                        stickyPriceEl.textContent = finalCalculatedStickyPrice;
+                        if (transferPriceFormatted) {
+                            stickyPriceEl.innerHTML = `
+                                <span>${finalCalculatedStickyPrice}</span>
+                                <span style="display: block; font-size: 0.68rem; font-weight: 800; color: #059669; line-height: 1.1;">${transferPriceFormatted} transf.</span>
+                            `;
+                        } else {
+                            stickyPriceEl.textContent = finalCalculatedStickyPrice;
+                        }
                     }
 
                     // Banner de descuentos por volumen
@@ -427,7 +480,9 @@
                     const icon = priceDisplay.querySelector('.price-info-icon');
 
                     if (wrapper && tooltip && icon) {
+                        let timeoutHide = null;
                         const showTooltip = () => {
+                            if (timeoutHide) clearTimeout(timeoutHide);
                             icon.style.color = 'var(--primary-color)';
                             tooltip.style.display = 'block';
                             setTimeout(() => { tooltip.style.opacity = '1'; }, 10);
@@ -435,19 +490,18 @@
                         const hideTooltip = () => {
                             icon.style.color = '#94A3B8';
                             tooltip.style.opacity = '0';
-                            setTimeout(() => { tooltip.style.display = 'none'; }, 200);
+                            if (timeoutHide) clearTimeout(timeoutHide);
+                            timeoutHide = setTimeout(() => { tooltip.style.display = 'none'; }, 200);
                         };
 
-                        wrapper.addEventListener('mouseenter', showTooltip);
-                        wrapper.addEventListener('mouseleave', hideTooltip);
+                        wrapper.onmouseenter = showTooltip;
+                        wrapper.onmouseleave = hideTooltip;
 
-                        icon.addEventListener('click', (e) => {
+                        icon.onclick = (e) => {
                             e.stopPropagation();
                             const isVisible = tooltip.style.display === 'block' && tooltip.style.opacity === '1';
                             if (isVisible) hideTooltip(); else showTooltip();
-                        });
-
-                        document.addEventListener('click', hideTooltip);
+                        };
                     }
                 } else {
                     priceDisplay.style.display = 'flex';

@@ -103,11 +103,11 @@
                     payConf.mercadopago.surchargePercent = 0;
                     payConf.mercadopago.creditSurchargePercent = 0;
                 }
-                if (payConf.transfer && !payConf.transfer.discountPercent) {
-                    payConf.transfer.discountPercent = 10;
+                if (payConf.transfer && (payConf.transfer.discountPercent === undefined || payConf.transfer.discountPercent === null)) {
+                    payConf.transfer.discountPercent = window.sessionPaymentConfig?.transfer?.discountPercent || 5;
                 }
-                if (payConf.transferCecilia && !payConf.transferCecilia.discountPercent) {
-                    payConf.transferCecilia.discountPercent = 10;
+                if (payConf.transferCecilia && (payConf.transferCecilia.discountPercent === undefined || payConf.transferCecilia.discountPercent === null)) {
+                    payConf.transferCecilia.discountPercent = window.sessionPaymentConfig?.transferCecilia?.discountPercent || 5;
                 }
                 localStorage.setItem('sessionPaymentConfig', JSON.stringify(payConf));
                 window.sessionPaymentConfig = payConf;
@@ -164,6 +164,10 @@
         const bank = transferConf.bank || (isResaleOrMixed ? 'Mercado Pago' : 'Banco Santander');
         const titular = transferConf.titular || (isResaleOrMixed ? 'Cecilia Beatriz Cerón' : 'Yonatan Lucas Orellana');
         const cuit = transferConf.cuit || (isResaleOrMixed ? '27-28767339-1' : '20-35281538-2');
+        let transferDiscountPct = parseFloat(transferConf?.discountPercent);
+        if (isNaN(transferDiscountPct)) {
+            transferDiscountPct = parseFloat(window.sessionPaymentConfig?.transfer?.discountPercent) || 5;
+        }
 
         const mpConf = payConf.mercadopago || {};
         const isMpGlobalActive = mpConf.active !== false;
@@ -270,18 +274,29 @@
                         
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px;">
                             <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.82rem; font-weight: 700; color: #0f172a; background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 12px; border-radius: 10px;">
-                                <input type="radio" name="pay-delivery-mode" id="pay-mode-pickup" value="pickup" style="accent-color: #0f172a; cursor: pointer;">
+                                <input type="radio" name="pay-delivery-mode" id="pay-mode-pickup" value="pickup" checked style="accent-color: #0f172a; cursor: pointer;">
                                 <span>🏬 Retiro por Taller / Local (Hurlingham)</span>
                             </label>
 
                             <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.82rem; font-weight: 700; color: #0f172a; background: #f8fafc; border: 1px solid #e2e8f0; padding: 8px 12px; border-radius: 10px;">
-                                <input type="radio" name="pay-delivery-mode" id="pay-mode-shipping" value="shipping" checked style="accent-color: #0f172a; cursor: pointer;">
+                                <input type="radio" name="pay-delivery-mode" id="pay-mode-shipping" value="shipping" style="accent-color: #0f172a; cursor: pointer;">
                                 <span>🚚 Envío a Domicilio / Flete / Expreso</span>
                             </label>
                         </div>
 
                         <!-- Menú Desplegable de Datos de Envío -->
                         <div id="pay-shipping-expand-menu" style="display: none; flex-direction: column; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #cbd5e1;">
+                            <!-- Selector Rápido de Direcciones Guardadas -->
+                            <div id="pay-saved-addresses-container" style="display: none; background: #f8fafc; border: 1.5px solid #bbf7d0; border-radius: 10px; padding: 0.65rem 0.85rem;">
+                                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+                                    <span style="font-size: 0.72rem; font-weight: 800; color: #166534; text-transform: uppercase; display: flex; align-items: center; gap: 4px;">
+                                        📍 Mis Direcciones:
+                                    </span>
+                                    <span style="font-size: 0.65rem; color: #16a34a; font-weight: 800;">Elegí a dónde enviarlo</span>
+                                </div>
+                                <div id="pay-saved-addresses-chips" style="display: flex; gap: 6px; flex-wrap: wrap;"></div>
+                            </div>
+
                             <div>
                                 <label style="display: block; font-size: 0.68rem; font-weight: 800; color: #475569; margin-bottom: 2px; text-transform: uppercase;">
                                     Dirección (Calle y Altura):
@@ -354,7 +369,7 @@
                                 <!-- Tooltip Popover Flotante -->
                                 <div id="pay-info-tooltip-popover" style="display: none; position: absolute; top: 100%; right: 0; margin-top: 6px; background: #0f172a; color: #ffffff; padding: 0.75rem 0.9rem; border-radius: 12px; font-size: 0.75rem; width: 250px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 100; line-height: 1.4; text-align: left;">
                                     <div style="font-weight: 800; margin-bottom: 4px; color: #38bdf8;">ℹ️ Precio Transferencia Directa</div>
-                                    Monto con 10% de ahorro directo por transferencia bancaria directa (Consumidor Final).
+                                    Monto con ${transferDiscountPct}% de ahorro directo extra acumulable por transferencia bancaria directa (Consumidor Final).
                                 </div>
                             </div>
                         </div>
@@ -387,7 +402,7 @@
                             </div>
                             <!-- Cartel Informativo al pagar con Mercado Pago / Tarjeta -->
                             <div id="breakdown-mp-hint-banner" style="display: none; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px; padding: 7px 10px; font-size: 0.75rem; color: #0369a1; justify-content: space-between; align-items: center; gap: 6px; margin-top: 4px;">
-                                <span>💡 Pagando por Transferencia Directa tenés 10% OFF</span>
+                                <span id="breakdown-mp-hint-label">💡 Pagando por Transferencia Directa sumás ${transferDiscountPct}% OFF EXTRA acumulable</span>
                                 <span style="font-weight: 800; color: #16a34a; white-space: nowrap;" id="breakdown-mp-hint-amount"></span>
                             </div>
                         </div>
@@ -533,7 +548,7 @@
                             <button type="button" class="pay-method-btn" data-pay-val="transfer" id="btn-pay-choice-transfer" style="background: #f8fafc; color: #334155; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.65rem 0.35rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; text-align: center; transition: all 0.2s;">
                                 <span class="material-symbols-outlined" style="font-size: 22px; color: #16a34a;">account_balance</span>
                                 <div style="font-size: 0.78rem; font-weight: 800; line-height: 1.2;">Transferencia</div>
-                                <span style="font-size: 0.65rem; font-weight: 800; color: #15803d; background: #dcfce7; padding: 2px 6px; border-radius: 4px; border: 1px solid #86efac;">10% OFF</span>
+                                <span id="btn-pay-choice-transfer-badge" style="font-size: 0.65rem; font-weight: 800; color: #15803d; background: #dcfce7; padding: 2px 6px; border-radius: 4px; border: 1px solid #86efac;">-${transferDiscountPct}% EXTRA</span>
                             </button>
 
                             <button type="button" class="pay-method-btn" data-pay-val="link" id="btn-pay-choice-link" style="background: #f8fafc; color: #334155; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 0.65rem 0.35rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; cursor: pointer; text-align: center; transition: all 0.2s;">
@@ -556,7 +571,7 @@
                                     <span class="material-symbols-outlined" style="font-size: 18px; color: #16a34a;">verified</span>
                                     <span>Pago por Transferencia Bancaria Directa (${transferAccountDesc})</span>
                                 </div>
-                                <span style="font-weight: 800; color: #15803d; background: #ffffff; padding: 2px 8px; border-radius: 6px; font-size: 0.7rem; border: 1px solid #86efac;">🎁 10% DE DESCUENTO APLICADO</span>
+                                <span style="font-weight: 800; color: #15803d; background: #ffffff; padding: 2px 8px; border-radius: 6px; font-size: 0.7rem; border: 1px solid #86efac;">🎁 ${transferDiscountPct}% OFF EXTRA ACUMULABLE APLICADO</span>
                             </div>
 
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; width: 100%; box-sizing: border-box; margin-top: 4px;">
@@ -732,6 +747,7 @@
                     razonSocial: document.getElementById('factura-razon-social')?.value || '',
                     cuit: document.getElementById('factura-cuit')?.value || '',
                     dirFiscal: document.getElementById('factura-direccion-fiscal')?.value || '',
+                    provinciaFiscal: document.getElementById('factura-provincia')?.value || '',
                     provFiscal: document.getElementById('factura-provincia')?.value || '',
                     condIva: document.getElementById('factura-condicion-iva')?.value || '',
                     emailFiscal: document.getElementById('factura-email')?.value || ''
@@ -835,9 +851,17 @@
                         if (waSpan) waSpan.textContent = 'Confirmar';
                     }
                 } else {
-                    // En Mercado Pago o Tarjeta, el cobro se dispara desde su propio botón dentro del panel
+                    // En Mercado Pago o Tarjeta, el cobro se dispara desde su propio botón dentro del panel (o fallback a WhatsApp)
                     if (btnNext) btnNext.style.display = 'none';
-                    if (btnWa) btnWa.style.display = 'none';
+                    if (btnWa) {
+                        if (!isMpGlobalActive) {
+                            btnWa.style.display = 'flex';
+                            const waSpan = btnWa.querySelector('span:not(.material-symbols-outlined)');
+                            if (waSpan) waSpan.textContent = 'Solicitar Link / WhatsApp';
+                        } else {
+                            btnWa.style.display = 'none';
+                        }
+                    }
                 }
             } else if (currentStep === 3) {
                 if (titleElem) titleElem.textContent = '3. Aclaraciones y Finalizar';
@@ -1116,11 +1140,82 @@
         const radioShipping = document.getElementById('pay-mode-shipping');
         const shippingExpandMenu = document.getElementById('pay-shipping-expand-menu');
 
+
+        function renderCheckoutSavedAddresses() {
+            const container = document.getElementById('pay-saved-addresses-container');
+            const chipsEl = document.getElementById('pay-saved-addresses-chips');
+            if (!container || !chipsEl) return;
+
+            const addrs = (window.UserDataManager && typeof window.UserDataManager.getAddresses === 'function')
+                ? window.UserDataManager.getAddresses()
+                : [];
+
+            if (addrs.length === 0) {
+                container.style.display = 'none';
+                return;
+            }
+
+            container.style.display = 'block';
+            const curDir = (document.getElementById('pay-ship-dir')?.value || '').trim();
+            const curCp = (document.getElementById('pay-ship-cp')?.value || '').trim();
+
+            chipsEl.innerHTML = addrs.map((a, idx) => {
+                const fullDir = (a.street || '') + (a.depto ? ' ' + a.depto : '');
+                const isSelected = (curCp && a.cp === curCp) || (curDir && fullDir.toLowerCase().includes(curDir.toLowerCase())) || (a.isDefault && !curCp);
+                const emoji = (a.alias || '').toLowerCase().includes('casa') ? '🏠' :
+                              (a.alias || '').toLowerCase().includes('trabajo') || (a.alias || '').toLowerCase().includes('oficina') ? '💼' :
+                              (a.alias || '').toLowerCase().includes('obra') ? '🏗️' : '📍';
+
+                return `
+                    <button type="button" class="btn-checkout-addr-chip" data-idx="${idx}" style="background: ${isSelected ? '#16a34a' : '#ffffff'}; color: ${isSelected ? '#ffffff' : '#0f172a'}; border: 1.5px solid ${isSelected ? '#15803d' : '#cbd5e1'}; border-radius: 8px; padding: 4px 10px; font-size: 0.74rem; font-weight: 800; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: all 0.15s; font-family: inherit;">
+                        <span>${emoji}</span>
+                        <span>${escapeHtml(a.alias || 'Dirección ' + (idx + 1))}</span>
+                        <span style="opacity: 0.85; font-size: 0.68rem; font-weight: 600;">(CP ${escapeHtml(a.cp || '')})</span>
+                    </button>
+                `;
+            }).join('');
+
+            chipsEl.querySelectorAll('.btn-checkout-addr-chip').forEach(chipBtn => {
+                chipBtn.onclick = () => {
+                    const idx = parseInt(chipBtn.getAttribute('data-idx'), 10);
+                    const targetAddr = addrs[idx];
+                    if (!targetAddr) return;
+
+                    const dirInput = document.getElementById('pay-ship-dir');
+                    const cpInput = document.getElementById('pay-ship-cp');
+                    const cityInput = document.getElementById('pay-ship-ciudad');
+                    const provInput = document.getElementById('pay-ship-provincia');
+
+                    if (dirInput) dirInput.value = targetAddr.street + (targetAddr.depto ? ' ' + targetAddr.depto : '');
+                    if (cpInput) cpInput.value = targetAddr.cp;
+                    if (cityInput) cityInput.value = targetAddr.city;
+                    if (provInput) provInput.value = targetAddr.province;
+
+                    if (targetAddr.cp && targetAddr.cp.length >= 3) {
+                        const res = window.lookupPostalCode ? window.lookupPostalCode(targetAddr.cp) : null;
+                        renderShipOptions(res);
+                        updateShipLine();
+                        updateTotalDisplay();
+                    }
+
+                    renderCheckoutSavedAddresses();
+                };
+            });
+        }
+
         const handleDeliveryToggle = () => {
+            const extContainer = document.getElementById('checkout-external-platforms-container');
             if (radioShipping && radioShipping.checked) {
                 if (shippingExpandMenu) shippingExpandMenu.style.display = 'flex';
+                renderCheckoutSavedAddresses();
+                renderExternalPlatformsCard();
             } else {
                 if (shippingExpandMenu) shippingExpandMenu.style.display = 'none';
+                if (extContainer) extContainer.style.display = 'none';
+                window._checkoutSelectedShipCost = 0;
+                window._checkoutSelectedShipLabel = '';
+                updateShipLine();
+                updateTotalDisplay();
             }
         };
 
@@ -1142,10 +1237,17 @@
             };
         }
 
-        // Tarjeta Independiente de Plataformas Externas (Siempre Visible en el Paso 1)
+        // Tarjeta Independiente de Plataformas Externas (Disponible solo si se tilda Envío a domicilio)
         const renderExternalPlatformsCard = () => {
             const container = document.getElementById('checkout-external-platforms-container');
             if (!container) return;
+
+            // Requerimiento explícito: solo disponible cuando el usuario tilda arriba Envío a domicilio
+            const radioShipping = document.getElementById('pay-mode-shipping');
+            if (!radioShipping || !radioShipping.checked) {
+                container.style.display = 'none';
+                return;
+            }
 
             const isValidExternalUrl = (u) => {
                 if (!u || typeof u !== 'string') return false;
@@ -1547,10 +1649,10 @@
             const shipLabel = window._checkoutSelectedShipLabel || '';
             const activePayVal = window._checkoutSelectedPayMethod || 'transfer';
 
-            // Descuento Transferencia Directa (asegurar siempre 10% salvo configuración explícita > 0)
+            // Descuento Transferencia Directa (dinámico según configuración)
             let transferDiscountPct = parseFloat(transferConf?.discountPercent);
-            if (isNaN(transferDiscountPct) || transferDiscountPct <= 0) {
-                transferDiscountPct = 10;
+            if (isNaN(transferDiscountPct)) {
+                transferDiscountPct = parseFloat(window.sessionPaymentConfig?.transfer?.discountPercent) || 5;
             }
 
             const baseWithShip = totalOfferVal + shipCost;
@@ -1633,7 +1735,7 @@
                 if (transferRow) {
                     if (isTransfer && transferDiscountVal > 0) {
                         transferRow.style.display = 'flex';
-                        if (transferLbl) transferLbl.textContent = `🎉 Descuento Transferencia (-${transferDiscountPct}%):`;
+                        if (transferLbl) transferLbl.textContent = `🎉 Descuento Transferencia (-${transferDiscountPct}% EXTRA acumulable):`;
                         if (transferVal) transferVal.textContent = '-' + formatCurr(transferDiscountVal);
                     } else {
                         transferRow.style.display = 'none';
@@ -1783,18 +1885,22 @@
                 const uData = (window.UserDataManager && typeof window.UserDataManager.get === 'function')
                     ? window.UserDataManager.get()
                     : {};
+                const defaultAddr = (window.UserDataManager && typeof window.UserDataManager.getDefaultAddress === 'function')
+                    ? window.UserDataManager.getDefaultAddress()
+                    : null;
+
                 const merged = {
                     name: data.name || uData.name || '',
                     phone: data.phone || uData.phone || '',
-                    dir: data.dir || uData.address || '',
-                    cp: data.cp || uData.zipCode || '',
-                    ciudad: data.ciudad || uData.locality || '',
-                    provincia: data.provincia || uData.province || '',
+                    dir: data.dir || (defaultAddr ? (defaultAddr.street + (defaultAddr.depto ? ' ' + defaultAddr.depto : '')) : '') || uData.address || '',
+                    cp: data.cp || (defaultAddr ? defaultAddr.cp : '') || uData.zipCode || '',
+                    ciudad: data.ciudad || (defaultAddr ? defaultAddr.city : '') || uData.locality || '',
+                    provincia: data.provincia || (defaultAddr ? defaultAddr.province : '') || uData.province || '',
                     email: data.email || uData.email || '',
                     razonSocial: data.razonSocial || uData.razonSocial || '',
                     cuit: data.cuit || uData.cuit || '',
                     dirFiscal: data.dirFiscal || uData.dirFiscal || '',
-                    provinciaFiscal: data.provinciaFiscal || uData.provinciaFiscal || '',
+                    provinciaFiscal: data.provinciaFiscal || data.provFiscal || uData.provinciaFiscal || uData.provFiscal || '',
                     condIva: data.condIva || uData.condIva || '',
                     emailFiscal: data.emailFiscal || uData.emailFiscal || '',
                     deliveryMode: data.deliveryMode || ''
@@ -1834,46 +1940,23 @@
                     }
                 }
 
-                if (merged.deliveryMode === 'pickup') {
-                    const rPickup = document.getElementById('pay-mode-pickup');
-                    if (rPickup) rPickup.checked = true;
-                    const shipMenu = document.getElementById('pay-shipping-expand-menu');
-                    if (shipMenu) shipMenu.style.display = 'none';
-                    window._checkoutSelectedShipCost = 0;
-                    window._checkoutSelectedShipLabel = '';
-                    updateShipLine();
-                    updateTotalDisplay();
-                if (currentStep === 2) {
-                    updateWizardView();
-                }
-                } else if (merged.deliveryMode === 'shipping' || (merged.cp && merged.cp.length >= 3)) {
-                    const rShip = document.getElementById('pay-mode-shipping');
-                    if (rShip) rShip.checked = true;
-                    const shipMenu = document.getElementById('pay-shipping-expand-menu');
-                    if (shipMenu) shipMenu.style.display = 'flex';
-                    if (merged.cp && merged.cp.length >= 3) {
-                        const res = window.lookupPostalCode ? window.lookupPostalCode(merged.cp) : null;
-                        renderShipOptions(res);
-                        updateShipLine();
-                        updateTotalDisplay();
-                        if (isExpressActive && currentStep === 2) {
-                            updateWizardView();
-                        }
-                    }
-                }
+                // Requerimiento explícito: todos arrancan desde el Paso 1 con Retiro por el local tildado por defecto
+                const rPickup = document.getElementById('pay-mode-pickup');
+                const rShip = document.getElementById('pay-mode-shipping');
+                if (rPickup) rPickup.checked = true;
+                if (rShip) rShip.checked = false;
+                const shipMenu = document.getElementById('pay-shipping-expand-menu');
+                if (shipMenu) shipMenu.style.display = 'none';
+                window._checkoutSelectedShipCost = 0;
+                window._checkoutSelectedShipLabel = '';
+                updateShipLine();
+                updateTotalDisplay();
+                handleDeliveryToggle();
 
-                // Activar Modo Express en 2 Clics si ya cuenta con datos de contacto y entrega guardados
-                const clientName = (merged.name || '').trim();
-                const clientPhone = (merged.phone || '').trim();
-                const hasValidContact = clientName.length >= 2 && clientPhone.length >= 6;
-                const hasValidDelivery = (merged.deliveryMode === 'pickup') || (merged.deliveryMode === 'shipping' && (merged.dir || '').trim().length >= 3 && (merged.cp || '').trim().length >= 3);
-
-                if (hasValidContact && hasValidDelivery) {
-                    isExpressActive = true;
-                    currentStep = 2;
-                    renderExpressBanner(merged);
-                    updateWizardView();
-                }
+                // Siempre arrancar desde el Paso 1 para todos los usuarios (sin salto automático al paso 2)
+                isExpressActive = false;
+                currentStep = 1;
+                updateWizardView();
             } catch (e) {}
         }
 
@@ -2419,8 +2502,21 @@
                 });
 
                 // 3. Mostrar pantalla de confirmación interactiva en la web
-                const modalContent = document.querySelector('#offer-payment-modal .modal-content') || document.querySelector('#offer-payment-modal > div');
+                const modalContent = document.querySelector('#offer-payment-modal-overlay > div') || document.querySelector('#offer-payment-modal .modal-content') || card;
                 if (modalContent) {
+                    // Si la orden provino del carrito completo, vaciarlo
+                    if (productContext?.cartShippingContext?.isCartSummary || offerInput?.isCartSummary) {
+                        try {
+                            if (window.CarritoModule && typeof window.CarritoModule.clearLocalSessionCart === 'function') {
+                                window.CarritoModule.clearLocalSessionCart();
+                            } else {
+                                localStorage.removeItem('cartItems');
+                            }
+                            if (window.CartDrawer && typeof window.CartDrawer.render === 'function') {
+                                window.CartDrawer.render();
+                            }
+                        } catch(e) {}
+                    }
                     modalContent.innerHTML = `
                         <div style="padding: 2.25rem 1.5rem; text-align: center; font-family: inherit;">
                             <div style="width: 72px; height: 72px; background: #dcfce7; color: #16a34a; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 1rem; box-shadow: 0 4px 16px rgba(22, 163, 74, 0.25);">

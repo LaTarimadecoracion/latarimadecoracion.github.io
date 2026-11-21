@@ -25,10 +25,13 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 60000,
-          "cost_price": 10000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": false
+          "logisticaEnabled": false,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "190 x 45 cm",
@@ -39,10 +42,13 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 60000,
-          "cost_price": 10000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": false
+          "logisticaEnabled": false,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "140 x 45 cm",
@@ -53,10 +59,13 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 40000,
-          "cost_price": 10000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "110 x 45 cm",
@@ -66,11 +75,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 27000,
-          "cost_price": 10000,
+          "price": 30000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "100 x 45 cm",
@@ -80,11 +92,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 27000,
-          "cost_price": 10000,
+          "price": 30000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "90 x 45 cm",
@@ -94,11 +109,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 26000,
-          "cost_price": 10000,
+          "price": 27000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "80 x 45 cm",
@@ -108,11 +126,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 25000,
-          "cost_price": 10000,
+          "price": 27000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "70 x 45 cm",
@@ -122,11 +143,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 23999,
-          "cost_price": 10000,
+          "price": 27000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "60 x 45 cm",
@@ -136,11 +160,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 23000,
-          "cost_price": 10000,
+          "price": 27000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
@@ -167,11 +194,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 45000,
-          "cost_price": 10000,
+          "price": 55000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "100 x 45 cm",
@@ -181,11 +211,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 45000,
-          "cost_price": 10000,
+          "price": 55000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "90 x 45 cm",
@@ -195,11 +228,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 45000,
-          "cost_price": 10000,
+          "price": 55000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "80 x 45 cm",
@@ -209,11 +245,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 45000,
-          "cost_price": 10000,
+          "price": 55000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "70 x 45 cm",
@@ -223,11 +262,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 45000,
-          "cost_price": 10000,
+          "price": 55000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "60 x 45 cm",
@@ -237,11 +279,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 45000,
-          "cost_price": 10000,
+          "price": 55000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
@@ -265,11 +310,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 40000,
-          "cost_price": 10000,
+          "price": 45000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "100 x 45 cm",
@@ -279,11 +327,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 40000,
-          "cost_price": 10000,
+          "price": 45000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "90 x 45 cm",
@@ -293,11 +344,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 40000,
-          "cost_price": 10000,
+          "price": 45000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "80 x 45 cm",
@@ -307,11 +361,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 40000,
-          "cost_price": 10000,
+          "price": 45000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "70 x 45 cm",
@@ -321,11 +378,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 40000,
-          "cost_price": 10000,
+          "price": 45000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "60 x 45 cm",
@@ -335,11 +395,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 40000,
-          "cost_price": 10000,
+          "price": 45000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": true
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
@@ -408,7 +471,7 @@
     "creditEnabled": false
   },
   "quantityDiscounts": [],
-  "last_modified": 1792896707701,
+  "last_modified": 1795223208558,
   "optional_variant": {
     "label": "Espesor del tirante (opcional)",
     "options": [
@@ -445,10 +508,5 @@
   },
   "primaryCatId": "Barandas",
   "history": [],
-  "views": 17,
-  "categories": [
-    "carpinteria-todos",
-    "Barandas"
-  ],
   "rubro": "carpinteria"
 }

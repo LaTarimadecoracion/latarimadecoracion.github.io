@@ -331,6 +331,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'avisos': 'view-notifications',
                 'perfil': 'view-user-profile',
                 'mi-perfil': 'view-user-profile',
+                'mis-direcciones': 'view-addresses',
+                'direcciones': 'view-addresses',
                 'mis-compras': 'view-my-orders',
                 'carrito': 'view-profile',
                 'cart': 'view-profile',
@@ -559,6 +561,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 'avisos': 'view-notifications',
                 'perfil': 'view-user-profile',
                 'mi-perfil': 'view-user-profile',
+                'mis-direcciones': 'view-addresses',
+                'direcciones': 'view-addresses',
                 'mis-compras': 'view-my-orders',
                 'admin': 'view-admin',
                 'catalogo': 'view-catalogo',
@@ -654,8 +658,9 @@ document.addEventListener('pointerdown', (e) => {
         // Limpieza tras 3.5s (duración de la fiesta de confeti en cámara lenta)
         setTimeout(() => p.remove(), 3500);
     }
+});
 
-    // --- Redirección y Sincronización de Scroll en Vistas con Iframe ---
+// --- Redirección y Sincronización de Scroll en Vistas con Iframe ---
     // Permite hacer scroll desde cualquier lugar de la pantalla (márgenes grises, cabecera, navegación inferior)
     window.addEventListener('wheel', (e) => {
         const activeView = document.querySelector('.view.active');
@@ -724,4 +729,3 @@ document.addEventListener('pointerdown', (e) => {
     } catch (e) {
         console.error("Error al iniciar Modo Vacaciones en el cliente:", e);
     }
-});

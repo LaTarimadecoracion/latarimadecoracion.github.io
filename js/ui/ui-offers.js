@@ -1583,7 +1583,8 @@
                     comboSub,
                     '',
                     '',
-                    offer.offerPrice * qty
+                    offer.offerPrice,
+                    qty
                 );
 
                 if (window.updateFavoritesBadge) window.updateFavoritesBadge();

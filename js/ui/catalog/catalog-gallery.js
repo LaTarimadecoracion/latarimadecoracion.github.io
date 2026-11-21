@@ -174,7 +174,7 @@
                 const grupo = (grupos && grupos[currentGroupIndex]) ? grupos[currentGroupIndex] : {};
                 const acabadoName = grupo.acabado_name || 'Único';
                 const selMedida = divMedida ? divMedida.querySelector('select') : null;
-                const medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
+                let medidaText = (selMedida && selMedida.selectedIndex !== -1) ? selMedida.options[selMedida.selectedIndex]?.text || '' : '';
 
                 const selOpt = divOpt ? divOpt.querySelector('select') : null;
                 const optText = (selOpt && selOpt.selectedIndex !== -1) ? selOpt.options[selOpt.selectedIndex]?.text || '' : '';

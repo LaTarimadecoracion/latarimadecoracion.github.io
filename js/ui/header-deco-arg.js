@@ -456,8 +456,6 @@
         const header = document.querySelector('.main-header-bar');
         if (!header) return;
 
-        header.style.position = 'relative';
-
         // Quitar canvas anterior si existía
         const oldCanvas = document.getElementById('lt-header-deco');
         if (oldCanvas) oldCanvas.remove();

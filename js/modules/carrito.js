@@ -2390,9 +2390,9 @@ window.CarritoModule = {
                             }
                         });
                         if (hasChanges) {
-                            saveCart();
-                            updateCartCount();
-                            if (typeof window.renderCartDrawer === 'function') window.renderCartDrawer();
+                            saveCartItems();
+                            renderPerfilCarritoView();
+                            if (window.CartDrawer && typeof window.CartDrawer.render === 'function') window.CartDrawer.render();
                             console.log('[Carrito] ⚡ Precios del carrito sincronizados en vivo desde la nube');
                         }
                     });

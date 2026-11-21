@@ -845,6 +845,13 @@
                 resolvedAvatar = user.picture || resolvedAvatar || '👤';
             }
             merged.avatar = resolvedAvatar;
+
+            // Sincronizar lista de direcciones de entrega (máx 5)
+            if (Array.isArray(cloudProfile.addresses) && cloudProfile.addresses.length > 0) {
+                merged.addresses = cloudProfile.addresses.slice(0, 5);
+            } else if (Array.isArray(current.addresses) && current.addresses.length > 0 && !isDifferentUser) {
+                merged.addresses = current.addresses.slice(0, 5);
+            }
         } else {
             if (isDifferentUser) {
                 syncFields.forEach((field) => {
@@ -852,6 +859,8 @@
                         merged[field] = '';
                     }
                 });
+            } else if (Array.isArray(current.addresses) && current.addresses.length > 0) {
+                merged.addresses = current.addresses.slice(0, 5);
             }
             const localName = isDifferentUser ? '' : (current.name || '').trim();
             if (!localName && user.nombre) {
