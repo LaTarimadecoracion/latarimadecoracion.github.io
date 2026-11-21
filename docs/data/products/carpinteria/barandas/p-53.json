@@ -1,11 +1,13 @@
 {
   "id": "53",
+  "shortId": "3K",
   "title": "Baranda: Desmontable Clásica - Triple",
   "description": "Seguridad y comodidad superior para la cama de los más chicos.",
   "image": "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp",
   "acabados_groups": [
     {
       "acabado_name": "Natural",
+      "description": "",
       "cover_image": "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp",
       "images_list": [
         "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp"
@@ -23,11 +25,10 @@
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": false,
-          "shippingConfig": {
-            "logisticaEnabled": false
-          },
-          "noFlex": true,
-          "disableFlex": true
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "190 x 60 cm",
@@ -41,11 +42,10 @@
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": false,
-          "shippingConfig": {
-            "logisticaEnabled": false
-          },
-          "noFlex": true,
-          "disableFlex": true
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "140 x 60 cm",
@@ -57,7 +57,12 @@
           "highlight": false,
           "price": 60000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "110 x 60 cm",
@@ -67,9 +72,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 35000,
+          "price": 40000,
           "legend": "",
-          "showPrice": true
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "70 x 60 cm",
@@ -79,97 +89,21 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
-          "price": 30000,
-          "legend": "",
-          "showPrice": true
-        }
-      ],
-      "hidden": false
-    },
-    {
-      "acabado_name": "Barnizado",
-      "cover_image": "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp",
-      "images_list": [
-        "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp"
-      ],
-      "medidas_variants": [
-        {
-          "medida": "200 x 60 cm",
-          "link": "",
-          "default": false,
-          "hidden": false,
-          "linkLabel": "",
-          "iconType": "local_shipping",
-          "highlight": false,
-          "price": 40000,
+          "price": 35000,
           "legend": "",
           "showPrice": true,
-          "logisticaEnabled": false,
-          "shippingConfig": {
-            "logisticaEnabled": false
-          },
-          "noFlex": true,
-          "disableFlex": true
-        },
-        {
-          "medida": "190 x 60 cm",
-          "link": "",
-          "default": false,
-          "hidden": false,
-          "linkLabel": "",
-          "iconType": "local_shipping",
-          "highlight": false,
-          "price": 40000,
-          "legend": "",
-          "showPrice": true,
-          "logisticaEnabled": false,
-          "shippingConfig": {
-            "logisticaEnabled": false
-          },
-          "noFlex": true,
-          "disableFlex": true
-        },
-        {
-          "medida": "140 x 60 cm",
-          "link": "https://articulo.mercadolibre.com.ar/MLA-2639109142-baranda-de-seguridad-para-cama-140-x-60-cm-_JM",
-          "default": false,
-          "hidden": false,
-          "linkLabel": "",
-          "iconType": "local_shipping",
-          "highlight": false,
-          "price": "",
-          "legend": "",
-          "showPrice": false
-        },
-        {
-          "medida": "110 x 60 cm",
-          "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
-          "default": true,
-          "hidden": false,
-          "linkLabel": "",
-          "iconType": "local_shipping",
-          "highlight": false,
-          "price": "",
-          "legend": "",
-          "showPrice": false
-        },
-        {
-          "medida": "70 x 60 cm",
-          "link": "https://articulo.mercadolibre.com.ar/MLA-1508659715-baranda-de-seguridad-para-cama-barnizada-110-x-60-cm-_JM",
-          "default": false,
-          "hidden": false,
-          "linkLabel": "",
-          "iconType": "local_shipping",
-          "highlight": false,
-          "price": "",
-          "legend": "",
-          "showPrice": false
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
     },
     {
       "acabado_name": "Blanco",
+      "description": "",
       "cover_image": "img/barandas-para-cama/baranda-desmontable-triple/1780542227331-imagen.webp",
       "images_list": [
         "img/barandas-para-cama/baranda-desmontable-triple/1780542227331-imagen.webp",
@@ -186,8 +120,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
+          "price": 60000,
           "legend": "",
-          "showPrice": false
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         },
         {
           "medida": "70 x 60 cm",
@@ -197,8 +137,14 @@
           "linkLabel": "",
           "iconType": "local_shipping",
           "highlight": false,
+          "price": 55000,
           "legend": "",
-          "showPrice": false
+          "showPrice": true,
+          "logisticaEnabled": true,
+          "material": "",
+          "espesor": "",
+          "armado": "",
+          "extra": ""
         }
       ],
       "hidden": false
@@ -249,7 +195,24 @@
     "protector cuna",
     "barandas de pino"
   ],
-  "last_modified": 1785450532165,
+  "shippingConfig": {
+    "logisticaEnabled": true,
+    "logisticaCost": 0,
+    "logisticaMaxUnits": 1,
+    "fleteEnabled": true,
+    "fleteCost": 0,
+    "otroEnabled": false,
+    "otroLabel": "A convenir",
+    "otroCost": 0,
+    "isFreeShipping": false
+  },
+  "paymentConfig": {
+    "transferEnabled": true,
+    "linkEnabled": false,
+    "creditEnabled": false
+  },
+  "quantityDiscounts": [],
+  "last_modified": 1795223329726,
   "optional_variant": {
     "label": "Espesor del tirante (opcional)",
     "options": [
@@ -275,21 +238,6 @@
     ]
   },
   "primaryCatId": "Barandas",
-  "views": 5,
-  "paymentConfig": {
-    "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
-  },
-  "shippingConfig": {
-    "logisticaEnabled": true,
-    "fleteEnabled": true,
-    "otroEnabled": false,
-    "logisticaMaxUnits": 1
-  },
-  "categories": [
-    "carpinteria-todos",
-    "Barandas"
-  ],
+  "history": [],
   "rubro": "carpinteria"
 }

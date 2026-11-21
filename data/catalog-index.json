@@ -111,14 +111,11 @@
   },
   {
     "id": "53",
-    "shortId": null,
+    "shortId": "3K",
     "title": "Baranda: Desmontable Clásica - Triple",
     "rubro": "carpinteria",
     "primaryCatId": "Barandas",
-    "categories": [
-      "carpinteria-todos",
-      "Barandas"
-    ],
+    "categories": [],
     "subcategoria": "",
     "price": 85000,
     "image": "img/barandas-para-cama/baranda-desmontable-triple/barandadesmontabletriple.webp",
