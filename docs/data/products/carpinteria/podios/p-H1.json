@@ -20,7 +20,8 @@
           "link": "https://www.mercadolibre.com.ar/podio-de-premiacion-profesional--3-niveles/up/MLAU3923567631",
           "default": false,
           "volumeDiscounts": [],
-          "price": 350000,
+          "cost_price": 35000,
+          "price": 450000,
           "stock": 0,
           "showPrice": true,
           "weight": 2.5
@@ -91,7 +92,7 @@
   ],
   "last_modified": 1780774148299,
   "primaryCatId": "Podios",
-  "views": 2,
+  "views": 3,
   "stock": 0,
   "history": [
     {
@@ -124,5 +125,6 @@
     "carpinteria-todos",
     "Podios"
   ],
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "price": 450000
 }

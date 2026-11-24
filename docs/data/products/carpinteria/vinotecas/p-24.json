@@ -23,6 +23,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 160000,
+          "cost_price": 36000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true,
@@ -130,7 +131,7 @@
     }
   ],
   "rubro": "carpinteria",
-  "views": 20,
+  "views": 22,
   "categories": [
     "Vinotecas"
   ]

@@ -24,6 +24,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 42000,
+          "cost_price": 42000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true,
@@ -70,7 +71,7 @@
   "last_modified": 1794796470483,
   "primaryCatId": "Juguetes",
   "history": [],
-  "views": 4,
+  "views": 5,
   "categories": [
     "carpinteria-todos",
     "Percheros",

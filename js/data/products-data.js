@@ -3630,7 +3630,7 @@ const productsData = [
                 "last_modified": 1788917627673,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 3,
+                "views": 4,
                 "categories": [
                     "carpinteria-todos",
                     "bazar-cocina"
@@ -3704,7 +3704,7 @@ const productsData = [
                 "last_modified": 1788917344040,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 6,
+                "views": 7,
                 "categories": [
                     "carpinteria-todos",
                     "bazar-cocina"
@@ -4372,7 +4372,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637216140,
                 "primaryCatId": "Mesas-madera",
-                "views": 5,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4422,7 +4422,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637228097,
                 "primaryCatId": "Mesas-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4720,7 +4720,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334411421,
                 "primaryCatId": "Mesas-madera",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -4972,7 +4972,7 @@ const productsData = [
                 "last_modified": 1794797048622,
                 "primaryCatId": "Organizadores",
                 "history": [],
-                "views": 6
+                "views": 22
             },
             {
                 "id": "49",
@@ -5679,7 +5679,7 @@ const productsData = [
                     }
                 ],
                 "visible": true,
-                "views": 19
+                "views": 21
             },
             {
                 "id": "32",
@@ -6900,7 +6900,7 @@ const productsData = [
                                 "default": false,
                                 "volumeDiscounts": [],
                                 "cost_price": 35000,
-                                "price": 350000,
+                                "price": 450000,
                                 "stock": 0,
                                 "showPrice": true,
                                 "weight": 2.5
@@ -6971,7 +6971,7 @@ const productsData = [
                 ],
                 "last_modified": 1780774148299,
                 "primaryCatId": "Podios",
-                "views": 2,
+                "views": 3,
                 "stock": 0,
                 "history": [
                     {
@@ -7004,7 +7004,8 @@ const productsData = [
                     "carpinteria-todos",
                     "Podios"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 450000
             },
             {
                 "id": "H2",
@@ -7032,7 +7033,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 250000,
+                                "price": 350000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
@@ -7109,7 +7110,8 @@ const productsData = [
                     "carpinteria-todos",
                     "Podios"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 350000
             },
             {
                 "id": "H3",
@@ -7160,7 +7162,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 3,
+                "views": 6,
                 "tags": [
                     "podio",
                     "podios",
@@ -7622,7 +7624,7 @@ const productsData = [
                 "last_modified": 1794796470483,
                 "primaryCatId": "Juguetes",
                 "history": [],
-                "views": 4
+                "views": 5
             },
             {
                 "id": "B1",
@@ -8042,7 +8044,7 @@ const productsData = [
                 "last_modified": 1790379461990,
                 "primaryCatId": "Juguetes",
                 "history": [],
-                "views": 1,
+                "views": 2,
                 "categories": [
                     "carpinteria-todos",
                     "Juguetes",
@@ -8139,7 +8141,7 @@ const productsData = [
                 "last_modified": 1783907160537,
                 "primaryCatId": "Juguetes",
                 "visible": true,
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -8253,7 +8255,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 146
+                "views": 149
             },
             {
                 "id": "22",
@@ -8388,7 +8390,7 @@ const productsData = [
                         "detail": "Costo: $35.000 ➔ $27.000"
                     }
                 ],
-                "views": 24
+                "views": 27
             },
             {
                 "id": "23",
@@ -8523,7 +8525,7 @@ const productsData = [
                         "detail": "Costo: $40.000 ➔ $31.000"
                     }
                 ],
-                "views": 7
+                "views": 8
             },
             {
                 "id": "25",
@@ -8729,7 +8731,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 9,
+                "views": 11,
                 "stock": 0,
                 "history": [
                     {
@@ -9383,7 +9385,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "visible": true,
-                "views": 81
+                "views": 82
             },
             {
                 "id": "1792887338328",
@@ -9619,7 +9621,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3946726502)"
                     }
                 ],
-                "views": 3,
+                "views": 4,
                 "price": 20500
             },
             {
@@ -9895,7 +9897,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
                     }
                 ],
-                "views": 4
+                "views": 5
             },
             {
                 "id": "1792887338350",
@@ -10148,7 +10150,7 @@ const productsData = [
                     }
                 ],
                 "price": 88000,
-                "views": 2
+                "views": 6
             },
             {
                 "id": "1792887338348",
@@ -10334,7 +10336,7 @@ const productsData = [
                         "detail": "Costo: $25.000 ➔ $30.000"
                     }
                 ],
-                "views": 146
+                "views": 149
             },
             {
                 "id": "22",
@@ -10469,7 +10471,7 @@ const productsData = [
                         "detail": "Costo: $35.000 ➔ $27.000"
                     }
                 ],
-                "views": 24
+                "views": 27
             },
             {
                 "id": "23",
@@ -10604,7 +10606,7 @@ const productsData = [
                         "detail": "Costo: $40.000 ➔ $31.000"
                     }
                 ],
-                "views": 7
+                "views": 8
             },
             {
                 "id": "24",
@@ -10739,7 +10741,7 @@ const productsData = [
                     }
                 ],
                 "rubro": "carpinteria",
-                "views": 20
+                "views": 22
             },
             {
                 "id": "25",
@@ -10945,7 +10947,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786828216883,
                 "primaryCatId": "Vinotecas",
-                "views": 9,
+                "views": 11,
                 "stock": 0,
                 "history": [
                     {
@@ -11135,7 +11137,7 @@ const productsData = [
                     }
                 ],
                 "visible": true,
-                "views": 19
+                "views": 21
             },
             {
                 "id": "32",
@@ -11357,7 +11359,7 @@ const productsData = [
                 "last_modified": 1794796470483,
                 "primaryCatId": "Juguetes",
                 "history": [],
-                "views": 4
+                "views": 5
             },
             {
                 "id": "33",
@@ -13488,7 +13490,8 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 18
             },
             {
                 "id": "53",
@@ -13738,7 +13741,8 @@ const productsData = [
                 },
                 "primaryCatId": "Barandas",
                 "history": [],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "views": 5
             },
             {
                 "id": "54",
@@ -15029,7 +15033,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA3946726502)"
                     }
                 ],
-                "views": 3,
+                "views": 4,
                 "price": 20500
             }
         ]
@@ -15213,7 +15217,7 @@ const productsData = [
                 "primaryCatId": "Steps",
                 "history": [],
                 "visible": true,
-                "views": 81
+                "views": 82
             },
             {
                 "id": "A1",
@@ -16772,7 +16776,7 @@ const productsData = [
                     }
                 ],
                 "price": 88000,
-                "views": 2
+                "views": 6
             },
             {
                 "id": "41",
@@ -17186,7 +17190,7 @@ const productsData = [
                 "last_modified": 1794797048622,
                 "primaryCatId": "Organizadores",
                 "history": [],
-                "views": 6
+                "views": 22
             },
             {
                 "id": "46",
@@ -18954,7 +18958,7 @@ const productsData = [
                 "last_modified": 1794797048622,
                 "primaryCatId": "Organizadores",
                 "history": [],
-                "views": 6
+                "views": 22
             },
             {
                 "id": "1792887338328",
@@ -20353,7 +20357,7 @@ const productsData = [
                 "primaryCatId": "camas-madera-pino",
                 "history": [],
                 "rubro": "carpinteria",
-                "views": 19,
+                "views": 21,
                 "price": 30000
             },
             {
@@ -21589,7 +21593,7 @@ const productsData = [
                 "last_modified": 1793586859102,
                 "primaryCatId": "Juguetes",
                 "history": [],
-                "views": 1,
+                "views": 2,
                 "categories": [
                     "carpinteria-todos",
                     "Juguetes",
@@ -21731,7 +21735,7 @@ const productsData = [
                 "last_modified": 1794796470483,
                 "primaryCatId": "Juguetes",
                 "history": [],
-                "views": 4
+                "views": 5
             },
             {
                 "id": "4A",
@@ -22784,7 +22788,7 @@ const productsData = [
                 "last_modified": 1793586859102,
                 "primaryCatId": "Juguetes",
                 "visible": true,
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23084,7 +23088,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637216140,
                 "primaryCatId": "Mesas-madera",
-                "views": 5,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23134,7 +23138,7 @@ const productsData = [
                 ],
                 "last_modified": 1783637228097,
                 "primaryCatId": "Mesas-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23432,7 +23436,7 @@ const productsData = [
                 "tags": [],
                 "last_modified": 1786334411421,
                 "primaryCatId": "Mesas-madera",
-                "views": 4,
+                "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -23915,7 +23919,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586789934,
                 "primaryCatId": "Mesas-madera",
-                "views": 5,
+                "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -24078,7 +24082,7 @@ const productsData = [
                         "details": "Importado como borrador desde Mercado Libre (MLA1475679709)"
                     }
                 ],
-                "views": 4,
+                "views": 5,
                 "order": 4
             },
             {
@@ -24112,7 +24116,7 @@ const productsData = [
                 ],
                 "last_modified": 1793586789934,
                 "primaryCatId": "Mesas-madera",
-                "views": 1,
+                "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
                     "linkEnabled": false,
@@ -25960,7 +25964,7 @@ const productsData = [
                 "last_modified": 1788917627673,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 3,
+                "views": 4,
                 "categories": [
                     "carpinteria-todos",
                     "bazar-cocina"
@@ -26034,7 +26038,7 @@ const productsData = [
                 "last_modified": 1788917344040,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
-                "views": 6,
+                "views": 7,
                 "categories": [
                     "carpinteria-todos",
                     "bazar-cocina"
@@ -26793,7 +26797,7 @@ const productsData = [
                                 "default": false,
                                 "volumeDiscounts": [],
                                 "cost_price": 35000,
-                                "price": 350000,
+                                "price": 450000,
                                 "stock": 0,
                                 "showPrice": true,
                                 "weight": 2.5
@@ -26864,7 +26868,7 @@ const productsData = [
                 ],
                 "last_modified": 1780774148299,
                 "primaryCatId": "Podios",
-                "views": 2,
+                "views": 3,
                 "stock": 0,
                 "history": [
                     {
@@ -26897,7 +26901,8 @@ const productsData = [
                     "carpinteria-todos",
                     "Podios"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 450000
             },
             {
                 "id": "H2",
@@ -26925,7 +26930,7 @@ const productsData = [
                                 "linkLabel": "",
                                 "iconType": "local_shipping",
                                 "highlight": false,
-                                "price": 250000,
+                                "price": 350000,
                                 "cost_price": 35000,
                                 "legend": "",
                                 "showPrice": true,
@@ -27002,7 +27007,8 @@ const productsData = [
                     "carpinteria-todos",
                     "Podios"
                 ],
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "price": 350000
             },
             {
                 "id": "H3",
@@ -27053,7 +27059,7 @@ const productsData = [
                         ]
                     }
                 ],
-                "views": 3,
+                "views": 6,
                 "tags": [
                     "podio",
                     "podios",

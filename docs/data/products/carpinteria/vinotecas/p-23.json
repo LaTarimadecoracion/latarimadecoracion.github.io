@@ -24,6 +24,7 @@
           "iconType": "local_shipping",
           "highlight": false,
           "price": 150000,
+          "cost_price": 31000,
           "legend": "",
           "showPrice": true,
           "logisticaEnabled": true,
@@ -130,7 +131,7 @@
       "detail": "Costo: $40.000 ➔ $31.000"
     }
   ],
-  "views": 7,
+  "views": 8,
   "categories": [
     "carpinteria-todos",
     "Vinotecas"

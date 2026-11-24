@@ -246,5 +246,9 @@
   },
   "primaryCatId": "Barandas",
   "history": [],
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "views": 5,
+  "categories": [
+    "Barandas"
+  ]
 }
