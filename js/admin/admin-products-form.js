@@ -1804,6 +1804,34 @@ window.addEventListener('message', (event) => {
                 }
             }
 
+            // Sincronizar precio en la nube en tiempo real (Cloudflare Worker KV) sin requerir git push
+            if (window.PriceOverlay && typeof window.PriceOverlay.pushPricesToCloud === 'function') {
+                try {
+                    const delta = {};
+                    const pid = String(product.id);
+                    delta[pid] = { price: Number(product.price) || 0, variants: {} };
+                    if (Array.isArray(product.acabados_groups)) {
+                        product.acabados_groups.forEach(g => {
+                            (g.medidas_variants || []).forEach(v => {
+                                const m = (v.medida || '').trim();
+                                if (m && m !== 'Única') {
+                                    delta[pid].variants[m] = {
+                                        price: Number(v.price) || 0,
+                                        cost_price: Number(v.cost_price) || 0
+                                    };
+                                }
+                            });
+                        });
+                    }
+                    const adminUser = (window.adminAuth && typeof window.adminAuth.getPublicSession === 'function')
+                        ? window.adminAuth.getPublicSession()?.user?.email
+                        : 'admin';
+                    window.PriceOverlay.pushPricesToCloud(delta, null, adminUser).catch(() => {});
+                } catch (e) {
+                    console.warn('[PriceOverlay] Error preparando delta para la ficha individual:', e);
+                }
+            }
+
             const productModal = document.getElementById('admin-product-modal');
             if (productModal) productModal.style.display = 'none';
             renderAdminUX();
