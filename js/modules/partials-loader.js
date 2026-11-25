@@ -104,7 +104,7 @@ let _postalModulePromise = null;
 window.ensurePostalLookupLoaded = function() {
     if (typeof window.lookupPostalCode === 'function') return Promise.resolve();
     if (_postalModulePromise) return _postalModulePromise;
-    _postalModulePromise = loadScriptOnDemand('js/modules/postal-lookup.js?v=1');
+    _postalModulePromise = loadScriptOnDemand('js/modules/postal-lookup.js?v=2');
     return _postalModulePromise;
 };
 
@@ -347,7 +347,7 @@ window.ensureAdminAreaLoaded = function(masterKey) {
             ]);
             await loadScriptsSequential([
                 'js/admin/admin-payments.js?v=6',
-                'js/admin/admin-shipping.js?v=2',
+                'js/admin/admin-shipping.js?v=3',
                 'js/admin/admin-users.js?v=2'
             ]);
             if (typeof window.initSettingsAdmin === 'function') window.initSettingsAdmin();

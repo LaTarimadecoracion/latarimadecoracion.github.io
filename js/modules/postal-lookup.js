@@ -175,14 +175,14 @@
         // GBA ZONA NORTE (1600 - 1689)
         // ═══════════════════════════════════════════════════════════
         "1601": { "localidad": "Isla Martín García", "departamento": "La Plata", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
-        "1602": { "localidad": "Florida", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1603": { "localidad": "Villa Martelli", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1604": { "localidad": "Florida Oeste", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1605": { "localidad": "Munro", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1606": { "localidad": "Carapachay", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1607": { "localidad": "Villa Adelina", "departamento": "San Isidro", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
+        "1602": { "localidad": "Florida", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1603": { "localidad": "Villa Martelli", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1604": { "localidad": "Florida Oeste", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1605": { "localidad": "Munro", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1606": { "localidad": "Carapachay", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1607": { "localidad": "Villa Adelina", "departamento": "San Isidro", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1608": { "localidad": "Troncos del Talar", "departamento": "Tigre", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
-        "1609": { "localidad": "Boulogne Sur Mer", "departamento": "San Isidro", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
+        "1609": { "localidad": "Boulogne Sur Mer", "departamento": "San Isidro", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1610": { "localidad": "Ricardo Rojas", "departamento": "Tigre", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1611": { "localidad": "Don Torcuato", "departamento": "Tigre", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1612": { "localidad": "Villa de Mayo", "departamento": "Malvinas Argentinas", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
@@ -209,28 +209,28 @@
         "1633": { "localidad": "Del Viso", "departamento": "Pilar", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1634": { "localidad": "Villa Astolfi", "departamento": "Pilar", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1635": { "localidad": "Manuel Alberti", "departamento": "Pilar", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
-        "1636": { "localidad": "Olivos", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1637": { "localidad": "La Lucila", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1638": { "localidad": "Vicente López", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1640": { "localidad": "Martínez", "departamento": "San Isidro", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1641": { "localidad": "Acassuso", "departamento": "San Isidro", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1642": { "localidad": "San Isidro", "departamento": "San Isidro", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1643": { "localidad": "Beccar", "departamento": "San Isidro", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1644": { "localidad": "Victoria", "departamento": "San Fernando", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1645": { "localidad": "Virreyes", "departamento": "San Fernando", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1646": { "localidad": "San Fernando", "departamento": "San Fernando", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
+        "1636": { "localidad": "Olivos", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1637": { "localidad": "La Lucila", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1638": { "localidad": "Vicente López", "departamento": "Vicente López", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1640": { "localidad": "Martínez", "departamento": "San Isidro", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1641": { "localidad": "Acassuso", "departamento": "San Isidro", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1642": { "localidad": "San Isidro", "departamento": "San Isidro", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1643": { "localidad": "Beccar", "departamento": "San Isidro", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1644": { "localidad": "Victoria", "departamento": "San Fernando", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1645": { "localidad": "Virreyes", "departamento": "San Fernando", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1646": { "localidad": "San Fernando", "departamento": "San Fernando", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1647": { "localidad": "Delta de San Fernando", "departamento": "San Fernando", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
         "1648": { "localidad": "Tigre", "departamento": "Tigre", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1649": { "localidad": "Delta de Tigre", "departamento": "Tigre", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
-        "1650": { "localidad": "Ciudad de San Martín", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
-        "1651": { "localidad": "San Andrés", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
-        "1652": { "localidad": "Villa Maipú", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
-        "1653": { "localidad": "Villa Ballester", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
-        "1654": { "localidad": "Villa Lynch", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
-        "1655": { "localidad": "José León Suárez", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
-        "1657": { "localidad": "Billinghurst", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
-        "1658": { "localidad": "Loma Hermosa (San Martín)", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
-        "1659": { "localidad": "Campo de Mayo (San Martín)", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
+        "1650": { "localidad": "Ciudad de San Martín", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_2" },
+        "1651": { "localidad": "San Andrés", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_2" },
+        "1652": { "localidad": "Villa Maipú", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_2" },
+        "1653": { "localidad": "Villa Ballester", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_2" },
+        "1654": { "localidad": "Villa Lynch", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_2" },
+        "1655": { "localidad": "José León Suárez", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_2" },
+        "1657": { "localidad": "Billinghurst", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_2" },
+        "1658": { "localidad": "Loma Hermosa (San Martín)", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_2" },
+        "1659": { "localidad": "Campo de Mayo (San Martín)", "departamento": "General San Martín", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_2" },
         "1661": { "localidad": "Bella Vista", "departamento": "San Miguel", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_2" },
         "1662": { "localidad": "Muñiz", "departamento": "San Miguel", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_2" },
         "1663": { "localidad": "San Miguel", "departamento": "San Miguel", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_2" },
@@ -251,10 +251,10 @@
         "1682": { "localidad": "Villa Bosch / Martín Coronado", "departamento": "Tres de Febrero", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
         "1683": { "localidad": "Churruca", "departamento": "Tres de Febrero", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
         "1684": { "localidad": "El Palomar", "departamento": "Morón", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
-        "1686": { "localidad": "Hurlingham", "departamento": "Hurlingham", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_1", "note": "📍 Origen Taller La Tarima" },
+        "1686": { "localidad": "Hurlingham", "departamento": "Hurlingham", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_1", "note": "📍 Origen Taller La Tarima" },
         "1687": { "localidad": "Pablo Podestá", "departamento": "Tres de Febrero", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
-        "1688": { "localidad": "Villa Tesei", "departamento": "Hurlingham", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_1", "note": "📍 Zona Local Hurlingham" },
-        "1689": { "localidad": "William C. Morris", "departamento": "Hurlingham", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_1" },
+        "1688": { "localidad": "Villa Tesei", "departamento": "Hurlingham", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_1", "note": "📍 Zona Local Hurlingham" },
+        "1689": { "localidad": "William C. Morris", "departamento": "Hurlingham", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_1" },
 
         // ═══════════════════════════════════════════════════════════
         // GBA ZONA OESTE (1700 - 1799)
@@ -269,27 +269,27 @@
         "1718": { "localidad": "San Antonio de Padua", "departamento": "Merlo", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1722": { "localidad": "Merlo", "departamento": "Merlo", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1723": { "localidad": "Mariano Acosta", "departamento": "Merlo", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
-        "1727": { "localidad": "Marcos Paz", "departamento": "Marcos Paz", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
+        "1727": { "localidad": "Marcos Paz", "departamento": "Marcos Paz", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
         "1738": { "localidad": "La Reja", "departamento": "Moreno", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1742": { "localidad": "Paso del Rey", "departamento": "Moreno", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1744": { "localidad": "Moreno", "departamento": "Moreno", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1746": { "localidad": "Francisco Álvarez", "departamento": "Moreno", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
-        "1748": { "localidad": "General Rodríguez", "departamento": "General Rodríguez", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
+        "1748": { "localidad": "General Rodríguez", "departamento": "General Rodríguez", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
         "1752": { "localidad": "Lomas del Mirador", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
         "1754": { "localidad": "San Justo", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
         "1755": { "localidad": "Rafael Castillo", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1757": { "localidad": "Gregorio de Laferrere", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1759": { "localidad": "González Catán", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
-        "1761": { "localidad": "Pontevedra", "departamento": "Merlo", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1763": { "localidad": "Virrey del Pino", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
+        "1761": { "localidad": "Pontevedra", "departamento": "Merlo", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1763": { "localidad": "Virrey del Pino", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
         "1765": { "localidad": "Isidro Casanova", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1766": { "localidad": "La Tablada", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
         "1768": { "localidad": "Villa Madero", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
         "1770": { "localidad": "Aldo Bonzi", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
         "1772": { "localidad": "Villa Celina", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
-        "1773": { "localidad": "Ingeniero Budge", "departamento": "Lomas de Zamora", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
+        "1773": { "localidad": "Ingeniero Budge", "departamento": "Lomas de Zamora", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1774": { "localidad": "La Salada", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_2" },
-        "1778": { "localidad": "Ciudad Evita", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1778": { "localidad": "Ciudad Evita", "departamento": "La Matanza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
 
         // ═══════════════════════════════════════════════════════════
         // GBA ZONA SUR (1800 - 1899)
@@ -297,18 +297,18 @@
         "1802": { "localidad": "Aeropuerto Ezeiza", "departamento": "Ezeiza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
         "1804": { "localidad": "Ezeiza", "departamento": "Ezeiza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
         "1806": { "localidad": "Tristán Suárez", "departamento": "Ezeiza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
-        "1812": { "localidad": "Carlos Spegazzini", "departamento": "Ezeiza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1814": { "localidad": "Cañuelas", "departamento": "Cañuelas", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1815": { "localidad": "Uribelarrea", "departamento": "Cañuelas", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1816": { "localidad": "Vicente Casares", "departamento": "Cañuelas", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1822": { "localidad": "Valentín Alsina", "departamento": "Lanús", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1824": { "localidad": "Lanús Oeste", "departamento": "Lanús", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1825": { "localidad": "Monte Chingolo", "departamento": "Lanús", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1826": { "localidad": "Remedios de Escalada", "departamento": "Lanús", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1828": { "localidad": "Banfield", "departamento": "Lomas de Zamora", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1832": { "localidad": "Lomas de Zamora", "departamento": "Lomas de Zamora", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1834": { "localidad": "Temperley", "departamento": "Lomas de Zamora", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1836": { "localidad": "Llavallol", "departamento": "Lomas de Zamora", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
+        "1812": { "localidad": "Carlos Spegazzini", "departamento": "Ezeiza", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1814": { "localidad": "Cañuelas", "departamento": "Cañuelas", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1815": { "localidad": "Uribelarrea", "departamento": "Cañuelas", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1816": { "localidad": "Vicente Casares", "departamento": "Cañuelas", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1822": { "localidad": "Valentín Alsina", "departamento": "Lanús", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1824": { "localidad": "Lanús Oeste", "departamento": "Lanús", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1825": { "localidad": "Monte Chingolo", "departamento": "Lanús", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1826": { "localidad": "Remedios de Escalada", "departamento": "Lanús", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1828": { "localidad": "Banfield", "departamento": "Lomas de Zamora", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1832": { "localidad": "Lomas de Zamora", "departamento": "Lomas de Zamora", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1834": { "localidad": "Temperley", "departamento": "Lomas de Zamora", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1836": { "localidad": "Llavallol", "departamento": "Lomas de Zamora", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1838": { "localidad": "Luis Guillón", "departamento": "Esteban Echeverría", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1839": { "localidad": "9 de Abril", "departamento": "Esteban Echeverría", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1842": { "localidad": "Monte Grande", "departamento": "Esteban Echeverría", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
@@ -318,16 +318,16 @@
         "1852": { "localidad": "Burzaco", "departamento": "Almirante Brown", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1854": { "localidad": "Longchamps", "departamento": "Almirante Brown", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1856": { "localidad": "Glew", "departamento": "Almirante Brown", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
-        "1862": { "localidad": "Guernica", "departamento": "Presidente Perón", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1864": { "localidad": "Alejandro Korn", "departamento": "San Vicente", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1865": { "localidad": "San Vicente", "departamento": "San Vicente", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1868": { "localidad": "Piñeyro", "departamento": "Avellaneda", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1869": { "localidad": "Gerli", "departamento": "Avellaneda", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1870": { "localidad": "Avellaneda", "departamento": "Avellaneda", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1871": { "localidad": "Dock Sud", "departamento": "Avellaneda", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1872": { "localidad": "Sarandí", "departamento": "Avellaneda", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1874": { "localidad": "Villa Domínico", "departamento": "Avellaneda", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
-        "1875": { "localidad": "Wilde", "departamento": "Avellaneda", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_1", "fleteZone": "flete_zona_3" },
+        "1862": { "localidad": "Guernica", "departamento": "Presidente Perón", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1864": { "localidad": "Alejandro Korn", "departamento": "San Vicente", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1865": { "localidad": "San Vicente", "departamento": "San Vicente", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1868": { "localidad": "Piñeyro", "departamento": "Avellaneda", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1869": { "localidad": "Gerli", "departamento": "Avellaneda", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1870": { "localidad": "Avellaneda", "departamento": "Avellaneda", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1871": { "localidad": "Dock Sud", "departamento": "Avellaneda", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1872": { "localidad": "Sarandí", "departamento": "Avellaneda", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1874": { "localidad": "Villa Domínico", "departamento": "Avellaneda", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
+        "1875": { "localidad": "Wilde", "departamento": "Avellaneda", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1876": { "localidad": "Bernal", "departamento": "Quilmes", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1878": { "localidad": "Quilmes", "departamento": "Quilmes", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1879": { "localidad": "Quilmes Oeste", "departamento": "Quilmes", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
@@ -338,14 +338,14 @@
         "1886": { "localidad": "Ranelagh", "departamento": "Berazategui", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1888": { "localidad": "Florencio Varela", "departamento": "Florencio Varela", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
         "1889": { "localidad": "Bosques", "departamento": "Florencio Varela", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_zona_3" },
-        "1890": { "localidad": "Juan María Gutiérrez", "departamento": "Berazategui", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1891": { "localidad": "Ingeniero Juan Allan", "departamento": "Florencio Varela", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1893": { "localidad": "El Pato", "departamento": "Berazategui", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1894": { "localidad": "Villa Elisa", "departamento": "La Plata", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1895": { "localidad": "Arturo Seguí", "departamento": "La Plata", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1896": { "localidad": "City Bell", "departamento": "La Plata", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1897": { "localidad": "Manuel B. Gonnet", "departamento": "La Plata", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
-        "1898": { "localidad": "Joaquín Gorina", "departamento": "La Plata", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_3", "fleteZone": "flete_fuera_rango" },
+        "1890": { "localidad": "Juan María Gutiérrez", "departamento": "Berazategui", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1891": { "localidad": "Ingeniero Juan Allan", "departamento": "Florencio Varela", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1893": { "localidad": "El Pato", "departamento": "Berazategui", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1894": { "localidad": "Villa Elisa", "departamento": "La Plata", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1895": { "localidad": "Arturo Seguí", "departamento": "La Plata", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1896": { "localidad": "City Bell", "departamento": "La Plata", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1897": { "localidad": "Manuel B. Gonnet", "departamento": "La Plata", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
+        "1898": { "localidad": "Joaquín Gorina", "departamento": "La Plata", "provincia": "BUENOS AIRES", "logisticaZone": "cordon_2", "fleteZone": "flete_fuera_rango" },
 
         // --- BUENOS AIRES (INTERIOR & COSTA ATLÁNTICA) ---
         "2700": { "localidad": "Pergamino", "departamento": "Pergamino", "provincia": "BUENOS AIRES" },
@@ -370,6 +370,10 @@
         "6620": { "localidad": "Chivilcoy", "departamento": "Chivilcoy", "provincia": "BUENOS AIRES" },
         "6640": { "localidad": "Bragado", "departamento": "Bragado", "provincia": "BUENOS AIRES" },
         "6700": { "localidad": "Luján", "departamento": "Luján", "provincia": "BUENOS AIRES" },
+        "6701": { "localidad": "Carlos Keen", "departamento": "Luján", "provincia": "BUENOS AIRES", "logisticaZone": "resto_provincias", "fleteZone": "flete_zona_4" },
+        "6703": { "localidad": "Olivera", "departamento": "Luján", "provincia": "BUENOS AIRES", "logisticaZone": "resto_provincias", "fleteZone": "flete_zona_4" },
+        "6706": { "localidad": "Jáuregui / Pueblo Nuevo", "departamento": "Luján", "provincia": "BUENOS AIRES", "logisticaZone": "resto_provincias", "fleteZone": "flete_zona_4" },
+        "6708": { "localidad": "Open Door", "departamento": "Luján", "provincia": "BUENOS AIRES", "logisticaZone": "resto_provincias", "fleteZone": "flete_zona_4" },
         "6725": { "localidad": "Carmen de Areco", "departamento": "Carmen de Areco", "provincia": "BUENOS AIRES" },
         "6740": { "localidad": "San Antonio de Areco", "departamento": "San Antonio de Areco", "provincia": "BUENOS AIRES" },
         "7000": { "localidad": "Tandil", "departamento": "Tandil", "provincia": "BUENOS AIRES" },
@@ -504,12 +508,13 @@
 
     const ZONE_NAMES = {
         'caba': 'CABA (Capital Federal)',
-        'cordon_1': 'Cordón 1 (GBA Cercano)',
-        'cordon_2': 'Cordón 2 (GBA Extendido)',
+        'cordon_1': 'Cordón 1 (Cercano: Matanza N., Morón, Ituzaingó, 3 de Febrero)',
+        'cordon_2': 'Cordón 2 (GBA Lejano & Muy Lejano)',
         'resto_provincias': 'Resto del País (Provincias)',
         'flete_zona_1': 'Zona 1 (Hurlingham Local)',
         'flete_zona_2': 'Zona 2 (Partidos Limítrofes)',
         'flete_zona_3': 'Zona 3 (GBA Extendido)',
+        'flete_zona_4': 'Zona 4 (Bs. As. Larga Distancia por KM)',
         'flete_fuera_rango': 'Fuera de Rango Directo'
     };
 
@@ -639,6 +644,59 @@
         '1655': [-34.5360, -58.5672], // José León Suárez
         '1657': [-34.5489, -58.5902], // Villa Ballester
 
+        // ── TRES DE FEBRERO Y ALREDEDORES (Zona Clave Taller) ──
+        '1672': [-34.5817, -58.5805], // Villa Bosch
+        '1674': [-34.6074, -58.5661], // Caseros
+        '1675': [-34.5997, -58.5284], // Sáenz Peña
+        '1676': [-34.5990, -58.5475], // Santos Lugares
+        '1677': [-34.5983, -58.5919], // Ciudad Jardín Lomas del Palomar
+        '1678': [-34.6366, -58.5367], // Ciudadela
+        '1680': [-34.6095, -58.5276], // Villa Raffo
+        '1681': [-34.5694, -58.6016], // Loma Hermosa (Tres de Febrero)
+        '1682': [-34.5890, -58.5907], // Villa Bosch / Martín Coronado
+        '1683': [-34.5591, -58.6209], // Churruca
+        '1684': [-34.6074, -58.5894], // El Palomar
+        '1687': [-34.5798, -58.6097], // Pablo Podestá
+
+        // ── SAN MIGUEL / JOSÉ C. PAZ / MALVINAS ARGENTINAS ──
+        '1661': [-34.5647, -58.6874], // Bella Vista
+        '1662': [-34.5422, -58.7058], // Muñiz
+        '1663': [-34.5414, -58.7128], // San Miguel
+        '1664': [-34.5350, -58.6650], // Campo de Mayo
+        '1665': [-34.5150, -58.7690], // José C. Paz
+        '1667': [-34.4744, -58.7562], // Tortuguitas
+        '1612': [-34.5262, -58.6828], // Villa de Mayo
+        '1614': [-34.5122, -58.6631], // Ingeniero Adolfo Sourdeaux
+        '1615': [-34.4831, -58.7169], // Grand Bourg
+        '1616': [-34.4981, -58.6942], // Pablo Nogués
+
+        // ── VICENTE LÓPEZ / SAN ISIDRO / SAN MARTÍN ADICIONALES ──
+        '1602': [-34.5317, -58.4842], // Florida
+        '1603': [-34.5517, -58.5028], // Villa Martelli
+        '1604': [-34.5381, -58.5089], // Florida Oeste
+        '1605': [-34.5292, -58.5250], // Munro
+        '1606': [-34.5319, -58.5433], // Carapachay
+        '1607': [-34.5417, -58.5381], // Villa Adelina (San Isidro)
+        '1637': [-34.4986, -58.4897], // La Lucila
+        '1652': [-34.5714, -58.5133], // Villa Maipú
+        '1653': [-34.5583, -58.5583], // Villa Ballester
+        '1654': [-34.5819, -58.5208], // Villa Lynch
+        '1658': [-34.5694, -58.5833], // Loma Hermosa (San Martín)
+
+        // ── LA MATANZA / MORÓN ADICIONALES ──
+        '1754': [-34.6700, -58.5631], // San Justo
+        '1755': [-34.6953, -58.6214], // Rafael Castillo
+        '1757': [-34.6972, -58.5917], // Gregorio de Laferrere
+        '1759': [-34.7644, -58.6181], // González Catán
+        '1761': [-34.7500, -58.7500], // Pontevedra
+        '1763': [-34.7917, -58.6750], // Virrey del Pino
+        '1765': [-34.7083, -58.5833], // Isidro Casanova
+        '1766': [-34.7010, -58.5333], // La Tablada
+        '1768': [-34.6917, -58.4917], // Villa Madero
+        '1770': [-34.7167, -58.5167], // Aldo Bonzi
+        '1772': [-34.6944, -58.4806], // Villa Celina
+        '1774': [-34.7056, -58.4556], // La Salada
+
         // ── GBA OESTE ──
         '1700': [-34.6082, -58.5536], // Ramos Mejía Este
         '1702': [-34.6200, -58.5700], // Ciudadela
@@ -686,7 +744,38 @@
         '1888': [-34.8900, -58.2000], // Don Bosco
         '1894': [-34.9100, -57.9900], // La Plata Norte
         '1900': [-34.9214, -57.9545], // La Plata Centro
-        '1904': [-34.9500, -57.9400]  // La Plata Sur
+        '1904': [-34.9500, -57.9400], // La Plata Sur
+
+        // ── BUENOS AIRES LARGA DISTANCIA (Hasta 4 hs i/v) ──
+        '2800': [-34.0958, -59.0242], // Zárate
+        '2804': [-34.1687, -58.9591], // Campana
+        '2930': [-33.6791, -59.6672], // San Pedro
+        '2942': [-33.8122, -59.5042], // Baradero
+        '6600': [-34.6514, -59.4308], // Mercedes
+        '6700': [-34.5703, -59.1050], // Luján Centro
+        '6701': [-34.4883, -59.2217], // Carlos Keen
+        '6703': [-34.6190, -59.2887], // Olivera
+        '6705': [-34.5950, -59.2080], // Cortínez
+        '6706': [-34.5887, -59.1778], // Jáuregui / Pueblo Nuevo
+        '6708': [-34.5020, -59.0760], // Open Door
+        '6740': [-34.2497, -59.4739], // San Antonio de Areco
+        '2760': [-34.2497, -59.4739], // San Antonio de Areco
+        '1814': [-35.0500, -58.7600], // Cañuelas
+        '7130': [-35.5760, -58.0097], // Chascomús
+        '7240': [-35.1856, -59.0964], // Lobos
+        '6605': [-35.0044, -59.2783], // Navarro
+
+        // ── BUENOS AIRES PROFUNDO / FUERA DE RANGO (> 4 hs i/v) ──
+        '7600': [-38.0055, -57.5560], // Mar del Plata
+        '8000': [-38.7183, -62.2663], // Bahía Blanca
+        '7000': [-37.3217, -59.1332], // Tandil
+        '7400': [-36.8927, -60.3225], // Olavarría
+        '6000': [-34.5838, -60.9433], // Junín
+        '2700': [-33.8900, -60.5700], // Pergamino
+        '2900': [-33.3333, -60.2167], // San Nicolás
+        '7630': [-38.5473, -58.7396], // Necochea
+        '7165': [-37.2639, -56.9731], // Villa Gesell
+        '7167': [-35.4055, -56.8622]  // Pinamar
     };
 
     function lookupPostalCode(query) {
@@ -775,8 +864,19 @@
                         logisticaZone: logZone,
                         fleteZone: fleteZone
                     };
+                } else if ((cpNum >= 1900 && cpNum <= 1999) || (cpNum >= 2700 && cpNum <= 2999) || (cpNum >= 6000 && cpNum <= 8199)) {
+                    // Interior de la Provincia de Buenos Aires (La Plata, Zárate, Campana, San Pedro, Luján, Mercedes, Tandil, Bahía Blanca, etc.)
+                    const isLaPlata = (cpNum >= 1900 && cpNum <= 1999);
+                    match = {
+                        cp: String(cpNum),
+                        localidad: isLaPlata ? 'La Plata y alrededores' : `Buenos Aires Interior (CP ${cpNum})`,
+                        departamento: isLaPlata ? 'La Plata' : 'Buenos Aires Interior',
+                        provincia: 'BUENOS AIRES',
+                        logisticaZone: isLaPlata ? 'cordon_2' : 'resto_provincias',
+                        fleteZone: 'flete_zona_4'
+                    };
                 } else {
-                    // Resto del País / Provincias (CP >= 1900 o Fuera de GBA)
+                    // Resto del País / Otras Provincias
                     match = {
                         cp: String(cpNum),
                         localidad: 'Interior del País / Provincia',
@@ -793,32 +893,68 @@
         if (!match) return null;
 
         const logZoneKey = match.logisticaZone || 'resto_provincias';
-        const fleteZoneKey = match.fleteZone || 'flete_fuera_rango';
+        let fleteZoneKey = match.fleteZone;
+        if (!fleteZoneKey) {
+            if (match.provincia === 'BUENOS AIRES') {
+                fleteZoneKey = 'flete_zona_4';
+            } else {
+                fleteZoneKey = 'flete_fuera_rango';
+            }
+        }
 
         const rates = getRates();
         const logRateObj = rates.logistica ? rates.logistica[logZoneKey] : null;
         const fleteRateObj = rates.flete ? rates.flete[fleteZoneKey] : null;
 
         const logCost = (logRateObj && logRateObj.baseCost > 0) ? logRateObj.baseCost : 0;
-        const fleteCost = (fleteRateObj && fleteRateObj.baseCost > 0) ? fleteRateObj.baseCost : 0;
+        let fleteCost = 0;
+        let fleteCostFormatted = 'Fuera de Rango (WA)';
+        let fleteDetail = '';
+        let fleteZoneName = ZONE_NAMES[fleteZoneKey] || fleteZoneKey;
 
-        const hasLocalMatch = (logZoneKey !== 'resto_provincias' || fleteZoneKey !== 'flete_fuera_rango');
+        const hasExactCoords = Boolean(CITY_COORDS[match.cp]);
+        const originCoords = [-34.5898, -58.6384];
+        const destCoords = CITY_COORDS[match.cp] || PROVINCE_COORDS[match.provincia] || [-34.6037, -58.3816];
+
+        if (fleteZoneKey === 'flete_zona_4') {
+            const costPerKm = (fleteRateObj && (fleteRateObj.costPerKm || fleteRateObj.baseCost)) ? (fleteRateObj.costPerKm || fleteRateObj.baseCost) : 1250;
+            const dLat = (destCoords[0] - originCoords[0]) * 111.32;
+            const dLon = (destCoords[1] - originCoords[1]) * 111.32 * Math.cos(destCoords[0] * Math.PI / 180);
+            const kmAprox = Math.round(Math.sqrt(dLat * dLat + dLon * dLon) * 1.25);
+
+            if (kmAprox <= 200) {
+                fleteCost = Math.round(kmAprox * 2 * costPerKm);
+                fleteCostFormatted = `$${fleteCost.toLocaleString('es-AR')}`;
+                fleteDetail = `~${kmAprox} km ida (${kmAprox * 2} km i/v) × $${costPerKm.toLocaleString('es-AR')}/km`;
+            } else {
+                fleteZoneKey = 'flete_fuera_rango';
+                fleteZoneName = 'Fuera de Rango (> 4 hs de viaje en auto)';
+                fleteCost = 0;
+                fleteCostFormatted = 'Fuera de Rango (> 4 hs)';
+                fleteDetail = 'Supera el límite de 4 hs de viaje en auto';
+            }
+        } else {
+            fleteCost = (fleteRateObj && fleteRateObj.baseCost > 0) ? fleteRateObj.baseCost : 0;
+            fleteCostFormatted = fleteCost > 0 ? `$${fleteCost.toLocaleString('es-AR')}` : 'Fuera de Rango (WA)';
+        }
+
+        const hasLocalMatch = (logZoneKey !== 'resto_provincias' || fleteCost > 0);
 
         let recommendationText = '';
         let logisticsLinks = [];
 
         if (logZoneKey === 'caba') {
-            recommendationText = '🟢 <strong>Dentro de Rango Urbano:</strong> Cobertura directa con <strong>Courier Flux (Tarifa Plana CABA)</strong> o Flete Directo.';
-            logisticsLinks = [{ name: '📦 Courier Flux', url: '#', color: '#0284c7' }];
+            recommendationText = '🟢 <strong>Dentro de Rango Urbano:</strong> Cobertura directa con <strong>Logística (Tarifa Plana CABA)</strong> o Flete Directo.';
+            logisticsLinks = [{ name: '📦 Logística Courier', url: '#', color: '#0284c7' }];
         } else if (logZoneKey === 'cordon_1') {
-            recommendationText = '🟢 <strong>Dentro de Rango GBA Cercano:</strong> Cobertura directa con <strong>Logística Flux (Cordón 1)</strong> o Flete Particular desde taller Hurlingham.';
+            recommendationText = '🟢 <strong>Dentro de Cordón 1 (Cercano a La Matanza):</strong> Cobertura con <strong>Logística (Cordón 1)</strong> o Flete Particular.';
             logisticsLinks = [
-                { name: '📦 Courier Flux', url: '#', color: '#0284c7' },
-                { name: '🚛 Flete Local', url: '#', color: '#059669' }
+                { name: '📦 Logística Courier', url: '#', color: '#0284c7' },
+                { name: '🚛 Flete Particular', url: '#', color: '#059669' }
             ];
         } else if (logZoneKey === 'cordon_2') {
-            recommendationText = '🟡 <strong>GBA Extendido:</strong> Cubierto por <strong>Logística Flux (Cordón 2)</strong> o Flete Extendido.';
-            logisticsLinks = [{ name: '📦 Courier Flux', url: '#', color: '#0284c7' }];
+            recommendationText = '🟡 <strong>Cordón 2 (GBA Lejano & Muy Lejano):</strong> Cobertura directa con <strong>Logística (Cordón 2)</strong> o Flete Extendido.';
+            logisticsLinks = [{ name: '📦 Logística Courier', url: '#', color: '#0284c7' }];
         } else {
             recommendationText = '🔴 <strong>Fuera de Rango de Flete Local / Provincias:</strong> Se recomienda despachar por <strong>Transporte o Expreso a Provincia</strong> (Vía Cargo, Andreani, Buspack, Correo Argentino).';
             logisticsLinks = [
@@ -829,8 +965,6 @@
             ];
         }
 
-        const destCoords = CITY_COORDS[match.cp] || PROVINCE_COORDS[match.provincia] || [-34.6037, -58.3816];
-
         return {
             cp: match.cp || strQuery,
             provincia: match.provincia,
@@ -838,7 +972,8 @@
             partido: match.departamento || match.partido,
             barrio: match.barrio || `${match.localidad} Centro`,
             coords: destCoords,
-            originCoords: [-34.5898, -58.6384], // Taller Hurlingham
+            hasExactCoords,
+            originCoords: originCoords, // Taller Hurlingham
             note: match.note || '',
             hasLocalMatch,
             recommendationText,
@@ -852,10 +987,12 @@
             },
             flete: {
                 zoneKey: fleteZoneKey,
-                zoneName: ZONE_NAMES[fleteZoneKey] || fleteZoneKey,
+                zoneName: fleteZoneName,
                 cost: fleteCost,
-                costFormatted: fleteCost > 0 ? `$${fleteCost.toLocaleString('es-AR')}` : 'Fuera de Rango (WA)',
-                active: fleteRateObj ? fleteRateObj.active !== false : true
+                costFormatted: fleteCostFormatted,
+                detail: fleteDetail,
+                active: fleteRateObj ? fleteRateObj.active !== false : true,
+                isDynamicKm: fleteZoneKey === 'flete_zona_4'
             }
         };
     }

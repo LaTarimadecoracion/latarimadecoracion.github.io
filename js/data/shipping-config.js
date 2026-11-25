@@ -3,7 +3,7 @@ window.sessionShippingFullData = {
     "logistica": {
         "caba": {
             "active": true,
-            "baseCost": 8000
+            "baseCost": 10000
         },
         "cordon_1": {
             "active": true,
@@ -30,6 +30,12 @@ window.sessionShippingFullData = {
         "flete_zona_3": {
             "active": true,
             "baseCost": 65000
+        },
+        "flete_zona_4": {
+            "active": false,
+            "baseCost": 1350,
+            "costPerKm": 1350,
+            "isDynamicKm": true
         },
         "flete_fuera_rango": {
             "active": false,

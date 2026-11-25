@@ -13,27 +13,27 @@
         logistica: {
             caba: {
                 title: '🏙️ 1. CABA (Capital Federal)',
-                badge: 'Tarifa Base Flux: $4.070',
+                badge: 'Tarifa Plana CABA',
                 cpRange: 'C.P. 1000 – 1499',
                 cities: ['Agronomía (1419)', 'Almagro (1177)', 'Belgrano (1428)', 'Caballito (1405)', 'Devoto (1419)', 'Flores (1406)', 'Palermo (1425)', 'Recoleta (1113)', 'San Telmo (1063)', 'Villa Urquiza (1431)']
             },
             cordon_1: {
                 title: '🟣 2. CORDÓN 1 (GBA Cercano)',
-                badge: 'Tarifa Base Flux: $5.380',
-                cpRange: 'C.P. 1600–1699, 1700–1799, 1800–1899',
-                cities: ['Vicente López (1638)', 'San Isidro (1642)', 'San Fernando (1646)', 'San Martín (1650)', 'Tres de Febrero (1678)', 'Hurlingham (1686)', 'Morón (1708)', 'Ituzaingó (1714)', 'Avellaneda (1870)', 'Lanús (1824)', 'Lomas de Zamora (1832)']
+                badge: 'La Matanza N., Morón, Ituzaingó, Tres de Febrero',
+                cpRange: 'La Matanza Norte, Morón, Ituzaingó, Tres de Febrero',
+                cities: ['Ramos Mejía (1704)', 'San Justo (1754)', 'Lomas del Mirador (1730)', 'Villa Luzuriaga (1728)', 'La Tablada (1766)', 'Ciudad Evita (1756)', 'Morón (1708)', 'Haedo (1706)', 'Castelar (1712)', 'El Palomar (1684)', 'Ituzaingó (1714)', 'Caseros (1674)', 'Pablo Podestá (1687)', 'Ciudad Jardín (1677)', 'Santos Lugares (1676)', 'Villa Bosch (1672)', 'Sáenz Peña (1675)', 'Ciudadela (1678)']
             },
             cordon_2: {
-                title: '🟠 3. CORDÓN 2 (GBA Alejado / Extendido)',
-                badge: 'Tarifa Base Flux: $8.280',
-                cpRange: 'C.P. 1600–1699, 1700–1799, 1800–1899, 1900',
-                cities: ['Tigre (1648)', 'Malvinas Argentinas (1613)', 'José C. Paz (1665)', 'San Miguel (1663)', 'Escobar (1625)', 'Pilar (1629)', 'Moreno (1744)', 'Merlo (1722)', 'Quilmes (1878)', 'Berazategui (1884)', 'Ezeiza (1804)', 'La Plata (1900)']
+                title: '🟠 3. CORDÓN 2 (GBA Lejano & Muy Lejano)',
+                badge: 'Lejanos y Muy Lejanos (40+ localidades)',
+                cpRange: 'GBA Norte, Sur, Oeste Lejano + La Plata, Escobar, Pilar',
+                cities: ['Hurlingham (1686)', 'San Martín (1650)', 'San Miguel (1663)', 'San Isidro (1642)', 'Vicente López (1638)', 'San Fernando (1646)', 'Tigre (1648)', 'Nordelta (1670)', 'José C. Paz (1665)', 'Malvinas Argentinas (1613)', 'Merlo (1722)', 'Moreno (1744)', 'La Matanza Sur - Catán/Virrey del Pino (1759)', 'Avellaneda (1870)', 'Lanús (1824)', 'Lomas de Zamora (1832)', 'Quilmes (1878)', 'Alte. Brown (1846)', 'Ezeiza (1804)', 'Berazategui (1884)', 'Pilar (1629)', 'Escobar (1625)', 'La Plata (1900)', 'Luján (6700)', 'Cañuelas (1814)', 'Zárate (2800)', 'Campana (2804)', 'San Vicente (1865)', 'Berisso (1923)', 'Ensenada (1925)']
             },
             resto_provincias: {
                 title: '🇦🇷 4. Resto del País (Provincias / Expreso)',
                 badge: 'Provincias de Argentina',
                 cpRange: 'C.P. 2000 – 9999',
-                cities: ['Rosario, Santa Fe (2000)', 'Córdoba Cap. (5000)', 'Mendoza Cap. (5500)', 'Salta Cap. (4400)', 'Posadas, Misiones (3300)', 'Tucumán Cap. (4000)', 'Paraná, Entre Ríos (3100)', 'Neuquén Cap. (8300)']
+                cities: ['Rosario (2000)', 'Córdoba (5000)', 'Mendoza (5500)', 'Salta (4400)', 'Mar del Plata (7600)', 'Tucumán (4000)', 'Santa Fe (3000)', 'Neuquén (8300)']
             }
         },
         flete: {
@@ -55,11 +55,18 @@
                 cpRange: 'C.P. 1000–1499, 1600–1699, 1744, 1665',
                 cities: ['CABA (1000)', 'Vicente López (1638)', 'San Isidro (1642)', 'San Fernando (1646)', 'Tigre (1648)', 'Malvinas Argentinas (1613)', 'José C. Paz (1665)', 'Moreno (1744)']
             },
+            flete_zona_4: {
+                title: '🚗 ZONA 4: Larga Distancia Bs. As. (Cálculo por KM)',
+                badge: 'Hasta 4 hs i/v · Fórmula: KM × $/km × 2',
+                cpRange: 'Prov. Bs. As. (Hasta 180 km de ida / 4 hs totales)',
+                isDynamicKm: true,
+                cities: ['San Pedro (2930)', 'Zárate (2800)', 'Campana (2804)', 'Mercedes (6600)', 'Luján (6700)', 'San Antonio de Areco (2760)', 'Cañuelas (1814)', 'Chascomús (7130)', 'Lobos (7240)', 'Navarro (6605)']
+            },
             flete_fuera_rango: {
                 title: '🚛 Fuera de Rango Flete Directo',
-                badge: 'GBA Sur Alejado e Interior',
-                cpRange: 'Resto de Códigos Postales',
-                cities: ['Quilmes (1878)', 'Berazategui (1884)', 'La Plata (1900)', 'Luján (6700)', 'Ezeiza (1804)']
+                badge: 'Más de 4 hs de viaje o Provincias',
+                cpRange: 'Provincias y Bs. As. profundo (> 200 km)',
+                cities: ['Mar del Plata (7600)', 'Bahía Blanca (8000)', 'Tandil (7000)', 'Olavarría (7400)', 'Rosario (2000)', 'Córdoba (5000)']
             }
         },
         otro: {
@@ -87,9 +94,10 @@
             resto_provincias: { active: true, baseCost: 0, requireWA: true }
         },
         flete: {
-            flete_zona_1: { active: true, baseCost: 4500 },
-            flete_zona_2: { active: true, baseCost: 7500 },
-            flete_zona_3: { active: true, baseCost: 11000 },
+            flete_zona_1: { active: true, baseCost: 5500 },
+            flete_zona_2: { active: true, baseCost: 45000 },
+            flete_zona_3: { active: true, baseCost: 65000 },
+            flete_zona_4: { active: true, baseCost: 1250, costPerKm: 1250, isDynamicKm: true },
             flete_fuera_rango: { active: false, baseCost: 0, requireWA: true }
         },
         otro: {
@@ -258,6 +266,7 @@
                             <div style="display: flex; align-items: center; gap: 2px; background: var(--admin-surface-hover); border: 1px solid var(--admin-border-color); border-radius: 4px; padding: 0.15rem 0.4rem;">
                                 <span style="font-size: 0.72rem; font-weight: 800; color: var(--admin-text-muted);">$</span>
                                 <input type="number" class="ship-zone-cost-in" data-mode="${currentShipMode}" data-zone="${zoneKey}" value="${zVal.baseCost !== undefined ? zVal.baseCost : 0}" placeholder="0" style="width: 75px; border: none; background: transparent; font-size: 0.82rem; font-weight: 700; color: var(--admin-text-main); outline: none;">
+                                ${(zoneKey === 'flete_zona_4' || zMeta.isDynamicKm) ? `<span style="font-size: 0.68rem; font-weight: 800; color: var(--admin-accent); white-space: nowrap; margin-left: 2px;">/ km i/v</span>` : ''}
                             </div>
                         </div>
 
@@ -1432,9 +1441,11 @@
                 const zoneKey = activeChk.dataset.zone;
                 const costIn = document.querySelector(`.ship-zone-cost-in[data-mode="${mode}"][data-zone="${zoneKey}"]`);
 
+                const parsedVal = costIn ? (parseFloat(costIn.value) || 0) : 0;
                 fullData[mode][zoneKey] = {
                     active: activeChk ? activeChk.checked : true,
-                    baseCost: costIn ? (parseFloat(costIn.value) || 0) : 0
+                    baseCost: parsedVal,
+                    ...(zoneKey === 'flete_zona_4' ? { costPerKm: parsedVal, isDynamicKm: true } : {})
                 };
             });
         });
@@ -1501,7 +1512,7 @@
                         <span class="material-symbols-outlined" style="color: #A0715B; font-size: 22px;">map</span>
                         <div>
                             <div style="font-size: 0.65rem; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; color: #A0715B;">PROVINCIA PRIMORDIAL</div>
-                            <div style="font-size: 1.05rem; font-weight: 900; letter-spacing: 0.5px;">${res.provincia}</div>
+                            <div id="admin-postal-prov-header" style="font-size: 1.05rem; font-weight: 900; letter-spacing: 0.5px;">${res.provincia}</div>
                         </div>
                     </div>
                     <span style="background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 800; color: #FAF9F6;">CP ${res.cp}</span>
@@ -1511,27 +1522,40 @@
                 <div style="background: white; border: 1px solid #E7E5E4; border-radius: 10px; padding: 0.85rem 1rem; margin-bottom: 0.85rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px;">
                     <div>
                         <div style="font-size: 0.68rem; font-weight: 800; color: #78716C; text-transform: uppercase;">2. LOCALIDAD / PARTIDO</div>
-                        <div style="font-size: 0.95rem; font-weight: 800; color: #1C1917;">${res.localidad}</div>
-                        <div style="font-size: 0.78rem; color: #78716C; font-weight: 600;">(${res.partido})</div>
+                        <div id="admin-postal-loc-header" style="font-size: 0.95rem; font-weight: 800; color: #1C1917;">${res.localidad}</div>
+                        <div id="admin-postal-part-header" style="font-size: 0.78rem; color: #78716C; font-weight: 600;">(${res.partido})</div>
                     </div>
                     <div>
                         <div style="font-size: 0.68rem; font-weight: 800; color: #78716C; text-transform: uppercase;">3. BARRIO / ZONA</div>
-                        <div style="font-size: 0.95rem; font-weight: 800; color: #1C1917;">${res.barrio}</div>
+                        <div id="admin-postal-barr-header" style="font-size: 0.95rem; font-weight: 800; color: #1C1917;">${res.barrio}</div>
                     </div>
                 </div>
 
-                <!-- 🗺️ MINIMAPA INTERACTIVO DE UBICACIÓN Y DISTANCIA -->
-                <div style="background: white; border: 1.5px solid #E7E5E4; border-radius: 12px; overflow: hidden; margin-bottom: 0.85rem; position: relative;">
-                    <div style="padding: 0.5rem 0.85rem; background: #FAF9F6; border-bottom: 1px solid #E7E5E4; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--admin-accent); display: flex; align-items: center; justify-content: space-between;">
-                        <span style="display: flex; align-items: center; gap: 5px;">
-                            <span class="material-symbols-outlined" style="font-size: 16px;">explore</span>
-                            Mapa Interactivo de Ubicación &amp; Recorrido
-                        </span>
-                        <span style="font-size: 0.7rem; color: #78716C; font-weight: 600;">
-                            📍 Hurlingham ➔ 📌 ${res.localidad} (${res.provincia})
-                        </span>
+                <!-- 🗺️ MINIMAPA INTERACTIVO DE UBICACIÓN Y DISTANCIA CON CONTROLES DE EXPANSIÓN -->
+                <div id="admin-postal-map-card" style="background: white; border: 1.5px solid #E7E5E4; border-radius: 12px; overflow: hidden; margin-bottom: 0.85rem; position: relative; transition: all 0.25s ease;">
+                    <div style="padding: 0.45rem 0.85rem; background: #FAF9F6; border-bottom: 1px solid #E7E5E4; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; color: var(--admin-accent); display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px; white-space: nowrap; overflow: hidden;">
+                            <span style="display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; flex-shrink: 0;">
+                                <span class="material-symbols-outlined" style="font-size: 16px;">explore</span>
+                                Ruta por Calles
+                            </span>
+                            <span id="admin-postal-route-badge" style="display: none; background: #EFF6FF; color: #1D4ED8; border: 1px solid #BFDBFE; padding: 2px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 800; white-space: nowrap; align-items: center; gap: 4px;"></span>
+                        </div>
+                        
+                        <!-- Destino en una sola línea + Solo Iconos de Cuadrado y Full Screen -->
+                        <div style="display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; flex-shrink: 0;">
+                            <span id="admin-postal-dest-header" style="font-size: 0.72rem; color: #78716C; font-weight: 700; white-space: nowrap; display: inline-flex; align-items: center; gap: 3px;" title="Hurlingham ➔ ${res.localidad} (${res.provincia})">
+                                📍 Hurlingham ➔ 📌 ${res.localidad}
+                            </span>
+                            <button type="button" id="btn-admin-map-square" onclick="window.toggleAdminPostalMapSquare()" title="Ampliar a formato cuadrado" style="background: white; border: 1.2px solid #D6D3D1; border-radius: 6px; width: 26px; height: 26px; padding: 0; color: #44403C; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 1px 2px rgba(0,0,0,0.05); transition: all 0.15s ease;">
+                                <span class="material-symbols-outlined" id="btn-admin-map-square-icon" style="font-size: 16px; color: var(--admin-accent);">crop_square</span>
+                            </button>
+                            <button type="button" id="btn-admin-map-fullscreen" onclick="window.toggleAdminPostalMapFullscreen()" title="Pantalla completa (Esc)" style="background: white; border: 1.2px solid #D6D3D1; border-radius: 6px; width: 26px; height: 26px; padding: 0; color: #44403C; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 1px 2px rgba(0,0,0,0.05); transition: all 0.15s ease;">
+                                <span class="material-symbols-outlined" id="btn-admin-map-fs-icon" style="font-size: 16px; color: var(--admin-accent);">fullscreen</span>
+                            </button>
+                        </div>
                     </div>
-                    <div id="${mapId}" style="height: 220px; width: 100%; background: #F5F5F4; z-index: 1;"></div>
+                    <div id="${mapId}" style="height: 250px; width: 100%; background: #F5F5F4; z-index: 1; transition: height 0.25s ease;"></div>
                 </div>
 
                 <!-- 3. COINCIDENCIA / GRUPOS DE ENVÍO -->
@@ -1550,10 +1574,11 @@
                                 <div style="font-size: 1.1rem; font-weight: 900; color: ${res.logistica.cost > 0 ? '#0284c7' : '#64748b'}; margin-top: 4px;">${res.logistica.costFormatted}</div>
                             </div>
                             <!-- Tarjeta Flete -->
-                            <div style="background: white; border: 1.5px solid ${res.flete.active ? '#059669' : '#e2e8f0'}; border-radius: 10px; padding: 0.75rem 0.9rem;">
+                            <div id="admin-postal-flete-card" style="background: white; border: 1.5px solid ${res.flete.active ? '#059669' : '#e2e8f0'}; border-radius: 10px; padding: 0.75rem 0.9rem;">
                                 <div style="font-size: 0.72rem; font-weight: 800; color: #059669; text-transform: uppercase;">🚛 Flete Particular</div>
-                                <div style="font-size: 0.88rem; font-weight: 800; color: #0f172a; margin-top: 2px;">${res.flete.zoneName}</div>
-                                <div style="font-size: 1.1rem; font-weight: 900; color: ${res.flete.cost > 0 ? '#059669' : '#64748b'}; margin-top: 4px;">${res.flete.costFormatted}</div>
+                                <div id="admin-postal-flete-zonename" style="font-size: 0.88rem; font-weight: 800; color: #0f172a; margin-top: 2px;">${res.flete.zoneName}</div>
+                                <div id="admin-postal-flete-cost" style="font-size: 1.1rem; font-weight: 900; color: ${res.flete.cost > 0 ? '#059669' : '#64748b'}; margin-top: 4px;">${res.flete.costFormatted}</div>
+                                <div id="admin-postal-flete-detail" style="font-size: 0.72rem; color: #64748b; font-weight: 600; margin-top: 3px;">${res.flete.detail || ''}</div>
                             </div>
                         </div>
                     ` : `
@@ -1631,20 +1656,170 @@
                 });
 
                 L.marker(origin, { icon: originIcon }).addTo(map).bindPopup('<b>Taller La Tarima</b><br>Hurlingham (CP 1686)');
-                L.marker(dest, { icon: destIcon }).addTo(map).bindPopup(`<b>${res.localidad}</b><br>${res.provincia} (CP ${res.cp})`);
+                const destMarker = L.marker(dest, { icon: destIcon }).addTo(map).bindPopup(`<b>${res.localidad}</b><br>${res.provincia} (CP ${res.cp})`);
 
-                if (Math.abs(origin[0] - dest[0]) > 0.001 || Math.abs(origin[1] - dest[1]) > 0.001) {
-                    L.polyline([origin, dest], {
-                        color: '#A0715B',
-                        weight: 3,
-                        opacity: 0.75,
-                        dashArray: '6, 8'
-                    }).addTo(map);
+                let routePolylines = [];
+                const clearRoutePolylines = () => {
+                    routePolylines.forEach(l => { try { map.removeLayer(l); } catch(e){} });
+                    routePolylines = [];
+                };
 
-                    const bounds = L.latLngBounds([origin, dest]);
-                    map.fitBounds(bounds, { padding: [35, 35] });
-                } else {
-                    map.setView(origin, 13);
+                const traceRoute = (currentDest) => {
+                    clearRoutePolylines();
+
+                    const drawFallback = () => {
+                        if (Math.abs(origin[0] - currentDest[0]) > 0.001 || Math.abs(origin[1] - currentDest[1]) > 0.001) {
+                            const line = L.polyline([origin, currentDest], {
+                                color: '#A0715B',
+                                weight: 3,
+                                opacity: 0.75,
+                                dashArray: '6, 8'
+                            }).addTo(map);
+                            routePolylines.push(line);
+
+                            const bounds = L.latLngBounds([origin, currentDest]);
+                            map._currentRouteBounds = bounds;
+                            map.fitBounds(bounds, { padding: [35, 35] });
+                        } else {
+                            map._currentCenter = origin;
+                            map.setView(origin, 13);
+                        }
+                    };
+
+                    if (Math.abs(origin[0] - currentDest[0]) > 0.001 || Math.abs(origin[1] - currentDest[1]) > 0.001) {
+                        const badge = document.getElementById('admin-postal-route-badge');
+                        if (badge) {
+                            badge.style.display = 'inline-flex';
+                            badge.innerHTML = '<span class="material-symbols-outlined" style="font-size:13px; animation:spin 1s linear infinite;">sync</span> <span>Calculando ruta real...</span>';
+                        }
+
+                        // Trazado de ruta real por calles y autopistas con OSRM (100% libre y gratuito)
+                        const osrmUrl = `https://router.project-osrm.org/route/v1/driving/${origin[1]},${origin[0]};${currentDest[1]},${currentDest[0]}?overview=full&geometries=geojson`;
+                        const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+                        const timeoutId = controller ? setTimeout(() => controller.abort(), 4500) : null;
+
+                        fetch(osrmUrl, controller ? { signal: controller.signal } : {})
+                            .then(r => r.json())
+                            .then(data => {
+                                if (timeoutId) clearTimeout(timeoutId);
+                                if (data && data.code === 'Ok' && data.routes && data.routes[0]) {
+                                    const route = data.routes[0];
+                                    const coords = route.geometry.coordinates.map(pt => [pt[1], pt[0]]);
+
+                                    // Sombra de contraste
+                                    const shadow = L.polyline(coords, {
+                                        color: '#1E3A8A',
+                                        weight: 7,
+                                        opacity: 0.35,
+                                        lineCap: 'round',
+                                        lineJoin: 'round'
+                                    }).addTo(map);
+                                    routePolylines.push(shadow);
+
+                                    // Línea principal
+                                    const routeLine = L.polyline(coords, {
+                                        color: '#2563EB',
+                                        weight: 4,
+                                        opacity: 0.95,
+                                        lineCap: 'round',
+                                        lineJoin: 'round'
+                                    }).addTo(map);
+                                    routePolylines.push(routeLine);
+
+                                    const km = (route.distance / 1000).toFixed(1);
+                                    const mins = Math.round(route.duration / 60);
+
+                                    if (badge) {
+                                        badge.style.display = 'inline-flex';
+                                        badge.style.background = '#ECFDF5';
+                                        badge.style.color = '#047857';
+                                        badge.style.borderColor = '#A7F3D0';
+                                        badge.innerHTML = `🛣️ <strong>${km} km</strong> de ruta · ⏱️ <strong>~${mins} min</strong> de viaje`;
+                                    }
+
+                                    // Cálculo dinámico para Flete Zona 4 (KM de ruta real × 2 × $/km)
+                                    if (res.flete && res.flete.isDynamicKm) {
+                                        const fleteCostEl = document.getElementById('admin-postal-flete-cost');
+                                        const fleteDetailEl = document.getElementById('admin-postal-flete-detail');
+                                        const fleteZoneEl = document.getElementById('admin-postal-flete-zonename');
+                                        const fleteRates = (window.sessionShippingFullData && window.sessionShippingFullData.flete) || {};
+                                        const costPerKm = (fleteRates.flete_zona_4 && (fleteRates.flete_zona_4.costPerKm || fleteRates.flete_zona_4.baseCost)) || 1250;
+                                        
+                                        const kmFloat = parseFloat(km) || 0;
+                                        const roundTripKm = (kmFloat * 2).toFixed(1);
+                                        const totalHours = (mins * 2 / 60).toFixed(1);
+
+                                        if (fleteCostEl && fleteDetailEl) {
+                                            // Límite de 4 horas i/v (~2h 15m ida = 135 min)
+                                            if (mins * 2 <= 260 && kmFloat <= 220) {
+                                                const totalCost = Math.round(kmFloat * 2 * costPerKm);
+                                                fleteCostEl.textContent = '$' + totalCost.toLocaleString('es-AR');
+                                                fleteCostEl.style.color = '#059669';
+                                                if (fleteZoneEl) fleteZoneEl.textContent = 'Zona 4 (Larga Distancia Bs. As.)';
+                                                fleteDetailEl.innerHTML = `🛣️ <strong>${km} km</strong> ida (<strong>${roundTripKm} km</strong> i/v) · ⏱️ ~${mins}m ida (~${totalHours} hs i/v) × <strong>$${costPerKm.toLocaleString('es-AR')}/km</strong>`;
+                                            } else {
+                                                fleteCostEl.textContent = 'Fuera de Rango (> 4 hs)';
+                                                fleteCostEl.style.color = '#64748b';
+                                                if (fleteZoneEl) fleteZoneEl.textContent = 'Fuera de Rango (> 4 hs de auto)';
+                                                fleteDetailEl.innerHTML = `<span style="color:#DC2626; font-weight:700;">⏱️ ${totalHours} hs i/v supera el límite de 4 hs de viaje en auto. Se sugiere Expreso.</span>`;
+                                            }
+                                        }
+                                    }
+
+                                    const routeBounds = routeLine.getBounds();
+                                    map._currentRouteBounds = routeBounds;
+                                    map.fitBounds(routeBounds, { padding: [35, 35] });
+                                } else {
+                                    if (badge) badge.style.display = 'none';
+                                    drawFallback();
+                                }
+                            })
+                            .catch(() => {
+                                if (timeoutId) clearTimeout(timeoutId);
+                                if (badge) badge.style.display = 'none';
+                                drawFallback();
+                            });
+                    } else {
+                        map._currentCenter = origin;
+                        map.setView(origin, 13);
+                    }
+                };
+
+                // Trazar con las coordenadas actuales
+                traceRoute(dest);
+
+                // Si las coordenadas no estaban en la lista exacta, geocodificar al vuelo vía OpenStreetMap Nominatim
+                if (!res.hasExactCoords && res.cp) {
+                    const geoQuery = `${res.cp}, Argentina`;
+                    fetch(`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=1&q=${encodeURIComponent(geoQuery)}`)
+                        .then(r => r.json())
+                        .then(geo => {
+                            if (geo && geo[0] && geo[0].lat && geo[0].lon) {
+                                const preciseDest = [parseFloat(geo[0].lat), parseFloat(geo[0].lon)];
+                                const addr = geo[0].address || {};
+                                const detectedCity = addr.city || addr.town || addr.village || addr.municipality || addr.suburb || res.localidad;
+                                const detectedCounty = addr.county || addr.state_district || res.partido;
+                                const detectedState = (addr.state || '').toUpperCase();
+
+                                if (detectedCity && !res.hasExactCoords) {
+                                    const locEl = document.getElementById('admin-postal-loc-header');
+                                    const partEl = document.getElementById('admin-postal-part-header');
+                                    const destEl = document.getElementById('admin-postal-dest-header');
+                                    if (locEl) locEl.textContent = detectedCity;
+                                    if (partEl && detectedCounty) partEl.textContent = `(${detectedCounty})`;
+                                    if (destEl) destEl.textContent = `📍 Hurlingham ➔ 📌 ${detectedCity}`;
+                                }
+                                if (detectedState && detectedState.includes('BUENOS AIRES')) {
+                                    const provEl = document.getElementById('admin-postal-prov-header');
+                                    if (provEl) provEl.textContent = 'BUENOS AIRES';
+                                }
+
+                                destMarker.setLatLng(preciseDest);
+                                destMarker.bindPopup(`<b>${detectedCity || res.localidad}</b><br>${res.provincia} (CP ${res.cp})<br><small style="color:#059669; font-weight:800;">📍 Ubicación Geocodificada</small>`);
+                                traceRoute(preciseDest);
+                            }
+                        })
+                        .catch(() => {});
                 }
 
                 window.activeAdminPostalMaps[containerId] = map;
@@ -1652,6 +1827,146 @@
             });
         }, 100);
     }
+
+    // Estilos CSS para el modo Fullscreen del Mapa Admin
+    if (!document.getElementById('admin-map-fullscreen-styles')) {
+        const style = document.createElement('style');
+        style.id = 'admin-map-fullscreen-styles';
+        style.textContent = `
+            .admin-postal-map-fullscreen-active {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                z-index: 9999999 !important;
+                margin: 0 !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                border: none !important;
+                display: flex !important;
+                flex-direction: column !important;
+                background: #FAF9F6 !important;
+            }
+            .admin-postal-map-fullscreen-active > div:first-child {
+                flex-shrink: 0 !important;
+                padding: 0.75rem 1.25rem !important;
+                background: #1C1917 !important;
+                color: #FAF9F6 !important;
+                border-bottom: 2px solid var(--admin-accent) !important;
+            }
+            .admin-postal-map-fullscreen-active > div:first-child span {
+                color: #FAF9F6 !important;
+            }
+            .admin-postal-map-fullscreen-active #admin-postal-result-map {
+                flex: 1 1 auto !important;
+                height: calc(100vh - 54px) !important;
+                width: 100vw !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // 🔲 Alternar tamaño Cuadrado (250px <-> 520px) en el mismo layout
+    window.toggleAdminPostalMapSquare = function() {
+        const mapEl = document.getElementById('admin-postal-result-map');
+        const iconEl = document.getElementById('btn-admin-map-square-icon');
+        const btn = document.getElementById('btn-admin-map-square');
+        if (!mapEl) return;
+
+        const isSquare = mapEl.getAttribute('data-is-square') === 'true';
+        if (!isSquare) {
+            mapEl.style.height = '520px';
+            mapEl.setAttribute('data-is-square', 'true');
+            if (iconEl) iconEl.textContent = 'width';
+            if (btn) {
+                btn.style.background = '#F5F5F4';
+                btn.style.borderColor = 'var(--admin-accent)';
+                btn.title = 'Volver a formato apaisado';
+            }
+        } else {
+            mapEl.style.height = '250px';
+            mapEl.setAttribute('data-is-square', 'false');
+            if (iconEl) iconEl.textContent = 'crop_square';
+            if (btn) {
+                btn.style.background = 'white';
+                btn.style.borderColor = '#D6D3D1';
+                btn.title = 'Ampliar a formato cuadrado';
+            }
+        }
+
+        const map = window.activeAdminPostalMaps && window.activeAdminPostalMaps['admin-postal-result-map'];
+        if (map) {
+            setTimeout(() => {
+                map.invalidateSize();
+                if (map._currentRouteBounds) {
+                    map.fitBounds(map._currentRouteBounds, { padding: [35, 35] });
+                } else if (map._currentCenter) {
+                    map.setView(map._currentCenter, 13);
+                }
+            }, 260);
+        }
+    };
+
+    // 🖥️ Alternar Pantalla Completa (100vw / 100vh modal con ESC)
+    window.toggleAdminPostalMapFullscreen = function() {
+        const card = document.getElementById('admin-postal-map-card');
+        const mapEl = document.getElementById('admin-postal-result-map');
+        const fsIcon = document.getElementById('btn-admin-map-fs-icon');
+        const btn = document.getElementById('btn-admin-map-fullscreen');
+        if (!card || !mapEl) return;
+
+        const isFs = card.classList.contains('admin-postal-map-fullscreen-active');
+
+        if (!isFs) {
+            card.setAttribute('data-prev-height', mapEl.style.height || '250px');
+            card.classList.add('admin-postal-map-fullscreen-active');
+            document.body.style.overflow = 'hidden';
+            if (fsIcon) fsIcon.textContent = 'fullscreen_exit';
+            if (btn) {
+                btn.style.background = '#FEE2E2';
+                btn.style.borderColor = '#FCA5A5';
+                btn.style.color = '#B91C1C';
+                btn.title = 'Salir de pantalla completa (Esc)';
+            }
+
+            const escListener = function(e) {
+                if (e.key === 'Escape') {
+                    window.toggleAdminPostalMapFullscreen();
+                }
+            };
+            document.addEventListener('keydown', escListener);
+            card._escListener = escListener;
+        } else {
+            card.classList.remove('admin-postal-map-fullscreen-active');
+            document.body.style.overflow = '';
+            const prevHeight = card.getAttribute('data-prev-height') || '250px';
+            mapEl.style.height = prevHeight;
+            if (fsIcon) fsIcon.textContent = 'fullscreen';
+            if (btn) {
+                btn.style.background = 'white';
+                btn.style.borderColor = '#D6D3D1';
+                btn.style.color = '#44403C';
+                btn.title = 'Pantalla completa (Esc)';
+            }
+            if (card._escListener) {
+                document.removeEventListener('keydown', card._escListener);
+                delete card._escListener;
+            }
+        }
+
+        const map = window.activeAdminPostalMaps && window.activeAdminPostalMaps['admin-postal-result-map'];
+        if (map) {
+            setTimeout(() => {
+                map.invalidateSize();
+                if (map._currentRouteBounds) {
+                    map.fitBounds(map._currentRouteBounds, { padding: [45, 45] });
+                } else if (map._currentCenter) {
+                    map.setView(map._currentCenter, 13);
+                }
+            }, 100);
+        }
+    };
 
     function loadLeafletIfNeeded(callback) {
         if (window.L) return callback();
