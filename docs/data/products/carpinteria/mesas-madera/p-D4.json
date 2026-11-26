@@ -225,14 +225,14 @@
     "banquetes",
     "atriles"
   ],
-  "last_modified": 1786564190405,
+  "last_modified": 1795719905445,
   "primaryCatId": "Mesas-madera",
   "visible": true,
   "views": 9,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": false,

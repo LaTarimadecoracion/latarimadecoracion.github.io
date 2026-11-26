@@ -19,13 +19,13 @@
     }
   ],
   "tags": [],
-  "last_modified": 1786334411421,
+  "last_modified": 1795719905445,
   "primaryCatId": "Mesas-madera",
   "views": 5,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": false,

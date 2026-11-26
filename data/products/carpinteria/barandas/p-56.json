@@ -60,15 +60,15 @@
     "baranda reforzada pino",
     "baranda reforzada madera"
   ],
-  "last_modified": 1788028292941,
+  "last_modified": 1795719905445,
   "primaryCatId": "Barandas",
   "history": [],
   "visible": true,
   "views": 3,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": false,

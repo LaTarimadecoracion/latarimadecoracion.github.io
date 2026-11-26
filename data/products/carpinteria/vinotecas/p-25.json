@@ -83,15 +83,15 @@
     "guarda botellas",
     "guarda vinos"
   ],
-  "last_modified": 1784391201352,
+  "last_modified": 1795719905445,
   "primaryCatId": "Vinotecas",
   "visible": true,
   "views": 12,
   "stock": 0,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": true,

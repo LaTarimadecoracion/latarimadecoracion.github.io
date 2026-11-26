@@ -81,14 +81,14 @@
     "muebles de calidad",
     "diseño artesanal"
   ],
-  "last_modified": 1786924556417,
+  "last_modified": 1795719905445,
   "primaryCatId": "camas-madera-pino",
   "visible": true,
   "views": 0,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": false,

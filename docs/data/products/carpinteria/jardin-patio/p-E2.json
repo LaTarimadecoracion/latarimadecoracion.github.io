@@ -250,13 +250,13 @@
     "piso jardin",
     "deck jardin"
   ],
-  "last_modified": 1786812326311,
+  "last_modified": 1795719905445,
   "primaryCatId": "jardin-patio",
   "views": 5,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": true,

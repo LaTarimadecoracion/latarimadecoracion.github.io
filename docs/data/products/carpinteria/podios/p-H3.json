@@ -106,8 +106,8 @@
   ],
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": false,
@@ -119,5 +119,6 @@
     "Podios"
   ],
   "primaryCatId": "Podios",
-  "rubro": "carpinteria"
+  "rubro": "carpinteria",
+  "last_modified": 1795719905445
 }

@@ -123,13 +123,13 @@
     "mensulas rusticas",
     "mensula decorativa"
   ],
-  "last_modified": 1787716545046,
+  "last_modified": 1795719905445,
   "primaryCatId": "Estantes",
   "views": 0,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": true,

@@ -47,11 +47,11 @@
   },
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "quantityDiscounts": [],
-  "last_modified": 1793485683722,
+  "last_modified": 1795719905445,
   "primaryCatId": "muebles",
   "history": [],
   "rubro": "carpinteria",

@@ -51,11 +51,11 @@
   },
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "quantityDiscounts": [],
-  "last_modified": 1794021964488,
+  "last_modified": 1795719905445,
   "primaryCatId": "Organizadores",
   "history": [],
   "visible": true,

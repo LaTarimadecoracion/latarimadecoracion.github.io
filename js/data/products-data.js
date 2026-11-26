@@ -60,11 +60,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1794021964488,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "history": [],
                 "visible": true,
@@ -117,9 +117,10 @@ const productsData = [
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                }
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "last_modified": 1795719905445
             },
             {
                 "id": "1794021585691",
@@ -164,9 +165,10 @@ const productsData = [
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                }
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "last_modified": 1795719905445
             },
             {
                 "id": "56",
@@ -230,15 +232,15 @@ const productsData = [
                     "baranda reforzada pino",
                     "baranda reforzada madera"
                 ],
-                "last_modified": 1788028292941,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Barandas",
                 "history": [],
                 "visible": true,
                 "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -321,13 +323,13 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616739128,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Barandas",
                 "views": 7,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -427,11 +429,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1792896741700,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Barandas",
                 "history": [],
                 "views": 3
@@ -504,13 +506,13 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616752912,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Barandas",
                 "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -649,11 +651,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586351484,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "history": [
                     {
@@ -728,13 +730,13 @@ const productsData = [
                     "torneado",
                     "madera"
                 ],
-                "last_modified": 1783908158520,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -795,11 +797,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1790378932962,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
                 "views": 3,
@@ -884,13 +886,13 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1783906817810,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cajones-madera",
                 "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -980,13 +982,13 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1783906817810,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cajones-madera",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -1075,13 +1077,13 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1783906817810,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cajones-madera",
                 "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -1116,13 +1118,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786305162256,
+                "last_modified": 1795719905445,
                 "primaryCatId": "camas-madera-pino",
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -1211,13 +1213,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1784411533338,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -1306,13 +1308,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1786811672934,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -1413,13 +1415,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1786811859567,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -1515,13 +1517,13 @@ const productsData = [
                     "corral de madera",
                     "corral funcional"
                 ],
-                "last_modified": 1786811707863,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -1609,13 +1611,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1784411560841,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -1703,13 +1705,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1784411566442,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -1797,13 +1799,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1784411576658,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -1891,13 +1893,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1784411571657,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -1943,13 +1945,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786316089369,
+                "last_modified": 1795719905445,
                 "primaryCatId": "muebles",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -2079,10 +2081,10 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
-                "last_modified": 1788738695697,
+                "last_modified": 1795719905445,
                 "primaryCatId": "muebles",
                 "history": [],
                 "views": 12,
@@ -2144,8 +2146,8 @@ const productsData = [
                 ],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -2157,7 +2159,8 @@ const productsData = [
                     "muebles"
                 ],
                 "primaryCatId": "muebles",
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "last_modified": 1795719905445
             },
             {
                 "id": "4E",
@@ -2422,11 +2425,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "order": 5,
@@ -2466,13 +2469,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1787715147118,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -2559,11 +2562,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586159405,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "visible": true,
@@ -2753,11 +2756,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586175821,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "views": 1
@@ -2837,11 +2840,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586145045,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "views": 6
@@ -2922,11 +2925,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1794021508802,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "views": 8
@@ -2988,8 +2991,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -2998,7 +3001,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1788916093301,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "visible": true,
@@ -3063,11 +3066,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789446426308,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "views": 12,
@@ -3257,11 +3260,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793480985540,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Steps",
                 "history": [],
                 "views": 3
@@ -3352,13 +3355,13 @@ const productsData = [
                     "mueble natural",
                     "hecho a mano"
                 ],
-                "last_modified": 1785084728300,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -3460,14 +3463,14 @@ const productsData = [
                     "muebles de calidad",
                     "diseño artesanal"
                 ],
-                "last_modified": 1786924556417,
+                "last_modified": 1795719905445,
                 "primaryCatId": "camas-madera-pino",
                 "visible": true,
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -3501,13 +3504,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786334775059,
+                "last_modified": 1795719905445,
                 "primaryCatId": "camas-madera-pino",
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -3617,8 +3620,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -3627,7 +3630,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1788917627673,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
                 "views": 4,
@@ -3691,8 +3694,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -3701,7 +3704,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1788917344040,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
                 "views": 7,
@@ -3930,13 +3933,13 @@ const productsData = [
                     "piso jardin",
                     "deck jardin"
                 ],
-                "last_modified": 1786812318991,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "views": 13,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -4214,13 +4217,13 @@ const productsData = [
                     "piso jardin",
                     "deck jardin"
                 ],
-                "last_modified": 1786812326311,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -4321,13 +4324,13 @@ const productsData = [
                     "papelera de madera",
                     "papelera pino"
                 ],
-                "last_modified": 1783742622011,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "views": 7,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -4370,13 +4373,13 @@ const productsData = [
                     "bosque",
                     "viaje"
                 ],
-                "last_modified": 1783637216140,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -4420,13 +4423,13 @@ const productsData = [
                     "bosque",
                     "viaje"
                 ],
-                "last_modified": 1783637228097,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -4676,14 +4679,14 @@ const productsData = [
                     "banquetes",
                     "atriles"
                 ],
-                "last_modified": 1786564190405,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
                 "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -4718,13 +4721,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786334411421,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -4835,8 +4838,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -4845,7 +4848,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796783964,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "history": [],
                 "views": 5
@@ -4959,8 +4962,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -4969,7 +4972,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794797048622,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "history": [],
                 "views": 22
@@ -5056,13 +5059,13 @@ const productsData = [
                     "muebles para casa",
                     "envios a todo el pais"
                 ],
-                "last_modified": 1783637306441,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -5289,13 +5292,13 @@ const productsData = [
                     "mensulas rusticas",
                     "mensula decorativa"
                 ],
-                "last_modified": 1786315987713,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -5436,13 +5439,13 @@ const productsData = [
                     "mensulas rusticas",
                     "mensula decorativa"
                 ],
-                "last_modified": 1787716545046,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -5516,8 +5519,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -5526,7 +5529,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796790637,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "history": [],
                 "views": 26
@@ -5654,8 +5657,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -5664,7 +5667,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796432955,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "history": [
                     {
@@ -5802,8 +5805,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -5812,7 +5815,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796445210,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "history": [
                     {
@@ -5945,8 +5948,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -5955,7 +5958,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796631235,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "history": [
                     {
@@ -6086,8 +6089,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -6096,7 +6099,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796652780,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "history": [
                     {
@@ -6253,13 +6256,13 @@ const productsData = [
                     "colgador abrigo pared",
                     "perchero minimalista madera"
                 ],
-                "last_modified": 1784163988629,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -6438,8 +6441,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -6448,7 +6451,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796550139,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "history": [],
                 "price": 24000,
@@ -6542,7 +6545,7 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784773242756,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 1,
@@ -6556,8 +6559,8 @@ const productsData = [
                 ],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -6661,7 +6664,7 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784773120669,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 3,
@@ -6680,8 +6683,8 @@ const productsData = [
                 ],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -6851,8 +6854,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -6861,7 +6864,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796513907,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "history": [
                     {
@@ -6969,7 +6972,7 @@ const productsData = [
                     "podios individuales",
                     "podios de madera"
                 ],
-                "last_modified": 1780774148299,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Podios",
                 "views": 3,
                 "stock": 0,
@@ -6992,8 +6995,8 @@ const productsData = [
                 ],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -7080,7 +7083,7 @@ const productsData = [
                     "podios individuales",
                     "podios de madera"
                 ],
-                "last_modified": 1784645695698,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Podios",
                 "views": 2,
                 "stock": 0,
@@ -7098,8 +7101,8 @@ const productsData = [
                 ],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -7224,8 +7227,8 @@ const productsData = [
                 ],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -7237,7 +7240,8 @@ const productsData = [
                     "Podios"
                 ],
                 "primaryCatId": "Podios",
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "last_modified": 1795719905445
             },
             {
                 "id": "G1",
@@ -7325,13 +7329,13 @@ const productsData = [
                     "vajilla de algarrobo",
                     "plato rustico"
                 ],
-                "last_modified": 1784081486789,
+                "last_modified": 1795719905445,
                 "primaryCatId": "productos-algarrobo",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -7417,15 +7421,15 @@ const productsData = [
                     "vajilla de algarrobo",
                     "plato rustico"
                 ],
-                "last_modified": 1783636741117,
+                "last_modified": 1795719905445,
                 "primaryCatId": "productos-algarrobo",
                 "views": 2,
                 "stock": 2,
                 "history": [],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -7542,11 +7546,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586660076,
+                "last_modified": 1795719905445,
                 "primaryCatId": "productos-algarrobo",
                 "history": [],
                 "views": 16
@@ -7611,8 +7615,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -7621,7 +7625,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796470483,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "views": 5
@@ -7690,13 +7694,13 @@ const productsData = [
                     "juguete de madera",
                     "jenga madera"
                 ],
-                "last_modified": 1783637073874,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -7760,11 +7764,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793504671360,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "order": 1,
@@ -7801,13 +7805,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786839116557,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -7852,13 +7856,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786839110101,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -7917,13 +7921,13 @@ const productsData = [
                     "chicos",
                     "decoracion"
                 ],
-                "last_modified": 1786564211621,
+                "last_modified": 1795719905445,
                 "primaryCatId": "sillas-sillones",
                 "views": 17,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -8037,11 +8041,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1790379461990,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "views": 2,
@@ -8138,14 +8142,14 @@ const productsData = [
                     "muebles de exterior",
                     "muebles de living"
                 ],
-                "last_modified": 1783907160537,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "visible": true,
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -8231,7 +8235,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794795773447,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Vinotecas",
                 "history": [
                     {
@@ -8371,8 +8375,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -8381,7 +8385,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794795893944,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Vinotecas",
                 "history": [
                     {
@@ -8506,8 +8510,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -8516,7 +8520,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794795847991,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Vinotecas",
                 "history": [
                     {
@@ -8612,15 +8616,15 @@ const productsData = [
                     "guarda botellas",
                     "guarda vinos"
                 ],
-                "last_modified": 1784391201352,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
                 "views": 12,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -8669,7 +8673,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786828055190,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
                 "views": 5,
@@ -8683,8 +8687,8 @@ const productsData = [
                 ],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -8729,7 +8733,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786828216883,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Vinotecas",
                 "views": 11,
                 "stock": 0,
@@ -8748,8 +8752,8 @@ const productsData = [
                 "visible": true,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -8884,11 +8888,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1791766625851,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "categories": [
@@ -8998,11 +9002,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1791766660527,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "views": 5
@@ -9066,11 +9070,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1791766694912,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
@@ -9135,11 +9139,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1791766726663,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
@@ -9203,11 +9207,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1791766460594,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
@@ -9366,8 +9370,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -9381,7 +9385,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1793479955669,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Steps",
                 "history": [],
                 "visible": true,
@@ -9428,11 +9432,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1792896610293,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [
                     {
@@ -9482,11 +9486,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1792896622140,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [
                     {
@@ -9538,11 +9542,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1792896633811,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [
                     {
@@ -9608,11 +9612,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793479628428,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-28-mvay9cq6",
                 "history": [
                     {
@@ -9672,11 +9676,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793479781268,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-28-mvay9cq6",
                 "history": [],
                 "visible": true,
@@ -9740,11 +9744,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793480283124,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "history": [
                     {
@@ -9812,11 +9816,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793480381864,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "history": [
                     {
@@ -9884,11 +9888,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793480476135,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "history": [
                     {
@@ -10045,11 +10049,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1794718986203,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "history": [
                     {
@@ -10130,8 +10134,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -10140,7 +10144,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796870037,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "history": [
                     {
@@ -10208,11 +10212,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793500205826,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "history": [
                     {
@@ -10312,7 +10316,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794795773447,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Vinotecas",
                 "history": [
                     {
@@ -10452,8 +10456,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -10462,7 +10466,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794795893944,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Vinotecas",
                 "history": [
                     {
@@ -10587,8 +10591,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -10597,7 +10601,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794795847991,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Vinotecas",
                 "history": [
                     {
@@ -10721,8 +10725,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -10731,7 +10735,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794794051309,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Vinotecas",
                 "history": [
                     {
@@ -10828,15 +10832,15 @@ const productsData = [
                     "guarda botellas",
                     "guarda vinos"
                 ],
-                "last_modified": 1784391201352,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
                 "views": 12,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -10885,7 +10889,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786828055190,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
                 "views": 5,
@@ -10899,8 +10903,8 @@ const productsData = [
                 ],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -10945,7 +10949,7 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786828216883,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Vinotecas",
                 "views": 11,
                 "stock": 0,
@@ -10964,8 +10968,8 @@ const productsData = [
                 "visible": true,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -11112,8 +11116,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -11122,7 +11126,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796432955,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "history": [
                     {
@@ -11260,8 +11264,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -11270,7 +11274,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796445210,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "history": [
                     {
@@ -11346,8 +11350,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -11356,7 +11360,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796470483,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "views": 5
@@ -11478,8 +11482,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -11488,7 +11492,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796631235,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "history": [
                     {
@@ -11619,8 +11623,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -11629,7 +11633,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796652780,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "history": [
                     {
@@ -11786,13 +11790,13 @@ const productsData = [
                     "colgador abrigo pared",
                     "perchero minimalista madera"
                 ],
-                "last_modified": 1784163988629,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -11971,8 +11975,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -11981,7 +11985,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796550139,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "history": [],
                 "price": 24000,
@@ -12075,7 +12079,7 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784773242756,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 1,
@@ -12089,8 +12093,8 @@ const productsData = [
                 ],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -12194,7 +12198,7 @@ const productsData = [
                     "perchero toallero",
                     "perchero baño"
                 ],
-                "last_modified": 1784773120669,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "visible": true,
                 "views": 3,
@@ -12213,8 +12217,8 @@ const productsData = [
                 ],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -12384,8 +12388,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -12394,7 +12398,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796513907,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Percheros",
                 "history": [
                     {
@@ -12925,11 +12929,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1794105002346,
+                "last_modified": 1795719905445,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -13449,11 +13453,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1795223208558,
+                "last_modified": 1795719905445,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -13710,11 +13714,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1795223329726,
+                "last_modified": 1795719905445,
                 "optional_variant": {
                     "label": "Espesor del tirante (opcional)",
                     "options": [
@@ -14156,11 +14160,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793923031277,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Barandas",
                 "history": [],
                 "rubro": "carpinteria",
@@ -14418,11 +14422,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793965208814,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Barandas",
                 "history": [],
                 "rubro": "carpinteria",
@@ -14490,15 +14494,15 @@ const productsData = [
                     "baranda reforzada pino",
                     "baranda reforzada madera"
                 ],
-                "last_modified": 1788028292941,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Barandas",
                 "history": [],
                 "visible": true,
                 "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -14581,13 +14585,13 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616739128,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Barandas",
                 "views": 7,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -14687,11 +14691,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1792896741700,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Barandas",
                 "history": [],
                 "views": 3
@@ -14764,13 +14768,13 @@ const productsData = [
                     "protector cuna",
                     "barandas de pino"
                 ],
-                "last_modified": 1783616752912,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Barandas",
                 "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -14840,10 +14844,11 @@ const productsData = [
                 "subcategoria": "pizarras",
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
-                "price": 30500
+                "price": 30500,
+                "last_modified": 1795719905445
             },
             {
                 "id": "1792154576619",
@@ -14893,11 +14898,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793479781268,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-28-mvay9cq6",
                 "history": [],
                 "visible": true,
@@ -14954,11 +14959,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1792154651487,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-28-mvay9cq6",
                 "history": [],
                 "rubro": "carpinteria",
@@ -15020,11 +15025,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793479628428,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-28-mvay9cq6",
                 "history": [
                     {
@@ -15198,8 +15203,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -15213,7 +15218,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1793479955669,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Steps",
                 "history": [],
                 "visible": true,
@@ -15320,11 +15325,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793481022357,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Steps",
                 "history": [],
                 "rubro": "carpinteria",
@@ -15480,11 +15485,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793481042956,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Steps",
                 "history": [],
                 "rubro": "carpinteria",
@@ -15669,11 +15674,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793481029476,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Steps",
                 "history": [],
                 "rubro": "carpinteria",
@@ -15858,11 +15863,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793480985540,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Steps",
                 "history": [],
                 "views": 3
@@ -15900,7 +15905,7 @@ const productsData = [
                     "plataforma",
                     "fitness"
                 ],
-                "last_modified": 1792887338329,
+                "last_modified": 1795719905445,
                 "optional_variant": null,
                 "primaryCatId": "Steps",
                 "history": [
@@ -15915,8 +15920,8 @@ const productsData = [
                     "mode": "store",
                     "showBuyButton": true,
                     "showCartButton": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "mode": "both"
@@ -15962,7 +15967,7 @@ const productsData = [
                     "cajón",
                     "escalón"
                 ],
-                "last_modified": 1792887338332,
+                "last_modified": 1795719905445,
                 "optional_variant": null,
                 "primaryCatId": "Steps",
                 "history": [
@@ -15977,8 +15982,8 @@ const productsData = [
                     "mode": "store",
                     "showBuyButton": true,
                     "showCartButton": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "mode": "both"
@@ -16022,11 +16027,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793481013332,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Steps",
                 "history": [],
                 "visible": true,
@@ -16167,11 +16172,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1794021964488,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "history": [
                     {
@@ -16242,11 +16247,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1794021964488,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "history": [],
                 "visible": true,
@@ -16351,8 +16356,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -16361,7 +16366,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796783964,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "history": [],
                 "views": 5
@@ -16424,8 +16429,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -16434,7 +16439,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796790637,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "history": [],
                 "views": 26
@@ -16496,8 +16501,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -16506,7 +16511,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794021964488,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "visible": true,
@@ -16603,13 +16608,13 @@ const productsData = [
                     "muebles para casa",
                     "envios a todo el pais"
                 ],
-                "last_modified": 1794021964488,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -16670,11 +16675,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1794021964488,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
                 "views": 3,
@@ -16756,8 +16761,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -16766,7 +16771,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796870037,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "history": [
                     {
@@ -16852,13 +16857,13 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1794021964488,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cajones-madera",
                 "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -16949,13 +16954,13 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1794021964488,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cajones-madera",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -17045,13 +17050,13 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1794021964488,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cajones-madera",
                 "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -17177,8 +17182,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -17187,7 +17192,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794797048622,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "history": [],
                 "views": 22
@@ -17278,13 +17283,13 @@ const productsData = [
                     "mueble natural",
                     "hecho a mano"
                 ],
-                "last_modified": 1794021964488,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -17371,11 +17376,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1791766460594,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
@@ -17501,11 +17506,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1791766625851,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "categories": [
@@ -17615,11 +17620,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1791766660527,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "views": 5
@@ -17683,11 +17688,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1791766694912,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
@@ -17752,11 +17757,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1791766726663,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cortes-madera",
                 "history": [],
                 "visible": true,
@@ -17805,13 +17810,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1787715147118,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -17951,11 +17956,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586351484,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "history": [
                     {
@@ -18029,8 +18034,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -18039,7 +18044,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1788916093301,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "visible": true,
@@ -18316,11 +18321,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "order": 5,
@@ -18510,11 +18515,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586175821,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "views": 1
@@ -18591,11 +18596,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586159405,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "visible": true,
@@ -18676,11 +18681,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586145045,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "views": 6
@@ -18761,11 +18766,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1794021508802,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "views": 8
@@ -18821,11 +18826,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789446426308,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "views": 12,
@@ -18945,8 +18950,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -18955,7 +18960,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794797048622,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Organizadores",
                 "history": [],
                 "views": 22
@@ -19001,11 +19006,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1792896610293,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [
                     {
@@ -19055,11 +19060,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1792896622140,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [
                     {
@@ -19111,11 +19116,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1792896633811,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [
                     {
@@ -19339,13 +19344,13 @@ const productsData = [
                     "mensulas rusticas",
                     "mensula decorativa"
                 ],
-                "last_modified": 1786315987713,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -19486,13 +19491,13 @@ const productsData = [
                     "mensulas rusticas",
                     "mensula decorativa"
                 ],
-                "last_modified": 1787716545046,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -19593,13 +19598,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1784411533338,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -19688,13 +19693,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1786811672934,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -19795,13 +19800,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1786811859567,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -19897,13 +19902,13 @@ const productsData = [
                     "corral de madera",
                     "corral funcional"
                 ],
-                "last_modified": 1786811707863,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -19991,13 +19996,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1784411560841,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -20085,13 +20090,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1784411566442,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -20179,13 +20184,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1784411576658,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -20273,13 +20278,13 @@ const productsData = [
                     "cunas de madera",
                     "cunas de pino"
                 ],
-                "last_modified": 1784411571657,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cunas-madera-pino",
                 "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -20349,11 +20354,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793640925719,
+                "last_modified": 1795719905445,
                 "primaryCatId": "camas-madera-pino",
                 "history": [],
                 "rubro": "carpinteria",
@@ -20413,11 +20418,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1794588125836,
+                "last_modified": 1795719905445,
                 "primaryCatId": "camas-madera-pino",
                 "history": [],
                 "visible": true,
@@ -20443,13 +20448,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1793586887358,
+                "last_modified": 1795719905445,
                 "primaryCatId": "camas-madera-pino",
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -20580,10 +20585,10 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
-                "last_modified": 1793586887358,
+                "last_modified": 1795719905445,
                 "primaryCatId": "muebles",
                 "history": [],
                 "views": 12,
@@ -20669,13 +20674,13 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1793586887358,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cajones-madera",
                 "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -20766,13 +20771,13 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1793586887358,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cajones-madera",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -20862,13 +20867,13 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1793586887358,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cajones-madera",
                 "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -20904,13 +20909,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1793586887358,
+                "last_modified": 1795719905445,
                 "primaryCatId": "camas-madera-pino",
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -21009,14 +21014,14 @@ const productsData = [
                     "muebles de calidad",
                     "diseño artesanal"
                 ],
-                "last_modified": 1793586887358,
+                "last_modified": 1795719905445,
                 "primaryCatId": "camas-madera-pino",
                 "visible": true,
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -21157,10 +21162,10 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
-                "last_modified": 1788738695697,
+                "last_modified": 1795719905445,
                 "primaryCatId": "muebles",
                 "history": [],
                 "views": 12,
@@ -21222,8 +21227,8 @@ const productsData = [
                 ],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -21235,7 +21240,8 @@ const productsData = [
                     "muebles"
                 ],
                 "primaryCatId": "muebles",
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "last_modified": 1795719905445
             },
             {
                 "id": "4D",
@@ -21270,13 +21276,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786316089369,
+                "last_modified": 1795719905445,
                 "primaryCatId": "muebles",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -21339,11 +21345,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793485683722,
+                "last_modified": 1795719905445,
                 "primaryCatId": "muebles",
                 "history": [],
                 "rubro": "carpinteria",
@@ -21399,11 +21405,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793485870299,
+                "last_modified": 1795719905445,
                 "primaryCatId": "muebles",
                 "history": [],
                 "visible": true,
@@ -21465,13 +21471,13 @@ const productsData = [
                     "chicos",
                     "decoracion"
                 ],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "sillas-sillones",
                 "views": 17,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -21586,11 +21592,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "views": 2,
@@ -21652,11 +21658,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "order": 2,
@@ -21722,8 +21728,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -21732,7 +21738,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1794796470483,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "views": 5
@@ -21795,13 +21801,13 @@ const productsData = [
                     "torneado",
                     "madera"
                 ],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -22080,11 +22086,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "order": 5,
@@ -22124,13 +22130,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -22197,11 +22203,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Estantes",
                 "history": [],
                 "views": 12,
@@ -22244,13 +22250,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -22329,13 +22335,13 @@ const productsData = [
                     "juguete de madera",
                     "jenga madera"
                 ],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -22371,13 +22377,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "camas-madera-pino",
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -22627,14 +22633,14 @@ const productsData = [
                     "banquetes",
                     "atriles"
                 ],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
                 "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -22680,13 +22686,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -22785,14 +22791,14 @@ const productsData = [
                     "muebles de exterior",
                     "muebles de living"
                 ],
-                "last_modified": 1793586859102,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "visible": true,
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -22862,13 +22868,13 @@ const productsData = [
                     "chicos",
                     "decoracion"
                 ],
-                "last_modified": 1793586813439,
+                "last_modified": 1795719905445,
                 "primaryCatId": "sillas-sillones",
                 "views": 17,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -22933,11 +22939,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586813439,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "history": [],
                 "order": 1,
@@ -22974,13 +22980,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1793586813439,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -23026,13 +23032,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1793586813439,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Juguetes",
                 "views": 4,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -23086,13 +23092,13 @@ const productsData = [
                     "bosque",
                     "viaje"
                 ],
-                "last_modified": 1783637216140,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -23136,13 +23142,13 @@ const productsData = [
                     "bosque",
                     "viaje"
                 ],
-                "last_modified": 1783637228097,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -23392,14 +23398,14 @@ const productsData = [
                     "banquetes",
                     "atriles"
                 ],
-                "last_modified": 1786564190405,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "visible": true,
                 "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -23434,13 +23440,13 @@ const productsData = [
                     }
                 ],
                 "tags": [],
-                "last_modified": 1786334411421,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -23510,11 +23516,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793500205826,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "history": [
                     {
@@ -23671,11 +23677,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1794718986203,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "history": [
                     {
@@ -23804,11 +23810,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793681645232,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "history": [],
                 "rubro": "carpinteria",
@@ -23871,11 +23877,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586789934,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "history": [
                     {
@@ -23917,13 +23923,13 @@ const productsData = [
                     "bosque",
                     "viaje"
                 ],
-                "last_modified": 1793586789934,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "views": 6,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -23996,11 +24002,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586789934,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "history": [
                     {
@@ -24069,11 +24075,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586789934,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "history": [
                     {
@@ -24114,13 +24120,13 @@ const productsData = [
                     "bosque",
                     "viaje"
                 ],
-                "last_modified": 1793586789934,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Mesas-madera",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -24223,13 +24229,13 @@ const productsData = [
                     "papelera de madera",
                     "papelera pino"
                 ],
-                "last_modified": 1793586789934,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "views": 7,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -24461,13 +24467,13 @@ const productsData = [
                     "piso jardin",
                     "deck jardin"
                 ],
-                "last_modified": 1793586789934,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "views": 13,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -24746,13 +24752,13 @@ const productsData = [
                     "piso jardin",
                     "deck jardin"
                 ],
-                "last_modified": 1793586789934,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "views": 5,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -24798,7 +24804,7 @@ const productsData = [
                     "macetas",
                     "madera"
                 ],
-                "last_modified": 1793586789934,
+                "last_modified": 1795719905445,
                 "optional_variant": null,
                 "primaryCatId": "jardin-patio",
                 "history": [
@@ -24813,8 +24819,8 @@ const productsData = [
                     "mode": "store",
                     "showBuyButton": true,
                     "showCartButton": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "mode": "both"
@@ -24886,11 +24892,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1794017501407,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "history": [
                     {
@@ -24960,11 +24966,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1794017570905,
+                "last_modified": 1795719905445,
                 "primaryCatId": "jardin-patio",
                 "history": [
                     {
@@ -25071,13 +25077,13 @@ const productsData = [
                     "vajilla de algarrobo",
                     "plato rustico"
                 ],
-                "last_modified": 1784081486789,
+                "last_modified": 1795719905445,
                 "primaryCatId": "productos-algarrobo",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -25163,15 +25169,15 @@ const productsData = [
                     "vajilla de algarrobo",
                     "plato rustico"
                 ],
-                "last_modified": 1783636741117,
+                "last_modified": 1795719905445,
                 "primaryCatId": "productos-algarrobo",
                 "views": 2,
                 "stock": 2,
                 "history": [],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -25288,11 +25294,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586660076,
+                "last_modified": 1795719905445,
                 "primaryCatId": "productos-algarrobo",
                 "history": [],
                 "views": 16
@@ -25331,7 +25337,7 @@ const productsData = [
                     "redonda",
                     "calada"
                 ],
-                "last_modified": 1792887338345,
+                "last_modified": 1795719905445,
                 "optional_variant": null,
                 "primaryCatId": "productos-algarrobo",
                 "history": [
@@ -25346,8 +25352,8 @@ const productsData = [
                     "mode": "store",
                     "showBuyButton": true,
                     "showCartButton": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "mode": "both"
@@ -25415,9 +25421,10 @@ const productsData = [
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                }
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "last_modified": 1795719905445
             },
             {
                 "id": "1794021585691",
@@ -25462,9 +25469,10 @@ const productsData = [
                 "views": 1,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
-                }
+                    "linkEnabled": true,
+                    "creditEnabled": true
+                },
+                "last_modified": 1795719905445
             },
             {
                 "id": "42",
@@ -25591,11 +25599,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586351484,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "history": [
                     {
@@ -25705,11 +25713,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793887981528,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
                 "rubro": "carpinteria",
@@ -25773,13 +25781,13 @@ const productsData = [
                     "torneado",
                     "madera"
                 ],
-                "last_modified": 1783908158520,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "views": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -25840,11 +25848,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1790378932962,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
                 "views": 3,
@@ -25951,8 +25959,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -25961,7 +25969,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1788917627673,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
                 "views": 4,
@@ -26025,8 +26033,8 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [
                     {
@@ -26035,7 +26043,7 @@ const productsData = [
                         "shippingDiscountPercent": 0
                     }
                 ],
-                "last_modified": 1788917344040,
+                "last_modified": 1795719905445,
                 "primaryCatId": "bazar-cocina",
                 "history": [],
                 "views": 7,
@@ -26132,13 +26140,13 @@ const productsData = [
                     "vajilla de algarrobo",
                     "plato rustico"
                 ],
-                "last_modified": 1784081486789,
+                "last_modified": 1795719905445,
                 "primaryCatId": "productos-algarrobo",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -26224,15 +26232,15 @@ const productsData = [
                     "vajilla de algarrobo",
                     "plato rustico"
                 ],
-                "last_modified": 1783636741117,
+                "last_modified": 1795719905445,
                 "primaryCatId": "productos-algarrobo",
                 "views": 2,
                 "stock": 2,
                 "history": [],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -26349,11 +26357,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1793586660076,
+                "last_modified": 1795719905445,
                 "primaryCatId": "productos-algarrobo",
                 "history": [],
                 "views": 16
@@ -26443,15 +26451,15 @@ const productsData = [
                     "guarda botellas",
                     "guarda vinos"
                 ],
-                "last_modified": 1784391201352,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Vinotecas",
                 "visible": true,
                 "views": 12,
                 "stock": 0,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": true,
@@ -26552,13 +26560,13 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1783906817810,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cajones-madera",
                 "views": 9,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -26648,13 +26656,13 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1783906817810,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cajones-madera",
                 "views": 2,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -26743,13 +26751,13 @@ const productsData = [
                     "baulera de madera",
                     "baulera pino"
                 ],
-                "last_modified": 1783906817810,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cajones-madera",
                 "views": 3,
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -26866,7 +26874,7 @@ const productsData = [
                     "podios individuales",
                     "podios de madera"
                 ],
-                "last_modified": 1780774148299,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Podios",
                 "views": 3,
                 "stock": 0,
@@ -26889,8 +26897,8 @@ const productsData = [
                 ],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -26977,7 +26985,7 @@ const productsData = [
                     "podios individuales",
                     "podios de madera"
                 ],
-                "last_modified": 1784645695698,
+                "last_modified": 1795719905445,
                 "primaryCatId": "Podios",
                 "views": 2,
                 "stock": 0,
@@ -26995,8 +27003,8 @@ const productsData = [
                 ],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -27121,8 +27129,8 @@ const productsData = [
                 ],
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "shippingConfig": {
                     "logisticaEnabled": false,
@@ -27134,7 +27142,8 @@ const productsData = [
                     "Podios"
                 ],
                 "primaryCatId": "Podios",
-                "rubro": "carpinteria"
+                "rubro": "carpinteria",
+                "last_modified": 1795719905445
             }
         ]
     },
@@ -27203,11 +27212,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789839131712,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": [],
                 "views": 14,
@@ -27265,11 +27274,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789839031552,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": [],
                 "views": 1,
@@ -27327,11 +27336,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789839502393,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": [],
                 "visible": true,
@@ -27390,11 +27399,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789849249639,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": [],
                 "views": 7,
@@ -27462,11 +27471,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789839131712,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": [],
                 "views": 14,
@@ -27524,11 +27533,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789839031552,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": [],
                 "views": 1,
@@ -27586,11 +27595,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789839502393,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": [],
                 "visible": true,
@@ -27649,11 +27658,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789849249639,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-21-mu7q9i7y",
                 "history": [],
                 "views": 7,
@@ -27732,11 +27741,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789865946949,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-23-mu93q76a",
                 "history": [],
                 "views": 1,
@@ -27815,11 +27824,11 @@ const productsData = [
                 },
                 "paymentConfig": {
                     "transferEnabled": true,
-                    "linkEnabled": false,
-                    "creditEnabled": false
+                    "linkEnabled": true,
+                    "creditEnabled": true
                 },
                 "quantityDiscounts": [],
-                "last_modified": 1789865946949,
+                "last_modified": 1795719905445,
                 "primaryCatId": "cat-23-mu93q76a",
                 "history": [],
                 "views": 1,

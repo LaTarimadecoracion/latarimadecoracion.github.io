@@ -80,13 +80,13 @@
     "muebles para casa",
     "envios a todo el pais"
   ],
-  "last_modified": 1783637306441,
+  "last_modified": 1795719905445,
   "primaryCatId": "Organizadores",
   "views": 1,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": true,

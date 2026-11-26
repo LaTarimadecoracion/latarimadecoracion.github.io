@@ -160,8 +160,8 @@
   },
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "quantityDiscounts": [
     {
@@ -170,7 +170,7 @@
       "shippingDiscountPercent": 0
     }
   ],
-  "last_modified": 1794796550139,
+  "last_modified": 1795719905445,
   "primaryCatId": "Percheros",
   "history": [],
   "price": 24000,

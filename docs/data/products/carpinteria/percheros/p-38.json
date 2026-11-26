@@ -86,7 +86,7 @@
     "perchero toallero",
     "perchero baño"
   ],
-  "last_modified": 1784773120669,
+  "last_modified": 1795719905445,
   "primaryCatId": "Percheros",
   "visible": true,
   "views": 3,
@@ -105,8 +105,8 @@
   ],
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": true,

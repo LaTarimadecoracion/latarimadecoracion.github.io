@@ -70,13 +70,13 @@
     "baulera de madera",
     "baulera pino"
   ],
-  "last_modified": 1783906817810,
+  "last_modified": 1795719905445,
   "primaryCatId": "cajones-madera",
   "views": 3,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": false,

@@ -62,13 +62,13 @@
     "juguete de madera",
     "jenga madera"
   ],
-  "last_modified": 1783637073874,
+  "last_modified": 1795719905445,
   "primaryCatId": "Juguetes",
   "views": 1,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": true,

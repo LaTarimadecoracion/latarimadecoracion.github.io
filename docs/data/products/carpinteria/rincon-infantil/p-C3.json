@@ -81,14 +81,14 @@
     "muebles de exterior",
     "muebles de living"
   ],
-  "last_modified": 1783907160537,
+  "last_modified": 1795719905445,
   "primaryCatId": "Juguetes",
   "visible": true,
   "views": 2,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": false,

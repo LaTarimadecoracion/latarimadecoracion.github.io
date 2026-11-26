@@ -47,11 +47,11 @@
   },
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "quantityDiscounts": [],
-  "last_modified": 1792154651487,
+  "last_modified": 1795719905445,
   "primaryCatId": "cat-28-mvay9cq6",
   "history": [],
   "rubro": "carpinteria",

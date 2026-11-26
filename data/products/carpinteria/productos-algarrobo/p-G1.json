@@ -84,13 +84,13 @@
     "vajilla de algarrobo",
     "plato rustico"
   ],
-  "last_modified": 1784081486789,
+  "last_modified": 1795719905445,
   "primaryCatId": "productos-algarrobo",
   "views": 2,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": true,

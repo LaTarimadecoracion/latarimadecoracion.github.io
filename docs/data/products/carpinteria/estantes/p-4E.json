@@ -249,11 +249,11 @@
   },
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "quantityDiscounts": [],
-  "last_modified": 1793586859102,
+  "last_modified": 1795719905445,
   "primaryCatId": "Estantes",
   "history": [],
   "order": 5,

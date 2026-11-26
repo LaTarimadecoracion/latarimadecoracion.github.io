@@ -28,13 +28,13 @@
     "bosque",
     "viaje"
   ],
-  "last_modified": 1783637216140,
+  "last_modified": 1795719905445,
   "primaryCatId": "Mesas-madera",
   "views": 6,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": false,

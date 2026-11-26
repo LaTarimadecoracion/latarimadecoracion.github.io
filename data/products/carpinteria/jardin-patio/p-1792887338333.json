@@ -29,7 +29,7 @@
     "macetas",
     "madera"
   ],
-  "last_modified": 1793586789934,
+  "last_modified": 1795719905445,
   "optional_variant": null,
   "primaryCatId": "jardin-patio",
   "history": [
@@ -44,8 +44,8 @@
     "mode": "store",
     "showBuyButton": true,
     "showCartButton": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "mode": "both"

@@ -44,8 +44,9 @@
   "subcategoria": "pizarras",
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
-  "price": 30500
+  "price": 30500,
+  "last_modified": 1795719905445
 }

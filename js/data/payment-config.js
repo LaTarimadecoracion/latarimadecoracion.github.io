@@ -24,7 +24,7 @@ window.sessionPaymentConfig = {
     "mercadopago": {
         "active": true,
         "mode": "production",
-        "publicKey": "APP_USR-5f38a900-5349-43a1-a232-e0d9e4dd2367",
+        "publicKey": "APP_USR-be803e20-9c32-45f1-8354-8691ea7fa550",
         "accessToken": "",
         "workerUrl": "",
         "surchargePercent": 0,

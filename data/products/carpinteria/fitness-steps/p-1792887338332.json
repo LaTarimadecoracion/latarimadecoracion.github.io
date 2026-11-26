@@ -31,7 +31,7 @@
     "cajón",
     "escalón"
   ],
-  "last_modified": 1792887338332,
+  "last_modified": 1795719905445,
   "optional_variant": null,
   "primaryCatId": "Steps",
   "history": [
@@ -46,8 +46,8 @@
     "mode": "store",
     "showBuyButton": true,
     "showCartButton": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "mode": "both"

@@ -45,11 +45,11 @@
   },
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "quantityDiscounts": [],
-  "last_modified": 1793504671360,
+  "last_modified": 1795719905445,
   "primaryCatId": "Juguetes",
   "history": [],
   "order": 1,

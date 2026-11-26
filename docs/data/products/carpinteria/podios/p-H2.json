@@ -70,7 +70,7 @@
     "podios individuales",
     "podios de madera"
   ],
-  "last_modified": 1784645695698,
+  "last_modified": 1795719905445,
   "primaryCatId": "Podios",
   "views": 2,
   "stock": 0,
@@ -88,8 +88,8 @@
   ],
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": false,

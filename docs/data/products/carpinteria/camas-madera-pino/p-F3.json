@@ -45,11 +45,11 @@
   },
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "quantityDiscounts": [],
-  "last_modified": 1793640925719,
+  "last_modified": 1795719905445,
   "primaryCatId": "camas-madera-pino",
   "history": [],
   "rubro": "carpinteria",

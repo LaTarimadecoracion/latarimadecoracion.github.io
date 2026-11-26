@@ -45,11 +45,11 @@
   },
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "quantityDiscounts": [],
-  "last_modified": 1789839031552,
+  "last_modified": 1795719905445,
   "primaryCatId": "cat-21-mu7q9i7y",
   "history": [],
   "views": 1,

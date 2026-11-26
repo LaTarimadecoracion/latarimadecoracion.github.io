@@ -119,11 +119,11 @@
   },
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "quantityDiscounts": [],
-  "last_modified": 1793586351484,
+  "last_modified": 1795719905445,
   "primaryCatId": "bazar-cocina",
   "history": [
     {

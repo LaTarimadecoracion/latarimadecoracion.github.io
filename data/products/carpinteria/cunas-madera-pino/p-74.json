@@ -81,13 +81,13 @@
     "corral de madera",
     "corral funcional"
   ],
-  "last_modified": 1786811707863,
+  "last_modified": 1795719905445,
   "primaryCatId": "cunas-madera-pino",
   "views": 1,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": false,

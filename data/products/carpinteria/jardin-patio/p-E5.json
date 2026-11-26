@@ -85,13 +85,13 @@
     "papelera de madera",
     "papelera pino"
   ],
-  "last_modified": 1783742622011,
+  "last_modified": 1795719905445,
   "primaryCatId": "jardin-patio",
   "views": 7,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": false,

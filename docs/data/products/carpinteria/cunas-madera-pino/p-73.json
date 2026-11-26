@@ -85,13 +85,13 @@
     "cunas de madera",
     "cunas de pino"
   ],
-  "last_modified": 1786811859567,
+  "last_modified": 1795719905445,
   "primaryCatId": "cunas-madera-pino",
   "views": 1,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": false,

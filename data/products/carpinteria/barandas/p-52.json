@@ -488,11 +488,11 @@
   },
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "quantityDiscounts": [],
-  "last_modified": 1795223208558,
+  "last_modified": 1795719905445,
   "optional_variant": {
     "label": "Espesor del tirante (opcional)",
     "options": [

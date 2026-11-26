@@ -29,13 +29,13 @@
     }
   ],
   "tags": [],
-  "last_modified": 1786839110101,
+  "last_modified": 1795719905445,
   "primaryCatId": "Juguetes",
   "views": 4,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": false,

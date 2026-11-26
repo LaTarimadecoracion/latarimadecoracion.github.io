@@ -83,13 +83,13 @@
     "mueble natural",
     "hecho a mano"
   ],
-  "last_modified": 1785084728300,
+  "last_modified": 1795719905445,
   "primaryCatId": "Organizadores",
   "views": 3,
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "shippingConfig": {
     "logisticaEnabled": true,

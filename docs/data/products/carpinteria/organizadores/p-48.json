@@ -106,8 +106,8 @@
   },
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "quantityDiscounts": [
     {
@@ -116,7 +116,7 @@
       "shippingDiscountPercent": 0
     }
   ],
-  "last_modified": 1794797048622,
+  "last_modified": 1795719905445,
   "primaryCatId": "Organizadores",
   "history": [],
   "views": 22,

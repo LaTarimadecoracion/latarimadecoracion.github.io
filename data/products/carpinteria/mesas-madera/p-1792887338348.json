@@ -54,11 +54,11 @@
   },
   "paymentConfig": {
     "transferEnabled": true,
-    "linkEnabled": false,
-    "creditEnabled": false
+    "linkEnabled": true,
+    "creditEnabled": true
   },
   "quantityDiscounts": [],
-  "last_modified": 1793500205826,
+  "last_modified": 1795719905445,
   "primaryCatId": "Mesas-madera",
   "history": [
     {
